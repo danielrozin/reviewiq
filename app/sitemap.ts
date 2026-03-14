@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
   const now = new Date();
