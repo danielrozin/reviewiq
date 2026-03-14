@@ -38,6 +38,12 @@ export function Header() {
             >
               About
             </Link>
+            <Link
+              href="/community"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
+            >
+              Community
+            </Link>
           </nav>
 
           <div className="flex items-center gap-3 shrink-0">

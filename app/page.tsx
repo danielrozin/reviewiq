@@ -1,13 +1,18 @@
 import Link from "next/link";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
+import { getTrendingDiscussions } from "@/data/discussions";
+import { getUserById } from "@/data/users";
 import { SmartScore } from "@/components/ui/SmartScore";
+import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { formatNumber } from "@/lib/utils";
 
 export default function HomePage() {
   const topProducts = [...products]
     .sort((a, b) => b.smartScore - a.smartScore)
     .slice(0, 6);
+
+  const trendingDiscussions = getTrendingDiscussions(4);
 
   return (
     <>
@@ -54,7 +59,7 @@ export default function HomePage() {
               { value: "20K+", label: "Verified Reviews" },
               { value: "78%", label: "Verified Purchase Rate" },
               { value: "500+", label: "Products Analyzed" },
-              { value: "0", label: "Affiliate Links" },
+              { value: "2.4K", label: "Community Members" },
             ].map((stat) => (
               <div key={stat.label}>
                 <p className="text-2xl sm:text-3xl font-bold text-gray-900">
@@ -144,6 +149,83 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Community Discussions */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-3">
+              <span className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
+              Live Community
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              Trending Discussions
+            </h2>
+            <p className="text-gray-500 mt-1">
+              Real conversations from verified product owners
+            </p>
+          </div>
+          <Link
+            href="/community"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block"
+          >
+            View all →
+          </Link>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {trendingDiscussions.map((thread) => {
+            const author = getUserById(thread.authorId);
+            const netVotes = thread.upvotes - thread.downvotes;
+
+            return (
+              <Link
+                key={thread.id}
+                href={`/community/thread/${thread.id}`}
+                className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all"
+              >
+                <div className="flex flex-col items-center shrink-0 min-w-[36px]">
+                  <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
+                    {formatNumber(netVotes)}
+                  </span>
+                  <span className="text-[9px] text-gray-400">votes</span>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+                      {THREAD_TYPE_LABELS[thread.threadType]}
+                    </span>
+                    {thread.isResolved && (
+                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                        Resolved
+                      </span>
+                    )}
+                  </div>
+                  <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug mb-2">
+                    {thread.title}
+                  </h3>
+                  <div className="flex items-center gap-3 text-xs text-gray-400">
+                    {author && (
+                      <span className="font-medium text-gray-500">
+                        {author.displayName}
+                      </span>
+                    )}
+                    <span>💬 {thread.commentCount}</span>
+                    <span>👁 {formatNumber(thread.viewCount)}</span>
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+        <div className="text-center mt-6 sm:hidden">
+          <Link
+            href="/community"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700"
+          >
+            View all discussions →
+          </Link>
+        </div>
+      </section>
+
       {/* How It Works */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
@@ -194,18 +276,27 @@ export default function HomePage() {
       <section className="bg-brand-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
-            Share your honest experience
+            Join the conversation
           </h2>
           <p className="text-brand-200 max-w-xl mx-auto mb-6">
-            Help others make smarter buying decisions. Write a structured,
-            verified review and contribute to a more transparent marketplace.
+            Help others make smarter buying decisions. Write reviews, share your
+            experience, and participate in product discussions with a community
+            that values truth over hype.
           </p>
-          <Link
-            href="/write-review"
-            className="inline-flex px-8 py-3.5 bg-white text-brand-600 font-semibold rounded-xl hover:bg-brand-50 transition-colors"
-          >
-            Write a Review
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <Link
+              href="/write-review"
+              className="w-full sm:w-auto px-8 py-3.5 bg-white text-brand-600 font-semibold rounded-xl hover:bg-brand-50 transition-colors"
+            >
+              Write a Review
+            </Link>
+            <Link
+              href="/community"
+              className="w-full sm:w-auto px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl border border-brand-400 hover:bg-brand-400 transition-colors"
+            >
+              Join Community
+            </Link>
+          </div>
         </div>
       </section>
     </>

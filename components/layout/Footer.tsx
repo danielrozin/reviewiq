@@ -49,38 +49,39 @@ export function Footer() {
               Platform
             </h3>
             <ul className="space-y-2">
-              {["How It Works", "Trust & Verification", "About", "Contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <Link
-                      href="#"
-                      className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-                    >
-                      {item}
-                    </Link>
-                  </li>
-                )
-              )}
+              {[
+                { name: "How It Works", href: "/how-it-works" },
+                { name: "About", href: "/about" },
+                { name: "Community", href: "/community" },
+              ].map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
-              For Reviewers
+              Contribute
             </h3>
             <ul className="space-y-2">
               {[
-                "Write a Review",
-                "Verification Guide",
-                "Review Guidelines",
-                "Community",
+                { name: "Write a Review", href: "/write-review" },
+                { name: "Start a Discussion", href: "/community" },
+                { name: "Community Guidelines", href: "/community" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <Link
-                    href="#"
+                    href={item.href}
                     className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

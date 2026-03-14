@@ -176,3 +176,185 @@ export interface TrendSignal {
   trend: "rising" | "stable" | "declining";
   changePercent: number;
 }
+
+// ==========================================
+// Social / Community Layer
+// ==========================================
+
+// --- User Profiles ---
+
+export type TrustLevel = "newcomer" | "contributor" | "trusted" | "expert" | "moderator";
+
+export const TRUST_LEVEL_LABELS: Record<TrustLevel, string> = {
+  newcomer: "Newcomer",
+  contributor: "Contributor",
+  trusted: "Trusted Member",
+  expert: "Expert",
+  moderator: "Moderator",
+};
+
+export const TRUST_LEVEL_COLORS: Record<TrustLevel, string> = {
+  newcomer: "text-gray-500 bg-gray-100",
+  contributor: "text-blue-700 bg-blue-50",
+  trusted: "text-emerald-700 bg-emerald-50",
+  expert: "text-purple-700 bg-purple-50",
+  moderator: "text-amber-700 bg-amber-50",
+};
+
+export type UserBadge =
+  | "verified_owner"
+  | "top_contributor"
+  | "category_expert"
+  | "long_term_owner"
+  | "helpful_reviewer"
+  | "early_adopter"
+  | "detail_oriented";
+
+export const BADGE_LABELS: Record<UserBadge, string> = {
+  verified_owner: "Verified Owner",
+  top_contributor: "Top Contributor",
+  category_expert: "Category Expert",
+  long_term_owner: "Long-Term Owner",
+  helpful_reviewer: "Helpful Reviewer",
+  early_adopter: "Early Adopter",
+  detail_oriented: "Detail Oriented",
+};
+
+export const BADGE_ICONS: Record<UserBadge, string> = {
+  verified_owner: "shield-check",
+  top_contributor: "star",
+  category_expert: "award",
+  long_term_owner: "clock",
+  helpful_reviewer: "thumbs-up",
+  early_adopter: "zap",
+  detail_oriented: "search",
+};
+
+export interface UserProfile {
+  id: string;
+  username: string;
+  displayName: string;
+  avatar?: string;
+  bio: string;
+  trustLevel: TrustLevel;
+  reputationScore: number;
+  badges: UserBadge[];
+  expertiseCategories: string[];
+  verifiedProductCount: number;
+  reviewCount: number;
+  commentCount: number;
+  threadCount: number;
+  helpfulVotesReceived: number;
+  joinedAt: string;
+  lastActiveAt: string;
+}
+
+// --- Discussion Threads ---
+
+export type ThreadType =
+  | "question"
+  | "discussion"
+  | "issue"
+  | "recommendation"
+  | "comparison"
+  | "long_term_update"
+  | "warning"
+  | "positive_surprise"
+  | "tip";
+
+export const THREAD_TYPE_LABELS: Record<ThreadType, string> = {
+  question: "Question",
+  discussion: "Discussion",
+  issue: "Issue Report",
+  recommendation: "Recommendation",
+  comparison: "Comparison",
+  long_term_update: "Long-Term Update",
+  warning: "Warning",
+  positive_surprise: "Positive Surprise",
+  tip: "Tip",
+};
+
+export const THREAD_TYPE_COLORS: Record<ThreadType, string> = {
+  question: "text-blue-700 bg-blue-50 border-blue-200",
+  discussion: "text-gray-700 bg-gray-50 border-gray-200",
+  issue: "text-red-700 bg-red-50 border-red-200",
+  recommendation: "text-emerald-700 bg-emerald-50 border-emerald-200",
+  comparison: "text-purple-700 bg-purple-50 border-purple-200",
+  long_term_update: "text-amber-700 bg-amber-50 border-amber-200",
+  warning: "text-orange-700 bg-orange-50 border-orange-200",
+  positive_surprise: "text-teal-700 bg-teal-50 border-teal-200",
+  tip: "text-indigo-700 bg-indigo-50 border-indigo-200",
+};
+
+export interface DiscussionThread {
+  id: string;
+  title: string;
+  body: string;
+  threadType: ThreadType;
+  authorId: string;
+  productId?: string;
+  productSlug?: string;
+  categoryId?: string;
+  categorySlug?: string;
+  upvotes: number;
+  downvotes: number;
+  commentCount: number;
+  viewCount: number;
+  isPinned: boolean;
+  isResolved: boolean;
+  tags: string[];
+  createdAt: string;
+  lastActivityAt: string;
+}
+
+// --- Comments ---
+
+export interface Comment {
+  id: string;
+  threadId: string;
+  parentId?: string; // for nested replies
+  authorId: string;
+  body: string;
+  upvotes: number;
+  downvotes: number;
+  isTopAnswer: boolean;
+  isOwnerVerified: boolean;
+  helpfulCount: number;
+  createdAt: string;
+  replies?: Comment[];
+}
+
+// --- Votes ---
+
+export type VoteType = "upvote" | "downvote" | "helpful" | "agree" | "same_issue" | "owner_confirmed";
+
+export const VOTE_TYPE_LABELS: Record<VoteType, string> = {
+  upvote: "Upvote",
+  downvote: "Downvote",
+  helpful: "Helpful",
+  agree: "Agree",
+  same_issue: "Same Issue",
+  owner_confirmed: "Owner Confirmed",
+};
+
+// --- Moderation ---
+
+export type ReportReason =
+  | "spam"
+  | "fake_review"
+  | "harassment"
+  | "misinformation"
+  | "off_topic"
+  | "duplicate"
+  | "self_promotion";
+
+export interface ModerationReport {
+  id: string;
+  contentType: "thread" | "comment" | "review";
+  contentId: string;
+  reporterId: string;
+  reason: ReportReason;
+  details?: string;
+  status: "pending" | "reviewed" | "resolved" | "dismissed";
+  createdAt: string;
+}

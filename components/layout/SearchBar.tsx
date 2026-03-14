@@ -4,9 +4,10 @@ import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
+import { discussions } from "@/data/discussions";
 
 interface SearchResult {
-  type: "product" | "category";
+  type: "product" | "category" | "discussion";
   name: string;
   subtitle: string;
   href: string;
@@ -71,9 +72,24 @@ export function SearchBar() {
       }
     }
 
-    // Sort products by SmartScore
+    // Search discussions
+    for (const d of discussions) {
+      const searchable = `${d.title} ${d.tags.join(" ")}`.toLowerCase();
+      if (searchable.includes(lower)) {
+        matched.push({
+          type: "discussion",
+          name: d.title,
+          subtitle: `${d.commentCount} replies · ${d.upvotes} upvotes`,
+          href: `/community/thread/${d.id}`,
+          score: d.upvotes,
+        });
+      }
+    }
+
+    // Sort: categories first, then products by score, then discussions
     matched.sort((a, b) => {
-      if (a.type !== b.type) return a.type === "category" ? -1 : 1;
+      const order = { category: 0, product: 1, discussion: 2 };
+      if (a.type !== b.type) return order[a.type] - order[b.type];
       return (b.score || 0) - (a.score || 0);
     });
 
@@ -130,7 +146,7 @@ export function SearchBar() {
           onChange={(e) => search(e.target.value)}
           onFocus={() => query.length >= 2 && results.length > 0 && setOpen(true)}
           onKeyDown={handleKeyDown}
-          placeholder="Search products, brands, categories..."
+          placeholder="Search products, discussions, categories..."
           className="w-full pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-xl bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-colors"
         />
       </div>
@@ -151,10 +167,12 @@ export function SearchBar() {
                 className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${
                   result.type === "category"
                     ? "bg-gray-100 text-gray-500"
+                    : result.type === "discussion"
+                    ? "bg-purple-50 text-purple-600"
                     : "bg-brand-50 text-brand-600"
                 }`}
               >
-                {result.type === "category" ? "CAT" : result.score}
+                {result.type === "category" ? "CAT" : result.type === "discussion" ? "💬" : result.score}
               </span>
               <div className="min-w-0">
                 <p className="text-sm font-medium text-gray-900 truncate">

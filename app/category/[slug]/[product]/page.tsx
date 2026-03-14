@@ -12,6 +12,8 @@ import { RecurringIssues } from "@/components/product/RecurringIssues";
 import { SpecsTable } from "@/components/product/SpecsTable";
 import { ComparisonModule } from "@/components/product/ComparisonModule";
 import { FAQSection } from "@/components/product/FAQSection";
+import { ProductDiscussions } from "@/components/community/ProductDiscussions";
+import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { productSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
@@ -49,6 +51,8 @@ export default async function ProductPage({ params }: Props) {
   const product = getProductBySlug(slug, productSlug);
 
   if (!category || !product) notFound();
+
+  const productDiscussions = getDiscussionsByProduct(product.slug);
 
   const avgRating =
     product.reviews.length > 0
@@ -179,6 +183,12 @@ export default async function ProductPage({ params }: Props) {
               ))}
             </div>
           </section>
+
+          {/* Community Discussion */}
+          <ProductDiscussions
+            threads={productDiscussions}
+            productName={product.name}
+          />
         </div>
 
         {/* Right Column — Sidebar */}
