@@ -4,10 +4,11 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 // ==========================================
-// Auth (NextAuth.js compatible)
+// NextAuth.js Models
 // ==========================================
 
 model Account {
@@ -27,7 +28,6 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
-  @@map("accounts")
 }
 
 model Session {
@@ -35,10 +35,7 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@map("sessions")
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model VerificationToken {
@@ -47,60 +44,48 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
-  @@map("verification_tokens")
 }
 
 // ==========================================
-// Users & Trust
+// Core Models
 // ==========================================
 
 model User {
-  id                   String    @id @default(cuid())
-  email                String?   @unique
-  emailVerified        DateTime?
-  name                 String?
-  username             String?   @unique
-  displayName          String?
-  avatar               String?
-  bio                  String?   @default("")
-  trustLevel           String    @default("newcomer")
-  reputationScore      Int       @default(0)
-  badges               String[]  @default([])
-  expertiseCategories  String[]  @default([])
-  verifiedProductCount Int       @default(0)
-  joinedAt             DateTime  @default(now())
-  lastActiveAt         DateTime  @default(now())
+  id                  String    @id @default(cuid())
+  name                String?
+  email               String?   @unique
+  emailVerified       DateTime?
+  image               String?
+  username            String?   @unique
+  bio                 String?   @db.Text
+  trustLevel          String    @default("newcomer")
+  reputationScore     Int       @default(0)
+  badges              String[]  @default([])
+  expertiseCategories String[]  @default([])
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
 
-  accounts   Account[]
-  sessions   Session[]
-  reviews    Review[]
-  threads    DiscussionThread[]
-  comments   Comment[]
-  votes      Vote[]
-  reports    ModerationReport[] @relation("reporter")
-
-  @@map("users")
+  accounts Account[]
+  sessions Session[]
+  reviews  Review[]
+  threads  DiscussionThread[]
+  comments Comment[]
+  votes    Vote[]
+  reports  ModerationReport[] @relation("Reporter")
 }
 
-// ==========================================
-// Products & Categories
-// ==========================================
-
 model Category {
-  id           String   @id @default(cuid())
-  name         String
-  slug         String   @unique
-  description  String
-  icon         String   @default("")
-  image        String?
-  productCount Int      @default(0)
-  createdAt    DateTime @default(now())
-  updatedAt    DateTime @updatedAt
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String   @db.Text
+  icon        String
+  image       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 
   products Product[]
   threads  DiscussionThread[]
-
-  @@map("categories")
 }
 
 model Product {
@@ -111,34 +96,32 @@ model Product {
   categoryId           String
   description          String   @db.Text
   image                String
-  priceMin             Float
-  priceMax             Float
+  priceMin             Int
+  priceMax             Int
   priceCurrency        String   @default("USD")
   smartScore           Int      @default(0)
   verifiedPurchaseRate Int      @default(0)
   reviewCount          Int      @default(0)
-  rating5              Int      @default(0)
-  rating4              Int      @default(0)
-  rating3              Int      @default(0)
-  rating2              Int      @default(0)
-  rating1              Int      @default(0)
+  ratingDist5          Int      @default(0)
+  ratingDist4          Int      @default(0)
+  ratingDist3          Int      @default(0)
+  ratingDist2          Int      @default(0)
+  ratingDist1          Int      @default(0)
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
-  category        Category         @relation(fields: [categoryId], references: [id])
-  aiSummary       AISummary?
-  specs           ProductSpec[]
-  recurringIssues RecurringIssue[]
-  comparisons     ComparisonRef[]
-  faqs            FAQ[]
-  reviews         Review[]
-  youtubeVideos   YouTubeVideo[]
-  threads         DiscussionThread[]
+  category  Category        @relation(fields: [categoryId], references: [id])
+  reviews   Review[]
+  threads   DiscussionThread[]
+  specs     ProductSpec[]
+  aiSummary AISummary?
+  issues    RecurringIssue[]
+  faqs      FAQ[]
+  videos    YouTubeVideo[]
 
   @@index([categoryId])
-  @@index([smartScore(sort: Desc)])
   @@index([brand])
-  @@map("products")
+  @@index([smartScore])
 }
 
 model AISummary {
@@ -152,8 +135,6 @@ model AISummary {
   keyFacts       String[]
 
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@map("ai_summaries")
 }
 
 model ProductSpec {
@@ -166,7 +147,6 @@ model ProductSpec {
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
-  @@map("product_specs")
 }
 
 model RecurringIssue {
@@ -180,21 +160,6 @@ model RecurringIssue {
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
-  @@map("recurring_issues")
-}
-
-model ComparisonRef {
-  id                String  @id @default(cuid())
-  productId         String
-  targetProductId   String?
-  targetProductName String
-  targetProductSlug String
-  searchVolume      Int?
-
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@index([productId])
-  @@map("comparison_refs")
 }
 
 model FAQ {
@@ -206,7 +171,6 @@ model FAQ {
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
-  @@map("faqs")
 }
 
 model YouTubeVideo {
@@ -218,7 +182,6 @@ model YouTubeVideo {
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
-  @@map("youtube_videos")
 }
 
 // ==========================================
@@ -228,63 +191,60 @@ model YouTubeVideo {
 model Review {
   id               String   @id @default(cuid())
   productId        String
-  userId           String?
+  userId           String
   headline         String
   rating           Int
   verifiedPurchase Boolean  @default(false)
   verificationTier String   @default("unverified")
   timeOwned        String?
-  experienceLevel  String   @default("beginner")
+  experienceLevel  String   @default("intermediate")
   pros             String[]
   cons             String[]
-  reliabilityRating Float?
-  easeOfUseRating  Float?
-  valueRating      Float?
+  reliabilityRating Int?
+  easeOfUseRating   Int?
+  valueRating       Int?
   body             String   @db.Text
   aiTopics         String[] @default([])
-  authorName       String
-  authorAvatar     String?
   helpfulCount     Int      @default(0)
   status           String   @default("published")
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-  user    User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user    User    @relation(fields: [userId], references: [id])
   votes   Vote[]
 
   @@index([productId])
   @@index([userId])
-  @@index([status])
   @@index([rating])
-  @@map("reviews")
 }
 
 // ==========================================
-// Community: Discussions & Comments
+// Discussions
 // ==========================================
 
 model DiscussionThread {
-  id             String   @id @default(cuid())
-  title          String
-  body           String   @db.Text
-  threadType     String   @default("discussion")
-  authorId       String
-  productId      String?
-  categoryId     String?
-  upvotes        Int      @default(0)
-  downvotes      Int      @default(0)
-  commentCount   Int      @default(0)
-  viewCount      Int      @default(0)
-  isPinned       Boolean  @default(false)
-  isResolved     Boolean  @default(false)
-  tags           String[] @default([])
-  createdAt      DateTime @default(now())
-  lastActivityAt DateTime @default(now())
+  id           String   @id @default(cuid())
+  title        String
+  body         String   @db.Text
+  threadType   String
+  authorId     String
+  productId    String?
+  categoryId   String?
+  upvotes      Int      @default(0)
+  downvotes    Int      @default(0)
+  commentCount Int      @default(0)
+  viewCount    Int      @default(0)
+  isPinned     Boolean  @default(false)
+  isResolved   Boolean  @default(false)
+  tags         String[] @default([])
+  status       String   @default("active")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
-  author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  product  Product?  @relation(fields: [productId], references: [id], onDelete: SetNull)
-  category Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  author   User      @relation(fields: [authorId], references: [id])
+  product  Product?  @relation(fields: [productId], references: [id])
+  category Category? @relation(fields: [categoryId], references: [id])
   comments Comment[]
   votes    Vote[]
 
@@ -292,8 +252,6 @@ model DiscussionThread {
   @@index([productId])
   @@index([categoryId])
   @@index([threadType])
-  @@index([lastActivityAt(sort: Desc)])
-  @@map("discussion_threads")
 }
 
 model Comment {
@@ -307,23 +265,23 @@ model Comment {
   isTopAnswer     Boolean  @default(false)
   isOwnerVerified Boolean  @default(false)
   helpfulCount    Int      @default(0)
+  status          String   @default("published")
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 
   thread  DiscussionThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
-  parent  Comment?         @relation("CommentReplies", fields: [parentId], references: [id], onDelete: Cascade)
+  parent  Comment?         @relation("CommentReplies", fields: [parentId], references: [id])
   replies Comment[]        @relation("CommentReplies")
-  author  User             @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  author  User             @relation(fields: [authorId], references: [id])
   votes   Vote[]
 
   @@index([threadId])
   @@index([parentId])
   @@index([authorId])
-  @@map("comments")
 }
 
 // ==========================================
-// Votes (polymorphic)
+// Votes
 // ==========================================
 
 model Vote {
@@ -335,7 +293,7 @@ model Vote {
   commentId String?
   createdAt DateTime @default(now())
 
-  user    User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user    User              @relation(fields: [userId], references: [id])
   review  Review?           @relation(fields: [reviewId], references: [id], onDelete: Cascade)
   thread  DiscussionThread? @relation(fields: [threadId], references: [id], onDelete: Cascade)
   comment Comment?          @relation(fields: [commentId], references: [id], onDelete: Cascade)
@@ -344,7 +302,6 @@ model Vote {
   @@unique([userId, threadId, voteType])
   @@unique([userId, commentId, voteType])
   @@index([userId])
-  @@map("votes")
 }
 
 // ==========================================
@@ -362,9 +319,9 @@ model ModerationReport {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
-  reporter User @relation("reporter", fields: [reporterId], references: [id], onDelete: Cascade)
+  reporter User @relation("Reporter", fields: [reporterId], references: [id])
 
   @@index([contentType, contentId])
   @@index([status])
-  @@map("moderation_reports")
+  @@index([reporterId])
 }

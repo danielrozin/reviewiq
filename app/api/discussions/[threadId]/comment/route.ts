@@ -1,7 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db/prisma";
+import { prisma } from "@/lib/prisma";
+import { z } from "zod";
 
-export const dynamic = "force-dynamic";
+const createCommentSchema = z.object({
+  authorId: z.string().min(1),
+  body: z.string().min(1),
+  parentId: z.string().optional(),
+});
 
 export async function POST(
   request: NextRequest,
@@ -9,51 +14,39 @@ export async function POST(
 ) {
   try {
     const { threadId } = await params;
-    const body = await request.json();
-    const { authorId, body: commentBody, parentId } = body;
+    const json = await request.json();
+    const data = createCommentSchema.parse(json);
 
-    if (!authorId || !commentBody) {
-      return NextResponse.json(
-        { error: "Missing required fields: authorId, body" },
-        { status: 400 }
-      );
-    }
-
-    const thread = await prisma.discussionThread.findUnique({ where: { id: threadId } });
+    const thread = await prisma.discussionThread.findUnique({
+      where: { id: threadId },
+    });
     if (!thread) {
       return NextResponse.json({ error: "Thread not found" }, { status: 404 });
-    }
-
-    if (parentId) {
-      const parent = await prisma.comment.findUnique({ where: { id: parentId } });
-      if (!parent || parent.threadId !== threadId) {
-        return NextResponse.json({ error: "Parent comment not found in this thread" }, { status: 404 });
-      }
     }
 
     const comment = await prisma.comment.create({
       data: {
         threadId,
-        authorId,
-        body: commentBody,
-        parentId: parentId || null,
+        authorId: data.authorId,
+        body: data.body,
+        parentId: data.parentId,
       },
       include: {
-        author: { select: { id: true, username: true, displayName: true, avatar: true, trustLevel: true } },
+        author: { select: { id: true, name: true, image: true, trustLevel: true } },
       },
     });
 
+    // Increment thread comment count
     await prisma.discussionThread.update({
       where: { id: threadId },
-      data: {
-        commentCount: { increment: 1 },
-        lastActivityAt: new Date(),
-      },
+      data: { commentCount: { increment: 1 }, updatedAt: new Date() },
     });
 
     return NextResponse.json(comment, { status: 201 });
   } catch (error) {
-    console.error("Error creating comment:", error);
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
+    }
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }
@@ -62,26 +55,30 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ threadId: string }> }
 ) {
-  try {
-    const { threadId } = await params;
+  const { threadId } = await params;
+  const { searchParams } = new URL(request.url);
+  const page = parseInt(searchParams.get("page") ?? "1");
+  const limit = Math.min(parseInt(searchParams.get("limit") ?? "50"), 100);
 
-    const comments = await prisma.comment.findMany({
-      where: { threadId, parentId: null },
-      orderBy: [{ isTopAnswer: "desc" }, { upvotes: "desc" }, { createdAt: "asc" }],
+  const [comments, total] = await Promise.all([
+    prisma.comment.findMany({
+      where: { threadId, parentId: null, status: "published" },
+      orderBy: [{ isTopAnswer: "desc" }, { createdAt: "asc" }],
+      skip: (page - 1) * limit,
+      take: limit,
       include: {
-        author: { select: { id: true, username: true, displayName: true, avatar: true, trustLevel: true } },
+        author: { select: { id: true, name: true, image: true, trustLevel: true } },
         replies: {
+          where: { status: "published" },
           orderBy: { createdAt: "asc" },
           include: {
-            author: { select: { id: true, username: true, displayName: true, avatar: true, trustLevel: true } },
+            author: { select: { id: true, name: true, image: true, trustLevel: true } },
           },
         },
       },
-    });
+    }),
+    prisma.comment.count({ where: { threadId, parentId: null, status: "published" } }),
+  ]);
 
-    return NextResponse.json({ comments });
-  } catch (error) {
-    console.error("Error fetching comments:", error);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
-  }
+  return NextResponse.json({ comments, total, page, limit });
 }

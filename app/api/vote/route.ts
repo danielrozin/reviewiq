@@ -1,81 +1,78 @@
 import { NextRequest, NextResponse } from "next/server";
-import { prisma } from "@/lib/db/prisma";
+import { prisma } from "@/lib/prisma";
+import { z } from "zod";
 
-export const dynamic = "force-dynamic";
+const voteSchema = z.object({
+  userId: z.string().min(1),
+  voteType: z.enum(["upvote", "downvote", "helpful", "agree", "same_issue", "owner_confirmed"]),
+  reviewId: z.string().optional(),
+  threadId: z.string().optional(),
+  commentId: z.string().optional(),
+}).refine(
+  (d) => [d.reviewId, d.threadId, d.commentId].filter(Boolean).length === 1,
+  { message: "Provide exactly one of reviewId, threadId, or commentId" }
+);
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { userId, voteType, reviewId, threadId, commentId } = body;
+    const json = await request.json();
+    const data = voteSchema.parse(json);
 
-    if (!userId || !voteType) {
-      return NextResponse.json({ error: "Missing required fields: userId, voteType" }, { status: 400 });
-    }
-
-    const targets = [reviewId, threadId, commentId].filter(Boolean);
-    if (targets.length !== 1) {
-      return NextResponse.json(
-        { error: "Exactly one of reviewId, threadId, or commentId must be provided" },
-        { status: 400 }
-      );
-    }
-
-    const validVoteTypes = ["upvote", "downvote", "helpful", "agree", "same_issue", "owner_confirmed"];
-    if (!validVoteTypes.includes(voteType)) {
-      return NextResponse.json({ error: `Invalid voteType. Must be one of: ${validVoteTypes.join(", ")}` }, { status: 400 });
-    }
-
-    // Check for existing vote and toggle
-    const existingWhere: Record<string, unknown> = { userId, voteType };
-    if (reviewId) existingWhere.reviewId = reviewId;
-    if (threadId) existingWhere.threadId = threadId;
-    if (commentId) existingWhere.commentId = commentId;
-
-    const existing = await prisma.vote.findFirst({ where: existingWhere });
+    // Check for existing vote (toggle behavior)
+    const existing = await prisma.vote.findFirst({
+      where: {
+        userId: data.userId,
+        voteType: data.voteType,
+        reviewId: data.reviewId ?? null,
+        threadId: data.threadId ?? null,
+        commentId: data.commentId ?? null,
+      },
+    });
 
     if (existing) {
       // Remove vote (toggle off)
       await prisma.vote.delete({ where: { id: existing.id } });
-
-      // Decrement counter
-      if (reviewId && voteType === "helpful") {
-        await prisma.review.update({ where: { id: reviewId }, data: { helpfulCount: { decrement: 1 } } });
-      } else if (threadId) {
-        const field = voteType === "upvote" ? "upvotes" : voteType === "downvote" ? "downvotes" : null;
-        if (field) await prisma.discussionThread.update({ where: { id: threadId }, data: { [field]: { decrement: 1 } } });
-      } else if (commentId) {
-        const field = voteType === "upvote" ? "upvotes" : voteType === "downvote" ? "downvotes" : voteType === "helpful" ? "helpfulCount" : null;
-        if (field) await prisma.comment.update({ where: { id: commentId }, data: { [field]: { decrement: 1 } } });
-      }
-
+      await updateVoteCount(data, -1);
       return NextResponse.json({ action: "removed" });
     }
 
     // Create vote
-    await prisma.vote.create({
-      data: {
-        userId,
-        voteType,
-        reviewId: reviewId || null,
-        threadId: threadId || null,
-        commentId: commentId || null,
-      },
-    });
-
-    // Increment counter
-    if (reviewId && voteType === "helpful") {
-      await prisma.review.update({ where: { id: reviewId }, data: { helpfulCount: { increment: 1 } } });
-    } else if (threadId) {
-      const field = voteType === "upvote" ? "upvotes" : voteType === "downvote" ? "downvotes" : null;
-      if (field) await prisma.discussionThread.update({ where: { id: threadId }, data: { [field]: { increment: 1 } } });
-    } else if (commentId) {
-      const field = voteType === "upvote" ? "upvotes" : voteType === "downvote" ? "downvotes" : voteType === "helpful" ? "helpfulCount" : null;
-      if (field) await prisma.comment.update({ where: { id: commentId }, data: { [field]: { increment: 1 } } });
-    }
+    await prisma.vote.create({ data });
+    await updateVoteCount(data, 1);
 
     return NextResponse.json({ action: "created" }, { status: 201 });
   } catch (error) {
-    console.error("Error processing vote:", error);
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ error: error.issues }, { status: 400 });
+    }
     return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}
+
+async function updateVoteCount(
+  data: { voteType: string; reviewId?: string; threadId?: string; commentId?: string },
+  delta: number
+) {
+  const isUp = data.voteType === "upvote" || data.voteType === "helpful" || data.voteType === "agree";
+  const field = data.voteType === "helpful" ? "helpfulCount" : isUp ? "upvotes" : "downvotes";
+
+  if (data.reviewId) {
+    const updateField = data.voteType === "helpful" ? "helpfulCount" : undefined;
+    if (updateField) {
+      await prisma.review.update({
+        where: { id: data.reviewId },
+        data: { [updateField]: { increment: delta } },
+      });
+    }
+  } else if (data.threadId) {
+    await prisma.discussionThread.update({
+      where: { id: data.threadId },
+      data: { [field]: { increment: delta } },
+    });
+  } else if (data.commentId) {
+    await prisma.comment.update({
+      where: { id: data.commentId },
+      data: { [field]: { increment: delta } },
+    });
   }
 }

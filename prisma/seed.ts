@@ -1,59 +1,58 @@
 import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
+
+// Import static data - these need to be copied as plain objects
+// since seed runs with ts-node, not Next.js path aliases
 import { categories } from "../data/categories";
 import { products } from "../data/products";
 import { users } from "../data/users";
-import { discussions, comments } from "../data/discussions";
-
-const prisma = new PrismaClient();
+import { discussions, comments as discussionComments } from "../data/discussions";
 
 async function main() {
   console.log("Seeding database...");
 
-  // 1. Seed users (from static data)
-  console.log("Seeding users...");
+  // 1. Seed users
+  console.log("Creating users...");
   for (const u of users) {
     await prisma.user.upsert({
       where: { id: u.id },
       update: {},
       create: {
         id: u.id,
+        name: u.displayName,
         username: u.username,
-        displayName: u.displayName,
-        avatar: u.avatar || null,
         bio: u.bio,
         trustLevel: u.trustLevel,
         reputationScore: u.reputationScore,
         badges: u.badges,
         expertiseCategories: u.expertiseCategories,
-        verifiedProductCount: u.verifiedProductCount,
-        joinedAt: new Date(u.joinedAt),
-        lastActiveAt: new Date(u.lastActiveAt),
+        createdAt: new Date(u.joinedAt),
       },
     });
   }
-  console.log(`  Seeded ${users.length} users`);
+  console.log(`  Created ${users.length} users`);
 
   // 2. Seed categories
-  console.log("Seeding categories...");
-  for (const cat of categories) {
+  console.log("Creating categories...");
+  for (const c of categories) {
     await prisma.category.upsert({
-      where: { id: cat.id },
+      where: { id: c.id },
       update: {},
       create: {
-        id: cat.id,
-        name: cat.name,
-        slug: cat.slug,
-        description: cat.description,
-        icon: cat.icon,
-        image: cat.image || null,
-        productCount: cat.productCount,
+        id: c.id,
+        name: c.name,
+        slug: c.slug,
+        description: c.description,
+        icon: c.icon,
+        image: c.image,
       },
     });
   }
-  console.log(`  Seeded ${categories.length} categories`);
+  console.log(`  Created ${categories.length} categories`);
 
   // 3. Seed products with all nested data
-  console.log("Seeding products...");
+  console.log("Creating products...");
   for (const p of products) {
     await prisma.product.upsert({
       where: { id: p.id },
@@ -72,11 +71,11 @@ async function main() {
         smartScore: p.smartScore,
         verifiedPurchaseRate: p.verifiedPurchaseRate,
         reviewCount: p.reviewCount,
-        rating5: p.ratingDistribution[5],
-        rating4: p.ratingDistribution[4],
-        rating3: p.ratingDistribution[3],
-        rating2: p.ratingDistribution[2],
-        rating1: p.ratingDistribution[1],
+        ratingDist5: p.ratingDistribution[5],
+        ratingDist4: p.ratingDistribution[4],
+        ratingDist3: p.ratingDistribution[3],
+        ratingDist2: p.ratingDistribution[2],
+        ratingDist1: p.ratingDistribution[1],
       },
     });
 
@@ -104,7 +103,7 @@ async function main() {
           productId: p.id,
           label: spec.label,
           value: spec.value,
-          group: spec.group || null,
+          group: spec.group,
         },
       });
     }
@@ -122,19 +121,6 @@ async function main() {
       });
     }
 
-    // Comparisons
-    for (const comp of p.comparisons) {
-      await prisma.comparisonRef.create({
-        data: {
-          productId: p.id,
-          targetProductId: comp.productId,
-          targetProductName: comp.productName,
-          targetProductSlug: comp.productSlug,
-          searchVolume: comp.searchVolume || null,
-        },
-      });
-    }
-
     // FAQs
     for (const faq of p.faq) {
       await prisma.fAQ.create({
@@ -148,120 +134,102 @@ async function main() {
 
     // YouTube videos
     if (p.youtubeVideos) {
-      for (const yt of p.youtubeVideos) {
+      for (const vid of p.youtubeVideos) {
         await prisma.youTubeVideo.create({
           data: {
             productId: p.id,
-            videoId: yt.id,
-            title: yt.title,
+            videoId: vid.id,
+            title: vid.title,
           },
         });
       }
     }
 
     // Reviews
-    for (const review of p.reviews) {
+    for (const r of p.reviews) {
+      // Assign reviews to random seed users
+      const randomUser = users[Math.floor(Math.random() * users.length)];
       await prisma.review.create({
         data: {
+          id: r.id,
           productId: p.id,
-          headline: review.headline,
-          rating: review.rating,
-          verifiedPurchase: review.verifiedPurchase,
-          verificationTier: review.verificationTier,
-          timeOwned: review.timeOwned,
-          experienceLevel: review.experienceLevel,
-          pros: review.pros,
-          cons: review.cons,
-          reliabilityRating: review.reliabilityRating,
-          easeOfUseRating: review.easeOfUseRating,
-          valueRating: review.valueRating,
-          body: review.body,
-          aiTopics: review.aiTopics,
-          authorName: review.authorName,
-          authorAvatar: review.authorAvatar || null,
-          helpfulCount: review.helpfulCount,
-          status: "published",
-          createdAt: new Date(review.createdAt),
+          userId: randomUser.id,
+          headline: r.headline,
+          rating: r.rating,
+          verifiedPurchase: r.verifiedPurchase,
+          verificationTier: r.verificationTier,
+          timeOwned: r.timeOwned,
+          experienceLevel: r.experienceLevel,
+          pros: r.pros,
+          cons: r.cons,
+          reliabilityRating: r.reliabilityRating,
+          easeOfUseRating: r.easeOfUseRating,
+          valueRating: r.valueRating,
+          body: r.body,
+          aiTopics: r.aiTopics,
+          helpfulCount: r.helpfulCount,
+          createdAt: new Date(r.createdAt),
         },
       });
     }
   }
-  console.log(`  Seeded ${products.length} products with nested data`);
+  console.log(`  Created ${products.length} products with specs, reviews, FAQs`);
 
   // 4. Seed discussion threads
-  console.log("Seeding discussions...");
-  for (const thread of discussions) {
+  console.log("Creating discussions...");
+  for (const d of discussions) {
     await prisma.discussionThread.upsert({
-      where: { id: thread.id },
+      where: { id: d.id },
       update: {},
       create: {
-        id: thread.id,
-        title: thread.title,
-        body: thread.body,
-        threadType: thread.threadType,
-        authorId: thread.authorId,
-        productId: thread.productId || null,
-        categoryId: thread.categoryId || null,
-        upvotes: thread.upvotes,
-        downvotes: thread.downvotes,
-        commentCount: thread.commentCount,
-        viewCount: thread.viewCount,
-        isPinned: thread.isPinned,
-        isResolved: thread.isResolved,
-        tags: thread.tags,
-        createdAt: new Date(thread.createdAt),
-        lastActivityAt: new Date(thread.lastActivityAt),
+        id: d.id,
+        title: d.title,
+        body: d.body,
+        threadType: d.threadType,
+        authorId: d.authorId,
+        productId: d.productId ? products.find((p) => p.slug === d.productSlug)?.id : undefined,
+        categoryId: d.categoryId,
+        upvotes: d.upvotes,
+        downvotes: d.downvotes,
+        commentCount: d.commentCount,
+        viewCount: d.viewCount,
+        isPinned: d.isPinned,
+        isResolved: d.isResolved,
+        tags: d.tags,
+        createdAt: new Date(d.createdAt),
       },
     });
   }
-  console.log(`  Seeded ${discussions.length} threads`);
+  console.log(`  Created ${discussions.length} discussion threads`);
 
-  // 5. Seed comments (top-level first, then replies)
-  console.log("Seeding comments...");
-  const topLevel = comments.filter((c) => !c.parentId);
-  const replies = comments.filter((c) => c.parentId);
-
-  for (const c of topLevel) {
-    await prisma.comment.upsert({
-      where: { id: c.id },
-      update: {},
-      create: {
-        id: c.id,
-        threadId: c.threadId,
-        authorId: c.authorId,
-        body: c.body,
-        upvotes: c.upvotes,
-        downvotes: c.downvotes,
-        isTopAnswer: c.isTopAnswer,
-        isOwnerVerified: c.isOwnerVerified,
-        helpfulCount: c.helpfulCount,
-        createdAt: new Date(c.createdAt),
-      },
-    });
+  // 5. Seed comments if exported
+  if (typeof discussionComments !== "undefined" && discussionComments) {
+    console.log("Creating comments...");
+    let commentCount = 0;
+    for (const c of discussionComments) {
+      await prisma.comment.upsert({
+        where: { id: c.id },
+        update: {},
+        create: {
+          id: c.id,
+          threadId: c.threadId,
+          parentId: c.parentId,
+          authorId: c.authorId,
+          body: c.body,
+          upvotes: c.upvotes,
+          downvotes: c.downvotes,
+          isTopAnswer: c.isTopAnswer,
+          isOwnerVerified: c.isOwnerVerified,
+          helpfulCount: c.helpfulCount,
+          createdAt: new Date(c.createdAt),
+        },
+      });
+      commentCount++;
+    }
+    console.log(`  Created ${commentCount} comments`);
   }
 
-  for (const c of replies) {
-    await prisma.comment.upsert({
-      where: { id: c.id },
-      update: {},
-      create: {
-        id: c.id,
-        threadId: c.threadId,
-        parentId: c.parentId,
-        authorId: c.authorId,
-        body: c.body,
-        upvotes: c.upvotes,
-        downvotes: c.downvotes,
-        isTopAnswer: c.isTopAnswer,
-        isOwnerVerified: c.isOwnerVerified,
-        helpfulCount: c.helpfulCount,
-        createdAt: new Date(c.createdAt),
-      },
-    });
-  }
-  console.log(`  Seeded ${comments.length} comments`);
-
-  console.log("Seed complete!");
+  console.log("Seeding complete!");
 }
 
 main()
