@@ -11,12 +11,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: siteUrl, lastModified: now, changeFrequency: "daily", priority: 1 },
-    {
-      url: `${siteUrl}/categories`,
-      lastModified: now,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
+    { url: `${siteUrl}/categories`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${siteUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${siteUrl}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${siteUrl}/write-review`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const categoryPages: MetadataRoute.Sitemap = categories.map((cat) => ({

@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
   ]);
 
   const productsWithStats = await Promise.all(
-    products.map(async (product) => {
+    products.map(async (product: (typeof products)[number]) => {
       const avgRating = await prisma.review.aggregate({
         where: { productId: product.id },
         _avg: { rating: true },

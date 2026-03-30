@@ -12,6 +12,7 @@ import { RecurringIssues } from "@/components/product/RecurringIssues";
 import { SpecsTable } from "@/components/product/SpecsTable";
 import { ComparisonModule } from "@/components/product/ComparisonModule";
 import { ExternalComparisonLinks } from "@/components/product/ExternalComparisonLinks";
+import { AutoComparisonLinks } from "@/components/product/AutoComparisonLinks";
 import { FAQSection } from "@/components/product/FAQSection";
 import { YouTubeVideos } from "@/components/product/YouTubeVideos";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
@@ -271,8 +272,10 @@ export default async function ProductPage({ params }: Props) {
           />
 
           {/* External Comparisons (aversusb.net) */}
-          {product.externalComparisons && product.externalComparisons.length > 0 && (
+          {product.externalComparisons && product.externalComparisons.length > 0 ? (
             <ExternalComparisonLinks comparisons={product.externalComparisons} />
+          ) : (
+            <AutoComparisonLinks productName={product.name} productSlug={product.slug} />
           )}
 
           {/* FAQ */}
