@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { productListSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
+import { TrackCategoryView } from "@/components/tracking/TrackCategoryView";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -36,6 +37,7 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <TrackCategoryView slug={slug} productCount={categoryProducts.length} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
