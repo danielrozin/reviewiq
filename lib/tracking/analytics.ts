@@ -22,7 +22,9 @@ interface ConversionOptions {
 
 function getDataLayer(): unknown[] | undefined {
   if (typeof window === "undefined") return undefined;
-  return (window as unknown as Record<string, unknown>).dataLayer as unknown[] | undefined;
+  const w = window as unknown as Record<string, unknown>;
+  if (!w.dataLayer) w.dataLayer = [];
+  return w.dataLayer as unknown[];
 }
 
 function gtag(...args: unknown[]) {
@@ -68,6 +70,8 @@ export function trackConversion(
 
 export function trackReviewSubmitted(productSlug: string, rating: number) {
   trackEvent("review_submitted", { product_slug: productSlug, rating });
+  // Also push as generate_lead for GA4 recommended conversion event
+  trackEvent("generate_lead", { value: 1, currency: "USD", event_label: `review_${productSlug}` });
   fbq("trackCustom", "ReviewSubmitted", { product_slug: productSlug, rating });
 }
 
@@ -95,11 +99,15 @@ export function trackSearch(query: string, resultsCount: number) {
 
 export function trackNewsletterSignup(source: string) {
   trackEvent("newsletter_signup", { source });
+  // GA4 recommended event for lead capture
+  trackEvent("generate_lead", { value: 0.5, currency: "USD", event_label: `newsletter_${source}` });
   fbq("track", "Lead", { content_name: "newsletter", source });
 }
 
 export function trackContactFormSubmitted() {
   trackEvent("contact_form_submitted");
+  // GA4 recommended event for contact conversion
+  trackEvent("generate_lead", { value: 1, currency: "USD", event_label: "contact_form" });
   fbq("track", "Contact");
 }
 
