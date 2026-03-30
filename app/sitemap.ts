@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
+import { discussions } from "@/data/discussions";
 
 export const dynamic = "force-static";
 
@@ -32,5 +33,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...categoryPages, ...productPages];
+  // Community discussion threads
+  const communityPages: MetadataRoute.Sitemap = [
+    {
+      url: `${siteUrl}/community`,
+      lastModified: now,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    },
+    ...discussions.map((thread) => ({
+      url: `${siteUrl}/community/thread/${thread.id}`,
+      lastModified: thread.lastActivityAt ? new Date(thread.lastActivityAt) : now,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    })),
+  ];
+
+  return [...staticPages, ...categoryPages, ...productPages, ...communityPages];
 }
