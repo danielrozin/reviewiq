@@ -24,6 +24,7 @@ import { formatNumber } from "@/lib/utils";
 import { TrackProductView } from "@/components/tracking/TrackProductView";
 import { WriteReviewCTA } from "@/components/product/WriteReviewCTA";
 import { StickyMobileCTA } from "@/components/product/StickyMobileCTA";
+import { EmailCaptureCTA } from "@/components/product/EmailCaptureCTA";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -148,6 +149,15 @@ export default async function ProductPage({ params }: Props) {
           </div>
         </div>
       </header>
+
+      {/* Email Capture CTA */}
+      <div className="mb-10">
+        <EmailCaptureCTA
+          productId={product.id}
+          productSlug={product.slug}
+          productName={product.name}
+        />
+      </div>
 
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

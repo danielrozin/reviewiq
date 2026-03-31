@@ -327,6 +327,26 @@ model ModerationReport {
 }
 
 // ==========================================
+// Email Subscriptions
+// ==========================================
+
+model EmailSubscription {
+  id             String    @id @default(cuid())
+  email          String
+  productId      String
+  productSlug    String
+  productName    String
+  unsubscribeToken String  @unique @default(cuid())
+  unsubscribedAt DateTime?
+  createdAt      DateTime  @default(now())
+
+  @@unique([email, productId])
+  @@index([productId])
+  @@index([email])
+  @@index([unsubscribeToken])
+}
+
+// ==========================================
 // GDPR Consent Management
 // ==========================================
 
