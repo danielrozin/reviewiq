@@ -14,6 +14,7 @@ import { ComparisonModule } from "@/components/product/ComparisonModule";
 import { ExternalComparisonLinks } from "@/components/product/ExternalComparisonLinks";
 import { AutoComparisonLinks } from "@/components/product/AutoComparisonLinks";
 import { FAQSection } from "@/components/product/FAQSection";
+import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { YouTubeVideos } from "@/components/product/YouTubeVideos";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
@@ -59,6 +60,23 @@ export default async function ProductPage({ params }: Props) {
   if (!category || !product) notFound();
 
   const productDiscussions = getDiscussionsByProduct(product.slug);
+
+  // Get related products from the same category (excluding current product)
+  const allCategoryProducts = getProductsByCategory(slug);
+  const relatedProducts = allCategoryProducts
+    .filter((p) => p.slug !== product.slug)
+    .sort((a, b) => b.smartScore - a.smartScore)
+    .slice(0, 5)
+    .map((p) => ({
+      name: p.name,
+      slug: p.slug,
+      brand: p.brand,
+      smartScore: p.smartScore,
+      reviewCount: p.reviewCount,
+      priceMin: p.priceRange.min,
+      priceMax: p.priceRange.max,
+      categorySlug: p.categorySlug,
+    }));
 
   const avgRating =
     product.reviews.length > 0
@@ -207,6 +225,15 @@ export default async function ProductPage({ params }: Props) {
             threads={productDiscussions}
             productName={product.name}
           />
+
+          {/* Related Products */}
+          {relatedProducts.length > 0 && (
+            <RelatedProducts
+              products={relatedProducts}
+              categorySlug={slug}
+              categoryName={category.name}
+            />
+          )}
         </div>
 
         {/* Right Column — Sidebar */}
