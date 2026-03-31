@@ -2157,4 +2157,17 @@ export function getRecentBlogPosts(limit: number): BlogPost[] {
   return getAllBlogPosts().slice(0, limit);
 }
 
+/**
+ * Get all unique blog categories with slug and name
+ */
+export function getBlogCategories(): { slug: string; name: string }[] {
+  const seen = new Map<string, string>();
+  for (const post of blogPosts) {
+    if (!seen.has(post.categorySlug)) {
+      seen.set(post.categorySlug, post.categoryName);
+    }
+  }
+  return Array.from(seen.entries()).map(([slug, name]) => ({ slug, name }));
+}
+
 export default blogPosts;
