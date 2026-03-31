@@ -50,6 +50,12 @@ export function Header() {
 
           <div className="flex items-center gap-3 shrink-0">
             <Link
+              href="/auth/signin"
+              className="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Sign In
+            </Link>
+            <Link
               href="/write-review"
               className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
             >
@@ -103,9 +109,16 @@ export function Header() {
               </Link>
             ))}
             <Link
+              href="/auth/signin"
+              onClick={() => setMenuOpen(false)}
+              className="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors mt-2"
+            >
+              Sign In
+            </Link>
+            <Link
               href="/write-review"
               onClick={() => setMenuOpen(false)}
-              className="block px-3 py-2 rounded-lg text-base font-medium text-brand-600 bg-brand-50 hover:bg-brand-100 transition-colors mt-2"
+              className="block px-3 py-2 rounded-lg text-base font-medium text-brand-600 bg-brand-50 hover:bg-brand-100 transition-colors mt-1"
             >
               Write a Review
             </Link>
