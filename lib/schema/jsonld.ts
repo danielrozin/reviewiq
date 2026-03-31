@@ -1,4 +1,4 @@
-import type { Product, Review, Category, FAQItem } from "@/types";
+import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo } from "@/types";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
 
@@ -129,6 +129,77 @@ export function productListSchema(products: Product[], categoryName: string) {
       position: index + 1,
       name: p.name,
       url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
+    })),
+  };
+}
+
+export function videoObjectSchema(video: YouTubeVideo, productName: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: video.title,
+    description: `${video.title} — video review for ${productName}`,
+    thumbnailUrl: `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`,
+    uploadDate: new Date().toISOString().split("T")[0],
+    contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+    embedUrl: `https://www.youtube.com/embed/${video.id}`,
+  };
+}
+
+export function videoObjectListSchema(videos: YouTubeVideo[], productName: string) {
+  return videos.map((video) => videoObjectSchema(video, productName));
+}
+
+export function analysisAuthorSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "SmartReview AI Analysis Team",
+    url: `${SITE_URL}/about`,
+    worksFor: {
+      "@type": "Organization",
+      name: "SmartReview",
+      url: SITE_URL,
+    },
+    knowsAbout: ["Product Reviews", "Consumer Electronics", "Buyer Guidance"],
+  };
+}
+
+export function blogPostSchema(post: BlogPost) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.seo.metaDescription,
+    image: post.coverImage || `${SITE_URL}/og-default.jpg`,
+    author: {
+      "@type": "Organization",
+      name: post.author.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "SmartReview",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+    },
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt,
+    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    keywords: [post.seo.focusKeyword, ...post.seo.secondaryKeywords].join(", "),
+  };
+}
+
+export function blogListSchema(posts: BlogPost[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "SmartReview Blog",
+    description: "Expert buying guides, product comparisons, and review insights from SmartReview.",
+    url: `${SITE_URL}/blog`,
+    hasPart: posts.map((post) => ({
+      "@type": "Article",
+      headline: post.title,
+      url: `${SITE_URL}/blog/${post.slug}`,
+      datePublished: post.publishedAt,
     })),
   };
 }
