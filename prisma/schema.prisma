@@ -325,3 +325,25 @@ model ModerationReport {
   @@index([status])
   @@index([reporterId])
 }
+
+// ==========================================
+// GDPR Consent Management
+// ==========================================
+
+model ConsentRecord {
+  id               String   @id @default(cuid())
+  visitorId        String
+  consentCategories Json
+  ipHash           String?
+  policyVersion    String
+  userAgent        String?  @db.Text
+  geoCountry       String?
+  grantedAt        DateTime @default(now())
+  revokedAt        DateTime?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([visitorId])
+  @@index([grantedAt])
+  @@index([geoCountry])
+}
