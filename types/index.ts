@@ -371,3 +371,39 @@ export interface ModerationReport {
   status: "pending" | "reviewed" | "resolved" | "dismissed";
   createdAt: string;
 }
+
+// ==========================================
+// Blog System
+// ==========================================
+
+export interface BlogPost {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string;
+  content: string;
+  coverImage?: string;
+  categorySlug: string;
+  categoryName: string;
+  tags: string[];
+  author: BlogAuthor;
+  publishedAt: string;
+  updatedAt: string;
+  readingTime: number;
+  seo: BlogSEO;
+  faq: FAQItem[];
+  relatedProductSlugs: string[];
+}
+
+export interface BlogAuthor {
+  name: string;
+  avatar?: string;
+  bio: string;
+}
+
+export interface BlogSEO {
+  metaTitle: string;
+  metaDescription: string;
+  focusKeyword: string;
+  secondaryKeywords: string[];
+}

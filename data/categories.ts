@@ -46,6 +46,51 @@ export const categories: Category[] = [
     icon: "🛏️",
     productCount: 4,
   },
+  {
+    id: "cat-smart-watches",
+    name: "Smart Watches",
+    slug: "smart-watches",
+    description:
+      "Compare smart watches by health tracking accuracy, battery life, and daily usability. Real owner insights on fitness features, notifications, and long-term durability.",
+    icon: "⌚",
+    productCount: 4,
+  },
+  {
+    id: "cat-standing-desks",
+    name: "Standing Desks",
+    slug: "standing-desks",
+    description:
+      "Find the best standing desk for your workspace. Compare motor quality, stability, height range, and real owner experiences after months of daily use.",
+    icon: "🪑",
+    productCount: 4,
+  },
+  {
+    id: "cat-blenders",
+    name: "Blenders",
+    slug: "blenders",
+    description:
+      "Discover the right blender for smoothies, soups, and meal prep. Compare blending power, noise levels, and cleanup ease from verified buyer reviews.",
+    icon: "🥤",
+    productCount: 4,
+  },
+  {
+    id: "cat-laptops",
+    name: "Laptops",
+    slug: "laptops",
+    description:
+      "Choose the right laptop for work, gaming, or creative tasks. Compare real-world performance, battery life, and build quality from verified owners.",
+    icon: "💻",
+    productCount: 4,
+  },
+  {
+    id: "cat-electric-toothbrushes",
+    name: "Electric Toothbrushes",
+    slug: "electric-toothbrushes",
+    description:
+      "Find the best electric toothbrush for your dental routine. Compare cleaning performance, battery life, and smart features from real user experiences.",
+    icon: "🪥",
+    productCount: 4,
+  },
 ];
 
 export function getCategoryBySlug(slug: string): Category | undefined {

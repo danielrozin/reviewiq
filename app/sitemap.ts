@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 import { discussions } from "@/data/discussions";
+import { getAllBlogPosts } from "@/data/blog-posts";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
@@ -90,11 +91,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // DB unavailable — static data only
   }
 
+  // Blog posts
+  const blogPosts = getAllBlogPosts();
+  const blogPages: MetadataRoute.Sitemap = [
+    {
+      url: `${siteUrl}/blog`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    },
+    ...blogPosts.map((post) => ({
+      url: `${siteUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  ];
+
   return [
     ...staticPages,
     ...categoryPages,
     ...productPages,
     ...communityPages,
+    ...blogPages,
     ...dbProductPages,
     ...dbDiscussionPages,
   ];

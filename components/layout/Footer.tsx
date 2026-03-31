@@ -33,6 +33,11 @@ export function Footer() {
                 { name: "Air Fryers", slug: "air-fryers" },
                 { name: "Wireless Earbuds", slug: "wireless-earbuds" },
                 { name: "Mattresses", slug: "mattresses" },
+                { name: "Smart Watches", slug: "smart-watches" },
+                { name: "Standing Desks", slug: "standing-desks" },
+                { name: "Blenders", slug: "blenders" },
+                { name: "Laptops", slug: "laptops" },
+                { name: "Electric Toothbrushes", slug: "electric-toothbrushes" },
               ].map((cat) => (
                 <li key={cat.slug}>
                   <Link
@@ -53,6 +58,7 @@ export function Footer() {
             <ul className="space-y-2">
               {[
                 { name: "How It Works", href: "/how-it-works" },
+                { name: "Blog", href: "/blog" },
                 { name: "About", href: "/about" },
                 { name: "Community", href: "/community" },
               ].map((item) => (

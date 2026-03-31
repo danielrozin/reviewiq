@@ -7,7 +7,7 @@ import { categoryListSchema } from "@/lib/schema/jsonld";
 export const metadata = buildMetadata({
   title: "All Categories",
   description:
-    "Browse all product categories on SmartReview. Find honest, AI-powered reviews across robot vacuums, coffee machines, air fryers, wireless earbuds, and mattresses.",
+    "Browse all product categories on SmartReview. Find honest, AI-powered reviews across robot vacuums, coffee machines, air fryers, wireless earbuds, mattresses, smart watches, standing desks, blenders, laptops, and electric toothbrushes.",
   path: "/categories",
 });
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 import { getTrendingDiscussions } from "@/data/discussions";
+import { getRecentBlogPosts } from "@/data/blog-posts";
 import { getUserById } from "@/data/users";
 import { SmartScore } from "@/components/ui/SmartScore";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
@@ -90,7 +91,7 @@ export default function HomePage() {
             View all &rarr;
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {categories.map((cat) => (
             <Link
               key={cat.id}
@@ -223,6 +224,58 @@ export default function HomePage() {
           >
             View all discussions →
           </Link>
+        </div>
+      </section>
+
+      {/* Latest from the Blog */}
+      <section className="bg-gray-50/50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900">
+                Buying Guides & Comparisons
+              </h2>
+              <p className="text-gray-500 mt-1">
+                Expert insights backed by real owner data
+              </p>
+            </div>
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block"
+            >
+              View all articles &rarr;
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {getRecentBlogPosts(3).map((post) => (
+              <Link
+                key={post.id}
+                href={`/blog/${post.slug}`}
+                className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-gray-200 transition-all"
+              >
+                <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2 py-1 rounded-full">
+                  {post.categoryName}
+                </span>
+                <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2">
+                  {post.title}
+                </h3>
+                <p className="text-sm text-gray-500 line-clamp-2">
+                  {post.excerpt}
+                </p>
+                <p className="text-xs text-gray-400 mt-3">
+                  {post.readingTime} min read
+                </p>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6 sm:hidden">
+            <Link
+              href="/blog"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700"
+            >
+              View all articles &rarr;
+            </Link>
+          </div>
         </div>
       </section>
 
