@@ -1,0 +1,86 @@
+import { NextRequest, NextResponse } from "next/server";
+import { prisma } from "@/lib/db/prisma";
+import { verifyAdmin, unauthorizedResponse } from "@/lib/admin-auth";
+
+export const dynamic = "force-dynamic";
+
+export async function GET(request: NextRequest) {
+  if (!verifyAdmin(request)) return unauthorizedResponse();
+
+  const { searchParams } = new URL(request.url);
+  const page = parseInt(searchParams.get("page") || "1");
+  const limit = parseInt(searchParams.get("limit") || "20");
+  const status = searchParams.get("status") || "";
+  const search = searchParams.get("search") || "";
+
+  const where: Record<string, unknown> = {};
+  if (status) where.status = status;
+  if (search) {
+    where.OR = [
+      { headline: { contains: search, mode: "insensitive" } },
+      { body: { contains: search, mode: "insensitive" } },
+    ];
+  }
+
+  const [reviews, total] = await Promise.all([
+    prisma.review.findMany({
+      where,
+      orderBy: { createdAt: "desc" },
+      skip: (page - 1) * limit,
+      take: limit,
+      include: {
+        product: { select: { id: true, name: true, slug: true } },
+        user: { select: { id: true, name: true, email: true } },
+      },
+    }),
+    prisma.review.count({ where }),
+  ]);
+
+  return NextResponse.json({ reviews, total, page, limit });
+}
+
+export async function PATCH(request: NextRequest) {
+  if (!verifyAdmin(request)) return unauthorizedResponse();
+
+  const json = await request.json();
+  const { ids, status, featured } = json as {
+    ids: string[];
+    status?: string;
+    featured?: boolean;
+  };
+
+  if (!ids || !Array.isArray(ids) || ids.length === 0) {
+    return NextResponse.json(
+      { error: "Review IDs required" },
+      { status: 400 }
+    );
+  }
+
+  const data: Record<string, unknown> = {};
+  if (status) data.status = status;
+  if (typeof featured === "boolean") data.helpfulCount = featured ? 999 : 0;
+
+  const result = await prisma.review.updateMany({
+    where: { id: { in: ids } },
+    data,
+  });
+
+  return NextResponse.json({ updated: result.count });
+}
+
+export async function DELETE(request: NextRequest) {
+  if (!verifyAdmin(request)) return unauthorizedResponse();
+
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json(
+      { error: "Review ID required" },
+      { status: 400 }
+    );
+  }
+
+  await prisma.review.delete({ where: { id } });
+  return NextResponse.json({ success: true });
+}
