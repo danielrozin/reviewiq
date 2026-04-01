@@ -65,13 +65,15 @@ model User {
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 
-  accounts Account[]
-  sessions Session[]
-  reviews  Review[]
-  threads  DiscussionThread[]
-  comments Comment[]
-  votes    Vote[]
-  reports  ModerationReport[] @relation("Reporter")
+  accounts            Account[]
+  sessions            Session[]
+  reviews             Review[]
+  threads             DiscussionThread[]
+  comments            Comment[]
+  votes               Vote[]
+  reports             ModerationReport[] @relation("Reporter")
+  savedComparisons    SavedComparison[]
+  watchlistItems      WatchlistItem[]
 }
 
 model Category {
@@ -110,14 +112,16 @@ model Product {
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 
-  category  Category        @relation(fields: [categoryId], references: [id])
-  reviews   Review[]
-  threads   DiscussionThread[]
-  specs     ProductSpec[]
-  aiSummary AISummary?
-  issues    RecurringIssue[]
-  faqs      FAQ[]
-  videos    YouTubeVideo[]
+  category         Category          @relation(fields: [categoryId], references: [id])
+  reviews          Review[]
+  threads          DiscussionThread[]
+  specs            ProductSpec[]
+  aiSummary        AISummary?
+  issues           RecurringIssue[]
+  faqs             FAQ[]
+  videos           YouTubeVideo[]
+  savedComparisons SavedComparison[]
+  watchlistItems   WatchlistItem[]
 
   @@index([categoryId])
   @@index([brand])
@@ -301,6 +305,38 @@ model Vote {
   @@unique([userId, reviewId, voteType])
   @@unique([userId, threadId, voteType])
   @@unique([userId, commentId, voteType])
+  @@index([userId])
+}
+
+// ==========================================
+// Dashboard: Saved Comparisons & Watchlist
+// ==========================================
+
+model SavedComparison {
+  id        String   @id @default(cuid())
+  userId    String
+  productId String
+  note      String?  @db.Text
+  createdAt DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
+  @@index([userId])
+}
+
+model WatchlistItem {
+  id              String   @id @default(cuid())
+  userId          String
+  productId       String
+  lastKnownScore  Int      @default(0)
+  createdAt       DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, productId])
   @@index([userId])
 }
 

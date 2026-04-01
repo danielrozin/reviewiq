@@ -53,6 +53,12 @@ export function Header() {
 
           <div className="flex items-center gap-3 shrink-0">
             <Link
+              href="/dashboard"
+              className="hidden sm:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              Dashboard
+            </Link>
+            <Link
               href="/write-review"
               className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
             >

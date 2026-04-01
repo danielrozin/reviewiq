@@ -350,6 +350,41 @@ export const VOTE_TYPE_LABELS: Record<VoteType, string> = {
   owner_confirmed: "Owner Confirmed",
 };
 
+// --- Dashboard ---
+
+export interface SavedComparison {
+  id: string;
+  productId: string;
+  productName: string;
+  productSlug: string;
+  productImage: string;
+  productScore: number;
+  categorySlug: string;
+  note?: string;
+  savedAt: string;
+}
+
+export interface WatchlistItem {
+  id: string;
+  productId: string;
+  productName: string;
+  productSlug: string;
+  productImage: string;
+  currentScore: number;
+  lastKnownScore: number;
+  categorySlug: string;
+  addedAt: string;
+}
+
+export interface DashboardStats {
+  reviewCount: number;
+  savedCount: number;
+  watchlistCount: number;
+  helpfulVotesReceived: number;
+  reputationScore: number;
+  trustLevel: TrustLevel;
+}
+
 // --- Moderation ---
 
 export type ReportReason =
