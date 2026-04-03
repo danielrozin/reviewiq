@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllBlogPosts, getBlogPostBySlug, getBlogPostsByCategory } from "@/data/blog-posts";
-import { getProductsByCategory } from "@/data/products";
+import { getProductsByCategory, getAffinityProducts } from "@/data/products";
+import { getAffinityCategorySlugs } from "@/data/category-affinity";
+import { getCategoryBySlug } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { blogPostSchema, faqSchema } from "@/lib/schema/jsonld";
 
@@ -56,6 +58,8 @@ export default async function BlogPostPage({
     (p) => p.slug !== post.slug
   );
   const categoryProducts = getProductsByCategory(post.categorySlug).slice(0, 4);
+  const crossCategoryProducts = getAffinityProducts(post.categorySlug, undefined, 4);
+  const affinitySlugs = getAffinityCategorySlugs(post.categorySlug);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -217,6 +221,62 @@ export default async function BlogPostPage({
                 </Link>
               ))}
             </div>
+          </section>
+        )}
+
+        {/* Cross-Category Products — Affinity Linking */}
+        {crossCategoryProducts.length > 0 && (
+          <section className="mt-12 border-t border-gray-100 pt-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              You Might Also Like
+            </h2>
+            <p className="text-sm text-gray-500 mb-6">
+              Top-rated products in related categories
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {crossCategoryProducts.map((product) => {
+                const cat = getCategoryBySlug(product.categorySlug);
+                return (
+                  <Link
+                    key={product.id}
+                    href={`/category/${product.categorySlug}/${product.slug}`}
+                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                  >
+                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-gray-100 shrink-0">
+                      <span className="text-lg font-bold text-brand-600">
+                        {product.smartScore}
+                      </span>
+                    </div>
+                    <div className="min-w-0">
+                      <p className="font-medium text-gray-900 truncate">
+                        {product.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        <span className="text-brand-500 font-medium">{cat?.name}</span>
+                        {" "}&middot; ${product.priceRange.min}&ndash;${product.priceRange.max}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            {affinitySlugs.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-4">
+                {affinitySlugs.slice(0, 3).map((s) => {
+                  const cat = getCategoryBySlug(s);
+                  if (!cat) return null;
+                  return (
+                    <Link
+                      key={s}
+                      href={`/category/${s}`}
+                      className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors"
+                    >
+                      Explore {cat.name} &rarr;
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </section>
         )}
 

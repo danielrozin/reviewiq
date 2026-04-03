@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getCategoryBySlug, categories } from "@/data/categories";
-import { getProductBySlug, getProductsByCategory } from "@/data/products";
+import { getProductBySlug, getProductsByCategory, getAffinityProducts } from "@/data/products";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { SmartScore } from "@/components/ui/SmartScore";
 import { RatingStars } from "@/components/ui/RatingStars";
@@ -18,6 +18,8 @@ import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { productSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
+import { RelatedProducts } from "@/components/product/RelatedProducts";
+import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
 import { TrackProductView } from "@/components/tracking/TrackProductView";
 
 interface Props {
@@ -61,6 +63,27 @@ export default async function ProductPage({ params }: Props) {
       ? product.reviews.reduce((sum, r) => sum + r.rating, 0) /
         product.reviews.length
       : 0;
+
+  // Same-category related products (exclude current)
+  const relatedSameCategory = getProductsByCategory(slug)
+    .filter((p) => p.slug !== product.slug)
+    .sort((a, b) => b.smartScore - a.smartScore)
+    .slice(0, 4)
+    .map((p) => ({
+      name: p.name,
+      slug: p.slug,
+      brand: p.brand,
+      smartScore: p.smartScore,
+      reviewCount: p.reviewCount,
+      priceMin: p.priceRange.min,
+      priceMax: p.priceRange.max,
+      categorySlug: p.categorySlug,
+      categoryName: category.name,
+      image: p.image,
+    }));
+
+  // Cross-category affinity products
+  const affinityProducts = getAffinityProducts(slug, product.slug, 4);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -274,6 +297,16 @@ export default async function ProductPage({ params }: Props) {
           <FAQSection items={product.faq} />
         </aside>
       </div>
+
+      {/* Related Products — Same Category */}
+      <RelatedProducts
+        products={relatedSameCategory}
+        categorySlug={slug}
+        categoryName={category.name}
+      />
+
+      {/* People Also Reviewed — Cross-Category Affinity */}
+      <PeopleAlsoReviewed products={affinityProducts} />
     </div>
   );
 }

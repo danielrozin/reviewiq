@@ -2,6 +2,7 @@ import type { Product } from "@/types";
 import { productsBatch1 } from "./products-batch1";
 import { productsBatch2 } from "./products-batch2";
 import { productsBatch3 } from "./products-batch3";
+import { getAffinityCategories } from "./category-affinity";
 
 const baseProducts: Product[] = [
   // ==========================================
@@ -4295,4 +4296,32 @@ export function getProductBySlug(categorySlug: string, productSlug: string): Pro
 
 export function getAllProducts(): Product[] {
   return products;
+}
+
+/**
+ * Get top-rated products from affinity (related) categories.
+ * Excludes the current product's own category. Returns up to `limit` products,
+ * picking from highest-affinity categories first, sorted by smartScore.
+ */
+export function getAffinityProducts(
+  categorySlug: string,
+  excludeProductSlug?: string,
+  limit = 4,
+): Product[] {
+  const affinities = getAffinityCategories(categorySlug);
+  const result: Product[] = [];
+
+  for (const affinity of affinities) {
+    const categoryProducts = getProductsByCategory(affinity.slug)
+      .filter((p) => p.slug !== excludeProductSlug)
+      .sort((a, b) => b.smartScore - a.smartScore);
+
+    // Take top 2 from each affinity category to ensure diversity
+    const take = Math.min(2, limit - result.length);
+    result.push(...categoryProducts.slice(0, take));
+
+    if (result.length >= limit) break;
+  }
+
+  return result.slice(0, limit);
 }
