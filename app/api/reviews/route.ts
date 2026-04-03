@@ -4,6 +4,7 @@ import { z } from "zod";
 import { reviewLimiter } from "@/lib/rate-limit";
 import { sanitizeReviewContent } from "@/lib/sanitize";
 import { cacheGet, cacheSet, CacheKey, CacheTTL, invalidateReviewCaches } from "@/lib/cache/redis";
+import { notifyWatchersOfNewReview } from "@/lib/email/notify-review";
 
 const createReviewSchema = z.object({
   productId: z.string().min(1),
@@ -73,6 +74,15 @@ export async function POST(request: NextRequest) {
 
     // Invalidate caches for this product
     await invalidateReviewCaches(product.slug);
+
+    // Notify watchers (fire and forget)
+    notifyWatchersOfNewReview({
+      productId: data.productId,
+      reviewerId: data.userId,
+      reviewerName: review.user?.name || "Anonymous",
+      rating: data.rating,
+      headline: sanitizedHeadline,
+    }).catch(() => {});
 
     return NextResponse.json(review, { status: 201 });
   } catch (error) {

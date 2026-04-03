@@ -75,6 +75,7 @@ model User {
   savedComparisons    SavedComparison[]
   watchlistItems      WatchlistItem[]
   subscription        Subscription?
+  notificationPref    NotificationPreference?
 }
 
 model Category {
@@ -332,6 +333,7 @@ model WatchlistItem {
   userId          String
   productId       String
   lastKnownScore  Int      @default(0)
+  lastKnownPrice  Int      @default(0)
   createdAt       DateTime @default(now())
 
   user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -405,6 +407,38 @@ model EmailSubscription {
   @@index([productId])
   @@index([email])
   @@index([unsubscribeToken])
+}
+
+// ==========================================
+// Notification Preferences
+// ==========================================
+
+model NotificationPreference {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  priceAlerts     Boolean  @default(true)
+  reviewAlerts    Boolean  @default(true)
+  weeklyDigest    Boolean  @default(true)
+  unsubscribeToken String  @unique @default(cuid())
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ==========================================
+// Email Log (dedup + audit)
+// ==========================================
+
+model EmailLog {
+  id        String   @id @default(cuid())
+  userId    String
+  emailType String   // price_alert, review_alert, weekly_digest
+  productId String?
+  sentAt    DateTime @default(now())
+
+  @@index([userId, emailType])
+  @@index([sentAt])
 }
 
 // ==========================================
