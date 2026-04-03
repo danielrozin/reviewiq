@@ -1,4 +1,4 @@
-import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo } from "@/types";
+import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep } from "@/types";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
 
@@ -201,6 +201,23 @@ export function blogListSchema(posts: BlogPost[]) {
       url: `${SITE_URL}/blog/${post.slug}`,
       datePublished: post.publishedAt,
     })),
+  };
+}
+
+export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlug: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: title,
+    description: `Step-by-step guide to choosing the best ${title.replace(/^How to Choose the (?:Best |Right )?/i, "").toLowerCase()}.`,
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+      ...(step.image ? { image: `${SITE_URL}${step.image}` } : {}),
+    })),
+    url: `${SITE_URL}/category/${categorySlug}`,
   };
 }
 

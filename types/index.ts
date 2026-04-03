@@ -91,6 +91,12 @@ export interface FAQItem {
   answer: string;
 }
 
+export interface BuyingGuideStep {
+  name: string;
+  text: string;
+  image?: string;
+}
+
 export interface ExternalComparison {
   title: string;
   url: string;
