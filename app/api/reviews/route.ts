@@ -3,6 +3,7 @@ import { prisma } from "@/lib/prisma";
 import { z } from "zod";
 import { reviewLimiter } from "@/lib/rate-limit";
 import { sanitizeReviewContent } from "@/lib/sanitize";
+import { cacheGet, cacheSet, CacheKey, CacheTTL, invalidateReviewCaches } from "@/lib/cache/redis";
 
 const createReviewSchema = z.object({
   productId: z.string().min(1),
@@ -70,6 +71,9 @@ export async function POST(request: NextRequest) {
       data: { reviewCount: { increment: 1 } },
     });
 
+    // Invalidate caches for this product
+    await invalidateReviewCaches(product.slug);
+
     return NextResponse.json(review, { status: 201 });
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -85,6 +89,10 @@ export async function GET(request: NextRequest) {
   const page = parseInt(searchParams.get("page") ?? "1");
   const limit = Math.min(parseInt(searchParams.get("limit") ?? "20"), 50);
   const sortBy = searchParams.get("sort") ?? "createdAt";
+
+  const cacheKey = CacheKey.reviews(`${productId || "all"}:${sortBy}:${page}:${limit}`);
+  const cached = await cacheGet<{ reviews: unknown[]; total: number; page: number; limit: number }>(cacheKey);
+  if (cached) return NextResponse.json(cached);
 
   const where = {
     status: "published",
@@ -109,5 +117,8 @@ export async function GET(request: NextRequest) {
     prisma.review.count({ where }),
   ]);
 
-  return NextResponse.json({ reviews, total, page, limit });
+  const result = { reviews, total, page, limit };
+  await cacheSet(cacheKey, result, CacheTTL.REVIEWS);
+
+  return NextResponse.json(result);
 }

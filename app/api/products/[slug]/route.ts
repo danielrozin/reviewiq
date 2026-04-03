@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { cacheGet, cacheSet, CacheKey, CacheTTL } from "@/lib/cache/redis";
 
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
   const { slug } = await params;
+
+  const cacheKey = CacheKey.productDetail(slug);
+  const cached = await cacheGet(cacheKey);
+  if (cached) return NextResponse.json(cached);
 
   const product = await prisma.product.findUnique({
     where: { slug },
@@ -40,5 +45,6 @@ export async function GET(
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
   }
 
+  await cacheSet(cacheKey, product, CacheTTL.PRODUCT_DETAIL);
   return NextResponse.json(product);
 }

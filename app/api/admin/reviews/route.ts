@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
 import { verifyAdmin, unauthorizedResponse } from "@/lib/admin-auth";
+import { invalidateReviewCaches } from "@/lib/cache/redis";
 
 export const dynamic = "force-dynamic";
 
@@ -65,6 +66,7 @@ export async function PATCH(request: NextRequest) {
     data,
   });
 
+  await invalidateReviewCaches();
   return NextResponse.json({ updated: result.count });
 }
 
@@ -81,6 +83,11 @@ export async function DELETE(request: NextRequest) {
     );
   }
 
+  const review = await prisma.review.findUnique({
+    where: { id },
+    include: { product: { select: { slug: true } } },
+  });
   await prisma.review.delete({ where: { id } });
+  await invalidateReviewCaches(review?.product?.slug);
   return NextResponse.json({ success: true });
 }

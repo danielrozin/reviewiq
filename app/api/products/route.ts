@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
+import { cacheGet, cacheSet, CacheKey, CacheTTL } from "@/lib/cache/redis";
 
 export const dynamic = "force-dynamic";
 
@@ -8,6 +9,10 @@ export async function GET(request: NextRequest) {
   const categoryId = searchParams.get("categoryId");
   const page = parseInt(searchParams.get("page") || "1");
   const limit = parseInt(searchParams.get("limit") || "20");
+
+  const cacheKey = CacheKey.productList(`${categoryId || "all"}:${page}:${limit}`);
+  const cached = await cacheGet<{ products: unknown[]; total: number; page: number; limit: number }>(cacheKey);
+  if (cached) return NextResponse.json(cached);
 
   const where: Record<string, unknown> = {};
   if (categoryId) where.categoryId = categoryId;
@@ -40,10 +45,8 @@ export async function GET(request: NextRequest) {
     })
   );
 
-  return NextResponse.json({
-    products: productsWithStats,
-    total,
-    page,
-    limit,
-  });
+  const result = { products: productsWithStats, total, page, limit };
+  await cacheSet(cacheKey, result, CacheTTL.PRODUCT_LIST);
+
+  return NextResponse.json(result);
 }

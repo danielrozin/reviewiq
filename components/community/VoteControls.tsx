@@ -62,6 +62,10 @@ export function VoteControls({
       localStorage.removeItem(`vote_${itemId}`);
     }
 
+    if (newVote) {
+      trackVoteCast(itemType || "thread", newVote);
+    }
+
     // Ready for backend API when available:
     // fetch("/api/votes", {
     //   method: "POST",

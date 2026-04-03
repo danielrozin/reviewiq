@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
 import { verifyAdmin, unauthorizedResponse } from "@/lib/admin-auth";
 import { z } from "zod";
+import { invalidateProductCaches } from "@/lib/cache/redis";
 
 export const dynamic = "force-dynamic";
 
@@ -75,6 +76,7 @@ export async function POST(request: NextRequest) {
       include: { category: { select: { name: true } } },
     });
 
+    await invalidateProductCaches();
     return NextResponse.json(product, { status: 201 });
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -109,6 +111,7 @@ export async function PUT(request: NextRequest) {
       include: { category: { select: { name: true } } },
     });
 
+    await invalidateProductCaches(data.slug);
     return NextResponse.json(product);
   } catch (error) {
     if (error instanceof z.ZodError) {
@@ -134,6 +137,8 @@ export async function DELETE(request: NextRequest) {
     );
   }
 
+  const product = await prisma.product.findUnique({ where: { id }, select: { slug: true } });
   await prisma.product.delete({ where: { id } });
+  await invalidateProductCaches(product?.slug);
   return NextResponse.json({ success: true });
 }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { searchLimiter } from "@/lib/rate-limit";
 import { sanitizeSearchQuery } from "@/lib/sanitize";
+import { cacheGet, cacheSet, CacheKey, CacheTTL } from "@/lib/cache/redis";
 
 export async function GET(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
@@ -18,6 +19,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ products: [], total: 0 });
   }
 
+  const cacheKey = CacheKey.search(q.toLowerCase(), limit);
+  const cached = await cacheGet<{ products: unknown[]; total: number }>(cacheKey);
+  if (cached) return NextResponse.json(cached);
+
   const products = await prisma.product.findMany({
     where: {
       OR: [
@@ -33,5 +38,8 @@ export async function GET(request: NextRequest) {
     },
   });
 
-  return NextResponse.json({ products, total: products.length });
+  const result = { products, total: products.length };
+  await cacheSet(cacheKey, result, CacheTTL.SEARCH);
+
+  return NextResponse.json(result);
 }
