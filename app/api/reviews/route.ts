@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { z } from "zod";
+import { reviewLimiter } from "@/lib/rate-limit";
+import { sanitizeReviewContent } from "@/lib/sanitize";
 
 const createReviewSchema = z.object({
   productId: z.string().min(1),
@@ -20,9 +22,20 @@ const createReviewSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const rateCheck = reviewLimiter.check(ip);
+  if (!rateCheck.success) {
+    return NextResponse.json(
+      { error: "Too many reviews. Please try again later." },
+      { status: 429, headers: { "Retry-After": String(Math.ceil((rateCheck.reset - Date.now()) / 1000)) } }
+    );
+  }
+
   try {
     const json = await request.json();
     const data = createReviewSchema.parse(json);
+    const sanitizedHeadline = sanitizeReviewContent(data.headline);
+    const sanitizedBody = sanitizeReviewContent(data.body);
 
     const product = await prisma.product.findUnique({
       where: { id: data.productId },
@@ -35,7 +48,7 @@ export async function POST(request: NextRequest) {
       data: {
         productId: data.productId,
         userId: data.userId,
-        headline: data.headline,
+        headline: sanitizedHeadline,
         rating: data.rating,
         verifiedPurchase: data.verifiedPurchase ?? false,
         verificationTier: data.verificationTier ?? "unverified",
@@ -46,7 +59,7 @@ export async function POST(request: NextRequest) {
         reliabilityRating: data.reliabilityRating,
         easeOfUseRating: data.easeOfUseRating,
         valueRating: data.valueRating,
-        body: data.body,
+        body: sanitizedBody,
       },
       include: { user: { select: { id: true, name: true, image: true } } },
     });
