@@ -19,6 +19,7 @@ import { TRUST_LEVEL_LABELS, TRUST_LEVEL_COLORS } from "@/types";
 import type { UserBadge } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { UserProBadge } from "@/components/premium/UserProBadge";
+import { ProfileChecklist } from "@/components/onboarding/ProfileChecklist";
 
 // Demo user for initial launch — will use session auth when NextAuth is fully wired
 const DEMO_USER_ID = "user-sarah-k";
@@ -93,6 +94,11 @@ export default function DashboardPage() {
           View public profile →
         </Link>
       </div>
+
+      {/* Onboarding Checklist */}
+      <section className="mb-8">
+        <ProfileChecklist />
+      </section>
 
       {/* Quick Actions */}
       <section className="mb-8">

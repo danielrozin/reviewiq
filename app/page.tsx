@@ -7,6 +7,7 @@ import { getUserById } from "@/data/users";
 import { SmartScore } from "@/components/ui/SmartScore";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { formatNumber } from "@/lib/utils";
+import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 
 export default function HomePage() {
   const topProducts = [...products]
@@ -50,6 +51,11 @@ export default function HomePage() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* Onboarding — Welcome Back / Quick Start */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <HomeOnboardingSection />
       </section>
 
       {/* Trust Signals */}
