@@ -41,6 +41,8 @@ export interface Product {
 export interface YouTubeVideo {
   id: string; // YouTube video ID (e.g. "dQw4w9WgXcQ")
   title: string;
+  isActive?: boolean;
+  status?: string;
 }
 
 export interface PriceRange {

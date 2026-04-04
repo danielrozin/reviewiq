@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { YouTubeVideo } from "@/types";
 
 interface Props {
@@ -8,7 +9,14 @@ interface Props {
 }
 
 export function YouTubeVideos({ videos, productName }: Props) {
-  if (videos.length === 0) return null;
+  const activeVideos = videos.filter((v) => v.isActive !== false);
+  const [failedIds, setFailedIds] = useState<Set<string>>(new Set());
+
+  const visibleVideos = activeVideos
+    .filter((v) => !failedIds.has(v.id))
+    .slice(0, 3);
+
+  if (visibleVideos.length === 0) return null;
 
   return (
     <section>
@@ -19,7 +27,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
         Watch in-depth reviews and comparisons of the {productName}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {videos.slice(0, 3).map((video) => (
+        {visibleVideos.map((video) => (
           <div key={video.id} className="space-y-2">
             <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100">
               <iframe
@@ -31,6 +39,9 @@ export function YouTubeVideos({ videos, productName }: Props) {
                 allowFullScreen
                 referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 w-full h-full"
+                onError={() =>
+                  setFailedIds((prev) => new Set(prev).add(video.id))
+                }
               />
             </div>
             <p className="text-sm font-medium text-gray-700 line-clamp-2">

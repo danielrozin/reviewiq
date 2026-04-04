@@ -147,7 +147,9 @@ export function videoObjectSchema(video: YouTubeVideo, productName: string) {
 }
 
 export function videoObjectListSchema(videos: YouTubeVideo[], productName: string) {
-  return videos.map((video) => videoObjectSchema(video, productName));
+  return videos
+    .filter((v) => v.isActive !== false)
+    .map((video) => videoObjectSchema(video, productName));
 }
 
 export function analysisAuthorSchema() {
