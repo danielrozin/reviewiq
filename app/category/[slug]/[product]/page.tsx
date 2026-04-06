@@ -21,6 +21,7 @@ import { formatNumber } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
 import { TrackProductView } from "@/components/tracking/TrackProductView";
+import { ReviewFormCTA } from "@/components/product/ReviewFormCTA";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -160,6 +161,13 @@ export default async function ProductPage({ params }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Left Column — Main Content */}
         <div className="lg:col-span-2 space-y-10">
+          {/* Review CTA — above-fold experiment variant */}
+          <ReviewFormCTA
+            productName={product.name}
+            productSlug={product.slug}
+            categorySlug={slug}
+          />
+
           {/* AI Summary */}
           <div data-speakable="ai-summary">
             <AISummaryCard summary={product.aiSummary} />
