@@ -1273,8 +1273,8 @@ export const productsBatch3: Product[] = [
         answer: "If you want Apple Pencil Pro features — squeeze to switch tools, barrel roll for brush angle control, haptic feedback — the iPad Air M3 at $599 supports all of them, identical to the iPad Pro M4. This was a significant upgrade from previous Air models and means you get the full $129 Apple Pencil Pro experience without paying Pro tablet prices. The only drawing-related advantage the Pro M4 has is ProMotion 120Hz, which reduces visible latency between your pencil stroke and the on-screen line from about 20ms to 9ms. For note-taking and casual illustration, the 60Hz on the Air M3 is perfectly adequate. For professional illustrators doing fast, detailed strokes in Procreate, the 120Hz smoothness on the Pro is noticeable.",
       },
       {
-        question: "Is the iPad Air M3 good for students?",
-        answer: "It's widely considered the best iPad for students. The M3 handles everything from note-taking to video editing to coding. Apple Pencil Pro support, all-day battery, and compatibility with the entire app ecosystem make it an excellent study and creativity tool.",
+        question: "If I'm starting college and need a device for lecture notes, PDF annotation, studying, and occasional video projects, is the iPad Air M3 enough or do I need the Pro?",
+        answer: "If your college workflow involves handwritten notes in GoodNotes or Notability, annotating lecture PDFs, studying with flashcard apps, and editing video projects for class assignments, the iPad Air M3 at $599 handles all of these comfortably — the M3 chip processes 4K video editing in iMovie and LumaFusion without lag. The 10-hour battery lasts a full day of classes and library study sessions. With Apple Pencil Pro ($129) you get the same squeeze and barrel roll gestures as the Pro model. The main limitation is the 128GB base storage, which fills up quickly if you record lectures or store large project files — upgrading to 256GB adds $100. For a student budget, the Air M3 plus Pencil Pro at $728 total delivers 90% of the Pro M4 experience at 55% of the cost.",
       },
     ],
     reviews: [

@@ -1440,12 +1440,12 @@ export const productsBatch1: Product[] = [
         answer: "If you're cooking for 1-4 people in a small apartment, the Breville at $349-$399 handles most daily cooking: it fits a 6-lb whole chicken, a 13-inch pizza, a batch of cookies on a sheet, and air fries a full serving of wings. It will not handle a Thanksgiving turkey, a large casserole dish, or multiple racks of baking at once. Reviewers in studios and 1-bedroom apartments report using their conventional oven 70-80% less after buying this. For a household of 5+ or holiday entertaining, you will still need a full-size oven alongside it.",
       },
       {
-        question: "Is the Breville Smart Oven Air Fryer Pro worth the price vs cheaper air fryers?",
-        answer: "If you only need air frying, a $100-$150 basket air fryer does it just as well and costs much less. The Breville's value is in the versatility — 13 cooking functions in one appliance. If you'd buy a toaster oven AND an air fryer separately, the Breville is excellent value.",
+        question: "If I only plan to air fry frozen fries and chicken nuggets a few times a week, is the $350-$400 Breville Smart Oven overkill compared to a $100 basket air fryer?",
+        answer: "If you're only air frying frozen foods 2-3 times per week, a $100-$150 basket air fryer like the COSORI Dual Blaze ($119-$139) or Ninja produces identical air-fry results for less than half the price. The Breville's $349-$399 price is justified when you use its 13 cooking functions: air fry, bake, roast, broil, toast, dehydrate, pizza mode, proof dough, slow cook, and more. If you would otherwise buy a toaster oven ($80-$120) and an air fryer ($100-$150) and a dehydrator ($50-$80) separately, the Breville consolidates all three for less than buying them individually.",
       },
       {
-        question: "How much space does the Breville Smart Oven Air Fryer Pro need?",
-        answer: "It requires 4 inches of clearance on all sides for ventilation and the top must be kept away from cabinets. It's 21.5\" wide, which is substantial. Measure your counter space carefully — many returns are due to the size being larger than expected.",
+        question: "If I have limited counter space with upper cabinets directly above, will the Breville Smart Oven Air Fryer Pro fit safely in my kitchen?",
+        answer: "If you have upper cabinets less than 16-17 inches above your counter, the Breville may not fit safely. It is 21.5 inches wide and 12.7 inches tall, and requires at least 4 inches of clearance on all sides and above for ventilation. The top and sides get hot enough during use to discolor wooden cabinets — reviewers report actual cabinet damage from insufficient clearance. Measure your counter space carefully before ordering: the number one return reason is the unit being larger than buyers expected. A kitchen island or open counter section without overhead cabinets is the ideal placement.",
       },
     ],
     reviews: [
@@ -1603,8 +1603,8 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "What is the advantage of dual heating elements in the COSORI Dual Blaze?",
-        answer: "Standard air fryers heat from the top only. The Dual Blaze heats from both top and bottom simultaneously, which reduces cooking time by 15-25% and produces more even browning — especially on the bottom of food. You'll notice it most with fries, chicken, and baked goods.",
+        question: "If I'm tired of flipping food halfway through cooking because the bottom never gets crispy, does the COSORI Dual Blaze's dual heating actually fix this problem?",
+        answer: "If you're used to single-element air fryers where the bottom of your fries and chicken stays pale and soft unless you shake the basket midway, the Dual Blaze's top-and-bottom heating elements directly address this. At $119-$139, the dual heat reduces cooking time by 15-25% and produces even browning on both sides without flipping. You will notice the difference most with french fries, chicken thighs, and baked goods where the bottom comes out crispy instead of steamed. It does not completely eliminate the need to shake dense, overlapping batches, but for single-layer cooking the improvement is significant.",
       },
       {
         question: "Do I need the app to use the COSORI Dual Blaze?",

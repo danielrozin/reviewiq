@@ -2299,12 +2299,12 @@ export const productsBatch2: Product[] = [
     ],
     faq: [
       {
-        question: "Is the Framework Laptop 16 GPU module actually upgradeable in the future?",
-        answer: "Framework has committed to providing future GPU modules as upgrades. However, as of 2025, only the RX 7700S module has shipped. The upgrade path exists by design and Framework has a strong track record of honoring upgrade commitments from their 13-inch lineup. Verify current availability of future modules before buying with upgrade plans in mind.",
+        question: "If I buy the Framework Laptop 16 now with the RX 7700S GPU module, can I actually upgrade to a newer GPU in 2-3 years without buying a whole new laptop?",
+        answer: "If you want a laptop where you can swap the GPU module in 2-3 years instead of replacing the entire machine, Framework has designed the Laptop 16 with a modular GPU bay and has committed to future GPU modules. As of 2025, only the RX 7700S module ($399) has shipped. Framework has a strong track record from their 13-inch model of delivering promised expansion cards and mainboard upgrades. Before buying with a specific upgrade timeline in mind, verify that next-generation GPU modules have been announced or shipped, since the upgrade path depends on Framework continuing to produce compatible modules.",
       },
       {
-        question: "Is the Framework Laptop 16 good for Linux?",
-        answer: "Yes — Framework actively supports Linux and publishes detailed guides for Fedora and Ubuntu. The hardware is designed with open standards. The community around Framework Linux is particularly strong. It is one of the best laptops for Linux users in the market.",
+        question: "If I'm a developer who runs Fedora or Ubuntu as my daily driver, is the Framework Laptop 16 one of the better options for Linux compatibility out of the box?",
+        answer: "If you develop on Linux daily and want hardware that works without driver hunting, the Framework Laptop 16 ships with official support for Fedora 39+ and Ubuntu 22.04+, with Framework publishing detailed setup guides and contributing upstream kernel patches. The expansion card system uses standard USB-C and USB-A interfaces that Linux handles natively. The Framework community maintains active Linux forums and troubleshooting resources. Compared to Dell XPS Developer Edition ($1,399+) or System76 laptops ($1,099+), the Framework Laptop 16 adds hardware modularity and repairability while matching Linux compatibility. It is among the top 3 laptops for Linux users alongside System76 and ThinkPad X1 Carbon.",
       },
     ],
     reviews: [
@@ -2455,8 +2455,8 @@ export const productsBatch2: Product[] = [
     ],
     faq: [
       {
-        question: "Is the Surface Laptop 6 better with Snapdragon X Elite or Intel?",
-        answer: "For battery life and AI Copilot+ features, the Snapdragon X Elite version (13.5\") is superior — up to 22 hours versus 12 hours for Intel. For demanding applications with broad Windows software compatibility, Intel Core Ultra is more reliable. Check if your required software has Arm-compatible versions before choosing Snapdragon.",
+        question: "If I need all-day battery life for travel and use Microsoft 365 heavily, should I get the Surface Laptop 6 with Snapdragon X Elite or Intel Core Ultra?",
+        answer: "If you travel frequently and need all-day battery life with Microsoft 365, web browsing, and video calls, the Snapdragon X Elite version delivers up to 22 hours versus 12 hours for Intel and includes AI Copilot+ features like live captions and Windows Studio effects. If you run specialized Windows software like AutoCAD, older .NET applications, or niche enterprise tools that may not have Arm-compatible versions, the Intel Core Ultra version guarantees full x86 software compatibility. Before choosing Snapdragon, verify that your specific must-have applications run natively on Arm or perform acceptably through emulation.",
       },
       {
         question: "How does Surface Laptop 6 compare to MacBook Air M3?",
