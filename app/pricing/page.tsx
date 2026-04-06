@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PricingTiers } from "./PricingTiers";
+import { faqSchema } from "@/lib/schema/jsonld";
 
 export const metadata: Metadata = {
   title: "Pricing — ReviewIQ Pro",
@@ -33,6 +34,12 @@ export default function PricingPage() {
       </div>
 
       {/* FAQ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))),
+        }}
+      />
       <div className="bg-gray-50 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">

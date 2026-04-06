@@ -91,16 +91,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "Is the Sony WH-1000XM5 better than the XM4?",
-        answer: "The XM5 has improved ANC and slightly better sound quality, but it lost the fold-flat design of the XM4. For pure audio and ANC performance, the XM5 wins. For portability, the XM4 is still preferred by many.",
+        question: "If I already own the Sony WH-1000XM4 and they still work, is the XM5 upgrade worth spending another $299-$399?",
+        answer: "If you primarily use your XM4 at a desk or on flights and want stronger noise cancellation against voices and mid-range sounds, the XM5's improved ANC with 8 microphones and Dual Noise Sensor Technology is a noticeable step up. If you travel frequently and rely on the XM4's fold-flat design to pack into a bag, the XM5 loses that feature entirely and uses a bulkier carrying case. The sound quality improvement is real but subtle — most noticeable in vocal clarity and treble detail. For $299-$399, the upgrade makes sense for stationary listeners but not for travelers who value portability.",
       },
       {
-        question: "Can the Sony WH-1000XM5 be used with airplane audio?",
-        answer: "Yes — the headphones include a 3.5mm audio cable and a dual-prong airplane adapter in the box, making them compatible with in-flight entertainment systems.",
+        question: "If I fly long-haul regularly and want to use these with in-flight entertainment, do they come with the right adapters?",
+        answer: "If you're a frequent flyer, the XM5 includes a 3.5mm audio cable and a dual-prong airplane adapter in the box, so you can plug directly into seatback entertainment systems without buying anything extra. Combined with the 30-hour battery life (ANC on), they will cover even the longest transpacific flights. The ANC blocks engine drone effectively, though call quality suffers in pressurized cabins with air circulation noise.",
       },
       {
-        question: "How is the Sony WH-1000XM5 for gym use?",
-        answer: "They are not recommended for gym use. They have no IP rating, meaning sweat and moisture can damage the internals over time. Consider the Sony WF-SP800N for active use instead.",
+        question: "If I want to wear these during weightlifting or cardio sessions at the gym, will sweat damage them?",
+        answer: "If you have sweaty workouts, the XM5 is a poor choice — they carry no IP water or dust resistance rating, meaning sweat from your forehead and hands can seep into the 30mm drivers and ear cup padding over time and cause permanent damage. Replacement ear cushions cost $25-$40 and won't protect the electronics. For gym use at a similar price range, the Sony WF-1000XM5 earbuds ($279) have IPX4 sweat resistance, or the Beats Fit Pro ($199) offer IPX4 with secure ear hooks for high-movement exercises.",
       },
     ],
     reviews: [
@@ -258,16 +258,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "Do AirPods Max work with Android?",
-        answer: "Basic playback works via Bluetooth, but you lose all premium features: no spatial audio, no adaptive EQ, no auto device switching, no Siri, and no low-latency mode. They are only recommended for Apple device users.",
+        question: "If I have a Samsung Galaxy or Google Pixel phone, will I get the full AirPods Max experience or am I paying $449-$549 for half the features?",
+        answer: "If you're on Android, you're paying $449-$549 for roughly half the functionality. You get basic Bluetooth audio playback and ANC, but you lose spatial audio with head tracking, adaptive EQ calibration, automatic device switching between Apple devices, Siri voice control, low-latency mode for video, and all EQ customization. The Sony WH-1000XM5 at $299-$399 or Bose QC Ultra at $379-$429 deliver their full feature set on Android and match or exceed the AirPods Max in ANC performance.",
       },
       {
-        question: "Is the AirPods Max worth the price?",
-        answer: "For heavy Apple ecosystem users, many reviewers say yes — the seamless integration, spatial audio, and build quality justify the premium. For everyone else, the Sony XM5 or Bose QC Ultra offer better value.",
+        question: "If I already own an iPhone, iPad, and Mac, does spending $449-$549 on AirPods Max actually improve my daily experience compared to $299 headphones?",
+        answer: "If you're deep in the Apple ecosystem with multiple devices, the AirPods Max add automatic audio handoff between your iPhone, iPad, and Mac without pressing anything, spatial audio with dynamic head tracking on Apple TV+ and Apple Music content, and computational audio via the dual H1 chips that adapts sound to your ear shape. These integration features are genuinely unavailable at any price outside Apple's ecosystem. The tradeoff is 20-hour battery life (vs 30 hours on the Sony XM5), 385g weight that causes neck fatigue after 3+ hours, and a widely criticized Smart Case. For home and office use across Apple devices, the daily convenience is tangible. For commuting or travel, the Sony XM5 at $150 less is lighter, lasts longer, and folds for packing.",
       },
       {
-        question: "What is the difference between the old and new AirPods Max?",
-        answer: "The 2024 revision added USB-C charging and new color options. The audio hardware, ANC performance, and design are identical to the 2020 original. The Smart Case was also redesigned but still widely criticized.",
+        question: "If I'm deciding between the original 2020 AirPods Max on sale and the 2024 USB-C revision, is the newer model worth the price difference?",
+        answer: "If you already have a household of USB-C cables (which most people do after the iPhone 15+ transition), the 2024 revision eliminates the need for a separate Lightning cable — that's the main practical benefit. The audio hardware, ANC performance, H1 chips, and overall design are identical between the two models. The 2024 version has updated color options and a slightly redesigned Smart Case that remains widely criticized. If you find the 2020 Lightning model discounted by $100 or more, it delivers the same audio and ANC experience and you just need one Lightning cable for charging.",
       },
     ],
     reviews: [
@@ -426,16 +426,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "How does Bose QC Ultra compare to QC45?",
-        answer: "The QC Ultra adds Immersive Audio, CustomTune personalized ANC, and better call quality. The sound signature is also more refined. However, the QC45 is often on sale at a significant discount and remains one of the best-value comfort headphones available.",
+        question: "If I currently own the Bose QC45 and can get the QC Ultra for $379-$429, is the upgrade worth $150-$200 over keeping what I have?",
+        answer: "If you spend more than 2 hours daily on video calls, the QC Ultra's upgraded microphone array picks up your voice significantly clearer than the QC45 and rejects background noise more effectively — that alone may justify the upgrade for remote workers. The CustomTune technology calibrates ANC specifically to your ear shape on first use, producing measurably stronger noise cancellation than the QC45's fixed profile. Immersive Audio adds spatial sound for music but drains battery to about 18 hours (vs 24 hours in standard mode). If the QC45 still meets your needs for calls and commuting, it remains one of the best-value comfort headphones, especially when found on sale for $200-$249.",
       },
       {
-        question: "Is the Bose QC Ultra good for calls?",
-        answer: "Yes — it has some of the best call microphones of any consumer headphone. Voice pickup is clear and background noise rejection is excellent. It is widely recommended for remote workers and frequent conference callers.",
+        question: "If I work from home and spend 4-5 hours daily on Zoom and Teams calls, will the Bose QC Ultra make me sound clearer than my current headset?",
+        answer: "If you're on frequent video calls, the QC Ultra has some of the clearest call microphones in any consumer headphone — multiple reviewers and users report that call partners immediately notice the improvement. Background noise rejection handles household sounds (dishwashers, family members, barking dogs) effectively, and the CustomTune ANC keeps their voices out of your ears while you listen. At $379-$429, it outperforms the Sony XM5 for call clarity specifically, though the Sony matches it for music and ANC. For remote workers who prioritize being heard clearly over everything else, this is the top recommendation in the $300-$450 range.",
       },
       {
-        question: "Does the Bose QC Ultra fold?",
-        answer: "Yes, the ear cups fold inward for storage and come with a semi-hard zip case. The headphones do not fold completely flat but pack down compactly enough for travel.",
+        question: "If I travel weekly for work and need headphones that fit in a laptop bag without taking up too much space, do the QC Ultra fold down small enough?",
+        answer: "If you're packing a standard laptop bag or backpack, the QC Ultra ear cups fold inward and fit into the included semi-hard zip case, which is compact enough to slide alongside a 15-inch laptop. They do not fold completely flat like the Sennheiser Momentum 4, so they take slightly more vertical space. At 253g they're lighter than the AirPods Max (385g) and come with a proper protective case — unlike the AirPods Max's widely criticized Smart Case that leaves the headband exposed. For weekly travel, the fold-and-case combination is practical and protective.",
       },
     ],
     reviews: [
@@ -593,16 +593,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "How long does the Sennheiser Momentum 4 battery really last?",
-        answer: "Real-world tests consistently confirm 55-60 hours with ANC on at moderate volume. This is extraordinary and unmatched by any competitor at this price. The 3-minute quick charge provides 1.5 hours of playback in a pinch.",
+        question: "If I take two-week international trips and hate carrying chargers, can the Sennheiser Momentum 4 actually last that long on a single charge?",
+        answer: "If you use them 4-5 hours per day with ANC on at moderate volume, real-world tests confirm 55-60 hours of total playback — that's 11-12 days of daily use on one charge. Multiple long-haul travelers report leaving for two-week trips and returning with battery remaining. No competitor comes close: the Sony XM5 lasts 30 hours and the Bose QC Ultra lasts 24 hours. If you forget to charge before a flight, a 3-minute quick charge gives 1.5 hours of playback — enough to cover boarding through takeoff. At $299-$349, the battery life alone makes this the top pick for frequent travelers with charging anxiety.",
       },
       {
-        question: "Is the Sennheiser Momentum 4 good for commuting?",
-        answer: "It's good but not the best for commuting. The sound quality and comfort are excellent, but the ANC struggles slightly more with metro and train rumble compared to Sony XM5 or Bose QC Ultra. For bus and car commutes it performs very well.",
+        question: "If I commute 45 minutes each way on a subway or metro train, will the Momentum 4's noise cancellation block out enough rumble and chatter?",
+        answer: "If your commute involves heavy low-frequency rumble from subway trains and metro systems, the Momentum 4's adaptive ANC handles bus and car noise well but falls measurably behind the Sony XM5 and Bose QC Ultra for blocking train engine drone and HVAC hum specifically. Commuter conversations at moderate volume still bleed through more than on Sony or Bose flagships. For quieter commutes (bus, car, or above-ground rail), the Momentum 4 performs well and its 60-hour battery means you'll charge it roughly once every two weeks of commuting. If maximum noise blocking on a loud subway is your priority, the Sony XM5 ($299-$399) or Bose QC Ultra ($379-$429) are stronger choices for that specific scenario.",
       },
       {
-        question: "Does the Sennheiser Momentum 4 fold?",
-        answer: "Yes — it folds flat, which is a significant advantage over the Sony XM5. The foldable design and included hard case make it one of the more travel-friendly options in the premium segment.",
+        question: "If I need headphones that pack flat into a suitcase or backpack pocket, does the Momentum 4 fold down smaller than the Sony XM5?",
+        answer: "If you're packing for travel, the Momentum 4 folds completely flat and fits into the included hard case, which takes up roughly the footprint of a paperback book. The Sony XM5 does not fold flat at all — Sony removed the fold-flat hinge from the XM4 design, and the XM5 case takes up nearly twice as much bag space. At 293g, the Momentum 4 is heavier than the XM5 (250g) but the flat-fold advantage more than compensates in practical packing. Combined with the 60-hour battery, this makes the Momentum 4 one of the most travel-optimized options in the $299-$349 premium segment.",
       },
     ],
     reviews: [
@@ -763,16 +763,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "Is the iPad Pro M4 worth upgrading from M2?",
-        answer: "If you use the iPad as a primary work device and the OLED display matters to you, yes. The display upgrade alone is significant. If you use it mainly for media consumption and light tasks, the M2 is still very capable and the upgrade is hard to justify.",
+        question: "If I have an iPad Pro M2 that works fine for illustration and video editing, is spending $1,299-$1,599 on the M4 a meaningful upgrade or a lateral move?",
+        answer: "If you do color-critical work like illustration, photo editing, or video color grading, the M4's Ultra Retina XDR OLED display with tandem stack technology produces deeper blacks, wider color gamut, and higher peak brightness than the M2's Liquid Retina XDR mini-LED — this is the single biggest reason to upgrade and professionals who depend on color accuracy will see an immediate difference. If you primarily use your M2 for note-taking, media consumption, and light creative tasks, the M2's M-series chip still handles these without lag and the $1,299+ upgrade cost is difficult to justify. The M4 chip is faster in benchmarks but few current iPadOS apps push either chip to its limits.",
       },
       {
-        question: "Can the iPad Pro M4 replace a laptop?",
-        answer: "For many creative professionals — illustrators, video editors, photographers — it can. For developers, writers needing complex window management, or anyone who needs Pro Mac software, iPadOS still has meaningful limitations. It depends heavily on your workflow.",
+        question: "If I want to leave my MacBook at home and use only the iPad Pro M4 with Magic Keyboard for work travel, what workflows will actually work and what will break?",
+        answer: "If you're an illustrator using Procreate or Adobe Fresco, a video editor using DaVinci Resolve or LumaFusion, or a photographer using Lightroom, the iPad Pro M4 can fully replace a laptop — the M4 chip handles 4K ProRes editing in real time and the OLED display rivals calibrated desktop monitors. If you're a developer needing Xcode, a writer needing complex multi-window setups with more than two apps side by side, or anyone dependent on macOS-specific software, iPadOS Stage Manager multitasking remains frustrating and limited compared to macOS. The total cost with Magic Keyboard ($349) and Apple Pencil Pro ($129) pushes the system above $1,777, which overlaps with a MacBook Air M3 that runs full macOS without restrictions.",
       },
       {
-        question: "What is the difference between iPad Pro M4 and iPad Air M3?",
-        answer: "The Pro M4 gets OLED display, M4 chip (vs M3 in Air), Thunderbolt connectivity, ProMotion 120Hz, LiDAR scanner, and Apple Pencil Pro support. The Air M3 is $700 cheaper and still very fast. For casual to moderate use, the Air M3 is better value.",
+        question: "If I'm torn between the iPad Pro M4 at $1,299 and the iPad Air M3 at $599, what exactly do I get for the extra $700?",
+        answer: "If you spend the extra $700, you get an OLED display instead of LCD (dramatically deeper blacks and more accurate colors), ProMotion 120Hz refresh rate instead of 60Hz (smoother scrolling and noticeably less Apple Pencil latency), Thunderbolt 4 connectivity instead of USB 3 (40Gbps vs 10Gbps for external drives and monitors), a LiDAR scanner for 3D scanning and AR, and the M4 chip with 10-core GPU instead of M3. If you use your iPad for note-taking, web browsing, streaming, light creative work, and studying, the Air M3 handles all of these without struggle and the $700 savings can buy the Magic Keyboard and Apple Pencil Pro with money left over. The Pro is justified only when OLED accuracy, 120Hz drawing smoothness, or Thunderbolt transfer speeds are requirements, not preferences.",
       },
     ],
     reviews: [
@@ -931,16 +931,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "Is the Samsung Galaxy Tab S9 Ultra better than iPad Pro?",
-        answer: "It depends on ecosystem. The Tab S9 Ultra has a larger screen, includes S Pen, and runs full Android. The iPad Pro has better app optimization, OLED display, more powerful chip, and superior tablet-specific apps. For Android users the Tab S9 Ultra is the better choice; for Apple users or creative professionals, the iPad Pro wins.",
+        question: "If I'm an Android user choosing between the Samsung Galaxy Tab S9 Ultra at $1,099-$1,299 and the iPad Pro M4 at $1,299-$1,599, which gives me more for my money?",
+        answer: "If you're already in the Android ecosystem with a Samsung phone, the Tab S9 Ultra keeps your apps, files, and notifications unified — plus it includes the S Pen in the box (saving you the $129 Apple Pencil Pro cost), has a larger 14.6-inch AMOLED display, IP68 water resistance, and microSD expansion. If you rely on third-party professional apps like Adobe Suite, Procreate, or LumaFusion, the iPad Pro M4 has significantly more polished tablet-optimized versions of these apps, a more powerful M4 chip, and the OLED display with ProMotion 120Hz. The Tab S9 Ultra's DeX mode provides desktop-like multitasking that iPadOS Stage Manager still can't match for windowed workflows. For media consumption and note-taking, the Tab S9 Ultra's larger screen and included S Pen offer better value. For creative production app quality, the iPad Pro remains ahead.",
       },
       {
-        question: "Does Samsung DeX work well on Tab S9 Ultra?",
-        answer: "DeX is impressive for an Android tablet experience — you get windowed apps, a taskbar, and desktop-like multitasking when connected to an external monitor or keyboard. It's not as polished as macOS but it's far ahead of standard Android for productivity.",
+        question: "If I want to connect the Tab S9 Ultra to an external monitor and use it as a desktop replacement with a keyboard, how well does Samsung DeX actually work?",
+        answer: "If you connect via USB-C to a monitor and pair a Bluetooth keyboard and mouse, DeX gives you resizable windowed apps, a Windows-style taskbar, and drag-and-drop file management — closer to a desktop experience than anything iPadOS offers. It handles Google Docs, Microsoft Office, web browsing with multiple tabs, and Samsung's own apps smoothly. Where DeX falls short is with apps that aren't optimized for the desktop layout — some Android apps force portrait mode or don't resize properly. For a workflow built around Google Workspace, Samsung Notes, and web-based tools, DeX on the Tab S9 Ultra can genuinely replace a Chromebook. For professional creative or development tools, you'll hit Android app optimization limits.",
       },
       {
-        question: "Is the Tab S9 Ultra too big?",
-        answer: "For most casual users, yes — it's unwieldy to use without a stand or case. For those who primarily use it at a desk, for media consumption on a couch, or as a near-laptop replacement, the screen size is genuinely excellent. Consider your actual use case carefully.",
+        question: "If I want to use the Tab S9 Ultra for reading in bed and carrying around the house, is the 14.6-inch screen too large and heavy to hold comfortably?",
+        answer: "If you plan to hold it one-handed for reading or browsing in bed, the Tab S9 Ultra's 732g weight causes arm fatigue within 15-20 minutes for most users — that's heavier than many hardcover books. Most owners report switching to a stand or propping it on a pillow within the first week. If you primarily use it at a desk with a keyboard case, on a couch with a stand, or as a stationary media display on a nightstand, the 14.6-inch AMOLED screen is genuinely cinematic for streaming and excellent for split-screen productivity. For handheld portability around the house, Samsung's 11-inch Tab S9 at $799 or the iPad Air M3 at 462g are significantly more comfortable to hold for extended periods.",
       },
     ],
     reviews: [
@@ -1098,16 +1098,16 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "Is the Surface Pro 10 a full laptop replacement?",
-        answer: "Yes, more so than any iPad or Android tablet — it runs full Windows 11 with zero app limitations. The keyboard and kickstand design means you can use any Windows software. The tradeoff is shorter battery life and slightly less portability in pure tablet mode.",
+        question: "If I need to run Windows-specific software like Visual Studio, AutoCAD, or legacy enterprise apps, can the Surface Pro 10 fully replace a laptop without compromise?",
+        answer: "If your work requires Windows-native software — Active Directory tools, legacy enterprise apps, Visual Studio, AutoCAD, or VPN clients with specific drivers — the Surface Pro 10 is the only tablet-form device that runs all of these natively on full Windows 11 Pro with Intel Core Ultra processors. The kickstand adjusts to any angle for desk work. The tradeoff is real-world battery life of 6-8 hours (vs Microsoft's claimed 10), meaning you'll carry a charger for a full workday. The Type Cover keyboard ($149-$279 extra) is essential and pushes total cost to $1,148-$1,778. For pure Windows compatibility in a portable form, nothing else competes — but if you don't specifically need Windows, the iPad Pro M4 lasts longer on battery and weighs less.",
       },
       {
-        question: "How does Surface Pro 10 compare to iPad Pro for business?",
-        answer: "For IT and enterprise environments running Windows-specific software, the Surface Pro wins decisively. For creative professionals or environments where iOS apps work well, the iPad Pro has better performance per watt, longer battery, and a superior display. It depends entirely on whether you need Windows.",
+        question: "If my company's IT department supports both Windows and Apple devices, should I request the Surface Pro 10 or iPad Pro M4 as my work tablet?",
+        answer: "If your company uses Microsoft 365 desktop apps, Windows-specific line-of-business software, Active Directory group policies, or needs IT-manageable features like NFC badge login and removable SSDs for data security, the Surface Pro 10 is the clear choice — enterprise IT teams can manage it like any Windows laptop. If your role is creative (design, video production, marketing) and your company's tools are mostly cloud-based or have strong iPad versions, the iPad Pro M4 offers 10 hours of real-world battery (vs 6-8 on Surface), a thinner 5.1mm form factor at 582g (vs 895g without keyboard), and the OLED display for color-critical work. The Surface Pro runs every Windows enterprise app without exception; the iPad Pro runs longer and lighter but with iPadOS software limitations.",
       },
       {
-        question: "Does the Surface Pro 10 come with the keyboard?",
-        answer: "No — this remains one of Microsoft's most-criticized decisions. The keyboard cover is sold separately for $149-$279 depending on model. When budgeting for a Surface Pro, always add this cost to the total.",
+        question: "If I'm budgeting for a Surface Pro 10, what is the actual total cost once I add the keyboard and pen that aren't included?",
+        answer: "If you're pricing out a complete Surface Pro 10 setup, the base tablet starts at $999 but the Type Cover keyboard ($149 for standard, $279 for Signature with Slim Pen storage) and Surface Slim Pen 2 ($129) are sold separately. A realistic working configuration costs $1,277-$1,407 for the base model with keyboard and pen, or $1,777+ for the Core Ultra 7 with Signature keyboard. This remains one of Microsoft's most-criticized decisions — the iPad Pro M4 and Samsung Tab S9 Ultra also charge extra for keyboards, but the S Pen comes included with Samsung's tablet. Always add $149-$408 in accessories to the advertised Surface Pro price when comparing against competitors.",
       },
     ],
     reviews: [
@@ -1265,12 +1265,12 @@ export const productsBatch3: Product[] = [
     ],
     faq: [
       {
-        question: "Should I buy iPad Air M3 or iPad Pro M4?",
-        answer: "For most people, the iPad Air M3 is the better purchase. It's $700 cheaper and the M3 chip handles virtually everything typical users need. Only buy the iPad Pro M4 if the OLED display, ProMotion 120Hz, Thunderbolt 4, or LiDAR scanner are genuinely important to your workflow.",
+        question: "If I use my iPad for note-taking, streaming, light photo editing, and browsing, should I save $700 and get the iPad Air M3 instead of the Pro M4?",
+        answer: "If your daily use is note-taking with Apple Pencil, Netflix and YouTube streaming, editing photos in Lightroom, and web browsing, the iPad Air M3 at $599-$799 handles all of these without any perceptible lag — the M3 chip is the same generation powering the MacBook Air. You save $700 that can cover the Magic Keyboard ($249) and Apple Pencil Pro ($129) with money to spare. The Pro M4's OLED display, ProMotion 120Hz, and Thunderbolt 4 provide real advantages only for professional illustrators who need color accuracy and pencil latency reduction, video editors working with 4K ProRes footage on external drives, or 3D scanning with LiDAR. For the use case you described, the Air M3 is the smarter purchase and the $700 difference buys all the accessories.",
       },
       {
-        question: "Does iPad Air M3 support Apple Pencil Pro?",
-        answer: "Yes — this was a notable upgrade. The M3 iPad Air supports Apple Pencil Pro with squeeze gesture and barrel roll, the same Pencil as the iPad Pro. This makes it excellent for note-taking and illustration without needing the Pro model.",
+        question: "If I want to use the Apple Pencil Pro with squeeze and barrel roll gestures for drawing, do I need to buy the $1,299 iPad Pro or does the $599 Air M3 support it?",
+        answer: "If you want Apple Pencil Pro features — squeeze to switch tools, barrel roll for brush angle control, haptic feedback — the iPad Air M3 at $599 supports all of them, identical to the iPad Pro M4. This was a significant upgrade from previous Air models and means you get the full $129 Apple Pencil Pro experience without paying Pro tablet prices. The only drawing-related advantage the Pro M4 has is ProMotion 120Hz, which reduces visible latency between your pencil stroke and the on-screen line from about 20ms to 9ms. For note-taking and casual illustration, the 60Hz on the Air M3 is perfectly adequate. For professional illustrators doing fast, detailed strokes in Procreate, the 120Hz smoothness on the Pro is noticeable.",
       },
       {
         question: "Is the iPad Air M3 good for students?",

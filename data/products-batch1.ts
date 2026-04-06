@@ -91,16 +91,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Does the Roborock Q5 Pro+ mop?",
-        answer: "No. The Q5 Pro+ is a vacuum-only robot. If you want Roborock's combined vacuum and mop, look at the S7 or S8 series which include a vibrating mop pad.",
+        question: "If I want a robot vacuum under $500 that also mops my kitchen tile, does the Roborock Q5 Pro+ actually mop well or is it just a wet Swiffer?",
+        answer: "If you have tile or hardwood floors that need mopping, the Q5 Pro+ is not the right pick — it is vacuum-only with no mop attachment at all. At its $349-$429 price range, you would need to step up to the Roborock S7 ($449-$549) or S8 series ($599+) for a vibrating mop pad that handles kitchen spills and dried coffee rings on tile. The Q5 Pro+ excels purely as a vacuum with 5500Pa suction and LiDAR navigation.",
       },
       {
-        question: "How does the Q5 Pro+ compare to the S8 MaxV Ultra?",
-        answer: "The S8 MaxV Ultra has stronger suction (6000Pa vs 5500Pa), adds mopping, camera-based obstacle avoidance, and a full auto-wash dock. The Q5 Pro+ costs roughly 3x less and still delivers excellent vacuuming performance. For vacuum-only homes, the Q5 Pro+ is the smarter value pick.",
+        question: "If I have a 2000 sq ft home with pets and hard floors, should I spend $350 on the Q5 Pro+ or $1200 on the Roborock S8 MaxV Ultra?",
+        answer: "If your home is primarily hard floors and you only need vacuuming, the Q5 Pro+ at $349-$429 delivers 5500Pa suction and the same PreciSense LiDAR navigation that handles pet hair on hardwood and low-pile carpet effectively. The S8 MaxV Ultra ($1,099-$1,299) adds 6000Pa suction, mopping with an auto-wash dock, and camera-based obstacle avoidance for things like pet toys and cables. For a pet-owner household that only needs vacuuming, the Q5 Pro+ saves you roughly $700-$800 with comparable vacuum-only performance.",
       },
       {
-        question: "Is the self-emptying dock worth it for the Q5 Pro+?",
-        answer: "Yes — it genuinely removes the chore of emptying daily. The 2.5L bag holds about 7 weeks of debris for an average-sized home. Just be aware the emptying cycle is louder than some competitors.",
+        question: "If I have a busy household and hate emptying dustbins every day, is the self-emptying dock on the Q5 Pro+ actually hands-free or do I still have to babysit it?",
+        answer: "If you want to set and forget your robot vacuum for weeks at a time, the self-emptying dock is genuinely worth it. The 2.5L bag holds approximately 7 weeks of debris for a typical 1500-2000 sq ft home with moderate pet hair. You replace the bag roughly 7-8 times per year at about $6-$8 per bag. The one tradeoff: the emptying cycle is noticeably louder than Roborock S8 or Roomba j-series docks, so schedule it outside of nap time or quiet hours.",
       },
     ],
     reviews: [
@@ -259,16 +259,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Does the Roomba Combo j9+ mop lift on carpet?",
-        answer: "Yes — this is its headline feature. The mop pad automatically retracts 7mm above the floor surface when the robot detects carpet, preventing wet streaks on rugs. It's one of the most reliable implementations of this feature on the market.",
+        question: "If I have area rugs on hardwood floors throughout my house, will the Roomba Combo j9+ drag a wet mop pad across my rugs and ruin them?",
+        answer: "If you have a mixed-floor home with area rugs on hardwood, the j9+ solves this with its retractable mop pad that lifts 7mm above the floor when it detects carpet or rug transitions. This prevents wet streaks and water damage on rugs during mopping runs. At $999-$1,099, this mop-lift mechanism is one of the most reliable in any robot vacuum, and reviewers with 6+ area rugs report zero carpet-wetting incidents.",
       },
       {
-        question: "Is the iRobot Combo j9+ better than the Roborock S8 MaxV Ultra?",
-        answer: "For obstacle avoidance and mop-on-carpet reliability, yes. For raw suction power and scrubbing mop pressure, the S8 MaxV Ultra wins clearly. The j9+ is the better choice if you have pets or lots of obstacles; the S8 MaxV wins on pure cleaning power.",
+        question: "If I have three dogs and toys scattered everywhere, should I get the $1,000 Roomba j9+ or the similarly priced Roborock S8 MaxV Ultra?",
+        answer: "If you have pets that leave toys, chew bones, and occasional accidents on the floor, the j9+ is the stronger pick thanks to PrecisionVision obstacle avoidance and iRobot's P.O.O.P. guarantee that the robot will detect and avoid pet waste. The Roborock S8 MaxV Ultra wins on raw suction power (6000Pa vs 2200Pa) and scrubbing mop pressure for deeper carpet cleaning and stuck-on kitchen floor messes. For homes where avoiding obstacles matters more than raw cleaning power, the j9+ is worth the $999-$1,099 price.",
       },
       {
-        question: "Do you need an iRobot subscription to use the Combo j9+?",
-        answer: "Basic scheduling and cleaning work fine without a subscription. However, features like smart map customization, targeted room cleaning, and smart home voice integration are gated behind the iRobot Genius subscription at $9.99/month.",
+        question: "If I'm already spending $1,000 on the Roomba j9+, do I really have to pay a monthly subscription on top of that to use all the features?",
+        answer: "If you just want to schedule daily vacuuming and mopping runs, the j9+ works fine without any subscription. However, if you want smart map customization to set no-go zones around your dog's water bowl, targeted room-level cleaning from voice commands, or Alexa/Google Home integration, those features require the iRobot Genius subscription at $9.99/month ($120/year). That adds $240-$360 over 2-3 years of ownership on top of the $999-$1,099 purchase price.",
       },
     ],
     reviews: [
@@ -426,16 +426,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "What is DirtSense technology on the Narwal Freo X Ultra?",
-        answer: "DirtSense uses optical sensors to detect how dirty the floor is in real time. If it detects a heavily soiled area, it automatically slows down, increases water flow, and makes additional passes. This is unique to Narwal and produces noticeably cleaner results on kitchen floors vs. standard fixed-speed mopping.",
+        question: "If I have a kitchen with tile floors that get greasy and sticky from daily cooking, does the Narwal Freo X Ultra's DirtSense actually clean better than regular robot mops?",
+        answer: "If you're dealing with dried coffee spills, cooking grease, and sticky kitchen tile, DirtSense uses optical sensors to detect how dirty each floor section is in real time. When it hits a heavily soiled area, it automatically slows down, increases water flow, and makes 2-3 additional passes over that spot. On kitchen tile specifically, reviewers report noticeably cleaner results compared to fixed-speed robot mops like the Roborock S8 or Ecovacs X2 that make the same number of passes regardless of soil level. At $1,099-$1,299, this is a premium feature unique to Narwal.",
       },
       {
-        question: "Does the Narwal Freo X Ultra leave a mildew smell?",
-        answer: "No — this is one of its standout features. After cleaning, the station washes the mop pads and then dries them with 45°C hot air. This eliminates the musty mildew smell that plagues most other robot mops with self-cleaning stations.",
+        question: "If I've had robot mops before that left mop pads smelling musty and moldy after a few days, does the Narwal Freo X Ultra have the same problem?",
+        answer: "If you have experienced mildew smell from robot mop pads sitting damp in the dock (common with Roborock and Ecovacs self-cleaning stations), the Freo X Ultra solves this. After each cleaning session, the station washes the mop pads and then dries them with 45-degree-Celsius hot air. After 3-5 months of daily use, reviewers consistently report zero mildew odor. This hot-air drying system is a standout feature at the $1,099-$1,299 price point and a primary reason buyers choose Narwal over competitors.",
       },
       {
-        question: "How does the Freo X Ultra compare to the Roborock S8 MaxV Ultra?",
-        answer: "The Freo X Ultra wins on mopping quality thanks to DirtSense and better mop pad design. The S8 MaxV Ultra wins on app ecosystem maturity, global support network, and has a cleaner, more compact dock design. Both are at similar price points. Pick Narwal for mopping-first priorities; Roborock for overall ecosystem.",
+        question: "If I'm choosing between the Narwal Freo X Ultra and the Roborock S8 MaxV Ultra for a home with mostly tile and hardwood, which one actually cleans floors better?",
+        answer: "If your home is 70%+ hard floors like tile and hardwood where mopping matters most, the Freo X Ultra wins thanks to DirtSense adaptive cleaning and superior mop pad pressure. If you want a more polished app experience, easier-to-find replacement parts, and a more compact dock that fits in a closet alcove, the Roborock S8 MaxV Ultra is the safer choice. Both cost $1,099-$1,299. For a kitchen-heavy household prioritizing mopping quality, go Narwal. For a home where you want the most reliable app ecosystem and compact station footprint, go Roborock.",
       },
     ],
     reviews: [
@@ -594,16 +594,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Does the Samsung Bespoke Jet Bot AI+ work with Google Home?",
-        answer: "Yes, via SmartThings integration. However, direct Google Home commands are limited — you can start/stop cleaning via voice, but granular room-level control works best through the SmartThings app directly.",
+        question: "If I have a Google Home smart home setup and want to voice-control my robot vacuum room by room, will the Samsung Jet Bot AI+ work with Google Assistant?",
+        answer: "If you're running Google Home throughout your house, the Jet Bot AI+ connects via SmartThings integration. You can start and stop cleaning with voice commands through Google Assistant, but granular room-level commands like 'clean the kitchen' work more reliably through the SmartThings app directly. At $799-$999, the Jet Bot AI+ is optimized for Samsung SmartThings ecosystems first — if your smart home runs on Google Home or Alexa primarily, a Roborock with native Google Home support may give you smoother voice control.",
       },
       {
-        question: "What is the Clean Station and do I need a Samsung handheld?",
-        answer: "The Clean Station is a self-emptying base that also charges Samsung's Jet handheld vacuums. For the robot vacuum's self-emptying function, you don't need a handheld. The handheld charging is a bonus feature for existing Samsung vacuum users.",
+        question: "If I don't own a Samsung handheld vacuum, is the Clean Station on the Jet Bot AI+ still useful or am I paying for a feature I can't use?",
+        answer: "If you only want the robot vacuum and don't own a Samsung Jet handheld, the Clean Station still functions as a self-emptying dock that automatically empties the robot's 300ml dustbin after each cleaning session. The handheld vacuum charging port is a bonus feature built into the same station. You are not paying extra for it separately — it comes bundled in the $799-$999 price. If you later buy a Samsung Jet handheld ($199-$399), the dock charges both devices in one spot.",
       },
       {
-        question: "Is the Samsung Jet Bot AI+ worth the price vs Roborock competitors?",
-        answer: "On pure cleaning performance, it's hard to justify against Roborock models at similar or lower prices. The value proposition is strongest if you're in the Samsung ecosystem (SmartThings, smart appliances) or want the combined robot + handheld setup.",
+        question: "If I'm deciding between the $800-$999 Samsung Jet Bot AI+ and a $400-$500 Roborock that cleans just as well, what am I actually getting for the extra money?",
+        answer: "If you already have Samsung SmartThings appliances like a Family Hub fridge or SmartThings hub, the Jet Bot AI+ integrates seamlessly into that ecosystem and the AI object recognition identifies 20+ obstacle types accurately. On pure vacuuming power, a Roborock Q5 Pro+ at $349-$429 or Q8 at $449 delivers stronger 5500Pa+ suction for $400-$500 less. The Samsung's value comes from ecosystem integration, the combined robot + handheld dock, and premium design — not raw cleaning performance per dollar.",
       },
     ],
     reviews: [
@@ -764,16 +764,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "What is the difference between Nespresso Original and Vertuo?",
-        answer: "Original uses standard 19-bar pressure extraction and is compatible with third-party pods. Vertuo uses Centrifusion spinning technology that reads barcodes to optimize each pod — but requires Nespresso's own Vertuo pods only. Original makes better traditional espresso; Vertuo offers more brew sizes and simpler operation.",
+        question: "If I want to use cheaper third-party pods and mostly drink espresso, should I get the Nespresso Original line instead of the Vertuo Next?",
+        answer: "If you're looking to keep pod costs down with third-party options ($0.30-$0.60 per pod vs Nespresso's $1-$1.75) and you primarily drink espresso-sized shots, the Original line is the better fit — it uses standard 19-bar pressure extraction and accepts dozens of compatible pod brands. The Vertuo Next uses Centrifusion spinning technology that reads barcodes on proprietary Nespresso pods only, but offers 5 brew sizes from 1.35oz espresso up to 18oz Alto. If you want variety in cup sizes and push-button simplicity over cost savings, Vertuo makes sense. If you want real espresso extraction and cheaper pods, go Original.",
       },
       {
-        question: "Is Nespresso Vertuo worth the pod cost?",
-        answer: "Compared to coffee shop visits ($4–$7 each), Vertuo pods ($1–$1.75) are economical. Compared to ground coffee ($0.20–$0.50/cup), they're expensive. The value is in convenience and consistency, not savings versus manual brewing methods.",
+        question: "If I drink two coffees a day, how much will the Nespresso Vertuo Next actually cost me per month in pods compared to going to a coffee shop or brewing at home?",
+        answer: "If you're drinking 2 cups per day, Vertuo pods at $1-$1.75 each add up to $60-$105 per month ($720-$1,260 per year). Compare that to coffee shop visits at $4-$7 each ($240-$420/month) and it saves you roughly 60%. Compare it to ground coffee at $0.20-$0.50 per cup ($12-$30/month) and it costs 3-5x more. The Vertuo's value is in 15-second heat-up convenience and consistent quality, not cost savings over a drip machine or French press.",
       },
       {
-        question: "Can you use third-party pods in the Nespresso Vertuo Next?",
-        answer: "Officially, no. The Vertuo line uses barcode scanning to determine brew parameters and is designed for Nespresso Vertuo pods only. Some third-party compatible pods are emerging, but compatibility is not guaranteed and may affect brew quality.",
+        question: "If I want to save money by using off-brand pods in the Nespresso Vertuo Next, will third-party capsules actually work in this machine?",
+        answer: "If you're hoping to use cheaper third-party pods to cut the $1-$1.75 per-pod cost, the Vertuo Next officially does not support them. The machine uses barcode scanning on each pod to set brew temperature, water volume, and spin speed. A few third-party Vertuo-compatible pods are starting to appear from brands like Starbucks and Peet's, but they cost nearly the same as Nespresso's own pods. Generic budget pods that work in Original-line machines are not compatible with Vertuo at all.",
       },
     ],
     reviews: [
@@ -931,16 +931,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Does the Keurig K-Elite make good iced coffee?",
-        answer: "Better than standard Keurig models. The iced coffee mode brews at a higher concentration over ice, which prevents the diluted, watery result you'd get from brewing hot coffee over ice. It's not cold brew quality, but it's a genuine improvement over brewing normally.",
+        question: "If I want iced coffee every morning in summer without buying a separate cold brew maker, does the Keurig K-Elite's iced coffee mode actually taste good or does it come out watery?",
+        answer: "If you've tried pouring hot Keurig coffee over ice and ended up with a diluted, watery mess, the K-Elite's dedicated iced coffee mode fixes this by brewing at a higher concentration specifically designed to hold up over ice. At $139-$169, it produces a noticeably stronger iced coffee than standard Keurig models. It is not cold brew quality — you will not get the smooth, low-acid flavor of a 12-hour cold brew — but for a 60-second single-serve iced coffee, it is a genuine step up from just brewing hot over ice.",
       },
       {
-        question: "Can I use any K-Cup brand in the K-Elite?",
-        answer: "Yes — the K-Elite is compatible with all standard K-Cup pods from any brand. It also works with the My K-Cup Universal Reusable Filter for ground coffee, which is the most cost-effective way to use the machine.",
+        question: "If I want to use cheap store-brand K-Cups or my own ground coffee to save money, does the Keurig K-Elite work with any pod brand or just Keurig's own?",
+        answer: "If you're looking to keep per-cup costs below $0.50, the K-Elite accepts all standard K-Cup pods from any brand — Kirkland, Starbucks, Dunkin', store brands, and dozens of others. It also works with the My K-Cup Universal Reusable Filter ($12-$15) that lets you use your own ground coffee at roughly $0.15-$0.25 per cup instead of $0.50-$1.00 per K-Cup pod. The reusable filter is the most cost-effective way to use this $139-$169 machine long-term.",
       },
       {
-        question: "How often do I need to descale the Keurig K-Elite?",
-        answer: "Keurig recommends every 3-6 months depending on water hardness and usage frequency. The machine will display a descale notification. If you use filtered or soft water, you can extend this interval. Hard tap water users may need to descale every 2-3 months.",
+        question: "If I have hard tap water and use my Keurig K-Elite daily, how often will I need to descale it and how long does the process take?",
+        answer: "If you have hard tap water and brew 2-3 cups daily, expect to descale every 2-3 months — the machine displays a descale notification when it detects buildup. With filtered or soft water, you can stretch this to every 5-6 months. The descaling process itself takes 45+ minutes using Keurig's descaling solution ($8-$12) and involves running multiple water-and-solution cycles. Many users find the process tedious, so using a Brita filter pitcher to fill the 75oz reservoir helps reduce scale buildup and extends intervals between cleanings.",
       },
     ],
     reviews: [
@@ -1098,16 +1098,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Is the Jura E8 worth $2400?",
-        answer: "For daily cappuccino or latte drinkers who would otherwise spend $5-$8 at a coffee shop, the math works out in 18-24 months. For occasional coffee drinkers or those happy with drip coffee, the value is harder to justify. The quality is genuinely exceptional — the question is whether you'll use it enough.",
+        question: "If my household drinks 3-4 lattes and cappuccinos per day, how long would a $2,400 Jura E8 take to pay for itself compared to our coffee shop habit?",
+        answer: "If you're spending $5-$8 per drink at a coffee shop and your household averages 3-4 drinks daily, that is $450-$960 per month. With the Jura E8 at $2,399, using whole beans at roughly $0.50-$0.75 per drink plus $15-$20/month in milk, the machine pays for itself in 3-5 months. For a household making 1 coffee per day, the break-even stretches to 18-24 months. The quality from 15-bar extraction with the PEP system genuinely matches specialty cafe shots — the question is whether your household volume justifies the upfront cost and daily maintenance commitment.",
       },
       {
-        question: "How much maintenance does the Jura E8 require?",
-        answer: "Daily: a rinse cycle when turning on/off (2 min), milk system rinse after lattes (1 min). Weekly: deeper milk system cleaning (10 min). Monthly: descaling reminder based on water hardness. This adds up to about 5-7 minutes per day for heavy users. It's not zero-maintenance, but it's mostly automated.",
+        question: "If I hate cleaning kitchen appliances, how much daily maintenance does the Jura E8 actually require compared to a Nespresso pod machine?",
+        answer: "If you want a push-button-and-walk-away experience like a Nespresso, the Jura E8 requires more daily effort. Every day: a 2-minute automated rinse cycle when turning on/off plus a 1-minute milk system rinse after each latte or cappuccino. Every week: a 10-minute deeper milk system cleaning cycle. Every 1-3 months: a descaling cycle based on your water hardness. That adds up to about 5-7 minutes daily for a household making 3-4 milk drinks. A Nespresso Vertuo Next needs roughly 30 seconds of daily effort. The tradeoff is the Jura produces cafe-quality espresso while the Nespresso produces pod-quality coffee.",
       },
       {
-        question: "Can I use any coffee beans in the Jura E8?",
-        answer: "Yes, any whole bean coffee works. Jura recommends medium roasts for best results. Very dark, oily beans can clog the grinder over time — Jura advises against them. Pre-ground coffee can be added via the bypass doser but using whole beans is how you get the best results.",
+        question: "If I like buying specialty single-origin beans from local roasters, can I use any coffee beans in the Jura E8 or does it require specific brands?",
+        answer: "If you want to use your favorite local roaster's beans, the Jura E8 works with any whole bean coffee — single-origin, blends, fair trade, whatever you prefer. Jura recommends medium roasts for the smoothest extraction through its 10-level burr grinder. Very dark, oily beans (like French or Italian roast) can clog the grinder over time, so avoid heavily oily beans for longevity. You can also add pre-ground coffee via the bypass doser for decaf or flavored grounds, though whole beans through the built-in grinder produce noticeably better shots.",
       },
     ],
     reviews: [
@@ -1265,16 +1265,16 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Do I need a separate grinder for the Gaggia Classic Pro?",
-        answer: "Yes, if you want good espresso. Pre-ground coffee from a bag won't produce consistent results. A burr grinder with espresso-fine grinding capability ($100-$300 for the Baratza Encore or Eureka Mignon Silenzio) is effectively required to get the best from this machine.",
+        question: "If I'm buying the Gaggia Classic Pro as my first espresso machine and don't own a grinder, how much extra should I budget for a grinder that actually works with it?",
+        answer: "If you're budgeting for the Gaggia Classic Pro at $399-$449, add $100-$300 for a capable burr grinder — making your total setup cost $500-$750. The Baratza Encore ($150) is the entry-level sweet spot; the Eureka Mignon Silenzio ($250-$300) offers finer espresso-grade adjustments. Pre-ground supermarket coffee will produce inconsistent, mediocre shots because espresso requires freshly ground beans dialed to precise particle sizes. Without a burr grinder, you are spending $400 on a machine that cannot perform to its potential.",
       },
       {
-        question: "How hard is the Gaggia Classic Pro to learn?",
-        answer: "Harder than most pod machines, but rewarding. Most new owners take 2-4 weeks of daily practice to pull consistently good shots. The learning variables include grind size, dose, tamp pressure, and extraction time. Online communities (r/espresso) are incredibly helpful for troubleshooting.",
+        question: "If I've only ever used a Keurig or Nespresso, how long will it take me to learn to pull a good espresso shot on the Gaggia Classic Pro?",
+        answer: "If you're coming from pod machines with zero espresso experience, expect 2-4 weeks of daily practice before you consistently pull good shots. You will need to learn grind size adjustment, how to dose 18-20g of coffee into the 58mm portafilter, proper tamp pressure (about 30 lbs), and timing a 25-30 second extraction. Your first week will likely produce sour, bitter, or watery results. The r/espresso subreddit and YouTube channels like James Hoffmann are invaluable for troubleshooting. By week 3-4, most owners report pulling shots that rival $5 cafe espresso.",
       },
       {
-        question: "How long does the Gaggia Classic Pro last?",
-        answer: "With proper maintenance (descaling every 2-3 months, regular cleaning), 15-20 years is realistic. The commercial-grade components and fully replaceable parts mean the machine can be rebuilt rather than replaced. There are Gaggia Classic owners online still running machines from the 1990s.",
+        question: "If I want an espresso machine I can keep for 10-20 years instead of replacing every 3-4 years, is the Gaggia Classic Pro durable enough for long-term use?",
+        answer: "If you want a machine that lasts decades rather than becoming landfill in 3-5 years like most consumer espresso machines, the Gaggia Classic Pro is built for it. With descaling every 2-3 months and replacing the $8 grouphead gasket every 2-3 years (a 10-minute DIY job), 15-20 years of daily use is realistic. The 9-bar pump, 58mm commercial portafilter, and solenoid valve use the same grade components found in cafe machines. Parts are widely available globally, and there are Gaggia Classic owners still running machines from the 1990s. At $399-$449, the cost per year over a 15-year lifespan is under $30.",
       },
     ],
     reviews: [
@@ -1436,8 +1436,8 @@ export const productsBatch1: Product[] = [
     ],
     faq: [
       {
-        question: "Can the Breville Smart Oven Air Fryer Pro really replace a regular oven?",
-        answer: "For most everyday cooking tasks, yes. It can roast a full chicken, bake cookies, make pizza, and air fry. It won't work for very large batches or holiday-sized roasts. Many buyers report using their conventional oven significantly less after getting this. It won't fully replace a full-size oven but it supplements it effectively.",
+        question: "If I live in a small apartment with a tiny oven and want to roast a whole chicken and bake pizza at home, can the Breville Smart Oven Air Fryer Pro actually replace my regular oven?",
+        answer: "If you're cooking for 1-4 people in a small apartment, the Breville at $349-$399 handles most daily cooking: it fits a 6-lb whole chicken, a 13-inch pizza, a batch of cookies on a sheet, and air fries a full serving of wings. It will not handle a Thanksgiving turkey, a large casserole dish, or multiple racks of baking at once. Reviewers in studios and 1-bedroom apartments report using their conventional oven 70-80% less after buying this. For a household of 5+ or holiday entertaining, you will still need a full-size oven alongside it.",
       },
       {
         question: "Is the Breville Smart Oven Air Fryer Pro worth the price vs cheaper air fryers?",
