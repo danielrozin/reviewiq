@@ -9,6 +9,7 @@ import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { formatNumber } from "@/lib/utils";
 import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { HeroSearch } from "@/components/home/HeroSearch";
 
 export const metadata = buildMetadata({
   title: "AI-Powered Product Reviews & Comparisons",
@@ -43,6 +44,9 @@ export default function HomePage() {
               experiences to show you what products are really like — the good,
               the bad, and everything in between.
             </p>
+            <div className="flex justify-center mb-8">
+              <HeroSearch />
+            </div>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/categories"

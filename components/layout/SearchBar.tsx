@@ -15,7 +15,13 @@ interface SearchResult {
   score?: number;
 }
 
-export function SearchBar() {
+interface SearchBarProps {
+  size?: "default" | "lg";
+  placeholder?: string;
+  className?: string;
+}
+
+export function SearchBar({ size = "default", placeholder, className }: SearchBarProps = {}) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -134,10 +140,10 @@ export function SearchBar() {
   }
 
   return (
-    <div ref={wrapperRef} className="relative w-full max-w-md">
+    <div ref={wrapperRef} className={`relative w-full ${className || (size === "lg" ? "max-w-xl" : "max-w-md")}`}>
       <div className="relative">
         <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400"
+          className={`absolute top-1/2 -translate-y-1/2 text-gray-400 ${size === "lg" ? "left-4 w-5 h-5" : "left-3 w-4 h-4"}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -156,8 +162,12 @@ export function SearchBar() {
           onChange={(e) => search(e.target.value)}
           onFocus={() => query.length >= 2 && results.length > 0 && setOpen(true)}
           onKeyDown={handleKeyDown}
-          placeholder="Search products, discussions, categories..."
-          className="w-full pl-10 pr-4 py-2 text-sm border border-gray-200 rounded-xl bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-colors"
+          placeholder={placeholder || "Search products, discussions, categories..."}
+          className={`w-full border border-gray-200 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-colors ${
+            size === "lg"
+              ? "pl-12 pr-5 py-3.5 text-base rounded-2xl shadow-sm"
+              : "pl-10 pr-4 py-2 text-sm rounded-xl"
+          }`}
         />
       </div>
 
