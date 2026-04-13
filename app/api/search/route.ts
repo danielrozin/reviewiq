@@ -19,27 +19,32 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ products: [], total: 0 });
   }
 
-  const cacheKey = CacheKey.search(q.toLowerCase(), limit);
-  const cached = await cacheGet<{ products: unknown[]; total: number }>(cacheKey);
-  if (cached) return NextResponse.json(cached);
+  try {
+    const cacheKey = CacheKey.search(q.toLowerCase(), limit);
+    const cached = await cacheGet<{ products: unknown[]; total: number }>(cacheKey);
+    if (cached) return NextResponse.json(cached);
 
-  const products = await prisma.product.findMany({
-    where: {
-      OR: [
-        { name: { contains: q, mode: "insensitive" } },
-        { brand: { contains: q, mode: "insensitive" } },
-        { description: { contains: q, mode: "insensitive" } },
-      ],
-    },
-    take: limit,
-    orderBy: { smartScore: "desc" },
-    include: {
-      category: { select: { name: true, slug: true } },
-    },
-  });
+    const products = await prisma.product.findMany({
+      where: {
+        OR: [
+          { name: { contains: q, mode: "insensitive" } },
+          { brand: { contains: q, mode: "insensitive" } },
+          { description: { contains: q, mode: "insensitive" } },
+        ],
+      },
+      take: limit,
+      orderBy: { smartScore: "desc" },
+      include: {
+        category: { select: { name: true, slug: true } },
+      },
+    });
 
-  const result = { products, total: products.length };
-  await cacheSet(cacheKey, result, CacheTTL.SEARCH);
+    const result = { products, total: products.length };
+    await cacheSet(cacheKey, result, CacheTTL.SEARCH);
 
-  return NextResponse.json(result);
+    return NextResponse.json(result);
+  } catch (error) {
+    console.error("Failed to search products:", error);
+    return NextResponse.json({ error: "Failed to search products" }, { status: 500 });
+  }
 }
