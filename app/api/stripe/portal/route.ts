@@ -23,10 +23,15 @@ export async function POST() {
     );
   }
 
-  const portalSession = await getStripe().billingPortal.sessions.create({
-    customer: subscription.stripeCustomerId,
-    return_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/dashboard`,
-  });
+  try {
+    const portalSession = await getStripe().billingPortal.sessions.create({
+      customer: subscription.stripeCustomerId,
+      return_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/dashboard`,
+    });
 
-  return NextResponse.json({ url: portalSession.url });
+    return NextResponse.json({ url: portalSession.url });
+  } catch (err) {
+    console.error("Stripe portal error:", err);
+    return NextResponse.json({ error: "Failed to create billing portal session" }, { status: 500 });
+  }
 }

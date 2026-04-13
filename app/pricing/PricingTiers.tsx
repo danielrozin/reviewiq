@@ -19,10 +19,17 @@ export function PricingTiers() {
     setLoading(true);
     try {
       const res = await fetch("/api/stripe/checkout", { method: "POST" });
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        alert(data.error || "Something went wrong. Please try again.");
+        return;
+      }
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
       }
+    } catch {
+      alert("Network error. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
