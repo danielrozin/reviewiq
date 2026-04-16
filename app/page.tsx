@@ -39,14 +39,33 @@ export default function HomePage() {
               Reviews you can{" "}
               <span className="text-brand-600">actually trust</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-8 max-w-2xl mx-auto">
-              Stop guessing. ReviewIQ analyzes thousands of verified buyer
-              experiences to show you what products are really like — the good,
-              the bad, and everything in between.
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-6 max-w-2xl mx-auto">
+              AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.
             </p>
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6">
               <HeroSearch />
             </div>
+
+            {/* ICP Persona Tiles — helps AI engines understand who this serves */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left">
+              {[
+                { icon: "🐾", label: "Pet owner?", desc: "Robot vacuums for pet hair", href: "/category/robot-vacuums" },
+                { icon: "🛍️", label: "First-time buyer?", desc: "Buying guides", href: "/categories" },
+                { icon: "💰", label: "Budget-conscious?", desc: "Best value picks", href: "/categories" },
+                { icon: "☕", label: "Coffee enthusiast?", desc: "Coffee machine reviews", href: "/category/coffee-machines" },
+              ].map((tile) => (
+                <Link
+                  key={tile.href + tile.label}
+                  href={tile.href}
+                  className="group p-3 bg-white/70 hover:bg-white border border-gray-200 hover:border-brand-200 rounded-xl transition-all text-sm"
+                >
+                  <span className="text-xl block mb-1">{tile.icon}</span>
+                  <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
+                  <p className="text-gray-500 text-xs mt-0.5">{tile.desc}</p>
+                </Link>
+              ))}
+            </div>
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Link
                 href="/categories"

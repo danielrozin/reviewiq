@@ -22,6 +22,7 @@ import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
 import { TrackProductView } from "@/components/tracking/TrackProductView";
 import { ReviewFormCTA } from "@/components/product/ReviewFormCTA";
+import { BestFor } from "@/components/product/BestFor";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -180,6 +181,13 @@ export default async function ProductPage({ params }: Props) {
           <div data-speakable="ai-summary">
             <AISummaryCard summary={product.aiSummary} />
           </div>
+
+          {/* Best For / Not Ideal For */}
+          <BestFor
+            summary={product.aiSummary}
+            productName={product.name}
+            productSlug={`${slug}/${productSlug}`}
+          />
 
           {/* YouTube Videos */}
           {product.youtubeVideos && product.youtubeVideos.length > 0 && (
