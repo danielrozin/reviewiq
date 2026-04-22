@@ -1,7 +1,10 @@
 export const FPS = 30;
 export const WIDTH = 1920;
 export const HEIGHT = 1080;
-export const DURATION_IN_FRAMES = 30 * FPS; // 30 seconds @ 30fps = 900 frames
+
+// Tuned to the generated ElevenLabs V3 voiceover (~31.8s).
+// 32s gives the final CTA room to breathe and a clean fade.
+export const DURATION_IN_FRAMES = 32 * FPS; // 960 frames
 
 export const COLORS = {
   brand: "#005fd4",
@@ -19,13 +22,13 @@ export const COLORS = {
 } as const;
 
 export const SCENE_DURATIONS_FRAMES = {
-  hook: 3 * FPS,          // Scene 1: 0-3s
-  tabs: 3 * FPS,          // Scene 2: 3-6s
-  sponsored: 4 * FPS,     // Scene 3: 6-10s
-  enough: 3 * FPS,        // Scene 4: 10-13s
-  logo: 4 * FPS,          // Scene 5: 13-17s
-  smartScore: 5 * FPS,    // Scene 6: 17-22s
-  icps: 4 * FPS,          // Scene 7: 22-26s
-  noAffiliate: 2 * FPS,   // Scene 8: 26-28s
-  cta: 2 * FPS,           // Scene 9: 28-30s
+  hook: 3 * FPS,          // Scene 1: 0-3s    "Three hours of searching."
+  tabs: 3 * FPS,          // Scene 2: 3-6s    "Forty-seven tabs."
+  sponsored: 5 * FPS,     // Scene 3: 6-11s   "All recommending... get paid."
+  enough: 3 * FPS,        // Scene 4: 11-14s  "Enough." (whispered)
+  logo: 3 * FPS,          // Scene 5: 14-17s  "Meet ReviewIQ."
+  smartScore: 5 * FPS,    // Scene 6: 17-22s  "AI that reads thousands..."
+  icps: 4 * FPS,          // Scene 7: 22-26s  "Robot vacuums. Coffee machines..."
+  noAffiliate: 2 * FPS,   // Scene 8: 26-28s  "No affiliate links. No compromises."
+  cta: 4 * FPS,           // Scene 9: 28-32s  "ReviewIQ. The only review that matters — yours."
 } as const;
