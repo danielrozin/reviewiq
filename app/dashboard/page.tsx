@@ -25,7 +25,7 @@ import { UserProBadge } from "@/components/premium/UserProBadge";
 import { ProfileChecklist } from "@/components/onboarding/ProfileChecklist";
 
 export const metadata = buildMetadata({
-  title: "Dashboard — SmartReview",
+  title: "Dashboard — ReviewIQ",
   description: "Your saved comparisons, review history, and product watchlist.",
   path: "/dashboard",
 });

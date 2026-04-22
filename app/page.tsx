@@ -14,7 +14,7 @@ import { HeroSearch } from "@/components/home/HeroSearch";
 export const metadata = buildMetadata({
   title: "AI-Powered Product Reviews & Comparisons",
   description:
-    "SmartReview analyzes thousands of verified buyer reviews with AI to deliver SmartScores, honest summaries, and side-by-side comparisons across electronics, appliances, and more.",
+    "ReviewIQ analyzes thousands of verified buyer reviews with AI to deliver SmartScores, honest summaries, and side-by-side comparisons across electronics, appliances, and more.",
   path: "/",
 });
 

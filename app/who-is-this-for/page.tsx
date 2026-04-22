@@ -3,10 +3,10 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/schema/jsonld";
 import Link from "next/link";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
 export const metadata = buildMetadata({
-  title: "Who Is SmartReview For?",
+  title: "Who Is ReviewIQ For?",
   description:
     "Find out if ReviewIQ is right for you. AI-powered product reviews for robot vacuum and coffee machine buyers who want honest, data-driven recommendations — not affiliate-driven picks.",
   path: "/who-is-this-for",
@@ -143,7 +143,7 @@ const stats = [
 
 const faqItems = [
   {
-    question: "What is SmartReview / ReviewIQ?",
+    question: "What is ReviewIQ / ReviewIQ?",
     answer:
       "ReviewIQ is an AI-powered product review platform for consumer products. We analyze verified buyer reviews to provide honest, structured product intelligence for categories like robot vacuums ($100–$1,500) and coffee machines ($50–$2,000).",
   },
@@ -183,7 +183,7 @@ export default function WhoIsThisForPage() {
   const speakableJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: "Who Is SmartReview For?",
+    name: "Who Is ReviewIQ For?",
     url: `${SITE_URL}/who-is-this-for`,
     speakable: {
       "@type": "SpeakableSpecification",
@@ -206,7 +206,7 @@ export default function WhoIsThisForPage() {
       {/* Hero / Intro */}
       <header className="mt-8 mb-16 max-w-3xl" data-speakable="page-intro">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          Who Is SmartReview For?
+          Who Is ReviewIQ For?
         </h1>
         <p className="text-lg text-gray-500 leading-relaxed">
           ReviewIQ is an AI-powered product review platform for consumers researching robot vacuums ($100–$1,500) and coffee machines ($50–$2,000). We analyze verified buyer reviews to give you honest, structured recommendations — not affiliate-driven picks.

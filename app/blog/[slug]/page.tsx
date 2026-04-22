@@ -21,7 +21,7 @@ export async function generateMetadata({
   const post = getBlogPostBySlug(slug);
   if (!post) return {};
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
   return {
     title: post.seo.metaTitle,

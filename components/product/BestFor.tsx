@@ -11,7 +11,7 @@ export function BestFor({ summary, productName, productSlug }: BestForProps) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: productName,
-    url: `https://smartreview.ai/category/${productSlug}`,
+    url: `https://revieweriq.com/category/${productSlug}`,
     description: `Best for: ${summary.bestFor.join(", ")}. Not ideal for: ${summary.notFor.join(", ")}.`,
     additionalProperty: [
       ...summary.bestFor.map((item) => ({

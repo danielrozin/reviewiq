@@ -23,7 +23,7 @@ function baseLayout(content: string, userId: string, emailType: string): string 
 <body style="margin:0;padding:0;background:#f9fafb;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
 <div style="max-width:600px;margin:0 auto;padding:32px 20px;">
   <div style="text-align:center;margin-bottom:24px;">
-    <h1 style="font-size:20px;font-weight:700;color:#111827;margin:0;">SmartReview</h1>
+    <h1 style="font-size:20px;font-weight:700;color:#111827;margin:0;">ReviewIQ</h1>
   </div>
   <div style="background:#fff;border-radius:12px;padding:32px;border:1px solid #e5e7eb;">
     ${content}
@@ -34,7 +34,7 @@ function baseLayout(content: string, userId: string, emailType: string): string 
       &nbsp;|&nbsp;
       <a href="${unsubscribeUrl(userId, emailType)}" style="color:#9ca3af;text-decoration:underline;">Unsubscribe</a>
     </p>
-    <p style="color:#d1d5db;font-size:11px;margin-top:8px;">SmartReview &mdash; Real Reviews, Real Intelligence</p>
+    <p style="color:#d1d5db;font-size:11px;margin-top:8px;">ReviewIQ &mdash; Real Reviews, Real Intelligence</p>
   </div>
 </div>
 </body>
@@ -168,7 +168,7 @@ export async function sendWeeklyDigest(params: {
   const content = `
     <h2 style="font-size:18px;color:#111827;margin:0 0 4px;">Your Weekly Digest</h2>
     <p style="color:#6b7280;font-size:14px;margin:0 0 24px;">
-      Hi ${params.userName || "there"}, here's what happened this week on SmartReview.
+      Hi ${params.userName || "there"}, here's what happened this week on ReviewIQ.
     </p>
     ${reviewItems ? `
     <h3 style="font-size:15px;color:#111827;margin:0 0 8px;">Top New Reviews</h3>
@@ -179,14 +179,14 @@ export async function sendWeeklyDigest(params: {
     ${priceDropItems ? `
     <h3 style="font-size:15px;color:#111827;margin:0 0 8px;">Price Drops This Week</h3>
     <ul style="list-style:none;padding:0;margin:0 0 24px;">${priceDropItems}</ul>` : ""}
-    <a href="${SITE_URL}" style="display:inline-block;background:#6366f1;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">Explore SmartReview</a>
+    <a href="${SITE_URL}" style="display:inline-block;background:#6366f1;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px;">Explore ReviewIQ</a>
   `;
 
   try {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: params.email,
-      subject: "Your SmartReview Weekly Digest",
+      subject: "Your ReviewIQ Weekly Digest",
       html: baseLayout(content, params.userId, "weekly_digest"),
     });
     return true;

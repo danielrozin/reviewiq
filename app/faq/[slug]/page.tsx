@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = getFAQPageBySlug(slug);
   if (!page) return {};
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
   return {
     title: page.metaTitle,
     description: page.metaDescription,

@@ -14,7 +14,7 @@ import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { CompareProvider } from "@/lib/context/CompareContext";
 
 export const metadata: Metadata = {
-  title: "SmartReview — Real Reviews, Real Intelligence",
+  title: "ReviewIQ — Real Reviews, Real Intelligence",
   description:
     "Honest, AI-powered product reviews. See what real buyers love, hate, and wish they knew before purchasing.",
   metadataBase: new URL(

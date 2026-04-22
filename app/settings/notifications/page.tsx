@@ -74,7 +74,7 @@ export default function NotificationsSettingsPage() {
         Email Notifications
       </h1>
       <p className="text-gray-500 text-sm mb-8">
-        Choose which emails you'd like to receive from SmartReview.
+        Choose which emails you'd like to receive from ReviewIQ.
       </p>
 
       {error && (

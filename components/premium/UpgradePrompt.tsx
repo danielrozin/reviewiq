@@ -13,16 +13,16 @@ const GATE_COPY: Record<GateType, { title: string; description: string; icon: ty
   },
   advanced_filters: {
     title: "Unlock Advanced Filters",
-    description: "Custom price ranges and multi-attribute sorting are available with SmartReview Pro.",
+    description: "Custom price ranges and multi-attribute sorting are available with ReviewIQ Pro.",
     icon: Filter,
   },
   export: {
     title: "Export Comparisons",
-    description: "Download your comparisons as CSV or PDF with SmartReview Pro.",
+    description: "Download your comparisons as CSV or PDF with ReviewIQ Pro.",
     icon: Download,
   },
   general: {
-    title: "Upgrade to SmartReview Pro",
+    title: "Upgrade to ReviewIQ Pro",
     description: "Get unlimited saves, advanced filters, exports, and an ad-free experience.",
     icon: Crown,
   },

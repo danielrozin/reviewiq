@@ -1,5 +1,5 @@
 /**
- * OKR Configuration — Company & Team OKRs (SmartReview view)
+ * OKR Configuration — Company & Team OKRs (ReviewIQ view)
  *
  * Updated weekly during Monday check-ins.
  * Progress values are 0-100 (percentage).
@@ -78,8 +78,8 @@ export const okrConfig: OKRConfig = {
   teamOKRs: [
     {
       id: "smartreview-q2",
-      objective: "Launch SmartReview as a trusted review platform with active contributors",
-      owner: "VP Product / SmartReview",
+      objective: "Launch ReviewIQ as a trusted review platform with active contributors",
+      owner: "VP Product / ReviewIQ",
       overallProgress: 10,
       keyResults: [
         {

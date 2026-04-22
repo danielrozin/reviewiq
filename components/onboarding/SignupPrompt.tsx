@@ -34,7 +34,7 @@ export function SignupPrompt() {
             <UserPlus className="w-6 h-6 text-brand-600" />
           </div>
           <h3 className="text-lg font-bold text-gray-900 mb-1">
-            Enjoying SmartReview?
+            Enjoying ReviewIQ?
           </h3>
           <p className="text-sm text-gray-500">
             Create a free account to unlock more features.

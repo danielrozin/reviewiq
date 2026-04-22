@@ -94,7 +94,7 @@ export function AcceptableUseContent() {
         <p className="mb-4">Questions about this policy? Contact us:</p>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
           <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>
-          <p>Email: <a href="mailto:contact@smartreview.com" className="text-brand-600 hover:underline">contact@smartreview.com</a></p>
+          <p>Email: <a href="mailto:contact@revieweriq.com" className="text-brand-600 hover:underline">contact@revieweriq.com</a></p>
         </div>
       </section>
     </LegalPageLayout>

@@ -289,7 +289,7 @@ export default function AARRRDashboard() {
             General Analytics
           </a>
         </div>
-        <p className="text-gray-500">ReviewIQ (SmartReview) growth dashboard</p>
+        <p className="text-gray-500">ReviewIQ (ReviewIQ) growth dashboard</p>
         <p className="text-xs text-gray-400 mt-1">
           Generated: {new Date(data.generatedAt).toLocaleString()}
         </p>

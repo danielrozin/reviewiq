@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_NAME = "ReviewIQ";
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const SITE_DESCRIPTION =
   "Honest, AI-powered product reviews. See what real buyers love, hate, and wish they knew before purchasing.";
 

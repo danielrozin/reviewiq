@@ -47,7 +47,7 @@ jobs:
 
       - name: Alias to Staging URL
         run: |
-          vercel alias ${{ steps.deploy.outputs.url }} staging-smartreview.vercel.app --token=${{ secrets.VERCEL_TOKEN }} || true
+          vercel alias ${{ steps.deploy.outputs.url }} staging-revieweriq.vercel.app --token=${{ secrets.VERCEL_TOKEN }} || true
 
       - name: Smoke Test
         run: |

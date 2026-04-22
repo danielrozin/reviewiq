@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/db/prisma";
 
 /**
- * AARRR Metrics Dashboard API for ReviewIQ (SmartReview)
+ * AARRR Metrics Dashboard API for ReviewIQ (ReviewIQ)
  *
  * GET /api/analytics/aarrr — full AARRR metrics
  * GET /api/analytics/aarrr?section=acquisition|activation|retention|revenue|referral|health|cohorts

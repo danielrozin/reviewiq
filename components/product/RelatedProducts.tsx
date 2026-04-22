@@ -47,7 +47,7 @@ export function RelatedProducts({
               "@type": "ListItem",
               position: index + 1,
               name: product.name,
-              url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://smartreview.com"}/category/${product.categorySlug}/${product.slug}`,
+              url: `${process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com"}/category/${product.categorySlug}/${product.slug}`,
             })),
           }),
         }}

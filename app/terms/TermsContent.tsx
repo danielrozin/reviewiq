@@ -79,7 +79,7 @@ export function TermsContent() {
       <section id="limitation-of-liability">
         <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Limitation of Liability</h2>
         <p>
-          TO THE MAXIMUM EXTENT PERMITTED BY LAW, SMARTREVIEW SHALL NOT BE LIABLE FOR ANY INDIRECT,
+          TO THE MAXIMUM EXTENT PERMITTED BY LAW, REVIEWIQ SHALL NOT BE LIABLE FOR ANY INDIRECT,
           INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING FROM YOUR USE OF THE SITE.
         </p>
       </section>
@@ -104,7 +104,7 @@ export function TermsContent() {
         <p className="mb-4">Questions about these Terms? Contact us:</p>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
           <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>
-          <p>Email: <a href="mailto:contact@smartreview.com" className="text-brand-600 hover:underline">contact@smartreview.com</a></p>
+          <p>Email: <a href="mailto:contact@revieweriq.com" className="text-brand-600 hover:underline">contact@revieweriq.com</a></p>
         </div>
       </section>
     </LegalPageLayout>
