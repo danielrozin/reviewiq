@@ -41,6 +41,12 @@ next-env.d.ts
 
 /lib/generated/prisma
 
+# remotion video subproject
+/video/node_modules
+/video/out
+/video/public/voiceover.mp3
+/video/package-lock.json
+
 # cron-generated data (discovery results, enrichments, content queue)
 /data/trend-discoveries-*.json
 /data/trend-discoveries-latest.json
