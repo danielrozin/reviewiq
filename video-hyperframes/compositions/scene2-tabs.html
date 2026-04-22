@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;900&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+        font-family: "Inter", sans-serif;
+      }
+      .wrap {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 120px;
+      }
+      .tabs {
+        width: 1700px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        align-items: flex-end;
+        gap: 2px;
+        padding: 0 20px;
+        overflow: hidden;
+      }
+      .tab {
+        width: 34px;
+        height: 56px;
+        background: rgba(255, 255, 255, 0.06);
+        border-radius: 8px 8px 0 0;
+        border-top: 2px solid transparent;
+        flex-shrink: 0;
+      }
+      .tab.active {
+        background: rgba(255, 255, 255, 0.12);
+        border-top-color: #0a7cff;
+      }
+      .counter-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .counter {
+        font-size: 280px;
+        font-weight: 900;
+        color: #fff;
+        letter-spacing: -0.03em;
+        line-height: 1;
+      }
+      .label {
+        font-size: 36px;
+        font-weight: 500;
+        color: #94a3b8;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div data-composition-id="scene2-tabs" data-start="0" data-duration="3" data-width="1920" data-height="1080">
+      <div class="wrap">
+        <div class="tabs clip" id="tabs" data-start="0" data-duration="3" data-track-index="1"></div>
+        <div class="counter-block clip" id="counter-block" data-start="0" data-duration="3" data-track-index="2">
+          <div class="counter" id="counter">0</div>
+          <div class="label">Tabs open</div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const TAB_COUNT = 47;
+        const tabs = document.querySelector("#tabs");
+        const counter = document.querySelector("#counter");
+        const counterBlock = document.querySelector("#counter-block");
+
+        // Build all tabs once (invisible initially, shown progressively)
+        for (let i = 0; i < TAB_COUNT; i++) {
+          const tab = document.createElement("div");
+          tab.className = "tab";
+          tab.style.opacity = "0";
+          tabs.appendChild(tab);
+        }
+
+        const tl = gsap.timeline({ paused: true });
+        gsap.set(counterBlock, { opacity: 0, scale: 0.85 });
+
+        // Reveal tabs one-by-one (approx 47 tabs across 1.2s)
+        const tabEls = tabs.querySelectorAll(".tab");
+        tabEls.forEach((tab, i) => {
+          tl.to(tab, { opacity: 1, duration: 0.05 }, (i / TAB_COUNT) * 1.2);
+          // Last tab gets "active" state
+          if (i === TAB_COUNT - 1) {
+            tl.call(() => tab.classList.add("active"), null, (i / TAB_COUNT) * 1.2);
+          }
+        });
+
+        // Counter reveal + count up
+        tl.to(counterBlock, { opacity: 1, scale: 1, duration: 0.4, ease: "power3.out" }, 0.2);
+        const counterObj = { val: 0 };
+        tl.to(counterObj, {
+          val: TAB_COUNT,
+          duration: 1.0,
+          ease: "power2.out",
+          onUpdate: () => { counter.textContent = Math.floor(counterObj.val); },
+        }, 0.4);
+
+        // Final scale pop
+        tl.to(counterBlock, { scale: 1.05, duration: 0.2, ease: "back.out(2)" }, 1.5);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene2-tabs"] = tl;
+      })();
+    </script>
+  </body>
+</html>

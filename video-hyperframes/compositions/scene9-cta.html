@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800&display=block" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #000;
+        font-family: "Inter", sans-serif;
+      }
+      .wrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+      }
+      .glow {
+        position: absolute;
+        width: 1400px;
+        height: 1400px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(0, 95, 212, 0.3) 0%, transparent 55%);
+        filter: blur(60px);
+        opacity: 0;
+      }
+      .logo-row {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        position: relative;
+        z-index: 1;
+      }
+      .logo-mark {
+        width: 160px;
+        height: 160px;
+        border-radius: 38px;
+        background: #005fd4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      .logo-text {
+        font-size: 88px;
+        font-weight: 800;
+        color: #fff;
+        letter-spacing: -0.03em;
+      }
+      .logo-text .iq { color: #005fd4; }
+      .tagline {
+        position: relative;
+        z-index: 1;
+        font-size: 44px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.01em;
+        text-align: center;
+        max-width: 1200px;
+      }
+      .tagline .accent { color: #0a7cff; }
+      .url-chip {
+        position: relative;
+        z-index: 1;
+        padding: 20px 48px;
+        background: #005fd4;
+        border-radius: 999px;
+        font-size: 32px;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: 0.02em;
+        box-shadow: 0 20px 60px rgba(0, 95, 212, 0.4);
+      }
+    </style>
+  </head>
+  <body>
+    <div data-composition-id="scene9-cta" data-start="0" data-duration="4" data-width="1920" data-height="1080">
+      <div class="wrap">
+        <div class="glow clip" id="glow" data-start="0" data-duration="4" data-track-index="1"></div>
+        <div class="logo-row clip" id="logo" data-start="0" data-duration="4" data-track-index="2">
+          <div class="logo-mark">
+            <svg width="160" height="160" viewBox="0 0 120 120" fill="none">
+              <circle cx="60" cy="60" r="46" stroke="#ffffff" stroke-width="4" stroke-opacity="0.3" fill="none" />
+              <path d="M42 58 L54 70 L80 44" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="logo-text">Review<span class="iq">IQ</span></div>
+        </div>
+        <div class="tagline clip" id="tagline" data-start="0" data-duration="4" data-track-index="3">
+          The only review that matters — <span class="accent">yours.</span>
+        </div>
+        <div class="url-chip clip" id="url" data-start="0" data-duration="4" data-track-index="4">
+          revieweriq.com
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const tl = gsap.timeline({ paused: true });
+        const glow = document.querySelector("#glow");
+        const logo = document.querySelector("#logo");
+        const tagline = document.querySelector("#tagline");
+        const url = document.querySelector("#url");
+
+        gsap.set(glow, { opacity: 0 });
+        gsap.set(logo, { opacity: 0, scale: 0.7 });
+        gsap.set(tagline, { opacity: 0 });
+        gsap.set(url, { opacity: 0, scale: 0.85 });
+
+        tl.to(glow, { opacity: 1, duration: 1.0, ease: "power2.out" }, 0);
+        tl.to(logo, { opacity: 1, scale: 1, duration: 0.6, ease: "back.out(1.4)" }, 0.1);
+        tl.to(tagline, { opacity: 1, duration: 0.5, ease: "power3.out" }, 0.8);
+        tl.to(url, { opacity: 1, scale: 1, duration: 0.5, ease: "back.out(1.6)" }, 1.4);
+
+        window.__timelines = window.__timelines || {};
+        window.__timelines["scene9-cta"] = tl;
+      })();
+    </script>
+  </body>
+</html>

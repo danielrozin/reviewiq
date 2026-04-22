@@ -47,6 +47,15 @@ next-env.d.ts
 /video/public/voiceover.mp3
 /video/package-lock.json
 
+# hyperframes video subproject
+/video-hyperframes/node_modules
+/video-hyperframes/renders
+/video-hyperframes/assets/voiceover.mp3
+/video-hyperframes/package-lock.json
+/video-hyperframes/package.json
+/video-hyperframes/dist
+/video-hyperframes/.hyperframes
+
 # cron-generated data (discovery results, enrichments, content queue)
 /data/trend-discoveries-*.json
 /data/trend-discoveries-latest.json
