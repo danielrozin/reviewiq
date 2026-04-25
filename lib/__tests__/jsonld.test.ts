@@ -73,17 +73,25 @@ describe('productSchema', () => {
     expect(schema.aggregateRating.reviewCount).toBe(10)
   })
 
-  it('handles product with no reviews', () => {
+  it('omits aggregateRating and review when product has no reviews', () => {
     const noReviewProduct = { ...mockProduct, reviews: [], reviewCount: 0 }
     const schema = productSchema(noReviewProduct)
-    expect(schema.aggregateRating.ratingValue).toBe('0.0')
+    expect(schema.aggregateRating).toBeUndefined()
+    expect(schema.review).toBeUndefined()
   })
 
-  it('includes price range in offers', () => {
+  it('includes price range and offerCount in offers', () => {
     const schema = productSchema(mockProduct)
     expect(schema.offers.lowPrice).toBe(300)
     expect(schema.offers.highPrice).toBe(400)
     expect(schema.offers.priceCurrency).toBe('USD')
+    expect(schema.offers.offerCount).toBeGreaterThanOrEqual(1)
+  })
+
+  it('omits offers when price range is invalid', () => {
+    const noPriceProduct = { ...mockProduct, priceRange: { min: 0, max: 0, currency: 'USD' } }
+    const schema = productSchema(noPriceProduct)
+    expect(schema.offers).toBeUndefined()
   })
 
   it('limits review output to 5', () => {

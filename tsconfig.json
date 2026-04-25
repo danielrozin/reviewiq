@@ -37,6 +37,8 @@
   "exclude": [
     "node_modules",
     "vitest.config.ts",
-    "vitest.setup.ts"
+    "vitest.setup.ts",
+    "video",
+    "video-hyperframes"
   ]
 }

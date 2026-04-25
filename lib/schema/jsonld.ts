@@ -46,6 +46,7 @@ export function breadcrumbSchema(
 }
 
 export function productSchema(product: Product) {
+  const ratingCount = product.reviewCount || product.reviews.length;
   const avgRating =
     product.reviews.length > 0
       ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
@@ -53,7 +54,7 @@ export function productSchema(product: Product) {
 
   const buildDate = new Date().toISOString().split("T")[0];
 
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
@@ -62,20 +63,39 @@ export function productSchema(product: Product) {
     image: product.image,
     datePublished: product.createdAt || buildDate,
     dateModified: product.updatedAt || product.createdAt || buildDate,
-    offers: {
-      "@type": "AggregateOffer",
-      lowPrice: product.priceRange.min,
-      highPrice: product.priceRange.max,
-      priceCurrency: product.priceRange.currency,
-    },
-    aggregateRating: {
+  };
+
+  const offers = aggregateOfferFromProduct(product);
+  if (offers) schema.offers = offers;
+
+  if (ratingCount > 0 && avgRating > 0) {
+    schema.aggregateRating = {
       "@type": "AggregateRating",
       ratingValue: avgRating.toFixed(1),
-      reviewCount: product.reviewCount,
+      reviewCount: ratingCount,
       bestRating: 5,
       worstRating: 1,
-    },
-    review: product.reviews.slice(0, 5).map((r) => reviewSchema(r)),
+    };
+  }
+
+  if (product.reviews.length > 0) {
+    schema.review = product.reviews.slice(0, 5).map((r) => reviewSchema(r));
+  }
+
+  return schema;
+}
+
+function aggregateOfferFromProduct(product: Product) {
+  const { min, max, currency } = product.priceRange;
+  if (!currency || min == null || min <= 0) return null;
+  const highPrice = max && max >= min ? max : min;
+  return {
+    "@type": "AggregateOffer",
+    lowPrice: min,
+    highPrice,
+    priceCurrency: currency,
+    offerCount: 1,
+    availability: "https://schema.org/InStock",
   };
 }
 
@@ -288,15 +308,6 @@ export function competitorFaqPageSchema(opts: {
 }
 
 export function comparisonSchema(productA: Product, productB: Product) {
-  const avgRatingA =
-    productA.reviews.length > 0
-      ? productA.reviews.reduce((sum, r) => sum + r.rating, 0) / productA.reviews.length
-      : 0;
-  const avgRatingB =
-    productB.reviews.length > 0
-      ? productB.reviews.reduce((sum, r) => sum + r.rating, 0) / productB.reviews.length
-      : 0;
-
   const buildDate = new Date().toISOString().split("T")[0];
   const datePublished =
     productA.createdAt && productB.createdAt
@@ -320,53 +331,39 @@ export function comparisonSchema(productA: Product, productB: Product) {
       name: `${productA.name} vs ${productB.name}`,
       numberOfItems: 2,
       itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          item: {
-            "@type": "Product",
-            name: productA.name,
-            brand: { "@type": "Brand", name: productA.brand },
-            description: productA.description,
-            offers: {
-              "@type": "AggregateOffer",
-              lowPrice: productA.priceRange.min,
-              highPrice: productA.priceRange.max,
-              priceCurrency: productA.priceRange.currency,
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: avgRatingA.toFixed(1),
-              reviewCount: productA.reviewCount,
-              bestRating: 5,
-              worstRating: 1,
-            },
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          item: {
-            "@type": "Product",
-            name: productB.name,
-            brand: { "@type": "Brand", name: productB.brand },
-            description: productB.description,
-            offers: {
-              "@type": "AggregateOffer",
-              lowPrice: productB.priceRange.min,
-              highPrice: productB.priceRange.max,
-              priceCurrency: productB.priceRange.currency,
-            },
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: avgRatingB.toFixed(1),
-              reviewCount: productB.reviewCount,
-              bestRating: 5,
-              worstRating: 1,
-            },
-          },
-        },
+        { "@type": "ListItem", position: 1, item: comparisonProductItem(productA) },
+        { "@type": "ListItem", position: 2, item: comparisonProductItem(productB) },
       ],
     },
   };
+}
+
+function comparisonProductItem(product: Product) {
+  const ratingCount = product.reviewCount || product.reviews.length;
+  const avgRating =
+    product.reviews.length > 0
+      ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
+      : 0;
+
+  const item: Record<string, unknown> = {
+    "@type": "Product",
+    name: product.name,
+    brand: { "@type": "Brand", name: product.brand },
+    description: product.description,
+  };
+
+  const offers = aggregateOfferFromProduct(product);
+  if (offers) item.offers = offers;
+
+  if (ratingCount > 0 && avgRating > 0) {
+    item.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: avgRating.toFixed(1),
+      reviewCount: ratingCount,
+      bestRating: 5,
+      worstRating: 1,
+    };
+  }
+
+  return item;
 }
