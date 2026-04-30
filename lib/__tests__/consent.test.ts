@@ -60,10 +60,10 @@ describe('getCountryFromHeaders', () => {
 })
 
 describe('hashIp', () => {
-  it('returns a 16-character hex string', () => {
+  it('returns a 32-character hex string', () => {
     const hash = hashIp('192.168.1.1')
-    expect(hash).toHaveLength(16)
-    expect(hash).toMatch(/^[a-f0-9]{16}$/)
+    expect(hash).toHaveLength(32)
+    expect(hash).toMatch(/^[a-f0-9]{32}$/)
   })
 
   it('returns consistent hash for same input', () => {
@@ -72,6 +72,23 @@ describe('hashIp', () => {
 
   it('returns different hashes for different IPs', () => {
     expect(hashIp('10.0.0.1')).not.toBe(hashIp('10.0.0.2'))
+  })
+
+  it('produces a different hash when CONSENT_IP_SALT is set vs unset', () => {
+    const before = process.env.CONSENT_IP_SALT
+    delete process.env.CONSENT_IP_SALT
+    const unsalted = hashIp('203.0.113.7')
+    process.env.CONSENT_IP_SALT = 'unit-test-salt'
+    const salted = hashIp('203.0.113.7')
+    if (before === undefined) delete process.env.CONSENT_IP_SALT
+    else process.env.CONSENT_IP_SALT = before
+    expect(salted).not.toBe(unsalted)
+  })
+
+  it('does not contain the raw IP', () => {
+    const hash = hashIp('203.0.113.7')
+    expect(hash).not.toContain('203')
+    expect(hash).not.toContain('113')
   })
 })
 

@@ -457,6 +457,7 @@ model ConsentRecord {
   geoCountry       String?
   grantedAt        DateTime @default(now())
   revokedAt        DateTime?
+  revokedReason    String?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
 

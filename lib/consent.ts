@@ -37,8 +37,11 @@ export function getCountryFromHeaders(headers: Headers): string | null {
 }
 
 export function hashIp(ip: string): string {
-  return createHash("sha256").update(ip).digest("hex").slice(0, 16);
+  const salt = process.env.CONSENT_IP_SALT || "";
+  return createHash("sha256").update(`${ip}:${salt}`).digest("hex").slice(0, 32);
 }
+
+export const CONSENT_RETENTION_YEARS = 3;
 
 export function toGoogleConsentMode(categories: ConsentCategories): GoogleConsentModeV2 {
   return {

@@ -16,7 +16,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ci": "vitest run --reporter=verbose --no-color",
-    "discover:keywords": "tsx scripts/keyword-discovery.ts"
+    "discover:keywords": "tsx scripts/keyword-discovery.ts",
+    "cleanup:consent": "tsx scripts/cleanup-consent-records.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

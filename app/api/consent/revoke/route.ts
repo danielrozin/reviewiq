@@ -7,6 +7,7 @@ import type { ConsentCategories } from "@/lib/consent";
 const revokeSchema = z.object({
   visitorId: z.string().min(1),
   categories: z.array(z.enum(["analytics", "marketing", "functional"])).min(1),
+  reason: z.string().max(500).optional(),
 });
 
 export async function POST(request: NextRequest) {
@@ -31,10 +32,13 @@ export async function POST(request: NextRequest) {
 
     const currentCategories = latestConsent.consentCategories as unknown as ConsentCategories;
 
-    // Revoke the old consent record
+    // Mark the old consent record as revoked, with optional reason
     await prisma.consentRecord.update({
       where: { id: latestConsent.id },
-      data: { revokedAt: new Date() },
+      data: {
+        revokedAt: new Date(),
+        revokedReason: data.reason ?? null,
+      },
     });
 
     // Create new record with revoked categories set to false
@@ -62,6 +66,7 @@ export async function POST(request: NextRequest) {
       categories: updatedCategories,
       consentMode: toGoogleConsentMode(updatedCategories),
       revokedCategories: data.categories,
+      revokedReason: data.reason ?? null,
       grantedAt: newRecord.grantedAt,
     });
   } catch (error) {
