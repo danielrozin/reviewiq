@@ -180,16 +180,18 @@ model FAQ {
 }
 
 model YouTubeVideo {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   productId   String
   videoId     String
   title       String
-  isActive    Boolean  @default(true)
+  isActive    Boolean   @default(true)
+  status      String    @default("active") // "active" | "broken" | "removed"
   lastChecked DateTime?
 
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
+  @@index([status])
 }
 
 // ==========================================
