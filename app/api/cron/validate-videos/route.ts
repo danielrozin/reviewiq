@@ -3,7 +3,7 @@ import { validateYouTubeVideos } from "@/lib/videos/validate-youtube-videos";
 
 export const maxDuration = 120;
 
-export async function POST(req: NextRequest) {
+async function handle(req: NextRequest) {
   const authHeader = req.headers.get("authorization");
   if (
     process.env.CRON_SECRET &&
@@ -28,3 +28,7 @@ export async function POST(req: NextRequest) {
     );
   }
 }
+
+// Vercel Cron invokes scheduled paths with GET; expose both so the same
+// route works from Vercel's scheduler and from manual POST callers.
+export { handle as GET, handle as POST };
