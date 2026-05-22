@@ -4,6 +4,8 @@ import { z } from "zod";
 import { notifyNewFeedback } from "@/lib/email/notify-feedback";
 
 const createSurveySchema = z.object({
+  event: z.string().max(64).optional(),
+  reachedStep: z.string().max(64).optional(),
   userType: z.string().optional(),
   actionType: z.string().optional(),
   category: z.string().optional(),
@@ -17,6 +19,7 @@ const createSurveySchema = z.object({
   q4Improvement: z.string().optional(),
   q5Discovery: z.string().optional(),
   deviceType: z.string().optional(),
+  userAgent: z.string().max(1024).optional(),
   referralSource: z.string().optional(),
   optInEmail: z.string().email().optional(),
 });
@@ -28,6 +31,8 @@ export async function POST(request: NextRequest) {
 
     const survey = await prisma.smartreviewSurvey.create({
       data: {
+        event: data.event ?? null,
+        reachedStep: data.reachedStep ?? null,
         userType: data.userType ?? null,
         actionType: data.actionType ?? null,
         category: data.category ?? null,
@@ -41,13 +46,18 @@ export async function POST(request: NextRequest) {
         q4Improvement: data.q4Improvement ?? null,
         q5Discovery: data.q5Discovery ?? null,
         deviceType: data.deviceType ?? null,
+        userAgent: data.userAgent ?? null,
         referralSource: data.referralSource ?? null,
         optInEmail: data.optInEmail ?? null,
       },
     });
 
-    // Fire-and-forget email notification — don't block the response
-    notifyNewFeedback(data).catch(() => {});
+    // Fire-and-forget email notification for human-readable feedback only.
+    // Abandon events are high-volume drop-off signals (no answers to read), so
+    // skip the notification to avoid inbox spam — they live in the table/funnel.
+    if (data.event !== "form_abandon") {
+      notifyNewFeedback(data).catch(() => {});
+    }
 
     return NextResponse.json({ id: survey.id }, { status: 201 });
   } catch (error) {

@@ -12,7 +12,10 @@ const mockPrisma = vi.hoisted(() => ({
   },
 }))
 
+const mockNotify = vi.hoisted(() => ({ notifyNewFeedback: vi.fn(() => Promise.resolve()) }))
+
 vi.mock('@/lib/prisma', () => ({ prisma: mockPrisma }))
+vi.mock('@/lib/email/notify-feedback', () => mockNotify)
 
 import { POST, GET } from '../surveys/route'
 
@@ -80,6 +83,48 @@ describe('POST /api/surveys', () => {
   it('rejects negative reviewCompletionTimeSec', async () => {
     const res = await POST(makePostRequest({ reviewCompletionTimeSec: -5 }))
     expect(res.status).toBe(400)
+  })
+
+  it('persists a form_abandon event with the reached step (DAN-699)', async () => {
+    mockPrisma.smartreviewSurvey.create.mockResolvedValue({ id: 'a1' })
+
+    const res = await POST(makePostRequest({
+      event: 'form_abandon',
+      reachedStep: 'q2',
+      surveyCompleted: false,
+      q1Intent: 'comparing',
+      deviceType: 'mobile',
+      userAgent: 'Mozilla/5.0 (iPhone)',
+      referralSource: 'https://aversusb.net/iphone-vs-pixel',
+    }))
+
+    expect(res.status).toBe(201)
+    expect(mockPrisma.smartreviewSurvey.create).toHaveBeenCalledWith(
+      expect.objectContaining({
+        data: expect.objectContaining({
+          event: 'form_abandon',
+          reachedStep: 'q2',
+          surveyCompleted: false,
+          userAgent: 'Mozilla/5.0 (iPhone)',
+        }),
+      })
+    )
+  })
+
+  it('does NOT send a feedback email for form_abandon events', async () => {
+    mockPrisma.smartreviewSurvey.create.mockResolvedValue({ id: 'a2' })
+
+    await POST(makePostRequest({ event: 'form_abandon', reachedStep: 'q1' }))
+
+    expect(mockNotify.notifyNewFeedback).not.toHaveBeenCalled()
+  })
+
+  it('sends a feedback email for a completed submission', async () => {
+    mockPrisma.smartreviewSurvey.create.mockResolvedValue({ id: 's3' })
+
+    await POST(makePostRequest({ surveyCompleted: true, q3Rating: 5 }))
+
+    expect(mockNotify.notifyNewFeedback).toHaveBeenCalledTimes(1)
   })
 })
 

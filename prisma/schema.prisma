@@ -474,6 +474,13 @@ model ConsentRecord {
 
 model SmartreviewSurvey {
   id                     String   @id @default(cuid())
+  // Event discriminator: null/"form_submit" for completed submissions,
+  // "form_abandon" for survey drop-off (opened but left without submitting).
+  event                  String?
+  // Step/question the user had reached when the row was recorded — powers the
+  // drop-off funnel for survey goal #2 ("what makes users leave"). e.g.
+  // "intro" | "q1" | "q2" | "q3" | "q4" | "q5".
+  reachedStep            String?
   userType               String?
   actionType             String?
   category               String?
@@ -487,10 +494,12 @@ model SmartreviewSurvey {
   q4Improvement          String?  @db.Text
   q5Discovery            String?
   deviceType             String?
+  userAgent              String?  @db.Text
   referralSource         String?
   optInEmail             String?
   createdAt              DateTime @default(now())
 
   @@index([createdAt])
   @@index([category])
+  @@index([event])
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { trackEvent } from "@/lib/tracking/analytics";
 
 const STORAGE_KEY = "sr_survey_completed";
@@ -46,24 +46,120 @@ export function SurveyPopup() {
   });
   const [submitting, setSubmitting] = useState(false);
 
+  // --- Abandon tracking (DAN-699) ---
+  // Refs mirror live state so the page-leave listeners (pagehide /
+  // visibilitychange) can read the current step/answers without re-binding.
+  const stepRef = useRef<Step>(step);
+  const answersRef = useRef<Answers>(answers);
+  // True once the survey is open and the user is mid-flow (intro..q5) and has
+  // not submitted, dismissed, or reached "thanks". Only then is a page-leave an
+  // abandon. submittedRef suppresses false abandons while a submit is in flight.
+  const activeRef = useRef(false);
+  const submittedRef = useRef(false);
+  const abandonFiredRef = useRef(false);
+
+  useEffect(() => {
+    stepRef.current = step;
+  }, [step]);
+  useEffect(() => {
+    answersRef.current = answers;
+  }, [answers]);
+
+  /**
+   * Fire a single `form_abandon` event: user opened/started the survey but left
+   * without submitting. Records the reached step plus partial answers and
+   * context (device / userAgent / referrer) for the drop-off funnel. Uses
+   * sendBeacon so the write survives page unload, falling back to keepalive
+   * fetch. Single-fire and suppressed once a submit is in flight or completed.
+   */
+  const fireAbandon = useCallback(() => {
+    if (abandonFiredRef.current) return;
+    if (!activeRef.current) return;
+    if (submittedRef.current) return;
+    abandonFiredRef.current = true;
+
+    const reachedStep = stepRef.current;
+    const a = answersRef.current;
+    trackEvent("survey_form_abandon", { step: reachedStep });
+
+    const payload = {
+      event: "form_abandon",
+      reachedStep,
+      surveyCompleted: false,
+      // Partial answers captured before leaving (where the user got to).
+      q1Intent: a.q1Intent || undefined,
+      q2Found: a.q2Found ?? undefined,
+      q2Missing: a.q2Missing || undefined,
+      q3Rating: a.q3Rating || undefined,
+      q4Improvement: a.q4Improvement || undefined,
+      q5Discovery: a.q5Discovery || undefined,
+      deviceType: /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop",
+      userAgent: navigator.userAgent,
+      referralSource: document.referrer || undefined,
+    };
+
+    const body = JSON.stringify(payload);
+    try {
+      if (typeof navigator.sendBeacon === "function") {
+        const blob = new Blob([body], { type: "application/json" });
+        const queued = navigator.sendBeacon("/api/surveys", blob);
+        if (queued) return;
+      }
+      // Fallback for browsers without sendBeacon (or if it rejected the beacon).
+      void fetch("/api/surveys", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body,
+        keepalive: true,
+      }).catch(() => {});
+    } catch {
+      // Never let abandon tracking throw during unload.
+    }
+  }, []);
+
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (localStorage.getItem(STORAGE_KEY)) return;
 
     const timer = setTimeout(() => {
       setVisible(true);
+      activeRef.current = true;
       trackEvent("survey_popup_shown", { trigger: "timer" });
     }, SHOW_DELAY_MS);
 
     return () => clearTimeout(timer);
   }, []);
 
+  // Page-leave listeners: abandon on whichever of pagehide / visibilitychange
+  // (hidden) fires first. visibilitychange→hidden is the reliable last callback
+  // on mobile; pagehide covers desktop navigation/unload.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const onPageHide = () => fireAbandon();
+    const onVisibilityChange = () => {
+      if (document.visibilityState === "hidden") fireAbandon();
+    };
+    window.addEventListener("pagehide", onPageHide);
+    document.addEventListener("visibilitychange", onVisibilityChange);
+    return () => {
+      window.removeEventListener("pagehide", onPageHide);
+      document.removeEventListener("visibilitychange", onVisibilityChange);
+    };
+  }, [fireAbandon]);
+
   const dismiss = useCallback(() => {
+    // Explicit close is not a page-leave abandon — stop the listeners from
+    // firing one after the user deliberately dismissed the survey.
+    activeRef.current = false;
     setVisible(false);
     trackEvent("survey_popup_dismissed", { step });
   }, [step]);
 
   const submit = useCallback(async () => {
+    // Mark submit in flight so a pagehide / backgrounding during a slow submit
+    // (common on mobile) is not mis-counted as an abandon.
+    submittedRef.current = true;
+    activeRef.current = false;
     setSubmitting(true);
     try {
       const payload = {
