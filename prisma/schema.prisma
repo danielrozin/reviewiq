@@ -503,3 +503,27 @@ model SmartreviewSurvey {
   @@index([category])
   @@index([event])
 }
+
+// ==========================================
+// Outreach Reply Capture (Resend inbound)
+// ==========================================
+
+model OutreachReply {
+  id          String   @id @default(cuid())
+  resendEmailId String @unique // Resend email_id from webhook payload
+  messageId   String?  @db.Text  // SMTP Message-ID header
+  inReplyTo   String?  @db.Text  // In-Reply-To header (links to outbound message)
+  fromEmail   String
+  fromName    String?
+  toEmail     String
+  subject     String
+  bodyText    String?  @db.Text
+  bodyHtml    String?  @db.Text
+  rawHeaders  Json?    // Full headers map from Resend
+  receivedAt  DateTime @default(now())
+  processedAt DateTime?
+
+  @@index([inReplyTo])
+  @@index([fromEmail])
+  @@index([receivedAt])
+}
