@@ -82,6 +82,10 @@ export function productSchema(product: Product) {
     schema.review = product.reviews.slice(0, 5).map((r) => reviewSchema(r));
   }
 
+  // Google requires at least one of offers/aggregateRating/review for Product
+  // rich results. Suppress the schema entirely rather than emit an invalid node.
+  if (!schema.offers && !schema.aggregateRating && !schema.review) return null;
+
   return schema;
 }
 

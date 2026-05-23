@@ -89,15 +89,17 @@ export default async function ProductPage({ params }: Props) {
   // Cross-category affinity products
   const affinityProducts = getAffinityProducts(slug, product.slug, 4);
 
+  const pSchema = productSchema(product);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackProductView slug={product.slug} category={category.slug} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema(product)),
-        }}
-      />
+      {pSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(pSchema) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -94,6 +94,11 @@ describe('productSchema', () => {
     expect(schema.offers).toBeUndefined()
   })
 
+  it('returns null when no offers, aggregateRating, or review can be populated', () => {
+    const bareProduct = { ...mockProduct, reviews: [], reviewCount: 0, priceRange: { min: 0, max: 0, currency: 'USD' } }
+    expect(productSchema(bareProduct)).toBeNull()
+  })
+
   it('limits review output to 5', () => {
     const manyReviews = Array(10).fill(mockProduct.reviews[0])
     const schema = productSchema({ ...mockProduct, reviews: manyReviews })
