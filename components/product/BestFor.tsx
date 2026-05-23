@@ -2,37 +2,15 @@ import type { AISummary } from "@/types";
 
 interface BestForProps {
   summary: AISummary;
-  productName: string;
-  productSlug: string;
 }
 
-export function BestFor({ summary, productName, productSlug }: BestForProps) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: productName,
-    url: `https://revieweriq.com/category/${productSlug}`,
-    description: `Best for: ${summary.bestFor.join(", ")}. Not ideal for: ${summary.notFor.join(", ")}.`,
-    additionalProperty: [
-      ...summary.bestFor.map((item) => ({
-        "@type": "PropertyValue",
-        name: "Best For",
-        value: item,
-      })),
-      ...summary.notFor.map((item) => ({
-        "@type": "PropertyValue",
-        name: "Not Ideal For",
-        value: item,
-      })),
-    ],
-  };
-
+// Note: the "Best For" / "Not Ideal For" data is emitted as `additionalProperty`
+// on the page's single canonical Product node in `productSchema()`. This component
+// must NOT emit its own Product JSON-LD — a second Product entity without
+// offers/review/aggregateRating triggers a Google "Product snippets" critical error.
+export function BestFor({ summary }: BestForProps) {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <section
         data-speakable="best-for"
         className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-2xl overflow-hidden border border-gray-100"

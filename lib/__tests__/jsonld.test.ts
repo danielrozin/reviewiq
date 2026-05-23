@@ -57,10 +57,20 @@ describe('productSchema', () => {
   const mockProduct = {
     name: 'Sony WH-1000XM5',
     brand: 'Sony',
+    slug: 'sony-wh-1000xm5',
+    categorySlug: 'headphones',
     description: 'Noise canceling headphones',
     image: '/sony.jpg',
     priceRange: { min: 300, max: 400, currency: 'USD' },
     reviewCount: 10,
+    aiSummary: {
+      whatPeopleLove: [],
+      whatPeopleHate: [],
+      bestFor: ['Frequent flyers', 'Office workers'],
+      notFor: ['Audiophiles on a budget'],
+      topComplaints: [],
+      keyFacts: [],
+    },
     reviews: [
       { rating: 5, headline: 'Great', body: 'Excellent', authorName: 'User1', createdAt: '2025-01-01' },
       { rating: 4, headline: 'Good', body: 'Nice', authorName: 'User2', createdAt: '2025-01-02' },
@@ -98,6 +108,31 @@ describe('productSchema', () => {
     const manyReviews = Array(10).fill(mockProduct.reviews[0])
     const schema = productSchema({ ...mockProduct, reviews: manyReviews })
     expect(schema.review).toHaveLength(5)
+  })
+
+  it('folds bestFor/notFor into additionalProperty on the Product node', () => {
+    const schema = productSchema(mockProduct)
+    expect(schema.additionalProperty).toHaveLength(3)
+    expect(schema.additionalProperty[0]).toMatchObject({
+      '@type': 'PropertyValue',
+      name: 'Best For',
+      value: 'Frequent flyers',
+    })
+    expect(schema.additionalProperty[2]).toMatchObject({
+      name: 'Not Ideal For',
+      value: 'Audiophiles on a budget',
+    })
+  })
+
+  // GSC "Product snippets" requires at least one of offers/review/aggregateRating.
+  // A product with reviews always satisfies this via review + aggregateRating.
+  it('always specifies at least one of offers, review or aggregateRating', () => {
+    const schema = productSchema(mockProduct)
+    const hasRequired =
+      schema.offers !== undefined ||
+      schema.review !== undefined ||
+      schema.aggregateRating !== undefined
+    expect(hasRequired).toBe(true)
   })
 })
 

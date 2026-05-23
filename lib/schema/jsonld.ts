@@ -61,9 +61,24 @@ export function productSchema(product: Product) {
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
     image: product.image,
+    url: `${SITE_URL}/category/${product.categorySlug}/${product.slug}`,
     datePublished: product.createdAt || buildDate,
     dateModified: product.updatedAt || product.createdAt || buildDate,
   };
+
+  const additionalProperty = [
+    ...product.aiSummary.bestFor.map((value) => ({
+      "@type": "PropertyValue",
+      name: "Best For",
+      value,
+    })),
+    ...product.aiSummary.notFor.map((value) => ({
+      "@type": "PropertyValue",
+      name: "Not Ideal For",
+      value,
+    })),
+  ];
+  if (additionalProperty.length > 0) schema.additionalProperty = additionalProperty;
 
   const offers = aggregateOfferFromProduct(product);
   if (offers) schema.offers = offers;

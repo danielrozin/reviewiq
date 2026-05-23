@@ -183,11 +183,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Best For / Not Ideal For */}
-          <BestFor
-            summary={product.aiSummary}
-            productName={product.name}
-            productSlug={`${slug}/${productSlug}`}
-          />
+          <BestFor summary={product.aiSummary} />
 
           {/* YouTube Videos */}
           {product.youtubeVideos && product.youtubeVideos.length > 0 && (
