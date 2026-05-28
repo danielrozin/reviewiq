@@ -12,6 +12,7 @@ import { ExperimentProvider } from "@/lib/experiments";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/tracking/GoogleTagManager";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { CompareProvider } from "@/lib/context/CompareContext";
+import { SurveyPopup } from "@/components/survey/SurveyPopup";
 
 export const metadata: Metadata = {
   title: "ReviewIQ — Real Reviews, Real Intelligence",
@@ -56,6 +57,7 @@ export default function RootLayout({
                     <OnboardingOrchestrator />
                     <main className="flex-1">{children}</main>
                     <Footer />
+                    <SurveyPopup />
                   </ExperimentProvider>
                 </OnboardingProvider>
               </CompareProvider>
