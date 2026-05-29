@@ -31,3 +31,5 @@ export async function POST(request: NextRequest) {
     );
   }
 }
+
+export { POST as GET };

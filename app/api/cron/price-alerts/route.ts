@@ -95,3 +95,5 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Failed to process price alerts" }, { status: 500 });
   }
 }
+
+export { POST as GET };
