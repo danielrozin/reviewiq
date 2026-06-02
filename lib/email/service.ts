@@ -8,7 +8,7 @@ function getResend(): Resend | null {
   return _resend;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim();
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
 
 function unsubscribeUrl(userId: string, emailType: string): string {

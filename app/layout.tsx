@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Honest, AI-powered product reviews. See what real buyers love, hate, and wish they knew before purchasing.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim()
   ),
 };
 

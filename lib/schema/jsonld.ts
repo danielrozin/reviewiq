@@ -1,7 +1,7 @@
 import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
 export function organizationSchema() {
   return {
