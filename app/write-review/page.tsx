@@ -314,12 +314,12 @@ export default function WriteReviewPage() {
               Explore Products
             </a>
           </div>
-          <a
+          <Link
             href="/"
             className="inline-flex mt-3 text-sm text-gray-400 hover:text-gray-600 transition-colors"
           >
             Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     );
