@@ -1,5 +1,8 @@
 import type { NextConfig } from "next";
+import type { Redirect } from "next/dist/lib/load-custom-routes";
 import { withSentryConfig } from "@sentry/nextjs";
+// DAN-942 Phase 1b: legacy Google Sites → ReviewIQ 301 redirect map (data-driven).
+import redirectMap from "./redirects.json";
 
 const securityHeaders = [
   {
@@ -42,6 +45,10 @@ const nextConfig: NextConfig = {
     ],
   },
   trailingSlash: false,
+  async redirects() {
+    // 301s lifting legacy Google Sites paths onto the new ReviewIQ routes.
+    return redirectMap.rules as Redirect[];
+  },
   async headers() {
     return [
       {

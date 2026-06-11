@@ -11,6 +11,8 @@
     "db:generate": "prisma generate",
     "db:push": "prisma db push",
     "db:seed": "tsx prisma/seed.ts",
+    "db:seed:reviewiq": "tsx prisma/seed-reviewiq.ts",
+    "lift:reviewiq": "node scripts/scrape-reviewiq.mjs && node scripts/build-reviewiq-data.mjs && node scripts/build-redirects.mjs",
     "db:reset": "prisma db push --force-reset && tsx prisma/seed.ts",
     "test": "vitest run",
     "test:watch": "vitest",

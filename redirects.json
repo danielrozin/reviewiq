@@ -1,0 +1,258 @@
+{
+  "generatedBy": "scripts/build-redirects.mjs (DAN-942 Phase 1b)",
+  "generatedFrom": "scripts/output/reviewiq-content.json",
+  "legacyPublicBase": "https://reviewiq.net",
+  "note": "Applied at cutover (Phase 1d). `rules` are wired into next.config.ts redirects(); `explicit` is the full per-URL verification map.",
+  "rules": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/reviews",
+      "destination": "/categories",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/:category/:slug",
+      "destination": "/category/:category/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/reviews/:category",
+      "destination": "/category/:category",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "usp"
+        }
+      ],
+      "destination": "/",
+      "permanent": true
+    }
+  ],
+  "explicit": [
+    {
+      "from": "/",
+      "fromUrl": "https://reviewiq.net/",
+      "to": "/",
+      "identity": true
+    },
+    {
+      "from": "/home",
+      "fromUrl": "https://reviewiq.net/home",
+      "to": "/",
+      "identity": false
+    },
+    {
+      "from": "/about",
+      "fromUrl": "https://reviewiq.net/about",
+      "to": "/about",
+      "identity": true
+    },
+    {
+      "from": "/blog",
+      "fromUrl": "https://reviewiq.net/blog",
+      "to": "/blog",
+      "identity": true
+    },
+    {
+      "from": "/reviews",
+      "fromUrl": "https://reviewiq.net/reviews",
+      "to": "/categories",
+      "identity": false
+    },
+    {
+      "from": "/reviews/content-creation",
+      "fromUrl": "https://reviewiq.net/reviews/content-creation",
+      "to": "/category/content-creation",
+      "identity": false
+    },
+    {
+      "from": "/reviews/home-goods",
+      "fromUrl": "https://reviewiq.net/reviews/home-goods",
+      "to": "/category/home-goods",
+      "identity": false
+    },
+    {
+      "from": "/reviews/on-the-green",
+      "fromUrl": "https://reviewiq.net/reviews/on-the-green",
+      "to": "/category/on-the-green",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame",
+      "to": "/category/take-me-out-to-the-ballgame",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology",
+      "fromUrl": "https://reviewiq.net/reviews/technology",
+      "to": "/category/technology",
+      "identity": false
+    },
+    {
+      "from": "/reviews/content-creation/neewer-cube-light",
+      "fromUrl": "https://reviewiq.net/reviews/content-creation/neewer-cube-light",
+      "to": "/category/content-creation/neewer-cube-light",
+      "identity": false
+    },
+    {
+      "from": "/reviews/home-goods/table-leg-risers",
+      "fromUrl": "https://reviewiq.net/reviews/home-goods/table-leg-risers",
+      "to": "/category/home-goods/table-leg-risers",
+      "identity": false
+    },
+    {
+      "from": "/reviews/home-goods/titan-clad-cutting-board",
+      "fromUrl": "https://reviewiq.net/reviews/home-goods/titan-clad-cutting-board",
+      "to": "/category/home-goods/titan-clad-cutting-board",
+      "identity": false
+    },
+    {
+      "from": "/reviews/home-goods/welclux-shaver",
+      "fromUrl": "https://reviewiq.net/reviews/home-goods/welclux-shaver",
+      "to": "/category/home-goods/welclux-shaver",
+      "identity": false
+    },
+    {
+      "from": "/reviews/on-the-green/4-pack-ball-markers",
+      "fromUrl": "https://reviewiq.net/reviews/on-the-green/4-pack-ball-markers",
+      "to": "/category/on-the-green/4-pack-ball-markers",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/baseball-bogg-charms",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/baseball-bogg-charms",
+      "to": "/category/take-me-out-to-the-ballgame/baseball-bogg-charms",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/baseball-ice-molds",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/baseball-ice-molds",
+      "to": "/category/take-me-out-to-the-ballgame/baseball-ice-molds",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/baseball-sunflower-seed-bag",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/baseball-sunflower-seed-bag",
+      "to": "/category/take-me-out-to-the-ballgame/baseball-sunflower-seed-bag",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/easton-bomb-bat-grip-tape",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/easton-bomb-bat-grip-tape",
+      "to": "/category/take-me-out-to-the-ballgame/easton-bomb-bat-grip-tape",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/fence-mounted-phone-holder",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/fence-mounted-phone-holder",
+      "to": "/category/take-me-out-to-the-ballgame/fence-mounted-phone-holder",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/fuzzy-baseball-mascot",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/fuzzy-baseball-mascot",
+      "to": "/category/take-me-out-to-the-ballgame/fuzzy-baseball-mascot",
+      "identity": false
+    },
+    {
+      "from": "/reviews/take-me-out-to-the-ballgame/party-animals-lanyard",
+      "fromUrl": "https://reviewiq.net/reviews/take-me-out-to-the-ballgame/party-animals-lanyard",
+      "to": "/category/take-me-out-to-the-ballgame/party-animals-lanyard",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/10-port-usb-charger",
+      "fromUrl": "https://reviewiq.net/reviews/technology/10-port-usb-charger",
+      "to": "/category/technology/10-port-usb-charger",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/4-in-1-switch-2-controller-charger-dock",
+      "fromUrl": "https://reviewiq.net/reviews/technology/4-in-1-switch-2-controller-charger-dock",
+      "to": "/category/technology/4-in-1-switch-2-controller-charger-dock",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/45-w-usb-c-plugs-and-usb-c-cables",
+      "fromUrl": "https://reviewiq.net/reviews/technology/45-w-usb-c-plugs-and-usb-c-cables",
+      "to": "/category/technology/45-w-usb-c-plugs-and-usb-c-cables",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/flexible-overhead-camera-mount",
+      "fromUrl": "https://reviewiq.net/reviews/technology/flexible-overhead-camera-mount",
+      "to": "/category/technology/flexible-overhead-camera-mount",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/game-controller-case",
+      "fromUrl": "https://reviewiq.net/reviews/technology/game-controller-case",
+      "to": "/category/technology/game-controller-case",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/inchoi-cases-dji-osmo-pocket-3-hard-case",
+      "fromUrl": "https://reviewiq.net/reviews/technology/inchoi-cases-dji-osmo-pocket-3-hard-case",
+      "to": "/category/technology/inchoi-cases-dji-osmo-pocket-3-hard-case",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/large-capacity-power-bank",
+      "fromUrl": "https://reviewiq.net/reviews/technology/large-capacity-power-bank",
+      "to": "/category/technology/large-capacity-power-bank",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/mobile-phone-magnetic-vent-clip",
+      "fromUrl": "https://reviewiq.net/reviews/technology/mobile-phone-magnetic-vent-clip",
+      "to": "/category/technology/mobile-phone-magnetic-vent-clip",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/multi-plug-surge-protector",
+      "fromUrl": "https://reviewiq.net/reviews/technology/multi-plug-surge-protector",
+      "to": "/category/technology/multi-plug-surge-protector",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/raubay-monitor-camera-mount",
+      "fromUrl": "https://reviewiq.net/reviews/technology/raubay-monitor-camera-mount",
+      "to": "/category/technology/raubay-monitor-camera-mount",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/suncat-wallet-with-find-my-tracking",
+      "fromUrl": "https://reviewiq.net/reviews/technology/suncat-wallet-with-find-my-tracking",
+      "to": "/category/technology/suncat-wallet-with-find-my-tracking",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/switch-2-joy-con-controllers",
+      "fromUrl": "https://reviewiq.net/reviews/technology/switch-2-joy-con-controllers",
+      "to": "/category/technology/switch-2-joy-con-controllers",
+      "identity": false
+    },
+    {
+      "from": "/reviews/technology/zyqeee-phone-screen-protector",
+      "fromUrl": "https://reviewiq.net/reviews/technology/zyqeee-phone-screen-protector",
+      "to": "/category/technology/zyqeee-phone-screen-protector",
+      "identity": false
+    },
+    {
+      "from": "/*?usp=<any>",
+      "fromUrl": "https://reviewiq.net/?usp=sharing",
+      "to": "/",
+      "identity": false,
+      "note": "Google Sites ?usp= share-link query variants → home (single catch-all rule)."
+    }
+  ]
+}
