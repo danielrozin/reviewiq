@@ -35,7 +35,7 @@ export default async function SurveyPage({
         <div className="text-center mb-6">
           <h1 className="text-xl font-bold text-gray-900">ReviewIQ</h1>
           <p className="text-sm text-gray-500 mt-1">
-            A few quick questions — under 30 seconds, no account needed.
+            30 seconds to make ReviewIQ better — 3 quick questions.
           </p>
         </div>
         <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 sm:p-8">
