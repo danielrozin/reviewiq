@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!cat) return {};
 
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+    (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
   return {
     title: `${cat.name} Buying Guides & Reviews | ReviewIQ Blog`,

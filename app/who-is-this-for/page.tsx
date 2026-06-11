@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { faqSchema } from "@/lib/schema/jsonld";
 import Link from "next/link";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
 export const metadata = buildMetadata({
   title: "Who Is ReviewIQ For?",

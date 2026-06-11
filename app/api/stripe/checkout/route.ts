@@ -45,7 +45,7 @@ export async function POST() {
     if (subscription?.status === "active" && subscription.plan === "pro") {
       const portalSession = await getStripe().billingPortal.sessions.create({
         customer: customerId,
-        return_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/dashboard`,
+        return_url: `${(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim()}/dashboard`,
       });
       return NextResponse.json({ url: portalSession.url });
     }
@@ -60,8 +60,8 @@ export async function POST() {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/dashboard?upgraded=true`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"}/pricing`,
+      success_url: `${(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim()}/dashboard?upgraded=true`,
+      cancel_url: `${(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim()}/pricing`,
       metadata: { userId },
     });
 

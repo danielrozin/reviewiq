@@ -31,7 +31,7 @@ function escapeXml(str: string): string {
 
 export async function GET() {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+    (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
   const posts = getAllBlogPosts();
   const products = getAllProducts();
   const reviews = await getRecentReviews();
