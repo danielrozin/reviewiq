@@ -19,10 +19,20 @@
  *   Q4 email capture       -> optInEmail   (same opt-in column as on-site)
  *   Q4 alert frequency     -> q4Improvement ("alert_freq:weekly|monthly|major"; q4Improvement is unused by the trimmed instrument)
  *
- * NOTE: exact question wording / answer labels below are DRAFT pending the UX
- * Designer's finalized instrument (DAN-985). The VALUES (q1Intent codes,
- * account_willing codes, alert_freq codes) are the contract that must stay
- * stable for aggregation — labels can be re-skinned without touching the schema.
+ * RECONCILED against the UX Designer's finalized instrument (DAN-985,
+ * 2026-06-12). The aggregation contract — the canonical VALUES — matches 1:1:
+ *   - Q1 intent codeframe == on-site INTENT_OPTIONS (same codes, prefillable).
+ *   - Q3 account-willingness == yes|maybe|no (DAN-985 `account_willingness` enum;
+ *     stored here in actionType as "account_willing:<v>" to avoid a prod migration).
+ *   - Q2 stored as canonical free text (q2Missing); DAN-985's optional typed
+ *     `q2_barrier` enum was declined — not needed for the email channel.
+ * DAN-985 specced 3 NEW nullable columns (account_willingness / notify_frequency /
+ * source_channel); we deliberately reuse existing columns instead. Rationale:
+ * Vercel never auto-runs Prisma migrations, so new columns would 500 prod survey
+ * writes until DevOps applies a manual `migrate deploy`. The UX Designer
+ * explicitly permitted column reuse provided the VALUES + mapping intent hold —
+ * which they do. Respondent-facing LABELS can be re-skinned to match the doc copy
+ * without touching the schema or the value contract.
  */
 
 /** referralSource tag that marks a row as coming from the email channel. */
@@ -65,7 +75,9 @@ export function isIntentValue(v: string | null | undefined): v is IntentValue {
   return !!v && INTENT_OPTIONS.some((o) => o.value === v);
 }
 
-/** Q3 Account-willingness options (DRAFT labels; values are the stable contract). */
+/** Q3 Account-willingness options. Values yes|maybe|no match DAN-985's
+ *  `account_willingness` enum (the stable aggregation contract); labels are
+ *  presentational and may be re-skinned to the finalized DAN-985 copy. */
 export const ACCOUNT_OPTIONS = [
   { value: "yes", label: "Yes — I'd create an account" },
   { value: "maybe", label: "Maybe, depends on the feature" },
