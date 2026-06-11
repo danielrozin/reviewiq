@@ -6,7 +6,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest'
 const mockPrisma = vi.hoisted(() => ({
   subscription: {
     findUnique: vi.fn(),
-    create: vi.fn(),
+    upsert: vi.fn(),
   },
 }))
 
@@ -77,7 +77,7 @@ describe('POST /api/stripe/checkout', () => {
     })
     mockPrisma.subscription.findUnique.mockResolvedValue(null)
     mockStripe.customers.create.mockResolvedValue({ id: 'cus_new' })
-    mockPrisma.subscription.create.mockResolvedValue({
+    mockPrisma.subscription.upsert.mockResolvedValue({
       userId: 'u1',
       stripeCustomerId: 'cus_new',
       plan: 'free',
@@ -94,8 +94,10 @@ describe('POST /api/stripe/checkout', () => {
       email: 'test@example.com',
       metadata: { userId: 'u1' },
     })
-    expect(mockPrisma.subscription.create).toHaveBeenCalledWith({
-      data: {
+    expect(mockPrisma.subscription.upsert).toHaveBeenCalledWith({
+      where: { userId: 'u1' },
+      update: { stripeCustomerId: 'cus_new' },
+      create: {
         userId: 'u1',
         stripeCustomerId: 'cus_new',
         plan: 'free',
@@ -195,6 +197,6 @@ describe('POST /api/stripe/checkout', () => {
     await POST()
 
     expect(mockStripe.customers.create).not.toHaveBeenCalled()
-    expect(mockPrisma.subscription.create).not.toHaveBeenCalled()
+    expect(mockPrisma.subscription.upsert).not.toHaveBeenCalled()
   })
 })

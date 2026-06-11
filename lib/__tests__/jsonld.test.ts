@@ -68,7 +68,7 @@ describe('productSchema', () => {
   } as any
 
   it('calculates average rating correctly', () => {
-    const schema = productSchema(mockProduct)
+    const schema = productSchema(mockProduct) as any
     expect(schema.aggregateRating.ratingValue).toBe('4.5')
     expect(schema.aggregateRating.reviewCount).toBe(10)
   })
@@ -81,7 +81,7 @@ describe('productSchema', () => {
   })
 
   it('includes price range and offerCount in offers', () => {
-    const schema = productSchema(mockProduct)
+    const schema = productSchema(mockProduct) as any
     expect(schema.offers.lowPrice).toBe(300)
     expect(schema.offers.highPrice).toBe(400)
     expect(schema.offers.priceCurrency).toBe('USD')
