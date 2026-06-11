@@ -311,7 +311,7 @@ export function SurveyPopup() {
                 onClick={() => setStep("q1")}
                 className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
               >
-                Sure, I'll help
+                Sure, I&apos;ll help
               </button>
             </div>
           </div>
