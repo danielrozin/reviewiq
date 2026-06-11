@@ -16,7 +16,7 @@ import {
 
 describe('organizationSchema', () => {
   it('returns valid Organization schema', () => {
-    const schema = organizationSchema()
+    const schema: any = organizationSchema()
     expect(schema['@context']).toBe('https://schema.org')
     expect(schema['@type']).toBe('Organization')
     expect(schema.name).toBe('ReviewIQ')
@@ -26,7 +26,7 @@ describe('organizationSchema', () => {
 
 describe('websiteSchema', () => {
   it('returns valid WebSite schema with search action', () => {
-    const schema = websiteSchema()
+    const schema: any = websiteSchema()
     expect(schema['@type']).toBe('WebSite')
     expect(schema.potentialAction['@type']).toBe('SearchAction')
     expect(schema.potentialAction.target).toContain('{search_term_string}')
@@ -35,7 +35,7 @@ describe('websiteSchema', () => {
 
 describe('breadcrumbSchema', () => {
   it('generates correct positions for breadcrumb items', () => {
-    const schema = breadcrumbSchema([
+    const schema: any = breadcrumbSchema([
       { name: 'Home', url: '/' },
       { name: 'Electronics', url: '/category/electronics' },
       { name: 'Headphones', url: '/category/electronics/headphones' },
@@ -48,7 +48,7 @@ describe('breadcrumbSchema', () => {
   })
 
   it('handles empty breadcrumb list', () => {
-    const schema = breadcrumbSchema([])
+    const schema: any = breadcrumbSchema([])
     expect(schema.itemListElement).toHaveLength(0)
   })
 })
@@ -68,20 +68,20 @@ describe('productSchema', () => {
   } as any
 
   it('calculates average rating correctly', () => {
-    const schema = productSchema(mockProduct) as any
+    const schema: any = productSchema(mockProduct)
     expect(schema.aggregateRating.ratingValue).toBe('4.5')
     expect(schema.aggregateRating.reviewCount).toBe(10)
   })
 
   it('omits aggregateRating and review when product has no reviews', () => {
     const noReviewProduct = { ...mockProduct, reviews: [], reviewCount: 0 }
-    const schema = productSchema(noReviewProduct)
+    const schema: any = productSchema(noReviewProduct)
     expect(schema.aggregateRating).toBeUndefined()
     expect(schema.review).toBeUndefined()
   })
 
   it('includes price range and offerCount in offers', () => {
-    const schema = productSchema(mockProduct) as any
+    const schema: any = productSchema(mockProduct)
     expect(schema.offers.lowPrice).toBe(300)
     expect(schema.offers.highPrice).toBe(400)
     expect(schema.offers.priceCurrency).toBe('USD')
@@ -90,20 +90,20 @@ describe('productSchema', () => {
 
   it('omits offers when price range is invalid', () => {
     const noPriceProduct = { ...mockProduct, priceRange: { min: 0, max: 0, currency: 'USD' } }
-    const schema = productSchema(noPriceProduct)
+    const schema: any = productSchema(noPriceProduct)
     expect(schema.offers).toBeUndefined()
   })
 
   it('limits review output to 5', () => {
     const manyReviews = Array(10).fill(mockProduct.reviews[0])
-    const schema = productSchema({ ...mockProduct, reviews: manyReviews })
+    const schema: any = productSchema({ ...mockProduct, reviews: manyReviews })
     expect(schema.review).toHaveLength(5)
   })
 })
 
 describe('reviewSchema', () => {
   it('returns valid Review schema', () => {
-    const schema = reviewSchema({
+    const schema: any = reviewSchema({
       headline: 'Amazing',
       rating: 5,
       body: 'Best product ever',
@@ -118,7 +118,7 @@ describe('reviewSchema', () => {
 
 describe('faqSchema', () => {
   it('generates FAQ structured data', () => {
-    const schema = faqSchema([
+    const schema: any = faqSchema([
       { question: 'Is it waterproof?', answer: 'Yes, IPX4 rated.' },
       { question: 'Battery life?', answer: '30 hours.' },
     ] as any)
@@ -131,7 +131,7 @@ describe('faqSchema', () => {
 
 describe('categoryListSchema', () => {
   it('generates ItemList with positions', () => {
-    const schema = categoryListSchema([
+    const schema: any = categoryListSchema([
       { name: 'Electronics', slug: 'electronics' },
       { name: 'Audio', slug: 'audio' },
     ] as any)
@@ -144,7 +144,7 @@ describe('categoryListSchema', () => {
 
 describe('videoObjectSchema', () => {
   it('generates VideoObject with YouTube URLs', () => {
-    const schema = videoObjectSchema(
+    const schema: any = videoObjectSchema(
       { id: 'abc123', title: 'Sony Review' } as any,
       'Sony WH-1000XM5'
     )
@@ -157,7 +157,7 @@ describe('videoObjectSchema', () => {
 
 describe('analysisAuthorSchema', () => {
   it('returns valid Person schema', () => {
-    const schema = analysisAuthorSchema()
+    const schema: any = analysisAuthorSchema()
     expect(schema['@type']).toBe('Person')
     expect(schema.name).toContain('ReviewIQ')
     expect(schema.worksFor['@type']).toBe('Organization')
