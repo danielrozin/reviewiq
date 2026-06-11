@@ -17,9 +17,8 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-sm text-gray-500 leading-relaxed">
-              Honest, AI-powered product reviews. Our SmartScores are built on
-              real buyer experiences and are never influenced by affiliate
-              partnerships.
+              Honest, AI-powered product reviews. Built on real buyer
+              experiences, not affiliate deals.
             </p>
           </div>
 
