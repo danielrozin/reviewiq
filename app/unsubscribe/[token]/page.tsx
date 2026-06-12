@@ -10,12 +10,20 @@ const EMAIL_TYPE_LABELS: Record<string, string> = {
   price_alerts: "price drop alerts",
   review_alerts: "new review notifications",
   weekly_digest: "weekly digest emails",
+  // DAN-984 survey invite. Its consent gate IS weeklyDigest, so unsubscribing
+  // here turns off the weekly digest (the email opt-in this survey was sent
+  // under), which also suppresses any future survey batch (live predicate).
+  survey_invite: "ReviewIQ emails (weekly digest)",
 };
 
 const EMAIL_TYPE_FIELDS: Record<string, "priceAlerts" | "reviewAlerts" | "weeklyDigest"> = {
   price_alerts: "priceAlerts",
   review_alerts: "reviewAlerts",
   weekly_digest: "weeklyDigest",
+  // Survey invites are gated on weeklyDigest; unsubscribe must flip the same
+  // field so the recipient is dropped from the consented pool on the next batch.
+  // Without this mapping the link 404s (violates the DAN-1066 dry-run check).
+  survey_invite: "weeklyDigest",
 };
 
 export default async function UnsubscribePage({ params }: Props) {
