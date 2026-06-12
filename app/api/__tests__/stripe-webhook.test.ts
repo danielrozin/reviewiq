@@ -7,6 +7,8 @@ import { NextRequest } from 'next/server'
 const mockPrisma = vi.hoisted(() => ({
   subscription: {
     update: vi.fn(),
+    updateMany: vi.fn(),
+    findUnique: vi.fn(),
   },
 }))
 
@@ -89,6 +91,7 @@ describe('POST /api/stripe/webhook', () => {
       },
     })
     mockStripe.subscriptions.retrieve.mockResolvedValue(mockSub)
+    mockPrisma.subscription.findUnique.mockResolvedValue({ id: 'row_1', stripeCustomerId: 'cus_abc' })
     mockPrisma.subscription.update.mockResolvedValue({})
 
     const req = makeWebhookRequest('body', 'sig_valid')
@@ -126,13 +129,13 @@ describe('POST /api/stripe/webhook', () => {
         },
       },
     })
-    mockPrisma.subscription.update.mockResolvedValue({})
+    mockPrisma.subscription.updateMany.mockResolvedValue({ count: 1 })
 
     const req = makeWebhookRequest('body', 'sig_valid')
     const res = await POST(req)
     expect(res.status).toBe(200)
 
-    expect(mockPrisma.subscription.update).toHaveBeenCalledWith({
+    expect(mockPrisma.subscription.updateMany).toHaveBeenCalledWith({
       where: { stripeCustomerId: 'cus_abc' },
       data: expect.objectContaining({
         status: 'active',
@@ -159,13 +162,13 @@ describe('POST /api/stripe/webhook', () => {
         },
       },
     })
-    mockPrisma.subscription.update.mockResolvedValue({})
+    mockPrisma.subscription.updateMany.mockResolvedValue({ count: 1 })
 
     const req = makeWebhookRequest('body', 'sig_valid')
     const res = await POST(req)
     expect(res.status).toBe(200)
 
-    expect(mockPrisma.subscription.update).toHaveBeenCalledWith({
+    expect(mockPrisma.subscription.updateMany).toHaveBeenCalledWith({
       where: { stripeCustomerId: 'cus_abc' },
       data: {
         status: 'canceled',
@@ -186,13 +189,13 @@ describe('POST /api/stripe/webhook', () => {
         },
       },
     })
-    mockPrisma.subscription.update.mockResolvedValue({})
+    mockPrisma.subscription.updateMany.mockResolvedValue({ count: 1 })
 
     const req = makeWebhookRequest('body', 'sig_valid')
     const res = await POST(req)
     expect(res.status).toBe(200)
 
-    expect(mockPrisma.subscription.update).toHaveBeenCalledWith({
+    expect(mockPrisma.subscription.updateMany).toHaveBeenCalledWith({
       where: { stripeCustomerId: 'cus_abc' },
       data: { status: 'past_due' },
     })

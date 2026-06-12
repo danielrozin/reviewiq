@@ -37,11 +37,11 @@ describe("SurveyPopup form_abandon", () => {
     vi.clearAllMocks();
   });
 
-  /** Render and advance past the 30s show delay so the popup is open at "intro". */
+  /** Render and advance past the show delay so the popup is open at "intro". */
   function showSurvey() {
     render(<SurveyPopup />);
     act(() => {
-      vi.advanceTimersByTime(30_000);
+      vi.advanceTimersByTime(12_000);
     });
   }
 
@@ -99,16 +99,21 @@ describe("SurveyPopup form_abandon", () => {
     expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "q1" });
   });
 
-  it("does NOT fire after the user explicitly dismisses the survey", () => {
+  it("records a dismissal and does NOT also fire form_abandon on a later page-leave", () => {
     showSurvey();
 
     fireEvent.click(document.querySelector('[aria-label="Close survey"]')!);
+    // Dismiss writes exactly one `dismissed` funnel beacon (DAN-983)...
+    expect(sendBeacon).toHaveBeenCalledTimes(1);
+    expect(trackEvent).toHaveBeenCalledWith("survey_popup_dismissed", { step: "intro" });
 
     act(() => {
       window.dispatchEvent(new Event("pagehide"));
     });
 
-    expect(sendBeacon).not.toHaveBeenCalled();
+    // ...and the subsequent page-leave does NOT add a form_abandon beacon.
+    expect(sendBeacon).toHaveBeenCalledTimes(1);
+    expect(trackEvent).not.toHaveBeenCalledWith("survey_form_abandon", expect.anything());
   });
 
   it("does NOT fire when the survey never opened (already completed)", () => {

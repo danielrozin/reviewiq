@@ -4,7 +4,40 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { trackEvent } from "@/lib/tracking/analytics";
 
 const STORAGE_KEY = "sr_survey_completed";
-const SHOW_DELAY_MS = 30_000; // 30 seconds
+// Friction reduction (DAN-983): trigger sooner than the old 30s so fast sessions
+// still see the prompt before they bounce. Paired with exit-intent / scroll-depth
+// triggers below for sessions that leave before even 12s elapses.
+const SHOW_DELAY_MS = 12_000; // 12 seconds
+const SCROLL_TRIGGER_RATIO = 0.5; // show once the user has scrolled 50% of the page
+
+function deviceTypeOf(): "mobile" | "desktop" {
+  return /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop";
+}
+
+/**
+ * Persist one funnel event to the survey table. Funnel events (DAN-983):
+ * `impression` | `partial` | `dismissed` | `form_abandon` | `form_submit`.
+ * Uses sendBeacon when `beacon` is set (page-leave paths: dismiss / abandon) so
+ * the write survives unload, with a keepalive fetch fallback. Best-effort and
+ * never throws — funnel instrumentation must not break the survey UX.
+ */
+function postSurveyEvent(payload: Record<string, unknown>, opts?: { beacon?: boolean }) {
+  const body = JSON.stringify(payload);
+  try {
+    if (opts?.beacon && typeof navigator.sendBeacon === "function") {
+      const blob = new Blob([body], { type: "application/json" });
+      if (navigator.sendBeacon("/api/surveys", blob)) return;
+    }
+    void fetch("/api/surveys", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body,
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // Never let funnel tracking throw.
+  }
+}
 
 const INTENT_OPTIONS = [
   { value: "researching", label: "Researching a product to buy" },
@@ -57,6 +90,11 @@ export function SurveyPopup() {
   const activeRef = useRef(false);
   const submittedRef = useRef(false);
   const abandonFiredRef = useRef(false);
+  // Single-fire guards for the funnel (DAN-983): the popup is shown exactly once
+  // per session regardless of which trigger wins, the impression is recorded
+  // once, and an explicit dismissal is recorded once.
+  const shownRef = useRef(false);
+  const dismissFiredRef = useRef(false);
 
   useEffect(() => {
     stepRef.current = step;
@@ -93,42 +131,68 @@ export function SurveyPopup() {
       q3Rating: a.q3Rating || undefined,
       q4Improvement: a.q4Improvement || undefined,
       q5Discovery: a.q5Discovery || undefined,
-      deviceType: /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop",
+      deviceType: deviceTypeOf(),
       userAgent: navigator.userAgent,
       referralSource: document.referrer || undefined,
     };
 
-    const body = JSON.stringify(payload);
-    try {
-      if (typeof navigator.sendBeacon === "function") {
-        const blob = new Blob([body], { type: "application/json" });
-        const queued = navigator.sendBeacon("/api/surveys", blob);
-        if (queued) return;
-      }
-      // Fallback for browsers without sendBeacon (or if it rejected the beacon).
-      void fetch("/api/surveys", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body,
-        keepalive: true,
-      }).catch(() => {});
-    } catch {
-      // Never let abandon tracking throw during unload.
-    }
+    postSurveyEvent(payload, { beacon: true });
+  }, []);
+
+  /**
+   * Show the popup once per session, regardless of which trigger (timer /
+   * exit-intent / scroll-depth) fires first, and record an `impression` row so
+   * the funnel can distinguish "popup not shown" from "shown but abandoned"
+   * (DAN-983). trackEvent keeps the analytics signal; the DB write is what makes
+   * the funnel queryable via GET /api/surveys.
+   */
+  const showPopup = useCallback((trigger: string) => {
+    if (shownRef.current) return;
+    shownRef.current = true;
+    setVisible(true);
+    activeRef.current = true;
+    trackEvent("survey_popup_shown", { trigger });
+    postSurveyEvent({
+      event: "impression",
+      reachedStep: "intro",
+      deviceType: deviceTypeOf(),
+      userAgent: navigator.userAgent,
+      referralSource: document.referrer || undefined,
+    });
   }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (localStorage.getItem(STORAGE_KEY)) return;
 
-    const timer = setTimeout(() => {
-      setVisible(true);
-      activeRef.current = true;
-      trackEvent("survey_popup_shown", { trigger: "timer" });
-    }, SHOW_DELAY_MS);
+    // Primary trigger: dwell timer.
+    const timer = setTimeout(() => showPopup("timer"), SHOW_DELAY_MS);
 
-    return () => clearTimeout(timer);
-  }, []);
+    // Secondary trigger A: exit-intent (desktop only). Mouse leaving the
+    // viewport toward the top (clientY <= 0) signals the user is heading for the
+    // tab bar / URL — prompt before they bounce.
+    const onMouseOut = (e: MouseEvent) => {
+      if (e.clientY <= 0 && !e.relatedTarget) showPopup("exit_intent");
+    };
+    // Secondary trigger B: scroll depth. Fast readers who scroll past 50% are
+    // engaged enough to ask, even if they leave before the 12s timer.
+    const onScroll = () => {
+      const doc = document.documentElement;
+      const scrollable = doc.scrollHeight - doc.clientHeight;
+      if (scrollable <= 0) return;
+      if (doc.scrollTop / scrollable >= SCROLL_TRIGGER_RATIO) showPopup("scroll_depth");
+    };
+
+    const isMobile = deviceTypeOf() === "mobile";
+    if (!isMobile) document.addEventListener("mouseout", onMouseOut);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      clearTimeout(timer);
+      document.removeEventListener("mouseout", onMouseOut);
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [showPopup]);
 
   // Page-leave listeners: abandon on whichever of pagehide / visibilitychange
   // (hidden) fires first. visibilitychange→hidden is the reliable last callback
@@ -153,6 +217,23 @@ export function SurveyPopup() {
     activeRef.current = false;
     setVisible(false);
     trackEvent("survey_popup_dismissed", { step });
+    // Record the dismissal in the funnel (DAN-983), with the step reached and
+    // any intent captured so far. Single-fire; suppress once a submit is mid-air.
+    if (dismissFiredRef.current || submittedRef.current) return;
+    dismissFiredRef.current = true;
+    const a = answersRef.current;
+    postSurveyEvent(
+      {
+        event: "dismissed",
+        reachedStep: step,
+        surveyCompleted: false,
+        q1Intent: a.q1Intent || undefined,
+        deviceType: deviceTypeOf(),
+        userAgent: navigator.userAgent,
+        referralSource: document.referrer || undefined,
+      },
+      { beacon: true }
+    );
   }, [step]);
 
   const submit = useCallback(async () => {
@@ -163,6 +244,7 @@ export function SurveyPopup() {
     setSubmitting(true);
     try {
       const payload = {
+        event: "form_submit",
         surveyCompleted: true,
         q1Intent: answers.q1Intent || undefined,
         q2Found: answers.q2Found ?? undefined,
@@ -229,7 +311,7 @@ export function SurveyPopup() {
                 onClick={() => setStep("q1")}
                 className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
               >
-                Sure, I'll help
+                Sure, I&apos;ll help
               </button>
             </div>
           </div>
@@ -245,6 +327,17 @@ export function SurveyPopup() {
                   key={opt.value}
                   onClick={() => {
                     setAnswers((a) => ({ ...a, q1Intent: opt.value }));
+                    // Partial save (DAN-983): persist intent the instant it's
+                    // chosen so abandoners still yield the highest-value field
+                    // (DAN-162/DAN-163) even if they never submit or the
+                    // page-leave beacon is dropped.
+                    postSurveyEvent({
+                      event: "partial",
+                      reachedStep: "q1",
+                      q1Intent: opt.value,
+                      deviceType: deviceTypeOf(),
+                      referralSource: document.referrer || undefined,
+                    });
                     setStep("q2");
                   }}
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${

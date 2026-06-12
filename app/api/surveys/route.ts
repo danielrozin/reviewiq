@@ -52,10 +52,13 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Fire-and-forget email notification for human-readable feedback only.
-    // Abandon events are high-volume drop-off signals (no answers to read), so
-    // skip the notification to avoid inbox spam — they live in the table/funnel.
-    if (data.event !== "form_abandon") {
+    // Fire-and-forget email notification for completed, human-readable feedback
+    // only. Funnel events (impression / partial / dismissed / form_abandon) are
+    // high-volume drop-off signals with little or nothing to read, so they live
+    // in the table/funnel and never trigger an email (DAN-983) — this avoids the
+    // inbox spam the new impression/dismissed instrumentation would otherwise
+    // cause now that every shown popup writes a row.
+    if (data.surveyCompleted) {
       notifyNewFeedback(data).catch(() => {});
     }
 
