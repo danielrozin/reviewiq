@@ -62,16 +62,20 @@ export const EmailFunnelStep = {
 } as const;
 
 /**
- * Q1 Intent options. Kept IDENTICAL to the on-site popup's INTENT_OPTIONS so the
- * q1Intent column aggregates across channels. If you change these, change them
- * in components/survey/SurveyPopup.tsx too.
+ * Q1 Intent options. The `value` codes are IDENTICAL to the on-site popup's
+ * INTENT_OPTIONS (components/survey/SurveyPopup.tsx) so q1Intent aggregates 1:1
+ * across channels and the ?intent= prefill resolves — NEVER change a value here
+ * without changing it on-site. The `label`s are email-channel presentational copy
+ * (DAN-985 rev 2, UX-finalized) and may differ from on-site labels freely; labels
+ * don't affect aggregation. DAN-985's draft `check_score`/`other` codes were
+ * dropped — they don't exist on-site (logged as a DAN-983 future enhancement).
  */
 export const INTENT_OPTIONS = [
-  { value: "researching", label: "Researching a product to buy" },
-  { value: "comparing", label: "Comparing specific products" },
-  { value: "reading_reviews", label: "Reading reviews" },
-  { value: "writing_review", label: "Writing a review" },
-  { value: "browsing", label: "Just browsing" },
+  { value: "researching", label: "Researching products in general" },
+  { value: "comparing", label: "Compare specific products before buying" },
+  { value: "reading_reviews", label: "Read what other people experienced" },
+  { value: "writing_review", label: "Write or update a review" },
+  { value: "browsing", label: "Just browsing / curiosity" },
 ] as const;
 
 export type IntentValue = (typeof INTENT_OPTIONS)[number]["value"];
