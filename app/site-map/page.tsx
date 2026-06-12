@@ -309,6 +309,7 @@ export default function SiteMapPage() {
               { href: "/write-review", label: "Write a Review" },
               { href: "/search", label: "Search" },
               { href: "/how-it-works", label: "How It Works" },
+              { href: "/how-we-work", label: "How We Work (Disclosures)" },
               { href: "/about", label: "About" },
               { href: "/pricing", label: "Pricing" },
               { href: "/privacy", label: "Privacy Policy" },
