@@ -68,20 +68,20 @@ describe('productSchema', () => {
   } as any
 
   it('calculates average rating correctly', () => {
-    const schema = productSchema(mockProduct)
+    const schema = productSchema(mockProduct) as Record<string, any>
     expect(schema.aggregateRating.ratingValue).toBe('4.5')
     expect(schema.aggregateRating.reviewCount).toBe(10)
   })
 
   it('omits aggregateRating and review when product has no reviews', () => {
     const noReviewProduct = { ...mockProduct, reviews: [], reviewCount: 0 }
-    const schema = productSchema(noReviewProduct)
+    const schema = productSchema(noReviewProduct) as Record<string, any>
     expect(schema.aggregateRating).toBeUndefined()
     expect(schema.review).toBeUndefined()
   })
 
   it('includes price range and offerCount in offers', () => {
-    const schema = productSchema(mockProduct)
+    const schema = productSchema(mockProduct) as Record<string, any>
     expect(schema.offers.lowPrice).toBe(300)
     expect(schema.offers.highPrice).toBe(400)
     expect(schema.offers.priceCurrency).toBe('USD')
@@ -90,7 +90,7 @@ describe('productSchema', () => {
 
   it('omits offers when price range is invalid', () => {
     const noPriceProduct = { ...mockProduct, priceRange: { min: 0, max: 0, currency: 'USD' } }
-    const schema = productSchema(noPriceProduct)
+    const schema = productSchema(noPriceProduct) as Record<string, any>
     expect(schema.offers).toBeUndefined()
   })
 
@@ -101,7 +101,7 @@ describe('productSchema', () => {
 
   it('limits review output to 5', () => {
     const manyReviews = Array(10).fill(mockProduct.reviews[0])
-    const schema = productSchema({ ...mockProduct, reviews: manyReviews })
+    const schema = productSchema({ ...mockProduct, reviews: manyReviews }) as Record<string, any>
     expect(schema.review).toHaveLength(5)
   })
 })

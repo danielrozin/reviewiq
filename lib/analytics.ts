@@ -32,6 +32,20 @@ export function trackShareClick(platform: string, page: string) {
   trackEvent("share_click", { platform, page });
 }
 
+/**
+ * Where the "see how we work →" / methodology link was opened from.
+ * `panel_footnote` = the affiliate disclosure footnote under WhereToBuyPanel.
+ * `how-we-work-link` = a standalone methodology link reusing the disclosure copy
+ * (e.g. future deal-alert / price-drop emails per DAN-600).
+ */
+export type DisclosureMethodologySource = "panel_footnote" | "how-we-work-link";
+
+export function trackDisclosureMethodologyOpen(
+  source: DisclosureMethodologySource
+) {
+  trackEvent("disclosure_methodology_open", { source });
+}
+
 export function trackRelatedComparisonClick(
   source_page: string,
   target_page: string
