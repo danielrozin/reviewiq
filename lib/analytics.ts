@@ -46,6 +46,31 @@ export function trackDisclosureMethodologyOpen(
   trackEvent("disclosure_methodology_open", { source });
 }
 
+/**
+ * Fired once when WhereToBuyPanel mounts (DAN-974 / DAN-600 Component 4).
+ * `merchant_count` is 0 for the empty state; `lowest_price` is 0 when no offers.
+ */
+export function trackWhereToBuyImpression(params: {
+  product_slug: string;
+  merchant_count: number;
+  lowest_price: number;
+}) {
+  trackEvent("where_to_buy_impression", params);
+}
+
+/**
+ * Fired when a shopper clicks a merchant row in WhereToBuyPanel.
+ * `position` is the 0-based index in the rendered (sorted) list.
+ */
+export function trackWhereToBuyMerchantClick(params: {
+  product_slug: string;
+  merchant_slug: string;
+  displayed_price: number;
+  position: number;
+}) {
+  trackEvent("where_to_buy_merchant_click", params);
+}
+
 export function trackRelatedComparisonClick(
   source_page: string,
   target_page: string

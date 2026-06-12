@@ -53,6 +53,28 @@ export interface PriceRange {
   currency: string;
 }
 
+/**
+ * A single live merchant offer for a product, surfaced in WhereToBuyPanel
+ * (DAN-974 / DAN-600 Component 1). Populated from the affiliate backend
+ * (Impact / CJ / Amazon Associates per DAN-365 / DAN-368).
+ */
+export interface MerchantOffer {
+  /** Stable merchant key, e.g. "amazon", "best-buy", or the brand slug for first-party. */
+  merchantSlug: string;
+  /** Display name, e.g. "Amazon", "Best Buy", "Dyson". */
+  merchantName: string;
+  /** Affiliate/tracking deep link to the merchant's product page. */
+  url: string;
+  /** Current price in the smallest sane unit of `currency` (e.g. dollars). */
+  price: number;
+  /** ISO-4217 currency code, e.g. "USD". */
+  currency: string;
+  /** True when the merchant is the product's own manufacturer/brand store. */
+  isFirstParty: boolean;
+  /** Optional 24×24 logo path; falls back to the merchant registry. */
+  logo?: string;
+}
+
 export interface RatingDistribution {
   5: number;
   4: number;

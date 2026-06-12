@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getCategoryBySlug, categories } from "@/data/categories";
 import { getProductBySlug, getProductsByCategory, getAffinityProducts } from "@/data/products";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -184,6 +185,18 @@ export default async function ProductPage({ params }: Props) {
           {/* AI Summary */}
           <div data-speakable="ai-summary">
             <AISummaryCard summary={product.aiSummary} />
+          </div>
+
+          {/* Tertiary "Where to buy" CTA (Option C, DAN-974) — links to the
+              dedicated sub-page; deliberately NOT an inline buy button. */}
+          <div>
+            <Link
+              href={`/category/${slug}/${productSlug}/where-to-buy`}
+              className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700"
+            >
+              Where to buy
+              <span aria-hidden="true">→</span>
+            </Link>
           </div>
 
           {/* Best For / Not Ideal For */}
