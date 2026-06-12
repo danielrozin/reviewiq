@@ -52,13 +52,15 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Fire-and-forget email notification for completed, human-readable feedback
-    // only. Funnel events (impression / partial / dismissed / form_abandon) are
-    // high-volume drop-off signals with little or nothing to read, so they live
-    // in the table/funnel and never trigger an email (DAN-983) — this avoids the
-    // inbox spam the new impression/dismissed instrumentation would otherwise
-    // cause now that every shown popup writes a row.
-    if (data.surveyCompleted) {
+    // Fire-and-forget email notification for human-readable feedback only.
+    // Notify ONLY on a completed submission. Funnel rows (impression / partial /
+    // dismissed / form_abandon on-site, plus the email channel's email_sent /
+    // email_open / landing_view / partial — DAN-984; on-site drop-off — DAN-983)
+    // are high-volume signals with nothing to read, so they live in the
+    // table/funnel and never trigger an email. This is essential now that a
+    // single email send writes ~150 email_sent rows that would otherwise each
+    // fire a notification.
+    if (data.surveyCompleted === true) {
       notifyNewFeedback(data).catch(() => {});
     }
 
