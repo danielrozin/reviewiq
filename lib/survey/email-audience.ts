@@ -66,6 +66,27 @@ export interface AudienceCounts {
    * is randomly sampled from, per the DAN-1066 all-consented ruling).
    */
   eligible: number;
+  /**
+   * DIAGNOSTIC (DAN-1081) — the SECOND email reservoir. The eligibility predicate
+   * above counts only `User.email`, which fills ONLY via Google OAuth sign-in
+   * (rare on a browse-first content site). The public, no-login email-capture
+   * surface (`POST /api/subscribe`, per-product alert opt-in) writes to a
+   * SEPARATE table, `EmailSubscription`, which the predicate never inspects.
+   * Reporting it here makes a single prod GET dispositive:
+   *   - withEmail:0 AND emailSubscriptionsActive:0 -> genuinely no emailable
+   *     audience anywhere -> VP Product scope call (seed/import or lean on the
+   *     on-site funnel DAN-983).
+   *   - withEmail:0 BUT emailSubscriptionsActive>0 -> the predicate is querying
+   *     the wrong reservoir; an emailable audience exists in EmailSubscription
+   *     (consent basis = per-product alert opt-in, distinct from weeklyDigest;
+   *     VP Product must rule whether it covers a one-time survey).
+   * COUNT-ONLY — no send path reads these; they do not change who gets emailed.
+   */
+  emailSubscriptionsTotal: number;
+  /** EmailSubscription rows still opted-in (unsubscribedAt IS NULL). */
+  emailSubscriptionsActive: number;
+  /** Distinct email addresses among active subscriptions (de-duped reach). */
+  emailSubscriptionsDistinct: number;
 }
 
 /** Build the Prisma `where` for consented, emailable users (optionally reviewers). */
@@ -82,12 +103,29 @@ function eligibleWhere(reviewersOnly: boolean) {
  * the operator knows the real audience size against live consent state.
  */
 export async function getAudienceCounts(): Promise<AudienceCounts> {
-  const [withEmail, consented, consentedReviewers, alreadySent] = await Promise.all([
+  const [
+    withEmail,
+    consented,
+    consentedReviewers,
+    alreadySent,
+    emailSubscriptionsTotal,
+    emailSubscriptionsActive,
+    activeSubRows,
+  ] = await Promise.all([
     prisma.user.count({ where: { email: { not: null } } }),
     prisma.user.count({ where: eligibleWhere(false) }),
     prisma.user.count({ where: eligibleWhere(true) }),
     prisma.emailLog.count({ where: { emailType: SURVEY_INVITE_EMAIL_TYPE } }),
+    // DIAGNOSTIC (DAN-1081): second email reservoir — see AudienceCounts docs.
+    prisma.emailSubscription.count(),
+    prisma.emailSubscription.count({ where: { unsubscribedAt: null } }),
+    prisma.emailSubscription.findMany({
+      where: { unsubscribedAt: null },
+      select: { email: true },
+      distinct: ["email"],
+    }),
   ]);
+  const emailSubscriptionsDistinct = activeSubRows.length;
 
   // Eligible = full consented pool (all weeklyDigest=true, not reviewers-only)
   // minus those already sent. This is the pool batch-1 is sampled from.
@@ -102,7 +140,16 @@ export async function getAudienceCounts(): Promise<AudienceCounts> {
   });
   const eligible = consentedRows.filter((u) => !sentSet.has(u.id)).length;
 
-  return { withEmail, consented, consentedReviewers, alreadySent, eligible };
+  return {
+    withEmail,
+    consented,
+    consentedReviewers,
+    alreadySent,
+    eligible,
+    emailSubscriptionsTotal,
+    emailSubscriptionsActive,
+    emailSubscriptionsDistinct,
+  };
 }
 
 /**
