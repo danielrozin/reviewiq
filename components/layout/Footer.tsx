@@ -143,25 +143,25 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-200 mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
             >
               Privacy
             </Link>
             <Link
               href="/terms"
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
             >
               Terms
             </Link>
             <Link
               href="/cookie-policy"
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
             >
               Cookies
             </Link>
