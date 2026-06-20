@@ -286,8 +286,17 @@ export function SurveyPopup() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
-      {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismiss} />
+      {/* Backdrop. DAN-1179 (P2): backdrop-tap dismiss is desktop-only. On a
+          phone the card is a bottom sheet and a tap just above it (in the
+          backdrop) is almost always an accidental close — which both loses
+          borderline users and inflates `dismissed@q1`, polluting the DAN-1175
+          lift signal. On mobile the explicit ✕ is the only dismiss affordance. */}
+      <div
+        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+        onClick={() => {
+          if (deviceTypeOf() === "desktop") dismiss();
+        }}
+      />
 
       {/* Card */}
       <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
@@ -304,7 +313,12 @@ export function SurveyPopup() {
 
         {step === "q1" && (
           <div>
-            <p className="text-xs text-brand-600 font-medium mb-2">1 of 5</p>
+            {/* DAN-1179 (P1): no "1 of 5" counter on Q1. Removing the intro
+                screen (DAN-1170) but keeping the "this is a 5-question survey"
+                signal on the very first frame still primes the user for
+                homework at the exact moment we're trying to win the first tap.
+                The counter returns from Q2 onward, once the user is engaged, so
+                Q1 reads as a single question — not the opening of a survey. */}
             <h3 className="text-base font-bold text-gray-900 mb-4">What brought you here today?</h3>
             <div className="space-y-2">
               {INTENT_OPTIONS.map((opt) => (
