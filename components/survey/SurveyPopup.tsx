@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { trackEvent } from "@/lib/tracking/analytics";
+import { NEWSLETTER_PRODUCT, SUBSCRIPTION_SOURCE } from "@/lib/email/newsletter";
 
 const STORAGE_KEY = "sr_survey_completed";
 // Friction reduction (DAN-983): trigger sooner than the old 30s so fast sessions
@@ -84,6 +85,43 @@ export function SurveyPopup() {
     q5Discovery: "",
   });
   const [submitting, setSubmitting] = useState(false);
+
+  // --- Consent-clean email opt-in (DAN-1085) ---
+  // Surfaced only on the post-completion "thanks" step. Opt-in is strictly
+  // affirmative: the user must type an email and click subscribe — there is no
+  // pre-checked box and no auto-subscribe from survey answers. Writes to the
+  // existing POST /api/subscribe -> EmailSubscription path with
+  // source="survey_funnel" so the consent basis (source + createdAt timestamp)
+  // is stored and a future send is defensible.
+  const [optInEmail, setOptInEmail] = useState("");
+  const [optInStatus, setOptInStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+
+  const subscribeFromSurvey = useCallback(async () => {
+    const email = optInEmail.trim();
+    if (!email || optInStatus === "loading") return;
+    setOptInStatus("loading");
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          ...NEWSLETTER_PRODUCT,
+          source: SUBSCRIPTION_SOURCE.SURVEY_FUNNEL,
+        }),
+      });
+      if (!res.ok) {
+        setOptInStatus("error");
+        return;
+      }
+      trackEvent("survey_email_optin");
+      setOptInStatus("success");
+    } catch {
+      setOptInStatus("error");
+    }
+  }, [optInEmail, optInStatus]);
 
   // --- Abandon tracking (DAN-699) ---
   // Refs mirror live state so the page-leave listeners (pagehide /
@@ -492,6 +530,50 @@ export function SurveyPopup() {
             <p className="text-sm text-gray-500 mb-4">
               Your feedback helps us build a better review platform for everyone.
             </p>
+
+            {/* Consent-clean email opt-in (DAN-1085). Affirmative only: nothing is
+                subscribed unless the user enters an email and clicks the button. */}
+            {optInStatus === "success" ? (
+              <div className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+                You&apos;re on the list — we&apos;ll only email occasional ReviewIQ
+                updates. Unsubscribe anytime.
+              </div>
+            ) : (
+              <div className="mb-4 text-left">
+                <p className="text-sm font-medium text-gray-700 mb-1">
+                  Want occasional ReviewIQ updates?
+                </p>
+                <p className="text-xs text-gray-400 mb-2">
+                  Optional. Drop your email to opt in — no spam, unsubscribe anytime.
+                </p>
+                <div className="flex gap-2">
+                  <input
+                    type="email"
+                    value={optInEmail}
+                    onChange={(e) => setOptInEmail(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") subscribeFromSurvey();
+                    }}
+                    placeholder="you@example.com"
+                    className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+                    disabled={optInStatus === "loading"}
+                  />
+                  <button
+                    onClick={subscribeFromSurvey}
+                    disabled={optInStatus === "loading" || !optInEmail.trim()}
+                    className="px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50"
+                  >
+                    {optInStatus === "loading" ? "..." : "Keep me posted"}
+                  </button>
+                </div>
+                {optInStatus === "error" && (
+                  <p className="text-xs text-red-600 mt-2">
+                    Couldn&apos;t subscribe — please try again.
+                  </p>
+                )}
+              </div>
+            )}
+
             <button
               onClick={() => setVisible(false)}
               className="px-6 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"

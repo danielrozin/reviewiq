@@ -55,6 +55,46 @@ describe('POST /api/subscribe', () => {
     expect(data.alreadySubscribed).toBeUndefined()
   })
 
+  it('defaults consent source to product_alert when omitted (DAN-1085)', async () => {
+    mockPrisma.emailSubscription.findUnique.mockResolvedValue(null)
+    mockPrisma.emailSubscription.create.mockResolvedValue({ id: 's1' })
+
+    await POST(makeRequest(validSub))
+    expect(mockPrisma.emailSubscription.create).toHaveBeenCalledWith({
+      data: expect.objectContaining({ source: 'product_alert' }),
+    })
+  })
+
+  it('persists survey_funnel consent source when provided (DAN-1085)', async () => {
+    mockPrisma.emailSubscription.findUnique.mockResolvedValue(null)
+    mockPrisma.emailSubscription.create.mockResolvedValue({ id: 's1' })
+
+    await POST(makeRequest({ ...validSub, source: 'survey_funnel' }))
+    expect(mockPrisma.emailSubscription.create).toHaveBeenCalledWith({
+      data: expect.objectContaining({ source: 'survey_funnel' }),
+    })
+  })
+
+  it('rejects an unknown consent source (DAN-1085)', async () => {
+    const res = await POST(makeRequest({ ...validSub, source: 'bought_list' }))
+    expect(res.status).toBe(400)
+    expect(mockPrisma.emailSubscription.create).not.toHaveBeenCalled()
+  })
+
+  it('re-stamps consent source on reactivation (DAN-1085)', async () => {
+    mockPrisma.emailSubscription.findUnique.mockResolvedValue({
+      id: 's1',
+      unsubscribedAt: new Date(),
+    })
+    mockPrisma.emailSubscription.update.mockResolvedValue({ id: 's1' })
+
+    await POST(makeRequest({ ...validSub, source: 'survey_funnel' }))
+    expect(mockPrisma.emailSubscription.update).toHaveBeenCalledWith({
+      where: { id: 's1' },
+      data: { unsubscribedAt: null, source: 'survey_funnel' },
+    })
+  })
+
   it('returns alreadySubscribed for active existing subscription', async () => {
     mockPrisma.emailSubscription.findUnique.mockResolvedValue({
       id: 's1',
@@ -79,7 +119,7 @@ describe('POST /api/subscribe', () => {
 
     expect(mockPrisma.emailSubscription.update).toHaveBeenCalledWith({
       where: { id: 's1' },
-      data: { unsubscribedAt: null },
+      data: { unsubscribedAt: null, source: 'product_alert' },
     })
   })
 

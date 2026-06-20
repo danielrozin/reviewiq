@@ -405,12 +405,19 @@ model EmailSubscription {
   productName    String
   unsubscribeToken String  @unique @default(cuid())
   unsubscribedAt DateTime?
+  // Consent basis (DAN-1085): which opt-in surface produced this subscription.
+  // Paired with `createdAt` (the opt-in timestamp), this is the defensible record
+  // of *what* the subscriber consented to, so a future send can scope to the
+  // right population. "product_alert" = per-product SmartScore alert opt-in
+  // (EmailCaptureCTA); "survey_funnel" = on-site survey-funnel newsletter opt-in.
+  source         String    @default("product_alert")
   createdAt      DateTime  @default(now())
 
   @@unique([email, productId])
   @@index([productId])
   @@index([email])
   @@index([unsubscribeToken])
+  @@index([source])
 }
 
 // ==========================================
