@@ -55,7 +55,12 @@ const DISCOVERY_OPTIONS = [
   { value: "other", label: "Other" },
 ];
 
-type Step = "intro" | "q1" | "q2" | "q3" | "q4" | "q5" | "thanks";
+// DAN-1170: the dedicated intro/welcome gate is removed — the popup now opens
+// directly on Q1 (an answerable, single-tap prompt). Live funnel data (DAN-176 /
+// DAN-1162) showed ~90% of impressions abandoned at the old `intro` screen before
+// answering anything, so the gate is collapsed to convert the impressions we
+// already get. "intro" is intentionally no longer a reachable step.
+type Step = "q1" | "q2" | "q3" | "q4" | "q5" | "thanks";
 
 interface Answers {
   q1Intent: string;
@@ -68,7 +73,8 @@ interface Answers {
 
 export function SurveyPopup() {
   const [visible, setVisible] = useState(false);
-  const [step, setStep] = useState<Step>("intro");
+  // Open on Q1 directly — no intro gate (DAN-1170).
+  const [step, setStep] = useState<Step>("q1");
   const [answers, setAnswers] = useState<Answers>({
     q1Intent: "",
     q2Found: null,
@@ -84,7 +90,7 @@ export function SurveyPopup() {
   // visibilitychange) can read the current step/answers without re-binding.
   const stepRef = useRef<Step>(step);
   const answersRef = useRef<Answers>(answers);
-  // True once the survey is open and the user is mid-flow (intro..q5) and has
+  // True once the survey is open and the user is mid-flow (q1..q5) and has
   // not submitted, dismissed, or reached "thanks". Only then is a page-leave an
   // abandon. submittedRef suppresses false abandons while a submit is in flight.
   const activeRef = useRef(false);
@@ -145,6 +151,11 @@ export function SurveyPopup() {
    * the funnel can distinguish "popup not shown" from "shown but abandoned"
    * (DAN-983). trackEvent keeps the analytics signal; the DB write is what makes
    * the funnel queryable via GET /api/surveys.
+   *
+   * DAN-1170: the popup now opens on Q1, so the impression's reachedStep is "q1"
+   * (no intro gate). The intro→q1 progression that the funnel tracks is therefore
+   * measured as (partial@q1 + form_submit) / impression — i.e. how many shown
+   * users actually answered the first question.
    */
   const showPopup = useCallback((trigger: string) => {
     if (shownRef.current) return;
@@ -154,7 +165,7 @@ export function SurveyPopup() {
     trackEvent("survey_popup_shown", { trigger });
     postSurveyEvent({
       event: "impression",
-      reachedStep: "intro",
+      reachedStep: "q1",
       deviceType: deviceTypeOf(),
       userAgent: navigator.userAgent,
       referralSource: document.referrer || undefined,
@@ -290,32 +301,6 @@ export function SurveyPopup() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-
-        {step === "intro" && (
-          <div className="text-center">
-            <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">💬</span>
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Quick feedback?</h3>
-            <p className="text-sm text-gray-500 mb-6">
-              Help us make ReviewIQ better. Takes less than 30 seconds.
-            </p>
-            <div className="flex gap-3">
-              <button
-                onClick={dismiss}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
-              >
-                No thanks
-              </button>
-              <button
-                onClick={() => setStep("q1")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
-              >
-                Sure, I&apos;ll help
-              </button>
-            </div>
-          </div>
-        )}
 
         {step === "q1" && (
           <div>

@@ -37,7 +37,7 @@ describe("SurveyPopup form_abandon", () => {
     vi.clearAllMocks();
   });
 
-  /** Render and advance past the show delay so the popup is open at "intro". */
+  /** Render and advance past the show delay so the popup is open at "q1" (DAN-1170: no intro gate). */
   function showSurvey() {
     render(<SurveyPopup />);
     act(() => {
@@ -54,7 +54,7 @@ describe("SurveyPopup form_abandon", () => {
 
     expect(sendBeacon).toHaveBeenCalledTimes(1);
     expect(sendBeacon.mock.calls[0][0]).toBe("/api/surveys");
-    expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "intro" });
+    expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "q1" });
   });
 
   it("fires form_abandon when the tab is hidden (visibilitychange)", () => {
@@ -89,14 +89,14 @@ describe("SurveyPopup form_abandon", () => {
   it("records the reached step after the user advances", () => {
     showSurvey();
 
-    // Advance from intro into the first question.
-    fireEvent.click(document.querySelector("button.bg-brand-600")!);
+    // Popup opens on Q1 (no intro gate, DAN-1170). Answering Q1 advances to Q2.
+    fireEvent.click(document.querySelector(".space-y-2 button")!);
 
     act(() => {
       window.dispatchEvent(new Event("pagehide"));
     });
 
-    expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "q1" });
+    expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "q2" });
   });
 
   it("records a dismissal and does NOT also fire form_abandon on a later page-leave", () => {
@@ -105,7 +105,7 @@ describe("SurveyPopup form_abandon", () => {
     fireEvent.click(document.querySelector('[aria-label="Close survey"]')!);
     // Dismiss writes exactly one `dismissed` funnel beacon (DAN-983)...
     expect(sendBeacon).toHaveBeenCalledTimes(1);
-    expect(trackEvent).toHaveBeenCalledWith("survey_popup_dismissed", { step: "intro" });
+    expect(trackEvent).toHaveBeenCalledWith("survey_popup_dismissed", { step: "q1" });
 
     act(() => {
       window.dispatchEvent(new Event("pagehide"));
