@@ -77,6 +77,31 @@ jobs:
       - name: Pull Vercel Environment
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
+      # Apply pending Prisma migrations to the production DB BEFORE building/deploying.
+      # Vercel's build/deploy never runs `prisma migrate deploy`, so without this a PR
+      # that adds a column (e.g. DAN-1085's EmailSubscription.source) ships code that
+      # 500s every write to the affected table until someone applies the migration by
+      # hand. Running it here — after `vercel pull` writes the prod env, before the
+      # build — guarantees the schema is ahead of the code and removes the silent
+      # footgun for all future schema changes. Fails loudly if DATABASE_URL is absent.
+      - name: Apply DB migrations (production)
+        run: |
+          ENV_FILE=.vercel/.env.production.local
+          if [ ! -f "$ENV_FILE" ]; then
+            echo "::error::$ENV_FILE not found — vercel pull did not produce a prod env file."
+            exit 1
+          fi
+          set -a
+          # shellcheck disable=SC1090
+          . "$ENV_FILE"
+          set +a
+          if [ -z "${DATABASE_URL:-}" ]; then
+            echo "::error::DATABASE_URL not present in the pulled production env. Add it to the Vercel production environment before deploying schema changes."
+            exit 1
+          fi
+          echo "Applying pending Prisma migrations to production…"
+          npx prisma migrate deploy
+
       - name: Build for Production
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
