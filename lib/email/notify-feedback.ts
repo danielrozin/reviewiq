@@ -25,6 +25,38 @@ function getResend(): Resend | null {
  * serverless the function instance can freeze the moment the route returns its
  * response, killing an un-awaited Resend HTTP request before it flushes.
  */
+// Resend's universally-available sandbox sender. It requires no domain
+// verification and reliably delivers to the Resend account owner's own
+// address — which is exactly who our admin notifications go to
+// (daniarozin@gmail.com). Used as the guaranteed-deliverable fallback when the
+// branded From domain isn't (yet) verified.
+const SANDBOX_FROM = "onboarding@resend.dev";
+
+async function trySend(
+  resend: Resend,
+  from: string,
+  subject: string,
+  html: string,
+): Promise<boolean> {
+  try {
+    const { data, error } = await resend.emails.send({
+      from,
+      to: NOTIFY_EMAILS,
+      subject,
+      html,
+    });
+    if (error) {
+      console.error(`[EMAIL][resend][fail] from=${from} ${subject}:`, error);
+      return false;
+    }
+    console.log(`[EMAIL][resend][ok] from=${from} ${subject} (id=${data?.id ?? "?"})`);
+    return true;
+  } catch (err) {
+    console.error(`[EMAIL][resend][fail] from=${from} ${subject}:`, err);
+    return false;
+  }
+}
+
 async function sendAdminNotification(subject: string, html: string): Promise<boolean> {
   const resend = getResend();
   if (!resend) {
@@ -37,25 +69,24 @@ async function sendAdminNotification(subject: string, html: string): Promise<boo
   // Resend silently reject every send (DAN-1276 root cause). Defensive trim so a
   // stray whitespace in the secret can never break delivery again.
   const fromEmail =
-    (process.env.RESEND_FROM_EMAIL || "").trim() || "onboarding@resend.dev";
+    (process.env.RESEND_FROM_EMAIL || "").trim() || SANDBOX_FROM;
 
-  try {
-    const { data, error } = await resend.emails.send({
-      from: fromEmail,
-      to: NOTIFY_EMAILS,
-      subject,
-      html,
-    });
-    if (error) {
-      console.error(`[EMAIL][resend][fail] ${subject}:`, error);
-      return false;
-    }
-    console.log(`[EMAIL][resend][ok] ${subject} (id=${data?.id ?? "?"})`);
-    return true;
-  } catch (err) {
-    console.error(`[EMAIL][resend][fail] ${subject}:`, err);
-    return false;
+  // Primary attempt with the configured (branded) sender.
+  if (await trySend(resend, fromEmail, subject, html)) return true;
+
+  // Fallback: if the branded send failed (the most common cause is an
+  // unverified sender domain in Resend — DAN-1276: revieweriq.com was never
+  // verified, so every branded send 403s), retry once with the sandbox sender
+  // so the founder still gets the notification. Once the domain is verified the
+  // primary attempt succeeds and this fallback is never reached.
+  if (fromEmail !== SANDBOX_FROM) {
+    console.warn(
+      `[EMAIL][fallback] retrying "${subject}" via ${SANDBOX_FROM} after ${fromEmail} failed`,
+    );
+    return trySend(resend, SANDBOX_FROM, subject, html);
   }
+
+  return false;
 }
 
 function escapeHtml(value: string): string {
