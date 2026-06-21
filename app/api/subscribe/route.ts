@@ -5,6 +5,7 @@ import {
   SUBSCRIPTION_SOURCE,
   SUBSCRIPTION_SOURCE_VALUES,
 } from "@/lib/email/newsletter";
+import { notifyNewSubscriber } from "@/lib/email/notify-feedback";
 
 const subscribeSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -48,12 +49,25 @@ export async function POST(req: NextRequest) {
         where: { id: existing.id },
         data: { unsubscribedAt: null, source },
       });
+      // Awaited admin notification (DAN-1276): never let a serverless freeze
+      // drop the send; a notify failure must not fail the subscription.
+      try {
+        await notifyNewSubscriber({ email, productName, productSlug, source, reSubscribe: true });
+      } catch (err) {
+        console.error("[EMAIL][subscribe] re-subscribe notification threw:", err);
+      }
       return NextResponse.json({ success: true });
     }
 
     await prisma.emailSubscription.create({
       data: { email, productId, productSlug, productName, source },
     });
+
+    try {
+      await notifyNewSubscriber({ email, productName, productSlug, source });
+    } catch (err) {
+      console.error("[EMAIL][subscribe] new-subscriber notification threw:", err);
+    }
 
     return NextResponse.json({ success: true });
   } catch {

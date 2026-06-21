@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    // Fire-and-forget email notification for human-readable feedback only.
+    // Email notification for human-readable feedback only.
     // Notify ONLY on a completed submission. Funnel rows (impression / partial /
     // dismissed / form_abandon on-site, plus the email channel's email_sent /
     // email_open / landing_view / partial — DAN-984; on-site drop-off — DAN-983)
@@ -60,8 +60,16 @@ export async function POST(request: NextRequest) {
     // table/funnel and never trigger an email. This is essential now that a
     // single email send writes ~150 email_sent rows that would otherwise each
     // fire a notification.
+    //
+    // AWAITED on purpose (DAN-1276): an un-awaited send is dropped when Vercel
+    // freezes the serverless instance right after the response. A send failure
+    // must never 500 the submission, so it is wrapped and logged, not rethrown.
     if (data.surveyCompleted === true) {
-      notifyNewFeedback(data).catch(() => {});
+      try {
+        await notifyNewFeedback(data);
+      } catch (err) {
+        console.error("[EMAIL][surveys] feedback notification threw:", err);
+      }
     }
 
     return NextResponse.json({ id: survey.id }, { status: 201 });

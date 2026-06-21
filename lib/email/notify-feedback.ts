@@ -9,6 +9,55 @@ function getResend(): Resend | null {
   return _resend;
 }
 
+/**
+ * Send an admin notification to the ReviewIQ owners.
+ *
+ * Returns `true` only when Resend actually accepted the message — never a silent
+ * `true`. Every outcome is logged (`[EMAIL][resend][ok|fail]` / `[EMAIL][skip]`)
+ * so a missing key or a send failure is visible in the Vercel function logs
+ * instead of vanishing (DAN-1276 / DAN-323 founder bug: 120 days of zero
+ * notifications because the path failed silently).
+ *
+ * Callers MUST `await` this. It is intentionally not fire-and-forget: on Vercel
+ * serverless the function instance can freeze the moment the route returns its
+ * response, killing an un-awaited Resend HTTP request before it flushes.
+ */
+async function sendAdminNotification(subject: string, html: string): Promise<boolean> {
+  const resend = getResend();
+  if (!resend) {
+    console.warn(`[EMAIL][skip] RESEND_API_KEY not set — dropped admin notification: ${subject}`);
+    return false;
+  }
+
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+
+  try {
+    const { data, error } = await resend.emails.send({
+      from: fromEmail,
+      to: NOTIFY_EMAILS,
+      subject,
+      html,
+    });
+    if (error) {
+      console.error(`[EMAIL][resend][fail] ${subject}:`, error);
+      return false;
+    }
+    console.log(`[EMAIL][resend][ok] ${subject} (id=${data?.id ?? "?"})`);
+    return true;
+  } catch (err) {
+    console.error(`[EMAIL][resend][fail] ${subject}:`, err);
+    return false;
+  }
+}
+
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 interface SurveyData {
   q1Intent?: string | null;
   q2Found?: boolean | null;
@@ -20,25 +69,18 @@ interface SurveyData {
   referralSource?: string | null;
 }
 
-export async function notifyNewFeedback(survey: SurveyData) {
-  const resend = getResend();
-  if (!resend) {
-    console.warn("RESEND_API_KEY not set — skipping feedback email notification");
-    return;
-  }
-
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+export async function notifyNewFeedback(survey: SurveyData): Promise<boolean> {
   const lines: string[] = [];
 
-  if (survey.q1Intent) lines.push(`<b>Intent:</b> ${survey.q1Intent}`);
+  if (survey.q1Intent) lines.push(`<b>Intent:</b> ${escapeHtml(survey.q1Intent)}`);
   if (survey.q2Found !== null && survey.q2Found !== undefined)
     lines.push(`<b>Found what they needed:</b> ${survey.q2Found ? "Yes" : "No"}`);
-  if (survey.q2Missing) lines.push(`<b>What was missing:</b> ${survey.q2Missing}`);
+  if (survey.q2Missing) lines.push(`<b>What was missing:</b> ${escapeHtml(survey.q2Missing)}`);
   if (survey.q3Rating) lines.push(`<b>Rating:</b> ${"★".repeat(survey.q3Rating)}${"☆".repeat(5 - survey.q3Rating)} (${survey.q3Rating}/5)`);
-  if (survey.q4Improvement) lines.push(`<b>Improvement suggestion:</b> ${survey.q4Improvement}`);
-  if (survey.q5Discovery) lines.push(`<b>Discovery source:</b> ${survey.q5Discovery}`);
-  if (survey.deviceType) lines.push(`<b>Device:</b> ${survey.deviceType}`);
-  if (survey.referralSource) lines.push(`<b>Referrer:</b> ${survey.referralSource}`);
+  if (survey.q4Improvement) lines.push(`<b>Improvement suggestion:</b> ${escapeHtml(survey.q4Improvement)}`);
+  if (survey.q5Discovery) lines.push(`<b>Discovery source:</b> ${escapeHtml(survey.q5Discovery)}`);
+  if (survey.deviceType) lines.push(`<b>Device:</b> ${escapeHtml(survey.deviceType)}`);
+  if (survey.referralSource) lines.push(`<b>Referrer:</b> ${escapeHtml(survey.referralSource)}`);
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -50,14 +92,39 @@ export async function notifyNewFeedback(survey: SurveyData) {
     </div>
   `;
 
-  try {
-    await resend.emails.send({
-      from: fromEmail,
-      to: NOTIFY_EMAILS,
-      subject: "New feedback from reviewiq",
-      html,
-    });
-  } catch (err) {
-    console.error("Failed to send feedback notification email:", err);
-  }
+  return sendAdminNotification("New feedback from reviewiq", html);
+}
+
+interface SubscriberData {
+  email: string;
+  productName?: string | null;
+  productSlug?: string | null;
+  source?: string | null;
+  reSubscribe?: boolean;
+}
+
+/**
+ * Notify the ReviewIQ owners when someone subscribes to email alerts / the
+ * newsletter (DAN-1276 / DAN-323). The subscribe route previously saved the row
+ * but sent no admin notification at all, so the founder never learned about new
+ * signups.
+ */
+export async function notifyNewSubscriber(sub: SubscriberData): Promise<boolean> {
+  const lines: string[] = [];
+  lines.push(`<b>Email:</b> ${escapeHtml(sub.email)}`);
+  if (sub.productName) lines.push(`<b>Product:</b> ${escapeHtml(sub.productName)}`);
+  if (sub.source) lines.push(`<b>Opt-in source:</b> ${escapeHtml(sub.source)}`);
+  if (sub.reSubscribe) lines.push(`<b>Note:</b> re-subscribed (previously unsubscribed)`);
+
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto;">
+      <h2 style="color: #1a1a1a; margin-bottom: 16px;">New email subscriber on ReviewIQ</h2>
+      <div style="background: #f9fafb; border-radius: 8px; padding: 20px; border: 1px solid #e5e7eb;">
+        ${lines.map((l) => `<p style="margin: 8px 0; color: #374151; font-size: 14px;">${l}</p>`).join("")}
+      </div>
+      <p style="color: #9ca3af; font-size: 12px; margin-top: 16px;">Sent automatically by ReviewIQ subscription system</p>
+    </div>
+  `;
+
+  return sendAdminNotification(`New ReviewIQ subscriber: ${sub.email}`, html);
 }
