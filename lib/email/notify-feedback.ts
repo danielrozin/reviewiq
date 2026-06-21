@@ -1,6 +1,11 @@
 import { Resend } from "resend";
 
-const NOTIFY_EMAILS = ["daniarozin@gmail.com", "Shai.and1@gmail.com"];
+// The Resend account owner / founder. This is the only address the sandbox
+// sender (onboarding@resend.dev) is allowed to deliver to until a domain is
+// verified, so the fallback path sends here exclusively. It is also the address
+// the founder explicitly needs notified (DAN-323).
+const OWNER_EMAIL = "daniarozin@gmail.com";
+const NOTIFY_EMAILS = [OWNER_EMAIL, "Shai.and1@gmail.com"];
 
 let _resend: Resend | null = null;
 function getResend(): Resend | null {
@@ -35,24 +40,25 @@ const SANDBOX_FROM = "onboarding@resend.dev";
 async function trySend(
   resend: Resend,
   from: string,
+  to: string[],
   subject: string,
   html: string,
 ): Promise<boolean> {
   try {
     const { data, error } = await resend.emails.send({
       from,
-      to: NOTIFY_EMAILS,
+      to,
       subject,
       html,
     });
     if (error) {
-      console.error(`[EMAIL][resend][fail] from=${from} ${subject}:`, error);
+      console.error(`[EMAIL][resend][fail] from=${from} to=${to.join(",")} ${subject}:`, error);
       return false;
     }
-    console.log(`[EMAIL][resend][ok] from=${from} ${subject} (id=${data?.id ?? "?"})`);
+    console.log(`[EMAIL][resend][ok] from=${from} to=${to.join(",")} ${subject} (id=${data?.id ?? "?"})`);
     return true;
   } catch (err) {
-    console.error(`[EMAIL][resend][fail] from=${from} ${subject}:`, err);
+    console.error(`[EMAIL][resend][fail] from=${from} to=${to.join(",")} ${subject}:`, err);
     return false;
   }
 }
@@ -71,19 +77,23 @@ async function sendAdminNotification(subject: string, html: string): Promise<boo
   const fromEmail =
     (process.env.RESEND_FROM_EMAIL || "").trim() || SANDBOX_FROM;
 
-  // Primary attempt with the configured (branded) sender.
-  if (await trySend(resend, fromEmail, subject, html)) return true;
+  // Primary attempt: configured (branded) sender → all owners. This works once
+  // revieweriq.com is verified in Resend.
+  if (await trySend(resend, fromEmail, NOTIFY_EMAILS, subject, html)) return true;
 
-  // Fallback: if the branded send failed (the most common cause is an
-  // unverified sender domain in Resend — DAN-1276: revieweriq.com was never
-  // verified, so every branded send 403s), retry once with the sandbox sender
-  // so the founder still gets the notification. Once the domain is verified the
-  // primary attempt succeeds and this fallback is never reached.
+  // Fallback: the branded send failed. The cause (confirmed in DAN-1276 via a
+  // live probe with the prod key) is that revieweriq.com is NOT a verified
+  // Resend domain, so the branded From 400s. Retry with the sandbox sender,
+  // which needs no domain — but Resend only lets the sandbox sender deliver to
+  // the account owner's own address, so we send to OWNER_EMAIL ONLY here
+  // (including the second recipient would 403 the whole call and drop the
+  // notification entirely). The founder (DAN-323) gets notified today; once the
+  // domain is verified the primary attempt succeeds and reaches all owners.
   if (fromEmail !== SANDBOX_FROM) {
     console.warn(
-      `[EMAIL][fallback] retrying "${subject}" via ${SANDBOX_FROM} after ${fromEmail} failed`,
+      `[EMAIL][fallback] retrying "${subject}" via ${SANDBOX_FROM} → ${OWNER_EMAIL} only (branded ${fromEmail} failed; verify revieweriq.com in Resend to reach all recipients)`,
     );
-    return trySend(resend, SANDBOX_FROM, subject, html);
+    return trySend(resend, SANDBOX_FROM, [OWNER_EMAIL], subject, html);
   }
 
   return false;
