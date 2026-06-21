@@ -42,6 +42,20 @@ const nextConfig: NextConfig = {
     ],
   },
   trailingSlash: false,
+  async redirects() {
+    // Canonicalize host: permanently redirect www → apex so Google
+    // consolidates ranking signals on a single host. Canonical tags and
+    // SITE_URL already point to the non-www apex (https://revieweriq.com);
+    // without this 301, both hosts resolve 200 and split link equity.
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.revieweriq.com" }],
+        destination: "https://revieweriq.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
