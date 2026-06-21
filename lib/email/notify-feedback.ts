@@ -4,8 +4,11 @@ const NOTIFY_EMAILS = ["daniarozin@gmail.com", "Shai.and1@gmail.com"];
 
 let _resend: Resend | null = null;
 function getResend(): Resend | null {
-  if (!process.env.RESEND_API_KEY) return null;
-  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
+  // Trim to survive a secret stored with stray whitespace/newline (see fromEmail
+  // note below — the same class of bug that silently broke delivery in DAN-1276).
+  const apiKey = (process.env.RESEND_API_KEY || "").trim();
+  if (!apiKey) return null;
+  if (!_resend) _resend = new Resend(apiKey);
   return _resend;
 }
 
@@ -29,7 +32,12 @@ async function sendAdminNotification(subject: string, html: string): Promise<boo
     return false;
   }
 
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+  // Trim the env value: the Vercel prod secret was stored with a trailing
+  // newline ("Info@revieweriq.com\n"), which corrupts the From header and makes
+  // Resend silently reject every send (DAN-1276 root cause). Defensive trim so a
+  // stray whitespace in the secret can never break delivery again.
+  const fromEmail =
+    (process.env.RESEND_FROM_EMAIL || "").trim() || "onboarding@resend.dev";
 
   try {
     const { data, error } = await resend.emails.send({
