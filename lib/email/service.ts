@@ -10,6 +10,9 @@ function getResend(): Resend | null {
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim();
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+// FROM (revieweriq.com) has no inbound MX — replies to it bounce and are lost.
+// Route Reply-To to the monitored inbox so any user reply reaches a human.
+const REPLY_TO = (process.env.RESEND_REPLY_TO || "daniarozin@gmail.com").trim();
 
 function unsubscribeUrl(userId: string, emailType: string): string {
   const token = signToken(userId, emailType);
@@ -78,6 +81,7 @@ export async function sendPriceDropAlert(params: {
       to: params.email,
       subject: `Price drop: ${params.productName} is now $${params.newPrice}`,
       html: baseLayout(content, params.userId, "price_alerts"),
+      replyTo: REPLY_TO,
     });
     return true;
   } catch (err) {
@@ -122,6 +126,7 @@ export async function sendNewReviewAlert(params: {
       to: params.email,
       subject: `New review on ${params.productName}: "${params.headline}"`,
       html: baseLayout(content, params.userId, "review_alerts"),
+      replyTo: REPLY_TO,
     });
     return true;
   } catch (err) {
@@ -188,6 +193,7 @@ export async function sendWeeklyDigest(params: {
       to: params.email,
       subject: "Your ReviewIQ Weekly Digest",
       html: baseLayout(content, params.userId, "weekly_digest"),
+      replyTo: REPLY_TO,
     });
     return true;
   } catch (err) {
