@@ -26,6 +26,7 @@ import {
   ReviewFormCTA,
 } from "@/components/product/ProductPageClientWidgets";
 import { BestFor } from "@/components/product/BestFor";
+import { EmailCaptureCTA } from "@/components/product/EmailCaptureCTA";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -345,6 +346,18 @@ export default async function ProductPage({ params }: Props) {
           {/* FAQ */}
           <FAQSection items={product.faq} />
         </aside>
+      </div>
+
+      {/* Email Capture CTA — "Get notified when SmartScore changes" (restores
+          ca305f36, dropped in the f000c51 product-page rewrite). Consent-clean
+          per-product alert opt-in; the organic growth engine for the owned
+          email list (gates the survey n≥30 goal). */}
+      <div className="mt-12 mb-4">
+        <EmailCaptureCTA
+          productId={product.id}
+          productSlug={product.slug}
+          productName={product.name}
+        />
       </div>
 
       {/* Related Products — Same Category */}
