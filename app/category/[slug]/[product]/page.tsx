@@ -27,6 +27,7 @@ import {
 } from "@/components/product/ProductPageClientWidgets";
 import { BestFor } from "@/components/product/BestFor";
 import { EmailCaptureCTA } from "@/components/product/EmailCaptureCTA";
+import { StickyMobileCTA } from "@/components/product/StickyMobileCTA";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -94,7 +95,7 @@ export default async function ProductPage({ params }: Props) {
   const pSchema = productSchema(product);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8">
       <TrackProductView slug={product.slug} category={category.slug} />
       {pSchema && (
         <script
@@ -369,6 +370,11 @@ export default async function ProductPage({ params }: Props) {
 
       {/* People Also Reviewed — Cross-Category Affinity */}
       <PeopleAlsoReviewed products={affinityProducts} />
+
+      {/* Persistent thumb-reachable mobile CTA (CRO Check 04). Restored —
+          silently dropped in the f000c51 product-page rewrite alongside
+          EmailCaptureCTA. lg:hidden so it never shows on desktop. */}
+      <StickyMobileCTA productName={product.name} productSlug={product.slug} />
     </div>
   );
 }
