@@ -24,6 +24,10 @@ function getResend(): Resend | null {
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").trim();
 const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev";
+// FROM (revieweriq.com) has no inbound MX, so replies to it bounce and are lost.
+// Point Reply-To at the monitored inbox (same address the DAN-1375 reply monitor
+// watches) so survey recipients who reply with feedback actually reach a human.
+const REPLY_TO = (process.env.RESEND_REPLY_TO || "daniarozin@gmail.com").trim();
 
 /** One-click link to the dedicated /survey landing, with Q1 intent prefilled. */
 function surveyUrl(intent?: IntentValue): string {
@@ -160,7 +164,7 @@ async function sendOne(
     batch,
   });
   try {
-    const { error } = await resend.emails.send({ from: FROM_EMAIL, to: r.email, subject, html });
+    const { error } = await resend.emails.send({ from: FROM_EMAIL, to: r.email, subject, html, replyTo: REPLY_TO });
     if (error) return false;
 
     // Record dedup + funnel only on a confirmed send.
