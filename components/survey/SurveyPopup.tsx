@@ -7,7 +7,7 @@ const STORAGE_KEY = "sr_survey_completed";
 // Friction reduction (DAN-983): trigger sooner than the old 30s so fast sessions
 // still see the prompt before they bounce. Paired with exit-intent / scroll-depth
 // triggers below for sessions that leave before even 12s elapses.
-const SHOW_DELAY_MS = 12_000; // 12 seconds
+const SHOW_DELAY_MS = 20_000; // 20 seconds — DAN-1405: was 12s; earlier trigger catches users before they've formed an opinion
 const SCROLL_TRIGGER_RATIO = 0.5; // show once the user has scrolled 50% of the page
 
 function deviceTypeOf(): "mobile" | "desktop" {
@@ -313,13 +313,9 @@ export function SurveyPopup() {
 
         {step === "q1" && (
           <div>
-            {/* DAN-1179 (P1): no "1 of 5" counter on Q1. Removing the intro
-                screen (DAN-1170) but keeping the "this is a 5-question survey"
-                signal on the very first frame still primes the user for
-                homework at the exact moment we're trying to win the first tap.
-                The counter returns from Q2 onward, once the user is engaged, so
-                Q1 reads as a single question — not the opening of a survey. */}
-            <h3 className="text-base font-bold text-gray-900 mb-4">What brought you here today?</h3>
+            {/* DAN-1179 removed step counter; DAN-1405 adds time-box label instead */}
+            <p className="text-xs text-brand-600 font-medium mb-2">Quick question · ~20 sec</p>
+            <h3 className="text-base font-bold text-gray-900 mb-4">What are you looking for on ReviewIQ?</h3>
             <div className="space-y-2">
               {INTENT_OPTIONS.map((opt) => (
                 <button
