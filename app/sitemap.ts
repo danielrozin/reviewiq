@@ -22,6 +22,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/write-review`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${siteUrl}/search`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
     { url: `${siteUrl}/site-map`, lastModified: now, changeFrequency: "daily", priority: 0.6 },
+    // High-value indexable pages previously absent from the sitemap (discovery gap).
+    { url: `${siteUrl}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteUrl}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteUrl}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${siteUrl}/who-is-this-for`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    // Legal/policy pages — low priority but legitimate for completeness.
+    { url: `${siteUrl}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/cookie-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/acceptable-use`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const categoryPages: MetadataRoute.Sitemap = categories.map((cat) => ({
