@@ -22,9 +22,12 @@ export async function generateMetadata({ params }: Props) {
   const category = getCategoryBySlug(slug);
   if (!category) return {};
 
+  const year = new Date().getFullYear();
   return buildMetadata({
-    title: `Best ${category.name} — Reviews & Comparisons`,
-    description: category.description,
+    title: `Best ${category.name} (${year}) — Reviews & Comparisons`,
+    description:
+      category.description ||
+      `See the best ${category.name} ranked by SmartScore from verified buyer reviews. Compare top picks, pros & cons, and prices to find the right one for you.`,
     path: `/category/${slug}`,
   });
 }

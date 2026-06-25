@@ -50,8 +50,9 @@ export async function generateMetadata({ params }: Props) {
   const product = getProductBySlug(slug, productSlug);
   if (!product) return {};
 
+  const year = new Date().getFullYear();
   return buildMetadata({
-    title: `${product.name} Review — SmartScore ${product.smartScore}/100`,
+    title: `${product.name} Review (${year}) — SmartScore ${product.smartScore}/100`,
     description: `Honest ${product.name} review based on ${product.reviewCount} verified buyer experiences. See what people love, hate, and who this product is best for.`,
     path: `/category/${slug}/${productSlug}`,
   });
