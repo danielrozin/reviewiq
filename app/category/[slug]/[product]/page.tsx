@@ -12,6 +12,7 @@ import { ReviewCard } from "@/components/product/ReviewCard";
 import { RecurringIssues } from "@/components/product/RecurringIssues";
 import { SpecsTable } from "@/components/product/SpecsTable";
 import { ComparisonModule } from "@/components/product/ComparisonModule";
+import { ExternalComparisonLinks } from "@/components/product/ExternalComparisonLinks";
 import { FAQSection } from "@/components/product/FAQSection";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
@@ -343,6 +344,17 @@ export default async function ProductPage({ params }: Props) {
             comparisons={product.comparisons}
             categorySlug={slug}
           />
+
+          {/* Curated head-to-head comparisons on aversusb.net. Restores
+              editorial cross-referral links (dropped in the f000c51 product-page
+              rewrite). Self-guards: renders null when externalComparisons is
+              empty, so only the curated products (n=7) show it. Auto-generated
+              AutoComparisonLinks is intentionally NOT restored — its /entity/
+              and /alternatives/ targets are soft-404 templates that resolve for
+              any slug, so it would emit site-wide dofollow links to thin pages. */}
+          {product.externalComparisons && product.externalComparisons.length > 0 && (
+            <ExternalComparisonLinks comparisons={product.externalComparisons} />
+          )}
 
           {/* FAQ */}
           <FAQSection items={product.faq} />
