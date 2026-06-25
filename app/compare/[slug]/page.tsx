@@ -28,8 +28,9 @@ export async function generateMetadata({ params }: Props) {
   if (!pair) return {};
 
   const { productA, productB } = pair;
+  const year = new Date().getFullYear();
   return buildMetadata({
-    title: `${productA.name} vs ${productB.name} — Side-by-Side Comparison`,
+    title: `${productA.name} vs ${productB.name} (${year}) — Which Is Better?`,
     description: `Compare ${productA.name} (SmartScore ${productA.smartScore}) vs ${productB.name} (SmartScore ${productB.smartScore}). See specs, pros & cons, pricing, and which is better based on ${productA.reviewCount + productB.reviewCount} verified reviews.`,
     path: `/compare/${slug}`,
   });
