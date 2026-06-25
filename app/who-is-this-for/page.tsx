@@ -6,7 +6,7 @@ import Link from "next/link";
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
 export const metadata = buildMetadata({
-  title: "Who Is ReviewIQ For?",
+  title: "Who Is This For?",
   description:
     "Find out if ReviewIQ is right for you. Honest AI-powered reviews for robot vacuums and coffee machines — affiliate commissions never change our SmartScores.",
   path: "/who-is-this-for",
