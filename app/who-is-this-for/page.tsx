@@ -8,7 +8,7 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").
 export const metadata = buildMetadata({
   title: "Who Is ReviewIQ For?",
   description:
-    "Find out if ReviewIQ is right for you. AI-powered product reviews for robot vacuum and coffee machine buyers who want honest, data-driven recommendations — not affiliate-driven picks.",
+    "Find out if ReviewIQ is right for you. Honest AI-powered reviews for robot vacuums and coffee machines — affiliate commissions never change our SmartScores.",
   path: "/who-is-this-for",
 });
 
@@ -72,7 +72,7 @@ const notForYou = [
   {
     title: "You want to buy directly on our site",
     detail:
-      "We review and recommend — we don't sell products. We never earn commissions from your purchase.",
+      "We review and recommend — we don't sell products. We may earn affiliate commissions through partner links, but these never influence our SmartScores or rankings.",
   },
   {
     title: "You need enterprise or B2B product reviews",
@@ -138,7 +138,7 @@ const stats = [
   { value: "AI-Powered", label: "Analysis of thousands of verified buyer reviews per product" },
   { value: "Structured", label: "Specs, pros/cons, and use-case matching on every product" },
   { value: "2026", label: "Category-specific buying guides updated for current models" },
-  { value: "Zero", label: "Affiliate links — we never profit from your purchase" },
+  { value: "Independent", label: "SmartScores — verified buyer data drives rankings, affiliate commissions are never an input" },
 ];
 
 const faqItems = [
@@ -155,12 +155,12 @@ const faqItems = [
   {
     question: "Is ReviewIQ free to use?",
     answer:
-      "Yes. All product reviews, buying guides, and comparisons are free. We do not use affiliate links and never earn commissions from your purchases.",
+      "Yes. All product reviews, buying guides, and comparisons are free. We may earn affiliate commissions through partner links, but this never influences our SmartScores or rankings.",
   },
   {
     question: "How is ReviewIQ different from other review sites?",
     answer:
-      "Most review sites earn affiliate commissions, which can bias their recommendations. ReviewIQ uses AI to analyze verified buyer reviews and has zero affiliate links. Every review shows a verification tier so you know whether the reviewer actually owns the product.",
+      "Most review sites let affiliate commissions influence their recommendations. ReviewIQ uses AI to analyze verified buyer reviews, and our SmartScore algorithm has no access to commission data — affiliate revenue is never an input to our rankings. Every review shows a verification tier so you know whether the reviewer actually owns the product.",
   },
   {
     question: "What is the best robot vacuum for pet hair under $500?",
@@ -209,7 +209,7 @@ export default function WhoIsThisForPage() {
           Who Is ReviewIQ For?
         </h1>
         <p className="text-lg text-gray-500 leading-relaxed">
-          ReviewIQ is an AI-powered product review platform for consumers researching robot vacuums ($100–$1,500) and coffee machines ($50–$2,000). We analyze verified buyer reviews to give you honest, structured recommendations — not affiliate-driven picks.
+          ReviewIQ is an AI-powered product review platform for consumers researching robot vacuums ($100–$1,500) and coffee machines ($50–$2,000). We analyze verified buyer reviews to give you honest, structured recommendations — affiliate commissions never influence our SmartScores.
         </p>
       </header>
 

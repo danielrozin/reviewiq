@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "About ReviewIQ",
   description:
-    "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
+    "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers — affiliate commissions never influence our SmartScores.",
   path: "/about",
 });
 
@@ -78,8 +78,8 @@ export default function AboutPage() {
                 text: "Our AI reads all verified reviews to surface recurring patterns — what people consistently love, hate, and complain about.",
               },
               {
-                title: "Zero Affiliate Revenue",
-                text: "We don't earn commissions on purchases. We have no financial incentive to recommend one product over another.",
+                title: "Commission-Proof Rankings",
+                text: "ReviewIQ may earn affiliate commissions, but our editorial team has no view of revenue per product. SmartScores run entirely on verified buyer data — commission rates are never an input.",
               },
             ].map((item) => (
               <div
