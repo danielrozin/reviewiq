@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProductSearch } from "@/components/product/ProductSearch";
 
 export const metadata = buildMetadata({
-  title: "Browse All Products — Search & Filter",
+  title: "Browse All Products — Reviews, SmartScores & Prices",
   description:
     "Search and filter products across all categories. Sort by SmartScore, price, ratings, and more. Find the perfect product with ReviewIQ.",
   path: "/products",

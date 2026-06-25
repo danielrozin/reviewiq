@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { categoryListSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
-  title: "All Categories",
+  title: "All Product Categories — Reviews & Comparisons",
   description:
     "Browse all product categories on ReviewIQ. Find honest, AI-powered reviews across robot vacuums, coffee machines, air fryers, wireless earbuds, mattresses, smart watches, standing desks, blenders, laptops, and electric toothbrushes.",
   path: "/categories",
