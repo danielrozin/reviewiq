@@ -3,13 +3,20 @@ import type { FAQEntry } from "@/data/faq-pages";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
+// Static brand assets like /logo.png and /og-default.jpg do not exist in /public
+// and 404 in production, which makes structured-data image/logo refs invalid and
+// drops the rich result. The app DOES generate per-route OG images at runtime via
+// file-based opengraph-image.tsx (verified 200 image/png), so we point structured
+// data at those routes instead. BRAND_IMAGE is the site-level branded OG banner.
+const BRAND_IMAGE = `${SITE_URL}/opengraph-image`;
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "ReviewIQ",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: BRAND_IMAGE,
     description:
       "AI-powered product review platform providing honest, structured insights from verified buyers.",
     sameAs: [],
@@ -60,7 +67,9 @@ export function productSchema(product: Product) {
     name: product.name,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
-    image: product.image,
+    // product.image points at /images/products/*.jpg which 404 (no real photos yet);
+    // use the per-product generated OG card so the Product rich result has a valid image.
+    image: `${SITE_URL}/category/${product.categorySlug}/${product.slug}/opengraph-image`,
     datePublished: product.createdAt || buildDate,
     dateModified: product.updatedAt || product.createdAt || buildDate,
   };
@@ -202,7 +211,7 @@ export function blogPostSchema(post: BlogPost) {
     "@type": "Article",
     headline: post.title,
     description: post.seo.metaDescription,
-    image: post.coverImage || `${SITE_URL}/og-default.jpg`,
+    image: post.coverImage || `${SITE_URL}/blog/${post.slug}/opengraph-image`,
     author: {
       "@type": "Organization",
       name: post.author.name,
@@ -210,7 +219,7 @@ export function blogPostSchema(post: BlogPost) {
     publisher: {
       "@type": "Organization",
       name: "ReviewIQ",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
+      logo: { "@type": "ImageObject", url: BRAND_IMAGE },
     },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
