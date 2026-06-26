@@ -85,7 +85,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
       {!mounted ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.slice(0, 6).map((_, i) => (
-            <div key={i} className="rounded-2xl bg-gray-100 animate-pulse h-56" />
+            <div key={i} className="rounded-2xl bg-gray-100 animate-pulse h-80" />
           ))}
         </div>
       ) : (
@@ -104,7 +104,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
                   #{index + 1}
                 </div>
               )}
-              <ProductCard product={product} />
+              <ProductCard product={product} priority={index < 3} />
             </div>
           ))}
         </div>

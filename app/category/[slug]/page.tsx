@@ -120,7 +120,7 @@ export default async function CategoryPage({ params }: Props) {
       <CategorySortedGrid products={categoryProducts} categorySlug={slug} />
 
       {/* Buying Guide */}
-      <section className="mt-16" aria-label="Buying guide">
+      <section className="mt-16" aria-label="Buying guide" data-speakable="buying-guide">
         <div className="flex items-center gap-3 mb-6">
           <div className="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center">
             <svg className="w-4 h-4 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

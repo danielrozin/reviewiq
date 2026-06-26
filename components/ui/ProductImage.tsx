@@ -11,6 +11,7 @@ interface ProductImageProps {
   brand: string;
   size?: "sm" | "md" | "lg";
   className?: string;
+  priority?: boolean;
 }
 
 const sizeConfig = {
@@ -25,6 +26,7 @@ export function ProductImage({
   brand,
   size = "md",
   className,
+  priority = false,
 }: ProductImageProps) {
   const [imgError, setImgError] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -53,6 +55,7 @@ export function ProductImage({
             alt={alt}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+            priority={priority}
             placeholder="blur"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
             className={cn(

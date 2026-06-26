@@ -4,15 +4,17 @@ import Link from "next/link";
 import type { Product } from "@/types";
 import { SmartScore } from "@/components/ui/SmartScore";
 import { RatingStars } from "@/components/ui/RatingStars";
+import { ProductImage } from "@/components/ui/ProductImage";
 import { formatNumber } from "@/lib/utils";
 import { useCompare } from "@/lib/context/CompareContext";
 import { useExperiment } from "@/lib/experiments";
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   const { add, remove, has, isFull } = useCompare();
   const isSelected = has(product.id);
   const { variant: badgeVariant } = useExperiment("social-proof-badges");
@@ -39,9 +41,20 @@ export function ProductCard({ product }: ProductCardProps) {
 
       <Link
         href={`/category/${product.categorySlug}/${product.slug}`}
-        className="block p-6"
+        className="block"
       >
-        <div className="flex items-start justify-between mb-4">
+        {/* Product image thumbnail */}
+        <ProductImage
+          src={product.image}
+          alt={product.name}
+          brand={product.brand}
+          size="md"
+          priority={priority}
+          className="rounded-t-2xl"
+        />
+
+        <div className="p-5">
+        <div className="flex items-start justify-between mb-3">
           <div className="flex-1 min-w-0 pr-3">
             <p className="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-1">
               {product.brand}
@@ -95,10 +108,11 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           </div>
         </div>
+        </div>{/* end p-5 */}
       </Link>
 
       {/* Compare button — always visible on mobile, hover-reveal on desktop */}
-      <div className="px-6 pb-4">
+      <div className="px-5 pb-4">
         <button
           type="button"
           onClick={handleCompare}
