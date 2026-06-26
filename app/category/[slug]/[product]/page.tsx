@@ -25,6 +25,7 @@ import { TrackRecentlyViewed } from "@/components/product/TrackRecentlyViewed";
 import { ReviewFormCTA } from "@/components/product/ReviewFormCTA";
 import { BestFor } from "@/components/product/BestFor";
 import { StickyMobileCTA } from "@/components/product/StickyMobileCTA";
+import { ProductJumpNav } from "@/components/product/ProductJumpNav";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -92,6 +93,7 @@ export default async function ProductPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackProductView slug={product.slug} category={category.slug} />
+      <ProductJumpNav />
       <StickyMobileCTA
         productName={product.name}
         productSlug={product.slug}
@@ -149,7 +151,7 @@ export default async function ProductPage({ params }: Props) {
         </p>
 
         <div className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
-          <SmartScore score={product.smartScore} size="lg" showRing />
+          <SmartScore score={product.smartScore} size="lg" showRing animateOnView />
 
           <div className="h-12 w-px bg-gray-200 hidden sm:block" />
 
@@ -192,7 +194,7 @@ export default async function ProductPage({ params }: Props) {
           />
 
           {/* AI Summary */}
-          <div data-speakable="ai-summary">
+          <div id="section-summary" data-speakable="ai-summary">
             <AISummaryCard summary={product.aiSummary} />
           </div>
 
@@ -248,7 +250,7 @@ export default async function ProductPage({ params }: Props) {
           )}
 
           {/* Reviews */}
-          <section>
+          <section id="section-reviews">
             <div className="flex items-center justify-between mb-6">
               <h2 className="text-lg font-semibold text-gray-900">
                 Verified Reviews
@@ -329,18 +331,24 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Specs */}
-          <SpecsTable specs={product.specs} />
+          <div id="section-specs">
+            <SpecsTable specs={product.specs} />
+          </div>
 
           {/* Comparisons */}
-          <ComparisonModule
-            currentProduct={product.name}
-            currentProductSlug={product.slug}
-            comparisons={product.comparisons}
-            categorySlug={slug}
-          />
+          <div id="section-compare">
+            <ComparisonModule
+              currentProduct={product.name}
+              currentProductSlug={product.slug}
+              comparisons={product.comparisons}
+              categorySlug={slug}
+            />
+          </div>
 
           {/* FAQ */}
-          <FAQSection items={product.faq} />
+          <div id="section-faq">
+            <FAQSection items={product.faq} />
+          </div>
         </aside>
       </div>
 
