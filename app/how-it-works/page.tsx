@@ -11,6 +11,10 @@ export const metadata = buildMetadata({
 const steps = [
   {
     number: "01",
+    icon: "✓",
+    color: "bg-emerald-500",
+    lightBg: "bg-emerald-50",
+    textColor: "text-emerald-600",
     title: "Verified Buyers Submit Structured Reviews",
     description:
       "Unlike traditional review platforms, ReviewIQ asks reviewers to share specific details: how long they've owned the product, their experience level, and separate ratings for reliability, ease of use, and value. Every review includes a verification tier so you know how trustworthy it is.",
@@ -23,6 +27,10 @@ const steps = [
   },
   {
     number: "02",
+    icon: "🤖",
+    color: "bg-brand-500",
+    lightBg: "bg-brand-50",
+    textColor: "text-brand-600",
     title: "AI Analyzes Thousands of Experiences",
     description:
       "Our AI reads every verified review and identifies patterns that individual reviews miss. It surfaces recurring praise, recurring complaints, and builds a complete picture of what owning the product is actually like.",
@@ -35,6 +43,10 @@ const steps = [
   },
   {
     number: "03",
+    icon: "📊",
+    color: "bg-purple-500",
+    lightBg: "bg-purple-50",
+    textColor: "text-purple-600",
     title: "SmartScore Ranks Products Honestly",
     description:
       "Every product gets a SmartScore from 0 to 100. It's not just an average rating — it factors in verification rate, review consistency, recurring issues severity, and long-term ownership feedback. Higher verified purchase rates mean a more trustworthy score.",
@@ -47,6 +59,10 @@ const steps = [
   },
   {
     number: "04",
+    icon: "🎯",
+    color: "bg-amber-500",
+    lightBg: "bg-amber-50",
+    textColor: "text-amber-600",
     title: "You Make Smarter Decisions",
     description:
       "Browse structured product pages with everything you need: AI summaries, specs, comparisons, recurring issues, and FAQ — all in one place. No affiliate links. No sponsored placements. Just honest intelligence.",
@@ -64,7 +80,12 @@ export default function HowItWorksPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs items={[{ name: "How It Works", url: "/how-it-works" }]} />
 
+      {/* Hero */}
       <div className="mt-8 mb-16 max-w-3xl">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-4 border border-brand-100">
+          <span className="w-2 h-2 bg-brand-500 rounded-full" />
+          The ReviewIQ system
+        </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           How ReviewIQ Works
         </h1>
@@ -75,70 +96,90 @@ export default function HowItWorksPage() {
         </p>
       </div>
 
-      <div className="space-y-16 max-w-4xl">
-        {steps.map((step) => (
-          <section key={step.number} className="flex gap-6">
-            <div className="shrink-0">
-              <div className="w-14 h-14 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center font-bold text-xl">
-                {step.number}
+      {/* Timeline steps */}
+      <div className="relative max-w-4xl">
+        {/* Vertical connector line */}
+        <div className="absolute left-6 top-10 bottom-10 w-0.5 bg-gradient-to-b from-emerald-200 via-brand-200 to-amber-200 hidden sm:block" aria-hidden="true" />
+
+        <div className="space-y-12">
+          {steps.map((step, index) => (
+            <section key={step.number} className="relative flex gap-6 sm:gap-8">
+              {/* Step number bubble */}
+              <div className="shrink-0 relative z-10">
+                <div className={`w-12 h-12 ${step.color} rounded-2xl flex items-center justify-center text-white text-xl shadow-md`}>
+                  {step.icon}
+                </div>
               </div>
-            </div>
-            <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-3">
-                {step.title}
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                {step.description}
-              </p>
-              <ul className="space-y-2">
-                {step.details.map((detail, i) => (
-                  <li
-                    key={i}
-                    className="flex items-start gap-2 text-sm text-gray-600"
-                  >
-                    <span className="text-brand-500 mt-0.5 shrink-0">
-                      &#10003;
-                    </span>
-                    {detail}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-        ))}
+
+              {/* Content card */}
+              <div className={`flex-1 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow`}>
+                <div className="flex items-center gap-3 mb-3">
+                  <span className={`text-xs font-bold ${step.textColor} ${step.lightBg} px-2.5 py-1 rounded-full`}>
+                    Step {step.number}
+                  </span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3">
+                  {step.title}
+                </h2>
+                <p className="text-gray-600 leading-relaxed mb-4">
+                  {step.description}
+                </p>
+                <ul className="grid sm:grid-cols-2 gap-2">
+                  {step.details.map((detail, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-2 text-sm text-gray-600"
+                    >
+                      <span className={`${step.textColor} mt-0.5 shrink-0 font-bold`}>✓</span>
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ))}
+        </div>
       </div>
 
       {/* Trust Principles */}
-      <section className="mt-20 bg-gray-50 rounded-2xl p-8 lg:p-12 max-w-4xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section className="mt-20 bg-gradient-to-br from-gray-50 to-brand-50/30 rounded-2xl p-8 lg:p-12 max-w-4xl border border-gray-100">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Our Trust Principles
         </h2>
+        <p className="text-gray-500 mb-8">The commitments that make ReviewIQ different from every other review site.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
+              icon: "🚫",
               title: "No Affiliate Links",
               text: "We never earn commissions from product purchases. Our only incentive is giving you honest information.",
             },
             {
+              icon: "🏆",
               title: "No Sponsored Rankings",
               text: "Brands cannot pay to rank higher. SmartScores are calculated algorithmically from verified buyer data.",
             },
             {
+              icon: "🔍",
               title: "Transparent Verification",
               text: "Every review shows its verification tier. You always know whether a reviewer actually bought the product.",
             },
             {
+              icon: "💬",
               title: "Negative Reviews Welcome",
               text: "We believe negative reviews are often the most valuable. We never suppress critical feedback.",
             },
           ].map((principle) => (
-            <div key={principle.title}>
-              <h3 className="font-semibold text-gray-900 mb-1">
-                {principle.title}
-              </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
-                {principle.text}
-              </p>
+            <div key={principle.title} className="flex gap-4">
+              <span className="text-2xl shrink-0">{principle.icon}</span>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">
+                  {principle.title}
+                </h3>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {principle.text}
+                </p>
+              </div>
             </div>
           ))}
         </div>
