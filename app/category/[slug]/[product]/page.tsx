@@ -7,7 +7,7 @@ import { RatingStars } from "@/components/ui/RatingStars";
 import { RatingDistribution } from "@/components/ui/RatingDistribution";
 import { VerificationBadge } from "@/components/ui/VerificationBadge";
 import { AISummaryCard } from "@/components/product/AISummaryCard";
-import { ReviewCard } from "@/components/product/ReviewCard";
+import { ReviewsWithFilter } from "@/components/product/ReviewsWithFilter";
 import { RecurringIssues } from "@/components/product/RecurringIssues";
 import { SpecsTable } from "@/components/product/SpecsTable";
 import { ComparisonModule } from "@/components/product/ComparisonModule";
@@ -250,21 +250,10 @@ export default async function ProductPage({ params }: Props) {
           )}
 
           {/* Reviews */}
-          <section id="section-reviews">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">
-                Verified Reviews
-              </h2>
-              <span className="text-sm text-gray-400">
-                {product.reviews.length} shown
-              </span>
-            </div>
-            <div className="space-y-4">
-              {product.reviews.map((review) => (
-                <ReviewCard key={review.id} review={review} />
-              ))}
-            </div>
-          </section>
+          <ReviewsWithFilter
+            reviews={product.reviews}
+            totalCount={product.reviewCount}
+          />
 
           {/* Community Discussion */}
           <ProductDiscussions

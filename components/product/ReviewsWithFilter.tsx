@@ -1,0 +1,147 @@
+"use client";
+
+import { useState, useMemo } from "react";
+import type { Review } from "@/types";
+import { ReviewCard } from "./ReviewCard";
+
+type SortKey = "recent" | "helpful" | "highest" | "lowest";
+
+const INITIAL_VISIBLE = 3;
+
+const SORT_OPTIONS: { key: SortKey; label: string }[] = [
+  { key: "recent", label: "Most Recent" },
+  { key: "helpful", label: "Most Helpful" },
+  { key: "highest", label: "Highest Rating" },
+  { key: "lowest", label: "Lowest Rating" },
+];
+
+interface ReviewsWithFilterProps {
+  reviews: Review[];
+  totalCount: number;
+}
+
+export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProps) {
+  const [sort, setSort] = useState<SortKey>("recent");
+  const [filterRating, setFilterRating] = useState<number | null>(null);
+  const [visible, setVisible] = useState(INITIAL_VISIBLE);
+
+  const filtered = useMemo(() => {
+    let result = filterRating ? reviews.filter((r) => r.rating === filterRating) : reviews;
+    switch (sort) {
+      case "helpful":
+        result = [...result].sort((a, b) => b.helpfulCount - a.helpfulCount);
+        break;
+      case "highest":
+        result = [...result].sort((a, b) => b.rating - a.rating);
+        break;
+      case "lowest":
+        result = [...result].sort((a, b) => a.rating - b.rating);
+        break;
+      case "recent":
+      default:
+        break;
+    }
+    return result;
+  }, [reviews, sort, filterRating]);
+
+  const shown = filtered.slice(0, visible);
+  const hasMore = visible < filtered.length;
+
+  return (
+    <section id="section-reviews">
+      {/* Controls */}
+      <div className="flex flex-wrap items-center gap-3 mb-6">
+        <div className="flex items-center gap-2 flex-1 min-w-0">
+          <h2 className="text-lg font-semibold text-gray-900 shrink-0">
+            Verified Reviews
+          </h2>
+          <span className="text-sm text-gray-400 shrink-0">
+            {totalCount.toLocaleString()} total
+          </span>
+        </div>
+
+        {/* Star filter pills */}
+        <div className="flex items-center gap-1">
+          {[5, 4, 3, 2, 1].map((star) => (
+            <button
+              key={star}
+              type="button"
+              onClick={() => {
+                setFilterRating(filterRating === star ? null : star);
+                setVisible(INITIAL_VISIBLE);
+              }}
+              className={`flex items-center gap-0.5 px-2 py-1 rounded-lg text-xs font-medium transition-colors ${
+                filterRating === star
+                  ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
+                  : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+              }`}
+              aria-pressed={filterRating === star}
+            >
+              <svg className="w-3 h-3 text-amber-400 fill-current" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
+              </svg>
+              {star}
+            </button>
+          ))}
+          {filterRating && (
+            <button
+              type="button"
+              onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
+              className="px-2 py-1 text-xs text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              Clear
+            </button>
+          )}
+        </div>
+
+        {/* Sort select */}
+        <select
+          value={sort}
+          onChange={(e) => { setSort(e.target.value as SortKey); setVisible(INITIAL_VISIBLE); }}
+          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent cursor-pointer"
+          aria-label="Sort reviews"
+        >
+          {SORT_OPTIONS.map((o) => (
+            <option key={o.key} value={o.key}>{o.label}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* Review list */}
+      {shown.length === 0 ? (
+        <div className="text-center py-12 text-gray-400">
+          <p className="text-sm">No reviews match this filter.</p>
+          <button
+            type="button"
+            onClick={() => setFilterRating(null)}
+            className="mt-2 text-sm text-brand-600 hover:underline"
+          >
+            Clear filter
+          </button>
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {shown.map((review) => (
+            <ReviewCard key={review.id} review={review} />
+          ))}
+        </div>
+      )}
+
+      {/* Load more */}
+      {hasMore && (
+        <div className="mt-6 text-center">
+          <button
+            type="button"
+            onClick={() => setVisible((v) => v + 5)}
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-brand-700 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
+          >
+            Load more reviews
+            <span className="text-xs text-brand-500">
+              ({filtered.length - visible} remaining)
+            </span>
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
