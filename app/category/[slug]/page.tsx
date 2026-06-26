@@ -4,7 +4,7 @@ import { getProductsByCategory } from "@/data/products";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CategorySortedGrid } from "@/components/category/CategorySortedGrid";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
+import { productListSchema, howToSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
 import { TrackCategoryView } from "@/components/tracking/TrackCategoryView";
@@ -58,6 +58,18 @@ export default async function CategoryPage({ params }: Props) {
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Home", url: "/" },
+              { name: "Categories", url: "/categories" },
+              { name: category.name, url: `/category/${slug}` },
+            ])
+          ),
+        }}
+      />
       <Breadcrumbs
         items={[
           { name: "Categories", url: "/categories" },
