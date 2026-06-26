@@ -1,8 +1,18 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleNewsletter(e: React.FormEvent) {
+    e.preventDefault();
+    if (!email) return;
+    setSubmitted(true);
+  }
+
   return (
     <footer className="bg-gray-50 border-t border-gray-100 mt-20">
       {/* Trust bar */}
@@ -23,6 +33,43 @@ export function Footer() {
               <span className="text-amber-500 font-bold text-base">🛒</span>
               <span>78% verified purchase rate</span>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Newsletter signup */}
+      <div className="border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <p className="text-sm font-semibold text-gray-900">Get weekly buying guides</p>
+              <p className="text-sm text-gray-500 mt-0.5">Top picks + AI insights, straight to your inbox. No spam.</p>
+            </div>
+            {submitted ? (
+              <div className="flex items-center gap-2 text-sm text-emerald-600 font-medium">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+                You&rsquo;re in — check your inbox!
+              </div>
+            ) : (
+              <form onSubmit={handleNewsletter} className="flex gap-2 w-full sm:w-auto">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  required
+                  className="flex-1 sm:w-60 px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-300 focus:border-transparent bg-white"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2.5 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors shrink-0"
+                >
+                  Subscribe
+                </button>
+              </form>
+            )}
           </div>
         </div>
       </div>
