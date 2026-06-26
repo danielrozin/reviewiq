@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { PricingTiers } from "./PricingTiers";
 import { faqSchema } from "@/lib/schema/jsonld";
+import { GuaranteeBadge } from "@/components/premium/GuaranteeBadge";
 
 export const metadata: Metadata = {
   title: "Pricing — ReviewIQ Pro",
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <div className="bg-white">
+      <GuaranteeBadge />
       {/* Hero */}
       <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

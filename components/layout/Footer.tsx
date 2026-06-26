@@ -38,16 +38,21 @@ export function Footer() {
       </div>
 
       {/* Newsletter signup */}
-      <div className="border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="border-b border-gray-100 bg-gradient-to-r from-brand-600 to-brand-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="text-sm font-semibold text-gray-900">Get weekly buying guides</p>
-              <p className="text-sm text-gray-500 mt-0.5">Top picks + AI insights, straight to your inbox. No spam.</p>
+              <p className="text-lg font-bold text-white">Get smarter about buying</p>
+              <p className="text-sm text-brand-100 mt-1">Weekly buying guides + AI insights. No spam, unsubscribe anytime.</p>
+              <div className="flex items-center gap-3 mt-3">
+                {["📊 Top picks", "🤖 AI summaries", "💡 Price alerts"].map((tag) => (
+                  <span key={tag} className="text-xs text-brand-200">{tag}</span>
+                ))}
+              </div>
             </div>
             {submitted ? (
-              <div className="flex items-center gap-2 text-sm text-emerald-600 font-medium">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+              <div className="flex items-center gap-2 text-sm text-white font-medium bg-white/20 px-5 py-3 rounded-xl">
+                <svg className="w-5 h-5 text-emerald-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
                 You&rsquo;re in — check your inbox!
@@ -60,11 +65,11 @@ export function Footer() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
                   required
-                  className="flex-1 sm:w-60 px-4 py-2.5 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-300 focus:border-transparent bg-white"
+                  className="flex-1 sm:w-64 px-4 py-3 text-sm border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/15 text-white placeholder:text-brand-200 backdrop-blur-sm"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2.5 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors shrink-0"
+                  className="px-5 py-3 bg-white text-brand-700 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shrink-0 shadow-sm"
                 >
                   Subscribe
                 </button>

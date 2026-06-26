@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getAllBlogPosts, getBlogPostBySlug, getBlogPostsByCategory } from "@/data/blog-posts";
 import { getProductsByCategory, getAffinityProducts } from "@/data/products";
@@ -86,6 +87,20 @@ export default async function BlogPostPage({
       />
 
       <article className="mt-8 max-w-4xl mx-auto">
+        {/* Cover image */}
+        {post.coverImage && (
+          <div className="relative aspect-[2/1] rounded-2xl overflow-hidden mb-8 bg-gray-100">
+            <Image
+              src={post.coverImage}
+              alt={post.title}
+              fill
+              priority
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover"
+            />
+          </div>
+        )}
+
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-center gap-3 mb-4">
