@@ -28,26 +28,32 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-slate-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">
+        {/* Subtle background orbs */}
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+          <div className="absolute -top-40 -right-20 w-96 h-96 rounded-full bg-brand-100/40 blur-3xl" />
+          <div className="absolute -bottom-20 -left-10 w-72 h-72 rounded-full bg-blue-100/30 blur-3xl" />
+        </div>
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-brand-500 rounded-full" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6 animate-fade-in border border-brand-100">
+              <span className="w-2 h-2 bg-brand-500 rounded-full animate-pulse" />
               AI-Powered Review Intelligence
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-fade-up">
               Reviews you can{" "}
               <span className="text-brand-600">actually trust</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-6 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-up delay-100">
               AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.
             </p>
-            <div className="flex justify-center mb-6">
+            <div className="flex justify-center mb-8 animate-fade-up delay-200">
               <HeroSearch />
             </div>
 
             {/* ICP Persona Tiles — helps AI engines understand who this serves */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left animate-fade-up delay-300">
               {[
                 { icon: "🐾", label: "Pet owner?", desc: "Robot vacuums for pet hair", href: "/category/robot-vacuums" },
                 { icon: "🛍️", label: "First-time buyer?", desc: "Buying guides", href: "/categories" },
@@ -57,7 +63,7 @@ export default function HomePage() {
                 <Link
                   key={tile.href + tile.label}
                   href={tile.href}
-                  className="group p-3 bg-white/70 hover:bg-white border border-gray-200 hover:border-brand-200 rounded-xl transition-all text-sm"
+                  className="group p-3 bg-white/80 hover:bg-white border border-gray-200/80 hover:border-brand-200 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm"
                 >
                   <span className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
@@ -66,16 +72,16 @@ export default function HomePage() {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up delay-400">
               <Link
                 href="/categories"
-                className="w-full sm:w-auto px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors text-center"
+                className="w-full sm:w-auto px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 active:scale-[0.98] transition-all shadow-sm hover:shadow-md text-center"
               >
                 Browse Categories
               </Link>
               <Link
                 href="/how-it-works"
-                className="w-full sm:w-auto px-8 py-3.5 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 transition-colors text-center"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 active:scale-[0.98] transition-all text-center"
               >
                 How It Works
               </Link>
@@ -91,16 +97,16 @@ export default function HomePage() {
 
       {/* Trust Signals */}
       <section className="border-y border-gray-100 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { value: "20K+", label: "Verified Reviews" },
-              { value: "78%", label: "Verified Purchase Rate" },
-              { value: "500+", label: "Products Analyzed" },
-              { value: "2.4K", label: "Community Members" },
+              { value: "20K+", label: "Verified Reviews", icon: "✓" },
+              { value: "78%", label: "Verified Purchase Rate", icon: "🛒" },
+              { value: "500+", label: "Products Analyzed", icon: "📊" },
+              { value: "2.4K", label: "Community Members", icon: "👥" },
             ].map((stat) => (
-              <div key={stat.label}>
-                <p className="text-2xl sm:text-3xl font-bold text-gray-900">
+              <div key={stat.label} className="group">
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors">
                   {stat.value}
                 </p>
                 <p className="text-sm text-gray-500 mt-1">{stat.label}</p>
@@ -133,9 +139,9 @@ export default function HomePage() {
             <Link
               key={cat.id}
               href={`/category/${cat.slug}`}
-              className="group p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-gray-200 transition-all"
+              className="group p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200"
             >
-              <span className="text-3xl mb-3 block">{cat.icon}</span>
+              <span className="text-3xl mb-3 block group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
                 {cat.name}
               </h3>

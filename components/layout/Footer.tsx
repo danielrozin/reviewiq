@@ -5,21 +5,52 @@ import Link from "next/link";
 export function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-100 mt-20">
+      {/* Trust bar */}
+      <div className="border-b border-gray-100 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-sm text-gray-500">
+            <div className="flex items-center gap-2">
+              <span className="text-emerald-500 font-bold text-base">✓</span>
+              <span>No affiliate bias — honest reviews only</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-gray-200" />
+            <div className="flex items-center gap-2">
+              <span className="text-brand-500 font-bold text-base">🤖</span>
+              <span>AI-synthesized from 20,000+ verified reviews</span>
+            </div>
+            <div className="hidden sm:block w-px h-4 bg-gray-200" />
+            <div className="flex items-center gap-2">
+              <span className="text-amber-500 font-bold text-base">🛒</span>
+              <span>78% verified purchase rate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center">
+            <Link href="/" className="flex items-center gap-2 mb-4 group">
+              <div className="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
                 <span className="text-white font-bold text-[10px]">RIQ</span>
               </div>
               <span className="text-lg font-bold text-gray-900">
                 Review<span className="text-brand-600">IQ</span>
               </span>
             </Link>
-            <p className="text-sm text-gray-500 leading-relaxed">
+            <p className="text-sm text-gray-500 leading-relaxed mb-4">
               Honest, AI-powered product reviews. Built on real buyer
               experiences, not affiliate deals.
             </p>
+            <Link
+              href="/write-review"
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
+              </svg>
+              Write a review
+            </Link>
           </div>
 
           <div>
@@ -42,7 +73,7 @@ export function Footer() {
                 <li key={cat.slug}>
                   <Link
                     href={`/category/${cat.slug}`}
-                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                    className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
                   >
                     {cat.name}
                   </Link>
@@ -62,12 +93,13 @@ export function Footer() {
                 { name: "Blog", href: "/blog" },
                 { name: "About", href: "/about" },
                 { name: "Community", href: "/community" },
+                { name: "Pricing", href: "/pricing" },
                 { name: "Sitemap", href: "/site-map" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                    className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -85,11 +117,12 @@ export function Footer() {
                 { name: "Write a Review", href: "/write-review" },
                 { name: "Start a Discussion", href: "/community" },
                 { name: "Community Guidelines", href: "/community" },
+                { name: "FAQ", href: "/faq" },
               ].map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+                    className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -98,29 +131,28 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Legal section */}
           <div>
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Legal
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                <Link href="/privacy" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                <Link href="/terms" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                <Link href="/cookie-policy" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
                   Cookie Policy
                 </Link>
               </li>
               <li>
-                <Link href="/acceptable-use" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                <Link href="/acceptable-use" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
                   Acceptable Use
                 </Link>
               </li>
@@ -132,7 +164,7 @@ export function Footer() {
                       window.dispatchEvent(new CustomEvent("open-cookie-preferences"));
                     }
                   }}
-                  className="text-sm text-gray-500 hover:text-gray-900 transition-colors cursor-pointer"
+                  className="text-sm text-gray-500 hover:text-brand-600 transition-colors cursor-pointer"
                 >
                   Cookie Preferences
                 </button>
@@ -141,27 +173,18 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-gray-200 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved.
+            &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved. No affiliate commissions.
           </p>
-          <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
-            >
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
               Privacy
             </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
-            >
+            <Link href="/terms" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
               Terms
             </Link>
-            <Link
-              href="/cookie-policy"
-              className="text-sm text-gray-400 hover:text-gray-600 transition-colors"
-            >
+            <Link href="/cookie-policy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
               Cookies
             </Link>
           </div>

@@ -33,17 +33,20 @@ export function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <div className="group relative bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg hover:border-gray-200 transition-all duration-200">
+    <div className="group relative bg-white border border-gray-100 rounded-2xl hover:shadow-lg hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200 overflow-hidden">
+      {/* Product color accent strip at top */}
+      <div className="h-1 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+
       <Link
         href={`/category/${product.categorySlug}/${product.slug}`}
-        className="block"
+        className="block p-6"
       >
         <div className="flex items-start justify-between mb-4">
-          <div className="flex-1">
-            <p className="text-xs font-medium text-brand-600 uppercase tracking-wider mb-1">
+          <div className="flex-1 min-w-0 pr-3">
+            <p className="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-1">
               {product.brand}
             </p>
-            <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-tight">
+            <h3 className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug line-clamp-2">
               {product.name}
             </h3>
           </div>
@@ -51,8 +54,8 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="flex items-center gap-3 mb-4">
-          <RatingStars rating={avgRating} size="sm" />
-          <span className="text-sm text-gray-500">
+          <RatingStars rating={avgRating} size="sm" showValue />
+          <span className="text-xs text-gray-400">
             {formatNumber(product.reviewCount)} reviews
           </span>
           {badgeVariant === "treatment" && product.reviewCount >= 50 && (
@@ -65,64 +68,67 @@ export function ProductCard({ product }: ProductCardProps) {
           )}
         </div>
 
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center gap-2 text-sm">
-            <span className="text-emerald-600 font-medium">
+        <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-50">
+          <div className="flex items-center gap-1.5">
+            <span className="inline-block w-2 h-2 rounded-full bg-emerald-400" />
+            <span className="text-sm font-medium text-emerald-700">
               {product.verifiedPurchaseRate}%
             </span>
-            <span className="text-gray-400">verified buyers</span>
+            <span className="text-xs text-gray-400">verified buyers</span>
           </div>
-          <div className="text-sm text-gray-500">
-            ${product.priceRange.min} — ${product.priceRange.max}
+          <div className="text-sm font-medium text-gray-600">
+            ${product.priceRange.min}–${product.priceRange.max}
           </div>
         </div>
 
-        <div className="border-t border-gray-50 pt-4 space-y-2">
+        <div className="space-y-2">
           <div className="flex items-start gap-2">
-            <span className="text-emerald-500 text-xs mt-0.5">+</span>
-            <p className="text-sm text-gray-600 line-clamp-1">
+            <span className="text-emerald-500 text-sm mt-0.5 shrink-0 font-bold">+</span>
+            <p className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
               {product.aiSummary.whatPeopleLove[0]}
             </p>
           </div>
           <div className="flex items-start gap-2">
-            <span className="text-red-400 text-xs mt-0.5">-</span>
-            <p className="text-sm text-gray-600 line-clamp-1">
+            <span className="text-red-400 text-sm mt-0.5 shrink-0 font-bold">−</span>
+            <p className="text-sm text-gray-500 line-clamp-1 leading-relaxed">
               {product.aiSummary.whatPeopleHate[0]}
             </p>
           </div>
         </div>
       </Link>
 
-      {/* Compare button */}
-      <button
-        type="button"
-        onClick={handleCompare}
-        disabled={!isSelected && isFull}
-        className={`absolute top-3 right-3 z-10 flex items-center gap-1 px-2.5 py-1.5 text-xs font-medium rounded-lg transition-all ${
-          isSelected
-            ? "bg-brand-600 text-white shadow-sm"
-            : isFull
-              ? "bg-gray-100 text-gray-300 cursor-not-allowed"
-              : "bg-white/90 text-gray-500 border border-gray-200 opacity-0 group-hover:opacity-100 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 shadow-sm backdrop-blur-sm"
-        }`}
-        title={isSelected ? "Remove from comparison" : isFull ? "Max 4 products" : "Add to compare"}
-      >
-        {isSelected ? (
-          <>
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-            Compare
-          </>
-        ) : (
-          <>
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-            Compare
-          </>
-        )}
-      </button>
+      {/* Compare button — always visible on mobile, hover-reveal on desktop */}
+      <div className="px-6 pb-4">
+        <button
+          type="button"
+          onClick={handleCompare}
+          disabled={!isSelected && isFull}
+          className={`w-full flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium rounded-xl transition-all ${
+            isSelected
+              ? "bg-brand-600 text-white shadow-sm"
+              : isFull
+                ? "bg-gray-100 text-gray-300 cursor-not-allowed"
+                : "bg-gray-50 text-gray-500 border border-gray-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100"
+          }`}
+          title={isSelected ? "Remove from comparison" : isFull ? "Max 4 products" : "Add to compare"}
+        >
+          {isSelected ? (
+            <>
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              Added to compare
+            </>
+          ) : (
+            <>
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+              </svg>
+              Compare
+            </>
+          )}
+        </button>
+      </div>
     </div>
   );
 }
