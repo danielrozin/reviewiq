@@ -1,8 +1,8 @@
-import Link from "next/link";
 import { categories } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { categoryListSchema } from "@/lib/schema/jsonld";
+import { CategorySearch } from "@/components/category/CategorySearch";
 
 export const metadata = buildMetadata({
   title: "All Product Categories — AI Reviews & Comparisons",
@@ -24,47 +24,31 @@ export default function CategoriesPage() {
       />
       <Breadcrumbs items={[{ name: "Categories", url: "/categories" }]} />
 
-      <div className="mt-8 mb-10">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
-          Product Categories
-        </h1>
-        <p className="text-gray-500 max-w-2xl leading-relaxed">
-          Explore in-depth product intelligence across {categories.length} popular consumer
-          categories — {totalProducts}+ products with AI-analyzed reviews, verified buyer
-          insights, and structured comparison data.
-        </p>
+      {/* Page header */}
+      <div className="mt-8 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Product Categories
+          </h1>
+          <p className="text-gray-500 max-w-2xl leading-relaxed">
+            {categories.length} categories · {totalProducts}+ products · AI-analyzed reviews from verified buyers
+          </p>
+        </div>
+        {/* Quick stat pills */}
+        <div className="flex items-center gap-3 shrink-0">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 text-emerald-700 rounded-full text-xs font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            78% verified buyers
+          </div>
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-xs font-medium">
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+            20K+ reviews
+          </div>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {categories.map((cat) => (
-          <Link
-            key={cat.id}
-            href={`/category/${cat.slug}`}
-            className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200"
-          >
-            <div className="flex items-start justify-between mb-3">
-              <span className="text-4xl group-hover:scale-110 transition-transform duration-200 inline-block">
-                {cat.icon}
-              </span>
-              <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded-full">
-                {cat.productCount} products
-              </span>
-            </div>
-            <h2 className="text-xl font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2">
-              {cat.name}
-            </h2>
-            <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
-              {cat.description}
-            </p>
-            <div className="flex items-center gap-1.5 text-sm font-medium text-brand-600 group-hover:gap-2.5 transition-all">
-              <span>Explore reviews</span>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </div>
-          </Link>
-        ))}
-      </div>
+      {/* Search + grid (client component) */}
+      <CategorySearch categories={categories} />
     </div>
   );
 }
