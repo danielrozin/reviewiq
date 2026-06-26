@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import { getCategoryBySlug } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
-import { ProductCard } from "@/components/product/ProductCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { CategorySortedGrid } from "@/components/category/CategorySortedGrid";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
@@ -36,10 +36,6 @@ export default async function CategoryPage({ params }: Props) {
 
   const categoryProducts = getProductsByCategory(slug);
   const buyingGuide = getBuyingGuide(slug);
-
-  const sortedProducts = [...categoryProducts].sort(
-    (a, b) => b.smartScore - a.smartScore
-  );
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -108,24 +104,8 @@ export default async function CategoryPage({ params }: Props) {
         </div>
       </div>
 
-      {/* Product grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sortedProducts.map((product, index) => (
-          <div key={product.id} className="relative">
-            {/* Top-3 rank badge */}
-            {index < 3 && (
-              <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm border-2 border-white"
-                style={{
-                  background: index === 0 ? "#f59e0b" : index === 1 ? "#94a3b8" : "#cd7f32",
-                  color: "white"
-                }}>
-                #{index + 1}
-              </div>
-            )}
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
+      {/* Product grid with client-side sort + persistence */}
+      <CategorySortedGrid products={categoryProducts} categorySlug={slug} />
 
       {/* Buying Guide */}
       <section className="mt-16" aria-label="Buying guide">

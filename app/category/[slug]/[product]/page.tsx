@@ -24,6 +24,7 @@ import { TrackProductView } from "@/components/tracking/TrackProductView";
 import { TrackRecentlyViewed } from "@/components/product/TrackRecentlyViewed";
 import { ReviewFormCTA } from "@/components/product/ReviewFormCTA";
 import { BestFor } from "@/components/product/BestFor";
+import { StickyMobileCTA } from "@/components/product/StickyMobileCTA";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -91,6 +92,11 @@ export default async function ProductPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackProductView slug={product.slug} category={category.slug} />
+      <StickyMobileCTA
+        productName={product.name}
+        productSlug={product.slug}
+        smartScore={product.smartScore}
+      />
       <TrackRecentlyViewed
         slug={product.slug}
         name={product.name}
