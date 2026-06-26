@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 import { getTrendingDiscussions } from "@/data/discussions";
@@ -168,28 +169,53 @@ export default function HomePage() {
               Top SmartScores across all categories
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {topProducts.map((product) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {topProducts.map((product, index) => (
               <Link
                 key={product.id}
                 href={`/category/${product.categorySlug}/${product.slug}`}
-                className="group flex items-center gap-4 bg-white border border-gray-100 rounded-xl p-4 hover:shadow-md hover:border-gray-200 transition-all"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all flex flex-col"
               >
-                <SmartScore
-                  score={product.smartScore}
-                  size="sm"
-                  showLabel={false}
-                />
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-brand-600 font-medium uppercase tracking-wider">
+                {/* Product image */}
+                <div className="relative h-44 bg-gray-50 overflow-hidden">
+                  {product.image ? (
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                      priority={index < 3}
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-4xl font-black text-gray-200">
+                        {product.brand[0]}
+                      </span>
+                    </div>
+                  )}
+                  {/* Winner badge */}
+                  <div className="absolute top-3 right-3">
+                    <div className="flex items-center gap-1 px-2 py-0.5 bg-white/90 backdrop-blur-sm rounded-full shadow-sm border border-gray-100">
+                      <SmartScore score={product.smartScore} size="sm" showLabel={false} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card body */}
+                <div className="p-4 flex-1 flex flex-col">
+                  <p className="text-xs text-brand-600 font-semibold uppercase tracking-wider mb-0.5">
                     {product.brand}
                   </p>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
+                  <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 flex-1 mb-3">
                     {product.name}
                   </h3>
-                  <p className="text-sm text-gray-400">
-                    {formatNumber(product.reviewCount)} reviews
-                  </p>
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-gray-400">{formatNumber(product.reviewCount)} reviews</span>
+                    <span className="text-gray-500 font-medium">
+                      ${product.priceRange.min}–${product.priceRange.max}
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}

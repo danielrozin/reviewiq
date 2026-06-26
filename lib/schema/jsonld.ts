@@ -145,16 +145,57 @@ export function categoryListSchema(categories: Category[]) {
 }
 
 export function productListSchema(products: Product[], categoryName: string) {
+  const avgCategoryRating =
+    products.length > 0
+      ? products.reduce((sum, p) => {
+          const avg =
+            p.reviews.length > 0
+              ? p.reviews.reduce((s, r) => s + r.rating, 0) / p.reviews.length
+              : 0;
+          return sum + avg;
+        }, 0) / products.length
+      : 0;
+
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: `Best ${categoryName}`,
-    itemListElement: products.map((p, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: p.name,
-      url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
-    })),
+    description: `Top-rated ${categoryName} ranked by SmartScore from verified buyer reviews`,
+    numberOfItems: products.length,
+    ...(avgCategoryRating > 0 && {
+      aggregateRating: {
+        "@type": "AggregateRating",
+        ratingValue: avgCategoryRating.toFixed(1),
+        bestRating: "5",
+        worstRating: "1",
+        reviewCount: products.reduce((sum, p) => sum + p.reviewCount, 0),
+      },
+    }),
+    itemListElement: products.map((p, index) => {
+      const avgRating =
+        p.reviews.length > 0
+          ? p.reviews.reduce((s, r) => s + r.rating, 0) / p.reviews.length
+          : 0;
+      return {
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Product",
+          name: p.name,
+          url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
+          brand: { "@type": "Brand", name: p.brand },
+          ...(avgRating > 0 && {
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: avgRating.toFixed(1),
+              bestRating: "5",
+              worstRating: "1",
+              reviewCount: p.reviewCount,
+            },
+          }),
+        },
+      };
+    }),
   };
 }
 
