@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { getCategoryBySlug } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
@@ -7,6 +8,8 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
+import { getAllComparisonPairs } from "@/data/comparisons";
+import { getAffinityCategories } from "@/data/category-affinity";
 import { TrackCategoryView } from "@/components/product/ProductPageClientWidgets";
 
 interface Props {
@@ -39,6 +42,23 @@ export default async function CategoryPage({ params }: Props) {
 
   const categoryProducts = getProductsByCategory(slug);
   const buyingGuide = getBuyingGuide(slug);
+
+  // Internal linking: top comparison pages within this category (funnels
+  // crawl + authority from the category hub to high-intent /compare pages).
+  const categoryComparisons = getAllComparisonPairs()
+    .filter(
+      (pair) =>
+        pair.productA.categorySlug === slug ||
+        pair.productB.categorySlug === slug
+    )
+    .slice(0, 6);
+
+  // Internal linking: sibling categories (removes the category dead-end and
+  // spreads link equity across related hubs).
+  const relatedCategories = getAffinityCategories(slug)
+    .map((affinity) => getCategoryBySlug(affinity.slug))
+    .filter((cat): cat is NonNullable<typeof cat> => Boolean(cat))
+    .slice(0, 6);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -124,6 +144,54 @@ export default async function CategoryPage({ params }: Props) {
           </div>
         )}
       </section>
+
+      {/* Internal linking: high-intent comparison pages within this category */}
+      {categoryComparisons.length > 0 && (
+        <section className="mt-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            Popular {category.name} Comparisons
+          </h2>
+          <p className="text-gray-500 mb-6 max-w-3xl">
+            See how the top {category.name.toLowerCase()} stack up head-to-head.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {categoryComparisons.map((pair) => (
+              <li key={pair.slug}>
+                <Link
+                  href={`/compare/${pair.slug}`}
+                  className="block rounded-lg border border-gray-200 px-4 py-3 text-gray-700 hover:border-blue-300 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+                >
+                  <span className="font-medium">{pair.productA.name}</span>
+                  <span className="text-gray-400"> vs </span>
+                  <span className="font-medium">{pair.productB.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Internal linking: related category hubs (removes the dead-end) */}
+      {relatedCategories.length > 0 && (
+        <section className="mt-16">
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Related Categories
+          </h2>
+          <ul className="flex flex-wrap gap-3">
+            {relatedCategories.map((cat) => (
+              <li key={cat.slug}>
+                <Link
+                  href={`/category/${cat.slug}`}
+                  className="inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-2 text-gray-700 hover:border-blue-300 hover:text-blue-700 hover:bg-blue-50 transition-colors"
+                >
+                  <span className="text-lg">{cat.icon}</span>
+                  <span className="font-medium">{cat.name}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </div>
   );
 }
