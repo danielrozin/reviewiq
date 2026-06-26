@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { getAllBlogPosts } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -41,38 +42,29 @@ export default function BlogPage() {
             href={`/blog/${post.slug}`}
             className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all"
           >
-            {post.coverImage && (
-              <div className="aspect-video bg-gray-100 relative overflow-hidden">
+            <div className="aspect-video bg-gray-100 relative overflow-hidden">
+              {post.coverImage ? (
+                <Image
+                  src={post.coverImage}
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
-                  <span className="text-4xl opacity-40">
-                    {post.categoryName === "Mattresses"
-                      ? "🛏️"
-                      : post.categoryName === "Coffee Machines"
-                        ? "☕"
-                        : post.categoryName === "Air Fryers"
-                          ? "🍟"
-                          : post.categoryName === "Robot Vacuums"
-                            ? "🤖"
-                            : post.categoryName === "Wireless Earbuds"
-                              ? "🎧"
-                              : post.categoryName === "Smart Watches"
-                                ? "⌚"
-                                : post.categoryName === "Standing Desks"
-                                  ? "🪑"
-                                  : post.categoryName === "Blenders"
-                                    ? "🥤"
-                                    : post.categoryName === "Laptops"
-                                      ? "💻"
-                                      : "🪥"}
-                  </span>
+                  <span className="text-5xl opacity-30">{post.categoryName?.[0] ?? "📖"}</span>
                 </div>
-              </div>
-            )}
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2 py-1 rounded-full">
+              )}
+              {/* Category overlay pill */}
+              <div className="absolute top-3 left-3">
+                <span className="text-xs font-semibold text-brand-700 bg-white/90 backdrop-blur-sm px-2.5 py-1 rounded-full shadow-sm">
                   {post.categoryName}
                 </span>
+              </div>
+            </div>
+            <div className="p-6">
+              <div className="flex items-center gap-2 mb-3">
                 <span className="text-xs text-gray-400">
                   {post.readingTime} min read
                 </span>
