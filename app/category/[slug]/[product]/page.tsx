@@ -21,6 +21,7 @@ import { formatNumber } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
 import { TrackProductView } from "@/components/tracking/TrackProductView";
+import { TrackRecentlyViewed } from "@/components/product/TrackRecentlyViewed";
 import { ReviewFormCTA } from "@/components/product/ReviewFormCTA";
 import { BestFor } from "@/components/product/BestFor";
 
@@ -90,6 +91,13 @@ export default async function ProductPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackProductView slug={product.slug} category={category.slug} />
+      <TrackRecentlyViewed
+        slug={product.slug}
+        name={product.name}
+        brand={product.brand}
+        categorySlug={category.slug}
+        smartScore={product.smartScore}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -10,6 +10,7 @@ import { formatNumber } from "@/lib/utils";
 import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { HeroSearch } from "@/components/home/HeroSearch";
+import { RecentlyViewedStrip } from "@/components/home/RecentlyViewedStrip";
 
 export const metadata = buildMetadata({
   title: "AI-Powered Product Reviews & Comparisons",
@@ -94,6 +95,9 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <HomeOnboardingSection />
       </section>
+
+      {/* Recently Viewed — returns users to where they left off */}
+      <RecentlyViewedStrip />
 
       {/* Trust Signals */}
       <section className="border-y border-gray-100 bg-white">
