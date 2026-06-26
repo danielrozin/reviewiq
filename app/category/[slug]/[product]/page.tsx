@@ -135,7 +135,7 @@ export default async function ProductPage({ params }: Props) {
         </p>
 
         <div className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
-          <SmartScore score={product.smartScore} size="lg" />
+          <SmartScore score={product.smartScore} size="lg" showRing />
 
           <div className="h-12 w-px bg-gray-200 hidden sm:block" />
 

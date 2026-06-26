@@ -37,6 +37,10 @@ export default async function CategoryPage({ params }: Props) {
   const categoryProducts = getProductsByCategory(slug);
   const buyingGuide = getBuyingGuide(slug);
 
+  const sortedProducts = [...categoryProducts].sort(
+    (a, b) => b.smartScore - a.smartScore
+  );
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackCategoryView slug={slug} productCount={categoryProducts.length} />
@@ -65,43 +69,89 @@ export default async function CategoryPage({ params }: Props) {
         ]}
       />
 
-      <div className="mt-8 mb-10">
-        <div className="flex items-center gap-3 mb-3">
-          <span className="text-3xl">{category.icon}</span>
-          <h1 className="text-3xl font-bold text-gray-900">
-            Best {category.name}
-          </h1>
+      {/* Category header */}
+      <div className="mt-8 mb-8">
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <div className="flex items-center gap-3 mb-2">
+              <span className="text-4xl">{category.icon}</span>
+              <h1 className="text-3xl font-bold text-gray-900">
+                Best {category.name}
+              </h1>
+            </div>
+            <p className="text-gray-500 max-w-3xl leading-relaxed">
+              {category.description}
+            </p>
+          </div>
+          <div className="shrink-0 text-right">
+            <p className="text-2xl font-bold text-gray-900">{categoryProducts.length}</p>
+            <p className="text-sm text-gray-400">products reviewed</p>
+          </div>
         </div>
-        <p className="text-gray-500 max-w-3xl leading-relaxed">
-          {category.description}
-        </p>
+
+        {/* Contextual trust signals */}
+        <div className="flex flex-wrap gap-3 mt-5">
+          {[
+            { label: "AI-analyzed reviews", icon: "🤖" },
+            { label: "Verified buyer data", icon: "✓" },
+            { label: "No affiliate bias", icon: "🛡️" },
+            { label: `Sorted by SmartScore`, icon: "📊" },
+          ].map((tag) => (
+            <span
+              key={tag.label}
+              className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-600 bg-gray-100 px-3 py-1.5 rounded-full"
+            >
+              <span>{tag.icon}</span>
+              {tag.label}
+            </span>
+          ))}
+        </div>
       </div>
 
+      {/* Product grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categoryProducts
-          .sort((a, b) => b.smartScore - a.smartScore)
-          .map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        {sortedProducts.map((product, index) => (
+          <div key={product.id} className="relative">
+            {/* Top-3 rank badge */}
+            {index < 3 && (
+              <div className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm border-2 border-white"
+                style={{
+                  background: index === 0 ? "#f59e0b" : index === 1 ? "#94a3b8" : "#cd7f32",
+                  color: "white"
+                }}>
+                #{index + 1}
+              </div>
+            )}
+            <ProductCard product={product} />
+          </div>
+        ))}
       </div>
 
       {/* Buying Guide */}
-      <section className="mt-16">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6">
-          {buyingGuide ? buyingGuide.title : `Buying Guide: ${category.name}`}
-        </h2>
+      <section className="mt-16" aria-label="Buying guide">
+        <div className="flex items-center gap-3 mb-6">
+          <div className="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center">
+            <svg className="w-4 h-4 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.966 8.966 0 0 0-6 2.292m0-14.25v14.25" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-gray-900">
+            {buyingGuide ? buyingGuide.title : `${category.name} Buying Guide`}
+          </h2>
+        </div>
+
         {buyingGuide ? (
-          <ol className="space-y-6 max-w-3xl">
+          <ol className="space-y-5 max-w-3xl">
             {buyingGuide.steps.map((step, index) => (
-              <li key={index} className="flex gap-4">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-700 font-semibold flex items-center justify-center text-sm">
+              <li key={index} className="flex gap-4 group">
+                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
                   {index + 1}
                 </span>
-                <div>
-                  <h3 className="font-semibold text-gray-900 capitalize">
+                <div className="flex-1 pt-0.5">
+                  <h3 className="font-semibold text-gray-900 capitalize mb-1">
                     {step.name}
                   </h3>
-                  <p className="text-gray-600 mt-1 leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed text-sm">
                     {step.text}
                   </p>
                 </div>
@@ -109,16 +159,14 @@ export default async function CategoryPage({ params }: Props) {
             ))}
           </ol>
         ) : (
-          <div className="prose prose-gray max-w-3xl">
-            <p className="text-gray-600 leading-relaxed">
-              Choosing the right product in the {category.name.toLowerCase()}{" "}
-              category can be overwhelming. ReviewIQ analyzes verified buyer
-              experiences to help you understand what matters most — from
-              performance and reliability to value and common issues. Browse the
-              products above to see AI-powered review summaries, recurring
-              complaints, and structured comparisons.
-            </p>
-          </div>
+          <p className="text-gray-600 leading-relaxed max-w-3xl">
+            Choosing the right product in the {category.name.toLowerCase()}{" "}
+            category can be overwhelming. ReviewIQ analyzes verified buyer
+            experiences to help you understand what matters most — from
+            performance and reliability to value and common issues. Browse the
+            products above to see AI-powered review summaries, recurring
+            complaints, and structured comparisons.
+          </p>
         )}
       </section>
     </div>

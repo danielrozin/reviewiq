@@ -12,6 +12,8 @@ import { ExperimentProvider } from "@/lib/experiments";
 import { GoogleTagManager, GoogleTagManagerNoScript } from "@/components/tracking/GoogleTagManager";
 import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { CompareProvider } from "@/lib/context/CompareContext";
+import { ComparisonTray } from "@/components/comparison/ComparisonTray";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "ReviewIQ — Real Reviews, Real Intelligence",
@@ -56,6 +58,8 @@ export default function RootLayout({
                     <OnboardingOrchestrator />
                     <main className="flex-1">{children}</main>
                     <Footer />
+                    <ComparisonTray />
+                    <ScrollToTop />
                   </ExperimentProvider>
                 </OnboardingProvider>
               </CompareProvider>
