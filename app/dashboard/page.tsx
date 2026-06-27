@@ -95,9 +95,12 @@ export default async function DashboardPage() {
         </div>
         <Link
           href={`/community/user/${user.username}`}
-          className="text-sm text-brand-600 hover:text-brand-700 font-medium"
+          className="inline-flex items-center gap-1 text-sm text-brand-600 hover:text-brand-700 font-medium group"
         >
-          View public profile →
+          View public profile
+          <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
         </Link>
       </div>
 
@@ -141,9 +144,12 @@ export default async function DashboardPage() {
               </h2>
               <Link
                 href="/write-review"
-                className="text-xs text-brand-600 hover:text-brand-700 font-medium"
+                className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 font-medium group"
               >
-                Write a review →
+                Write a review
+                <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
               </Link>
             </div>
             <ReviewHistory reviews={userReviews} />
