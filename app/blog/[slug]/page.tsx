@@ -172,34 +172,37 @@ export default async function BlogPostPage({
         {/* FAQ Section */}
         {post.faq.length > 0 && (
           <section className="mt-12 border-t border-gray-100 pt-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Frequently Asked Questions
-            </h2>
-            <div className="space-y-4">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+                </svg>
+              </div>
+              <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            </div>
+            <div className="space-y-3">
               {post.faq.map((item, i) => (
                 <details
                   key={i}
-                  className="group bg-gray-50 rounded-xl p-4"
+                  className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 transition-colors"
                 >
-                  <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between">
-                    {item.question}
+                  <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4">
+                    <span>{item.question}</span>
                     <svg
-                      className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"
+                      className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={2}
                       stroke="currentColor"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   </summary>
-                  <p className="mt-3 text-gray-600 leading-relaxed">
-                    {item.answer}
-                  </p>
+                  <div className="px-5 pb-5 border-t border-gray-50">
+                    <p className="mt-3 text-gray-600 leading-relaxed text-sm">
+                      {item.answer}
+                    </p>
+                  </div>
                 </details>
               ))}
             </div>
@@ -212,27 +215,33 @@ export default async function BlogPostPage({
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Top {post.categoryName} on ReviewIQ
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {categoryProducts.map((product) => (
                 <Link
                   key={product.id}
                   href={`/category/${product.categorySlug}/${product.slug}`}
-                  className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all"
                 >
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-gray-100 shrink-0">
-                    <span className="text-lg font-bold text-brand-600">
-                      {product.smartScore}
-                    </span>
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
+                    product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
+                    product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
+                    product.smartScore >= 55 ? "bg-amber-50 text-amber-700" :
+                    "bg-gray-50 text-gray-600"
+                  }`}>
+                    {product.smartScore}
                   </div>
-                  <div className="min-w-0">
-                    <p className="font-medium text-gray-900 truncate">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                       {product.name}
                     </p>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-xs text-gray-400 mt-0.5">
                       ${product.priceRange.min}–${product.priceRange.max} &middot;{" "}
                       {product.reviewCount} reviews
                     </p>
                   </div>
+                  <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                  </svg>
                 </Link>
               ))}
             </div>
