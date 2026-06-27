@@ -41,27 +41,39 @@ export function RecentlyViewedStrip() {
             localStorage.removeItem(KEY);
             setItems([]);
           }}
-          className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+          className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600 transition-colors"
         >
+          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+          </svg>
           Clear
         </button>
       </div>
-      <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-thin">
-        {items.map((item) => (
-          <Link
-            key={item.slug}
-            href={`/category/${item.categorySlug}/${item.slug}`}
-            className="snap-start shrink-0 w-44 bg-white border border-gray-200 rounded-xl p-3.5 hover:border-brand-300 hover:shadow-sm transition-all group"
-          >
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-xs text-gray-400 font-medium truncate max-w-[80px]">{item.brand}</span>
-              <SmartScore score={item.smartScore} size="sm" />
-            </div>
-            <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-600 line-clamp-2 leading-snug transition-colors">
-              {item.name}
-            </p>
-          </Link>
-        ))}
+      <div className="relative">
+        {/* Right fade gradient — scroll hint on mobile */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-white to-transparent z-10 sm:hidden" />
+        <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-thin">
+          {items.map((item) => (
+            <Link
+              key={item.slug}
+              href={`/category/${item.categorySlug}/${item.slug}`}
+              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl p-3.5 hover:border-brand-200 hover:shadow-sm transition-all group"
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[10px] text-gray-400 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>
+                <SmartScore score={item.smartScore} size="sm" />
+              </div>
+              <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-600 line-clamp-2 leading-snug transition-colors mb-1.5">
+                {item.name}
+              </p>
+              {item.categorySlug && (
+                <p className="text-[10px] text-gray-400 truncate capitalize">
+                  {item.categorySlug.replace(/-/g, " ")}
+                </p>
+              )}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );
