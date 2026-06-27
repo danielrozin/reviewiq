@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import type React from "react";
 import { ThreadCard } from "@/components/community/ThreadCard";
 import type { DiscussionThread } from "@/types";
 
@@ -17,7 +18,32 @@ export function SortableDiscussions({
 }) {
   const [activeTab, setActiveTab] = useState<SortTab>("Trending");
 
-  const tabs: SortTab[] = ["Trending", "Recent", "Top"];
+  const tabs: { key: SortTab; icon: React.ReactNode }[] = [
+    {
+      key: "Trending",
+      icon: (
+        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.387Z" />
+        </svg>
+      ),
+    },
+    {
+      key: "Recent",
+      icon: (
+        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+      ),
+    },
+    {
+      key: "Top",
+      icon: (
+        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+        </svg>
+      ),
+    },
+  ];
   const threads = activeTab === "Trending" ? trending : activeTab === "Recent" ? recent : top;
 
   return (
@@ -26,18 +52,19 @@ export function SortableDiscussions({
         <h2 className="text-lg font-semibold text-gray-900">
           {activeTab} Discussions
         </h2>
-        <div className="flex items-center gap-1">
-          {tabs.map((tab) => (
+        <div className="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
+          {tabs.map(({ key, icon }) => (
             <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${
-                activeTab === tab
-                  ? "bg-brand-50 text-brand-600"
-                  : "text-gray-500 hover:bg-gray-50"
+              key={key}
+              onClick={() => setActiveTab(key)}
+              className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${
+                activeTab === key
+                  ? "bg-white text-brand-600 shadow-sm border border-gray-100"
+                  : "text-gray-500 hover:text-gray-700"
               }`}
             >
-              {tab}
+              {icon}
+              {key}
             </button>
           ))}
         </div>
