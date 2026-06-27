@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
 import type { FAQItem } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -39,13 +38,18 @@ export function FAQSection({ items }: FAQSectionProps) {
                 <span className="text-sm font-medium text-gray-900 pr-4 group-hover:text-brand-700 transition-colors">
                   {item.question}
                 </span>
-                <ChevronDown
-                  size={16}
+                <svg
                   className={cn(
-                    "shrink-0 text-gray-400 transition-transform duration-200",
+                    "w-4 h-4 shrink-0 text-gray-400 transition-transform duration-200",
                     isOpen && "rotate-180 text-brand-500"
                   )}
-                />
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2.5}
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
               </button>
               <div
                 className={cn(
