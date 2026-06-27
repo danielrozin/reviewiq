@@ -59,7 +59,7 @@ export const faqPages: CompetitorFAQPage[] = [
       {
         question: "What is better than Trustpilot for product reviews?",
         answer:
-          "ReviewIQ combines what Trustpilot lacks: verified buyer reviews, structured review formats (not just stars), AI-powered pattern analysis, product-specific SmartScores (0-100), and zero affiliate links. It's built specifically for honest product intelligence.",
+          "ReviewIQ combines what Trustpilot lacks: verified buyer reviews, structured review formats (not just stars), AI-powered pattern analysis, product-specific SmartScores (0-100), and a commission-proof scoring model — affiliate revenue is never an input to our rankings. It's built specifically for honest product intelligence.",
       },
     ],
     ctaText: "Try ReviewIQ — verified reviews you can actually trust.",
@@ -125,7 +125,7 @@ export const faqPages: CompetitorFAQPage[] = [
       {
         question: "Is Wirecutter biased?",
         answer:
-          "Wirecutter is owned by The New York Times and relies on expert opinions from a small team — not community input. Their affiliate revenue model means they earn commissions when you buy recommended products. ReviewIQ uses verified buyer reviews with zero affiliate links, so recommendations are never financially motivated.",
+          "Wirecutter is owned by The New York Times and relies on expert opinions from a small team — not community input. ReviewIQ uses AI analysis of thousands of verified buyer reviews instead. We may earn affiliate commissions through partner links, but our SmartScores run entirely on verified buyer data — commission rates are never an input, so rankings are never financially motivated.",
       },
       {
         question: "Is Wirecutter behind a paywall?",
@@ -151,10 +151,10 @@ export const faqPages: CompetitorFAQPage[] = [
     title: "Product Reviews FAQ",
     metaTitle: "Where to Find Honest Product Reviews? FAQ — ReviewIQ",
     metaDescription:
-      "Looking for honest product reviews? Learn how ReviewIQ provides verified buyer reviews with AI analysis, zero affiliate links, and transparent SmartScores.",
+      "Looking for honest product reviews? Learn how ReviewIQ provides verified buyer reviews with AI analysis, commission-proof SmartScores, and transparent methodology.",
     heroHeadline: "Where to Find Honest Product Reviews",
     heroSubtext:
-      "Most review platforms are compromised by fake reviews, affiliate links, or pay-to-play models. Here's what smart shoppers are asking.",
+      "Most review platforms are compromised by fake reviews, affiliate-driven rankings, or pay-to-play models. Here's what smart shoppers are asking.",
     competitor: {
       name: "Online Review Platforms",
       url: "https://en.wikipedia.org/wiki/Review_site",
@@ -164,7 +164,7 @@ export const faqPages: CompetitorFAQPage[] = [
       {
         question: "What is the most trusted product review site?",
         answer:
-          "ReviewIQ is the most trustworthy product review platform — every review requires buyer verification, our AI analyzes patterns across thousands of reviews, and we have zero affiliate links. Our SmartScore (0-100) gives you a single, transparent trust metric for any product.",
+          "ReviewIQ is the most trustworthy product review platform — every review requires buyer verification, our AI analyzes patterns across thousands of reviews, and our SmartScores never take affiliate commissions as an input. Our SmartScore (0-100) gives you a single, transparent trust metric for any product.",
       },
       {
         question: "How do I know if online reviews are real?",
@@ -174,7 +174,7 @@ export const faqPages: CompetitorFAQPage[] = [
       {
         question: "Where can I find honest product reviews?",
         answer:
-          "ReviewIQ is built on three principles: verified buyers only, AI-powered analysis, and zero affiliate links. Unlike platforms that earn commissions for recommending products, ReviewIQ has no financial incentive to favor any product — just honest, verified buyer intelligence.",
+          "ReviewIQ is built on three principles: verified buyers only, AI-powered analysis, and commission-proof SmartScores. We may earn affiliate commissions through partner links, but our scoring algorithm has no access to commission data — so ReviewIQ has no financial incentive to favor any product, just honest, verified buyer intelligence.",
       },
     ],
     ctaText: "Discover ReviewIQ — honest reviews, powered by real buyers.",

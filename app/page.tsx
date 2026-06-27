@@ -40,7 +40,7 @@ export default function HomePage() {
               <span className="text-brand-600">actually trust</span>
             </h1>
             <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-6 max-w-2xl mx-auto">
-              AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.
+              AI-powered product reviews for smart buyers. Honest data. Verified buyers. Commission-proof SmartScores.
             </p>
             <div className="flex justify-center mb-6">
               <HeroSearch />

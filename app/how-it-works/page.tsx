@@ -49,12 +49,12 @@ const steps = [
     number: "04",
     title: "You Make Smarter Decisions",
     description:
-      "Browse structured product pages with everything you need: AI summaries, specs, comparisons, recurring issues, and FAQ — all in one place. No affiliate links. No sponsored placements. Just honest intelligence.",
+      "Browse structured product pages with everything you need: AI summaries, specs, comparisons, recurring issues, and FAQ — all in one place. No sponsored placements, and affiliate commissions never influence our SmartScores. Just honest intelligence.",
     details: [
       "Side-by-side comparisons based on real search demand",
       "FAQ sections answering the questions real buyers ask",
       "Technical specs alongside real-world experience data",
-      "Zero affiliate links — we never profit from your purchase",
+      "SmartScores run on verified buyer data — affiliate commissions are never an input",
     ],
   },
 ];
@@ -116,8 +116,8 @@ export default function HowItWorksPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
-              title: "No Affiliate Links",
-              text: "We never earn commissions from product purchases. Our only incentive is giving you honest information.",
+              title: "Commission-Proof Rankings",
+              text: "ReviewIQ may earn affiliate commissions through partner links, but our SmartScores run entirely on verified buyer data — commission rates are never an input.",
             },
             {
               title: "No Sponsored Rankings",
