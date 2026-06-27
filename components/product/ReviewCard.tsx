@@ -34,7 +34,11 @@ export function ReviewCard({ review }: ReviewCardProps) {
           <ul className="space-y-1">
             {review.pros.map((pro, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
-                <span className="text-emerald-500 mt-1 shrink-0">+</span>
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </span>
                 {pro}
               </li>
             ))}
@@ -47,7 +51,11 @@ export function ReviewCard({ review }: ReviewCardProps) {
           <ul className="space-y-1">
             {review.cons.map((con, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
-                <span className="text-red-400 mt-1 shrink-0">-</span>
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                  </svg>
+                </span>
                 {con}
               </li>
             ))}
