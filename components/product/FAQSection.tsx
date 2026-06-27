@@ -16,9 +16,16 @@ export function FAQSection({ items }: FAQSectionProps) {
 
   return (
     <section data-speakable="faq-answer">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">
-        Frequently Asked Questions
-      </h2>
+      <div className="flex items-center gap-2.5 mb-4">
+        <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+          <svg className="w-3.5 h-3.5 text-brand-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+          </svg>
+        </div>
+        <h2 className="text-lg font-semibold text-gray-900">
+          Frequently Asked Questions
+        </h2>
+      </div>
       <div className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
