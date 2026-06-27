@@ -77,7 +77,9 @@ export function BlogCategoryFilter({ posts }: Props) {
                 />
               ) : (
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
-                  <span className="text-5xl opacity-30">{post.categoryName?.[0] ?? "📖"}</span>
+                  <svg className="w-12 h-12 text-brand-200" fill="none" viewBox="0 0 24 24" strokeWidth={1.2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                  </svg>
                 </div>
               )}
               <div className="absolute top-3 left-3">
@@ -101,7 +103,12 @@ export function BlogCategoryFilter({ posts }: Props) {
                 </div>
                 <span className="text-xs text-gray-500 flex-1 truncate">{post.author.name}</span>
                 <span className="text-gray-200 text-xs shrink-0">·</span>
-                <span className="text-xs text-gray-400 shrink-0">{post.readingTime} min</span>
+                <span className="inline-flex items-center gap-1 text-xs text-gray-400 shrink-0">
+                  <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  {post.readingTime} min
+                </span>
               </div>
             </div>
           </Link>
