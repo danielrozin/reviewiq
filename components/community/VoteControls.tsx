@@ -77,6 +77,17 @@ export function VoteControls({
   const buttonSize = size === "sm" ? "w-7 h-7 text-sm" : "w-9 h-9 text-base";
   const scoreSize = size === "sm" ? "text-sm" : "text-base";
 
+  const UpIcon = () => (
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+  );
+  const DownIcon = () => (
+    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+    </svg>
+  );
+
   if (layout === "vertical") {
     return (
       <div className="flex flex-col items-center gap-0.5">
@@ -89,9 +100,9 @@ export function VoteControls({
           }`}
           aria-label="Upvote"
         >
-          ▲
+          <UpIcon />
         </button>
-        <span className={`${scoreSize} font-semibold ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-500" : "text-gray-500"}`}>
+        <span className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-500" : "text-gray-500"}`}>
           {formatNumber(netVotes)}
         </span>
         <button
@@ -103,7 +114,7 @@ export function VoteControls({
           }`}
           aria-label="Downvote"
         >
-          ▼
+          <DownIcon />
         </button>
       </div>
     );
@@ -121,9 +132,9 @@ export function VoteControls({
           }`}
           aria-label="Upvote"
         >
-          ▲
+          <UpIcon />
         </button>
-        <span className={`${scoreSize} font-semibold px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-500" : "text-gray-500"}`}>
+        <span className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-500" : "text-gray-500"}`}>
           {formatNumber(netVotes)}
         </span>
         <button
@@ -135,7 +146,7 @@ export function VoteControls({
           }`}
           aria-label="Downvote"
         >
-          ▼
+          <DownIcon />
         </button>
       </div>
       {helpfulCount !== undefined && helpfulCount > 0 && (

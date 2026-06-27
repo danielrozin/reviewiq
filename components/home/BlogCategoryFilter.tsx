@@ -86,27 +86,22 @@ export function BlogCategoryFilter({ posts }: Props) {
                 </span>
               </div>
             </div>
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-xs text-gray-400">{post.readingTime} min read</span>
-              </div>
-              <h2 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2">
+            <div className="p-6 flex flex-col flex-1">
+              <h2 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
                 {post.title}
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-3">
+              <p className="text-sm text-gray-500 leading-relaxed line-clamp-3 flex-1 mb-4">
                 {post.excerpt}
               </p>
-              <div className="mt-4 flex items-center justify-between">
-                <span className="text-xs text-gray-400">
-                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                  })}
-                </span>
-                <span className="text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Read more &rarr;
-                </span>
+              <div className="flex items-center gap-2.5 pt-3 border-t border-gray-50">
+                <div className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0">
+                  <span className="text-[9px] font-bold text-brand-600">
+                    {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
+                  </span>
+                </div>
+                <span className="text-xs text-gray-500 flex-1 truncate">{post.author.name}</span>
+                <span className="text-gray-200 text-xs shrink-0">·</span>
+                <span className="text-xs text-gray-400 shrink-0">{post.readingTime} min</span>
               </div>
             </div>
           </Link>
