@@ -59,15 +59,18 @@ export default function CommunityPage() {
         {/* Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8">
           {[
-            { value: stats.threads, label: "Discussions" },
-            { value: stats.totalComments, label: "Comments" },
-            { value: stats.totalVotes, label: "Upvotes" },
-            { value: stats.activeContributors, label: "Contributors" },
+            { value: stats.threads, label: "Discussions", icon: "💬", color: "bg-brand-50 text-brand-600" },
+            { value: stats.totalComments, label: "Comments", icon: "📝", color: "bg-emerald-50 text-emerald-600" },
+            { value: stats.totalVotes, label: "Upvotes", icon: "👍", color: "bg-amber-50 text-amber-600" },
+            { value: stats.activeContributors, label: "Contributors", icon: "👥", color: "bg-purple-50 text-purple-600" },
           ].map((stat) => (
             <div
               key={stat.label}
-              className="bg-gray-50 rounded-xl p-4 text-center"
+              className="bg-white border border-gray-100 rounded-xl p-4 text-center hover:shadow-sm transition-shadow"
             >
+              <div className={`w-8 h-8 ${stat.color} rounded-lg flex items-center justify-center mx-auto mb-2 text-base`}>
+                {stat.icon}
+              </div>
               <p className="text-xl font-bold text-gray-900">{stat.value.toLocaleString()}</p>
               <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
             </div>

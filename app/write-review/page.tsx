@@ -276,50 +276,76 @@ export default function WriteReviewPage() {
   }
 
   if (submitted) {
+    function handleReset(e: React.MouseEvent) {
+      e.preventDefault();
+      setSubmitted(false); setStep(0); setSelectedProduct(""); setHeadline(""); setRating(0); setBody(""); setPros(["","",""]); setCons(["","",""]); setExperienceLevel(""); setTimeOwned(""); setVerification(""); setReliabilityRating(0); setEaseOfUseRating(0); setValueRating(0); setTouched({});
+    }
+
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="max-w-2xl mx-auto text-center py-20">
-          <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-            <span className="text-emerald-600 text-2xl">&#10003;</span>
+        <div className="max-w-2xl mx-auto py-16">
+          {/* Success card */}
+          <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-3xl p-10 text-center mb-8">
+            <div className="relative inline-flex items-center justify-center mb-6">
+              <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-200">
+                <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                </svg>
+              </div>
+              <span className="absolute -top-1 -right-1 text-2xl animate-bounce">🎉</span>
+            </div>
+            <h1 className="text-3xl font-extrabold text-gray-900 mb-3">
+              Review submitted!
+            </h1>
+            <p className="text-gray-600 leading-relaxed mb-1">
+              Your review has been queued for verification. We check every review before publishing to keep the data honest.
+            </p>
+            <p className="text-sm text-gray-400 mb-6">
+              Typically live within 24–48 hours.
+            </p>
+
+            {/* Stats earned */}
+            <div className="flex items-center justify-center gap-6 py-4 border-t border-emerald-100">
+              {[
+                { icon: "⭐", label: "+10 reputation" },
+                { icon: "✓", label: "Verified contributor" },
+                { icon: "🤝", label: "Helped future buyers" },
+              ].map((item) => (
+                <div key={item.label} className="text-center">
+                  <span className="text-xl block mb-1">{item.icon}</span>
+                  <span className="text-xs font-medium text-emerald-700">{item.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
-            Thank you for your review!
-          </h1>
-          <p className="text-gray-500 leading-relaxed mb-2">
-            Your review has been submitted and will be processed by our team.
-            We verify all reviews before publishing to maintain trust and
-            quality.
-          </p>
-          <p className="text-sm text-gray-400 mb-8">
-            Reviews typically appear within 24-48 hours after verification.
-          </p>
+
+          {/* Actions */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <a
               href="/write-review"
-              onClick={(e) => { e.preventDefault(); setSubmitted(false); setStep(0); setSelectedProduct(""); setHeadline(""); setRating(0); setBody(""); setPros(["","",""]); setCons(["","",""]); setExperienceLevel(""); setTimeOwned(""); setVerification(""); setReliabilityRating(0); setEaseOfUseRating(0); setValueRating(0); setTouched({}); }}
-              className="inline-flex px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors"
+              onClick={handleReset}
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
             >
               Write Another Review
             </a>
             <a
               href="/community"
-              className="inline-flex px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Join the Community
             </a>
             <a
               href="/products"
-              className="inline-flex px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Explore Products
             </a>
           </div>
-          <a
-            href="/"
-            className="inline-flex mt-3 text-sm text-gray-400 hover:text-gray-600 transition-colors"
-          >
-            Back to Home
-          </a>
+          <div className="text-center mt-4">
+            <a href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
+              Back to Home
+            </a>
+          </div>
         </div>
       </div>
     );

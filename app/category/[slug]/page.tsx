@@ -133,19 +133,27 @@ export default async function CategoryPage({ params }: Props) {
         </div>
 
         {buyingGuide ? (
-          <ol className="space-y-5 max-w-3xl">
+          <ol className="max-w-3xl">
             {buyingGuide.steps.map((step, index) => (
-              <li key={index} className="flex gap-4 group">
-                <span className="flex-shrink-0 w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center text-sm shadow-sm">
-                  {index + 1}
-                </span>
-                <div className="flex-1 pt-0.5">
-                  <h3 className="font-semibold text-gray-900 capitalize mb-1">
-                    {step.name}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed text-sm">
-                    {step.text}
-                  </p>
+              <li key={index} className="flex gap-5 group pb-6 last:pb-0">
+                {/* Step number + connecting line */}
+                <div className="flex flex-col items-center shrink-0">
+                  <span className="w-9 h-9 rounded-full bg-brand-600 group-hover:bg-brand-700 text-white font-bold flex items-center justify-center text-sm shadow-md transition-colors z-10">
+                    {index + 1}
+                  </span>
+                  {index < buyingGuide.steps.length - 1 && (
+                    <div className="w-0.5 flex-1 bg-brand-100 mt-2 min-h-[24px]" />
+                  )}
+                </div>
+                <div className="flex-1 pb-1">
+                  <div className="bg-white border border-gray-100 rounded-xl p-4 group-hover:border-brand-100 group-hover:shadow-sm transition-all">
+                    <h3 className="font-semibold text-gray-900 capitalize mb-1">
+                      {step.name}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed text-sm">
+                      {step.text}
+                    </p>
+                  </div>
                 </div>
               </li>
             ))}
