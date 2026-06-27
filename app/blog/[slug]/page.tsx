@@ -251,35 +251,41 @@ export default async function BlogPostPage({
         {/* Cross-Category Products — Affinity Linking */}
         {crossCategoryProducts.length > 0 && (
           <section className="mt-12 border-t border-gray-100 pt-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl font-bold text-gray-900 mb-1">
               You Might Also Like
             </h2>
             <p className="text-sm text-gray-500 mb-6">
               Top-rated products in related categories
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {crossCategoryProducts.map((product) => {
                 const cat = getCategoryBySlug(product.categorySlug);
                 return (
                   <Link
                     key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
-                    className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all"
                   >
-                    <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-gray-100 shrink-0">
-                      <span className="text-lg font-bold text-brand-600">
-                        {product.smartScore}
-                      </span>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
+                      product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
+                      product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
+                      product.smartScore >= 55 ? "bg-amber-50 text-amber-700" :
+                      "bg-gray-50 text-gray-600"
+                    }`}>
+                      {product.smartScore}
                     </div>
-                    <div className="min-w-0">
-                      <p className="font-medium text-gray-900 truncate">
+                    <div className="min-w-0 flex-1">
+                      <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                         {product.name}
                       </p>
-                      <p className="text-sm text-gray-500">
-                        <span className="text-brand-500 font-medium">{cat?.name}</span>
-                        {" "}&middot; ${product.priceRange.min}&ndash;${product.priceRange.max}
+                      <p className="text-xs text-gray-400 mt-0.5">
+                        <span className="text-brand-500 font-medium">{cat?.icon} {cat?.name}</span>
+                        {" "}&middot; ${product.priceRange.min}–${product.priceRange.max}
                       </p>
                     </div>
+                    <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
                   </Link>
                 );
               })}
@@ -310,20 +316,28 @@ export default async function BlogPostPage({
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
               Related Articles
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {relatedPosts.map((rp) => (
                 <Link
                   key={rp.id}
                   href={`/blog/${rp.slug}`}
-                  className="p-4 bg-gray-50 rounded-xl hover:bg-gray-100 transition-colors"
+                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all"
                 >
-                  <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full">
+                  <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
                     {rp.categoryName}
                   </span>
-                  <p className="font-medium text-gray-900 mt-2">{rp.title}</p>
-                  <p className="text-sm text-gray-500 mt-1 line-clamp-2">
+                  <p className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 leading-snug">
+                    {rp.title}
+                  </p>
+                  <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
                     {rp.excerpt}
                   </p>
+                  <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                    Read article
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                    </svg>
+                  </div>
                 </Link>
               ))}
             </div>

@@ -13,13 +13,24 @@ interface ReviewHistoryProps {
 export function ReviewHistory({ reviews }: ReviewHistoryProps) {
   if (reviews.length === 0) {
     return (
-      <div className="text-center py-12 bg-gray-50 rounded-2xl">
-        <p className="text-gray-400 text-sm">No reviews written yet</p>
+      <div className="text-center py-10 px-6 bg-white border border-gray-100 rounded-2xl">
+        <div className="w-12 h-12 bg-amber-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg className="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Z" />
+          </svg>
+        </div>
+        <p className="text-sm font-semibold text-gray-900 mb-1">No reviews written yet</p>
+        <p className="text-xs text-gray-400 mb-4 leading-relaxed">
+          Share your experience with products you own — help other buyers make smarter decisions.
+        </p>
         <Link
           href="/write-review"
-          className="text-sm text-brand-600 hover:text-brand-700 font-medium mt-2 inline-block"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-amber-700 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors"
         >
-          Write your first review →
+          Write your first review
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+          </svg>
         </Link>
       </div>
     );
