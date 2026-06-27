@@ -11,7 +11,11 @@ export const metadata = buildMetadata({
 const steps = [
   {
     number: "01",
-    icon: "✓",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.955 11.955 0 0 1 .04 11.07c-.01.206-.01.41 0 .617A12.003 12.003 0 0 0 6 21.43a12 12 0 0 0 9.96-9.743c.01-.206.01-.41 0-.617A11.95 11.95 0 0 0 20.402 6a11.959 11.959 0 0 1-8.402-3.036Z" />
+      </svg>
+    ),
     color: "bg-emerald-500",
     lightBg: "bg-emerald-50",
     textColor: "text-emerald-600",
@@ -27,7 +31,11 @@ const steps = [
   },
   {
     number: "02",
-    icon: "🤖",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 0 0-2.455 2.456Z" />
+      </svg>
+    ),
     color: "bg-brand-500",
     lightBg: "bg-brand-50",
     textColor: "text-brand-600",
@@ -43,7 +51,11 @@ const steps = [
   },
   {
     number: "03",
-    icon: "📊",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+      </svg>
+    ),
     color: "bg-purple-500",
     lightBg: "bg-purple-50",
     textColor: "text-purple-600",
@@ -59,7 +71,11 @@ const steps = [
   },
   {
     number: "04",
-    icon: "🎯",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
+      </svg>
+    ),
     color: "bg-amber-500",
     lightBg: "bg-amber-50",
     textColor: "text-amber-600",
@@ -130,7 +146,9 @@ export default function HowItWorksPage() {
                       key={i}
                       className="flex items-start gap-2 text-sm text-gray-600"
                     >
-                      <span className={`${step.textColor} mt-0.5 shrink-0 font-bold`}>✓</span>
+                      <svg className={`w-4 h-4 shrink-0 mt-0.5 ${step.textColor}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
                       {detail}
                     </li>
                   ))}
@@ -152,7 +170,10 @@ export default function HowItWorksPage() {
                 <th className="text-left px-5 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider w-2/5">Feature</th>
                 <th className="text-center px-4 py-3.5 w-[30%]">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-600 text-white text-xs font-bold rounded-lg">
-                    ✓ ReviewIQ
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                    ReviewIQ
                   </span>
                 </th>
                 <th className="text-center px-4 py-3.5 text-xs font-semibold text-gray-400 uppercase tracking-wider w-[30%]">Traditional Sites</th>
@@ -173,20 +194,32 @@ export default function HowItWorksPage() {
                   <td className="px-5 py-3.5 font-medium text-gray-700">{row.feature}</td>
                   <td className="px-4 py-3.5 text-center">
                     {row.us === true ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold">✓</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                      </span>
                     ) : row.us === "partial" ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 text-amber-500 rounded-full text-xs font-bold">~</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+                      </span>
                     ) : (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 text-gray-300 rounded-full text-xs font-bold">✗</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                      </span>
                     )}
                   </td>
                   <td className="px-4 py-3.5 text-center">
                     {row.them === true ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold">✓</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                      </span>
                     ) : row.them === "partial" ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 text-amber-500 rounded-full text-xs font-bold">~</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+                      </span>
                     ) : (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 text-gray-300 rounded-full text-xs font-bold">✗</span>
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+                        <svg className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                      </span>
                     )}
                   </td>
                 </tr>
