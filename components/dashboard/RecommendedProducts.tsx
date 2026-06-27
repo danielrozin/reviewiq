@@ -17,28 +17,31 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
           href={`/category/${product.categorySlug}/${product.slug}`}
           className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all group"
         >
-          <div className="w-12 h-12 bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg flex items-center justify-center shrink-0">
-            <span className="text-gray-400 text-xs font-bold">
-              {product.name.slice(0, 2).toUpperCase()}
-            </span>
+          <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
+            product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
+            product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
+            product.smartScore >= 55 ? "bg-amber-50 text-amber-700" :
+            "bg-gray-50 text-gray-600"
+          }`}>
+            {product.smartScore}
           </div>
 
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
               {product.name}
             </h3>
-            <p className="text-[10px] text-gray-400">
+            <p className="text-[10px] text-gray-400 mt-0.5">
               {product.brand} · {product.reviewCount} reviews
             </p>
           </div>
 
           <div className="shrink-0">
-            <p className={`text-lg font-bold ${getScoreColor(product.smartScore)}`}>
-              {product.smartScore}
-            </p>
-            <p className="text-[10px] text-gray-400 text-right">
+            <p className="text-xs text-gray-400 text-right">
               {getScoreLabel(product.smartScore)}
             </p>
+            <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
           </div>
         </Link>
       ))}

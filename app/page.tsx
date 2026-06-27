@@ -334,10 +334,12 @@ export default function HomePage() {
                 className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all"
               >
                 <div className="flex flex-col items-center shrink-0 min-w-[36px]">
-                  <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
+                  <svg className={`w-4 h-4 mb-0.5 ${netVotes > 0 ? "text-brand-400" : "text-gray-300"}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                  </svg>
+                  <span className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
                     {formatNumber(netVotes)}
                   </span>
-                  <span className="text-[9px] text-gray-400">votes</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1.5">
@@ -401,20 +403,27 @@ export default function HomePage() {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-gray-200 transition-all"
+                className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-brand-100 transition-all flex flex-col"
               >
-                <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2 py-1 rounded-full">
+                <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full self-start">
                   {post.categoryName}
                 </span>
-                <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2">
+                <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2 flex-1 leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-sm text-gray-500 line-clamp-2">
+                <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
-                <p className="text-xs text-gray-400 mt-3">
-                  {post.readingTime} min read
-                </p>
+                <div className="flex items-center gap-2.5 pt-3 border-t border-gray-50">
+                  <div className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0">
+                    <span className="text-[9px] font-bold text-brand-600">
+                      {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
+                    </span>
+                  </div>
+                  <span className="text-xs text-gray-500 truncate">{post.author.name}</span>
+                  <span className="text-gray-200 text-xs">·</span>
+                  <span className="text-xs text-gray-400 shrink-0">{post.readingTime} min</span>
+                </div>
               </Link>
             ))}
           </div>
@@ -559,35 +568,60 @@ export default function HomePage() {
             We built a review platform you can actually trust.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {/* Connector lines on desktop */}
+          <div className="hidden md:block absolute top-10 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-brand-100 via-brand-200 to-brand-100 pointer-events-none" aria-hidden="true" />
+
           {[
             {
               step: "01",
+              iconBg: "bg-emerald-50",
+              iconColor: "text-emerald-600",
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 01.04 11.07c-.01.206-.01.41 0 .617A12.003 12.003 0 006 21.43a12 12 0 009.96-9.743c.01-.206.01-.41 0-.617A11.95 11.95 0 0020.402 6a11.959 11.959 0 01-8.402-3.036z" />
+                </svg>
+              ),
               title: "Verified Reviews Only",
               description:
                 "Every review shows a verification tier — from receipt uploads to retailer verification. You always know how trustworthy a review is.",
             },
             {
               step: "02",
+              iconBg: "bg-brand-50",
+              iconColor: "text-brand-600",
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+              ),
               title: "AI-Powered Analysis",
               description:
                 "Our AI reads thousands of reviews to surface recurring praise, complaints, and patterns that individual reviews miss.",
             },
             {
               step: "03",
+              iconBg: "bg-purple-50",
+              iconColor: "text-purple-600",
+              icon: (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                </svg>
+              ),
               title: "Structured Intelligence",
               description:
                 'No walls of text. Every product shows clear "Best For / Not For" signals, recurring issues, and comparison insights.',
             },
           ].map((item) => (
-            <div key={item.step} className="text-center">
-              <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center font-bold text-lg mx-auto mb-4">
-                {item.step}
+            <div key={item.step} className="text-center relative">
+              <div className={`w-20 h-20 ${item.iconBg} ${item.iconColor} rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm`}>
+                {item.icon}
               </div>
+              <span className="text-xs font-bold text-gray-300 tracking-widest uppercase mb-1 block">{item.step}</span>
               <h3 className="font-semibold text-gray-900 text-lg mb-2">
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">
                 {item.description}
               </p>
             </div>
