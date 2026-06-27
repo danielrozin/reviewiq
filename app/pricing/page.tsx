@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { PricingTiers } from "./PricingTiers";
+import { PricingFAQAccordion } from "./PricingFAQAccordion";
 import { faqSchema } from "@/lib/schema/jsonld";
 import { GuaranteeBadge } from "@/components/premium/GuaranteeBadge";
 
@@ -94,16 +95,7 @@ export default function PricingPage() {
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">
             Frequently Asked Questions
           </h2>
-          <div className="space-y-6">
-            {faqs.map((faq) => (
-              <div key={faq.q} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                <h3 className="font-semibold text-gray-900">{faq.q}</h3>
-                <p className="mt-2 text-sm text-gray-600 leading-relaxed">
-                  {faq.a}
-                </p>
-              </div>
-            ))}
-          </div>
+          <PricingFAQAccordion faqs={faqs} />
         </div>
       </div>
     </div>

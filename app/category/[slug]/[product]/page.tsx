@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import { getCategoryBySlug, categories } from "@/data/categories";
 import { getProductBySlug, getProductsByCategory, getAffinityProducts } from "@/data/products";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -26,6 +27,7 @@ import { ReviewFormCTA } from "@/components/product/ReviewFormCTA";
 import { BestFor } from "@/components/product/BestFor";
 import { StickyMobileCTA } from "@/components/product/StickyMobileCTA";
 import { ProductJumpNav } from "@/components/product/ProductJumpNav";
+import { ShareButtons } from "@/components/ui/ShareButtons";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -153,44 +155,78 @@ export default async function ProductPage({ params }: Props) {
 
       {/* Product Header */}
       <header className="mt-8 mb-10">
-        <p className="text-sm font-medium text-brand-600 uppercase tracking-wider mb-2">
-          {product.brand}
-        </p>
-        <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-          {product.name}
-        </h1>
-        <p className="text-gray-500 max-w-3xl leading-relaxed mb-6">
-          {product.description}
-        </p>
+        <div className="lg:flex lg:items-start lg:gap-10">
+          {/* Product image — left column on desktop */}
+          {product.image && (
+            <div className="lg:w-60 xl:w-72 shrink-0 mb-8 lg:mb-0">
+              <div className="relative aspect-square bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  sizes="(max-width: 1024px) 0px, 288px"
+                  className="object-contain p-6"
+                  priority
+                />
+              </div>
+              {/* Score pill under image */}
+              <div className="mt-3 flex items-center justify-center gap-2 px-3 py-2 bg-white border border-gray-100 rounded-xl shadow-sm">
+                <SmartScore score={product.smartScore} size="sm" showLabel={false} />
+                <span className="text-sm font-semibold text-gray-800">{product.smartScore}/100 SmartScore</span>
+              </div>
+            </div>
+          )}
 
-        <div className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
-          <SmartScore score={product.smartScore} size="lg" showRing animateOnView />
-
-          <div className="h-12 w-px bg-gray-200 hidden sm:block" />
-
-          <div>
-            <RatingStars rating={avgRating} size="md" showValue />
-            <p className="text-sm text-gray-500 mt-1">
-              Based on {formatNumber(product.reviewCount)} reviews
+          {/* Meta info — right column */}
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-medium text-brand-600 uppercase tracking-wider mb-2">
+              {product.brand}
             </p>
-          </div>
-
-          <div className="h-12 w-px bg-gray-200 hidden sm:block" />
-
-          <div>
-            <p className="text-lg font-semibold text-gray-900">
-              ${product.priceRange.min} — ${product.priceRange.max}
+            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+              {product.name}
+            </h1>
+            <p className="text-gray-500 max-w-2xl leading-relaxed mb-6">
+              {product.description}
             </p>
-            <p className="text-sm text-gray-400">Price range</p>
-          </div>
 
-          <div className="h-12 w-px bg-gray-200 hidden sm:block" />
+            <div className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
+              {!product.image && <SmartScore score={product.smartScore} size="lg" showRing animateOnView />}
+              {!product.image && <div className="h-12 w-px bg-gray-200 hidden sm:block" />}
 
-          <div>
-            <p className="text-lg font-semibold text-emerald-600">
-              {product.verifiedPurchaseRate}%
-            </p>
-            <p className="text-sm text-gray-400">Verified buyers</p>
+              <div>
+                <RatingStars rating={avgRating} size="md" showValue />
+                <p className="text-sm text-gray-500 mt-1">
+                  Based on {formatNumber(product.reviewCount)} reviews
+                </p>
+              </div>
+
+              <div className="h-12 w-px bg-gray-200 hidden sm:block" />
+
+              <div>
+                <p className="text-lg font-semibold text-gray-900">
+                  ${product.priceRange.min} — ${product.priceRange.max}
+                </p>
+                <p className="text-sm text-gray-400">Price range</p>
+              </div>
+
+              <div className="h-12 w-px bg-gray-200 hidden sm:block" />
+
+              <div>
+                <p className="text-lg font-semibold text-emerald-600">
+                  {product.verifiedPurchaseRate}%
+                </p>
+                <p className="text-sm text-gray-400">Verified buyers</p>
+              </div>
+            </div>
+
+            {/* Share row */}
+            <div className="mt-6 pt-5 border-t border-gray-100">
+              <ShareButtons
+                url={`/category/${slug}/${productSlug}`}
+                title={`${product.name} Review — SmartScore ${product.smartScore}/100`}
+                description={`Honest ${product.name} review based on ${product.reviewCount} verified buyer experiences. See what people love, hate, and who this is best for.`}
+              />
+            </div>
           </div>
         </div>
       </header>
@@ -208,7 +244,7 @@ export default async function ProductPage({ params }: Props) {
 
           {/* AI Summary */}
           <div id="section-summary" data-speakable="ai-summary">
-            <AISummaryCard summary={product.aiSummary} />
+            <AISummaryCard summary={product.aiSummary} score={product.smartScore} />
           </div>
 
           {/* Best For / Not Ideal For */}
