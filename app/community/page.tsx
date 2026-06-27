@@ -120,11 +120,16 @@ export default function CommunityPage() {
         {/* Right sidebar */}
         <aside className="space-y-8">
           {/* Category discussions */}
-          <div className="bg-gray-50 rounded-2xl p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">
-              Browse by Category
-            </h3>
-            <div className="space-y-2">
+          <div className="bg-white border border-gray-100 rounded-2xl p-6">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-gray-900">Browse by Category</h3>
+            </div>
+            <div className="space-y-1">
               {categories.map((cat) => {
                 const count = discussions.filter(
                   (d) => d.categorySlug === cat.slug
@@ -133,17 +138,20 @@ export default function CommunityPage() {
                   <Link
                     key={cat.id}
                     href={`/category/${cat.slug}`}
-                    className="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-white transition-colors group"
+                    className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-gray-50 transition-colors group"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-lg">{cat.icon}</span>
+                      <span className="text-base">{cat.icon}</span>
                       <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
                         {cat.name}
                       </span>
                     </div>
-                    <span className="text-xs text-gray-400">
-                      {count} threads
-                    </span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs text-gray-400">{count}</span>
+                      <svg className="w-3 h-3 text-gray-300 group-hover:text-brand-400 transition-colors" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                      </svg>
+                    </div>
                   </Link>
                 );
               })}
@@ -151,14 +159,24 @@ export default function CommunityPage() {
           </div>
 
           {/* Top contributors */}
-          <div className="bg-gray-50 rounded-2xl p-6">
-            <h3 className="font-semibold text-gray-900 mb-4">
-              Top Contributors
-            </h3>
+          <div className="bg-white border border-gray-100 rounded-2xl p-6">
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg className="w-3.5 h-3.5 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-gray-900">Top Contributors</h3>
+            </div>
             <div className="space-y-3">
               {topContributors.map((user, i) => (
                 <div key={user.id} className="flex items-center gap-3">
-                  <span className="text-xs font-bold text-gray-300 w-4">
+                  <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                    i === 0 ? "bg-amber-400 text-white" :
+                    i === 1 ? "bg-gray-300 text-white" :
+                    i === 2 ? "bg-orange-400 text-white" :
+                    "bg-gray-100 text-gray-400"
+                  }`}>
                     {i + 1}
                   </span>
                   <div className="flex-1 min-w-0">
@@ -175,31 +193,32 @@ export default function CommunityPage() {
           </div>
 
           {/* Community guidelines */}
-          <div className="border border-gray-100 rounded-2xl p-6">
-            <h3 className="font-semibold text-gray-900 mb-3">
-              Community Guidelines
-            </h3>
+          <div className="bg-white border border-gray-100 rounded-2xl p-6">
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                </svg>
+              </div>
+              <h3 className="font-semibold text-gray-900">Community Guidelines</h3>
+            </div>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li className="flex items-start gap-2">
-                <span className="text-brand-500 shrink-0 mt-0.5">●</span>
-                Share genuine experiences based on products you own
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-brand-500 shrink-0 mt-0.5">●</span>
-                Be specific and helpful — vague opinions don&apos;t help buyers
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-brand-500 shrink-0 mt-0.5">●</span>
-                Disagree respectfully — attack arguments, not people
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-brand-500 shrink-0 mt-0.5">●</span>
-                No affiliate links, self-promotion, or astroturfing
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-brand-500 shrink-0 mt-0.5">●</span>
-                Report suspected fake reviews or spam
-              </li>
+              {[
+                "Share genuine experiences based on products you own",
+                "Be specific and helpful — vague opinions don't help buyers",
+                "Disagree respectfully — attack arguments, not people",
+                "No affiliate links, self-promotion, or astroturfing",
+                "Report suspected fake reviews or spam",
+              ].map((rule) => (
+                <li key={rule} className="flex items-start gap-2">
+                  <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-brand-100 flex items-center justify-center">
+                    <svg className="w-2.5 h-2.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </span>
+                  {rule}
+                </li>
+              ))}
             </ul>
           </div>
         </aside>

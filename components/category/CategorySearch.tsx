@@ -96,9 +96,17 @@ export function CategorySearch({ categories }: CategorySearchProps) {
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-16">
-          <p className="text-4xl mb-4">🔍</p>
-          <p className="text-gray-500 text-sm">Try a different search — or <button onClick={() => setQuery("")} className="text-brand-600 hover:underline">browse all categories</button></p>
+        <div className="text-center py-16 px-6 bg-white border border-gray-100 rounded-2xl">
+          <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+            <svg className="w-6 h-6 text-brand-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+          </div>
+          <p className="text-sm font-semibold text-gray-900 mb-1">No categories found</p>
+          <p className="text-xs text-gray-400 mb-3">Try a different search term</p>
+          <button onClick={() => setQuery("")} className="inline-flex items-center gap-1 text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1.5 rounded-lg hover:bg-brand-100 transition-colors">
+            Browse all categories
+          </button>
         </div>
       )}
     </div>
