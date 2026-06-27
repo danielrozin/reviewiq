@@ -429,6 +429,126 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Editor's Picks — featured spotlight with asymmetric layout */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-3 border border-amber-100">
+              <svg className="w-3.5 h-3.5 fill-current text-amber-500" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
+              </svg>
+              Editor&apos;s Picks
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              Staff-recommended this week
+            </h2>
+            <p className="text-gray-500 mt-1">
+              Handpicked based on outstanding SmartScores and verified buyer consensus
+            </p>
+          </div>
+          <Link
+            href="/categories"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block"
+          >
+            Browse all &rarr;
+          </Link>
+        </div>
+
+        {/* Asymmetric grid: 1 large featured + 2 smaller */}
+        {(() => {
+          const picks = [...topProducts].slice(0, 3);
+          const [featured, ...rest] = picks;
+          if (!featured) return null;
+          return (
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+              {/* Featured pick — takes 3/5 columns */}
+              <Link
+                href={`/category/${featured.categorySlug}/${featured.slug}`}
+                className="group lg:col-span-3 relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex flex-col"
+              >
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full shadow-sm">
+                    ⭐ #1 Pick
+                  </span>
+                </div>
+                <div className="relative h-56 sm:h-72 overflow-hidden flex items-center justify-center bg-white/50">
+                  {featured.image ? (
+                    <Image
+                      src={featured.image}
+                      alt={featured.name}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      className="object-contain p-8 group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <span className="text-8xl font-black text-gray-200">{featured.brand[0]}</span>
+                  )}
+                </div>
+                <div className="p-6 flex flex-col flex-1">
+                  <p className="text-xs text-brand-600 font-bold uppercase tracking-wider mb-1">{featured.brand}</p>
+                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 leading-tight">
+                    {featured.name}
+                  </h3>
+                  <p className="text-sm text-gray-500 flex-1 line-clamp-2 mb-4">
+                    AI analysis of {formatNumber(featured.reviewCount)} verified reviews. Outperforms alternatives across noise reduction, battery life, and comfort.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <SmartScore score={featured.smartScore} size="md" />
+                    <span className="text-sm font-medium text-gray-500">
+                      ${featured.priceRange.min}–${featured.priceRange.max}
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              {/* Two smaller picks — take 2/5 columns */}
+              <div className="lg:col-span-2 flex flex-col gap-5">
+                {rest.map((product, i) => (
+                  <Link
+                    key={product.id}
+                    href={`/category/${product.categorySlug}/${product.slug}`}
+                    className="group flex-1 bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex"
+                  >
+                    <div className="relative w-28 shrink-0 bg-gray-50 overflow-hidden">
+                      {product.image ? (
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          sizes="112px"
+                          className="object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-3xl font-black text-gray-200">{product.brand[0]}</span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-4 flex flex-col justify-between min-w-0">
+                      <div>
+                        <div className="flex items-center gap-1.5 mb-1">
+                          <span className="text-[10px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-full">
+                            #{i + 2} Pick
+                          </span>
+                        </div>
+                        <p className="text-[10px] text-brand-600 font-bold uppercase tracking-wider">{product.brand}</p>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 mt-0.5">
+                          {product.name}
+                        </h3>
+                      </div>
+                      <div className="flex items-center justify-between mt-2">
+                        <SmartScore score={product.smartScore} size="sm" showLabel={false} />
+                        <span className="text-xs text-gray-400">{formatNumber(product.reviewCount)} reviews</span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          );
+        })()}
+      </section>
+
       {/* How It Works */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
