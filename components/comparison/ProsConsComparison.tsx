@@ -24,7 +24,7 @@ export function ProsConsComparison({
 
 function ProductProsConsCard({ product }: { product: Product }) {
   return (
-    <div className="border border-gray-100 rounded-xl p-5">
+    <div className="border border-gray-100 rounded-xl p-5 hover:border-gray-200 hover:shadow-sm transition-all">
       <h3 className="text-sm font-semibold text-gray-900 mb-4">
         {product.name}
       </h3>
@@ -40,8 +40,10 @@ function ProductProsConsCard({ product }: { product: Product }) {
                 key={i}
                 className="flex items-start gap-2 text-sm text-gray-700"
               >
-                <span className="text-emerald-500 mt-0.5 shrink-0">
-                  &#10003;
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
                 </span>
                 {item}
               </li>
@@ -59,7 +61,11 @@ function ProductProsConsCard({ product }: { product: Product }) {
                 key={i}
                 className="flex items-start gap-2 text-sm text-gray-700"
               >
-                <span className="text-red-400 mt-0.5 shrink-0">&#10007;</span>
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                  </svg>
+                </span>
                 {item}
               </li>
             ))}

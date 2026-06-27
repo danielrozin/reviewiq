@@ -22,19 +22,23 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
         {products.map((product) => (
           <div
             key={product.id}
-            className="border border-gray-100 rounded-xl overflow-hidden"
+            className="border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm transition-all"
           >
             {/* Product header */}
-            <div className="bg-gray-50 px-4 py-3 border-b border-gray-100">
+            <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3">
+              <div className={`w-8 h-8 rounded-lg font-bold text-white text-sm flex items-center justify-center shrink-0 ${
+                product.smartScore >= 85 ? "bg-emerald-500" :
+                product.smartScore >= 70 ? "bg-brand-500" :
+                product.smartScore >= 55 ? "bg-amber-500" : "bg-gray-400"
+              }`}>
+                {product.smartScore}
+              </div>
               <Link
                 href={`/category/${product.categorySlug}/${product.slug}`}
-                className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors"
+                className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors truncate"
               >
                 {product.name}
               </Link>
-              <p className="text-xs text-gray-400 mt-0.5">
-                SmartScore: {product.smartScore}
-              </p>
             </div>
 
             {/* Pros */}
@@ -45,7 +49,11 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
               <ul className="space-y-2">
                 {product.aiSummary.whatPeopleLove.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <span className="text-emerald-500 mt-0.5 shrink-0">+</span>
+                    <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    </span>
                     <span className="line-clamp-2">{item}</span>
                   </li>
                 ))}
@@ -60,7 +68,11 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
               <ul className="space-y-2">
                 {product.aiSummary.whatPeopleHate.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
-                    <span className="text-red-400 mt-0.5 shrink-0">-</span>
+                    <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+                      </svg>
+                    </span>
                     <span className="line-clamp-2">{item}</span>
                   </li>
                 ))}

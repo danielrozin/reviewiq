@@ -17,7 +17,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
 
   return (
     <div className={`${isNested ? "ml-6 pl-4 border-l-2 border-gray-100" : ""}`}>
-      <div className={`py-4 ${depth === 0 ? "border-b border-gray-50" : ""}`}>
+      <div className={`group py-4 px-1 rounded-xl transition-colors hover:bg-gray-50/60 ${depth === 0 ? "border-b border-gray-50" : ""}`}>
         {/* Comment header */}
         <div className="flex items-center gap-2 mb-2">
           {author && <UserChip user={author} showTrustLevel size="sm" />}
@@ -31,13 +31,12 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
               Top Answer
             </span>
           )}
-          <span className="text-xs text-gray-400">{comment.createdAt}</span>
+          <span className="text-xs text-gray-400 ml-auto">{comment.createdAt}</span>
         </div>
 
         {/* Comment body */}
         <div className="text-sm text-gray-700 leading-relaxed whitespace-pre-line mb-3">
           {comment.body.split("\n").map((line, i) => {
-            // Handle bold markdown
             const parts = line.split(/\*\*(.*?)\*\*/g);
             return (
               <span key={i}>
@@ -55,7 +54,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
         </div>
 
         {/* Comment actions */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <VoteControls
             itemId={comment.id}
             itemType="comment"
@@ -64,12 +63,17 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
             helpfulCount={comment.helpfulCount}
             size="sm"
           />
-          <button className="text-xs text-gray-400 hover:text-gray-600 transition-colors font-medium">
-            Reply
-          </button>
-          <button className="text-xs text-gray-400 hover:text-gray-600 transition-colors">
-            Report
-          </button>
+          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            <button className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-brand-600 transition-colors font-medium px-2 py-1 rounded-lg hover:bg-brand-50">
+              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+              </svg>
+              Reply
+            </button>
+            <button className="text-xs text-gray-400 hover:text-gray-600 transition-colors px-2 py-1 rounded-lg hover:bg-gray-100">
+              Report
+            </button>
+          </div>
         </div>
       </div>
 
