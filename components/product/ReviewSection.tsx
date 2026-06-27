@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { ArrowUpDown, CheckCircle2, Lock } from "lucide-react";
 import type { Review, RatingDistribution as RatingDistType } from "@/types";
 import { RatingStars } from "@/components/ui/RatingStars";
 import { VerificationBadge } from "@/components/ui/VerificationBadge";
@@ -108,8 +107,11 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
 
               return (
                 <div key={star} className="flex items-center gap-2 text-sm">
-                  <span className="w-6 text-right text-gray-500 text-xs font-medium">
-                    {star}&#9733;
+                  <span className="w-8 flex items-center justify-end gap-0.5 text-gray-500 text-xs font-medium shrink-0">
+                    {star}
+                    <svg className="w-2.5 h-2.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                    </svg>
                   </span>
                   <div className="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
                     <div
@@ -141,7 +143,9 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
 
         <div className="relative">
           <div className="flex items-center gap-1.5">
-            <ArrowUpDown className="w-3.5 h-3.5 text-gray-400" />
+            <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+            </svg>
             <select
               value={sortBy}
               onChange={(e) => handleSortChange(e.target.value)}
@@ -187,7 +191,9 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
             <h4 className="font-semibold text-gray-900">{review.headline}</h4>
             {review.verifiedPurchase && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-full">
-                <CheckCircle2 className="w-3 h-3" />
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
                 Verified Purchase
               </span>
             )}
@@ -216,7 +222,11 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
               <ul className="space-y-1">
                 {review.pros.map((pro, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
-                    <span className="text-emerald-500 mt-1 shrink-0">+</span>
+                    <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                      </svg>
+                    </span>
                     {pro}
                   </li>
                 ))}
@@ -231,7 +241,11 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
               <ul className="space-y-1">
                 {review.cons.map((con, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
-                    <span className="text-red-400 mt-1 shrink-0">-</span>
+                    <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
+                      <svg className="w-2.5 h-2.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
+                      </svg>
+                    </span>
                     {con}
                   </li>
                 ))}
