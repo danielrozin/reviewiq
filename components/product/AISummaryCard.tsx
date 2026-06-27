@@ -16,7 +16,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
   const verdict = score !== undefined ? getVerdict(score) : null;
 
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-blue-50/30 border border-slate-200 rounded-2xl p-6 lg:p-8">
+    <section className="bg-gradient-to-br from-brand-50/50 via-white to-slate-50 border border-brand-100/60 rounded-2xl p-6 lg:p-8">
       <div className="flex items-center gap-2 mb-4">
         <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
           <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
@@ -67,7 +67,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
 
         <div>
           <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3">
-            What People Hate
+            Common Complaints
           </h3>
           <ul className="space-y-2">
             {summary.whatPeopleHate.map((item, i) => (
@@ -110,7 +110,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center">
                   <svg className="w-2.5 h-2.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                   </svg>
                 </span>
                 {item}

@@ -24,24 +24,31 @@ export function FAQSection({ items }: FAQSectionProps) {
         <h2 className="text-lg font-semibold text-gray-900">
           Frequently Asked Questions
         </h2>
+        <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums">{items.length} questions</span>
       </div>
       <div className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
           return (
-            <div key={i}>
+            <div key={i} className={cn(isOpen && "bg-brand-50/40")}>
               <button
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 aria-expanded={isOpen}
-                className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition-colors group"
+                className={cn(
+                  "w-full flex items-center justify-between px-5 py-4 text-left transition-colors group",
+                  isOpen ? "hover:bg-brand-50/60" : "hover:bg-gray-50"
+                )}
               >
-                <span className="text-sm font-medium text-gray-900 pr-4 group-hover:text-brand-700 transition-colors">
+                <span className={cn(
+                  "text-sm font-medium pr-4 transition-colors",
+                  isOpen ? "text-brand-700" : "text-gray-900 group-hover:text-brand-700"
+                )}>
                   {item.question}
                 </span>
                 <svg
                   className={cn(
-                    "w-4 h-4 shrink-0 text-gray-400 transition-transform duration-200",
-                    isOpen && "rotate-180 text-brand-500"
+                    "w-4 h-4 shrink-0 transition-all duration-200",
+                    isOpen ? "rotate-180 text-brand-500" : "text-gray-400"
                   )}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -54,12 +61,14 @@ export function FAQSection({ items }: FAQSectionProps) {
               <div
                 className={cn(
                   "overflow-hidden transition-all duration-200",
-                  isOpen ? "max-h-96" : "max-h-0"
+                  isOpen ? "max-h-[32rem]" : "max-h-0"
                 )}
               >
-                <p className="px-5 pb-4 text-sm text-gray-600 leading-relaxed">
-                  {item.answer}
-                </p>
+                <div className="px-5 pb-4 border-l-2 border-brand-200 ml-5">
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {item.answer}
+                  </p>
+                </div>
               </div>
             </div>
           );
