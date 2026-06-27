@@ -352,10 +352,10 @@ export function ProductSearch() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-12">
-          <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-            <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        <div className="text-center py-14 px-6 bg-white border border-gray-100 rounded-2xl">
+          <div className="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg className="w-7 h-7 text-brand-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </div>
           <h3 className="text-lg font-semibold text-gray-900 mb-1">
@@ -367,23 +367,29 @@ export function ProductSearch() {
           <button
             type="button"
             onClick={clearFilters}
-            className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors mb-8"
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors mb-8"
           >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+            </svg>
             Clear all filters
           </button>
           <div className="flex flex-wrap items-center justify-center gap-2 max-w-lg mx-auto">
             {[
-              { label: "🤖 Robot Vacuums", slug: "robot-vacuums" },
-              { label: "☕ Coffee Machines", slug: "coffee-machines" },
-              { label: "🍟 Air Fryers", slug: "air-fryers" },
-              { label: "🎧 Wireless Earbuds", slug: "wireless-earbuds" },
-              { label: "💤 Mattresses", slug: "mattresses" },
+              { label: "Robot Vacuums", slug: "robot-vacuums" },
+              { label: "Coffee Machines", slug: "coffee-machines" },
+              { label: "Air Fryers", slug: "air-fryers" },
+              { label: "Wireless Earbuds", slug: "wireless-earbuds" },
+              { label: "Mattresses", slug: "mattresses" },
             ].map((cat) => (
               <a
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors"
               >
+                <svg className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+                </svg>
                 {cat.label}
               </a>
             ))}

@@ -30,9 +30,14 @@ export function RelatedProducts({
 
   return (
     <section className="mt-12">
-      <h2 className="text-xl font-semibold text-gray-900 mb-6">
-        Related {categoryName} Products
-      </h2>
+      <div className="flex items-center gap-2.5 mb-6">
+        <div className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
+          <svg className="w-3.5 h-3.5 text-emerald-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z" />
+          </svg>
+        </div>
+        <h2 className="text-xl font-semibold text-gray-900">Related {categoryName} Products</h2>
+      </div>
 
       {/* ItemList JSON-LD */}
       <script
@@ -91,9 +96,12 @@ export function RelatedProducts({
 
       <Link
         href={`/category/${categorySlug}`}
-        className="inline-block mt-5 text-sm text-brand-600 hover:text-brand-700 font-medium transition-colors"
+        className="inline-flex items-center gap-1.5 mt-5 text-sm text-brand-600 hover:text-brand-700 font-medium transition-colors group"
       >
-        View all {categoryName} products &rarr;
+        View all {categoryName} products
+        <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
       </Link>
     </section>
   );
