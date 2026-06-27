@@ -57,10 +57,10 @@ export default async function UserProfilePage({ params }: Props) {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8">
         {/* Left column — profile */}
         <aside>
-          <div className="bg-gray-50 rounded-2xl p-6 sticky top-24">
+          <div className="bg-white border border-gray-100 rounded-2xl p-6 sticky top-24">
             {/* Avatar + name */}
             <div className="text-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-brand-100 text-brand-600 font-bold text-2xl flex items-center justify-center mx-auto mb-4">
+              <div className="w-20 h-20 rounded-full bg-brand-100 text-brand-600 font-bold text-2xl flex items-center justify-center mx-auto mb-4 ring-4 ring-brand-50">
                 {initials}
               </div>
               <div className="flex items-center justify-center gap-2">
@@ -80,20 +80,20 @@ export default async function UserProfilePage({ params }: Props) {
             </p>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-3 mb-6">
+            <div className="grid grid-cols-2 gap-2 mb-6">
               {[
-                { value: user.reputationScore, label: "Reputation" },
-                { value: user.reviewCount, label: "Reviews" },
-                { value: user.commentCount, label: "Comments" },
-                { value: user.threadCount, label: "Discussions" },
-                { value: user.verifiedProductCount, label: "Verified Products" },
-                { value: user.helpfulVotesReceived, label: "Helpful Votes" },
+                { value: user.reputationScore, label: "Reputation", color: "text-brand-600" },
+                { value: user.reviewCount, label: "Reviews", color: "text-emerald-600" },
+                { value: user.commentCount, label: "Comments", color: "text-gray-700" },
+                { value: user.threadCount, label: "Discussions", color: "text-purple-600" },
+                { value: user.verifiedProductCount, label: "Verified", color: "text-amber-600" },
+                { value: user.helpfulVotesReceived, label: "Helpful Votes", color: "text-gray-700" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center py-2">
-                  <p className="text-lg font-bold text-gray-900">
+                <div key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl">
+                  <p className={`text-lg font-bold ${stat.color}`}>
                     {formatNumber(stat.value)}
                   </p>
-                  <p className="text-[10px] text-gray-500 uppercase tracking-wider">
+                  <p className="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default async function UserProfilePage({ params }: Props) {
             </div>
 
             {/* Badges */}
-            <div className="border-t border-gray-200 pt-4 mb-4">
+            <div className="border-t border-gray-100 pt-4 mb-4">
               <h3 className="text-xs text-gray-400 uppercase tracking-wider mb-3 font-semibold">
                 Badges
               </h3>
@@ -114,7 +114,7 @@ export default async function UserProfilePage({ params }: Props) {
 
             {/* Expertise */}
             {user.expertiseCategories.length > 0 && (
-              <div className="border-t border-gray-200 pt-4 mb-4">
+              <div className="border-t border-gray-100 pt-4 mb-4">
                 <h3 className="text-xs text-gray-400 uppercase tracking-wider mb-3 font-semibold">
                   Expertise
                 </h3>
@@ -133,7 +133,7 @@ export default async function UserProfilePage({ params }: Props) {
             )}
 
             {/* Meta */}
-            <div className="border-t border-gray-200 pt-4 text-xs text-gray-400 space-y-1">
+            <div className="border-t border-gray-100 pt-4 text-xs text-gray-400 space-y-1">
               <p>Joined {user.joinedAt}</p>
               <p>Last active {user.lastActiveAt}</p>
             </div>
@@ -154,9 +154,15 @@ export default async function UserProfilePage({ params }: Props) {
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-gray-400 py-8 text-center">
-                No discussions yet
-              </p>
+              <div className="text-center py-10 px-6 bg-white border border-gray-100 rounded-2xl">
+                <div className="w-10 h-10 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-5 h-5 text-brand-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                  </svg>
+                </div>
+                <p className="text-sm font-semibold text-gray-900 mb-1">No discussions started yet</p>
+                <p className="text-xs text-gray-400">Discussions this user starts will appear here.</p>
+              </div>
             )}
           </section>
 
@@ -175,9 +181,12 @@ export default async function UserProfilePage({ params }: Props) {
                     <div className="flex items-center gap-2 mb-2">
                       <Link
                         href={`/community/thread/${comment.threadId}`}
-                        className="text-xs text-brand-600 hover:text-brand-700 font-medium"
+                        className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 font-medium"
                       >
-                        View thread →
+                        View thread
+                        <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                        </svg>
                       </Link>
                       <span className="text-xs text-gray-400">{comment.createdAt}</span>
                       {comment.isTopAnswer && (
@@ -191,16 +200,27 @@ export default async function UserProfilePage({ params }: Props) {
                       {comment.body.length > 200 && "..."}
                     </p>
                     <div className="flex items-center gap-3 mt-2 text-xs text-gray-400">
-                      <span>▲ {comment.upvotes}</span>
+                      <span className="flex items-center gap-1">
+                        <svg className="w-3 h-3 text-brand-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+                        </svg>
+                        <span className="tabular-nums">{comment.upvotes}</span>
+                      </span>
                       <span>{comment.helpfulCount} helpful</span>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-gray-400 py-8 text-center">
-                No comments yet
-              </p>
+              <div className="text-center py-10 px-6 bg-white border border-gray-100 rounded-2xl">
+                <div className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg className="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                  </svg>
+                </div>
+                <p className="text-sm font-semibold text-gray-900 mb-1">No comments yet</p>
+                <p className="text-xs text-gray-400">Comments this user leaves on threads will appear here.</p>
+              </div>
             )}
           </section>
         </div>
