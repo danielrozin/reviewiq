@@ -352,33 +352,42 @@ export function ProductSearch() {
           ))}
         </div>
       ) : (
-        <div className="text-center py-16">
-          <svg
-            className="mx-auto w-12 h-12 text-gray-300 mb-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-            />
-          </svg>
+        <div className="text-center py-12">
+          <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+            <svg className="w-8 h-8 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </div>
           <h3 className="text-lg font-semibold text-gray-900 mb-1">
             No products found
           </h3>
-          <p className="text-sm text-gray-500 mb-4">
-            Try adjusting your search or filters.
+          <p className="text-sm text-gray-500 mb-6">
+            Try a different search term, or browse a popular category below.
           </p>
           <button
             type="button"
             onClick={clearFilters}
-            className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
+            className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors mb-8"
           >
             Clear all filters
           </button>
+          <div className="flex flex-wrap items-center justify-center gap-2 max-w-lg mx-auto">
+            {[
+              { label: "🤖 Robot Vacuums", slug: "robot-vacuums" },
+              { label: "☕ Coffee Machines", slug: "coffee-machines" },
+              { label: "🍟 Air Fryers", slug: "air-fryers" },
+              { label: "🎧 Wireless Earbuds", slug: "wireless-earbuds" },
+              { label: "💤 Mattresses", slug: "mattresses" },
+            ].map((cat) => (
+              <a
+                key={cat.slug}
+                href={`/category/${cat.slug}`}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors"
+              >
+                {cat.label}
+              </a>
+            ))}
+          </div>
         </div>
       )}
 

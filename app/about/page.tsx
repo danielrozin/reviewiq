@@ -41,10 +41,10 @@ const TEAM = [
 ];
 
 const STATS = [
-  { value: "20K+", label: "Verified Reviews" },
-  { value: "500+", label: "Products Analyzed" },
-  { value: "78%", label: "Verified Purchase Rate" },
-  { value: "10", label: "Product Categories" },
+  { value: "20K+", label: "Verified Reviews", icon: "✓", color: "bg-emerald-100 text-emerald-700" },
+  { value: "500+", label: "Products Analyzed", icon: "📊", color: "bg-brand-100 text-brand-700" },
+  { value: "78%", label: "Verified Purchase Rate", icon: "🛒", color: "bg-amber-100 text-amber-700" },
+  { value: "10", label: "Product Categories", icon: "🗂️", color: "bg-purple-100 text-purple-700" },
 ];
 
 const PRINCIPLES = [
@@ -111,11 +111,14 @@ export default function AboutPage() {
       </div>
 
       {/* Stats bar */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-20 p-6 bg-gray-50 rounded-2xl">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20">
         {STATS.map((s) => (
-          <div key={s.label} className="text-center">
-            <p className="text-3xl font-extrabold text-brand-600">{s.value}</p>
-            <p className="text-sm text-gray-500 mt-1">{s.label}</p>
+          <div key={s.label} className="bg-white border border-gray-100 rounded-2xl p-5 text-center hover:shadow-md transition-shadow">
+            <div className={`w-10 h-10 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3 text-lg font-bold`}>
+              {s.icon}
+            </div>
+            <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
+            <p className="text-xs text-gray-500 mt-1">{s.label}</p>
           </div>
         ))}
       </div>

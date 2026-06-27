@@ -14,6 +14,8 @@ export const metadata = buildMetadata({
 
 const personas = [
   {
+    icon: "🤯",
+    color: "bg-brand-50 text-brand-600 border-brand-100",
     title: "You're buying a robot vacuum and overwhelmed by choices",
     scenario:
       "You have a 3-bedroom home with pets and hardwood floors. You need a robot vacuum under $500 that handles pet hair and won't scratch your floors.",
@@ -26,6 +28,8 @@ const personas = [
       "AI-analyzed reviews from verified buyers, structured pros and cons, and scenario-matched recommendations filtered by your home type, budget, and needs.",
   },
   {
+    icon: "☕",
+    color: "bg-amber-50 text-amber-600 border-amber-100",
     title: "You're upgrading your coffee setup and want honest data",
     scenario:
       "You're a home barista wanting to upgrade from a Nespresso to a semi-automatic espresso machine under $800. You need to know which machines actually pull good shots — not which ones pay the highest affiliate commissions.",
@@ -38,6 +42,8 @@ const personas = [
       "Verified buyer reviews, feature-by-feature comparison, and a buying guide with price-performance analysis across brands and price points.",
   },
   {
+    icon: "🚫",
+    color: "bg-red-50 text-red-600 border-red-100",
     title: "You don't trust typical review sites",
     scenario:
       "You've read 5 different \"best robot vacuum\" articles and they all recommend different products. You suspect affiliate commissions are driving their picks. You want structured, data-driven analysis from people who actually own the product.",
@@ -50,6 +56,8 @@ const personas = [
       "AI-powered analysis of real buyer data, transparent methodology, no hidden affiliate bias. Every review shows its verification tier so you know how trustworthy it is.",
   },
   {
+    icon: "🎓",
+    color: "bg-emerald-50 text-emerald-600 border-emerald-100",
     title: "You need guidance in a category you know nothing about",
     scenario:
       "You're a first-time buyer. You don't know what suction power matters, what HEPA filtration means, or whether you need LiDAR mapping. You need education before you spend $200–$1,500 on something you've never owned.",
@@ -218,28 +226,35 @@ export default function WhoIsThisForPage() {
         <h2 className="text-2xl font-bold text-gray-900 mb-8">
           This is for you if&hellip;
         </h2>
-        <div className="space-y-10 max-w-4xl">
+        <div className="space-y-6 max-w-4xl">
           {personas.map((persona) => (
-            <article key={persona.title} className="border border-gray-100 rounded-2xl p-6 sm:p-8">
-              <h3 className="text-lg font-bold text-gray-900 mb-3">
-                {persona.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed mb-4">
-                <span className="font-medium text-gray-700">Scenario:</span> {persona.scenario}
-              </p>
-              <div className="mb-4">
-                <p className="text-sm font-medium text-gray-700 mb-2">Search queries you&rsquo;d use:</p>
-                <ul className="flex flex-wrap gap-2">
-                  {persona.queries.map((query) => (
-                    <li key={query} className="text-sm bg-brand-50 text-brand-700 px-3 py-1 rounded-full">
-                      &ldquo;{query}&rdquo;
-                    </li>
-                  ))}
-                </ul>
+            <article key={persona.title} className="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 hover:shadow-md transition-shadow flex gap-5">
+              <div className={`w-12 h-12 rounded-xl ${persona.color} border flex items-center justify-center text-2xl shrink-0`}>
+                {persona.icon}
               </div>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                <span className="font-medium text-gray-700">What you get:</span> {persona.outcome}
-              </p>
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {persona.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-4 text-sm">
+                  <span className="font-medium text-gray-700">Scenario:</span> {persona.scenario}
+                </p>
+                <div className="mb-4">
+                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Search queries you&rsquo;d use:</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {persona.queries.map((query) => (
+                      <li key={query} className="text-xs bg-gray-50 text-gray-600 border border-gray-200 px-3 py-1 rounded-full font-mono">
+                        &ldquo;{query}&rdquo;
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-3">
+                  <p className="text-sm text-emerald-800 leading-relaxed">
+                    <span className="font-semibold">✓ What you get:</span> {persona.outcome}
+                  </p>
+                </div>
+              </div>
             </article>
           ))}
         </div>
@@ -252,12 +267,12 @@ export default function WhoIsThisForPage() {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {notForYou.map((item) => (
-            <div key={item.title} className="bg-gray-50 rounded-xl p-5">
-              <h3 className="font-semibold text-gray-900 mb-1 flex items-start gap-2">
-                <span className="text-gray-400 mt-0.5 shrink-0">&times;</span>
+            <div key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
+              <h3 className="font-semibold text-gray-900 mb-2 flex items-start gap-2.5">
+                <span className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✕</span>
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed ml-5">
+              <p className="text-sm text-gray-500 leading-relaxed ml-7">
                 {item.detail}
               </p>
             </div>
