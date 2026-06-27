@@ -14,7 +14,11 @@ export const metadata = buildMetadata({
 
 const personas = [
   {
-    icon: "🤯",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+      </svg>
+    ),
     color: "bg-brand-50 text-brand-600 border-brand-100",
     title: "You're buying a robot vacuum and overwhelmed by choices",
     scenario:
@@ -28,7 +32,11 @@ const personas = [
       "AI-analyzed reviews from verified buyers, structured pros and cons, and scenario-matched recommendations filtered by your home type, budget, and needs.",
   },
   {
-    icon: "☕",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+      </svg>
+    ),
     color: "bg-amber-50 text-amber-600 border-amber-100",
     title: "You're upgrading your coffee setup and want honest data",
     scenario:
@@ -42,7 +50,11 @@ const personas = [
       "Verified buyer reviews, feature-by-feature comparison, and a buying guide with price-performance analysis across brands and price points.",
   },
   {
-    icon: "🚫",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636" />
+      </svg>
+    ),
     color: "bg-red-50 text-red-600 border-red-100",
     title: "You don't trust typical review sites",
     scenario:
@@ -56,7 +68,11 @@ const personas = [
       "AI-powered analysis of real buyer data, transparent methodology, no hidden affiliate bias. Every review shows its verification tier so you know how trustworthy it is.",
   },
   {
-    icon: "🎓",
+    icon: (
+      <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+      </svg>
+    ),
     color: "bg-emerald-50 text-emerald-600 border-emerald-100",
     title: "You need guidance in a category you know nothing about",
     scenario:
@@ -250,8 +266,11 @@ export default function WhoIsThisForPage() {
                   </ul>
                 </div>
                 <div className="bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-3">
-                  <p className="text-sm text-emerald-800 leading-relaxed">
-                    <span className="font-semibold">✓ What you get:</span> {persona.outcome}
+                  <p className="text-sm text-emerald-800 leading-relaxed flex items-start gap-2">
+                    <svg className="w-4 h-4 shrink-0 mt-0.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <span><span className="font-semibold">What you get:</span> {persona.outcome}</span>
                   </p>
                 </div>
               </div>
@@ -269,7 +288,11 @@ export default function WhoIsThisForPage() {
           {notForYou.map((item) => (
             <div key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-2 flex items-start gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">✕</span>
+                <span className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg className="w-3 h-3 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                    </svg>
+                  </span>
                 {item.title}
               </h3>
               <p className="text-sm text-gray-500 leading-relaxed ml-7">
@@ -300,9 +323,12 @@ export default function WhoIsThisForPage() {
                 </p>
                 <Link
                   href={uc.cta.href}
-                  className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors group"
                 >
-                  {uc.cta.label} &rarr;
+                  {uc.cta.label}
+                  <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                  </svg>
                 </Link>
               </div>
             </div>
@@ -361,7 +387,9 @@ export default function WhoIsThisForPage() {
             <details key={item.question} className="group border border-gray-100 rounded-xl">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-gray-900 font-medium">
                 {item.question}
-                <span className="ml-4 shrink-0 text-gray-400 group-open:rotate-45 transition-transform text-xl">+</span>
+                <svg className="ml-4 w-4 h-4 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
               </summary>
               <div className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">
                 {item.answer}
