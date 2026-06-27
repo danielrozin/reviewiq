@@ -51,7 +51,11 @@ export function EmailCaptureCTA({
   if (status === "success") {
     return (
       <section className="bg-emerald-50 border border-emerald-200 rounded-2xl p-6 sm:p-8 text-center">
-        <div className="text-3xl mb-3">&#10003;</div>
+        <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg className="w-6 h-6 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+          </svg>
+        </div>
         <h3 className="text-lg font-semibold text-emerald-800 mb-1">
           You&apos;re subscribed!
         </h3>
@@ -65,6 +69,11 @@ export function EmailCaptureCTA({
   return (
     <section className="bg-brand-50 border border-brand-100 rounded-2xl p-6 sm:p-8">
       <div className="text-center mb-4">
+        <div className="w-10 h-10 bg-brand-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg className="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+          </svg>
+        </div>
         <h3 className="text-lg font-semibold text-gray-900 mb-1">
           Get notified when SmartScore changes for {productName}
         </h3>
