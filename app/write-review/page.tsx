@@ -56,7 +56,11 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
                       : "bg-gray-100 text-gray-400"
                 }`}
               >
-                {isCompleted ? "\u2713" : i + 1}
+                {isCompleted ? (
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                ) : i + 1}
               </div>
               <span
                 className={`text-[10px] mt-1 font-medium ${
@@ -307,12 +311,21 @@ export default function WriteReviewPage() {
             {/* Stats earned */}
             <div className="flex items-center justify-center gap-6 py-4 border-t border-emerald-100">
               {[
-                { icon: "⭐", label: "+10 reputation" },
-                { icon: "✓", label: "Verified contributor" },
-                { icon: "🤝", label: "Helped future buyers" },
+                {
+                  icon: <svg className="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>,
+                  label: "+10 reputation",
+                },
+                {
+                  icon: <svg className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>,
+                  label: "Verified contributor",
+                },
+                {
+                  icon: <svg className="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" /></svg>,
+                  label: "Helped future buyers",
+                },
               ].map((item) => (
                 <div key={item.label} className="text-center">
-                  <span className="text-xl block mb-1">{item.icon}</span>
+                  <span className="w-8 h-8 bg-white rounded-xl flex items-center justify-center mx-auto mb-1.5 shadow-sm border border-emerald-100">{item.icon}</span>
                   <span className="text-xs font-medium text-emerald-700">{item.label}</span>
                 </div>
               ))}
@@ -476,7 +489,11 @@ export default function WriteReviewPage() {
               <div className="space-y-2">
                 {pros.map((pro, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="text-emerald-500 shrink-0 text-lg">+</span>
+                    <span className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                      </svg>
+                    </span>
                     <input
                       type="text"
                       value={pro}
@@ -497,7 +514,11 @@ export default function WriteReviewPage() {
               <div className="space-y-2">
                 {cons.map((con, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="text-red-400 shrink-0 text-lg">-</span>
+                    <span className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-3 h-3 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
+                      </svg>
+                    </span>
                     <input
                       type="text"
                       value={con}
@@ -611,13 +632,16 @@ export default function WriteReviewPage() {
               type="button"
               onClick={goNext}
               disabled={!canProceed}
-              className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                 canProceed
                   ? "bg-brand-600 text-white hover:bg-brand-700"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
               }`}
             >
               Continue
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
             </button>
           ) : (
             <div className="text-right">
@@ -628,13 +652,27 @@ export default function WriteReviewPage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={!canProceed || isSubmitting}
-                className={`px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
                   canProceed && !isSubmitting
                     ? "bg-brand-600 text-white hover:bg-brand-700"
                     : "bg-gray-100 text-gray-400 cursor-not-allowed"
                 }`}
               >
-                {isSubmitting ? "Submitting..." : "Submit Review"}
+                {isSubmitting ? (
+                  <>
+                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                    </svg>
+                    Submitting…
+                  </>
+                ) : (
+                  <>
+                    Submit Review
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                    </svg>
+                  </>
+                )}
               </button>
               <p className="text-xs text-gray-400 mt-2">
                 Your review will be verified before publishing.
