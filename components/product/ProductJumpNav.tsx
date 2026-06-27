@@ -57,22 +57,22 @@ export function ProductJumpNav() {
   return (
     <div
       ref={navRef}
-      className={`hidden lg:block sticky top-16 z-30 bg-white/90 backdrop-blur border-b border-gray-100 transition-all duration-300 ${
+      className={`block sticky top-14 sm:top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
       aria-label="Page sections"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-1 h-10 overflow-x-auto scrollbar-none">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <nav className="flex items-center gap-0.5 sm:gap-1 h-9 sm:h-10 overflow-x-auto scrollbar-none">
           {SECTIONS.map(({ id, label }) => (
             <button
               key={id}
               type="button"
               onClick={() => scrollTo(id)}
-              className={`shrink-0 px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`shrink-0 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
                 activeId === id
-                  ? "bg-brand-600 text-white"
-                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100"
+                  ? "bg-brand-600 text-white shadow-sm"
+                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-100"
               }`}
             >
               {label}

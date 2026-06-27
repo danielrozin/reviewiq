@@ -43,19 +43,29 @@ export function StickyMobileCTA({
       aria-hidden={!visible}
     >
       {/* Mobile layout */}
-      <div className="lg:hidden px-4 py-3">
-        <div className="flex items-center gap-3">
+      <div className="lg:hidden px-3 py-2.5">
+        <div className="flex items-center gap-2">
           {smartScore !== undefined && (
             <div className="shrink-0">
               <SmartScore score={smartScore} size="sm" showLabel={false} />
             </div>
           )}
-          <p className="flex-1 text-sm font-semibold text-gray-800 truncate">
+          <p className="flex-1 text-sm font-semibold text-gray-800 truncate min-w-0">
             {productName}
           </p>
           <Link
+            href={compareHref}
+            className="shrink-0 inline-flex items-center gap-1 px-3 py-2 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors touch-manipulation"
+            aria-label={`Compare ${productName}`}
+          >
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+            </svg>
+            Compare
+          </Link>
+          <Link
             href={`/write-review?product=${encodeURIComponent(productSlug)}`}
-            className="shrink-0 inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors touch-manipulation"
+            className="shrink-0 inline-flex items-center gap-1 px-3 py-2 text-xs font-semibold text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors touch-manipulation"
             aria-label={`Write a review for ${productName}`}
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

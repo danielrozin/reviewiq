@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import type { ProductSpec } from "@/types";
 
 interface SpecsTableProps {
@@ -12,6 +13,8 @@ export function SpecsTable({ specs }: SpecsTableProps) {
     return acc;
   }, {});
 
+  const groupEntries = Object.entries(groups);
+
   return (
     <section>
       <div className="flex items-center gap-2.5 mb-4">
@@ -23,13 +26,19 @@ export function SpecsTable({ specs }: SpecsTableProps) {
         <h2 className="text-lg font-semibold text-gray-900">
           Technical Specifications
         </h2>
+        <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums">
+          {specs.length} specs
+        </span>
       </div>
       <div className="border border-gray-100 rounded-xl overflow-hidden">
-        {Object.entries(groups).map(([groupName, groupSpecs], gi) => (
+        {groupEntries.map(([groupName, groupSpecs], gi) => (
           <div key={groupName}>
-            {Object.keys(groups).length > 1 && (
-              <div className="px-4 py-2 bg-gray-50 text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                {groupName}
+            {groupEntries.length > 1 && (
+              <div className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                  {groupName}
+                </span>
+                <span className="text-xs text-gray-400">{groupSpecs.length}</span>
               </div>
             )}
             {groupSpecs.map((spec, si) => (
@@ -37,13 +46,14 @@ export function SpecsTable({ specs }: SpecsTableProps) {
                 key={si}
                 className={cn(
                   "flex items-center justify-between px-4 py-3 text-sm",
-                  si < groupSpecs.length - 1 || gi < Object.keys(groups).length - 1
+                  si % 2 === 1 ? "bg-gray-50/50" : "bg-white",
+                  si < groupSpecs.length - 1 || gi < groupEntries.length - 1
                     ? "border-b border-gray-50"
                     : ""
                 )}
               >
-                <span className="text-gray-500">{spec.label}</span>
-                <span className="text-gray-900 font-medium">{spec.value}</span>
+                <span className="text-gray-500 pr-4">{spec.label}</span>
+                <span className="text-gray-900 font-medium text-right">{spec.value}</span>
               </div>
             ))}
           </div>
@@ -51,8 +61,4 @@ export function SpecsTable({ specs }: SpecsTableProps) {
       </div>
     </section>
   );
-}
-
-function cn(...classes: (string | false | undefined)[]) {
-  return classes.filter(Boolean).join(" ");
 }
