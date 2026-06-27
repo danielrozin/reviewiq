@@ -78,32 +78,77 @@ function CompareContent() {
     .map((id) => products.find((p) => p.id === id))
     .filter(Boolean) as typeof products;
 
+  const SUGGESTED_PAIRS = [
+    { label: "Sony WH-1000XM5 vs Bose QuietComfort 45", ids: "sony-wh-1000xm5,bose-quietcomfort-45" },
+    { label: "Dyson V15 vs Shark IZ462H", ids: "dyson-v15-detect,shark-iz462h" },
+    { label: "iRobot Roomba j7+ vs Roborock S7", ids: "irobot-roomba-j7-plus,roborock-s7" },
+  ];
+
   if (compareProducts.length < 2) {
     return (
-      <div className="max-w-4xl mx-auto px-4 py-16 text-center">
-        <div className="w-16 h-16 bg-gray-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-          <svg className="w-8 h-8 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
-          </svg>
+      <div className="max-w-3xl mx-auto px-4 py-12">
+        {/* Hero section */}
+        <div className="text-center mb-10">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-50 border border-brand-100 rounded-2xl mb-5 mx-auto">
+            <svg className="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
+            </svg>
+          </div>
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Compare Products Side-by-Side</h1>
+          <p className="text-gray-500 max-w-md mx-auto">
+            Search and add 2–4 products to see SmartScores, specs, pros & cons, and an AI verdict — all in one view.
+          </p>
         </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Compare Products</h1>
-        <p className="text-gray-500 mb-6">
-          Search and select at least 2 products to start comparing.
-        </p>
-        <div className="flex justify-center mb-6">
+
+        {/* Search */}
+        <div className="flex justify-center mb-4">
           <ProductSearch selectedIds={ids} onAdd={addProduct} />
         </div>
+
+        {/* Partial selection hint */}
         {compareProducts.length === 1 && (
-          <p className="text-sm text-gray-400">
-            {compareProducts[0].name} selected — add one more to compare.
+          <p className="text-center text-sm text-brand-600 font-medium mb-6">
+            ✓ {compareProducts[0].name} added — search for one more product to compare.
           </p>
         )}
-        <a
-          href="/products"
-          className="inline-flex items-center px-5 py-2.5 text-sm text-brand-600 font-medium hover:text-brand-700 transition-colors"
-        >
-          Or browse all products
-        </a>
+
+        {/* Feature chips */}
+        <div className="grid grid-cols-3 gap-3 mb-8 mt-6">
+          {[
+            { icon: "📊", label: "SmartScore breakdown" },
+            { icon: "🤖", label: "AI verdict" },
+            { icon: "📋", label: "Spec-by-spec table" },
+          ].map((f) => (
+            <div key={f.label} className="flex flex-col items-center gap-1.5 p-3 bg-gray-50 rounded-xl border border-gray-100 text-center">
+              <span className="text-xl">{f.icon}</span>
+              <span className="text-xs font-medium text-gray-600">{f.label}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Suggested comparisons */}
+        <div className="border-t border-gray-100 pt-6">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
+          <div className="flex flex-col gap-2">
+            {SUGGESTED_PAIRS.map((pair) => (
+              <a
+                key={pair.ids}
+                href={`/compare?ids=${pair.ids}`}
+                className="flex items-center justify-between px-4 py-3 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all group text-sm"
+              >
+                <span className="text-gray-700 group-hover:text-brand-600 transition-colors font-medium">{pair.label}</span>
+                <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+              </a>
+            ))}
+          </div>
+          <div className="text-center mt-4">
+            <a href="/products" className="text-sm text-brand-600 hover:text-brand-700 font-medium">
+              Browse all products →
+            </a>
+          </div>
+        </div>
       </div>
     );
   }

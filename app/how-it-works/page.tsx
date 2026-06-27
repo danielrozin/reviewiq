@@ -141,6 +141,61 @@ export default function HowItWorksPage() {
         </div>
       </div>
 
+      {/* ReviewIQ vs Traditional Reviews comparison table */}
+      <section className="mt-16 max-w-4xl">
+        <h2 className="text-xl font-bold text-gray-900 mb-2">ReviewIQ vs. Traditional Review Sites</h2>
+        <p className="text-gray-500 text-sm mb-6">See exactly how we&apos;re different in the ways that matter.</p>
+        <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="bg-gray-50 border-b border-gray-200">
+                <th className="text-left px-5 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider w-2/5">Feature</th>
+                <th className="text-center px-4 py-3.5 w-[30%]">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-600 text-white text-xs font-bold rounded-lg">
+                    ✓ ReviewIQ
+                  </span>
+                </th>
+                <th className="text-center px-4 py-3.5 text-xs font-semibold text-gray-400 uppercase tracking-wider w-[30%]">Traditional Sites</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { feature: "Verified buyer reviews", us: true, them: false },
+                { feature: "AI pattern analysis", us: true, them: false },
+                { feature: "Affiliate-free rankings", us: true, them: false },
+                { feature: "Recurring issue tracking", us: true, them: false },
+                { feature: "SmartScore (weighted algorithm)", us: true, them: false },
+                { feature: "Best For / Not For signals", us: true, them: false },
+                { feature: "Side-by-side comparison", us: true, them: "partial" },
+                { feature: "Anonymous star ratings", us: "partial", them: true },
+              ].map((row, i) => (
+                <tr key={row.feature} className={`border-b border-gray-100 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/40"}`}>
+                  <td className="px-5 py-3.5 font-medium text-gray-700">{row.feature}</td>
+                  <td className="px-4 py-3.5 text-center">
+                    {row.us === true ? (
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold">✓</span>
+                    ) : row.us === "partial" ? (
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 text-amber-500 rounded-full text-xs font-bold">~</span>
+                    ) : (
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 text-gray-300 rounded-full text-xs font-bold">✗</span>
+                    )}
+                  </td>
+                  <td className="px-4 py-3.5 text-center">
+                    {row.them === true ? (
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 text-emerald-600 rounded-full text-xs font-bold">✓</span>
+                    ) : row.them === "partial" ? (
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 text-amber-500 rounded-full text-xs font-bold">~</span>
+                    ) : (
+                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 text-gray-300 rounded-full text-xs font-bold">✗</span>
+                    )}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
       {/* Trust Principles */}
       <section className="mt-20 bg-gradient-to-br from-gray-50 to-brand-50/30 rounded-2xl p-8 lg:p-12 max-w-4xl border border-gray-100">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">

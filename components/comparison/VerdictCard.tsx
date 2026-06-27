@@ -1,5 +1,7 @@
 import type { Product } from "@/types";
 import { generateVerdict } from "@/data/comparisons";
+import { getScoreBgColor } from "@/lib/utils";
+import Link from "next/link";
 
 interface VerdictCardProps {
   productA: Product;
@@ -14,34 +16,94 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
       : productB.smartScore > productA.smartScore
         ? productB
         : null;
+  const loser = winner ? (winner.id === productA.id ? productB : productA) : null;
+  const scoreDiff = winner && loser ? winner.smartScore - loser.smartScore : 0;
 
   return (
-    <section className="bg-gradient-to-br from-brand-50 to-indigo-50/30 border border-brand-200 rounded-2xl p-6 lg:p-8">
-      <div className="flex items-center gap-2 mb-4">
-        <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
-          <span className="text-white text-sm font-bold">AI</span>
+    <section className="overflow-hidden rounded-2xl border border-brand-200">
+      {/* Header strip */}
+      <div className="bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-4 flex items-center gap-3">
+        <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
+          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
+          </svg>
         </div>
         <div>
-          <h2 className="text-lg font-semibold text-gray-900">
-            AI Verdict
-          </h2>
-          <p className="text-xs text-gray-500">
-            Based on verified buyer reviews
-          </p>
+          <p className="text-white font-semibold text-sm">AI Verdict</p>
+          <p className="text-brand-200 text-xs">Based on verified buyer reviews</p>
         </div>
+        {winner && (
+          <div className="ml-auto flex items-center gap-1.5 bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full border border-white/20">
+            <svg className="w-3.5 h-3.5 fill-current text-amber-300" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
+            </svg>
+            Recommended pick
+          </div>
+        )}
       </div>
-      <p className="text-gray-700 text-sm leading-relaxed mb-4">{verdict}</p>
-      {winner && (
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-yellow-500">&#9733;</span>
-          <span className="font-medium text-gray-900">
-            Winner: {winner.name}
-          </span>
-          <span className="text-gray-400">
-            (SmartScore {winner.smartScore}/100)
-          </span>
-        </div>
-      )}
+
+      {/* Body */}
+      <div className="bg-gradient-to-br from-brand-50/60 to-white p-6">
+        {/* Winner highlight */}
+        {winner && loser && (
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-5">
+            {/* Winner card */}
+            <Link
+              href={`/category/${winner.categorySlug}/${winner.slug}`}
+              className="flex-1 flex items-center gap-3 bg-white border-2 border-emerald-200 rounded-xl p-3.5 hover:border-emerald-300 hover:shadow-sm transition-all group"
+            >
+              <div className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(winner.smartScore)}`}>
+                {winner.smartScore}
+              </div>
+              <div className="min-w-0">
+                <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Winner</p>
+                <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">{winner.name}</p>
+                <p className="text-xs text-gray-400">{winner.brand}</p>
+              </div>
+              <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+            </Link>
+
+            {/* Score diff badge */}
+            <div className="flex sm:flex-col items-center justify-center gap-1 px-3 shrink-0">
+              <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 rounded-full px-2.5 py-1">
+                +{scoreDiff} pts
+              </span>
+              <span className="text-[10px] text-gray-400">ahead</span>
+            </div>
+
+            {/* Runner up card */}
+            <Link
+              href={`/category/${loser.categorySlug}/${loser.slug}`}
+              className="flex-1 flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-3.5 hover:border-gray-300 hover:shadow-sm transition-all group opacity-80"
+            >
+              <div className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(loser.smartScore)}`}>
+                {loser.smartScore}
+              </div>
+              <div className="min-w-0">
+                <p className="text-[10px] font-medium text-gray-400 uppercase tracking-wider">Runner-up</p>
+                <p className="text-sm font-semibold text-gray-700 group-hover:text-brand-600 transition-colors truncate">{loser.name}</p>
+                <p className="text-xs text-gray-400">{loser.brand}</p>
+              </div>
+              <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+            </Link>
+          </div>
+        )}
+
+        {/* Tie state */}
+        {!winner && (
+          <div className="flex items-center justify-center gap-2 mb-5 px-4 py-3 bg-amber-50 border border-amber-100 rounded-xl">
+            <span className="text-amber-500 text-lg">⚖️</span>
+            <p className="text-sm font-medium text-amber-800">Too close to call — both products are evenly matched.</p>
+          </div>
+        )}
+
+        {/* AI analysis text */}
+        <p className="text-gray-700 text-sm leading-relaxed">{verdict}</p>
+      </div>
     </section>
   );
 }
