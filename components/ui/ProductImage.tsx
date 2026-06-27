@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Package } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ProductImageProps {
@@ -15,9 +14,9 @@ interface ProductImageProps {
 }
 
 const sizeConfig = {
-  sm: { icon: 20, brandBadge: "w-8 h-8 text-sm", nameText: "text-[10px]" },
-  md: { icon: 28, brandBadge: "w-10 h-10 text-base", nameText: "text-xs" },
-  lg: { icon: 36, brandBadge: "w-14 h-14 text-xl", nameText: "text-sm" },
+  sm: { icon: "w-5 h-5", brandBadge: "w-8 h-8 text-sm", nameText: "text-[10px]" },
+  md: { icon: "w-7 h-7", brandBadge: "w-10 h-10 text-base", nameText: "text-xs" },
+  lg: { icon: "w-9 h-9", brandBadge: "w-14 h-14 text-xl", nameText: "text-sm" },
 };
 
 export function ProductImage({
@@ -93,11 +92,9 @@ export function ProductImage({
           </span>
 
           {/* Product icon */}
-          <Package
-            size={config.icon}
-            className="text-brand-200"
-            strokeWidth={1.5}
-          />
+          <svg className={cn(config.icon, "text-brand-200")} fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+          </svg>
 
           {/* Product name */}
           <span

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useOnboarding } from "./OnboardingProvider";
 import { useSession } from "next-auth/react";
-import { Check, Circle, ChevronRight } from "lucide-react";
 
 const CHECKLIST_ITEMS = [
   {
@@ -88,9 +87,13 @@ export function ProfileChecklist() {
                 }`}
               >
                 {done ? (
-                  <Check className="w-3.5 h-3.5" />
+                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
                 ) : (
-                  <Circle className="w-3 h-3" />
+                  <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <circle cx="12" cy="12" r="9" />
+                  </svg>
                 )}
               </div>
               <div className="flex-1 min-w-0">
@@ -101,7 +104,11 @@ export function ProfileChecklist() {
                   <p className="text-xs text-gray-500 mt-0.5">{item.description}</p>
                 )}
               </div>
-              {!done && <ChevronRight className="w-4 h-4 text-gray-300 shrink-0" />}
+              {!done && (
+                <svg className="w-4 h-4 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              )}
             </Link>
           );
         })}

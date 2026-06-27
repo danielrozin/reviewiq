@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useOnboarding } from "./OnboardingProvider";
-import { TrendingUp, ArrowRight } from "lucide-react";
 
 const POPULAR_CATEGORIES = [
   { name: "Smartphones", slug: "smartphones", emoji: "📱" },
@@ -25,7 +24,9 @@ export function QuickStartSuggestions() {
     <div className="bg-gradient-to-r from-brand-50 to-blue-50 border border-brand-100 rounded-2xl p-5 sm:p-6">
       <div className="flex items-center gap-2 mb-4">
         <div className="w-8 h-8 bg-brand-100 rounded-lg flex items-center justify-center">
-          <TrendingUp className="w-4 h-4 text-brand-600" />
+          <svg className="w-4 h-4 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
+          </svg>
         </div>
         <div>
           <h3 className="text-sm font-bold text-gray-900">Quick Start</h3>
@@ -53,7 +54,9 @@ export function QuickStartSuggestions() {
         className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
       >
         Browse all products
-        <ArrowRight className="w-3 h-3" />
+        <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+        </svg>
       </Link>
     </div>
   );
