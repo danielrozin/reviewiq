@@ -251,8 +251,10 @@ export default function HomePage() {
               <Link
                 key={product.id}
                 href={`/category/${product.categorySlug}/${product.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all flex flex-col"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
               >
+                {/* Brand accent hover strip */}
+                <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 {/* Product image */}
                 <div className="relative h-44 bg-gray-50 overflow-hidden">
                   {product.image ? (
@@ -361,8 +363,19 @@ export default function HomePage() {
                         {author.displayName}
                       </span>
                     )}
-                    <span>💬 {thread.commentCount}</span>
-                    <span>👁 {formatNumber(thread.viewCount)}</span>
+                    <span className="inline-flex items-center gap-1">
+                      <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.076-4.076a1.526 1.526 0 0 1 .978-.39 48.81 48.81 0 0 0 3.196-.218c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
+                      </svg>
+                      {thread.commentCount}
+                    </span>
+                    <span className="inline-flex items-center gap-1">
+                      <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      </svg>
+                      {formatNumber(thread.viewCount)}
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -403,8 +416,10 @@ export default function HomePage() {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-md hover:border-brand-100 transition-all flex flex-col"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
               >
+                <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div className="p-6 flex flex-col flex-1">
                 <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full self-start">
                   {post.categoryName}
                 </span>
@@ -423,6 +438,7 @@ export default function HomePage() {
                   <span className="text-xs text-gray-500 truncate">{post.author.name}</span>
                   <span className="text-gray-200 text-xs">·</span>
                   <span className="text-xs text-gray-400 shrink-0">{post.readingTime} min</span>
+                </div>
                 </div>
               </Link>
             ))}

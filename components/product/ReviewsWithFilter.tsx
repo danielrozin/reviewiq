@@ -51,11 +51,16 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
     <section id="section-reviews">
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
-        <div className="flex items-center gap-2 flex-1 min-w-0">
+        <div className="flex items-center gap-2.5 flex-1 min-w-0">
+          <div className="w-7 h-7 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg className="w-3.5 h-3.5 text-amber-500 fill-current" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
+            </svg>
+          </div>
           <h2 className="text-lg font-semibold text-gray-900 shrink-0">
             Verified Reviews
           </h2>
-          <span className="text-sm text-gray-400 shrink-0">
+          <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums shrink-0">
             {totalCount.toLocaleString()} total
           </span>
         </div>
@@ -138,20 +143,19 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
 
       {/* Load more */}
       {hasMore && (
-        <div className="mt-6 text-center">
+        <div className="mt-6 flex items-center gap-4">
+          <div className="flex-1 h-px bg-gray-100" />
           <button
             type="button"
             onClick={() => setVisible((v) => v + 5)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-brand-700 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full hover:bg-brand-100 transition-colors shrink-0"
           >
-            Load more reviews
-            <span className="text-xs text-brand-500">
-              ({filtered.length - visible} remaining)
-            </span>
-            <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+            <svg className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
+            Show {Math.min(5, filtered.length - visible)} more reviews
           </button>
+          <div className="flex-1 h-px bg-gray-100" />
         </div>
       )}
     </section>
