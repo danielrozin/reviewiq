@@ -66,7 +66,7 @@ export function PeopleAlsoReviewed({ products }: PeopleAlsoReviewedProps) {
               <div className="p-3 flex flex-col gap-1.5 flex-1">
                 <div className="flex items-center gap-2">
                   <SmartScore score={product.smartScore} size="sm" />
-                  <span className="text-xs text-brand-500 font-medium">
+                  <span className="text-xs text-brand-600 font-medium">
                     {category?.name ?? product.categorySlug}
                   </span>
                 </div>

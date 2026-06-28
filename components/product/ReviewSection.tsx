@@ -154,7 +154,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
             <select
               value={sortBy}
               onChange={(e) => handleSortChange(e.target.value)}
-              className="text-sm text-gray-600 bg-transparent border border-gray-200 rounded-lg px-3 py-1.5 pr-8 appearance-none cursor-pointer hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
+              className="text-sm text-gray-600 bg-transparent border border-gray-200 rounded-xl px-3 py-1.5 pr-8 appearance-none cursor-pointer hover:border-gray-300 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
             >
               {FREE_SORT_OPTIONS.map((value) => (
                 <option key={value} value={value}>
