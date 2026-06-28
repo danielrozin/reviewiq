@@ -69,8 +69,11 @@ export function CategorySearch({ categories }: CategorySearchProps) {
           <Link
             key={cat.id}
             href={`/category/${cat.slug}`}
-            className="group bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200"
+            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200"
           >
+            {/* Hover accent strip */}
+            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div className="p-6">
             <div className="flex items-start justify-between mb-3">
               <span className="text-4xl group-hover:scale-110 transition-transform duration-200 inline-block">
                 {cat.icon}
@@ -90,6 +93,7 @@ export function CategorySearch({ categories }: CategorySearchProps) {
               <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
+            </div>
             </div>
           </Link>
         ))}

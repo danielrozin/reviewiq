@@ -128,7 +128,7 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Content card */}
-              <div className={`flex-1 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow`}>
+              <div className={`flex-1 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200`}>
                 <div className="flex items-center gap-3 mb-3">
                   <span className={`text-xs font-bold ${step.textColor} ${step.lightBg} px-2.5 py-1 rounded-full`}>
                     Step {step.number}
@@ -161,7 +161,14 @@ export default function HowItWorksPage() {
 
       {/* ReviewIQ vs Traditional Reviews comparison table */}
       <section className="mt-16 max-w-4xl">
-        <h2 className="text-xl font-bold text-gray-900 mb-2">ReviewIQ vs. Traditional Review Sites</h2>
+        <div className="flex items-center gap-2.5 mb-2">
+          <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+          </div>
+          <h2 className="text-xl font-bold text-gray-900">ReviewIQ vs. Traditional Review Sites</h2>
+        </div>
         <p className="text-gray-500 text-sm mb-6">See exactly how we&apos;re different in the ways that matter.</p>
         <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
           <table className="w-full text-sm">
@@ -283,7 +290,7 @@ export default function HowItWorksPage() {
             },
           ].map((principle) => (
             <div key={principle.title} className="flex gap-4">
-              <div className={`w-10 h-10 ${principle.iconBg} ${principle.iconColor} rounded-xl flex items-center justify-center shrink-0`}>
+              <div className={`w-9 h-9 ${principle.iconBg} ${principle.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
                 {principle.icon}
               </div>
               <div>
