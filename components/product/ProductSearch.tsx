@@ -242,7 +242,7 @@ export function ProductSearch() {
         <select
           value={category}
           onChange={(e) => setFilter("category", e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
@@ -256,7 +256,7 @@ export function ProductSearch() {
         <select
           value={sort}
           onChange={(e) => setFilter("sort", e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
         >
           {SORT_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -269,7 +269,7 @@ export function ProductSearch() {
         <select
           value={minRating}
           onChange={(e) => setFilter("rating", Number(e.target.value))}
-          className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
+          className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500"
         >
           <option value={0}>Any Rating</option>
           {RATING_OPTIONS.map((opt) => (
@@ -288,7 +288,7 @@ export function ProductSearch() {
             min={GLOBAL_MIN_PRICE}
             max={priceMax}
             onChange={(e) => setFilter("priceMin", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+            className="w-20 px-2 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
             placeholder="Min"
           />
           <span className="text-gray-400">—</span>
@@ -298,7 +298,7 @@ export function ProductSearch() {
             min={priceMin}
             max={GLOBAL_MAX_PRICE}
             onChange={(e) => setFilter("priceMax", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-200 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+            className="w-20 px-2 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
             placeholder="Max"
           />
         </div>
@@ -307,7 +307,7 @@ export function ProductSearch() {
           <button
             type="button"
             onClick={clearFilters}
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-red-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-red-500 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -466,7 +466,7 @@ export function ProductSearch() {
             type="button"
             disabled={safePage <= 1}
             onClick={() => setFilter("page", safePage - 1)}
-            className="px-3 py-2 text-sm font-medium rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             Previous
           </button>
@@ -475,7 +475,7 @@ export function ProductSearch() {
               key={p}
               type="button"
               onClick={() => setFilter("page", p)}
-              className={`w-10 h-10 text-sm font-medium rounded-lg transition-colors ${
+              className={`w-10 h-10 text-sm font-medium rounded-xl transition-colors ${
                 p === safePage
                   ? "bg-brand-600 text-white"
                   : "border border-gray-200 text-gray-700 hover:bg-gray-50"
@@ -488,7 +488,7 @@ export function ProductSearch() {
             type="button"
             disabled={safePage >= totalPages}
             onClick={() => setFilter("page", safePage + 1)}
-            className="px-3 py-2 text-sm font-medium rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             Next
           </button>

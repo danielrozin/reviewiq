@@ -103,7 +103,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
         <select
           value={sort}
           onChange={(e) => { setSort(e.target.value as SortKey); setVisible(INITIAL_VISIBLE); }}
-          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-lg px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent cursor-pointer"
+          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent cursor-pointer"
           aria-label="Sort reviews"
         >
           {SORT_OPTIONS.map((o) => (
@@ -125,7 +125,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <button
             type="button"
             onClick={() => setFilterRating(null)}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1.5 rounded-lg hover:bg-brand-100 transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1.5 rounded-xl hover:bg-brand-100 transition-colors"
           >
             <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />

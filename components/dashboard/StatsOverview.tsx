@@ -104,7 +104,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
         {statItems.map((stat, i) => (
           <div
             key={stat.label}
-            className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} transition-colors`}
+            className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} hover:-translate-y-0.5 transition-all duration-200`}
           >
             <div className={`w-9 h-9 rounded-xl ${STAT_COLORS[i].icon} flex items-center justify-center mb-3`}>
               {STAT_ICONS[i]}
@@ -118,7 +118,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
       </div>
 
       {/* Reputation progress bar */}
-      <div className="bg-white border border-gray-100 rounded-2xl p-5">
+      <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <span className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">

@@ -49,7 +49,7 @@ export function QuickActions() {
         <Link
           key={action.title}
           href={action.href}
-          className={`group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl transition-all ${action.borderHover}`}
+          className={`group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:-translate-y-0.5 transition-all duration-200 ${action.borderHover}`}
         >
           <div className={`w-10 h-10 rounded-xl ${action.iconBg} ${action.iconColor} flex items-center justify-center shrink-0`}>
             {action.icon}
