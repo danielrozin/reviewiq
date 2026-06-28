@@ -83,6 +83,7 @@ export function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@example.com"
+                  aria-label="Email address"
                   required
                   className="flex-1 sm:w-64 px-4 py-3 text-sm border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/15 text-white placeholder:text-brand-200 backdrop-blur-sm"
                 />
@@ -124,7 +125,7 @@ export function Footer() {
             </Link>
           </div>
 
-          <div>
+          <nav aria-label="Product categories">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Categories
             </h3>
@@ -151,9 +152,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
+          <nav aria-label="Platform links">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Platform
             </h3>
@@ -177,9 +178,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
+          <nav aria-label="Contribute links">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Contribute
             </h3>
@@ -200,9 +201,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
+          <nav aria-label="Legal links">
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Legal
             </h3>
@@ -241,14 +242,14 @@ export function Footer() {
                 </button>
               </li>
             </ul>
-          </div>
+          </nav>
         </div>
 
         <div className="border-t border-gray-200 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-400">
             &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved. No affiliate commissions.
           </p>
-          <div className="flex items-center gap-6">
+          <nav aria-label="Footer legal links" className="flex items-center gap-6">
             <Link href="/privacy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
               Privacy
             </Link>
@@ -258,7 +259,7 @@ export function Footer() {
             <Link href="/cookie-policy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
               Cookies
             </Link>
-          </div>
+          </nav>
         </div>
       </div>
     </footer>
