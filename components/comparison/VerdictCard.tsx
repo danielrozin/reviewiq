@@ -76,7 +76,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
             {/* Runner up card */}
             <Link
               href={`/category/${loser.categorySlug}/${loser.slug}`}
-              className="flex-1 flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-3.5 hover:border-gray-300 hover:shadow-sm transition-all group opacity-80"
+              className="flex-1 flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-3.5 hover:border-gray-300 hover:shadow-sm transition-all group"
             >
               <div className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(loser.smartScore)}`}>
                 {loser.smartScore}
