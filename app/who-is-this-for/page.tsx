@@ -244,8 +244,10 @@ export default function WhoIsThisForPage() {
         </h2>
         <div className="space-y-6 max-w-4xl">
           {personas.map((persona) => (
-            <article key={persona.title} className="bg-white border border-gray-100 rounded-2xl p-6 sm:p-8 hover:shadow-md transition-shadow flex gap-5">
-              <div className={`w-12 h-12 rounded-xl ${persona.color} border flex items-center justify-center text-2xl shrink-0`}>
+            <article key={persona.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="flex gap-5 p-6 sm:p-8">
+              <div className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>
                 {persona.icon}
               </div>
               <div className="flex-1 min-w-0">
@@ -273,6 +275,7 @@ export default function WhoIsThisForPage() {
                     <span><span className="font-semibold">What you get:</span> {persona.outcome}</span>
                   </p>
                 </div>
+              </div>
               </div>
             </article>
           ))}
@@ -410,19 +413,19 @@ export default function WhoIsThisForPage() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/category/robot-vacuums"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
           >
             Robot Vacuums
           </Link>
           <Link
             href="/category/coffee-machines"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
           >
             Coffee Machines
           </Link>
           <Link
             href="/categories"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium text-gray-600 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
           >
             All Categories
           </Link>

@@ -75,11 +75,14 @@ export default function PricingPage() {
             { quote: "The AI summaries are scary good. I can read a product in 30 seconds.", name: "Marcus T.", role: "Pro member since 2024" },
             { quote: "Compared 4 coffee machines in 5 minutes. No other site comes close.", name: "Priya L.", role: "Verified buyer" },
           ].map((t) => (
-            <div key={t.name} className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm">
+            <div key={t.name} className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="p-5">
               <p className="text-sm text-gray-600 leading-relaxed italic mb-3">&ldquo;{t.quote}&rdquo;</p>
               <div>
                 <p className="text-sm font-semibold text-gray-900">{t.name}</p>
                 <p className="text-xs text-gray-400">{t.role}</p>
+              </div>
               </div>
             </div>
           ))}
@@ -100,9 +103,14 @@ export default function PricingPage() {
       />
       <div className="bg-gray-50 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 text-center mb-10">
-            Frequently Asked Questions
-          </h2>
+          <div className="flex items-center justify-center gap-2.5 mb-10">
+            <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+              <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          </div>
           <PricingFAQAccordion faqs={faqs} />
         </div>
       </div>
