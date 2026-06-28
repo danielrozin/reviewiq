@@ -61,6 +61,7 @@ export function SortableDiscussions({
           {tabs.map(({ key, icon }) => (
             <button
               key={key}
+              aria-pressed={activeTab === key}
               onClick={() => setActiveTab(key)}
               className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl transition-all ${
                 activeTab === key

@@ -103,7 +103,7 @@ export default async function BlogPostPage({
         ]}
       />
 
-      <article className="mt-8 max-w-4xl mx-auto">
+      <article className="mt-8 max-w-4xl mx-auto" aria-labelledby="blog-post-title">
         {/* Cover image */}
         {post.coverImage && (
           <div className="relative aspect-[2/1] rounded-2xl overflow-hidden mb-8 bg-gray-100">
@@ -131,7 +131,7 @@ export default async function BlogPostPage({
               {post.readingTime} min read
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4" data-speakable="blog-headline">
+          <h1 id="blog-post-title" className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4" data-speakable="blog-headline">
             {post.title}
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed" data-speakable="blog-intro">
