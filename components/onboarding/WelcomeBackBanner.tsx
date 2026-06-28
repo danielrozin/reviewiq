@@ -64,7 +64,7 @@ export function WelcomeBackBanner() {
           <div className="flex flex-wrap gap-2">
             <Link
               href="/products"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-lg hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors"
             >
               Browse products
               <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -74,7 +74,7 @@ export function WelcomeBackBanner() {
             {session && (
               <Link
                 href="/dashboard"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-lg hover:bg-white/20 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors"
               >
                 My dashboard
               </Link>

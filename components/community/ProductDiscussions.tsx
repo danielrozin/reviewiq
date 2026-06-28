@@ -23,7 +23,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
           </p>
           <Link
             href="/community"
-            className="inline-flex items-center px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-lg hover:bg-brand-700 transition-colors"
+            className="inline-flex items-center px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors"
           >
             Start a Discussion
           </Link>
@@ -114,7 +114,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
       <div className="mt-4 pt-4 border-t border-gray-50 text-center">
         <Link
           href="/community"
-          className="inline-flex items-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
+          className="inline-flex items-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
         >
           Start a Discussion about {productName}
         </Link>

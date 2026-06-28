@@ -62,7 +62,7 @@ export function SortableDiscussions({
             <button
               key={key}
               onClick={() => setActiveTab(key)}
-              className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition-all ${
+              className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl transition-all ${
                 activeTab === key
                   ? "bg-white text-brand-600 shadow-sm border border-gray-100"
                   : "text-gray-500 hover:text-gray-700"

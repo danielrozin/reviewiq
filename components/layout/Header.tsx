@@ -88,7 +88,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     aria-current={isActive ? "page" : undefined}
-                    className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors ${
                       isActive
                         ? "bg-brand-50 text-brand-700 font-semibold"
                         : link.accent
@@ -127,7 +127,7 @@ export function Header() {
 
               <Link
                 href="/dashboard"
-                className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors"
+                className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors"
               >
                 Dashboard
               </Link>

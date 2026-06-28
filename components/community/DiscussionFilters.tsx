@@ -57,7 +57,7 @@ export function DiscussionFilters({
           <button
             key={option.value}
             onClick={() => handleSort(option.value)}
-            className={`text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors border ${
+            className={`text-xs font-medium px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors border ${
               sort === option.value
                 ? "bg-brand-50 text-brand-600 border-brand-100"
                 : "text-gray-500 hover:bg-gray-50 hover:text-gray-700 border-transparent"

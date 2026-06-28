@@ -75,7 +75,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
             key={opt.key}
             type="button"
             onClick={() => handleSort(opt.key)}
-            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+            className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${
               sortKey === opt.key
                 ? "bg-brand-600 text-white shadow-sm ring-1 ring-brand-600/30"
                 : "bg-white border border-gray-200 text-gray-600 hover:border-brand-200 hover:text-brand-600"
