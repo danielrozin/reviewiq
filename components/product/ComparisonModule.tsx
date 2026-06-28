@@ -43,10 +43,10 @@ export function ComparisonModule({
             <Link
               key={comp.productId}
               href={`/compare/${compSlug}`}
-              className="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 transition-all group"
+              className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 hover:-translate-y-0.5 transition-all duration-200 group"
             >
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-9 h-9 bg-brand-50 border border-brand-100 rounded-lg flex items-center justify-center shrink-0 group-hover:bg-brand-100 transition-colors">
+                <div className="w-9 h-9 bg-brand-50 border border-brand-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-100 transition-colors">
                   <span className="text-brand-600 text-[10px] font-bold tracking-tight">VS</span>
                 </div>
                 <div className="min-w-0">

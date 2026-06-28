@@ -57,7 +57,7 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
           <div
             key={i}
             className={cn(
-              "border rounded-xl p-4",
+              "border rounded-xl p-4 hover:shadow-sm transition-all duration-200",
               severityColors[issue.severity]
             )}
           >
