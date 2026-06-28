@@ -37,7 +37,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
               Top Answer
             </span>
           )}
-          <span className="text-xs text-gray-400 ml-auto">{comment.createdAt}</span>
+          <span className="text-xs text-gray-500 ml-auto">{comment.createdAt}</span>
         </div>
 
         {/* Comment body */}

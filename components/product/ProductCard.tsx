@@ -68,7 +68,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
         <div className="flex items-center gap-3 mb-4">
           <RatingStars rating={avgRating} size="sm" showValue />
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-gray-500">
             {formatNumber(product.reviewCount)} reviews
           </span>
           {badgeVariant === "treatment" && product.reviewCount >= 50 && (
@@ -89,7 +89,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             <span className="text-sm font-medium text-emerald-700">
               {product.verifiedPurchaseRate}%
             </span>
-            <span className="text-xs text-gray-400">verified buyers</span>
+            <span className="text-xs text-gray-500">verified buyers</span>
           </div>
           <div className="text-sm font-medium text-gray-600">
             ${product.priceRange.min}–${product.priceRange.max}

@@ -17,7 +17,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
           </svg>
         </div>
         <p className="text-sm font-semibold text-gray-900 mb-1">Nothing on your watchlist yet</p>
-        <p className="text-xs text-gray-400 mb-4 leading-relaxed">
+        <p className="text-xs text-gray-500 mb-4 leading-relaxed">
           Follow products to track SmartScore changes over time.
         </p>
         <Link
@@ -55,7 +55,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
               <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
                 {item.productName}
               </h3>
-              <p className="text-[10px] text-gray-400 mt-0.5">
+              <p className="text-[10px] text-gray-500 mt-0.5">
                 Watching since {item.addedAt}
               </p>
             </div>
@@ -75,7 +75,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
                 </p>
               )}
               {scoreDiff === 0 && (
-                <p className="text-[10px] text-gray-400">No change</p>
+                <p className="text-[10px] text-gray-500">No change</p>
               )}
             </div>
             </div>

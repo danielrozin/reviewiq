@@ -20,7 +20,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
           </svg>
         </div>
         <p className="text-sm font-semibold text-gray-900 mb-1">No reviews written yet</p>
-        <p className="text-xs text-gray-400 mb-4 leading-relaxed">
+        <p className="text-xs text-gray-500 mb-4 leading-relaxed">
           Share your experience with products you own — help other buyers make smarter decisions.
         </p>
         <Link
@@ -86,7 +86,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
             </div>
           </div>
 
-          <div className="flex items-center gap-4 mt-3 text-xs text-gray-400">
+          <div className="flex items-center gap-4 mt-3 text-xs text-gray-500">
             <span>{review.createdAt}</span>
             <span className="flex items-center gap-1">
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

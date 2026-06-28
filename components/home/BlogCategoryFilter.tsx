@@ -104,7 +104,7 @@ export function BlogCategoryFilter({ posts }: Props) {
                 </div>
                 <span className="text-xs text-gray-600 flex-1 truncate">{post.author.name}</span>
                 <span className="text-gray-200 text-xs shrink-0">·</span>
-                <span className="inline-flex items-center gap-1 text-xs text-gray-400 shrink-0">
+                <span className="inline-flex items-center gap-1 text-xs text-gray-500 shrink-0">
                   <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                   </svg>
@@ -117,7 +117,7 @@ export function BlogCategoryFilter({ posts }: Props) {
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-12 text-gray-400">
+        <div className="text-center py-12 text-gray-500">
           <p className="text-lg">No posts in this category yet.</p>
         </div>
       )}

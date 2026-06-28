@@ -58,7 +58,7 @@ export function QuickActions() {
           </div>
           <div className="flex-1 min-w-0">
             <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{action.title}</h3>
-            <p className="text-xs text-gray-400 mt-0.5 truncate">{action.description}</p>
+            <p className="text-xs text-gray-500 mt-0.5 truncate">{action.description}</p>
           </div>
           <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

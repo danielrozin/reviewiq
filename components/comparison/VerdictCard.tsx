@@ -58,7 +58,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               <div className="min-w-0">
                 <p className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider">Winner</p>
                 <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">{winner.name}</p>
-                <p className="text-xs text-gray-400">{winner.brand}</p>
+                <p className="text-xs text-gray-500">{winner.brand}</p>
               </div>
               <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
@@ -70,7 +70,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               <span className="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-100 rounded-full px-2.5 py-1">
                 +{scoreDiff} pts
               </span>
-              <span className="text-[10px] text-gray-400">ahead</span>
+              <span className="text-[10px] text-gray-500">ahead</span>
             </div>
 
             {/* Runner up card */}
@@ -84,7 +84,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               <div className="min-w-0">
                 <p className="text-[10px] font-medium text-gray-400 uppercase tracking-wider">Runner-up</p>
                 <p className="text-sm font-semibold text-gray-700 group-hover:text-brand-600 transition-colors truncate">{loser.name}</p>
-                <p className="text-xs text-gray-400">{loser.brand}</p>
+                <p className="text-xs text-gray-500">{loser.brand}</p>
               </div>
               <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />

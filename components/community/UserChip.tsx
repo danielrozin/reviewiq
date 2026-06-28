@@ -39,7 +39,7 @@ export function UserChip({ user, showTrustLevel = true, showReputation = false, 
         </span>
       )}
       {showReputation && (
-        <span className="text-xs text-gray-400">{user.reputationScore} rep</span>
+        <span className="text-xs text-gray-500">{user.reputationScore} rep</span>
       )}
     </Link>
   );
