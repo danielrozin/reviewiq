@@ -22,6 +22,7 @@ export function websiteSchema() {
     "@type": "WebSite",
     name: "ReviewIQ",
     url: SITE_URL,
+    inLanguage: "en",
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/search?q={search_term_string}`,
@@ -61,6 +62,7 @@ export function productSchema(product: Product) {
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
     image: product.image,
+    inLanguage: "en",
     datePublished: product.createdAt || buildDate,
     dateModified: product.updatedAt || product.createdAt || buildDate,
   };
@@ -240,9 +242,11 @@ export function blogPostSchema(post: BlogPost) {
     headline: post.title,
     description: post.seo.metaDescription,
     image: post.coverImage || `${SITE_URL}/og-default.jpg`,
+    inLanguage: "en",
     author: {
-      "@type": "Organization",
+      "@type": "Person",
       name: post.author.name,
+      ...(post.author.bio && { description: post.author.bio }),
     },
     publisher: {
       "@type": "Organization",
@@ -263,6 +267,7 @@ export function blogListSchema(posts: BlogPost[]) {
     name: "ReviewIQ Blog",
     description: "Expert buying guides, product comparisons, and review insights from ReviewIQ.",
     url: `${SITE_URL}/blog`,
+    inLanguage: "en",
     hasPart: posts.map((post) => ({
       "@type": "Article",
       headline: post.title,
@@ -331,6 +336,7 @@ export function discussionForumPostingSchema(
     "@type": "DiscussionForumPosting",
     headline: thread.title,
     text: thread.body,
+    inLanguage: "en",
     url: `${SITE_URL}/community/thread/${thread.id}`,
     datePublished: thread.createdAt,
     dateModified: thread.lastActivityAt,
