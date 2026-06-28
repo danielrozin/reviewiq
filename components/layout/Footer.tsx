@@ -20,7 +20,7 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-sm text-gray-500">
             <div className="flex items-center gap-2">
-              <span className="w-5 h-5 bg-emerald-100 rounded-lg flex items-center justify-center shrink-0">
+              <span className="w-5 h-5 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
@@ -29,7 +29,7 @@ export function Footer() {
             </div>
             <div className="hidden sm:block w-px h-4 bg-gray-200" />
             <div className="flex items-center gap-2">
-              <span className="w-5 h-5 bg-brand-100 rounded-lg flex items-center justify-center shrink-0">
+              <span className="w-5 h-5 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg className="w-3 h-3 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z" />
                 </svg>
@@ -38,7 +38,7 @@ export function Footer() {
             </div>
             <div className="hidden sm:block w-px h-4 bg-gray-200" />
             <div className="flex items-center gap-2">
-              <span className="w-5 h-5 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
+              <span className="w-5 h-5 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg className="w-3 h-3 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                 </svg>
