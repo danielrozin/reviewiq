@@ -170,7 +170,7 @@ export default async function ProductPage({ params }: Props) {
                 />
               </div>
               {/* Score pill under image */}
-              <div className="mt-3 flex items-center justify-center gap-2 px-3 py-2 bg-white border border-gray-100 rounded-xl shadow-sm">
+              <div className="mt-3 flex items-center justify-center gap-2 px-3 py-2 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-200">
                 <SmartScore score={product.smartScore} size="sm" showLabel={false} />
                 <span className="text-sm font-semibold text-gray-800">{product.smartScore}/100 SmartScore</span>
               </div>
