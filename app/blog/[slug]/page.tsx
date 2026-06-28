@@ -7,7 +7,7 @@ import { getProductsByCategory, getAffinityProducts } from "@/data/products";
 import { getAffinityCategorySlugs } from "@/data/category-affinity";
 import { getCategoryBySlug } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blogPostSchema, faqSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { blogPostSchema, faqSchema, breadcrumbSchema, blogPostSpeakableSchema } from "@/lib/schema/jsonld";
 
 export function generateStaticParams() {
   return getAllBlogPosts().map((post) => ({ slug: post.slug }));
@@ -89,6 +89,12 @@ export default async function BlogPostPage({
           ),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostSpeakableSchema(post.title, `/blog/${post.slug}`)),
+        }}
+      />
 
       <Breadcrumbs
         items={[
@@ -125,10 +131,10 @@ export default async function BlogPostPage({
               {post.readingTime} min read
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4" data-speakable="blog-headline">
             {post.title}
           </h1>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          <p className="text-lg text-gray-600 leading-relaxed" data-speakable="blog-intro">
             {post.excerpt}
           </p>
           <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-100">

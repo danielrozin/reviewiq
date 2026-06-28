@@ -259,7 +259,7 @@ export function blogPostSchema(post: BlogPost) {
 export function blogListSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",
-    "@type": "CollectionPage",
+    "@type": "Blog",
     name: "ReviewIQ Blog",
     description: "Expert buying guides, product comparisons, and review insights from ReviewIQ.",
     url: `${SITE_URL}/blog`,
@@ -301,6 +301,22 @@ export function speakableSchema(productName: string, productUrl: string) {
         "[data-speakable='ai-summary']",
         "[data-speakable='key-facts']",
         "[data-speakable='smart-score']",
+      ],
+    },
+  };
+}
+
+export function blogPostSpeakableSchema(title: string, url: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    url: `${SITE_URL}${url}`,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [
+        "[data-speakable='blog-headline']",
+        "[data-speakable='blog-intro']",
       ],
     },
   };
