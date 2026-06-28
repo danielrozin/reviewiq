@@ -120,9 +120,16 @@ function StarRating({
   );
 }
 
-function FieldError({ show, message }: { show: boolean; message: string }) {
-  if (!show) return null;
-  return <p className="text-xs text-red-600 mt-1">{message}</p>;
+function FieldError({ id, show, message }: { id: string; show: boolean; message: string }) {
+  return (
+    <p
+      id={id}
+      aria-live="polite"
+      className={`text-xs mt-1 ${show ? "text-red-600" : "sr-only"}`}
+    >
+      {message}
+    </p>
+  );
 }
 
 export default function WriteReviewPage() {
@@ -392,6 +399,8 @@ export default function WriteReviewPage() {
                 value={selectedProduct}
                 onChange={(e) => setSelectedProduct(e.target.value)}
                 onBlur={() => markTouched("product")}
+                aria-describedby="error-product"
+                aria-invalid={touched.product === true && !selectedProduct ? true : undefined}
                 className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
               >
                 <option value="">Select a product...</option>
@@ -402,6 +411,7 @@ export default function WriteReviewPage() {
                 ))}
               </select>
               <FieldError
+                id="error-product"
                 show={touched.product === true && !selectedProduct}
                 message="Please select a product"
               />
@@ -418,10 +428,13 @@ export default function WriteReviewPage() {
                 onBlur={() => markTouched("headline")}
                 placeholder="Summarize your experience in one sentence"
                 maxLength={120}
+                aria-describedby="error-headline"
+                aria-invalid={touched.headline === true && !headline ? true : undefined}
                 className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
               />
               <div className="flex justify-between mt-1">
                 <FieldError
+                  id="error-headline"
                   show={touched.headline === true && !headline}
                   message="Headline is required"
                 />
@@ -548,6 +561,8 @@ export default function WriteReviewPage() {
                   value={experienceLevel}
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   onBlur={() => markTouched("experienceLevel")}
+                  aria-describedby="error-experienceLevel"
+                  aria-invalid={touched.experienceLevel === true && !experienceLevel ? true : undefined}
                   className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 >
                   <option value="">Select...</option>
@@ -558,6 +573,7 @@ export default function WriteReviewPage() {
                   ))}
                 </select>
                 <FieldError
+                  id="error-experienceLevel"
                   show={touched.experienceLevel === true && !experienceLevel}
                   message="Please select your experience level"
                 />
@@ -570,6 +586,8 @@ export default function WriteReviewPage() {
                   value={timeOwned}
                   onChange={(e) => setTimeOwned(e.target.value)}
                   onBlur={() => markTouched("timeOwned")}
+                  aria-describedby="error-timeOwned"
+                  aria-invalid={touched.timeOwned === true && !timeOwned ? true : undefined}
                   className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 >
                   <option value="">Select...</option>
@@ -580,6 +598,7 @@ export default function WriteReviewPage() {
                   ))}
                 </select>
                 <FieldError
+                  id="error-timeOwned"
                   show={touched.timeOwned === true && !timeOwned}
                   message="Please select how long you've owned it"
                 />
@@ -597,7 +616,7 @@ export default function WriteReviewPage() {
                     className={`flex items-center gap-3 p-3 border rounded-xl cursor-pointer transition-colors ${
                       verification === opt.value
                         ? "border-brand-300 bg-brand-50"
-                        : "border-gray-200 hover:border-gray-300"
+                        : "border-gray-400 hover:border-gray-500"
                     }`}
                   >
                     <input

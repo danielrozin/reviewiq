@@ -275,7 +275,7 @@ export default async function ThreadPage({ params }: Props) {
             </div>
 
             {/* Comment composer */}
-            <div className="border border-gray-200 rounded-xl p-4 mb-6">
+            <div className="border border-gray-400 rounded-xl p-4 mb-6">
               <textarea
                 placeholder="Share your experience or answer this question..."
                 className="w-full text-sm text-gray-700 placeholder-gray-400 resize-none border-0 focus:ring-0 focus:outline-none min-h-[80px]"
