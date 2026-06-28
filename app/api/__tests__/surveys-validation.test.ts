@@ -9,6 +9,8 @@ const mockPrisma = vi.hoisted(() => ({
     create: vi.fn(),
     findMany: vi.fn(),
     count: vi.fn(),
+    groupBy: vi.fn(),
+    findFirst: vi.fn(),
   },
 }))
 
@@ -27,8 +29,12 @@ function makePostRequest(body: unknown): NextRequest {
   })
 }
 
-function makeGetRequest(query = ''): NextRequest {
-  return new NextRequest(new URL(`/api/surveys${query}`, 'http://localhost:3000'))
+const TEST_TOKEN = 'test-survey-token'
+
+function makeGetRequest(query = '', auth: string | null = `Bearer ${TEST_TOKEN}`): NextRequest {
+  return new NextRequest(new URL(`/api/surveys${query}`, 'http://localhost:3000'), {
+    headers: auth ? { authorization: auth } : {},
+  })
 }
 
 describe('POST /api/surveys', () => {
@@ -129,23 +135,62 @@ describe('POST /api/surveys', () => {
 })
 
 describe('GET /api/surveys', () => {
-  beforeEach(() => vi.clearAllMocks())
-
-  it('returns paginated surveys with defaults', async () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+    process.env.SURVEY_ADMIN_TOKEN = TEST_TOKEN
+    // Aggregate query defaults so the route doesn't throw under mock.
     mockPrisma.smartreviewSurvey.findMany.mockResolvedValue([])
     mockPrisma.smartreviewSurvey.count.mockResolvedValue(0)
+    mockPrisma.smartreviewSurvey.groupBy.mockResolvedValue([])
+    mockPrisma.smartreviewSurvey.findFirst.mockResolvedValue(null)
+  })
+
+  it('returns 401 without a bearer token', async () => {
+    const res = await GET(makeGetRequest('', null))
+    expect(res.status).toBe(401)
+    expect(mockPrisma.smartreviewSurvey.findMany).not.toHaveBeenCalled()
+  })
+
+  it('returns 401 with a wrong bearer token', async () => {
+    const res = await GET(makeGetRequest('', 'Bearer nope'))
+    expect(res.status).toBe(401)
+  })
+
+  it('returns 401 when SURVEY_ADMIN_TOKEN is unset (fail closed)', async () => {
+    delete process.env.SURVEY_ADMIN_TOKEN
+    const res = await GET(makeGetRequest())
+    expect(res.status).toBe(401)
+  })
+
+  it('returns paginated surveys + aggregate with a valid token', async () => {
+    mockPrisma.smartreviewSurvey.count
+      .mockResolvedValueOnce(3) // filtered total
+      .mockResolvedValueOnce(10) // grandTotal
+      .mockResolvedValueOnce(4) // completions
+    mockPrisma.smartreviewSurvey.groupBy
+      .mockResolvedValueOnce([
+        { event: 'impression', _count: { _all: 8 } },
+        { event: 'dismissed', _count: { _all: 2 } },
+      ])
+      .mockResolvedValueOnce([{ q1Intent: 'research', _count: { _all: 5 } }])
+    mockPrisma.smartreviewSurvey.findFirst.mockResolvedValue({ createdAt: new Date('2026-06-01') })
 
     const res = await GET(makeGetRequest())
     expect(res.status).toBe(200)
     const data = await res.json()
     expect(data).toHaveProperty('surveys')
     expect(data).toHaveProperty('total')
+    expect(data.aggregate).toMatchObject({
+      totalRows: 10,
+      impressions: 8,
+      completions: 4,
+      dismissals: 2,
+      q1IntentBreakdown: { research: 5 },
+      funnelConversionRate: 0.5,
+    })
   })
 
   it('caps limit at 200', async () => {
-    mockPrisma.smartreviewSurvey.findMany.mockResolvedValue([])
-    mockPrisma.smartreviewSurvey.count.mockResolvedValue(0)
-
     await GET(makeGetRequest('?limit=500'))
 
     expect(mockPrisma.smartreviewSurvey.findMany).toHaveBeenCalledWith(
@@ -154,9 +199,6 @@ describe('GET /api/surveys', () => {
   })
 
   it('filters by category', async () => {
-    mockPrisma.smartreviewSurvey.findMany.mockResolvedValue([])
-    mockPrisma.smartreviewSurvey.count.mockResolvedValue(0)
-
     await GET(makeGetRequest('?category=electronics'))
 
     expect(mockPrisma.smartreviewSurvey.findMany).toHaveBeenCalledWith(
@@ -167,9 +209,6 @@ describe('GET /api/surveys', () => {
   })
 
   it('filters by surveyCompleted boolean', async () => {
-    mockPrisma.smartreviewSurvey.findMany.mockResolvedValue([])
-    mockPrisma.smartreviewSurvey.count.mockResolvedValue(0)
-
     await GET(makeGetRequest('?surveyCompleted=true'))
 
     expect(mockPrisma.smartreviewSurvey.findMany).toHaveBeenCalledWith(

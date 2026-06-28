@@ -20,7 +20,7 @@ const mockPrisma = vi.hoisted(() => ({
   moderationReport: { findFirst: vi.fn(), create: vi.fn(), count: vi.fn() },
   emailSubscription: { findUnique: vi.fn(), create: vi.fn(), update: vi.fn() },
   consentRecord: { create: vi.fn(), findFirst: vi.fn() },
-  smartreviewSurvey: { create: vi.fn(), findMany: vi.fn(), count: vi.fn() },
+  smartreviewSurvey: { create: vi.fn(), findMany: vi.fn(), count: vi.fn(), groupBy: vi.fn(), findFirst: vi.fn() },
 }))
 
 vi.mock('@/lib/prisma', () => ({ prisma: mockPrisma }))
@@ -100,13 +100,26 @@ describe('Smoke Tests — API Route Health', () => {
   })
 
   describe('GET /api/surveys', () => {
-    it('responds 200 with defaults', async () => {
+    it('responds 200 with a valid bearer token', async () => {
+      process.env.SURVEY_ADMIN_TOKEN = 'smoke-token'
       mockPrisma.smartreviewSurvey.findMany.mockResolvedValue([])
       mockPrisma.smartreviewSurvey.count.mockResolvedValue(0)
+      mockPrisma.smartreviewSurvey.groupBy.mockResolvedValue([])
+      mockPrisma.smartreviewSurvey.findFirst.mockResolvedValue(null)
 
       const { GET } = await import('../surveys/route')
-      const res = await GET(makeRequest('GET', '/api/surveys'))
+      const req = new NextRequest(new URL('/api/surveys', 'http://localhost:3000'), {
+        headers: { authorization: 'Bearer smoke-token' },
+      })
+      const res = await GET(req)
       expect(res.status).toBe(200)
+    })
+
+    it('responds 401 without a token', async () => {
+      process.env.SURVEY_ADMIN_TOKEN = 'smoke-token'
+      const { GET } = await import('../surveys/route')
+      const res = await GET(makeRequest('GET', '/api/surveys'))
+      expect(res.status).toBe(401)
     })
   })
 
