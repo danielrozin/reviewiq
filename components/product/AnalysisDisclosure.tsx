@@ -1,10 +1,10 @@
 export function AnalysisDisclosure({ productName }: { productName: string }) {
   return (
-    <section className="bg-blue-50 border border-blue-100 rounded-2xl p-6">
+    <section className="bg-brand-50/50 border border-brand-100 rounded-2xl p-6">
       <div className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
+        <div className="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center shrink-0">
           <svg
-            className="w-5 h-5 text-blue-600"
+            className="w-5 h-5 text-brand-600"
             fill="none"
             viewBox="0 0 24 24"
             strokeWidth={1.5}

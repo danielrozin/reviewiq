@@ -64,8 +64,10 @@ export function RelatedProducts({
             key={product.slug}
             href={`/category/${categorySlug}/${product.slug}`}
             title={`${product.name} review — SmartScore ${product.smartScore}/100`}
-            className="group flex flex-col border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-md transition-all"
+            className="group flex flex-col border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200"
           >
+            {/* Hover accent strip */}
+            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             {/* Product Thumbnail */}
             <ProductImage
               src={product.image}
