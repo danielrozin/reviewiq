@@ -59,7 +59,7 @@ export default function SignUpPage() {
           <h1 className="mt-4 text-2xl font-bold text-gray-900">
             Create your account
           </h1>
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-600">
             Join ReviewIQ to write reviews, save comparisons, and get personalized recommendations.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function SignUpPage() {
           </button>
         </div>
 
-        <p className="mt-4 text-center text-sm text-gray-500">
+        <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
           <Link href="/auth/signin" className="text-brand-600 hover:text-brand-700 font-medium">
             Sign in

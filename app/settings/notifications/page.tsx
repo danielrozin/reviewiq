@@ -130,7 +130,7 @@ export default function NotificationsSettingsPage() {
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Notifications</h1>
-            <p className="text-gray-500 text-sm mt-1">
+            <p className="text-gray-600 text-sm mt-1">
               Control how and when ReviewIQ contacts you.
             </p>
           </div>
@@ -199,7 +199,7 @@ export default function NotificationsSettingsPage() {
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{description}</p>
+                    <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">{description}</p>
                   </div>
                   <button
                     onClick={() => toggle(key)}
@@ -230,7 +230,7 @@ export default function NotificationsSettingsPage() {
           <svg className="w-4 h-4 text-gray-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
           </svg>
-          <p className="text-xs text-gray-500 leading-relaxed">
+          <p className="text-xs text-gray-600 leading-relaxed">
             All notifications are delivered to your account email. You can unsubscribe from any individual email using the link in the footer of each message.
           </p>
         </div>

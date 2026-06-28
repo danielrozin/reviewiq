@@ -30,7 +30,7 @@ export function QuickStartSuggestions() {
         </div>
         <div>
           <h3 className="text-sm font-bold text-gray-900">Quick Start</h3>
-          <p className="text-xs text-gray-500">Popular categories to explore</p>
+          <p className="text-xs text-gray-600">Popular categories to explore</p>
         </div>
       </div>
 

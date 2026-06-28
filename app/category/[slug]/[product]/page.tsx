@@ -185,7 +185,7 @@ export default async function ProductPage({ params }: Props) {
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               {product.name}
             </h1>
-            <p className="text-gray-500 max-w-2xl leading-relaxed mb-6">
+            <p className="text-gray-600 max-w-2xl leading-relaxed mb-6">
               {product.description}
             </p>
 
@@ -195,7 +195,7 @@ export default async function ProductPage({ params }: Props) {
 
               <div>
                 <RatingStars rating={avgRating} size="md" showValue />
-                <p className="text-sm text-gray-500 mt-1">
+                <p className="text-sm text-gray-600 mt-1">
                   Based on {formatNumber(product.reviewCount)} reviews
                 </p>
               </div>
@@ -318,31 +318,31 @@ export default async function ProductPage({ params }: Props) {
             <h3 className="font-semibold text-gray-900">Quick Stats</h3>
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">SmartScore</span>
+                <span className="text-gray-600">SmartScore</span>
                 <span className="font-semibold text-gray-900">
                   {product.smartScore}/100
                 </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Avg Rating</span>
+                <span className="text-gray-600">Avg Rating</span>
                 <span className="font-semibold text-gray-900">
                   {avgRating.toFixed(1)}/5
                 </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Total Reviews</span>
+                <span className="text-gray-600">Total Reviews</span>
                 <span className="font-semibold text-gray-900">
                   {formatNumber(product.reviewCount)}
                 </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Verified Rate</span>
+                <span className="text-gray-600">Verified Rate</span>
                 <span className="font-semibold text-emerald-600">
                   {product.verifiedPurchaseRate}%
                 </span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-500">Price Range</span>
+                <span className="text-gray-600">Price Range</span>
                 <span className="font-semibold text-gray-900">
                   ${product.priceRange.min}–${product.priceRange.max}
                 </span>

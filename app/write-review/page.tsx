@@ -265,7 +265,7 @@ export default function WriteReviewPage() {
           <h1 className="text-2xl font-bold text-gray-900 mb-3">
             Sign in to write a review
           </h1>
-          <p className="text-gray-500 mb-8 leading-relaxed">
+          <p className="text-gray-600 mb-8 leading-relaxed">
             Create a free account to share your experience and help others make smarter buying decisions. Your reviews earn reputation and build trust.
           </p>
           <Link
@@ -375,7 +375,7 @@ export default function WriteReviewPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-2">
           Write a Review
         </h1>
-        <p className="text-gray-500 mb-6">
+        <p className="text-gray-600 mb-6">
           Share your honest experience to help others make smarter buying decisions.
         </p>
 
@@ -442,7 +442,7 @@ export default function WriteReviewPage() {
             </div>
 
             <div className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
-              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
+              <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
                 Category Ratings
               </p>
               {[

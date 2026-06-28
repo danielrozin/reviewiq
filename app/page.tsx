@@ -47,7 +47,7 @@ export default function HomePage() {
               Reviews you can{" "}
               <span className="text-brand-600">actually trust</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-500 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-up delay-100">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-up delay-100">
               AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.
             </p>
             <div className="flex justify-center mb-8 animate-fade-up delay-200">
@@ -69,7 +69,7 @@ export default function HomePage() {
                 >
                   <span className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
-                  <p className="text-gray-500 text-xs mt-0.5">{tile.desc}</p>
+                  <p className="text-gray-600 text-xs mt-0.5">{tile.desc}</p>
                 </Link>
               ))}
             </div>
@@ -100,17 +100,17 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-600">
                   <span className="font-semibold text-gray-800">20,000+</span> verified reviews written
                 </span>
               </div>
               <span className="hidden sm:block text-gray-200">|</span>
-              <div className="flex items-center gap-1.5 text-sm text-gray-500">
+              <div className="flex items-center gap-1.5 text-sm text-gray-600">
                 <svg className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z"/></svg>
                 <span className="font-semibold text-gray-800">4.8/5</span> avg product rating
               </div>
               <span className="hidden sm:block text-gray-200">|</span>
-              <div className="flex items-center gap-1.5 text-sm text-gray-500">
+              <div className="flex items-center gap-1.5 text-sm text-gray-600">
                 <svg className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <span className="font-semibold text-gray-800">78%</span> verified buyers
               </div>
@@ -205,7 +205,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900">
               Browse by Category
             </h2>
-            <p className="text-gray-500 mt-1">
+            <p className="text-gray-600 mt-1">
               Deep product intelligence across popular categories
             </p>
           </div>
@@ -242,7 +242,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900">
               Highest Rated Products
             </h2>
-            <p className="text-gray-500 mt-1">
+            <p className="text-gray-600 mt-1">
               Top SmartScores across all categories
             </p>
           </div>
@@ -291,7 +291,7 @@ export default function HomePage() {
                   </h3>
                   <div className="flex items-center justify-between text-sm">
                     <span className="text-gray-400">{formatNumber(product.reviewCount)} reviews</span>
-                    <span className="text-gray-500 font-medium">
+                    <span className="text-gray-600 font-medium">
                       ${product.priceRange.min}–${product.priceRange.max}
                     </span>
                   </div>
@@ -313,7 +313,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900">
               Trending Discussions
             </h2>
-            <p className="text-gray-500 mt-1">
+            <p className="text-gray-600 mt-1">
               Real conversations from verified product owners
             </p>
           </div>
@@ -359,7 +359,7 @@ export default function HomePage() {
                   </h3>
                   <div className="flex items-center gap-3 text-xs text-gray-400">
                     {author && (
-                      <span className="font-medium text-gray-500">
+                      <span className="font-medium text-gray-600">
                         {author.displayName}
                       </span>
                     )}
@@ -400,7 +400,7 @@ export default function HomePage() {
               <h2 className="text-2xl font-bold text-gray-900">
                 Buying Guides & Comparisons
               </h2>
-              <p className="text-gray-500 mt-1">
+              <p className="text-gray-600 mt-1">
                 Expert insights backed by real owner data
               </p>
             </div>
@@ -426,7 +426,7 @@ export default function HomePage() {
                 <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2 flex-1 leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed mb-4">
+                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
                 <div className="flex items-center gap-2.5 pt-3 border-t border-gray-50">
@@ -435,7 +435,7 @@ export default function HomePage() {
                       {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
                     </span>
                   </div>
-                  <span className="text-xs text-gray-500 truncate">{post.author.name}</span>
+                  <span className="text-xs text-gray-600 truncate">{post.author.name}</span>
                   <span className="text-gray-200 text-xs">·</span>
                   <span className="text-xs text-gray-400 shrink-0">{post.readingTime} min</span>
                 </div>
@@ -467,7 +467,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold text-gray-900">
               Staff-recommended this week
             </h2>
-            <p className="text-gray-500 mt-1">
+            <p className="text-gray-600 mt-1">
               Handpicked based on outstanding SmartScores and verified buyer consensus
             </p>
           </div>
@@ -517,12 +517,12 @@ export default function HomePage() {
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 leading-tight">
                     {featured.name}
                   </h3>
-                  <p className="text-sm text-gray-500 flex-1 line-clamp-2 mb-4">
+                  <p className="text-sm text-gray-600 flex-1 line-clamp-2 mb-4">
                     AI analysis of {formatNumber(featured.reviewCount)} verified reviews. Outperforms alternatives across noise reduction, battery life, and comfort.
                   </p>
                   <div className="flex items-center justify-between">
                     <SmartScore score={featured.smartScore} size="md" />
-                    <span className="text-sm font-medium text-gray-500">
+                    <span className="text-sm font-medium text-gray-600">
                       ${featured.priceRange.min}–${featured.priceRange.max}
                     </span>
                   </div>
@@ -583,7 +583,7 @@ export default function HomePage() {
           <h2 className="text-2xl font-bold text-gray-900">
             How ReviewIQ Works
           </h2>
-          <p className="text-gray-500 mt-2 max-w-xl mx-auto">
+          <p className="text-gray-600 mt-2 max-w-xl mx-auto">
             We built a review platform you can actually trust.
           </p>
         </div>
@@ -640,7 +640,7 @@ export default function HomePage() {
               <h3 className="font-semibold text-gray-900 text-lg mb-2">
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">
+              <p className="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">
                 {item.description}
               </p>
             </div>

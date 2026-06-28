@@ -26,7 +26,7 @@ export default function NotFound() {
         <h1 className="text-3xl font-bold text-gray-900 mb-3">
           This page went missing
         </h1>
-        <p className="text-gray-500 max-w-md mx-auto leading-relaxed mb-8">
+        <p className="text-gray-600 max-w-md mx-auto leading-relaxed mb-8">
           The page you&apos;re looking for doesn&apos;t exist or has been moved. Let&apos;s get you back on track.
         </p>
 

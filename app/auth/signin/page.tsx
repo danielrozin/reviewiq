@@ -61,7 +61,7 @@ export default function SignInPage() {
           <h2 className="text-3xl font-extrabold text-gray-900 mb-4 leading-tight">
             Make smarter buying<br />decisions — for free
           </h2>
-          <p className="text-gray-500 mb-8 leading-relaxed">
+          <p className="text-gray-600 mb-8 leading-relaxed">
             AI-powered review intelligence trusted by 20,000+ verified buyers. No affiliate bias. No fake reviews.
           </p>
           <ul className="space-y-4">
@@ -99,7 +99,7 @@ export default function SignInPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">{benefit.title}</p>
-                  <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{benefit.desc}</p>
+                  <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">{benefit.desc}</p>
                 </div>
               </li>
             ))}

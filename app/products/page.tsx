@@ -21,7 +21,7 @@ export default function ProductsPage() {
         <h1 className="text-3xl font-bold text-gray-900">
           Browse Products
         </h1>
-        <p className="mt-2 text-gray-500 max-w-2xl">
+        <p className="mt-2 text-gray-600 max-w-2xl">
           Search and filter across all categories to find the right product for
           you. Every score is based on verified buyer reviews.
         </p>

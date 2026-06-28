@@ -16,7 +16,7 @@ export default function Error({
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
           Something went wrong
         </h2>
-        <p className="text-gray-500 mb-6">
+        <p className="text-gray-600 mb-6">
           An unexpected error occurred. Please try again.
         </p>
         <button

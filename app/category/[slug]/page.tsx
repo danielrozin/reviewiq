@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: Props) {
                 Best {category.name}
               </h1>
             </div>
-            <p className="text-gray-500 max-w-3xl leading-relaxed mt-2">
+            <p className="text-gray-600 max-w-3xl leading-relaxed mt-2">
               {category.description}
             </p>
           </div>
