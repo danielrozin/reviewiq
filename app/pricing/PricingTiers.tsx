@@ -38,7 +38,9 @@ export function PricingTiers() {
   return (
     <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {/* Free Plan */}
-      <div className="bg-white rounded-2xl border border-gray-200 p-8 flex flex-col">
+      <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-sm hover:border-gray-300 transition-all duration-200 group">
+        <div className="h-0.5 w-full bg-gradient-to-r from-gray-200 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+        <div className="p-8 flex flex-col flex-1">
         <div className="mb-6">
           <h3 className="text-lg font-semibold text-gray-900">
             {PLANS.free.name}
@@ -75,6 +77,7 @@ export function PricingTiers() {
         >
           Current Plan
         </button>
+        </div>
       </div>
 
       {/* Pro Plan */}
