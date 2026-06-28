@@ -117,7 +117,7 @@ export default async function BlogPostPage({
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">
             {post.title}
           </h1>
-          <p className="text-lg text-gray-500 leading-relaxed">
+          <p className="text-lg text-gray-600 leading-relaxed">
             {post.excerpt}
           </p>
           <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-100">
@@ -156,7 +156,7 @@ export default async function BlogPostPage({
           {post.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs text-gray-500 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full"
+              className="text-xs text-gray-600 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full"
             >
               {tag}
             </span>
@@ -259,7 +259,7 @@ export default async function BlogPostPage({
             <h2 className="text-2xl font-bold text-gray-900 mb-1">
               You Might Also Like
             </h2>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-gray-600 mb-6">
               Top-rated products in related categories
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -334,7 +334,7 @@ export default async function BlogPostPage({
                   <p className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 leading-snug">
                     {rp.title}
                   </p>
-                  <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
+                  <p className="text-sm text-gray-600 mt-2 line-clamp-2 leading-relaxed">
                     {rp.excerpt}
                   </p>
                   <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">

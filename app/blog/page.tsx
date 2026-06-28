@@ -28,7 +28,7 @@ export default function BlogPage() {
         <h1 className="text-3xl font-bold text-gray-900">
           ReviewIQ Blog
         </h1>
-        <p className="text-gray-500 mt-2 max-w-2xl">
+        <p className="text-gray-600 mt-2 max-w-2xl">
           Expert buying guides, product comparisons, and review insights —
           all backed by real owner data and AI-powered analysis.
         </p>

@@ -232,7 +232,7 @@ export default function WhoIsThisForPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           Who Is ReviewIQ For?
         </h1>
-        <p className="text-lg text-gray-500 leading-relaxed">
+        <p className="text-lg text-gray-600 leading-relaxed">
           ReviewIQ is an AI-powered product review platform for consumers researching robot vacuums ($100–$1,500) and coffee machines ($50–$2,000). We analyze verified buyer reviews to give you honest, structured recommendations — not affiliate-driven picks.
         </p>
       </header>
@@ -258,7 +258,7 @@ export default function WhoIsThisForPage() {
                   <span className="font-medium text-gray-700">Scenario:</span> {persona.scenario}
                 </p>
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Search queries you&rsquo;d use:</p>
+                  <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Search queries you&rsquo;d use:</p>
                   <ul className="flex flex-wrap gap-2">
                     {persona.queries.map((query) => (
                       <li key={query} className="text-xs bg-gray-50 text-gray-600 border border-gray-200 px-3 py-1 rounded-full font-mono">
@@ -298,7 +298,7 @@ export default function WhoIsThisForPage() {
                   </span>
                 {item.title}
               </h3>
-              <p className="text-sm text-gray-500 leading-relaxed ml-7">
+              <p className="text-sm text-gray-600 leading-relaxed ml-7">
                 {item.detail}
               </p>
             </div>
@@ -374,7 +374,7 @@ export default function WhoIsThisForPage() {
           {stats.map((stat) => (
             <div key={stat.value}>
               <p className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</p>
-              <p className="text-sm text-gray-500 leading-relaxed">{stat.label}</p>
+              <p className="text-sm text-gray-600 leading-relaxed">{stat.label}</p>
             </div>
           ))}
         </div>
@@ -407,7 +407,7 @@ export default function WhoIsThisForPage() {
         <h2 className="text-xl font-bold text-gray-900 mb-3">
           Ready to find the right product?
         </h2>
-        <p className="text-gray-500 mb-6">
+        <p className="text-gray-600 mb-6">
           Browse our categories or read a buying guide to get started.
         </p>
         <div className="flex flex-wrap justify-center gap-4">

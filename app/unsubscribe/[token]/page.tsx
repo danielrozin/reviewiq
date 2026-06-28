@@ -39,7 +39,7 @@ export default async function UnsubscribePage({ params }: Props) {
             You have been unsubscribed from{" "}
             <strong>{EMAIL_TYPE_LABELS[verified.emailType] || verified.emailType}</strong>.
           </p>
-          <p className="text-gray-500 text-sm mt-4">
+          <p className="text-gray-600 text-sm mt-4">
             You can re-enable notifications anytime from your{" "}
             <a href="/settings/notifications" className="text-indigo-600 hover:text-indigo-700 underline">
               notification settings

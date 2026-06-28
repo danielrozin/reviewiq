@@ -53,7 +53,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
                 className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2"
               >
                 <span className="font-medium text-gray-900">{p.brand}</span>
-                <span className="text-gray-500">{p.name}</span>
+                <span className="text-gray-600">{p.name}</span>
               </button>
             ))
           )}
@@ -95,7 +95,7 @@ function CompareContent() {
             </svg>
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Compare Products Side-by-Side</h1>
-          <p className="text-gray-500 max-w-md mx-auto">
+          <p className="text-gray-600 max-w-md mx-auto">
             Search and add 2–4 products to see SmartScores, specs, pros & cons, and an AI verdict — all in one view.
           </p>
         </div>
@@ -170,7 +170,7 @@ function CompareContent() {
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
           {title}
         </h1>
-        <p className="text-gray-500 text-sm">
+        <p className="text-gray-600 text-sm">
           Side-by-side comparison based on {totalReviews.toLocaleString()} verified buyer reviews
         </p>
         <div className="mt-4 flex justify-center">

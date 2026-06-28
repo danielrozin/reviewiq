@@ -110,7 +110,7 @@ export default async function FAQPage({ params }: Props) {
 
       {/* Related links */}
       <nav className="max-w-3xl" aria-label="Related pages">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+        <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">
           Learn More
         </h2>
         <ul className="flex flex-wrap gap-3">
@@ -130,7 +130,7 @@ export default async function FAQPage({ params }: Props) {
       {/* Cross-links to other FAQ pages */}
       {faqPages.filter((p) => p.slug !== page.slug).length > 0 && (
         <nav className="max-w-3xl mt-12 pt-8 border-t border-gray-200" aria-label="Other FAQ topics">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+          <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">
             More FAQ Topics
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">

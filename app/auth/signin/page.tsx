@@ -112,7 +112,7 @@ export default function SignInPage() {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-gray-500"><span className="font-semibold text-gray-800">20,000+</span> verified reviews written</p>
+            <p className="text-xs text-gray-600"><span className="font-semibold text-gray-800">20,000+</span> verified reviews written</p>
           </div>
         </div>
 
@@ -127,7 +127,7 @@ export default function SignInPage() {
           </div>
           <div className="text-center lg:text-left mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Sign in to ReviewIQ</h1>
-            <p className="mt-2 text-sm text-gray-500">
+            <p className="mt-2 text-sm text-gray-600">
               Write reviews, save comparisons, and get personalized recommendations.
             </p>
           </div>
@@ -160,7 +160,7 @@ export default function SignInPage() {
 
             <ul className="space-y-2">
               {["No affiliate bias", "78% verified buyer rate", "Cancel or leave anytime"].map((item) => (
-                <li key={item} className="flex items-center gap-2 text-xs text-gray-500">
+                <li key={item} className="flex items-center gap-2 text-xs text-gray-600">
                   <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>

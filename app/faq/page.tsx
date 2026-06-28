@@ -37,7 +37,7 @@ export default function FAQIndexPage() {
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
                 {page.title}
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed">
                 {page.heroSubtext}
               </p>
               <span className="inline-block mt-3 text-sm text-brand-600 font-medium">

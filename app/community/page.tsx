@@ -88,7 +88,7 @@ export default function CommunityPage() {
               </div>
               <div>
                 <p className="text-lg font-bold text-gray-900 leading-none">{stat.value.toLocaleString()}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+                <p className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
               </div>
             </div>
           ))}

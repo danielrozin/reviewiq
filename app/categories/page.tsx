@@ -30,7 +30,7 @@ export default function CategoriesPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Product Categories
           </h1>
-          <p className="text-gray-500 max-w-2xl leading-relaxed">
+          <p className="text-gray-600 max-w-2xl leading-relaxed">
             {categories.length} categories · {totalProducts}+ products · AI-analyzed reviews from verified buyers
           </p>
         </div>

@@ -71,7 +71,7 @@ export default async function ComparisonPage({ params }: Props) {
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
             {productA.name} vs {productB.name}
           </h1>
-          <p className="text-gray-500 text-sm">
+          <p className="text-gray-600 text-sm">
             Side-by-side comparison based on {productA.reviewCount + productB.reviewCount} verified buyer reviews
           </p>
           {searchVolume > 0 && (

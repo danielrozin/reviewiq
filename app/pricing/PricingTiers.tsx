@@ -47,9 +47,9 @@ export function PricingTiers() {
           </h3>
           <div className="mt-3 flex items-baseline gap-1">
             <span className="text-4xl font-extrabold text-gray-900">$0</span>
-            <span className="text-gray-500 text-sm">/month</span>
+            <span className="text-gray-600 text-sm">/month</span>
           </div>
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-600">
             Perfect for casual browsing and reading reviews.
           </p>
         </div>
@@ -73,7 +73,7 @@ export function PricingTiers() {
 
         <button
           disabled
-          className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-gray-100 text-gray-500 cursor-default"
+          className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-gray-100 text-gray-600 cursor-default"
         >
           Current Plan
         </button>
@@ -96,9 +96,9 @@ export function PricingTiers() {
             <span className="text-4xl font-extrabold text-gray-900">
               ${(PLANS.pro.price / 100).toFixed(2)}
             </span>
-            <span className="text-gray-500 text-sm">/month</span>
+            <span className="text-gray-600 text-sm">/month</span>
           </div>
-          <p className="mt-2 text-sm text-gray-500">
+          <p className="mt-2 text-sm text-gray-600">
             For power users who want the complete ReviewIQ experience.
           </p>
         </div>

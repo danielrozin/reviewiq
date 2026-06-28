@@ -168,7 +168,7 @@ export default async function ThreadPage({ params }: Props) {
                   {thread.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-xs text-gray-500 bg-gray-50 px-2.5 py-1 rounded-full"
+                      className="text-xs text-gray-600 bg-gray-50 px-2.5 py-1 rounded-full"
                     >
                       {tag}
                     </span>
@@ -200,25 +200,25 @@ export default async function ThreadPage({ params }: Props) {
 
                 {/* Actions bar */}
                 <div className="flex items-center gap-4 py-4 border-t border-b border-gray-100 mb-8">
-                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors font-medium">
+                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-700 transition-colors font-medium">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
                     </svg>
                     Share
                   </button>
-                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors font-medium">
+                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-700 transition-colors font-medium">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                     </svg>
                     Save
                   </button>
-                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors font-medium">
+                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-700 transition-colors font-medium">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2.25a2.25 2.25 0 0 1 2.25 2.25v.094a2.25 2.25 0 0 0 2.25 2.25h9.372c1.399 0 2.361-1.37 1.866-2.682L19.5 3M3 3v18m0-18 1.5 13.5M21 3l-1.5 7.5M3 21h18" />
                     </svg>
                     Report
                   </button>
-                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-700 transition-colors font-medium">
+                  <button className="inline-flex items-center gap-1.5 text-sm text-gray-600 hover:text-gray-700 transition-colors font-medium">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                     </svg>
@@ -242,7 +242,7 @@ export default async function ThreadPage({ params }: Props) {
                     className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors ${
                       i === 0
                         ? "bg-brand-50 text-brand-600"
-                        : "text-gray-500 hover:bg-gray-50"
+                        : "text-gray-600 hover:bg-gray-50"
                     }`}
                   >
                     {tab}
@@ -280,7 +280,7 @@ export default async function ThreadPage({ params }: Props) {
         <aside className="space-y-8">
           {/* Thread stats */}
           <div className="bg-white border border-gray-100 rounded-2xl p-6 sticky top-24">
-            <h3 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider text-gray-500">
+            <h3 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider text-gray-600">
               Thread Info
             </h3>
             <div className="grid grid-cols-3 gap-3 mb-5">
@@ -320,7 +320,7 @@ export default async function ThreadPage({ params }: Props) {
                   Posted by
                 </p>
                 <UserChip user={author} showTrustLevel showReputation size="md" />
-                <p className="text-xs text-gray-500 mt-2 ml-10 leading-relaxed">
+                <p className="text-xs text-gray-600 mt-2 ml-10 leading-relaxed">
                   {author.bio.slice(0, 100)}...
                 </p>
                 <div className="flex flex-wrap gap-1 mt-2 ml-10">

@@ -90,7 +90,7 @@ export default async function BlogCategoryPage({
         <h1 className="text-3xl font-bold text-gray-900">
           {emoji} {cat.name} — Guides & Reviews
         </h1>
-        <p className="text-gray-500 mt-2 max-w-2xl">
+        <p className="text-gray-600 mt-2 max-w-2xl">
           Expert buying guides, in-depth comparisons, and review insights for{" "}
           {cat.name.toLowerCase()} — backed by real owner data and AI analysis.
         </p>
@@ -145,7 +145,7 @@ export default async function BlogCategoryPage({
               <h2 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2">
                 {post.title}
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-3">
+              <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                 {post.excerpt}
               </p>
               <div className="mt-4 flex items-center justify-between">

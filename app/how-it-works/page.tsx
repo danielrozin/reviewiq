@@ -105,7 +105,7 @@ export default function HowItWorksPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           How ReviewIQ Works
         </h1>
-        <p className="text-lg text-gray-500 leading-relaxed">
+        <p className="text-lg text-gray-600 leading-relaxed">
           Most online reviews are manipulated, shallow, or driven by affiliate
           commissions. ReviewIQ is different. We built a system where trust,
           structure, and AI analysis replace star-rating noise.
@@ -169,12 +169,12 @@ export default function HowItWorksPage() {
           </div>
           <h2 className="text-xl font-bold text-gray-900">ReviewIQ vs. Traditional Review Sites</h2>
         </div>
-        <p className="text-gray-500 text-sm mb-6">See exactly how we&apos;re different in the ways that matter.</p>
+        <p className="text-gray-600 text-sm mb-6">See exactly how we&apos;re different in the ways that matter.</p>
         <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="text-left px-5 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider w-2/5">Feature</th>
+                <th className="text-left px-5 py-3.5 text-xs font-semibold text-gray-600 uppercase tracking-wider w-2/5">Feature</th>
                 <th className="text-center px-4 py-3.5 w-[30%]">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-600 text-white text-xs font-bold rounded-lg">
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -241,7 +241,7 @@ export default function HowItWorksPage() {
         <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Our Trust Principles
         </h2>
-        <p className="text-gray-500 mb-8">The commitments that make ReviewIQ different from every other review site.</p>
+        <p className="text-gray-600 mb-8">The commitments that make ReviewIQ different from every other review site.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {[
             {
@@ -297,7 +297,7 @@ export default function HowItWorksPage() {
                 <h3 className="font-semibold text-gray-900 mb-1">
                   {principle.title}
                 </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {principle.text}
                 </p>
               </div>

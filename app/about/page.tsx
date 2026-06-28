@@ -117,7 +117,7 @@ export default function AboutPage() {
           Reviews you can{" "}
           <span className="text-brand-600">actually trust</span>
         </h1>
-        <p className="text-xl text-gray-500 leading-relaxed max-w-2xl">
+        <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
           The review ecosystem is broken. Most reviews online are manipulated, affiliate-driven, or shallow. We built ReviewIQ to fix that — combining structured buyer reviews with AI analysis, zero affiliate revenue, and transparent verification.
         </p>
       </div>
@@ -132,7 +132,7 @@ export default function AboutPage() {
                 {s.icon}
               </div>
               <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
-              <p className="text-xs text-gray-500 mt-1">{s.label}</p>
+              <p className="text-xs text-gray-600 mt-1">{s.label}</p>
             </div>
           </div>
         ))}
@@ -141,7 +141,7 @@ export default function AboutPage() {
       {/* Why we built this */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Why we built this</h2>
-        <p className="text-gray-500 mb-8 max-w-2xl">
+        <p className="text-gray-600 mb-8 max-w-2xl">
           We were tired of reading hundreds of reviews and still not knowing if a product was right for us. A 4.2-star rating tells you almost nothing. What we really wanted to know:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -164,7 +164,7 @@ export default function AboutPage() {
       {/* Principles */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Our principles</h2>
-        <p className="text-gray-500 mb-8 max-w-2xl">Four rules we never break.</p>
+        <p className="text-gray-600 mb-8 max-w-2xl">Four rules we never break.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {PRINCIPLES.map((p) => (
             <div key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
@@ -175,7 +175,7 @@ export default function AboutPage() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">{p.title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{p.text}</p>
+                  <p className="text-sm text-gray-600 leading-relaxed">{p.text}</p>
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ export default function AboutPage() {
       {/* Team */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">The team</h2>
-        <p className="text-gray-500 mb-8 max-w-2xl">
+        <p className="text-gray-600 mb-8 max-w-2xl">
           We&apos;re a small, opinionated team with strong feelings about how product information should work.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -199,7 +199,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-0.5">{member.name}</h3>
                 <p className="text-xs font-medium text-brand-600 mb-3">{member.role}</p>
-                <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
+                <p className="text-sm text-gray-600 leading-relaxed">{member.bio}</p>
               </div>
             </div>
           ))}

@@ -97,7 +97,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                       )}
                       style={{ gridTemplateColumns: colTemplate }}
                     >
-                      <div className="px-4 py-3 text-gray-500 flex items-center gap-2">
+                      <div className="px-4 py-3 text-gray-600 flex items-center gap-2">
                         <span className="truncate">{spec.label}</span>
                         {isDifferent && (
                           <span className="text-[10px] font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none shrink-0">
