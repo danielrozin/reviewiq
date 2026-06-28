@@ -27,12 +27,12 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
         {products.map((product) => (
           <div
             key={product.id}
-            className="border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+            className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
           >
             <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             {/* Product header */}
             <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3">
-              <div className={`w-8 h-8 rounded-lg font-bold text-white text-sm flex items-center justify-center shrink-0 ${
+              <div className={`w-8 h-8 rounded-xl font-bold text-white text-sm flex items-center justify-center shrink-0 ${
                 product.smartScore >= 85 ? "bg-emerald-500" :
                 product.smartScore >= 70 ? "bg-brand-500" :
                 product.smartScore >= 55 ? "bg-amber-500" : "bg-gray-400"
@@ -94,7 +94,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                 {product.aiSummary.bestFor.slice(0, 3).map((item, i) => (
                   <span
                     key={i}
-                    className="inline-block px-2 py-0.5 text-xs bg-brand-50 text-brand-700 rounded-md"
+                    className="inline-block px-2 py-0.5 text-xs bg-brand-50 text-brand-700 rounded-full"
                   >
                     {item}
                   </span>
