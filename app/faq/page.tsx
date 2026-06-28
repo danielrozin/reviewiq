@@ -3,6 +3,27 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqPages } from "@/data/faq-pages";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const faqIndexJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "ReviewIQ FAQ Topics",
+  description:
+    "Frequently asked questions about product review platforms, fake reviews, and how ReviewIQ provides verified, AI-powered product intelligence.",
+  url: `${SITE_URL}/faq`,
+  itemListElement: faqPages.map((page, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "WebPage",
+      name: page.title,
+      url: `${SITE_URL}/faq/${page.slug}`,
+      description: page.metaDescription,
+    },
+  })),
+};
+
 export const metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
@@ -13,6 +34,7 @@ export const metadata = buildMetadata({
 export default function FAQIndexPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexJsonLd) }} />
       <Breadcrumbs items={[{ name: "FAQ", url: "/faq" }]} />
 
       <header className="mt-8 mb-12 max-w-3xl">

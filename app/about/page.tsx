@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { organizationSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "About ReviewIQ — AI-Powered Honest Product Reviews",
@@ -59,6 +58,21 @@ const TEAM = [
     color: "bg-purple-500",
   },
 ];
+
+const teamPersonsJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": TEAM.map((member) => ({
+    "@type": "Person",
+    name: member.name,
+    jobTitle: member.role,
+    description: member.bio,
+    worksFor: {
+      "@type": "Organization",
+      name: "ReviewIQ",
+      url: SITE_URL,
+    },
+  })),
+};
 
 const STATS = [
   {
@@ -126,7 +140,7 @@ export default function AboutPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(teamPersonsJsonLd) }} />
       <Breadcrumbs items={[{ name: "About", url: "/about" }]} />
 
       {/* Hero */}
