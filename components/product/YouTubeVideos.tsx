@@ -23,7 +23,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
     <section>
       <div className="flex items-center gap-2.5 mb-1">
         <div className="w-7 h-7 bg-red-50 rounded-lg flex items-center justify-center shrink-0">
-          <svg className="w-3.5 h-3.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <svg className="w-3.5 h-3.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z" />
           </svg>
         </div>
