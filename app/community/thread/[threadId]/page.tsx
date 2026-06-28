@@ -87,7 +87,7 @@ export default async function ThreadPage({ params }: Props) {
         {/* Main content */}
         <div className="lg:col-span-2">
           {/* Thread header */}
-          <article>
+          <article aria-labelledby="thread-title">
             <div className="flex gap-4">
               {/* Vote column */}
               <div className="shrink-0 pt-2">
@@ -126,7 +126,7 @@ export default async function ThreadPage({ params }: Props) {
                 </div>
 
                 {/* Title */}
-                <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 id="thread-title" className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-4">
                   {thread.title}
                 </h1>
 

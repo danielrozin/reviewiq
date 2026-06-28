@@ -17,12 +17,12 @@ function formatDate(iso: string): string {
 
 export function ReviewCard({ review }: ReviewCardProps) {
   return (
-    <article className="bg-white border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
+    <article aria-labelledby={`review-${review.id}-headline`} className="bg-white border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
       <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="p-6">
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h4 className="font-semibold text-gray-900 mb-1">{review.headline}</h4>
+          <h4 id={`review-${review.id}-headline`} className="font-semibold text-gray-900 mb-1">{review.headline}</h4>
           <div className="flex items-center gap-3">
             <RatingStars rating={review.rating} size="sm" />
             <VerificationBadge tier={review.verificationTier} compact />

@@ -20,7 +20,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
   const scoreDiff = winner && loser ? winner.smartScore - loser.smartScore : 0;
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-brand-200">
+    <section aria-label="AI Verdict" className="overflow-hidden rounded-2xl border border-brand-200">
       {/* Header strip */}
       <div className="bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-4 flex items-center gap-3">
         <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">
@@ -34,7 +34,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
         </div>
         {winner && (
           <div className="ml-auto flex items-center gap-1.5 bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full border border-white/20">
-            <svg className="w-3.5 h-3.5 fill-current text-amber-300" viewBox="0 0 20 20">
+            <svg aria-hidden="true" className="w-3.5 h-3.5 fill-current text-amber-300" viewBox="0 0 20 20">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
             </svg>
             Recommended pick
@@ -60,7 +60,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
                 <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">{winner.name}</p>
                 <p className="text-xs text-gray-500">{winner.brand}</p>
               </div>
-              <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>
             </Link>
@@ -86,7 +86,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
                 <p className="text-sm font-semibold text-gray-700 group-hover:text-brand-600 transition-colors truncate">{loser.name}</p>
                 <p className="text-xs text-gray-500">{loser.brand}</p>
               </div>
-              <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>
             </Link>
