@@ -141,7 +141,7 @@ export default function AboutPage() {
       {/* Why we built this */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Why we built this</h2>
-        <p className="text-gray-600 mb-8 max-w-2xl">
+        <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We were tired of reading hundreds of reviews and still not knowing if a product was right for us. A 4.2-star rating tells you almost nothing. What we really wanted to know:
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -186,7 +186,7 @@ export default function AboutPage() {
       {/* Team */}
       <section className="mb-20">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">The team</h2>
-        <p className="text-gray-600 mb-8 max-w-2xl">
+        <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We&apos;re a small, opinionated team with strong feelings about how product information should work.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
