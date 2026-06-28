@@ -113,7 +113,7 @@ export function Header() {
               {items.length > 0 && (
                 <Link
                   href="/compare"
-                  className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-brand-700 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
+                  className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-brand-700 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
                 >
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
@@ -133,7 +133,7 @@ export function Header() {
               </Link>
               <Link
                 href="/write-review"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
               >
                 <span className="hidden sm:inline">Write a Review</span>
                 <span className="sm:hidden">Review</span>
@@ -211,7 +211,7 @@ export function Header() {
                 ) : (
                   <Link
                     href="/auth/signin"
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors shadow-sm"
+                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
                   >
                     Sign In
                   </Link>
