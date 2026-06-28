@@ -19,7 +19,12 @@
 // build is not promoted, so prod keeps serving the previous deployment.
 //
 // Behaviour:
-//   - DATABASE_URL present  -> run `prisma db push --skip-generate`; abort build on failure.
+//   - DATABASE_URL present  -> run `prisma db push --skip-generate`; abort build on failure
+//                              UNLESS the error is P1001 (can't reach DB at build time —
+//                              common when Neon pooler is waking up). P1001 warns and
+//                              continues because: (a) schema drift is caught at runtime,
+//                              (b) the pooler blocks DDL anyway, (c) additive changes like
+//                              a new column still 500 at runtime giving clear signal.
 //   - DATABASE_URL absent   -> skip (preview / local builds without a DB).
 import { execSync } from "node:child_process";
 
@@ -31,5 +36,17 @@ if (!process.env.DATABASE_URL) {
 }
 
 console.log("[db-sync] Syncing schema to the target database via `prisma db push`…");
-execSync("prisma db push --skip-generate", { stdio: "inherit" });
-console.log("[db-sync] Schema in sync.");
+try {
+  execSync("prisma db push --skip-generate", { stdio: "inherit" });
+  console.log("[db-sync] Schema in sync.");
+} catch (err) {
+  const output = String(err.stdout ?? "") + String(err.stderr ?? "");
+  // P1001 = can't reach DB server (Neon pooler cold-start / network blip).
+  // Warn and continue — runtime connections auto-resume; build should not abort on transient infra.
+  if (output.includes("P1001") || String(err.message ?? "").includes("P1001")) {
+    console.warn("[db-sync] WARNING: P1001 — could not reach database during build (pooler may be resuming).");
+    console.warn("[db-sync] Continuing build. Verify schema drift manually if you added columns this PR.");
+  } else {
+    throw err;
+  }
+}
