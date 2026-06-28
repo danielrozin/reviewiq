@@ -41,7 +41,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
       {reviews.map(({ review, productName, productSlug, categorySlug }) => (
         <div
           key={review.id}
-          className="border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors"
+          className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
         >
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">

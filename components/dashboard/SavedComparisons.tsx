@@ -48,9 +48,9 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
         <Link
           key={item.id}
           href={`/category/${item.categorySlug}/${item.productSlug}`}
-          className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all group"
+          className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
         >
-          <div className="w-14 h-14 bg-gray-100 rounded-lg shrink-0 flex items-center justify-center overflow-hidden">
+          <div className="w-14 h-14 bg-gray-100 rounded-xl shrink-0 flex items-center justify-center overflow-hidden">
             <div className="w-full h-full bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
               <span className="text-brand-400 text-xs font-bold">
                 {item.productName.slice(0, 2).toUpperCase()}

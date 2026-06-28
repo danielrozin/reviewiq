@@ -15,7 +15,7 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
         <Link
           key={product.id}
           href={`/category/${product.categorySlug}/${product.slug}`}
-          className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all group"
+          className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
         >
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
             product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
