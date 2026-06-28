@@ -346,13 +346,13 @@ export default function WriteReviewPage() {
             </a>
             <a
               href="/community"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Join the Community
             </a>
             <a
               href="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Explore Products
             </a>
@@ -392,7 +392,7 @@ export default function WriteReviewPage() {
                 value={selectedProduct}
                 onChange={(e) => setSelectedProduct(e.target.value)}
                 onBlur={() => markTouched("product")}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
               >
                 <option value="">Select a product...</option>
                 {products.map((p) => (
@@ -418,7 +418,7 @@ export default function WriteReviewPage() {
                 onBlur={() => markTouched("headline")}
                 placeholder="Summarize your experience in one sentence"
                 maxLength={120}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
               />
               <div className="flex justify-between mt-1">
                 <FieldError
@@ -476,7 +476,7 @@ export default function WriteReviewPage() {
                 onBlur={() => markTouched("body")}
                 placeholder="Share your honest experience. What surprised you? What disappointed you? Would you buy it again?"
                 rows={6}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
               />
               <p className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-400"}`}>
                 {body.length}/50 minimum characters
@@ -502,7 +502,7 @@ export default function WriteReviewPage() {
                       value={pro}
                       onChange={(e) => updatePro(i, e.target.value)}
                       placeholder={`Pro ${i + 1}`}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -527,7 +527,7 @@ export default function WriteReviewPage() {
                       value={con}
                       onChange={(e) => updateCon(i, e.target.value)}
                       placeholder={`Con ${i + 1}`}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -548,7 +548,7 @@ export default function WriteReviewPage() {
                   value={experienceLevel}
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   onBlur={() => markTouched("experienceLevel")}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 >
                   <option value="">Select...</option>
                   {experienceLevels.map((level) => (
@@ -570,7 +570,7 @@ export default function WriteReviewPage() {
                   value={timeOwned}
                   onChange={(e) => setTimeOwned(e.target.value)}
                   onBlur={() => markTouched("timeOwned")}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                 >
                   <option value="">Select...</option>
                   {timeOwnedOptions.map((opt) => (

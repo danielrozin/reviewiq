@@ -98,7 +98,7 @@ export function EmailCaptureCTA({
           placeholder="you@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="flex-1 px-4 py-3 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+          className="flex-1 px-4 py-3 text-sm border border-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
           disabled={status === "loading"}
         />
         <button
