@@ -75,7 +75,7 @@ export function CategorySearch({ categories }: CategorySearchProps) {
               <span className="text-4xl group-hover:scale-110 transition-transform duration-200 inline-block">
                 {cat.icon}
               </span>
-              <span className="text-xs font-medium text-gray-400 bg-gray-50 px-2 py-1 rounded-full">
+              <span className="text-xs font-semibold text-brand-600 bg-brand-50 px-2 py-1 rounded-full">
                 {cat.productCount} products
               </span>
             </div>
@@ -85,9 +85,9 @@ export function CategorySearch({ categories }: CategorySearchProps) {
             <p className="text-sm text-gray-500 leading-relaxed mb-4 line-clamp-2">
               {cat.description}
             </p>
-            <div className="flex items-center gap-1.5 text-sm font-medium text-brand-600 group-hover:gap-2.5 transition-all">
+            <div className="flex items-center gap-1.5 text-sm font-medium text-brand-600">
               <span>Explore reviews</span>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </div>

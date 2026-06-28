@@ -84,6 +84,11 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
             {opt.label}
           </button>
         ))}
+        {mounted && (
+          <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums shrink-0">
+            {sorted.length} products
+          </span>
+        )}
       </div>
 
       {/* Product grid — show skeleton bars until hydrated */}
@@ -100,11 +105,9 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
               {/* Top-3 rank badge — only meaningful when sorted by SmartScore */}
               {sortKey === "smartScore" && index < 3 && (
                 <div
-                  className="absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm border-2 border-white"
-                  style={{
-                    background: index === 0 ? "#f59e0b" : index === 1 ? "#94a3b8" : "#cd7f32",
-                    color: "white",
-                  }}
+                  className={`absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm border-2 border-white text-white ${
+                    index === 0 ? "bg-amber-400" : index === 1 ? "bg-slate-400" : "bg-orange-700/80"
+                  }`}
                 >
                   #{index + 1}
                 </div>

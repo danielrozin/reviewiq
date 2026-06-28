@@ -73,10 +73,12 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
 
   return (
     <div className="flex items-center gap-3">
-      <span className="text-xs text-gray-400">
-        {helpfulCount > 0
-          ? `${helpfulCount} found this helpful`
-          : "Was this helpful?"}
+      <span className="text-xs text-gray-400 transition-all duration-200">
+        {voted !== null
+          ? "Thanks for your feedback!"
+          : helpfulCount > 0
+            ? `${helpfulCount} found this helpful`
+            : "Was this helpful?"}
       </span>
       <div className="flex items-center gap-1">
         <button
