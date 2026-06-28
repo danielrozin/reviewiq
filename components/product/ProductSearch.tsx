@@ -379,7 +379,7 @@ export function ProductSearch() {
 
       {/* Results count */}
       <div className="flex items-center justify-between border-b border-gray-100 pb-4">
-        <p className="text-sm text-gray-600">
+        <p className="text-sm text-gray-600" role="status" aria-live="polite" aria-atomic="true">
           <span className="font-semibold text-gray-900">
             {formatNumber(filtered.length)}
           </span>{" "}

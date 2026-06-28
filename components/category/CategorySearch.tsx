@@ -54,14 +54,19 @@ export function CategorySearch({ categories }: CategorySearchProps) {
         )}
       </div>
 
-      {/* Results count when filtering */}
-      {query && (
-        <p className="text-sm text-gray-600 mb-4">
-          {filtered.length === 0
+      {/* Results count — always in DOM so aria-live is registered before first change */}
+      <p
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className={`text-sm text-gray-600 ${query ? "mb-4" : ""}`}
+      >
+        {query
+          ? filtered.length === 0
             ? "No categories match your search"
-            : `${filtered.length} categor${filtered.length === 1 ? "y" : "ies"} found`}
-        </p>
-      )}
+            : `${filtered.length} categor${filtered.length === 1 ? "y" : "ies"} found`
+          : ""}
+      </p>
 
       {/* Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
