@@ -1,11 +1,11 @@
 /**
- * Tests for SurveyPopup form_abandon instrumentation (DAN-699).
- * Verifies the single-fire abandon beacon on page-leave events, the reached-step
- * capture, and the guards that suppress false abandons (dismiss / submit / not
- * shown).
+ * Tests for SurveyPopup form_abandon instrumentation (DAN-699), updated for the
+ * non-blocking single-question bottom bar (DAN-1508). Verifies the single-fire
+ * abandon beacon on page-leave, and the guards that suppress false abandons
+ * (Q1 answered / dismissed / not shown).
  */
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { render, fireEvent, act } from "@testing-library/react";
+import { render, fireEvent, act, screen } from "@testing-library/react";
 
 const trackEvent = vi.hoisted(() => vi.fn());
 vi.mock("@/lib/tracking/analytics", () => ({ trackEvent }));
@@ -86,17 +86,22 @@ describe("SurveyPopup form_abandon", () => {
     expect(sendBeacon).toHaveBeenCalledTimes(1);
   });
 
-  it("records the reached step after the user advances", () => {
+  it("records the Q1 answer and does NOT fire form_abandon on a later page-leave", () => {
     showSurvey();
 
-    // Popup opens on Q1 (no intro gate, DAN-1170). Answering Q1 advances to Q2.
-    fireEvent.click(document.querySelector(".space-y-2 button")!);
+    // DAN-1508: the bar asks only Q1. Answering it is the conversion — it records
+    // partial@q1, gates re-show, and collapses to a thanks state. A subsequent
+    // page-leave must therefore NOT be counted as an abandon.
+    fireEvent.click(screen.getByText("Researching a product"));
+
+    expect(trackEvent).toHaveBeenCalledWith("survey_q1_answered", { intent: "researching" });
+    expect(localStorage.getItem(STORAGE_KEY)).not.toBeNull();
 
     act(() => {
       window.dispatchEvent(new Event("pagehide"));
     });
 
-    expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "q2" });
+    expect(trackEvent).not.toHaveBeenCalledWith("survey_form_abandon", expect.anything());
   });
 
   it("records a dismissal and does NOT also fire form_abandon on a later page-leave", () => {

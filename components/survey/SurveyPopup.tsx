@@ -2,13 +2,13 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { trackEvent } from "@/lib/tracking/analytics";
-import { NEWSLETTER_PRODUCT, SUBSCRIPTION_SOURCE } from "@/lib/email/newsletter";
 
 const STORAGE_KEY = "sr_survey_completed";
-// Friction reduction (DAN-983): trigger sooner than the old 30s so fast sessions
-// still see the prompt before they bounce. Paired with exit-intent / scroll-depth
-// triggers below for sessions that leave before even 12s elapses.
-const SHOW_DELAY_MS = 20_000; // 20 seconds — DAN-1405: was 12s; earlier trigger catches users before they've formed an opinion
+// DAN-1508: trigger sooner. The old 20s timer meant users who bounced in <20s
+// never saw the prompt — many of the form_abandon@q1 events were likely from
+// users who left before the timer ever fired. 8s catches engaged users earlier
+// without being as aggressive as the old 12s value.
+const SHOW_DELAY_MS = 8_000; // 8 seconds (DAN-1508: was 20s)
 const SCROLL_TRIGGER_RATIO = 0.5; // show once the user has scrolled 50% of the page
 
 function deviceTypeOf(): "mobile" | "desktop" {
@@ -17,7 +17,7 @@ function deviceTypeOf(): "mobile" | "desktop" {
 
 /**
  * Persist one funnel event to the survey table. Funnel events (DAN-983):
- * `impression` | `partial` | `dismissed` | `form_abandon` | `form_submit`.
+ * `impression` | `partial` | `dismissed` | `form_abandon`.
  * Uses sendBeacon when `beacon` is set (page-leave paths: dismiss / abandon) so
  * the write survives unload, with a keepalive fetch fallback. Best-effort and
  * never throws — funnel instrumentation must not break the survey UX.
@@ -40,162 +40,74 @@ function postSurveyEvent(payload: Record<string, unknown>, opts?: { beacon?: boo
   }
 }
 
+// Q1 options. Labels are kept compact so they fit as a single row of pills in
+// the bottom bar; the `value` strings are unchanged from the modal era so the
+// funnel (q1Intent) stays comparable across the format change.
 const INTENT_OPTIONS = [
-  { value: "researching", label: "Researching a product to buy" },
-  { value: "comparing", label: "Comparing specific products" },
+  { value: "researching", label: "Researching a product" },
+  { value: "comparing", label: "Comparing products" },
   { value: "reading_reviews", label: "Reading reviews" },
   { value: "writing_review", label: "Writing a review" },
   { value: "browsing", label: "Just browsing" },
 ];
 
-const DISCOVERY_OPTIONS = [
-  { value: "google", label: "Google search" },
-  { value: "social", label: "Social media" },
-  { value: "friend", label: "Friend / colleague" },
-  { value: "direct", label: "Typed the URL directly" },
-  { value: "other", label: "Other" },
-];
-
-// DAN-1170: the dedicated intro/welcome gate is removed — the popup now opens
-// directly on Q1 (an answerable, single-tap prompt). Live funnel data (DAN-176 /
-// DAN-1162) showed ~90% of impressions abandoned at the old `intro` screen before
-// answering anything, so the gate is collapsed to convert the impressions we
-// already get. "intro" is intentionally no longer a reachable step.
-type Step = "q1" | "q2" | "q3" | "q4" | "q5" | "thanks";
-
-interface Answers {
-  q1Intent: string;
-  q2Found: boolean | null;
-  q2Missing: string;
-  q3Rating: number;
-  q4Improvement: string;
-  q5Discovery: string;
-}
+// DAN-1508: the survey is now a single, non-blocking sticky bottom bar that asks
+// only Q1. The old multi-step blocking modal (Q1–Q5 + post-completion email
+// opt-in) was the conversion bottleneck: DAN-176 funnel data showed 23
+// impressions / 0 completions / 4.3% Q1 answer rate, with ~96% of users
+// dismissing at Q1 without answering. Capturing Q1 — the single highest-value
+// field — without overlaying the page is the win. Q2–Q5 are intentionally no
+// longer asked; once Q1 is answered the bar is done.
+type Step = "q1" | "thanks";
 
 export function SurveyPopup() {
   const [visible, setVisible] = useState(false);
-  // Open on Q1 directly — no intro gate (DAN-1170).
   const [step, setStep] = useState<Step>("q1");
-  const [answers, setAnswers] = useState<Answers>({
-    q1Intent: "",
-    q2Found: null,
-    q2Missing: "",
-    q3Rating: 0,
-    q4Improvement: "",
-    q5Discovery: "",
-  });
-  const [submitting, setSubmitting] = useState(false);
-
-  // --- Consent-clean email opt-in (DAN-1085) ---
-  // Surfaced only on the post-completion "thanks" step. Opt-in is strictly
-  // affirmative: the user must type an email and click subscribe — there is no
-  // pre-checked box and no auto-subscribe from survey answers. Writes to the
-  // existing POST /api/subscribe -> EmailSubscription path with
-  // source="survey_funnel" so the consent basis (source + createdAt timestamp)
-  // is stored and a future send is defensible.
-  const [optInEmail, setOptInEmail] = useState("");
-  const [optInStatus, setOptInStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
-
-  const subscribeFromSurvey = useCallback(async () => {
-    const email = optInEmail.trim();
-    if (!email || optInStatus === "loading") return;
-    setOptInStatus("loading");
-    try {
-      const res = await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          ...NEWSLETTER_PRODUCT,
-          source: SUBSCRIPTION_SOURCE.SURVEY_FUNNEL,
-        }),
-      });
-      if (!res.ok) {
-        setOptInStatus("error");
-        return;
-      }
-      trackEvent("survey_email_optin");
-      setOptInStatus("success");
-    } catch {
-      setOptInStatus("error");
-    }
-  }, [optInEmail, optInStatus]);
+  const [selected, setSelected] = useState<string>("");
 
   // --- Abandon tracking (DAN-699) ---
-  // Refs mirror live state so the page-leave listeners (pagehide /
-  // visibilitychange) can read the current step/answers without re-binding.
-  const stepRef = useRef<Step>(step);
-  const answersRef = useRef<Answers>(answers);
-  // True once the survey is open and the user is mid-flow (q1..q5) and has
-  // not submitted, dismissed, or reached "thanks". Only then is a page-leave an
-  // abandon. submittedRef suppresses false abandons while a submit is in flight.
+  // `activeRef` is true once the bar is shown and Q1 is unanswered. Only then is
+  // a page-leave an abandon. It flips false the moment the user answers Q1 or
+  // explicitly dismisses, so neither path is mis-counted as an abandon.
   const activeRef = useRef(false);
-  const submittedRef = useRef(false);
   const abandonFiredRef = useRef(false);
-  // Single-fire guards for the funnel (DAN-983): the popup is shown exactly once
-  // per session regardless of which trigger wins, the impression is recorded
-  // once, and an explicit dismissal is recorded once.
+  // Single-fire guards (DAN-983): the bar is shown once per session regardless of
+  // which trigger wins, the impression is recorded once, and an explicit
+  // dismissal is recorded once.
   const shownRef = useRef(false);
   const dismissFiredRef = useRef(false);
 
-  useEffect(() => {
-    stepRef.current = step;
-  }, [step]);
-  useEffect(() => {
-    answersRef.current = answers;
-  }, [answers]);
-
   /**
-   * Fire a single `form_abandon` event: user opened/started the survey but left
-   * without submitting. Records the reached step plus partial answers and
-   * context (device / userAgent / referrer) for the drop-off funnel. Uses
-   * sendBeacon so the write survives page unload, falling back to keepalive
-   * fetch. Single-fire and suppressed once a submit is in flight or completed.
+   * Fire a single `form_abandon` event: the user saw the bar but left without
+   * answering Q1 or dismissing. Uses sendBeacon so the write survives unload.
+   * Single-fire and suppressed once the bar is no longer active.
    */
   const fireAbandon = useCallback(() => {
     if (abandonFiredRef.current) return;
     if (!activeRef.current) return;
-    if (submittedRef.current) return;
     abandonFiredRef.current = true;
 
-    const reachedStep = stepRef.current;
-    const a = answersRef.current;
-    trackEvent("survey_form_abandon", { step: reachedStep });
-
-    const payload = {
-      event: "form_abandon",
-      reachedStep,
-      surveyCompleted: false,
-      // Partial answers captured before leaving (where the user got to).
-      q1Intent: a.q1Intent || undefined,
-      q2Found: a.q2Found ?? undefined,
-      q2Missing: a.q2Missing || undefined,
-      q3Rating: a.q3Rating || undefined,
-      q4Improvement: a.q4Improvement || undefined,
-      q5Discovery: a.q5Discovery || undefined,
-      deviceType: deviceTypeOf(),
-      userAgent: navigator.userAgent,
-      referralSource: document.referrer || undefined,
-    };
-
-    postSurveyEvent(payload, { beacon: true });
+    trackEvent("survey_form_abandon", { step: "q1" });
+    postSurveyEvent(
+      {
+        event: "form_abandon",
+        reachedStep: "q1",
+        surveyCompleted: false,
+        deviceType: deviceTypeOf(),
+        userAgent: navigator.userAgent,
+        referralSource: document.referrer || undefined,
+      },
+      { beacon: true }
+    );
   }, []);
 
   /**
-   * Show the popup once per session, regardless of which trigger (timer /
+   * Show the bar once per session, regardless of which trigger (timer /
    * exit-intent / scroll-depth) fires first, and record an `impression` row so
-   * the funnel can distinguish "popup not shown" from "shown but abandoned"
-   * (DAN-983). trackEvent keeps the analytics signal; the DB write is what makes
-   * the funnel queryable via GET /api/surveys.
-   *
-   * DAN-1170: the popup now opens on Q1, so the impression's reachedStep is "q1"
-   * (no intro gate). The intro→q1 progression that the funnel tracks is therefore
-   * measured as (partial@q1 + form_submit) / impression — i.e. how many shown
-   * users actually answered the first question.
+   * the funnel can distinguish "bar not shown" from "shown but not answered"
+   * (DAN-983). The funnel answer rate is therefore partial@q1 / impression.
    */
-  const showPopup = useCallback((trigger: string) => {
+  const showBar = useCallback((trigger: string) => {
     if (shownRef.current) return;
     shownRef.current = true;
     setVisible(true);
@@ -215,21 +127,18 @@ export function SurveyPopup() {
     if (localStorage.getItem(STORAGE_KEY)) return;
 
     // Primary trigger: dwell timer.
-    const timer = setTimeout(() => showPopup("timer"), SHOW_DELAY_MS);
+    const timer = setTimeout(() => showBar("timer"), SHOW_DELAY_MS);
 
-    // Secondary trigger A: exit-intent (desktop only). Mouse leaving the
-    // viewport toward the top (clientY <= 0) signals the user is heading for the
-    // tab bar / URL — prompt before they bounce.
+    // Secondary trigger A: exit-intent (desktop only).
     const onMouseOut = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !e.relatedTarget) showPopup("exit_intent");
+      if (e.clientY <= 0 && !e.relatedTarget) showBar("exit_intent");
     };
-    // Secondary trigger B: scroll depth. Fast readers who scroll past 50% are
-    // engaged enough to ask, even if they leave before the 12s timer.
+    // Secondary trigger B: scroll depth (50%).
     const onScroll = () => {
       const doc = document.documentElement;
       const scrollable = doc.scrollHeight - doc.clientHeight;
       if (scrollable <= 0) return;
-      if (doc.scrollTop / scrollable >= SCROLL_TRIGGER_RATIO) showPopup("scroll_depth");
+      if (doc.scrollTop / scrollable >= SCROLL_TRIGGER_RATIO) showBar("scroll_depth");
     };
 
     const isMobile = deviceTypeOf() === "mobile";
@@ -241,11 +150,10 @@ export function SurveyPopup() {
       document.removeEventListener("mouseout", onMouseOut);
       window.removeEventListener("scroll", onScroll);
     };
-  }, [showPopup]);
+  }, [showBar]);
 
   // Page-leave listeners: abandon on whichever of pagehide / visibilitychange
-  // (hidden) fires first. visibilitychange→hidden is the reliable last callback
-  // on mobile; pagehide covers desktop navigation/unload.
+  // (hidden) fires first.
   useEffect(() => {
     if (typeof window === "undefined") return;
     const onPageHide = () => fireAbandon();
@@ -262,320 +170,104 @@ export function SurveyPopup() {
 
   const dismiss = useCallback(() => {
     // Explicit close is not a page-leave abandon — stop the listeners from
-    // firing one after the user deliberately dismissed the survey.
+    // firing one after the user deliberately dismissed the bar.
     activeRef.current = false;
     setVisible(false);
-    trackEvent("survey_popup_dismissed", { step });
-    // Record the dismissal in the funnel (DAN-983), with the step reached and
-    // any intent captured so far. Single-fire; suppress once a submit is mid-air.
-    if (dismissFiredRef.current || submittedRef.current) return;
+    trackEvent("survey_popup_dismissed", { step: "q1" });
+    // Record the dismissal in the funnel (DAN-983). Single-fire.
+    if (dismissFiredRef.current) return;
     dismissFiredRef.current = true;
-    const a = answersRef.current;
     postSurveyEvent(
       {
         event: "dismissed",
-        reachedStep: step,
+        reachedStep: "q1",
         surveyCompleted: false,
-        q1Intent: a.q1Intent || undefined,
         deviceType: deviceTypeOf(),
         userAgent: navigator.userAgent,
         referralSource: document.referrer || undefined,
       },
       { beacon: true }
     );
-  }, [step]);
+  }, []);
 
-  const submit = useCallback(async () => {
-    // Mark submit in flight so a pagehide / backgrounding during a slow submit
-    // (common on mobile) is not mis-counted as an abandon.
-    submittedRef.current = true;
+  const answerQ1 = useCallback((value: string) => {
+    // Q1 answered — this is the conversion. Record partial@q1 (the highest-value
+    // field, DAN-162/DAN-163), stop abandon listeners, and gate re-show via the
+    // `sr_survey_completed` localStorage key. Then collapse to a brief thanks and
+    // slide closed so the user continues with the main content.
     activeRef.current = false;
-    setSubmitting(true);
+    setSelected(value);
+    trackEvent("survey_q1_answered", { intent: value });
+    postSurveyEvent({
+      event: "partial",
+      reachedStep: "q1",
+      q1Intent: value,
+      surveyCompleted: true,
+      deviceType: deviceTypeOf(),
+      referralSource: document.referrer || undefined,
+    });
     try {
-      const payload = {
-        event: "form_submit",
-        surveyCompleted: true,
-        q1Intent: answers.q1Intent || undefined,
-        q2Found: answers.q2Found ?? undefined,
-        q2Missing: answers.q2Missing || undefined,
-        q3Rating: answers.q3Rating || undefined,
-        q4Improvement: answers.q4Improvement || undefined,
-        q5Discovery: answers.q5Discovery || undefined,
-        deviceType: /Mobi|Android/i.test(navigator.userAgent) ? "mobile" : "desktop",
-        referralSource: document.referrer || undefined,
-      };
-      await fetch("/api/surveys", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      trackEvent("survey_completed");
       localStorage.setItem(STORAGE_KEY, Date.now().toString());
-      setStep("thanks");
     } catch {
-      // Silently fail — don't block user
-      setVisible(false);
-    } finally {
-      setSubmitting(false);
+      // ignore storage failures — worst case the bar re-shows next session
     }
-  }, [answers]);
+    setStep("thanks");
+    // Auto-dismiss the thanks confirmation shortly after.
+    window.setTimeout(() => setVisible(false), 2500);
+  }, []);
 
   if (!visible) return null;
 
+  // Non-blocking sticky bottom bar. The full-width wrapper is pointer-events-none
+  // so taps outside the bar pass straight through to the page content; only the
+  // bar itself is interactive. No backdrop, no overlay — main content is never
+  // blocked (DAN-1508).
   return (
-    <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
-      {/* Backdrop. DAN-1179 (P2): backdrop-tap dismiss is desktop-only. On a
-          phone the card is a bottom sheet and a tap just above it (in the
-          backdrop) is almost always an accidental close — which both loses
-          borderline users and inflates `dismissed@q1`, polluting the DAN-1175
-          lift signal. On mobile the explicit ✕ is the only dismiss affordance. */}
-      <div
-        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
-        onClick={() => {
-          if (deviceTypeOf() === "desktop") dismiss();
-        }}
-      />
-
-      {/* Card */}
-      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
+    <div className="fixed bottom-0 inset-x-0 z-[100] px-3 pb-3 sm:px-4 sm:pb-4 pointer-events-none">
+      <div className="pointer-events-auto relative mx-auto w-full max-w-3xl rounded-xl border border-gray-200 bg-white shadow-2xl animate-in slide-in-from-bottom-4 duration-300">
         {/* Close */}
         <button
-          onClick={dismiss}
-          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+          onClick={() => (step === "thanks" ? setVisible(false) : dismiss())}
+          className="absolute right-2 top-2 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
           aria-label="Close survey"
         >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
 
         {step === "q1" && (
-          <div>
-            {/* DAN-1179 removed step counter; DAN-1405 adds time-box label instead */}
-            <p className="text-xs text-brand-600 font-medium mb-2">Quick question · ~20 sec</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">What are you looking for on ReviewIQ?</h3>
-            <div className="space-y-2">
+          <div className="flex flex-col gap-2 p-3 pr-9 sm:flex-row sm:items-center sm:gap-4 sm:py-3 sm:px-4">
+            <div className="min-w-0 sm:flex-shrink-0">
+              <p className="text-sm font-semibold text-gray-900">
+                Quick question — what brought you here today?
+              </p>
+              <p className="text-xs text-gray-500">Helps us show you better results</p>
+            </div>
+            <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-0.5 sm:ml-auto sm:flex-wrap sm:justify-end sm:overflow-visible">
               {INTENT_OPTIONS.map((opt) => (
                 <button
                   key={opt.value}
-                  onClick={() => {
-                    setAnswers((a) => ({ ...a, q1Intent: opt.value }));
-                    // Partial save (DAN-983): persist intent the instant it's
-                    // chosen so abandoners still yield the highest-value field
-                    // (DAN-162/DAN-163) even if they never submit or the
-                    // page-leave beacon is dropped.
-                    postSurveyEvent({
-                      event: "partial",
-                      reachedStep: "q1",
-                      q1Intent: opt.value,
-                      deviceType: deviceTypeOf(),
-                      referralSource: document.referrer || undefined,
-                    });
-                    setStep("q2");
-                  }}
-                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${
-                    answers.q1Intent === opt.value
+                  onClick={() => answerQ1(opt.value)}
+                  className={`whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+                    selected === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
-                      : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700"
+                      : "border-gray-200 bg-gray-50 text-gray-700 hover:border-brand-500 hover:bg-brand-50 hover:text-brand-700"
                   }`}
                 >
                   {opt.label}
                 </button>
               ))}
             </div>
-          </div>
-        )}
-
-        {step === "q2" && (
-          <div>
-            <p className="text-xs text-brand-600 font-medium mb-2">2 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">Did you find what you were looking for?</h3>
-            <div className="flex gap-3 mb-4">
-              <button
-                onClick={() => {
-                  setAnswers((a) => ({ ...a, q2Found: true }));
-                  setStep("q3");
-                }}
-                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors"
-              >
-                Yes
-              </button>
-              <button
-                onClick={() => setAnswers((a) => ({ ...a, q2Found: false }))}
-                className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors ${
-                  answers.q2Found === false
-                    ? "border-amber-400 bg-amber-50 text-amber-700"
-                    : "border-gray-200 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
-                }`}
-              >
-                Not quite
-              </button>
-            </div>
-            {answers.q2Found === false && (
-              <>
-                <textarea
-                  value={answers.q2Missing}
-                  onChange={(e) => setAnswers((a) => ({ ...a, q2Missing: e.target.value }))}
-                  placeholder="What were you looking for?"
-                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 resize-none"
-                  rows={2}
-                />
-                <button
-                  onClick={() => setStep("q3")}
-                  className="mt-3 w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
-                >
-                  Next
-                </button>
-              </>
-            )}
-          </div>
-        )}
-
-        {step === "q3" && (
-          <div>
-            <p className="text-xs text-brand-600 font-medium mb-2">3 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">How would you rate your experience?</h3>
-            <div className="flex justify-center gap-2 mb-4">
-              {[1, 2, 3, 4, 5].map((n) => (
-                <button
-                  key={n}
-                  onClick={() => {
-                    setAnswers((a) => ({ ...a, q3Rating: n }));
-                    setStep("q4");
-                  }}
-                  className={`w-12 h-12 rounded-xl text-lg font-bold transition-all ${
-                    answers.q3Rating === n
-                      ? "bg-brand-600 text-white scale-110"
-                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
-                  }`}
-                >
-                  {n}
-                </button>
-              ))}
-            </div>
-            <div className="flex justify-between text-xs text-gray-400 px-1">
-              <span>Poor</span>
-              <span>Excellent</span>
-            </div>
-          </div>
-        )}
-
-        {step === "q4" && (
-          <div>
-            <p className="text-xs text-brand-600 font-medium mb-2">4 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">What could we improve?</h3>
-            <textarea
-              value={answers.q4Improvement}
-              onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
-              placeholder="Anything at all — we read every response."
-              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 resize-none"
-              rows={3}
-            />
-            <div className="flex gap-3 mt-3">
-              <button
-                onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
-              >
-                Skip
-              </button>
-              <button
-                onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
-              >
-                Next
-              </button>
-            </div>
-          </div>
-        )}
-
-        {step === "q5" && (
-          <div>
-            <p className="text-xs text-brand-600 font-medium mb-2">5 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">How did you discover ReviewIQ?</h3>
-            <div className="space-y-2 mb-4">
-              {DISCOVERY_OPTIONS.map((opt) => (
-                <button
-                  key={opt.value}
-                  onClick={() => setAnswers((a) => ({ ...a, q5Discovery: opt.value }))}
-                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${
-                    answers.q5Discovery === opt.value
-                      ? "border-brand-600 bg-brand-50 text-brand-700"
-                      : "border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-700"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
-            <button
-              onClick={submit}
-              disabled={submitting}
-              className="w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50"
-            >
-              {submitting ? "Submitting..." : "Submit feedback"}
-            </button>
           </div>
         )}
 
         {step === "thanks" && (
-          <div className="text-center py-4">
-            <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
-              <span className="text-2xl">🙏</span>
-            </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Thank you!</h3>
-            <p className="text-sm text-gray-500 mb-4">
-              Your feedback helps us build a better review platform for everyone.
-            </p>
-
-            {/* Consent-clean email opt-in (DAN-1085). Affirmative only: nothing is
-                subscribed unless the user enters an email and clicks the button. */}
-            {optInStatus === "success" ? (
-              <div className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
-                You&apos;re on the list — we&apos;ll only email occasional ReviewIQ
-                updates. Unsubscribe anytime.
-              </div>
-            ) : (
-              <div className="mb-4 text-left">
-                <p className="text-sm font-medium text-gray-700 mb-1">
-                  Want occasional ReviewIQ updates?
-                </p>
-                <p className="text-xs text-gray-400 mb-2">
-                  Optional. Drop your email to opt in — no spam, unsubscribe anytime.
-                </p>
-                <div className="flex gap-2">
-                  <input
-                    type="email"
-                    value={optInEmail}
-                    onChange={(e) => setOptInEmail(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter") subscribeFromSurvey();
-                    }}
-                    placeholder="you@example.com"
-                    className="flex-1 px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
-                    disabled={optInStatus === "loading"}
-                  />
-                  <button
-                    onClick={subscribeFromSurvey}
-                    disabled={optInStatus === "loading" || !optInEmail.trim()}
-                    className="px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50"
-                  >
-                    {optInStatus === "loading" ? "..." : "Keep me posted"}
-                  </button>
-                </div>
-                {optInStatus === "error" && (
-                  <p className="text-xs text-red-600 mt-2">
-                    Couldn&apos;t subscribe — please try again.
-                  </p>
-                )}
-              </div>
-            )}
-
-            <button
-              onClick={() => setVisible(false)}
-              className="px-6 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
-            >
-              Done
-            </button>
+          <div className="flex items-center gap-2 p-3 pr-9 sm:px-4">
+            <span className="text-lg" aria-hidden="true">
+              🙏
+            </span>
+            <p className="text-sm font-medium text-gray-900">Thanks — that helps!</p>
           </div>
         )}
       </div>
