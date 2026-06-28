@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { organizationSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "About ReviewIQ — AI-Powered Honest Product Reviews",
@@ -8,6 +9,25 @@ export const metadata = buildMetadata({
     "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
   path: "/about",
 });
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const aboutPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "About ReviewIQ — AI-Powered Honest Product Reviews",
+  url: `${SITE_URL}/about`,
+  description:
+    "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [
+      "[data-speakable='about-mission']",
+      "[data-speakable='about-why']",
+      "[data-speakable='about-principles']",
+    ],
+  },
+};
 
 const TEAM = [
   {
@@ -105,10 +125,12 @@ const PRINCIPLES = [
 export default function AboutPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }} />
       <Breadcrumbs items={[{ name: "About", url: "/about" }]} />
 
       {/* Hero */}
-      <div className="mt-8 mb-16 max-w-3xl">
+      <div className="mt-8 mb-16 max-w-3xl" data-speakable="about-mission">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-4 border border-brand-100">
           <span className="w-2 h-2 bg-brand-500 rounded-full" />
           Our mission
@@ -139,7 +161,7 @@ export default function AboutPage() {
       </div>
 
       {/* Why we built this */}
-      <section className="mb-20">
+      <section className="mb-20" data-speakable="about-why">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Why we built this</h2>
         <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We were tired of reading hundreds of reviews and still not knowing if a product was right for us. A 4.2-star rating tells you almost nothing. What we really wanted to know:
@@ -162,7 +184,7 @@ export default function AboutPage() {
       </section>
 
       {/* Principles */}
-      <section className="mb-20">
+      <section className="mb-20" data-speakable="about-principles">
         <h2 className="text-2xl font-bold text-gray-900 mb-2">Our principles</h2>
         <p className="text-gray-600 mb-8 max-w-2xl">Four rules we never break.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

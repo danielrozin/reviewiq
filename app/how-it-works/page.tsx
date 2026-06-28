@@ -91,9 +91,42 @@ const steps = [
   },
 ];
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: "How ReviewIQ Works",
+  description:
+    "ReviewIQ's 4-step system: verified buyer reviews, AI analysis, SmartScore ranking, and data-driven buying decisions.",
+  url: `${SITE_URL}/how-it-works`,
+  step: steps.map((step, index) => ({
+    "@type": "HowToStep",
+    position: index + 1,
+    name: step.title,
+    text: step.description,
+  })),
+};
+
+const howItWorksWebPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "How ReviewIQ Works",
+  url: `${SITE_URL}/how-it-works`,
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: [
+      "[data-speakable='how-it-works-intro']",
+      "[data-speakable='how-it-works-steps']",
+    ],
+  },
+};
+
 export default function HowItWorksPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howItWorksWebPageJsonLd) }} />
       <Breadcrumbs items={[{ name: "How It Works", url: "/how-it-works" }]} />
 
       {/* Hero */}
@@ -105,7 +138,7 @@ export default function HowItWorksPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           How ReviewIQ Works
         </h1>
-        <p className="text-lg text-gray-600 leading-relaxed">
+        <p className="text-lg text-gray-600 leading-relaxed" data-speakable="how-it-works-intro">
           Most online reviews are manipulated, shallow, or driven by affiliate
           commissions. ReviewIQ is different. We built a system where trust,
           structure, and AI analysis replace star-rating noise.
@@ -113,7 +146,7 @@ export default function HowItWorksPage() {
       </div>
 
       {/* Timeline steps */}
-      <div className="relative max-w-4xl">
+      <div className="relative max-w-4xl" data-speakable="how-it-works-steps">
         {/* Vertical connector line */}
         <div className="absolute left-6 top-10 bottom-10 w-0.5 bg-gradient-to-b from-emerald-200 via-brand-200 to-amber-200 hidden sm:block" aria-hidden="true" />
 
