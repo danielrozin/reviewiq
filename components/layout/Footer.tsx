@@ -18,7 +18,7 @@ export function Footer() {
       {/* Trust bar */}
       <div className="border-b border-gray-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-sm text-gray-500">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-sm text-gray-600">
             <div className="flex items-center gap-2">
               <span className="w-5 h-5 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
@@ -109,7 +109,7 @@ export function Footer() {
                 Review<span className="text-brand-600">IQ</span>
               </span>
             </Link>
-            <p className="text-sm text-gray-500 leading-relaxed mb-4">
+            <p className="text-sm text-gray-600 leading-relaxed mb-4">
               Honest, AI-powered product reviews. Built on real buyer
               experiences, not affiliate deals.
             </p>
@@ -144,7 +144,7 @@ export function Footer() {
                 <li key={cat.slug}>
                   <Link
                     href={`/category/${cat.slug}`}
-                    className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
+                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors"
                   >
                     {cat.name}
                   </Link>
@@ -170,7 +170,7 @@ export function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
+                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -193,7 +193,7 @@ export function Footer() {
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
+                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors"
                   >
                     {item.name}
                   </Link>
@@ -208,22 +208,22 @@ export function Footer() {
             </h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/privacy" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
+                <Link href="/privacy" className="text-sm text-gray-600 hover:text-brand-600 transition-colors">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
+                <Link href="/terms" className="text-sm text-gray-600 hover:text-brand-600 transition-colors">
                   Terms of Service
                 </Link>
               </li>
               <li>
-                <Link href="/cookie-policy" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
+                <Link href="/cookie-policy" className="text-sm text-gray-600 hover:text-brand-600 transition-colors">
                   Cookie Policy
                 </Link>
               </li>
               <li>
-                <Link href="/acceptable-use" className="text-sm text-gray-500 hover:text-brand-600 transition-colors">
+                <Link href="/acceptable-use" className="text-sm text-gray-600 hover:text-brand-600 transition-colors">
                   Acceptable Use
                 </Link>
               </li>
@@ -235,7 +235,7 @@ export function Footer() {
                       window.dispatchEvent(new CustomEvent("open-cookie-preferences"));
                     }
                   }}
-                  className="text-sm text-gray-500 hover:text-brand-600 transition-colors cursor-pointer"
+                  className="text-sm text-gray-600 hover:text-brand-600 transition-colors cursor-pointer"
                 >
                   Cookie Preferences
                 </button>

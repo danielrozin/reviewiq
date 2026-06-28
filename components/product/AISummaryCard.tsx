@@ -27,7 +27,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <h2 className="text-lg font-semibold text-gray-900">
             AI Review Summary
           </h2>
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-600">
             Synthesized from all verified reviews
           </p>
         </div>

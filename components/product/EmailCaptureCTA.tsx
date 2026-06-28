@@ -83,7 +83,7 @@ export function EmailCaptureCTA({
         <h3 className="text-lg font-semibold text-gray-900 mb-1">
           Get notified when SmartScore changes for {productName}
         </h3>
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-600">
           We&apos;ll email you when the score updates based on new reviews.
         </p>
       </div>

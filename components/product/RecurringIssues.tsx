@@ -49,7 +49,7 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
         </h2>
         <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums">{issues.length} issues</span>
       </div>
-      <p className="text-sm text-gray-500 mb-4 ml-9">
+      <p className="text-sm text-gray-600 mb-4 ml-9">
         Common problems reported by multiple verified buyers
       </p>
       <div className="space-y-3">

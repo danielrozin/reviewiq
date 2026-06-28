@@ -83,7 +83,7 @@ export function StickyMobileCTA({
             {smartScore !== undefined && (
               <div className="shrink-0 flex items-center gap-2">
                 <SmartScore score={smartScore} size="sm" showLabel={false} />
-                <span className="text-xs text-gray-500 font-medium">SmartScore</span>
+                <span className="text-xs text-gray-600 font-medium">SmartScore</span>
               </div>
             )}
             <div className="w-px h-5 bg-gray-200 shrink-0" />

@@ -92,7 +92,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               <h2 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
                 {post.title}
               </h2>
-              <p className="text-sm text-gray-500 leading-relaxed line-clamp-3 flex-1 mb-4">
+              <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1 mb-4">
                 {post.excerpt}
               </p>
               <div className="flex items-center gap-2.5 pt-3 border-t border-gray-50">
@@ -101,7 +101,7 @@ export function BlogCategoryFilter({ posts }: Props) {
                     {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
                   </span>
                 </div>
-                <span className="text-xs text-gray-500 flex-1 truncate">{post.author.name}</span>
+                <span className="text-xs text-gray-600 flex-1 truncate">{post.author.name}</span>
                 <span className="text-gray-200 text-xs shrink-0">·</span>
                 <span className="inline-flex items-center gap-1 text-xs text-gray-400 shrink-0">
                   <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

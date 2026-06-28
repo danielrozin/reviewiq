@@ -22,7 +22,7 @@ export function ReviewFormCTA({ productName, productSlug, categorySlug }: Review
         <p className="text-sm font-medium text-gray-900">
           Own this product?
         </p>
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-gray-600">
           Share your experience to help other buyers
         </p>
       </div>

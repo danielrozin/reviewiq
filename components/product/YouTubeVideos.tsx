@@ -29,7 +29,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
         </div>
         <h2 className="text-lg font-semibold text-gray-900">Video Reviews</h2>
       </div>
-      <p className="text-sm text-gray-500 mb-6 ml-9">
+      <p className="text-sm text-gray-600 mb-6 ml-9">
         Watch in-depth reviews and comparisons of the {productName}
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
