@@ -57,10 +57,10 @@ export function DiscussionFilters({
           <button
             key={option.value}
             onClick={() => handleSort(option.value)}
-            className={`text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
+            className={`text-xs font-medium px-3 py-1.5 rounded-lg whitespace-nowrap transition-colors border ${
               sort === option.value
-                ? "bg-brand-50 text-brand-600"
-                : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                ? "bg-brand-50 text-brand-600 border-brand-100"
+                : "text-gray-500 hover:bg-gray-50 hover:text-gray-700 border-transparent"
             }`}
           >
             {option.label}
@@ -74,7 +74,7 @@ export function DiscussionFilters({
           onClick={() => handleTypeFilter(null)}
           className={`text-[11px] font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
             typeFilter === null
-              ? "bg-gray-900 text-white border-gray-900"
+              ? "bg-brand-600 text-white border-brand-600"
               : "text-gray-500 border-gray-200 hover:border-gray-300"
           }`}
         >
