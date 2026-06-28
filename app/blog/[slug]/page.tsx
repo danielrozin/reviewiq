@@ -225,7 +225,7 @@ export default async function BlogPostPage({
                 <Link
                   key={product.id}
                   href={`/category/${product.categorySlug}/${product.slug}`}
-                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all"
+                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
                     product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
@@ -269,7 +269,7 @@ export default async function BlogPostPage({
                   <Link
                     key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
-                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all"
+                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
                       product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
@@ -326,7 +326,7 @@ export default async function BlogPostPage({
                 <Link
                   key={rp.id}
                   href={`/blog/${rp.slug}`}
-                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all"
+                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
                     {rp.categoryName}
@@ -337,7 +337,7 @@ export default async function BlogPostPage({
                   <p className="text-sm text-gray-500 mt-2 line-clamp-2 leading-relaxed">
                     {rp.excerpt}
                   </p>
-                  <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                     Read article
                     <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

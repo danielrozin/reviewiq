@@ -62,14 +62,14 @@ export function UpgradePrompt({ gate, compact = false }: UpgradePromptProps) {
 
   if (compact) {
     return (
-      <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg">
+      <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl">
         <GateIcon gate={gate} className="w-5 h-5 text-amber-600 shrink-0" />
         <div className="flex-1 min-w-0">
           <p className="text-sm font-medium text-amber-900">{title}</p>
         </div>
         <Link
           href="/pricing"
-          className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 bg-amber-600 text-white text-xs font-medium rounded-lg hover:bg-amber-700 transition-colors"
+          className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 bg-amber-600 text-white text-xs font-medium rounded-xl hover:bg-amber-700 transition-colors"
         >
           <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
@@ -92,7 +92,7 @@ export function UpgradePrompt({ gate, compact = false }: UpgradePromptProps) {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
           <Link
             href="/pricing"
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 text-white text-sm font-medium rounded-lg hover:bg-amber-700 transition-colors shadow-sm"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-amber-600 text-white text-sm font-medium rounded-xl hover:bg-amber-700 transition-colors shadow-sm"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />

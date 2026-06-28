@@ -22,14 +22,14 @@ export function PricingFAQAccordion({ faqs }: Props) {
           <div
             key={faq.q}
             className={`bg-white rounded-xl border transition-all ${
-              isOpen ? "border-brand-200 shadow-sm" : "border-gray-100"
+              isOpen ? "border-brand-200 shadow-sm" : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
             }`}
           >
             <button
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
-              className="w-full flex items-center justify-between px-6 py-5 text-left gap-4"
+              className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 hover:bg-gray-50/50 transition-colors"
             >
               <span className={`font-semibold text-sm sm:text-base ${isOpen ? "text-brand-700" : "text-gray-900"}`}>
                 {faq.q}

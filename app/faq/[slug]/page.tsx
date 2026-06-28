@@ -101,7 +101,7 @@ export default async function FAQPage({ params }: Props) {
         </p>
         <Link
           href="/categories"
-          className="inline-flex items-center gap-2 bg-brand-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-brand-700 transition-colors"
+          className="inline-flex items-center gap-2 bg-brand-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-brand-700 transition-colors"
         >
           Browse Verified Reviews
           <span aria-hidden="true">&rarr;</span>
@@ -140,7 +140,7 @@ export default async function FAQPage({ params }: Props) {
                 <li key={p.slug}>
                   <Link
                     href={`/faq/${p.slug}`}
-                    className="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="block p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                   >
                     <span className="font-medium text-gray-900 text-sm">
                       {p.title}
