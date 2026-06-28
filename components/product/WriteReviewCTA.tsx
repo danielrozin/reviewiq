@@ -18,8 +18,8 @@ export function WriteReviewCTA({ productName, productSlug }: WriteReviewCTAProps
         <span className="text-xs text-gray-500 ml-1.5">Trusted by thousands of buyers</span>
       </div>
 
-      <div className="w-10 h-10 bg-brand-100 rounded-xl flex items-center justify-center mx-auto mb-3">
-        <svg className="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+      <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center mx-auto mb-3">
+        <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
         </svg>
       </div>
@@ -31,7 +31,7 @@ export function WriteReviewCTA({ productName, productSlug }: WriteReviewCTAProps
       </p>
       <Link
         href={`/write-review?product=${encodeURIComponent(productSlug)}`}
-        className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors shadow-sm"
+        className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
       >
         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
