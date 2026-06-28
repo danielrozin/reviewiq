@@ -60,7 +60,7 @@ export function ProUpgradeTouchpoint() {
           </div>
           <div>
             <h3 className="text-sm font-bold text-gray-900">Upgrade to Pro</h3>
-            <p className="text-xs text-gray-500">You&apos;ve been a loyal user!</p>
+            <p className="text-xs text-gray-600">You&apos;ve been a loyal user!</p>
           </div>
         </div>
 

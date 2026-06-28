@@ -57,7 +57,7 @@ export function ProfileChecklist() {
           </div>
           <div>
             <h3 className="text-sm font-bold text-gray-900">Complete your profile</h3>
-            <p className="text-xs text-gray-500 mt-0.5">
+            <p className="text-xs text-gray-600 mt-0.5">
               {completedCount} of {totalCount} completed
             </p>
           </div>
@@ -108,7 +108,7 @@ export function ProfileChecklist() {
                   {item.label}
                 </p>
                 {!done && (
-                  <p className="text-xs text-gray-500 mt-0.5">{item.description}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{item.description}</p>
                 )}
               </div>
               {!done && (

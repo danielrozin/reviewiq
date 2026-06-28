@@ -378,7 +378,7 @@ export function ProductSearch() {
 
       {/* Results count */}
       <div className="flex items-center justify-between border-b border-gray-100 pb-4">
-        <p className="text-sm text-gray-500">
+        <p className="text-sm text-gray-600">
           <span className="font-semibold text-gray-900">
             {formatNumber(filtered.length)}
           </span>{" "}
@@ -423,7 +423,7 @@ export function ProductSearch() {
           <h3 className="text-lg font-semibold text-gray-900 mb-1">
             No products found
           </h3>
-          <p className="text-sm text-gray-500 mb-6">
+          <p className="text-sm text-gray-600 mb-6">
             Try a different search term, or browse a popular category below.
           </p>
           <button

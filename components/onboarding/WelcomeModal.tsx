@@ -80,7 +80,7 @@ export function WelcomeModal() {
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Welcome to ReviewIQ
               </h2>
-              <p className="text-sm text-gray-500 max-w-sm mx-auto mb-8">
+              <p className="text-sm text-gray-600 max-w-sm mx-auto mb-8">
                 Make smarter buying decisions with AI-powered reviews,
                 real comparisons, and a community that actually helps.
               </p>
@@ -113,7 +113,7 @@ export function WelcomeModal() {
             <h3 className="text-lg font-bold text-gray-900 mb-1">
               Here&apos;s what you can do
             </h3>
-            <p className="text-sm text-gray-500 mb-5">
+            <p className="text-sm text-gray-600 mb-5">
               Everything you need to find the perfect product.
             </p>
 
@@ -128,7 +128,7 @@ export function WelcomeModal() {
                   </div>
                   <div>
                     <h4 className="text-sm font-semibold text-gray-900">{prop.title}</h4>
-                    <p className="text-xs text-gray-500 mt-0.5">{prop.description}</p>
+                    <p className="text-xs text-gray-600 mt-0.5">{prop.description}</p>
                   </div>
                 </div>
               ))}

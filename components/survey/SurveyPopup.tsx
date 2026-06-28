@@ -119,7 +119,7 @@ export function SurveyPopup() {
               <span className="text-2xl">💬</span>
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Quick feedback?</h3>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-gray-600 mb-6">
               Help us make ReviewIQ better. Takes less than 30 seconds.
             </p>
             <div className="flex gap-3">
@@ -301,7 +301,7 @@ export function SurveyPopup() {
               <span className="text-2xl">🙏</span>
             </div>
             <h3 className="text-lg font-bold text-gray-900 mb-2">Thank you!</h3>
-            <p className="text-sm text-gray-500 mb-4">
+            <p className="text-sm text-gray-600 mb-4">
               Your feedback helps us build a better review platform for everyone.
             </p>
             <button

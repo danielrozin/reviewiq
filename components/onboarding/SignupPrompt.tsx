@@ -61,7 +61,7 @@ export function SignupPrompt() {
           <h3 className="text-lg font-bold text-gray-900 mb-1">
             Enjoying ReviewIQ?
           </h3>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-600">
             Create a free account to unlock more features.
           </p>
         </div>

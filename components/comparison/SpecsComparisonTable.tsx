@@ -47,13 +47,13 @@ export function SpecsComparisonTable({
       <div className="border border-gray-100 rounded-xl overflow-hidden">
         {/* Sticky header */}
         <div className="grid grid-cols-[2fr_1fr_1fr] bg-gray-50 border-b border-gray-100 sticky top-0 z-10">
-          <div className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+          <div className="px-4 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider">
             Spec
           </div>
           <div className="px-4 py-3 text-xs font-semibold text-brand-700 uppercase tracking-wider text-center truncate">
             {nameA}
           </div>
-          <div className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider text-center truncate">
+          <div className="px-4 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider text-center truncate">
             {nameB}
           </div>
         </div>
@@ -77,7 +77,7 @@ export function SpecsComparisonTable({
                     differs && "bg-amber-50/40"
                   )}
                 >
-                  <div className="px-4 py-3 text-gray-500 flex items-center gap-2">
+                  <div className="px-4 py-3 text-gray-600 flex items-center gap-2">
                     {spec.label}
                     {differs && (
                       <span className="text-[10px] font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none">

@@ -112,7 +112,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
             <p className="text-2xl font-bold text-gray-900">
               {formatNumber(stat.value)}
             </p>
-            <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+            <p className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -133,7 +133,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
           </div>
           {nextLevel && (
             <div className="text-right">
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-600">
                 <span className="font-semibold text-gray-700">{pointsToNext}</span> pts to {TRUST_LEVEL_LABELS[nextLevel]}
               </p>
               <p className="inline-flex items-center gap-1 text-xs text-gray-400 mt-0.5">{TRUST_LEVEL_ICONS[nextLevel]} Next level</p>

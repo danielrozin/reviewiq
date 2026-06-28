@@ -63,7 +63,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
               {item.productName}
             </h3>
             {item.note && (
-              <p className="text-xs text-gray-500 mt-0.5 truncate">{item.note}</p>
+              <p className="text-xs text-gray-600 mt-0.5 truncate">{item.note}</p>
             )}
             <p className="text-[10px] text-gray-400 mt-1">
               Saved {item.savedAt}
