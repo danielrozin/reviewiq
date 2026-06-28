@@ -201,16 +201,16 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
 
 function ReviewCardWithVoting({ review }: { review: Review }) {
   return (
-    <article className="border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group">
+    <article aria-labelledby={`rs-${review.id}-headline`} className="border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group">
       <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="p-6">
       <div className="flex items-start justify-between mb-3">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <h4 className="font-semibold text-gray-900">{review.headline}</h4>
+            <h4 id={`rs-${review.id}-headline`} className="font-semibold text-gray-900">{review.headline}</h4>
             {review.verifiedPurchase && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-full">
-                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                 </svg>
                 Verified Purchase

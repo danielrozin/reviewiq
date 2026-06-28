@@ -50,18 +50,18 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
   }
 
   return (
-    <div className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
+    <article aria-labelledby={`thread-${thread.id}-title`} className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
       <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="flex gap-4 p-5">
         {/* Vote column */}
         <div className="flex flex-col items-center gap-1 shrink-0 pt-0.5">
-          <svg className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg aria-hidden="true" className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
           </svg>
           <span className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
             {formatNumber(netVotes)}
           </span>
-          <svg className="w-4 h-4 text-gray-200" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg aria-hidden="true" className="w-4 h-4 text-gray-200" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
         </div>
@@ -90,7 +90,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
             href={`/community/thread/${thread.id}`}
             className="block mb-2 group"
           >
-            <h3 className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug">
+            <h3 id={`thread-${thread.id}-title`} className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug">
               {thread.title}
             </h3>
           </Link>
@@ -104,7 +104,9 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           {/* Meta row */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
             {author && <UserChip user={author} showTrustLevel size="sm" />}
-            <span className="text-xs text-gray-500">{thread.createdAt}</span>
+            <time dateTime={thread.createdAt} className="text-xs text-gray-500">
+              {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
+            </time>
             <div className="flex items-center gap-3 text-xs text-gray-500">
               <span className="flex items-center gap-1">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -145,6 +147,6 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           )}
         </div>
       </div>
-    </div>
+    </article>
   );
 }
