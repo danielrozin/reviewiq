@@ -134,8 +134,8 @@ export default async function UserProfilePage({ params }: Props) {
 
             {/* Meta */}
             <div className="border-t border-gray-100 pt-4 text-xs text-gray-400 space-y-1">
-              <p>Joined {user.joinedAt}</p>
-              <p>Last active {user.lastActiveAt}</p>
+              <p>Joined <time dateTime={user.joinedAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.joinedAt))}</time></p>
+              <p>Last active <time dateTime={user.lastActiveAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.lastActiveAt))}</time></p>
             </div>
           </div>
         </aside>

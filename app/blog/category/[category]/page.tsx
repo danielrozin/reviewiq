@@ -160,13 +160,13 @@ export default async function BlogCategoryPage({
                 {post.excerpt}
               </p>
               <div className="mt-4 flex items-center justify-between">
-                <span className="text-xs text-gray-400">
+                <time dateTime={post.publishedAt} className="text-xs text-gray-400">
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",
                     year: "numeric",
                   })}
-                </span>
+                </time>
                 <span className="text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
                   Read more &rarr;
                 </span>
