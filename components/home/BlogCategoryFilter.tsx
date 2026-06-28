@@ -64,7 +64,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           <Link
             key={post.id}
             href={`/blog/${post.slug}`}
-            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200"
+            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="aspect-video bg-gray-100 relative overflow-hidden">
