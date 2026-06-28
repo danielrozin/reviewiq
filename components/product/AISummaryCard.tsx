@@ -16,7 +16,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
   const verdict = score !== undefined ? getVerdict(score) : null;
 
   return (
-    <section className="bg-gradient-to-br from-brand-50/50 via-white to-slate-50 border border-brand-100/60 rounded-2xl p-6 lg:p-8">
+    <section className="bg-gradient-to-br from-brand-50/50 to-white border border-brand-100/60 rounded-2xl p-6 lg:p-8">
       <div className="flex items-center gap-2 mb-4">
         <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
           <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
