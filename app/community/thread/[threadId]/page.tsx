@@ -15,7 +15,7 @@ import {
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema } from "@/lib/schema/jsonld";
+import { breadcrumbSchema, discussionForumPostingSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
@@ -62,6 +62,17 @@ export default async function ThreadPage({ params }: Props) {
               { name: "Community", url: "/community" },
               { name: thread.title, url: `/community/thread/${threadId}` },
             ])
+          ),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            discussionForumPostingSchema(
+              thread,
+              author?.displayName ?? author?.username ?? "ReviewIQ Community Member"
+            )
           ),
         }}
       />

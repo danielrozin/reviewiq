@@ -1,4 +1,4 @@
-import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep } from "@/types";
+import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
@@ -302,6 +302,43 @@ export function speakableSchema(productName: string, productUrl: string) {
         "[data-speakable='key-facts']",
         "[data-speakable='smart-score']",
       ],
+    },
+  };
+}
+
+export function discussionForumPostingSchema(
+  thread: DiscussionThread,
+  authorName: string
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "DiscussionForumPosting",
+    headline: thread.title,
+    text: thread.body,
+    url: `${SITE_URL}/community/thread/${thread.id}`,
+    datePublished: thread.createdAt,
+    dateModified: thread.lastActivityAt,
+    author: {
+      "@type": "Person",
+      name: authorName,
+    },
+    interactionStatistic: [
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/LikeAction",
+        userInteractionCount: thread.upvotes,
+      },
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/CommentAction",
+        userInteractionCount: thread.commentCount,
+      },
+    ],
+    ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
+    isPartOf: {
+      "@type": "WebPage",
+      name: "ReviewIQ Community",
+      url: `${SITE_URL}/community`,
     },
   };
 }
