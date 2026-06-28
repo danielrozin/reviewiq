@@ -107,7 +107,7 @@ export function PricingTiers() {
           {PLANS.pro.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
               <svg
-                className="w-5 h-5 text-brand-500 shrink-0 mt-0.5"
+                className="w-5 h-5 text-brand-600 shrink-0 mt-0.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}

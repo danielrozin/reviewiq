@@ -284,7 +284,7 @@ export default async function BlogPostPage({
                         {product.name}
                       </p>
                       <p className="text-xs text-gray-400 mt-0.5">
-                        <span className="text-brand-500 font-medium">{cat?.icon} {cat?.name}</span>
+                        <span className="text-brand-600 font-medium">{cat?.icon} {cat?.name}</span>
                         {" "}&middot; ${product.priceRange.min}–${product.priceRange.max}
                       </p>
                     </div>

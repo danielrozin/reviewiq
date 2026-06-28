@@ -109,7 +109,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </div>
           <div className="flex items-start gap-2">
             <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
-              <svg className="w-2.5 h-2.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+              <svg className="w-2.5 h-2.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
               </svg>
             </span>

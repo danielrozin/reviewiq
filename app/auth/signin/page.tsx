@@ -161,7 +161,7 @@ export default function SignInPage() {
             <ul className="space-y-2">
               {["No affiliate bias", "78% verified buyer rate", "Cancel or leave anytime"].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-xs text-gray-500">
-                  <svg className="w-3.5 h-3.5 text-emerald-500 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                  <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                   {item}

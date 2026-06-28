@@ -292,7 +292,7 @@ export default function WhoIsThisForPage() {
             <div key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-2 flex items-start gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <svg className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                   </span>
