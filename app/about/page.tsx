@@ -125,12 +125,15 @@ export default function AboutPage() {
       {/* Stats bar */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20">
         {STATS.map((s) => (
-          <div key={s.label} className="bg-white border border-gray-100 rounded-2xl p-5 text-center hover:shadow-md transition-shadow">
-            <div className={`w-10 h-10 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3 text-lg font-bold`}>
-              {s.icon}
+          <div key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div className="p-5 text-center">
+              <div className={`w-9 h-9 ${s.color} rounded-lg flex items-center justify-center mx-auto mb-3`}>
+                {s.icon}
+              </div>
+              <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
+              <p className="text-xs text-gray-500 mt-1">{s.label}</p>
             </div>
-            <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
-            <p className="text-xs text-gray-500 mt-1">{s.label}</p>
           </div>
         ))}
       </div>
@@ -148,7 +151,7 @@ export default function AboutPage() {
             "What do verified buyers consistently love and hate?",
             "How does it compare to the alternative everyone's considering?",
           ].map((q, i) => (
-            <div key={i} className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4">
+            <div key={i} className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 hover:border-brand-100 hover:shadow-sm transition-all duration-200">
               <div className="w-7 h-7 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                 {i + 1}
               </div>
@@ -164,13 +167,16 @@ export default function AboutPage() {
         <p className="text-gray-500 mb-8 max-w-2xl">Four rules we never break.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {PRINCIPLES.map((p) => (
-            <div key={p.title} className="bg-white border border-gray-100 rounded-2xl p-6 flex gap-4">
-              <div className={`w-11 h-11 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
-                {p.icon}
-              </div>
-              <div>
-                <h3 className="font-semibold text-gray-900 mb-1">{p.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{p.text}</p>
+            <div key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="flex gap-4 p-6">
+                <div className={`w-9 h-9 rounded-lg ${p.color} flex items-center justify-center shrink-0`}>
+                  {p.icon}
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 mb-1">{p.title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed">{p.text}</p>
+                </div>
               </div>
             </div>
           ))}
@@ -185,13 +191,16 @@ export default function AboutPage() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {TEAM.map((member) => (
-            <div key={member.name} className="bg-white border border-gray-100 rounded-2xl p-6 flex flex-col items-center text-center hover:shadow-md transition-shadow">
-              <div className={`w-16 h-16 rounded-2xl ${member.color} text-white flex items-center justify-center text-xl font-bold mb-4`}>
-                {member.initials}
+            <div key={member.name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="flex flex-col items-center text-center p-6">
+                <div className={`w-16 h-16 rounded-2xl ${member.color} text-white flex items-center justify-center text-xl font-bold mb-4`}>
+                  {member.initials}
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-0.5">{member.name}</h3>
+                <p className="text-xs font-medium text-brand-600 mb-3">{member.role}</p>
+                <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-0.5">{member.name}</h3>
-              <p className="text-xs font-medium text-brand-600 mb-3">{member.role}</p>
-              <p className="text-sm text-gray-500 leading-relaxed">{member.bio}</p>
             </div>
           ))}
         </div>
