@@ -37,13 +37,17 @@ if (!process.env.DATABASE_URL) {
 
 console.log("[db-sync] Syncing schema to the target database via `prisma db push`…");
 try {
-  execSync("prisma db push --skip-generate", { stdio: "inherit" });
+  // Use pipe so we can inspect output and detect P1001 without aborting on infra blips.
+  const result = execSync("prisma db push --skip-generate", { stdio: "pipe", encoding: "utf8" });
+  process.stdout.write(result ?? "");
   console.log("[db-sync] Schema in sync.");
 } catch (err) {
-  const output = String(err.stdout ?? "") + String(err.stderr ?? "");
+  const combined = String(err.stdout ?? "") + String(err.stderr ?? "") + String(err.message ?? "");
+  process.stdout.write(String(err.stdout ?? ""));
+  process.stderr.write(String(err.stderr ?? ""));
   // P1001 = can't reach DB server (Neon pooler cold-start / network blip).
   // Warn and continue — runtime connections auto-resume; build should not abort on transient infra.
-  if (output.includes("P1001") || String(err.message ?? "").includes("P1001")) {
+  if (combined.includes("P1001")) {
     console.warn("[db-sync] WARNING: P1001 — could not reach database during build (pooler may be resuming).");
     console.warn("[db-sync] Continuing build. Verify schema drift manually if you added columns this PR.");
   } else {
