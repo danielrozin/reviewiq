@@ -293,7 +293,7 @@ export default async function ThreadPage({ params }: Props) {
                 ), color: "text-brand-400" },
                 { label: "Upvotes", value: String(thread.upvotes), icon: (
                   <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
-                ), color: "text-emerald-500" },
+                ), color: "text-emerald-600" },
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-2.5 bg-gray-50 rounded-xl">
                   <div className={`flex items-center justify-center mb-1 ${stat.color}`}>{stat.icon}</div>

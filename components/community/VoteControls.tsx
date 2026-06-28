@@ -102,14 +102,14 @@ export function VoteControls({
         >
           <UpIcon />
         </button>
-        <span className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-500" : "text-gray-500"}`}>
+        <span className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}>
           {formatNumber(netVotes)}
         </span>
         <button
           onClick={() => handleVote("down")}
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "down"
-              ? "bg-red-50 text-red-500"
+              ? "bg-red-50 text-red-600"
               : "text-gray-400 hover:bg-gray-50 hover:text-gray-600"
           }`}
           aria-label="Downvote"
@@ -134,14 +134,14 @@ export function VoteControls({
         >
           <UpIcon />
         </button>
-        <span className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-500" : "text-gray-500"}`}>
+        <span className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}>
           {formatNumber(netVotes)}
         </span>
         <button
           onClick={() => handleVote("down")}
           className={`${buttonSize} flex items-center justify-center rounded-r-lg transition-colors ${
             vote === "down"
-              ? "bg-red-50 text-red-500"
+              ? "bg-red-50 text-red-600"
               : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
           }`}
           aria-label="Downvote"

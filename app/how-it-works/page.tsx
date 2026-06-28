@@ -206,7 +206,7 @@ export default function HowItWorksPage() {
                       </span>
                     ) : row.us === "partial" ? (
                       <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+                        <svg className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
                       </span>
                     ) : (
                       <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
@@ -221,7 +221,7 @@ export default function HowItWorksPage() {
                       </span>
                     ) : row.them === "partial" ? (
                       <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+                        <svg className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
                       </span>
                     ) : (
                       <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">

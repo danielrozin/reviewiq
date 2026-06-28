@@ -122,7 +122,7 @@ function StarRating({
 
 function FieldError({ show, message }: { show: boolean; message: string }) {
   if (!show) return null;
-  return <p className="text-xs text-red-500 mt-1">{message}</p>;
+  return <p className="text-xs text-red-600 mt-1">{message}</p>;
 }
 
 export default function WriteReviewPage() {
@@ -315,7 +315,7 @@ export default function WriteReviewPage() {
             <div className="flex items-center justify-center gap-6 py-4 border-t border-emerald-100">
               {[
                 {
-                  icon: <svg className="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>,
+                  icon: <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>,
                   label: "+10 reputation",
                 },
                 {
@@ -458,7 +458,7 @@ export default function WriteReviewPage() {
             </div>
 
             {touched.rating && !stepValid.rating && (
-              <p className="text-xs text-red-500">Please rate all categories</p>
+              <p className="text-xs text-red-600">Please rate all categories</p>
             )}
           </div>
         )}
@@ -478,7 +478,7 @@ export default function WriteReviewPage() {
                 rows={6}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
               />
-              <p className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-500" : "text-gray-400"}`}>
+              <p className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-400"}`}>
                 {body.length}/50 minimum characters
                 {body.length >= 50 && " \u2713"}
               </p>
@@ -518,7 +518,7 @@ export default function WriteReviewPage() {
                 {cons.map((con, i) => (
                   <div key={i} className="flex items-center gap-2">
                     <span className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-3 h-3 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <svg className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
                       </svg>
                     </span>
