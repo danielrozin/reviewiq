@@ -127,7 +127,7 @@ export function Header() {
 
               <Link
                 href="/dashboard"
-                className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors"
+                className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Dashboard
               </Link>
@@ -165,7 +165,7 @@ export function Header() {
                             </p>
                             {isPro && <ProBadge size="sm" />}
                           </div>
-                          <p className="text-xs text-gray-500 truncate">
+                          <p className="text-xs text-gray-600 truncate">
                             {session.user?.email}
                           </p>
                         </div>
@@ -221,7 +221,7 @@ export function Header() {
               {/* Mobile hamburger */}
               <button
                 type="button"
-                className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-expanded={menuOpen}
                 aria-controls="mobile-nav"

@@ -14,7 +14,7 @@ export function RatingDistribution({ distribution, totalReviews }: RatingDistrib
 
         return (
           <div key={star} className="flex items-center gap-3 text-sm">
-            <span className="w-8 text-right text-gray-500 font-medium">
+            <span className="w-8 text-right text-gray-600 font-medium">
               {star}&#9733;
             </span>
             <div className="flex-1 bg-gray-100 rounded-full h-2.5 overflow-hidden">

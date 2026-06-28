@@ -113,7 +113,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
               </svg>
             </span>
-            <p className="text-sm text-gray-500 line-clamp-1 leading-relaxed">
+            <p className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
               {product.aiSummary.whatPeopleHate[0]}
             </p>
           </div>
@@ -132,7 +132,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               ? "bg-brand-600 text-white shadow-sm"
               : isFull
                 ? "bg-gray-100 text-gray-300 cursor-not-allowed"
-                : "bg-gray-50 text-gray-500 border border-gray-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100"
+                : "bg-gray-50 text-gray-600 border border-gray-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100"
           }`}
           title={isSelected ? "Remove from comparison" : isFull ? "Max 4 products" : "Add to compare"}
         >

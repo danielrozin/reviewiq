@@ -85,7 +85,7 @@ export function RelatedProducts({
               <p className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2">
                 {product.name}
               </p>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-gray-600">
                 {product.brand}
               </p>
               <div className="flex items-center gap-1.5 text-xs text-gray-400 mt-auto">

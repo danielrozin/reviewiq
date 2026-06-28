@@ -72,7 +72,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
 
   return (
     <div className="flex items-center gap-2">
-      <span className="text-sm text-gray-500 mr-1">Share:</span>
+      <span className="text-sm text-gray-600 mr-1">Share:</span>
       {shareLinks.map((link) => (
         <a
           key={link.name}
@@ -80,7 +80,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           title={`Share on ${link.name}`}
-          className={`inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-500 transition-colors ${link.color}`}
+          className={`inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-600 transition-colors ${link.color}`}
         >
           {link.icon}
         </a>
@@ -88,7 +88,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
       <button
         onClick={handleCopyLink}
         title="Copy link"
-        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-500 transition-colors hover:bg-gray-100"
+        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-600 transition-colors hover:bg-gray-100"
       >
         {copied ? (
           <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

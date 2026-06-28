@@ -35,7 +35,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
           <div key={groupName}>
             {groupEntries.length > 1 && (
               <div className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
-                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   {groupName}
                 </span>
                 <span className="text-xs text-gray-400">{groupSpecs.length}</span>
@@ -52,7 +52,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
                     : ""
                 )}
               >
-                <span className="text-gray-500 pr-4">{spec.label}</span>
+                <span className="text-gray-600 pr-4">{spec.label}</span>
                 <span className="text-gray-900 font-medium text-right">{spec.value}</span>
               </div>
             ))}

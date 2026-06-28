@@ -19,7 +19,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
           __html: JSON.stringify(breadcrumbSchema(items)),
         }}
       />
-      <nav aria-label="Breadcrumb" className="text-sm text-gray-500">
+      <nav aria-label="Breadcrumb" className="text-sm text-gray-600">
         <ol className="flex items-center gap-1.5">
           <li>
             <Link href="/" className="hover:text-gray-900 transition-colors">

@@ -18,7 +18,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
           <h2 className="text-lg font-semibold text-gray-900">Community Discussion</h2>
         </div>
         <div className="border border-dashed border-gray-200 rounded-xl p-8 text-center">
-          <p className="text-gray-500 text-sm mb-3">
+          <p className="text-gray-600 text-sm mb-3">
             No discussions yet for {productName}
           </p>
           <Link
@@ -98,7 +98,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
 
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-400">
                   {author && (
-                    <span className="font-medium text-gray-500">{author.displayName}</span>
+                    <span className="font-medium text-gray-600">{author.displayName}</span>
                   )}
                   <span>{thread.commentCount} replies</span>
                   <span>{formatNumber(thread.viewCount)} views</span>

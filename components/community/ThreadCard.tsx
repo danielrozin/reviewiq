@@ -96,7 +96,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           </Link>
 
           {/* Preview */}
-          <p className="text-sm text-gray-500 line-clamp-2 mb-3 leading-relaxed">
+          <p className="text-sm text-gray-600 line-clamp-2 mb-3 leading-relaxed">
             {thread.body.replace(/\*\*/g, "").replace(/\n/g, " ").slice(0, 200)}
             {thread.body.length > 200 && "..."}
           </p>
@@ -136,7 +136,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
               {thread.tags.slice(0, 4).map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] text-gray-500 bg-gray-50 px-2 py-0.5 rounded-full"
+                  className="text-[10px] text-gray-600 bg-gray-50 px-2 py-0.5 rounded-full"
                 >
                   {tag}
                 </span>

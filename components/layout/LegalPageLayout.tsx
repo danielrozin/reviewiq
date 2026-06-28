@@ -49,7 +49,7 @@ export function LegalPageLayout({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav className="mb-8 print:hidden">
-        <ol className="flex items-center gap-2 text-sm text-gray-500">
+        <ol className="flex items-center gap-2 text-sm text-gray-600">
           <li>
             <Link href="/" className="hover:text-brand-600 transition-colors">
               Home
@@ -64,7 +64,7 @@ export function LegalPageLayout({
         {/* Sidebar TOC */}
         <aside className="hidden lg:block print:hidden">
           <div className="sticky top-24">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 mb-4">
+            <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-4">
               On this page
             </h2>
             <nav>
@@ -76,7 +76,7 @@ export function LegalPageLayout({
                       className={`block pl-4 py-1.5 text-sm transition-colors border-l-2 -ml-px ${
                         activeSection === section.id
                           ? "border-brand-600 text-brand-600 font-medium"
-                          : "border-transparent text-gray-500 hover:text-gray-900 hover:border-gray-300"
+                          : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
                       }`}
                     >
                       {section.title}
@@ -95,7 +95,7 @@ export function LegalPageLayout({
             <h1 className="text-4xl font-extrabold text-gray-900 mb-3">
               {title}
             </h1>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-600">
               Last updated: <time dateTime={lastUpdatedISO}>{lastUpdated}</time>
             </p>
           </div>
