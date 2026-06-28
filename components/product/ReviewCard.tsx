@@ -6,6 +6,15 @@ interface ReviewCardProps {
   review: Review;
 }
 
+function formatDate(iso: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(iso));
+}
+
 export function ReviewCard({ review }: ReviewCardProps) {
   return (
     <article className="bg-white border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
@@ -28,7 +37,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
         <span className="text-gray-200">·</span>
         <span className="capitalize">{review.experienceLevel} user</span>
         <span className="text-gray-200">·</span>
-        <span>{review.createdAt}</span>
+        <time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">

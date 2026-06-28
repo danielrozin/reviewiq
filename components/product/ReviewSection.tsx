@@ -8,6 +8,15 @@ import { ReviewVoting } from "./ReviewVoting";
 import { useSubscription } from "@/lib/context/SubscriptionContext";
 import { UpgradePrompt } from "@/components/premium/UpgradePrompt";
 
+function formatDate(iso: string): string {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  }).format(new Date(iso));
+}
+
 type SortOption = "most_helpful" | "newest" | "oldest" | "highest" | "lowest" | "reliability" | "value_rating";
 
 const FREE_SORT_OPTIONS: SortOption[] = ["most_helpful", "newest", "oldest", "highest", "lowest"];
@@ -216,7 +225,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
         <span>By {review.authorName}</span>
         {review.timeOwned && <span>Owned {review.timeOwned}</span>}
         <span className="capitalize">{review.experienceLevel} user</span>
-        <span>{review.createdAt}</span>
+        <time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time>
       </div>
 
       {(review.pros.length > 0 || review.cons.length > 0) && (
