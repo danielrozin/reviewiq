@@ -69,7 +69,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
             helpfulCount={comment.helpfulCount}
             size="sm"
           />
-          <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="flex items-center gap-1 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
             <button className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-brand-600 transition-colors font-medium px-2 py-1 rounded-lg hover:bg-brand-50">
               <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />

@@ -66,13 +66,37 @@ export default function SignInPage() {
           </p>
           <ul className="space-y-4">
             {[
-              { icon: "🤖", title: "AI-Powered Summaries", desc: "Instantly understand what buyers love and hate from thousands of reviews" },
-              { icon: "📊", title: "SmartScore Rankings", desc: "Our 0–100 score synthesizes verified buyer data into one clear verdict" },
-              { icon: "🔔", title: "Price & Score Alerts", desc: "Get notified when a product's SmartScore changes or the price drops" },
-              { icon: "⚖️", title: "Side-by-Side Comparisons", desc: "Compare up to 4 products head-to-head on every spec that matters" },
+              {
+                bg: "bg-brand-50", fg: "text-brand-600",
+                icon: "M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z",
+                title: "AI-Powered Summaries",
+                desc: "Instantly understand what buyers love and hate from thousands of reviews",
+              },
+              {
+                bg: "bg-emerald-50", fg: "text-emerald-600",
+                icon: "M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z",
+                title: "SmartScore Rankings",
+                desc: "Our 0–100 score synthesizes verified buyer data into one clear verdict",
+              },
+              {
+                bg: "bg-amber-50", fg: "text-amber-600",
+                icon: "M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0",
+                title: "Price & Score Alerts",
+                desc: "Get notified when a product's SmartScore changes or the price drops",
+              },
+              {
+                bg: "bg-purple-50", fg: "text-purple-600",
+                icon: "M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5",
+                title: "Side-by-Side Comparisons",
+                desc: "Compare up to 4 products head-to-head on every spec that matters",
+              },
             ].map((benefit) => (
               <li key={benefit.title} className="flex items-start gap-3">
-                <span className="text-2xl mt-0.5">{benefit.icon}</span>
+                <div className={`w-8 h-8 ${benefit.bg} rounded-lg flex items-center justify-center shrink-0 mt-0.5`}>
+                  <svg className={`w-4 h-4 ${benefit.fg}`} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d={benefit.icon} />
+                  </svg>
+                </div>
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">{benefit.title}</p>
                   <p className="text-xs text-gray-500 mt-0.5 leading-relaxed">{benefit.desc}</p>
