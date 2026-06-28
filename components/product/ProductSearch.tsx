@@ -321,7 +321,7 @@ export function ProductSearch() {
       {/* Active filter chips */}
       {hasActiveFilters && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-gray-400 font-medium">Active filters:</span>
+          <span className="text-xs text-gray-500 font-medium">Active filters:</span>
           {query && (
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-50 text-brand-700 text-xs font-medium rounded-full border border-brand-100">
               <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -401,7 +401,7 @@ export function ProductSearch() {
           )}
         </p>
         {totalPages > 1 && (
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500">
             Page {safePage} of {totalPages}
           </p>
         )}

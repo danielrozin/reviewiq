@@ -119,10 +119,10 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
-                  <span className="w-8 text-right text-gray-400 text-xs">
+                  <span className="w-8 text-right text-gray-500 text-xs">
                     {count}
                   </span>
-                  <span className="w-10 text-right text-gray-400 text-xs">
+                  <span className="w-10 text-right text-gray-500 text-xs">
                     {percentage.toFixed(0)}%
                   </span>
                 </div>
@@ -142,7 +142,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
           </div>
           <h2 className="text-lg font-semibold text-gray-900">
             Verified Reviews
-            <span className="text-sm font-normal text-gray-400 ml-2">{reviews.length} shown</span>
+            <span className="text-sm font-normal text-gray-500 ml-2">{reviews.length} shown</span>
           </h2>
         </div>
 
@@ -212,7 +212,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400 mb-4">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 mb-4">
         <span>By {review.authorName}</span>
         {review.timeOwned && <span>Owned {review.timeOwned}</span>}
         <span className="capitalize">{review.experienceLevel} user</span>
