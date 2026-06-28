@@ -30,6 +30,7 @@ export function BlogCategoryFilter({ posts }: Props) {
       <div className="flex flex-wrap gap-2 mb-8">
         <button
           type="button"
+          aria-pressed={activeCategory === "all"}
           onClick={() => setActiveCategory("all")}
           className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
             activeCategory === "all"
@@ -45,6 +46,7 @@ export function BlogCategoryFilter({ posts }: Props) {
             <button
               key={cat.slug}
               type="button"
+              aria-pressed={activeCategory === cat.slug}
               onClick={() => setActiveCategory(cat.slug)}
               className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
                 activeCategory === cat.slug

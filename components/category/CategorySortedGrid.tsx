@@ -74,6 +74,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           <button
             key={opt.key}
             type="button"
+            aria-pressed={sortKey === opt.key}
             onClick={() => handleSort(opt.key)}
             className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all ${
               sortKey === opt.key

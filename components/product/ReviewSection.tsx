@@ -118,20 +118,23 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
                 <div key={star} className="flex items-center gap-2 text-sm">
                   <span className="w-8 flex items-center justify-end gap-0.5 text-gray-600 text-xs font-medium shrink-0">
                     {star}
-                    <svg className="w-2.5 h-2.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <svg aria-hidden="true" className="w-2.5 h-2.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
                       <path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                     </svg>
                   </span>
-                  <div className="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
+                  <div aria-hidden="true" className="flex-1 bg-gray-200 rounded-full h-2 overflow-hidden">
                     <div
                       className="bg-amber-400 h-full rounded-full transition-all duration-500"
                       style={{ width: `${percentage}%` }}
                     />
                   </div>
-                  <span className="w-8 text-right text-gray-500 text-xs">
+                  <span
+                    className="w-8 text-right text-gray-500 text-xs"
+                    aria-label={`${star} stars: ${count} reviews, ${percentage.toFixed(0)}%`}
+                  >
                     {count}
                   </span>
-                  <span className="w-10 text-right text-gray-500 text-xs">
+                  <span aria-hidden="true" className="w-10 text-right text-gray-500 text-xs">
                     {percentage.toFixed(0)}%
                   </span>
                 </div>
