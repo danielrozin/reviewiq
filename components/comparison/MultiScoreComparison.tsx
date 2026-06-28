@@ -17,10 +17,15 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
   const minWidth = products.length > 2 ? `${products.length * 140}px` : undefined;
 
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-blue-50/30 border border-slate-200 rounded-2xl p-4 lg:p-8">
-      <h2 className="text-lg font-semibold text-gray-900 mb-6 text-center">
-        SmartScore Comparison
-      </h2>
+    <section className="bg-gradient-to-br from-brand-50/40 to-white border border-brand-100 rounded-2xl p-4 lg:p-8">
+      <div className="flex items-center justify-center gap-2.5 mb-6">
+        <div className="w-7 h-7 bg-brand-100 rounded-lg flex items-center justify-center shrink-0">
+          <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+          </svg>
+        </div>
+        <h2 className="text-lg font-semibold text-gray-900">SmartScore Comparison</h2>
+      </div>
 
       {/* Horizontal scroll on mobile for 3+ products */}
       <div className="overflow-x-auto -mx-4 px-4 lg:overflow-visible lg:mx-0 lg:px-0">
@@ -67,7 +72,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
         </div>
 
         {/* Price comparison row */}
-        <div className="mt-6 pt-6 border-t border-slate-200/60">
+        <div className="mt-6 pt-6 border-t border-brand-100/60">
           <div className={cn("grid gap-4 lg:gap-6 text-center", colClass)} style={{ minWidth }}>
             {products.map((product) => {
               const lowestPrice = Math.min(...products.map((p) => p.priceRange.min));
