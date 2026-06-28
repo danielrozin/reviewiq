@@ -8,6 +8,7 @@ import { SortableDiscussions } from "@/components/community/SortableDiscussions"
 import { getTopContributors } from "@/data/users";
 import { categories } from "@/data/categories";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Community — ReviewIQ",
@@ -32,6 +33,12 @@ export default function CommunityPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Community", url: "/community" }])),
+        }}
+      />
       <Breadcrumbs
         items={[{ name: "Community", url: "/community" }]}
       />
