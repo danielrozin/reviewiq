@@ -40,7 +40,7 @@ export function BestFor({ summary, productName, productSlug }: BestForProps) {
         {/* Best For */}
         <div className="bg-brand-50 p-5">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-brand-800 uppercase tracking-wider mb-3">
-            <span className="w-5 h-5 bg-brand-100 rounded-lg flex items-center justify-center shrink-0">
+            <span className="w-5 h-5 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
               <svg className="w-3 h-3 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
@@ -64,7 +64,7 @@ export function BestFor({ summary, productName, productSlug }: BestForProps) {
         {/* Not Ideal For */}
         <div className="bg-amber-50 p-5">
           <h2 className="flex items-center gap-2 text-sm font-semibold text-amber-800 uppercase tracking-wider mb-3">
-            <span className="w-5 h-5 bg-amber-100 rounded-lg flex items-center justify-center shrink-0">
+            <span className="w-5 h-5 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
               <svg className="w-3 h-3 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
               </svg>

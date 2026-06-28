@@ -180,7 +180,7 @@ export default async function CategoryPage({ params }: Props) {
                   )}
                 </div>
                 <div className="flex-1 pb-1">
-                  <div className="bg-white border border-gray-100 rounded-xl p-4 group-hover:border-brand-100 group-hover:shadow-sm transition-all">
+                  <div className="bg-white border border-gray-100 rounded-xl p-4 group-hover:border-brand-200 group-hover:shadow-sm group-hover:-translate-y-0.5 transition-all duration-200">
                     <h3 className="font-semibold text-gray-900 capitalize mb-1">
                       {step.name}
                     </h3>
