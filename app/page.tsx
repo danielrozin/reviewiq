@@ -30,7 +30,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">
+      <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">
         {/* Subtle background orbs */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
           <div className="absolute -top-40 -right-20 w-96 h-96 rounded-full bg-brand-100/40 blur-3xl" />
@@ -43,7 +43,7 @@ export default function HomePage() {
               <span className="w-2 h-2 bg-brand-500 rounded-full animate-pulse" />
               AI-Powered Review Intelligence
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-fade-up">
+            <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-fade-up">
               Reviews you can{" "}
               <span className="text-brand-600">actually trust</span>
             </h1>
@@ -128,7 +128,7 @@ export default function HomePage() {
       <RecentlyViewedStrip />
 
       {/* Trust Signals */}
-      <section className="border-y border-gray-100 bg-white">
+      <section aria-label="Site statistics" className="border-y border-gray-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -199,10 +199,10 @@ export default function HomePage() {
       </section>
 
       {/* Categories */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section aria-labelledby="browse-categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 id="browse-categories" className="text-2xl font-bold text-gray-900">
               Browse by Category
             </h2>
             <p className="text-gray-600 mt-1">
@@ -236,10 +236,10 @@ export default function HomePage() {
       </section>
 
       {/* Top Rated Products */}
-      <section className="bg-gray-50/50">
+      <section aria-labelledby="top-rated-products" className="bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 id="top-rated-products" className="text-2xl font-bold text-gray-900">
               Highest Rated Products
             </h2>
             <p className="text-gray-600 mt-1">
@@ -303,14 +303,14 @@ export default function HomePage() {
       </section>
 
       {/* Community Discussions */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section aria-labelledby="trending-discussions" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-3">
               <span className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
               Live Community
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 id="trending-discussions" className="text-2xl font-bold text-gray-900">
               Trending Discussions
             </h2>
             <p className="text-gray-600 mt-1">
@@ -393,11 +393,11 @@ export default function HomePage() {
       </section>
 
       {/* Latest from the Blog */}
-      <section className="bg-gray-50/50">
+      <section aria-labelledby="buying-guides" className="bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">
+              <h2 id="buying-guides" className="text-2xl font-bold text-gray-900">
                 Buying Guides & Comparisons
               </h2>
               <p className="text-gray-600 mt-1">
@@ -455,16 +455,16 @@ export default function HomePage() {
       </section>
 
       {/* Editor's Picks — featured spotlight with asymmetric layout */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section aria-labelledby="editors-picks" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-3 border border-amber-100">
-              <svg className="w-3.5 h-3.5 fill-current text-amber-600" viewBox="0 0 20 20">
+              <svg aria-hidden="true" className="w-3.5 h-3.5 fill-current text-amber-600" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
               </svg>
               Editor&apos;s Picks
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 id="editors-picks" className="text-2xl font-bold text-gray-900">
               Staff-recommended this week
             </h2>
             <p className="text-gray-600 mt-1">
@@ -578,9 +578,9 @@ export default function HomePage() {
       </section>
 
       {/* How It Works */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <section aria-labelledby="how-reviewiq-works" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-2xl font-bold text-gray-900">
+          <h2 id="how-reviewiq-works" className="text-2xl font-bold text-gray-900">
             How ReviewIQ Works
           </h2>
           <p className="text-gray-600 mt-2 max-w-xl mx-auto">
@@ -649,9 +649,9 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-brand-600">
+      <section aria-labelledby="join-cta" className="bg-brand-600">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">
+          <h2 id="join-cta" className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Join the conversation
           </h2>
           <p className="text-brand-200 max-w-xl mx-auto mb-6">
