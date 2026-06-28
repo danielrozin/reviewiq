@@ -43,8 +43,10 @@ export function ComparisonModule({
             <Link
               key={comp.productId}
               href={`/compare/${compSlug}`}
-              className="flex items-center justify-between p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 hover:-translate-y-0.5 transition-all duration-200 group"
+              className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:bg-brand-50/30 hover:-translate-y-0.5 transition-all duration-200 group"
             >
+              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="flex items-center justify-between p-4">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-9 h-9 bg-brand-50 border border-brand-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-100 transition-colors">
                   <span className="text-brand-600 text-[10px] font-bold tracking-tight">VS</span>
@@ -69,6 +71,7 @@ export function ComparisonModule({
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </span>
+              </div>
             </Link>
           );
         })}

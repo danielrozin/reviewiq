@@ -59,8 +59,10 @@ export function RecentlyViewedStrip() {
             <Link
               key={item.slug}
               href={`/category/${item.categorySlug}/${item.slug}`}
-              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl p-3.5 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
             >
+              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div className="p-3.5">
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-[10px] text-gray-400 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>
                 <SmartScore score={item.smartScore} size="sm" />
@@ -73,6 +75,7 @@ export function RecentlyViewedStrip() {
                   {item.categorySlug.replace(/-/g, " ")}
                 </p>
               )}
+              </div>
             </Link>
           ))}
         </div>
