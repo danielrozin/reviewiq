@@ -54,7 +54,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <ul className="space-y-2">
             {summary.whatPeopleLove.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center">
                   <svg className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
@@ -72,8 +72,8 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <ul className="space-y-2">
             {summary.whatPeopleHate.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
-                  <svg className="w-2.5 h-2.5 text-red-500" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-50 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                   </svg>
                 </span>
@@ -90,7 +90,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <ul className="space-y-2">
             {summary.bestFor.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-brand-100 flex items-center justify-center">
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-brand-50 flex items-center justify-center">
                   <svg className="w-2.5 h-2.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
@@ -108,7 +108,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <ul className="space-y-2">
             {summary.notFor.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center">
+                <span className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-amber-50 flex items-center justify-center">
                   <svg className="w-2.5 h-2.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                   </svg>
