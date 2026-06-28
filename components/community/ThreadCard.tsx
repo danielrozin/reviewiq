@@ -19,7 +19,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
     return (
       <Link
         href={`/community/thread/${thread.id}`}
-        className="flex items-center gap-3 py-3 px-4 rounded-xl hover:bg-gray-50 transition-colors group"
+        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group"
       >
         <div className="flex flex-col items-center min-w-[40px]">
           <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
