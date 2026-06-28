@@ -147,6 +147,7 @@ export function Header() {
                       onClick={() => setUserMenuOpen(!userMenuOpen)}
                       aria-expanded={userMenuOpen}
                       aria-haspopup="true"
+                      aria-label="Account menu"
                       className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
                     >
                       <div className="w-8 h-8 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs font-bold ring-2 ring-white">

@@ -18,7 +18,10 @@ export function ScrollToTop() {
   return (
     <button
       type="button"
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      onClick={() => {
+        const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: 0, behavior: reduced ? "instant" : "smooth" });
+      }}
       className="fixed bottom-6 right-6 z-40 w-11 h-11 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center text-gray-500 hover:text-brand-600 hover:border-brand-300 hover:shadow-xl transition-all animate-fade-in"
       aria-label="Scroll to top"
     >
