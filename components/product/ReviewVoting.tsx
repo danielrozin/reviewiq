@@ -84,7 +84,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
         <button
           onClick={() => handleVote("helpful")}
           disabled={loading}
-          className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs transition-colors ${
+          className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors ${
             voted === "helpful"
               ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
               : "text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
@@ -99,10 +99,10 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
         <button
           onClick={() => handleVote("not_helpful")}
           disabled={loading}
-          className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs transition-colors ${
+          className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors ${
             voted === "not_helpful"
-              ? "bg-red-50 text-red-500 border border-red-200"
-              : "text-gray-400 hover:text-red-500 hover:bg-red-50 border border-transparent"
+              ? "bg-red-50 text-red-600 border border-red-200"
+              : "text-gray-400 hover:text-red-600 hover:bg-red-50 border border-transparent"
           } disabled:opacity-50`}
           aria-label="Mark as not helpful"
         >

@@ -29,7 +29,7 @@ export function ComparisonTray() {
             <button
               type="button"
               onClick={clear}
-              className="text-xs text-gray-400 hover:text-red-500 transition-colors"
+              className="text-xs text-gray-400 hover:text-red-600 transition-colors"
             >
               Clear all
             </button>
@@ -57,7 +57,7 @@ export function ComparisonTray() {
                   <button
                     type="button"
                     onClick={() => remove(product.id)}
-                    className="text-gray-300 hover:text-red-500 transition-colors shrink-0"
+                    className="text-gray-300 hover:text-red-600 transition-colors shrink-0"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

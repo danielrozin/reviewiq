@@ -83,7 +83,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
                   <p className={cn("text-sm font-semibold", isLowest ? "text-emerald-600" : "text-gray-900")}>
                     ${product.priceRange.min}–${product.priceRange.max}
                     {isLowest && products.length > 1 && (
-                      <span className="ml-1 text-xs text-emerald-500 font-normal">Best</span>
+                      <span className="ml-1 text-xs text-emerald-600 font-normal">Best</span>
                     )}
                   </p>
                 </div>
