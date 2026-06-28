@@ -37,11 +37,16 @@ describe("SurveyPopup form_abandon", () => {
     vi.clearAllMocks();
   });
 
-  /** Render and advance past the show delay so the popup is open at "q1" (DAN-1170: no intro gate). */
+  /**
+   * Render and advance past the show delay so the popup is open at "q1"
+   * (DAN-1170: no intro gate). Advance generously past SHOW_DELAY_MS (20s as of
+   * DAN-1405) so timing tweaks to the dwell trigger don't silently re-break these
+   * tests — the only timer in flight is the show-popup setTimeout.
+   */
   function showSurvey() {
     render(<SurveyPopup />);
     act(() => {
-      vi.advanceTimersByTime(12_000);
+      vi.advanceTimersByTime(30_000);
     });
   }
 

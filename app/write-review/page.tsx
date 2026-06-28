@@ -118,6 +118,76 @@ function FieldError({ show, message }: { show: boolean; message: string }) {
   return <p className="text-xs text-red-500 mt-1">{message}</p>;
 }
 
+/**
+ * Static, hook-free shell rendered as the SSR HTML and during the brief
+ * client-side session-loading window. Gives crawlers and slow/JS-disabled
+ * clients a well-formed page (headline + auth prompt + step indicator +
+ * skeleton + noscript) instead of a bare spinner. See DAN-678.
+ *
+ * Layout intentionally mirrors the hydrated wizard (same Breadcrumbs,
+ * headline, intro copy and StepIndicator at step 0) so the SSR -> hydrated
+ * transition stays visually continuous and CLS-low.
+ */
+function WriteReviewShell() {
+  return (
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <Breadcrumbs items={[{ name: "Write a Review", url: "/write-review" }]} />
+
+      <div className="mt-8 max-w-2xl">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Write a Review</h1>
+        <p className="text-gray-500 mb-6">
+          Share your honest experience to help others make smarter buying decisions.
+        </p>
+
+        {/* Auth prompt — visible before JS resolves the session */}
+        <div className="rounded-xl border border-brand-100 bg-brand-50 p-4 mb-8">
+          <p className="text-sm font-semibold text-gray-900 mb-3">
+            Sign in to submit your review.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-2">
+            <Link
+              href="/auth/signin?callbackUrl=/write-review"
+              className="inline-flex justify-center px-5 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 transition-colors"
+            >
+              Sign in
+            </Link>
+            <Link
+              href="/auth/signin?callbackUrl=/write-review"
+              className="inline-flex justify-center px-5 py-2.5 border border-gray-200 text-gray-700 text-sm font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+            >
+              Create free account
+            </Link>
+          </div>
+        </div>
+
+        <StepIndicator currentStep={0} steps={STEPS} />
+
+        {/* Skeleton preview of the first step (Product + Headline) so visitors
+            can gauge what's involved before the wizard hydrates. */}
+        <div className="space-y-6" aria-hidden="true">
+          <div className="space-y-2">
+            <div className="h-4 w-24 bg-gray-100 rounded" />
+            <div className="h-12 w-full bg-gray-100 rounded-xl" />
+          </div>
+          <div className="space-y-2">
+            <div className="h-4 w-32 bg-gray-100 rounded" />
+            <div className="h-12 w-full bg-gray-100 rounded-xl" />
+          </div>
+        </div>
+
+        <noscript>
+          <div className="mt-6 rounded-xl border border-gray-200 p-4 text-sm text-gray-600">
+            Writing a review needs JavaScript enabled.{" "}
+            <Link href="/products" className="text-brand-600 underline">
+              Browse reviews instead &rarr;
+            </Link>
+          </div>
+        </noscript>
+      </div>
+    </div>
+  );
+}
+
 export default function WriteReviewPage() {
   const { data: session, status } = useSession();
   const [submitted, setSubmitted] = useState(false);
@@ -234,15 +304,12 @@ export default function WriteReviewPage() {
     }
   }, [session, status]);
 
-  // Auth gate: require sign-in to write reviews
+  // Auth gate: require sign-in to write reviews.
+  // The loading state is also what gets server-rendered as the initial HTML,
+  // so render the full static shell (not a bare spinner) for crawlers and
+  // slow/JS-disabled clients. See DAN-678.
   if (status === "loading") {
-    return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="max-w-2xl mx-auto text-center py-20">
-          <div className="w-8 h-8 border-2 border-brand-600 border-t-transparent rounded-full animate-spin mx-auto" />
-        </div>
-      </div>
-    );
+    return <WriteReviewShell />;
   }
 
   if (!session) {
