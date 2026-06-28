@@ -147,20 +147,24 @@ export default async function BlogPostPage({
               </p>
               <p className="text-xs text-gray-400">
                 Published{" "}
-                {new Date(post.publishedAt).toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
+                <time dateTime={post.publishedAt}>
+                  {new Date(post.publishedAt).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
                 {post.updatedAt !== post.publishedAt && (
                   <>
                     {" "}
                     &middot; Updated{" "}
-                    {new Date(post.updatedAt).toLocaleDateString("en-US", {
-                      month: "long",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
+                    <time dateTime={post.updatedAt}>
+                      {new Date(post.updatedAt).toLocaleDateString("en-US", {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </time>
                   </>
                 )}
               </p>

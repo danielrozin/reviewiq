@@ -135,9 +135,9 @@ export default async function ThreadPage({ params }: Props) {
                   {author && (
                     <UserChip user={author} showTrustLevel size="md" />
                   )}
-                  <span className="text-sm text-gray-400">
-                    {thread.createdAt}
-                  </span>
+                  <time dateTime={thread.createdAt} className="text-sm text-gray-400">
+                    {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
+                  </time>
                   <span className="text-sm text-gray-400">
                     {formatNumber(thread.viewCount)} views
                   </span>

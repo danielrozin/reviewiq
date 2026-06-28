@@ -188,7 +188,7 @@ export default async function UserProfilePage({ params }: Props) {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
                       </Link>
-                      <span className="text-xs text-gray-400">{comment.createdAt}</span>
+                      <time dateTime={comment.createdAt} className="text-xs text-gray-400">{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(comment.createdAt))}</time>
                       {comment.isTopAnswer && (
                         <span className="text-[10px] font-medium text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-full">
                           Top Answer
