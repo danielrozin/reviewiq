@@ -15,8 +15,10 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
         <Link
           key={product.id}
           href={`/category/${product.categorySlug}/${product.slug}`}
-          className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+          className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
         >
+          <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div className="flex items-center gap-3 p-4">
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
             product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
             product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
@@ -42,6 +44,7 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
             <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
+          </div>
           </div>
         </Link>
       ))}

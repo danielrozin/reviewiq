@@ -41,8 +41,10 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
       {reviews.map(({ review, productName, productSlug, categorySlug }) => (
         <div
           key={review.id}
-          className="bg-white border border-gray-100 rounded-xl p-4 hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+          className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
         >
+          <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div className="p-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
               <Link
@@ -108,6 +110,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
                 {review.cons.length} con{review.cons.length !== 1 && "s"}
               </span>
             )}
+          </div>
           </div>
         </div>
       ))}

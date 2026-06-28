@@ -49,8 +49,10 @@ export function QuickActions() {
         <Link
           key={action.title}
           href={action.href}
-          className={`group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:-translate-y-0.5 transition-all duration-200 ${action.borderHover}`}
+          className={`group block bg-white border border-gray-100 rounded-xl overflow-hidden hover:-translate-y-0.5 transition-all duration-200 ${action.borderHover}`}
         >
+          <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div className="flex items-center gap-4 p-4">
           <div className={`w-10 h-10 rounded-xl ${action.iconBg} ${action.iconColor} flex items-center justify-center shrink-0`}>
             {action.icon}
           </div>
@@ -61,6 +63,7 @@ export function QuickActions() {
           <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
+          </div>
         </Link>
       ))}
     </div>

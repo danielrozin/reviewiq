@@ -41,8 +41,10 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
           <Link
             key={item.id}
             href={`/category/${item.categorySlug}/${item.productSlug}`}
-            className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+            className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
           >
+            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div className="flex items-center gap-4 p-4">
             <div className="w-12 h-12 bg-gradient-to-br from-brand-50 to-brand-100 rounded-xl flex items-center justify-center shrink-0">
               <span className="text-brand-400 text-xs font-bold">
                 {item.productName.slice(0, 2).toUpperCase()}
@@ -75,6 +77,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
               {scoreDiff === 0 && (
                 <p className="text-[10px] text-gray-400">No change</p>
               )}
+            </div>
             </div>
           </Link>
         );
