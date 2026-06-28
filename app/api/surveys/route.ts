@@ -82,7 +82,25 @@ export async function POST(request: NextRequest) {
   }
 }
 
+// Survey read access is gated behind a static bearer token (DAN-1519) so the
+// raw funnel data is queryable from the public network (e.g. the UX Designer's
+// workspace via curl) without exposing it to anonymous traffic. Fail closed:
+// if SURVEY_ADMIN_TOKEN is unset the route always 401s rather than leaking data.
+function isAuthorizedRead(request: NextRequest): boolean {
+  const expected = process.env.SURVEY_ADMIN_TOKEN;
+  if (!expected) return false;
+  const header = request.headers.get("authorization");
+  return header === `Bearer ${expected}`;
+}
+
 export async function GET(request: NextRequest) {
+  if (!isAuthorizedRead(request)) {
+    return NextResponse.json(
+      { error: "Unauthorized — provide 'Authorization: Bearer <SURVEY_ADMIN_TOKEN>'" },
+      { status: 401 },
+    );
+  }
+
   try {
     const sp = request.nextUrl.searchParams;
     const category = sp.get("category") || undefined;
@@ -98,17 +116,62 @@ export async function GET(request: NextRequest) {
       where.surveyCompleted = surveyCompleted === "true";
     }
 
-    const [surveys, total] = await Promise.all([
-      prisma.smartreviewSurvey.findMany({
-        where,
-        orderBy: { createdAt: "desc" },
-        take: limit,
-        skip: offset,
-      }),
-      prisma.smartreviewSurvey.count({ where }),
-    ]);
+    // Paginated rows respect the query filters; the aggregate summary below is
+    // computed over the WHOLE table so DAN-176 gets stable global totals
+    // regardless of the current filter/page.
+    const [surveys, total, grandTotal, completions, eventGroups, q1Groups, earliest] =
+      await Promise.all([
+        prisma.smartreviewSurvey.findMany({
+          where,
+          orderBy: { createdAt: "desc" },
+          take: limit,
+          skip: offset,
+        }),
+        prisma.smartreviewSurvey.count({ where }),
+        prisma.smartreviewSurvey.count(),
+        prisma.smartreviewSurvey.count({ where: { surveyCompleted: true } }),
+        prisma.smartreviewSurvey.groupBy({ by: ["event"], _count: { _all: true } }),
+        prisma.smartreviewSurvey.groupBy({
+          by: ["q1Intent"],
+          _count: { _all: true },
+          where: { q1Intent: { not: null } },
+        }),
+        prisma.smartreviewSurvey.findFirst({
+          orderBy: { createdAt: "asc" },
+          select: { createdAt: true },
+        }),
+      ]);
 
-    return NextResponse.json({ surveys, total, limit, offset });
+    const eventBreakdown: Record<string, number> = {};
+    for (const g of eventGroups) {
+      eventBreakdown[g.event ?? "(null)"] = g._count._all;
+    }
+    const q1IntentBreakdown: Record<string, number> = {};
+    for (const g of q1Groups) {
+      if (g.q1Intent) q1IntentBreakdown[g.q1Intent] = g._count._all;
+    }
+
+    const impressions = eventBreakdown["impression"] ?? 0;
+    const dismissals = eventBreakdown["dismissed"] ?? 0;
+    const funnelConversionRate =
+      impressions > 0 ? Number((completions / impressions).toFixed(4)) : null;
+
+    return NextResponse.json({
+      surveys,
+      total,
+      limit,
+      offset,
+      aggregate: {
+        totalRows: grandTotal,
+        impressions,
+        completions,
+        dismissals,
+        eventBreakdown,
+        q1IntentBreakdown,
+        funnelConversionRate,
+        since: earliest?.createdAt ?? null,
+      },
+    });
   } catch (error) {
     console.error("Failed to fetch surveys:", error);
     return NextResponse.json({ error: "Failed to fetch surveys" }, { status: 500 });
