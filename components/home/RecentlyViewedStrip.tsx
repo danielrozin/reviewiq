@@ -30,9 +30,11 @@ export function RecentlyViewedStrip() {
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-          <svg className="w-5 h-5 text-brand-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-          </svg>
+          <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
           Recently Viewed
         </h2>
         <button
@@ -57,7 +59,7 @@ export function RecentlyViewedStrip() {
             <Link
               key={item.slug}
               href={`/category/${item.categorySlug}/${item.slug}`}
-              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl p-3.5 hover:border-brand-200 hover:shadow-sm transition-all group"
+              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl p-3.5 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
             >
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-[10px] text-gray-400 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>

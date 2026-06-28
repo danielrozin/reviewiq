@@ -441,7 +441,7 @@ export default function WriteReviewPage() {
               <StarRating value={rating} onChange={setRating} size="lg" />
             </div>
 
-            <div className="bg-gray-50 rounded-xl p-4 space-y-4">
+            <div className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
               <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">
                 Category Ratings
               </p>

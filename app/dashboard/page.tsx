@@ -172,7 +172,7 @@ export default async function DashboardPage() {
           </section>
 
           {/* Badges */}
-          <section className="bg-gray-50 rounded-2xl p-5">
+          <section className="bg-white border border-gray-100 rounded-2xl p-5">
             <h2 className="text-sm font-semibold text-gray-900 mb-3">
               Your Badges
             </h2>
