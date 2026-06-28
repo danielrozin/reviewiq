@@ -49,11 +49,18 @@ export function ProfileChecklist() {
   return (
     <div className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6">
       <div className="flex items-center justify-between mb-4">
-        <div>
-          <h3 className="text-sm font-bold text-gray-900">Complete your profile</h3>
-          <p className="text-xs text-gray-500 mt-0.5">
-            {completedCount} of {totalCount} completed
-          </p>
+        <div className="flex items-center gap-2.5">
+          <div className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-sm font-bold text-gray-900">Complete your profile</h3>
+            <p className="text-xs text-gray-500 mt-0.5">
+              {completedCount} of {totalCount} completed
+            </p>
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden">
@@ -76,7 +83,7 @@ export function ProfileChecklist() {
               className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
                 done
                   ? "bg-emerald-50/50 cursor-default"
-                  : "hover:bg-gray-50 cursor-pointer"
+                  : "hover:bg-brand-50/40 hover:border hover:border-brand-100 cursor-pointer"
               }`}
             >
               <div

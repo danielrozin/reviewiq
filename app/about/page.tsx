@@ -128,7 +128,7 @@ export default function AboutPage() {
           <div key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
             <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="p-5 text-center">
-              <div className={`w-9 h-9 ${s.color} rounded-lg flex items-center justify-center mx-auto mb-3`}>
+              <div className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 {s.icon}
               </div>
               <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
@@ -151,7 +151,7 @@ export default function AboutPage() {
             "What do verified buyers consistently love and hate?",
             "How does it compare to the alternative everyone's considering?",
           ].map((q, i) => (
-            <div key={i} className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 hover:border-brand-100 hover:shadow-sm transition-all duration-200">
+            <div key={i} className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200">
               <div className="w-7 h-7 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                 {i + 1}
               </div>
@@ -170,7 +170,7 @@ export default function AboutPage() {
             <div key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-4 p-6">
-                <div className={`w-9 h-9 rounded-lg ${p.color} flex items-center justify-center shrink-0`}>
+                <div className={`w-9 h-9 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
                   {p.icon}
                 </div>
                 <div>
