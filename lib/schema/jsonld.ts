@@ -31,7 +31,14 @@ export function websiteSchema() {
     url: SITE_URL,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/search?q={search_term_string}`,
+      // Point at the real search-results surface. There is no /search page
+      // (only the /api/search JSON endpoint) — a 404 target invalidates the
+      // sitelinks searchbox. /products?q= is the URL the site's own SearchBar
+      // navigates to on Enter and reads via searchParams.get("q").
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/products?q={search_term_string}`,
+      },
       "query-input": "required name=search_term_string",
     },
   };
