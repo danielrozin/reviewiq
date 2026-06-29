@@ -32,7 +32,7 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
             <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
               {product.name}
             </h3>
-            <p className="text-[10px] text-gray-500 mt-0.5">
+            <p className="text-xs text-gray-500 mt-0.5">
               {product.brand} · {product.reviewCount} reviews
             </p>
           </div>

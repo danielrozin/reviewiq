@@ -77,7 +77,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
                 ))}
               </div>
               {review.verifiedPurchase && (
-                <span className="inline-flex items-center gap-0.5 text-[10px] text-trust-green font-medium mt-1">
+                <span className="inline-flex items-center gap-0.5 text-xs text-trust-green font-medium mt-1">
                   <svg aria-hidden="true" className="w-2.5 h-2.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>

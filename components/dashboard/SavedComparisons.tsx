@@ -65,7 +65,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
             {item.note && (
               <p className="text-xs text-gray-600 mt-0.5 truncate">{item.note}</p>
             )}
-            <p className="text-[10px] text-gray-500 mt-1">
+            <p className="text-xs text-gray-500 mt-1">
               Saved {item.savedAt}
             </p>
           </div>
@@ -74,7 +74,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
             <p className={`text-lg font-bold ${getScoreColor(item.productScore)}`}>
               {item.productScore}
             </p>
-            <p className="text-[10px] text-gray-500">
+            <p className="text-xs text-gray-500">
               {getScoreLabel(item.productScore)}
             </p>
           </div>

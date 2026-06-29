@@ -107,7 +107,7 @@ export default function SignInPage() {
           <div className="flex items-center gap-3 mt-8 pt-6 border-t border-gray-100">
             <div className="flex -space-x-2">
               {["bg-brand-400","bg-emerald-400","bg-amber-400","bg-pink-400"].map((c,i) => (
-                <div key={i} className={`w-7 h-7 rounded-full ${c} ring-2 ring-white flex items-center justify-center text-white text-[10px] font-bold`}>
+                <div key={i} className={`w-7 h-7 rounded-full ${c} ring-2 ring-white flex items-center justify-center text-white text-xs font-bold`}>
                   {["JL","SA","MK","TR"][i]}
                 </div>
               ))}

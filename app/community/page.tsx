@@ -178,7 +178,7 @@ export default function CommunityPage() {
             <div className="space-y-3">
               {topContributors.map((user, i) => (
                 <div key={user.id} className="flex items-center gap-3">
-                  <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold shrink-0 ${
+                  <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                     i === 0 ? "bg-amber-400 text-white" :
                     i === 1 ? "bg-gray-300 text-white" :
                     i === 2 ? "bg-orange-400 text-white" :

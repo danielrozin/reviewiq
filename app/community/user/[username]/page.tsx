@@ -93,7 +93,7 @@ export default async function UserProfilePage({ params }: Props) {
                   <p className={`text-lg font-bold ${stat.color}`}>
                     {formatNumber(stat.value)}
                   </p>
-                  <p className="text-[10px] text-gray-400 uppercase tracking-wider mt-0.5">
+                  <p className="text-xs text-gray-400 uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </p>
                 </div>
@@ -190,7 +190,7 @@ export default async function UserProfilePage({ params }: Props) {
                       </Link>
                       <time dateTime={comment.createdAt} className="text-xs text-gray-400">{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(comment.createdAt))}</time>
                       {comment.isTopAnswer && (
-                        <span className="text-[10px] font-medium text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-full">
+                        <span className="text-xs font-medium text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-full">
                           Top Answer
                         </span>
                       )}

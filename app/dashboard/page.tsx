@@ -83,7 +83,7 @@ export default async function DashboardPage() {
             </div>
             <div className="flex items-center gap-2 mt-1">
               <span
-                className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${TRUST_LEVEL_COLORS[user.trustLevel]}`}
+                className={`text-xs font-medium px-2 py-0.5 rounded-full ${TRUST_LEVEL_COLORS[user.trustLevel]}`}
               >
                 {TRUST_LEVEL_LABELS[user.trustLevel]}
               </span>

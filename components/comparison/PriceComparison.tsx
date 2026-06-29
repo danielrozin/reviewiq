@@ -38,7 +38,7 @@ function PriceCard({ product, isLowest }: { product: Product; isLowest: boolean 
   return (
     <div className={`border rounded-xl p-5 text-center hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 ${isLowest ? "border-emerald-200 bg-emerald-50/40" : "border-gray-100 hover:border-gray-200"}`}>
       {isLowest && (
-        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-lg mb-2">
+        <span className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded-lg mb-2">
           <svg aria-hidden="true" className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>

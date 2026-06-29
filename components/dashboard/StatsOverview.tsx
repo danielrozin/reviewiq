@@ -153,9 +153,9 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
         </div>
         {nextLevel && (
           <div className="flex justify-between mt-1.5">
-            <span className="text-[10px] text-gray-500">{TRUST_LEVEL_LABELS[stats.trustLevel]}</span>
-            <span className="text-[10px] text-gray-500">{progressPct}%</span>
-            <span className="text-[10px] text-gray-500">{TRUST_LEVEL_LABELS[nextLevel]}</span>
+            <span className="text-xs text-gray-500">{TRUST_LEVEL_LABELS[stats.trustLevel]}</span>
+            <span className="text-xs text-gray-500">{progressPct}%</span>
+            <span className="text-xs text-gray-500">{TRUST_LEVEL_LABELS[nextLevel]}</span>
           </div>
         )}
       </div>

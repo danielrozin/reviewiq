@@ -444,6 +444,40 @@ model EmailLog {
 }
 
 // ==========================================
+// Inbound Outreach Replies (Resend inbound webhook)
+// Captures replies to Info@revieweriq.com so BD agents can
+// see outreach responses without a full-access dashboard key.
+// ==========================================
+
+model OutreachReply {
+  id            String   @id @default(cuid())
+  // Deterministic key for idempotent upserts: Message-ID header,
+  // else the Svix delivery id, else a synthesized fingerprint.
+  dedupeKey     String   @unique
+  resendEventId String?  // Svix delivery id (svix-id header)
+  eventType     String?  // e.g. "email.received" / "inbound.email.received"
+  fromEmail     String
+  fromName      String?
+  toEmail       String?
+  subject       String?  @db.Text
+  bodyText      String?  @db.Text
+  bodyHtml      String?  @db.Text
+  messageId     String?  // Message-ID header of the inbound email
+  inReplyTo     String?  // In-Reply-To header (links to the outreach we sent)
+  references    String?  @db.Text // References header chain
+  headers       Json?    // Full normalized header map
+  raw           Json?    // Raw webhook event payload (for replay/debugging)
+  status        String   @default("unread") // unread | read | handled
+  receivedAt    DateTime @default(now())
+  createdAt     DateTime @default(now())
+
+  @@index([fromEmail])
+  @@index([receivedAt])
+  @@index([inReplyTo])
+  @@index([status])
+}
+
+// ==========================================
 // GDPR Consent Management
 // ==========================================
 

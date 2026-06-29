@@ -210,7 +210,7 @@ export default async function ThreadPage({ params }: Props) {
                       </svg>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[10px] text-gray-400 uppercase tracking-wider font-medium mb-0.5">Related Product</p>
+                      <p className="text-xs text-gray-400 uppercase tracking-wider font-medium mb-0.5">Related Product</p>
                       <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors capitalize truncate">
                         {thread.productSlug.replace(/-/g, " ")}
                       </p>
@@ -321,7 +321,7 @@ export default async function ThreadPage({ params }: Props) {
                 <div key={stat.label} className="text-center p-2.5 bg-gray-50 rounded-xl">
                   <div className={`flex items-center justify-center mb-1 ${stat.color}`}>{stat.icon}</div>
                   <p className="text-sm font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-[10px] text-gray-400 mt-0.5">{stat.label}</p>
+                  <p className="text-xs text-gray-400 mt-0.5">{stat.label}</p>
                 </div>
               ))}
             </div>

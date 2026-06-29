@@ -14,7 +14,7 @@ interface ProductImageProps {
 }
 
 const sizeConfig = {
-  sm: { icon: "w-5 h-5", brandBadge: "w-8 h-8 text-sm", nameText: "text-[10px]" },
+  sm: { icon: "w-5 h-5", brandBadge: "w-8 h-8 text-sm", nameText: "text-xs" },
   md: { icon: "w-7 h-7", brandBadge: "w-10 h-10 text-base", nameText: "text-xs" },
   lg: { icon: "w-9 h-9", brandBadge: "w-14 h-14 text-xl", nameText: "text-sm" },
 };

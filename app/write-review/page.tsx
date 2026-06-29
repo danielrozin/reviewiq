@@ -63,7 +63,7 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
                 ) : i + 1}
               </div>
               <span
-                className={`text-[10px] mt-1 font-medium ${
+                className={`text-xs mt-1 font-medium ${
                   isCurrent ? "text-brand-600" : isCompleted ? "text-emerald-600" : "text-gray-400"
                 }`}
               >

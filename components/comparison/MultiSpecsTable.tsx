@@ -70,7 +70,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                   )}
                 >
                   <span className="block truncate">{product.brand}</span>
-                  <span className="block text-[10px] font-normal text-gray-400 truncate">{product.name}</span>
+                  <span className="block text-xs font-normal text-gray-400 truncate">{product.name}</span>
                 </div>
               ))}
             </div>
@@ -100,7 +100,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                       <div className="px-4 py-3 text-gray-600 flex items-center gap-2">
                         <span className="truncate">{spec.label}</span>
                         {isDifferent && (
-                          <span className="text-[10px] font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none shrink-0">
+                          <span className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none shrink-0">
                             diff
                           </span>
                         )}

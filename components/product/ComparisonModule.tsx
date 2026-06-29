@@ -49,7 +49,7 @@ export function ComparisonModule({
               <div className="flex items-center justify-between p-4">
               <div className="flex items-center gap-3 min-w-0">
                 <div className="w-9 h-9 bg-brand-50 border border-brand-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-100 transition-colors">
-                  <span className="text-brand-600 text-[10px] font-bold tracking-tight">VS</span>
+                  <span className="text-brand-600 text-xs font-bold tracking-tight">VS</span>
                 </div>
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors truncate">

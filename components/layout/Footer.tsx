@@ -104,7 +104,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2 mb-4 group">
               <div className="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
-                <span className="text-white font-bold text-[10px]">RIQ</span>
+                <span className="text-white font-bold text-xs">RIQ</span>
               </div>
               <span className="text-lg font-bold text-gray-900">
                 Review<span className="text-brand-600">IQ</span>
