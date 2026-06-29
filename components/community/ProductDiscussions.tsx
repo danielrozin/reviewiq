@@ -13,9 +13,9 @@ interface ProductDiscussionsProps {
 export function ProductDiscussions({ threads, productName }: ProductDiscussionsProps) {
   if (threads.length === 0) {
     return (
-      <section>
+      <section aria-labelledby="community-discussion-heading">
         <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-gray-900">Community Discussion</h2>
+          <h2 id="community-discussion-heading" className="text-lg font-semibold text-gray-900">Community Discussion</h2>
         </div>
         <div className="border border-dashed border-gray-200 rounded-xl p-8 text-center">
           <p className="text-gray-600 text-sm mb-3">
@@ -38,10 +38,10 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
   const allShown = [...pinned, ...regular];
 
   return (
-    <section>
+    <section aria-labelledby="community-discussion-heading">
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h2 className="text-lg font-semibold text-gray-900">
+          <h2 id="community-discussion-heading" className="text-lg font-semibold text-gray-900">
             Community Discussion
           </h2>
           <p className="text-sm text-gray-500 mt-0.5">
