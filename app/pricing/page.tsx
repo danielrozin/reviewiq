@@ -11,9 +11,31 @@ export const metadata = buildMetadata({
   path: "/pricing",
 });
 
+const proOfferSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "ReviewIQ Pro",
+  description: "Ad-free experience, price tracking alerts, advanced comparison tools, and expert consultation.",
+  brand: { "@type": "Brand", name: "ReviewIQ" },
+  offers: {
+    "@type": "Offer",
+    price: "9.99",
+    priceCurrency: "USD",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "9.99",
+      priceCurrency: "USD",
+      billingDuration: "P1M",
+    },
+    availability: "https://schema.org/InStock",
+    url: "https://revieweriq.com/pricing",
+  },
+};
+
 export default function PricingPage() {
   return (
     <div className="bg-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(proOfferSchema) }} />
       <GuaranteeBadge />
       {/* Hero */}
       <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">

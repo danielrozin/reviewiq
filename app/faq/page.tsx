@@ -41,7 +41,7 @@ export default function FAQIndexPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           Frequently Asked Questions
         </h1>
-        <p className="text-lg text-gray-600 leading-relaxed">
+        <p data-speakable="faq-intro" className="text-lg text-gray-600 leading-relaxed">
           Honest answers about product review platforms, fake reviews, and why
           ReviewIQ does things differently.
         </p>

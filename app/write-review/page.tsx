@@ -378,8 +378,8 @@ export default function WriteReviewPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs items={[{ name: "Write a Review", url: "/write-review" }]} />
 
-      <div className="mt-8 max-w-2xl">
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+      <div role="form" aria-labelledby="write-review-heading" className="mt-8 max-w-2xl">
+        <h1 id="write-review-heading" className="text-3xl font-bold text-gray-900 mb-2">
           Write a Review
         </h1>
         <p className="text-gray-600 mb-6">

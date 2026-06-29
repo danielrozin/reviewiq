@@ -41,6 +41,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
 
       <Link
         href={`/category/${product.categorySlug}/${product.slug}`}
+        aria-label={`View ${product.brand} ${product.name} — SmartScore ${product.smartScore}`}
         className="block"
       >
         {/* Product image thumbnail */}

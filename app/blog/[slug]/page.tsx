@@ -186,6 +186,7 @@ export default async function BlogPostPage({
 
         {/* Content */}
         <div
+          data-speakable="blog-body"
           className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-brand-600 prose-strong:text-gray-900 prose-li:text-gray-600 prose-table:text-sm"
           dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
         />
