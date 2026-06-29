@@ -92,13 +92,15 @@ export function VoteControls({
     return (
       <div className="flex flex-col items-center gap-0.5">
         <button
+          type="button"
           onClick={() => handleVote("up")}
+          aria-pressed={vote === "up"}
+          aria-label="Upvote"
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
               : "text-gray-400 hover:bg-gray-50 hover:text-gray-600"
           }`}
-          aria-label="Upvote"
         >
           <UpIcon />
         </button>
@@ -106,13 +108,15 @@ export function VoteControls({
           {formatNumber(netVotes)}
         </span>
         <button
+          type="button"
           onClick={() => handleVote("down")}
+          aria-pressed={vote === "down"}
+          aria-label="Downvote"
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
               : "text-gray-400 hover:bg-gray-50 hover:text-gray-600"
           }`}
-          aria-label="Downvote"
         >
           <DownIcon />
         </button>
@@ -124,13 +128,15 @@ export function VoteControls({
     <div className="flex items-center gap-2">
       <div className="flex items-center gap-0.5 bg-gray-50 rounded-lg">
         <button
+          type="button"
           onClick={() => handleVote("up")}
+          aria-pressed={vote === "up"}
+          aria-label="Upvote"
           className={`${buttonSize} flex items-center justify-center rounded-l-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
               : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
           }`}
-          aria-label="Upvote"
         >
           <UpIcon />
         </button>
@@ -138,13 +144,15 @@ export function VoteControls({
           {formatNumber(netVotes)}
         </span>
         <button
+          type="button"
           onClick={() => handleVote("down")}
+          aria-pressed={vote === "down"}
+          aria-label="Downvote"
           className={`${buttonSize} flex items-center justify-center rounded-r-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
               : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
           }`}
-          aria-label="Downvote"
         >
           <DownIcon />
         </button>
