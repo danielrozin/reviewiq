@@ -12,7 +12,12 @@ export function ComparisonTray() {
   const compareUrl = `/compare?ids=${items.map((p) => p.id).join(",")}`;
 
   return (
-    <div className="fixed bottom-0 inset-x-0 z-50 animate-in slide-in-from-bottom-4 duration-300">
+    <div
+      role="region"
+      aria-label="Product comparison tray"
+      aria-live="polite"
+      className="fixed bottom-0 inset-x-0 z-50 animate-in slide-in-from-bottom-4 duration-300"
+    >
       <div className="max-w-4xl mx-auto px-4 pb-4">
         <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-4">
           <div className="flex items-center justify-between mb-3">
