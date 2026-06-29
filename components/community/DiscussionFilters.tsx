@@ -56,6 +56,8 @@ export function DiscussionFilters({
         {SORT_OPTIONS.map((option) => (
           <button
             key={option.value}
+            type="button"
+            aria-pressed={sort === option.value}
             onClick={() => handleSort(option.value)}
             className={`text-xs font-medium px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors border ${
               sort === option.value
@@ -71,6 +73,8 @@ export function DiscussionFilters({
       {/* Type filter pills */}
       <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
         <button
+          type="button"
+          aria-pressed={typeFilter === null}
           onClick={() => handleTypeFilter(null)}
           className={`text-[11px] font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
             typeFilter === null
@@ -83,6 +87,8 @@ export function DiscussionFilters({
         {THREAD_TYPES.map((type) => (
           <button
             key={type}
+            type="button"
+            aria-pressed={typeFilter === type}
             onClick={() => handleTypeFilter(typeFilter === type ? null : type)}
             className={`text-[11px] font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
               typeFilter === type
