@@ -93,7 +93,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             <button
               type="button"
               onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
-              className="px-2 py-1 text-xs text-gray-400 hover:text-gray-600 transition-colors"
+              className="px-2 py-1 text-xs text-gray-600 hover:text-gray-800 transition-colors"
             >
               Clear
             </button>
@@ -104,7 +104,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
         <select
           value={sort}
           onChange={(e) => { setSort(e.target.value as SortKey); setVisible(INITIAL_VISIBLE); }}
-          className="text-sm text-gray-600 bg-white border border-gray-400 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent cursor-pointer"
+          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent cursor-pointer"
           aria-label="Sort reviews"
         >
           {SORT_OPTIONS.map((o) => (
@@ -122,7 +122,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             </svg>
           </div>
           <p className="text-sm font-semibold text-gray-900 mb-1">No reviews match this filter</p>
-          <p className="text-xs text-gray-400 mb-3">Try a different star rating</p>
+          <p className="text-xs text-gray-500 mb-3">Try a different star rating</p>
           <button
             type="button"
             onClick={() => setFilterRating(null)}
