@@ -29,7 +29,12 @@ describe('websiteSchema', () => {
     const schema = websiteSchema()
     expect(schema['@type']).toBe('WebSite')
     expect(schema.potentialAction['@type']).toBe('SearchAction')
-    expect(schema.potentialAction.target).toContain('{search_term_string}')
+    // target is a schema.org EntryPoint; urlTemplate must point at the on-site
+    // search page (/products?q=), not the JSON-only /api/search 404 target.
+    expect(schema.potentialAction.target['@type']).toBe('EntryPoint')
+    expect(schema.potentialAction.target.urlTemplate).toContain('/products?q=')
+    expect(schema.potentialAction.target.urlTemplate).toContain('{search_term_string}')
+    expect(schema.potentialAction['query-input']).toBe('required name=search_term_string')
   })
 })
 
