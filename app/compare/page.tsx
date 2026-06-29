@@ -48,6 +48,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
           ) : (
             filtered.slice(0, 8).map((p) => (
               <button
+                type="button"
                 key={p.id}
                 onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
                 className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2"
@@ -89,8 +90,8 @@ function CompareContent() {
       <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Hero section */}
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-brand-50 border border-brand-100 rounded-2xl mb-5 mx-auto">
-            <svg className="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+          <div aria-hidden="true" className="inline-flex items-center justify-center w-16 h-16 bg-brand-50 border border-brand-100 rounded-2xl mb-5 mx-auto">
+            <svg aria-hidden="true" className="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
             </svg>
           </div>
@@ -137,7 +138,7 @@ function CompareContent() {
                 className="flex items-center justify-between px-4 py-3 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-sm"
               >
                 <span className="text-gray-700 group-hover:text-brand-600 transition-colors font-medium">{pair.label}</span>
-                <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
               </a>

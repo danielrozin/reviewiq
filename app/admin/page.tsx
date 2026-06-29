@@ -86,7 +86,7 @@ function StatCard({ label, value, icon: Icon, color }: {
 }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4 flex items-start gap-3">
-      <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${color}`}>
+      <div aria-hidden="true" className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${color}`}>
         <Icon className="w-5 h-5" />
       </div>
       <div>
@@ -159,7 +159,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-2xl p-8 w-full max-w-sm shadow-sm">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
+          <div aria-hidden="true" className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
             <Shield className="w-5 h-5 text-white" />
           </div>
           <div>
@@ -335,12 +335,12 @@ export default function AdminDashboard() {
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
+            <div aria-hidden="true" className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">
               <Shield className="w-4 h-4 text-white" />
             </div>
             <h1 className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
           </div>
-          <button onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700">
+          <button type="button" onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700">
             <LogOut className="w-4 h-4" /> Sign Out
           </button>
         </div>
@@ -353,6 +353,7 @@ export default function AdminDashboard() {
             {tabs.map((tab) => (
               <button
                 key={tab.key}
+                type="button"
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                   activeTab === tab.key
@@ -551,6 +552,7 @@ export default function AdminDashboard() {
                             <Eye className="w-4 h-4" />
                           </a>
                           <button
+                            type="button"
                             onClick={() => handleDeleteProduct(p.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                             title="Delete product"
@@ -576,6 +578,7 @@ export default function AdminDashboard() {
                 </span>
                 <div className="flex gap-2">
                   <button
+                    type="button"
                     onClick={() => setProductPage((p) => Math.max(1, p - 1))}
                     disabled={productPage === 1}
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
@@ -583,6 +586,7 @@ export default function AdminDashboard() {
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
+                    type="button"
                     onClick={() => setProductPage((p) => p + 1)}
                     disabled={productPage >= Math.ceil(productTotal / 15)}
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
@@ -624,6 +628,7 @@ export default function AdminDashboard() {
                 <div className="flex items-center gap-2">
                   <span className="text-xs text-gray-500">{selectedReviews.size} selected</span>
                   <button
+                    type="button"
                     onClick={() => handleBulkAction("published")}
                     disabled={loading}
                     className="px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700"
@@ -631,6 +636,7 @@ export default function AdminDashboard() {
                     Approve
                   </button>
                   <button
+                    type="button"
                     onClick={() => handleBulkAction("rejected")}
                     disabled={loading}
                     className="px-3 py-1.5 bg-red-600 text-white text-xs rounded-lg hover:bg-red-700"
@@ -699,6 +705,7 @@ export default function AdminDashboard() {
                         <div className="flex items-center justify-end gap-1">
                           {r.status !== "published" && (
                             <button
+                              type="button"
                               onClick={() => handleQueueAction(r.id, "published")}
                               className="p-1.5 text-gray-400 hover:text-emerald-600 rounded"
                               title="Approve"
@@ -708,6 +715,7 @@ export default function AdminDashboard() {
                           )}
                           {r.status !== "rejected" && (
                             <button
+                              type="button"
                               onClick={() => handleQueueAction(r.id, "rejected")}
                               className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                               title="Reject"
@@ -716,6 +724,7 @@ export default function AdminDashboard() {
                             </button>
                           )}
                           <button
+                            type="button"
                             onClick={() => handleDeleteReview(r.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                             title="Delete"
@@ -740,6 +749,7 @@ export default function AdminDashboard() {
                 </span>
                 <div className="flex gap-2">
                   <button
+                    type="button"
                     onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
                     disabled={reviewPage === 1}
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
@@ -747,6 +757,7 @@ export default function AdminDashboard() {
                     <ChevronLeft className="w-4 h-4" />
                   </button>
                   <button
+                    type="button"
                     onClick={() => setReviewPage((p) => p + 1)}
                     disabled={reviewPage >= Math.ceil(reviewTotal / 15)}
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
@@ -767,6 +778,7 @@ export default function AdminDashboard() {
                 Pending Reviews ({pendingReviews.length})
               </h2>
               <button
+                type="button"
                 onClick={loadPendingReviews}
                 className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-200 rounded-lg"
               >
@@ -806,18 +818,21 @@ export default function AdminDashboard() {
                       </div>
                       <div className="flex items-center gap-2 shrink-0">
                         <button
+                          type="button"
                           onClick={() => handleQueueAction(r.id, "published")}
                           className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700"
                         >
                           <Check className="w-3.5 h-3.5" /> Approve
                         </button>
                         <button
+                          type="button"
                           onClick={() => handleQueueAction(r.id, "flagged")}
                           className="flex items-center gap-1.5 px-3 py-1.5 border border-yellow-300 text-yellow-700 text-xs rounded-lg hover:bg-yellow-50"
                         >
                           <AlertTriangle className="w-3.5 h-3.5" /> Flag
                         </button>
                         <button
+                          type="button"
                           onClick={() => handleQueueAction(r.id, "rejected")}
                           className="flex items-center gap-1.5 px-3 py-1.5 border border-red-300 text-red-700 text-xs rounded-lg hover:bg-red-50"
                         >
@@ -906,6 +921,7 @@ export default function AdminDashboard() {
                     </div>
                   </a>
                   <button
+                    type="button"
                     onClick={() => setActiveTab("queue")}
                     className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
                   >
@@ -916,6 +932,7 @@ export default function AdminDashboard() {
                     </div>
                   </button>
                   <button
+                    type="button"
                     onClick={() => setActiveTab("products")}
                     className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
                   >

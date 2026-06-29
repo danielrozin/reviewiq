@@ -194,8 +194,8 @@ export default async function BlogPostPage({
         {post.faq.length > 0 && (
           <section className="mt-12 border-t border-gray-100 pt-8">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
-                <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <div aria-hidden="true" className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg aria-hidden="true" className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                 </svg>
               </div>
@@ -210,6 +210,7 @@ export default async function BlogPostPage({
                   <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4">
                     <span>{item.question}</span>
                     <svg
+                      aria-hidden="true"
                       className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -234,8 +235,8 @@ export default async function BlogPostPage({
         {categoryProducts.length > 0 && (
           <section className="mt-12 border-t border-gray-100 pt-8">
             <div className="flex items-center gap-2.5 mb-6">
-              <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
-                <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                 </svg>
               </div>
@@ -265,7 +266,7 @@ export default async function BlogPostPage({
                       {product.reviewCount} reviews
                     </p>
                   </div>
-                  <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                   </svg>
                 </Link>
@@ -309,7 +310,7 @@ export default async function BlogPostPage({
                         {" "}&middot; ${product.priceRange.min}–${product.priceRange.max}
                       </p>
                     </div>
-                    <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </Link>
@@ -360,7 +361,7 @@ export default async function BlogPostPage({
                   </p>
                   <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
                     Read article
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </div>
