@@ -69,6 +69,8 @@ export function ProductJumpNav() {
               key={id}
               type="button"
               onClick={() => scrollTo(id)}
+              aria-label={`Jump to ${label} section`}
+              aria-current={activeId === id ? "true" : undefined}
               className={`shrink-0 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
                 activeId === id
                   ? "bg-brand-600 text-white shadow-sm"

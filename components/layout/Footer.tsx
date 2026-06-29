@@ -77,7 +77,7 @@ export function Footer() {
                 You&rsquo;re in — check your inbox!
               </div>
             ) : (
-              <form onSubmit={handleNewsletter} className="flex gap-2 w-full sm:w-auto">
+              <form onSubmit={handleNewsletter} aria-label="Newsletter signup" className="flex gap-2 w-full sm:w-auto">
                 <input
                   type="email"
                   value={email}

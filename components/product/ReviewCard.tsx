@@ -32,11 +32,11 @@ export function ReviewCard({ review }: ReviewCardProps) {
 
       <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-500 mb-4">
         <span className="font-medium text-gray-600">{review.authorName}</span>
-        <span className="text-gray-200">·</span>
+        <span aria-hidden="true" className="text-gray-200">·</span>
         <span>Owned {review.timeOwned}</span>
-        <span className="text-gray-200">·</span>
+        <span aria-hidden="true" className="text-gray-200">·</span>
         <span className="capitalize">{review.experienceLevel} user</span>
-        <span className="text-gray-200">·</span>
+        <span aria-hidden="true" className="text-gray-200">·</span>
         <time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time>
       </div>
 

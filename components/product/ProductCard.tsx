@@ -135,6 +135,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 ? "bg-gray-100 text-gray-300 cursor-not-allowed"
                 : "bg-gray-50 text-gray-600 border border-gray-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100"
           }`}
+          aria-label={isSelected ? `Remove ${product.name} from comparison` : isFull ? "Comparison list full — max 4 products" : `Add ${product.name} to compare`}
+          aria-pressed={isSelected}
           title={isSelected ? "Remove from comparison" : isFull ? "Max 4 products" : "Add to compare"}
         >
           {isSelected ? (

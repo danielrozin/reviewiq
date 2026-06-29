@@ -74,9 +74,10 @@ export default function HomePage() {
                 <Link
                   key={tile.href + tile.label}
                   href={tile.href}
+                  aria-label={`${tile.label} ${tile.desc}`}
                   className="group p-3 bg-white/80 hover:bg-white border border-gray-200/80 hover:border-brand-200 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm"
                 >
-                  <span className="text-xl block mb-1">{tile.icon}</span>
+                  <span aria-hidden="true" className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
                   <p className="text-gray-600 text-xs mt-0.5">{tile.desc}</p>
                 </Link>
