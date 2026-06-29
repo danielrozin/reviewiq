@@ -19,7 +19,7 @@ export function GuaranteeBadge() {
     >
       <div className="relative w-24 h-24">
         {/* Circular badge */}
-        <svg viewBox="0 0 100 100" className="w-full h-full -rotate-12">
+        <svg aria-hidden="true" viewBox="0 0 100 100" className="w-full h-full -rotate-12">
           <circle cx="50" cy="50" r="46" fill="#059669" />
           <circle cx="50" cy="50" r="42" fill="none" stroke="#34d399" strokeWidth="1.5" strokeDasharray="4 3" />
         </svg>
