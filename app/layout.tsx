@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
+
+// Self-host Inter at build time via next/font (variable font covers wght 100–900).
+// Replaces the render-blocking @import url(fonts.googleapis.com) in globals.css:
+// no external request chain (faster LCP/FCP) + automatic size-adjust fallback (lower CLS).
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+});
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { organizationSchema, websiteSchema } from "@/lib/schema/jsonld";
@@ -30,7 +40,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={inter.variable}>
+      {/* Microsoft Clarity is loaded via the deferred <MicrosoftClarity /> */}
+      {/* component below (next/script lazyOnload) — the render-blocking inline */}
+      {/* <head> snippet was removed to keep third-party JS off the critical path. */}
       <body className="min-h-screen flex flex-col">
         <GoogleTagManager />
         <MetaPixel />
