@@ -164,7 +164,7 @@ export default function AboutPage() {
           <div key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
             <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="p-5 text-center">
-              <div className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
+              <div aria-hidden="true" className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 {s.icon}
               </div>
               <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
@@ -206,7 +206,7 @@ export default function AboutPage() {
             <div key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-4 p-6">
-                <div className={`w-9 h-9 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
+                <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
                   {p.icon}
                 </div>
                 <div>
@@ -253,7 +253,7 @@ export default function AboutPage() {
             href="/write-review"
             className="inline-flex items-center gap-2 px-6 py-3 bg-white text-brand-700 font-semibold rounded-xl hover:bg-brand-50 transition-colors"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125" />
             </svg>
             Write a Review
@@ -262,7 +262,7 @@ export default function AboutPage() {
             href="mailto:hello@reviewiq.com"
             className="inline-flex items-center gap-2 px-6 py-3 bg-brand-500/30 text-white font-semibold rounded-xl hover:bg-brand-500/50 transition-colors border border-brand-400/30"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
             </svg>
             hello@reviewiq.com

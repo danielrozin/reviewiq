@@ -155,7 +155,7 @@ export default function HowItWorksPage() {
             <section key={step.number} className="relative flex gap-6 sm:gap-8">
               {/* Step number bubble */}
               <div className="shrink-0 relative z-10">
-                <div className={`w-12 h-12 ${step.color} rounded-2xl flex items-center justify-center text-white text-xl shadow-md`}>
+                <div aria-hidden="true" className={`w-12 h-12 ${step.color} rounded-2xl flex items-center justify-center text-white text-xl shadow-md`}>
                   {step.icon}
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function HowItWorksPage() {
                       key={i}
                       className="flex items-start gap-2 text-sm text-gray-600"
                     >
-                      <svg className={`w-4 h-4 shrink-0 mt-0.5 ${step.textColor}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <svg aria-hidden="true" className={`w-4 h-4 shrink-0 mt-0.5 ${step.textColor}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                       {detail}
@@ -195,8 +195,8 @@ export default function HowItWorksPage() {
       {/* ReviewIQ vs Traditional Reviews comparison table */}
       <section className="mt-16 max-w-4xl">
         <div className="flex items-center gap-2.5 mb-2">
-          <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
-            <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
             </svg>
           </div>
@@ -210,7 +210,7 @@ export default function HowItWorksPage() {
                 <th className="text-left px-5 py-3.5 text-xs font-semibold text-gray-600 uppercase tracking-wider w-2/5">Feature</th>
                 <th className="text-center px-4 py-3.5 w-[30%]">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-600 text-white text-xs font-bold rounded-lg">
-                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                     ReviewIQ
@@ -234,32 +234,50 @@ export default function HowItWorksPage() {
                   <td className="px-5 py-3.5 font-medium text-gray-700">{row.feature}</td>
                   <td className="px-4 py-3.5 text-center">
                     {row.us === true ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      </span>
+                      <>
+                        <span aria-hidden="true" className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full">
+                          <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                        </span>
+                        <span className="sr-only">Yes</span>
+                      </>
                     ) : row.us === "partial" ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
-                      </span>
+                      <>
+                        <span aria-hidden="true" className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
+                          <svg aria-hidden="true" className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+                        </span>
+                        <span className="sr-only">Partial</span>
+                      </>
                     ) : (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-                      </span>
+                      <>
+                        <span aria-hidden="true" className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+                          <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                        </span>
+                        <span className="sr-only">No</span>
+                      </>
                     )}
                   </td>
                   <td className="px-4 py-3.5 text-center">
                     {row.them === true ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
-                      </span>
+                      <>
+                        <span aria-hidden="true" className="inline-flex items-center justify-center w-6 h-6 bg-emerald-100 rounded-full">
+                          <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" /></svg>
+                        </span>
+                        <span className="sr-only">Yes</span>
+                      </>
                     ) : row.them === "partial" ? (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
-                      </span>
+                      <>
+                        <span aria-hidden="true" className="inline-flex items-center justify-center w-6 h-6 bg-amber-50 rounded-full">
+                          <svg aria-hidden="true" className="w-3.5 h-3.5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" /></svg>
+                        </span>
+                        <span className="sr-only">Partial</span>
+                      </>
                     ) : (
-                      <span className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
-                        <svg className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
-                      </span>
+                      <>
+                        <span aria-hidden="true" className="inline-flex items-center justify-center w-6 h-6 bg-gray-100 rounded-full">
+                          <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" /></svg>
+                        </span>
+                        <span className="sr-only">No</span>
+                      </>
                     )}
                   </td>
                 </tr>
@@ -323,7 +341,7 @@ export default function HowItWorksPage() {
             },
           ].map((principle) => (
             <div key={principle.title} className="flex gap-4">
-              <div className={`w-9 h-9 ${principle.iconBg} ${principle.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
+              <div aria-hidden="true" className={`w-9 h-9 ${principle.iconBg} ${principle.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
                 {principle.icon}
               </div>
               <div>
