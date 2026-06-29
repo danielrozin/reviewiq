@@ -104,7 +104,7 @@ export default function HomePage() {
                 {/* Avatar stack */}
                 <div className="flex -space-x-2">
                   {["bg-brand-400", "bg-emerald-400", "bg-amber-400", "bg-pink-400", "bg-purple-400"].map((color, i) => (
-                    <div key={i} className={`w-7 h-7 rounded-full ${color} ring-2 ring-white flex items-center justify-center text-white text-[10px] font-bold`}>
+                    <div key={i} className={`w-7 h-7 rounded-full ${color} ring-2 ring-white flex items-center justify-center text-white text-xs font-bold`}>
                       {["JL", "SA", "MK", "TR", "PW"][i]}
                     </div>
                   ))}
@@ -354,11 +354,11 @@ export default function HomePage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+                    <span className={`text-xs font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
                       {THREAD_TYPE_LABELS[thread.threadType]}
                     </span>
                     {thread.isResolved && (
-                      <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                      <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
                         Resolved
                       </span>
                     )}
@@ -564,11 +564,11 @@ export default function HomePage() {
                     <div className="p-4 flex flex-col justify-between min-w-0">
                       <div>
                         <div className="flex items-center gap-1.5 mb-1">
-                          <span className="text-[10px] font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-full">
+                          <span className="text-xs font-bold text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-full">
                             #{i + 2} Pick
                           </span>
                         </div>
-                        <p className="text-[10px] text-brand-600 font-bold uppercase tracking-wider">{product.brand}</p>
+                        <p className="text-xs text-brand-600 font-bold uppercase tracking-wider">{product.brand}</p>
                         <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 mt-0.5">
                           {product.name}
                         </h3>

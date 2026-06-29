@@ -30,7 +30,7 @@ export function GuaranteeBadge() {
           <span className="text-white text-[9px] font-bold uppercase tracking-wide">guarantee</span>
         </div>
       </div>
-      <span className="mt-1.5 text-[10px] text-gray-600 text-center max-w-[80px] leading-tight">
+      <span className="mt-1.5 text-xs text-gray-600 text-center max-w-[80px] leading-tight">
         Money back, no questions
       </span>
     </div>

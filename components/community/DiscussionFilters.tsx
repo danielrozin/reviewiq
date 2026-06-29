@@ -76,7 +76,7 @@ export function DiscussionFilters({
           type="button"
           aria-pressed={typeFilter === null}
           onClick={() => handleTypeFilter(null)}
-          className={`text-[11px] font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
+          className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
             typeFilter === null
               ? "bg-brand-600 text-white border-brand-600"
               : "text-gray-500 border-gray-200 hover:border-gray-300"
@@ -90,7 +90,7 @@ export function DiscussionFilters({
             type="button"
             aria-pressed={typeFilter === type}
             onClick={() => handleTypeFilter(typeFilter === type ? null : type)}
-            className={`text-[11px] font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
+            className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors ${
               typeFilter === type
                 ? THREAD_TYPE_COLORS[type]
                 : "text-gray-500 border-gray-200 hover:border-gray-300"

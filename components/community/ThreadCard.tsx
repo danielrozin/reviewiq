@@ -25,15 +25,15 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
             {formatNumber(netVotes)}
           </span>
-          <span className="text-[10px] text-gray-500">votes</span>
+          <span className="text-xs text-gray-500">votes</span>
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
-            <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+            <span className={`text-xs font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
               {THREAD_TYPE_LABELS[thread.threadType]}
             </span>
             {thread.isResolved && (
-              <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+              <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
                 Resolved
               </span>
             )}
@@ -70,16 +70,16 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
         <div className="flex-1 min-w-0">
           {/* Thread type + tags */}
           <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className={`text-[11px] font-medium px-2 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+            <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
               {THREAD_TYPE_LABELS[thread.threadType]}
             </span>
             {thread.isPinned && (
-              <span className="text-[11px] font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+              <span className="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
                 Pinned
               </span>
             )}
             {thread.isResolved && (
-              <span className="text-[11px] font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
                 Resolved
               </span>
             )}
@@ -138,7 +138,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
               {thread.tags.slice(0, 4).map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] text-gray-600 bg-gray-50 px-2 py-0.5 rounded-full"
+                  className="text-xs text-gray-600 bg-gray-50 px-2 py-0.5 rounded-full"
                 >
                   {tag}
                 </span>

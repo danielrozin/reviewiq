@@ -185,8 +185,8 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
           }`}
         />
         {size === "default" && !query && (
-          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-0.5 px-1.5 py-0.5 text-[10px] font-medium text-gray-400 bg-gray-100 border border-gray-200 rounded pointer-events-none">
-            <span className="text-[11px]">⌘</span>K
+          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-0.5 px-1.5 py-0.5 text-xs font-medium text-gray-400 bg-gray-100 border border-gray-200 rounded pointer-events-none">
+            <span className="text-xs">⌘</span>K
           </kbd>
         )}
       </div>
