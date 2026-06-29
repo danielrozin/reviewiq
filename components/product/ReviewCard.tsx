@@ -42,9 +42,9 @@ export function ReviewCard({ review }: ReviewCardProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <div>
-          <p className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
+          <h5 className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
             Pros
-          </p>
+          </h5>
           <ul className="space-y-1">
             {review.pros.map((pro, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
@@ -59,9 +59,9 @@ export function ReviewCard({ review }: ReviewCardProps) {
           </ul>
         </div>
         <div>
-          <p className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
+          <h5 className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
             Cons
-          </p>
+          </h5>
           <ul className="space-y-1">
             {review.cons.map((con, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
@@ -81,23 +81,23 @@ export function ReviewCard({ review }: ReviewCardProps) {
 
       <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-50">
         <div className="flex flex-wrap gap-1.5">
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 text-xs font-medium">
+          <span aria-label={`Reliability: ${review.reliabilityRating} out of 5`} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 text-xs font-medium">
             <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
             </svg>
-            Reliability {review.reliabilityRating}/5
+            <span aria-hidden="true">Reliability {review.reliabilityRating}/5</span>
           </span>
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
+          <span aria-label={`Ease of use: ${review.easeOfUseRating} out of 5`} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
             <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
             </svg>
-            Ease {review.easeOfUseRating}/5
+            <span aria-hidden="true">Ease {review.easeOfUseRating}/5</span>
           </span>
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
+          <span aria-label={`Value: ${review.valueRating} out of 5`} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
             <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
-            Value {review.valueRating}/5
+            <span aria-hidden="true">Value {review.valueRating}/5</span>
           </span>
         </div>
         {review.helpfulCount > 0 && (
@@ -111,16 +111,16 @@ export function ReviewCard({ review }: ReviewCardProps) {
       </div>
 
       {review.aiTopics.length > 0 && (
-        <div className="flex flex-wrap gap-1.5 mt-3">
+        <ul role="list" aria-label="Review topics" className="flex flex-wrap gap-1.5 mt-3">
           {review.aiTopics.map((topic) => (
-            <span
+            <li
               key={topic}
               className="px-2 py-0.5 bg-gray-50 hover:bg-gray-100 text-gray-500 rounded-full text-xs transition-colors border border-gray-100"
             >
               {topic}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
       </div>
     </article>

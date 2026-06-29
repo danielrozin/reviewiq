@@ -30,7 +30,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             <li key={item.url} className="flex items-center gap-1.5">
               <span aria-hidden="true" className="text-gray-400">/</span>
               {index === items.length - 1 ? (
-                <span className="text-gray-900 font-medium">{item.name}</span>
+                <span aria-current="page" className="text-gray-900 font-medium">{item.name}</span>
               ) : (
                 <Link
                   href={item.url}
