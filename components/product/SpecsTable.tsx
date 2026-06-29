@@ -30,11 +30,11 @@ export function SpecsTable({ specs }: SpecsTableProps) {
           {specs.length} specs
         </span>
       </div>
-      <div className="border border-gray-100 rounded-xl overflow-hidden">
+      <dl className="border border-gray-100 rounded-xl overflow-hidden">
         {groupEntries.map(([groupName, groupSpecs], gi) => (
           <div key={groupName}>
             {groupEntries.length > 1 && (
-              <div className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+              <div className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between" role="presentation">
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   {groupName}
                 </span>
@@ -52,13 +52,13 @@ export function SpecsTable({ specs }: SpecsTableProps) {
                     : ""
                 )}
               >
-                <span className="text-gray-600 pr-4">{spec.label}</span>
-                <span className="text-gray-900 font-medium text-right">{spec.value}</span>
+                <dt className="text-gray-600 pr-4">{spec.label}</dt>
+                <dd className="text-gray-900 font-medium text-right">{spec.value}</dd>
               </div>
             ))}
           </div>
         ))}
-      </div>
+      </dl>
     </section>
   );
 }

@@ -16,7 +16,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
   const verdict = score !== undefined ? getVerdict(score) : null;
 
   return (
-    <section aria-labelledby="ai-review-summary" className="bg-gradient-to-br from-brand-50/50 to-white border border-brand-100/60 rounded-2xl p-6 lg:p-8">
+    <section aria-labelledby="ai-review-summary" data-speakable="ai-summary" className="bg-gradient-to-br from-brand-50/50 to-white border border-brand-100/60 rounded-2xl p-6 lg:p-8">
       <div className="flex items-center gap-2 mb-4">
         <div aria-hidden="true" className="w-8 h-8 bg-brand-600 rounded-xl flex items-center justify-center">
           <svg aria-hidden="true" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
@@ -35,7 +35,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
 
       {/* TL;DR Verdict */}
       {verdict && (
-        <div className={`flex items-center gap-3 px-4 py-3 rounded-xl border mb-6 ${verdict.bg} ${verdict.border}`}>
+        <div role="note" data-speakable="verdict" className={`flex items-center gap-3 px-4 py-3 rounded-xl border mb-6 ${verdict.bg} ${verdict.border}`}>
           <svg aria-hidden="true" className={`w-5 h-5 shrink-0 ${verdict.color}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" />
           </svg>
