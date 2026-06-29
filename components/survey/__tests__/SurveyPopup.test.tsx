@@ -91,17 +91,24 @@ describe("SurveyPopup form_abandon", () => {
     expect(sendBeacon).toHaveBeenCalledTimes(1);
   });
 
-  it("records the reached step after the user advances", () => {
+  it("does NOT fire form_abandon after the user answers Q1 (submission, not abandon)", () => {
     showSurvey();
 
-    // Popup opens on Q1 (no intro gate, DAN-1170). Answering Q1 advances to Q2.
-    fireEvent.click(document.querySelector(".space-y-2 button")!);
+    // Single-question flow (DAN-1508 bottom bar): answering Q1 completes the
+    // survey and advances straight to the thanks state — there is no Q2.
+    // The first button inside the intent-options row is a Q1 answer; the close
+    // button is a sibling outside `.flex-wrap`.
+    fireEvent.click(document.querySelector(".flex-wrap button")!);
+
+    expect(trackEvent).toHaveBeenCalledWith("survey_q1_answered", expect.anything());
 
     act(() => {
       window.dispatchEvent(new Event("pagehide"));
     });
 
-    expect(trackEvent).toHaveBeenCalledWith("survey_form_abandon", { step: "q2" });
+    // Answering is a submit (submittedRef guard), so the later page-leave must
+    // NOT log an abandon beacon.
+    expect(trackEvent).not.toHaveBeenCalledWith("survey_form_abandon", expect.anything());
   });
 
   it("records a dismissal and does NOT also fire form_abandon on a later page-leave", () => {
