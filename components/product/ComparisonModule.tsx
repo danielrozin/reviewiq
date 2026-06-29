@@ -24,14 +24,14 @@ export function ComparisonModule({
   if (comparisons.length === 0) return null;
 
   return (
-    <section>
+    <section aria-labelledby="compare-with-heading">
       <div className="flex items-center gap-2.5 mb-4">
-        <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
-          <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+          <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
           </svg>
         </div>
-        <h2 className="text-lg font-semibold text-gray-900">Compare With</h2>
+        <h2 id="compare-with-heading" className="text-lg font-semibold text-gray-900">Compare With</h2>
       </div>
       <div className="space-y-2.5">
         {comparisons.map((comp) => {
@@ -57,7 +57,7 @@ export function ComparisonModule({
                   </p>
                   {comp.searchVolume && (
                     <p className="text-xs text-gray-400 flex items-center gap-1 mt-0.5">
-                      <svg className="w-3 h-3 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                      <svg aria-hidden="true" className="w-3 h-3 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                       </svg>
                       {formatSearchVolume(comp.searchVolume)}/mo
@@ -67,7 +67,7 @@ export function ComparisonModule({
               </div>
               <span className="inline-flex items-center gap-1 text-brand-600 text-xs font-medium shrink-0 ml-3">
                 Compare
-                <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </span>
