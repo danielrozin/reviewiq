@@ -92,8 +92,8 @@ export default function SignInPage() {
               },
             ].map((benefit) => (
               <li key={benefit.title} className="flex items-start gap-3">
-                <div className={`w-8 h-8 ${benefit.bg} rounded-lg flex items-center justify-center shrink-0 mt-0.5`}>
-                  <svg className={`w-4 h-4 ${benefit.fg}`} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+                <div aria-hidden="true" className={`w-8 h-8 ${benefit.bg} rounded-lg flex items-center justify-center shrink-0 mt-0.5`}>
+                  <svg aria-hidden="true" className={`w-4 h-4 ${benefit.fg}`} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d={benefit.icon} />
                   </svg>
                 </div>
@@ -143,7 +143,7 @@ export default function SignInPage() {
               disabled={loading}
               className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-sm"
             >
-              <svg className="w-5 h-5" viewBox="0 0 24 24">
+              <svg aria-hidden="true" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
                 <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
@@ -161,7 +161,7 @@ export default function SignInPage() {
             <ul className="space-y-2">
               {["No affiliate bias", "78% verified buyer rate", "Cancel or leave anytime"].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-xs text-gray-600">
-                  <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                  <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                   {item}

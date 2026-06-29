@@ -20,6 +20,7 @@ export default function Error({
           An unexpected error occurred. Please try again.
         </p>
         <button
+          type="button"
           onClick={reset}
           className="inline-flex px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors"
         >

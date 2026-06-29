@@ -18,6 +18,8 @@ export function PricingFAQAccordion({ faqs }: Props) {
     <div className="space-y-3">
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
+        const btnId = `pricing-faq-btn-${i}`;
+        const panelId = `pricing-faq-panel-${i}`;
         return (
           <div
             key={faq.q}
@@ -26,16 +28,19 @@ export function PricingFAQAccordion({ faqs }: Props) {
             }`}
           >
             <button
+              id={btnId}
               type="button"
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
+              aria-controls={panelId}
               className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 hover:bg-gray-50/50 transition-colors"
             >
               <span className={`font-semibold text-sm sm:text-base ${isOpen ? "text-brand-700" : "text-gray-900"}`}>
                 {faq.q}
               </span>
-              <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${isOpen ? "bg-brand-100 text-brand-600" : "bg-gray-100 text-gray-400"}`}>
+              <span aria-hidden="true" className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${isOpen ? "bg-brand-100 text-brand-600" : "bg-gray-100 text-gray-400"}`}>
                 <svg
+                  aria-hidden="true"
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
                   fill="none"
                   viewBox="0 0 24 24"
@@ -47,7 +52,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
               </span>
             </button>
             {isOpen && (
-              <div className="px-6 pb-5">
+              <div id={panelId} role="region" aria-labelledby={btnId} className="px-6 pb-5">
                 <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
               </div>
             )}

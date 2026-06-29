@@ -58,6 +58,7 @@ export function PricingTiers() {
           {PLANS.free.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
               <svg
+                aria-hidden="true"
                 className="w-5 h-5 text-gray-400 shrink-0 mt-0.5"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -72,6 +73,7 @@ export function PricingTiers() {
         </ul>
 
         <button
+          type="button"
           disabled
           className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-gray-100 text-gray-600 cursor-default"
         >
@@ -107,6 +109,7 @@ export function PricingTiers() {
           {PLANS.pro.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
               <svg
+                aria-hidden="true"
                 className="w-5 h-5 text-brand-600 shrink-0 mt-0.5"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -121,13 +124,14 @@ export function PricingTiers() {
         </ul>
 
         <button
+          type="button"
           onClick={handleSubscribe}
           disabled={loading}
           className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-wait inline-flex items-center justify-center gap-2"
         >
           {loading ? (
             <>
-              <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+              <svg aria-hidden="true" className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" />
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4Z" />
               </svg>
@@ -135,7 +139,7 @@ export function PricingTiers() {
             </>
           ) : (
             <>
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
               </svg>
               Upgrade to Pro

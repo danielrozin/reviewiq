@@ -57,7 +57,7 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
                 }`}
               >
                 {isCompleted ? (
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                  <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
                 ) : i + 1}
@@ -108,7 +108,7 @@ function StarRating({
           } hover:text-amber-300`}
           aria-label={`Rate ${star} out of 5`}
         >
-          <svg className={iconSize} fill="currentColor" viewBox="0 0 20 20">
+          <svg aria-hidden="true" className={iconSize} fill="currentColor" viewBox="0 0 20 20">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
           </svg>
         </button>
@@ -264,8 +264,8 @@ export default function WriteReviewPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Breadcrumbs items={[{ name: "Write a Review", url: "/write-review" }]} />
         <div className="max-w-lg mx-auto text-center py-16">
-          <div className="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+          <div aria-hidden="true" className="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <svg aria-hidden="true" className="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
             </svg>
           </div>
@@ -301,8 +301,8 @@ export default function WriteReviewPage() {
           {/* Success card */}
           <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-3xl p-10 text-center mb-8">
             <div className="relative inline-flex items-center justify-center mb-6">
-              <div className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-200">
-                <svg className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+              <div aria-hidden="true" className="w-20 h-20 bg-emerald-500 rounded-full flex items-center justify-center shadow-lg shadow-emerald-200">
+                <svg aria-hidden="true" className="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
@@ -335,7 +335,7 @@ export default function WriteReviewPage() {
                 },
               ].map((item) => (
                 <div key={item.label} className="text-center">
-                  <span className="w-8 h-8 bg-white rounded-xl flex items-center justify-center mx-auto mb-1.5 shadow-sm border border-emerald-100">{item.icon}</span>
+                  <span aria-hidden="true" className="w-8 h-8 bg-white rounded-xl flex items-center justify-center mx-auto mb-1.5 shadow-sm border border-emerald-100">{item.icon}</span>
                   <span className="text-xs font-medium text-emerald-700">{item.label}</span>
                 </div>
               ))}
@@ -505,8 +505,8 @@ export default function WriteReviewPage() {
               <div className="space-y-2">
                 {pros.map((pro, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <span aria-hidden="true" className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg aria-hidden="true" className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                       </svg>
                     </span>
@@ -530,8 +530,8 @@ export default function WriteReviewPage() {
               <div className="space-y-2">
                 {cons.map((con, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <span aria-hidden="true" className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg aria-hidden="true" className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
                       </svg>
                     </span>
@@ -661,7 +661,7 @@ export default function WriteReviewPage() {
               }`}
             >
               Continue
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </button>
@@ -682,7 +682,7 @@ export default function WriteReviewPage() {
               >
                 {isSubmitting ? (
                   <>
-                    <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <svg aria-hidden="true" className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
                     </svg>
                     Submitting…
@@ -690,7 +690,7 @@ export default function WriteReviewPage() {
                 ) : (
                   <>
                     Submit Review
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                     </svg>
                   </>
