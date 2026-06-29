@@ -103,7 +103,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
               }
               size="sm"
             />
-            <span className="text-xs text-gray-400 mt-1">
+            <span className="text-xs text-gray-500 mt-1">
               {totalReviews} reviews
             </span>
           </div>
@@ -278,7 +278,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>
 
       <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-        <div className="flex gap-4 text-xs text-gray-400">
+        <div className="flex gap-4 text-xs text-gray-500">
           {review.reliabilityRating != null && (
             <span>Reliability: {review.reliabilityRating}/5</span>
           )}

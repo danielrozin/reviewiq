@@ -103,7 +103,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
             <span className={cn("font-semibold text-sm", getScoreColor(score))}>
               {getScoreLabel(score)}
             </span>
-            <span className="text-xs text-gray-400">SmartScore</span>
+            <span className="text-xs text-gray-500">SmartScore</span>
           </div>
         )}
       </div>
@@ -128,7 +128,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
           <span className={cn("font-semibold text-sm", getScoreColor(score))}>
             {getScoreLabel(score)}
           </span>
-          <span className="text-xs text-gray-400">SmartScore</span>
+          <span className="text-xs text-gray-500">SmartScore</span>
         </div>
       )}
     </div>

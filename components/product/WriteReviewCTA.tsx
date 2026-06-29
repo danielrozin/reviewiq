@@ -38,7 +38,7 @@ export function WriteReviewCTA({ productName, productSlug }: WriteReviewCTAProps
         </svg>
         Write a Review
       </Link>
-      <p className="text-xs text-gray-400 mt-3">Free · No account required</p>
+      <p className="text-xs text-gray-500 mt-3">Free · No account required</p>
     </section>
   );
 }
