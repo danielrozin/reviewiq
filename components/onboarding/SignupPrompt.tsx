@@ -41,7 +41,7 @@ export function SignupPrompt() {
     <div className="fixed inset-0 z-[90] flex items-end sm:items-center justify-center p-4">
       <div aria-hidden="true" className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={dismissSignup} />
 
-      <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
+      <div role="dialog" aria-modal="true" aria-label="Create a free account" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
         <button
           type="button"
           onClick={dismissSignup}

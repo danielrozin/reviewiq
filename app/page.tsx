@@ -344,7 +344,7 @@ export default function HomePage() {
                 href={`/community/thread/${thread.id}`}
                 className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all"
               >
-                <div className="flex flex-col items-center shrink-0 min-w-[36px]">
+                <div className="flex flex-col items-center shrink-0 min-w-9">
                   <svg aria-hidden="true" className={`w-4 h-4 mb-0.5 ${netVotes > 0 ? "text-brand-400" : "text-gray-300"}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
                   </svg>

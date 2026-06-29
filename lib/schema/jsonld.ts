@@ -123,6 +123,7 @@ export function reviewSchema(review: Review) {
     author: { "@type": "Person", name: review.authorName },
     datePublished: review.createdAt,
     reviewBody: review.body,
+    inLanguage: "en",
   };
 }
 
