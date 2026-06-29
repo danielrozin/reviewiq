@@ -303,6 +303,26 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
   };
 }
 
+export function homePageSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "ReviewIQ — Real Reviews, Real Intelligence",
+    description: "AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.",
+    url: SITE_URL,
+    inLanguage: "en",
+    about: {
+      "@type": "Organization",
+      name: "ReviewIQ",
+      url: SITE_URL,
+    },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='hero-tagline']"],
+    },
+  };
+}
+
 export function speakableSchema(productName: string, productUrl: string) {
   return {
     "@context": "https://schema.org",

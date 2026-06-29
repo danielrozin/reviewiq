@@ -10,6 +10,7 @@ import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { formatNumber } from "@/lib/utils";
 import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { homePageSchema, categoryListSchema } from "@/lib/schema/jsonld";
 import { HeroSearch } from "@/components/home/HeroSearch";
 import { RecentlyViewedStrip } from "@/components/home/RecentlyViewedStrip";
 
@@ -29,6 +30,14 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema()) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryListSchema(categories)) }}
+      />
       {/* Hero Section */}
       <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">
         {/* Subtle background orbs */}
@@ -47,7 +56,7 @@ export default function HomePage() {
               Reviews you can{" "}
               <span className="text-brand-600">actually trust</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-up delay-100">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-up delay-100" data-speakable="hero-tagline">
               AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.
             </p>
             <div className="flex justify-center mb-8 animate-fade-up delay-200">
