@@ -1,6 +1,6 @@
 export function CardSkeleton() {
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-5 animate-pulse">
+    <div role="status" aria-label="Loading product card" className="bg-white border border-gray-100 rounded-2xl p-5 animate-pulse">
       <div className="flex items-start gap-3 mb-4">
         <div className="w-12 h-12 bg-gray-200 rounded-xl shrink-0" />
         <div className="flex-1 space-y-2">
@@ -22,7 +22,7 @@ export function CardSkeleton() {
 
 export function CardSkeletonGrid({ count = 6 }: { count?: number }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div aria-busy="true" aria-label="Loading products" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {Array.from({ length: count }).map((_, i) => (
         <CardSkeleton key={i} />
       ))}

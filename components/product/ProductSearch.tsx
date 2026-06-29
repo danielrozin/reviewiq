@@ -245,6 +245,7 @@ export function ProductSearch() {
         <select
           value={category}
           onChange={(e) => setFilter("category", e.target.value)}
+          aria-label="Filter by category"
           className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           <option value="">All Categories</option>
@@ -259,6 +260,7 @@ export function ProductSearch() {
         <select
           value={sort}
           onChange={(e) => setFilter("sort", e.target.value)}
+          aria-label="Sort products"
           className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           {SORT_OPTIONS.map((opt) => (
@@ -272,6 +274,7 @@ export function ProductSearch() {
         <select
           value={minRating}
           onChange={(e) => setFilter("rating", Number(e.target.value))}
+          aria-label="Filter by minimum rating"
           className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           <option value={0}>Any Rating</option>

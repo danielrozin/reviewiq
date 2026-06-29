@@ -106,7 +106,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
         )}
 
         {/* AI analysis text */}
-        <p className="text-gray-700 text-sm leading-relaxed">{verdict}</p>
+        <p data-speakable="comparison-verdict" className="text-gray-700 text-sm leading-relaxed">{verdict}</p>
       </div>
     </section>
   );
