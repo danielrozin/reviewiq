@@ -98,7 +98,7 @@ export function SurveyPopup() {
   return (
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismiss} />
+      <div aria-hidden="true" className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismiss} />
 
       {/* Card */}
       <div className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
