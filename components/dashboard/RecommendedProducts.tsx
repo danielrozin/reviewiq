@@ -41,7 +41,7 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
             <p className="text-xs text-gray-500 text-right">
               {getScoreLabel(product.smartScore)}
             </p>
-            <svg className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
             </svg>
           </div>

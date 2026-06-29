@@ -106,7 +106,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
             key={stat.label}
             className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} hover:-translate-y-0.5 transition-all duration-200`}
           >
-            <div className={`w-9 h-9 rounded-xl ${STAT_COLORS[i].icon} flex items-center justify-center mb-3`}>
+            <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${STAT_COLORS[i].icon} flex items-center justify-center mb-3`}>
               {STAT_ICONS[i]}
             </div>
             <p className="text-2xl font-bold text-gray-900">
@@ -121,7 +121,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
       <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
-            <span className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
+            <span aria-hidden="true" className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
               {TRUST_LEVEL_ICONS[stats.trustLevel]}
             </span>
             <div>
@@ -136,7 +136,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
               <p className="text-xs text-gray-600">
                 <span className="font-semibold text-gray-700">{pointsToNext}</span> pts to {TRUST_LEVEL_LABELS[nextLevel]}
               </p>
-              <p className="inline-flex items-center gap-1 text-xs text-gray-500 mt-0.5">{TRUST_LEVEL_ICONS[nextLevel]} Next level</p>
+              <p className="inline-flex items-center gap-1 text-xs text-gray-500 mt-0.5"><span aria-hidden="true">{TRUST_LEVEL_ICONS[nextLevel]}</span> Next level</p>
             </div>
           )}
           {!nextLevel && (

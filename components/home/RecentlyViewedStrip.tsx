@@ -27,11 +27,11 @@ export function RecentlyViewedStrip() {
   if (!mounted || items.length === 0) return null;
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <section aria-labelledby="recently-viewed-heading" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-lg font-semibold text-gray-900 flex items-center gap-2">
-          <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
-            <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <h2 id="recently-viewed-heading" className="text-lg font-semibold text-gray-900 flex items-center gap-2">
+          <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
             </svg>
           </div>
@@ -45,7 +45,7 @@ export function RecentlyViewedStrip() {
           }}
           className="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-gray-600 transition-colors"
         >
-          <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
           </svg>
           Clear

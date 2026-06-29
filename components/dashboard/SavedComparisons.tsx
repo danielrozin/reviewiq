@@ -18,8 +18,8 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
   if (items.length === 0) {
     return (
       <div className="text-center py-10 px-6 bg-white border border-gray-100 rounded-2xl">
-        <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mx-auto mb-3">
-          <svg className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+        <div aria-hidden="true" className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <svg aria-hidden="true" className="w-6 h-6 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
           </svg>
         </div>
@@ -32,7 +32,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
           className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-purple-700 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors"
         >
           Browse products
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </Link>
