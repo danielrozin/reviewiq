@@ -514,6 +514,7 @@ export default function WriteReviewPage() {
                       type="text"
                       value={pro}
                       onChange={(e) => updatePro(i, e.target.value)}
+                      aria-label={`Pro ${i + 1}`}
                       placeholder={`Pro ${i + 1}`}
                       className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                     />
@@ -539,6 +540,7 @@ export default function WriteReviewPage() {
                       type="text"
                       value={con}
                       onChange={(e) => updateCon(i, e.target.value)}
+                      aria-label={`Con ${i + 1}`}
                       placeholder={`Con ${i + 1}`}
                       className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
                     />

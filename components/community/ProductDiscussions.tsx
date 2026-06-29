@@ -72,21 +72,21 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
                 <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
                   {formatNumber(netVotes)}
                 </span>
-                <span className="text-[10px] text-gray-500">votes</span>
+                <span className="text-xs text-gray-500">votes</span>
               </div>
 
               <div className="flex-1 min-w-0">
                 <div className="flex flex-wrap items-center gap-2 mb-1.5">
-                  <span className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+                  <span className={`text-xs font-medium px-1.5 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
                     {THREAD_TYPE_LABELS[thread.threadType]}
                   </span>
                   {thread.isPinned && (
-                    <span className="text-[10px] font-medium text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-full">
+                    <span className="text-xs font-medium text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-full">
                       Pinned
                     </span>
                   )}
                   {thread.isResolved && (
-                    <span className="text-[10px] font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+                    <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
                       Resolved
                     </span>
                   )}

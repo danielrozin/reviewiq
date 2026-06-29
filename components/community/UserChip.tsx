@@ -16,7 +16,7 @@ export function UserChip({ user, showTrustLevel = true, showReputation = false, 
     .join("")
     .toUpperCase();
 
-  const avatarSize = size === "sm" ? "w-6 h-6 text-[10px]" : "w-8 h-8 text-xs";
+  const avatarSize = size === "sm" ? "w-6 h-6 text-xs" : "w-8 h-8 text-xs";
 
   return (
     <Link
@@ -33,7 +33,7 @@ export function UserChip({ user, showTrustLevel = true, showReputation = false, 
       </span>
       {showTrustLevel && user.trustLevel !== "newcomer" && (
         <span
-          className={`text-[10px] font-medium px-1.5 py-0.5 rounded-full ${TRUST_LEVEL_COLORS[user.trustLevel]}`}
+          className={`text-xs font-medium px-1.5 py-0.5 rounded-full ${TRUST_LEVEL_COLORS[user.trustLevel]}`}
         >
           {TRUST_LEVEL_LABELS[user.trustLevel]}
         </span>

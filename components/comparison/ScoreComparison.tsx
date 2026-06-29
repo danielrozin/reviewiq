@@ -29,7 +29,7 @@ export function ScoreComparison({ productA, productB }: ScoreComparisonProps) {
         <div className="flex flex-col items-center gap-2 shrink-0">
           <span className="text-xs font-bold text-gray-400 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full tracking-wider">VS</span>
           {diff !== 0 && (
-            <span className="text-[10px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
+            <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
               {Math.abs(diff)} pt{Math.abs(diff) !== 1 ? "s" : ""}
             </span>
           )}

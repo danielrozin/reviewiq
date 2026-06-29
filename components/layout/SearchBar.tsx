@@ -177,6 +177,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
           onChange={(e) => search(e.target.value)}
           onFocus={() => query.length >= 2 && results.length > 0 && setOpen(true)}
           onKeyDown={handleKeyDown}
+          aria-label="Search products, discussions, and categories"
           placeholder={placeholder || "Search products, discussions, categories..."}
           className={`w-full border border-gray-400 bg-gray-50 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent focus:bg-white transition-colors ${
             size === "lg"

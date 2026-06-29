@@ -221,6 +221,7 @@ export function ProductSearch() {
           type="text"
           value={query}
           onChange={(e) => setFilter("q", e.target.value)}
+          aria-label="Search by product name, brand, or keyword"
           placeholder="Search by product name, brand, or keyword..."
           className="w-full pl-12 pr-4 py-3 text-base border border-gray-400 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent transition-colors"
         />
@@ -291,6 +292,7 @@ export function ProductSearch() {
             max={priceMax}
             onChange={(e) => setFilter("priceMin", Number(e.target.value))}
             className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+            aria-label="Minimum price"
             placeholder="Min"
           />
           <span className="text-gray-400">—</span>
@@ -301,6 +303,7 @@ export function ProductSearch() {
             max={GLOBAL_MAX_PRICE}
             onChange={(e) => setFilter("priceMax", Number(e.target.value))}
             className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm"
+            aria-label="Maximum price"
             placeholder="Max"
           />
         </div>
