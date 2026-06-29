@@ -23,8 +23,8 @@ export function QuickStartSuggestions() {
   return (
     <div className="bg-gradient-to-br from-brand-50/60 to-white border border-brand-100 rounded-2xl p-5 sm:p-6">
       <div className="flex items-center gap-2 mb-4">
-        <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center">
-          <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+        <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center">
+          <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18 9 11.25l4.306 4.306a11.95 11.95 0 0 1 5.814-5.518l2.74-1.22m0 0-5.94-2.281m5.94 2.28-2.28 5.941" />
           </svg>
         </div>
@@ -41,8 +41,8 @@ export function QuickStartSuggestions() {
             href={`/category/${cat.slug}`}
             className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm transition-all group"
           >
-            <div className="w-6 h-6 bg-brand-50 rounded-md flex items-center justify-center shrink-0">
-              <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <div aria-hidden="true" className="w-6 h-6 bg-brand-50 rounded-md flex items-center justify-center shrink-0">
+              <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d={cat.icon} />
               </svg>
             </div>
@@ -58,7 +58,7 @@ export function QuickStartSuggestions() {
         className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
       >
         Browse all products
-        <svg className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+        <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
         </svg>
       </Link>

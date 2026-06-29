@@ -50,8 +50,8 @@ export function ProfileChecklist() {
     <div className="bg-white border border-gray-100 rounded-2xl p-5 sm:p-6">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
-          <div className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
-            <svg className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <div aria-hidden="true" className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
+            <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </div>
@@ -87,6 +87,7 @@ export function ProfileChecklist() {
               }`}
             >
               <div
+                aria-hidden="true"
                 className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center ${
                   done
                     ? "bg-emerald-500 text-white"
@@ -112,7 +113,7 @@ export function ProfileChecklist() {
                 )}
               </div>
               {!done && (
-                <svg className="w-4 h-4 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <svg aria-hidden="true" className="w-4 h-4 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               )}
