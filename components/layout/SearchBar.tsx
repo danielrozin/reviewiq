@@ -233,7 +233,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                 <p className="text-sm font-medium text-gray-900 truncate">
                   {result.name}
                 </p>
-                <p className="text-xs text-gray-400 truncate">
+                <p className="text-xs text-gray-500 truncate">
                   {result.subtitle}
                 </p>
               </div>

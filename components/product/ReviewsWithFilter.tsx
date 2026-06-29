@@ -60,7 +60,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <h2 id="verified-reviews-heading" className="text-lg font-semibold text-gray-900 shrink-0">
             Verified Reviews
           </h2>
-          <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums shrink-0">
+          <span className="ml-auto text-xs text-gray-500 font-medium tabular-nums shrink-0">
             {totalCount.toLocaleString()} total
           </span>
         </div>

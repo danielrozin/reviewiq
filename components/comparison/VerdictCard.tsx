@@ -82,7 +82,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
                 {loser.smartScore}
               </div>
               <div className="min-w-0">
-                <p className="text-xs font-medium text-gray-400 uppercase tracking-wider">Runner-up</p>
+                <p className="text-xs font-medium text-gray-500 uppercase tracking-wider">Runner-up</p>
                 <p className="text-sm font-semibold text-gray-700 group-hover:text-brand-600 transition-colors truncate">{loser.name}</p>
                 <p className="text-xs text-gray-500">{loser.brand}</p>
               </div>

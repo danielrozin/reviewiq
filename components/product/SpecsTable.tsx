@@ -26,7 +26,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
         <h2 id="technical-specs-heading" className="text-lg font-semibold text-gray-900">
           Technical Specifications
         </h2>
-        <span className="ml-auto text-xs text-gray-400 font-medium tabular-nums">
+        <span className="ml-auto text-xs text-gray-500 font-medium tabular-nums">
           {specs.length} specs
         </span>
       </div>
@@ -38,7 +38,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   {groupName}
                 </span>
-                <span className="text-xs text-gray-400">{groupSpecs.length}</span>
+                <span className="text-xs text-gray-500">{groupSpecs.length}</span>
               </div>
             )}
             {groupSpecs.map((spec, si) => (

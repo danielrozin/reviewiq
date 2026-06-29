@@ -239,7 +239,7 @@ export function SurveyPopup() {
                 </button>
               ))}
             </div>
-            <div className="flex justify-between text-xs text-gray-400 px-1">
+            <div className="flex justify-between text-xs text-gray-500 px-1">
               <span>Poor</span>
               <span>Excellent</span>
             </div>
