@@ -14,14 +14,14 @@ export function FAQSection({ items }: FAQSectionProps) {
   if (items.length === 0) return null;
 
   return (
-    <section data-speakable="faq-answer">
+    <section aria-labelledby="faq-section-heading" data-speakable="faq-answer">
       <div className="flex items-center gap-2.5 mb-4">
         <div className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
-          <svg className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+          <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
           </svg>
         </div>
-        <h2 className="text-lg font-semibold text-gray-900">
+        <h2 id="faq-section-heading" className="text-lg font-semibold text-gray-900">
           Frequently Asked Questions
         </h2>
         <span className="ml-auto text-xs text-gray-500 font-medium tabular-nums">{items.length} questions</span>
@@ -29,11 +29,13 @@ export function FAQSection({ items }: FAQSectionProps) {
       <div className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
+          const panelId = `faq-panel-${i}`;
           return (
             <div key={i} className={cn(isOpen && "bg-brand-50/40")}>
               <button
                 onClick={() => setOpenIndex(isOpen ? null : i)}
                 aria-expanded={isOpen}
+                aria-controls={panelId}
                 className={cn(
                   "w-full flex items-center justify-between px-5 py-4 text-left transition-colors group",
                   isOpen ? "hover:bg-brand-50/60" : "hover:bg-gray-50"
@@ -46,6 +48,7 @@ export function FAQSection({ items }: FAQSectionProps) {
                   {item.question}
                 </span>
                 <svg
+                  aria-hidden="true"
                   className={cn(
                     "w-4 h-4 shrink-0 transition-all duration-200",
                     isOpen ? "rotate-180 text-brand-600" : "text-gray-400"
@@ -59,6 +62,9 @@ export function FAQSection({ items }: FAQSectionProps) {
                 </svg>
               </button>
               <div
+                id={panelId}
+                role="region"
+                aria-labelledby={undefined}
                 className={cn(
                   "overflow-hidden transition-all duration-200",
                   isOpen ? "max-h-[32rem]" : "max-h-0"
