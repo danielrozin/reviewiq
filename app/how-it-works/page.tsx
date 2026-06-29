@@ -207,8 +207,8 @@ export default function HowItWorksPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
-                <th className="text-left px-5 py-3.5 text-xs font-semibold text-gray-600 uppercase tracking-wider w-2/5">Feature</th>
-                <th className="text-center px-4 py-3.5 w-[30%]">
+                <th scope="col" className="text-left px-5 py-3.5 text-xs font-semibold text-gray-600 uppercase tracking-wider w-2/5">Feature</th>
+                <th scope="col" className="text-center px-4 py-3.5 w-[30%]">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-brand-600 text-white text-xs font-bold rounded-lg">
                     <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -216,7 +216,7 @@ export default function HowItWorksPage() {
                     ReviewIQ
                   </span>
                 </th>
-                <th className="text-center px-4 py-3.5 text-xs font-semibold text-gray-400 uppercase tracking-wider w-[30%]">Traditional Sites</th>
+                <th scope="col" className="text-center px-4 py-3.5 text-xs font-semibold text-gray-400 uppercase tracking-wider w-[30%]">Traditional Sites</th>
               </tr>
             </thead>
             <tbody>

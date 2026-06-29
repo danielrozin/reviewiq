@@ -32,7 +32,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           type="button"
           aria-pressed={activeCategory === "all"}
           onClick={() => setActiveCategory("all")}
-          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+          className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
             activeCategory === "all"
               ? "bg-brand-600 text-white shadow-sm"
               : "bg-white border border-gray-200 text-gray-600 hover:border-brand-200 hover:text-brand-700"
@@ -48,7 +48,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               type="button"
               aria-pressed={activeCategory === cat.slug}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 activeCategory === cat.slug
                   ? "bg-brand-600 text-white shadow-sm"
                   : "bg-white border border-gray-200 text-gray-600 hover:border-brand-200 hover:text-brand-700"

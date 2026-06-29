@@ -329,7 +329,7 @@ export function ProductSearch() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
               </svg>
               &ldquo;{query}&rdquo;
-              <button type="button" onClick={() => setFilter("q", "")} className="ml-0.5 hover:text-brand-900" aria-label="Remove search filter">
+              <button type="button" onClick={() => setFilter("q", "")} className="ml-0.5 hover:text-brand-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded" aria-label="Remove search filter">
                 <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
@@ -340,7 +340,7 @@ export function ProductSearch() {
             <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full border border-purple-100">
               {categories.find((c) => c.slug === category)?.icon}{" "}
               {categories.find((c) => c.slug === category)?.name}
-              <button type="button" onClick={() => setFilter("category", "")} className="ml-0.5 hover:text-purple-900" aria-label="Remove category filter">
+              <button type="button" onClick={() => setFilter("category", "")} className="ml-0.5 hover:text-purple-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded" aria-label="Remove category filter">
                 <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
@@ -353,7 +353,7 @@ export function ProductSearch() {
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
               </svg>
               {minRating}+ stars
-              <button type="button" onClick={() => setFilter("rating", 0)} className="ml-0.5 hover:text-amber-900" aria-label="Remove rating filter">
+              <button type="button" onClick={() => setFilter("rating", 0)} className="ml-0.5 hover:text-amber-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded" aria-label="Remove rating filter">
                 <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
@@ -366,7 +366,7 @@ export function ProductSearch() {
               <button
                 type="button"
                 onClick={() => { setPriceMin(GLOBAL_MIN_PRICE); setPriceMax(GLOBAL_MAX_PRICE); updateUrl({ priceMin: GLOBAL_MIN_PRICE, priceMax: GLOBAL_MAX_PRICE }); }}
-                className="ml-0.5 hover:text-emerald-900"
+                className="ml-0.5 hover:text-emerald-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded"
                 aria-label="Remove price filter"
               >
                 <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

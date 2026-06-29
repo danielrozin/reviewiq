@@ -87,7 +87,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           disabled={loading}
           aria-pressed={voted === "helpful"}
           aria-label="Mark as helpful"
-          className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors ${
+          className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-brand-400 ${
             voted === "helpful"
               ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
               : "text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
@@ -104,7 +104,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           disabled={loading}
           aria-pressed={voted === "not_helpful"}
           aria-label="Mark as not helpful"
-          className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors ${
+          className={`inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-brand-400 ${
             voted === "not_helpful"
               ? "bg-red-50 text-red-600 border border-red-200"
               : "text-gray-400 hover:text-red-600 hover:bg-red-50 border border-transparent"
