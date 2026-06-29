@@ -12,7 +12,11 @@ export function organizationSchema() {
     logo: `${SITE_URL}/logo.png`,
     description:
       "AI-powered product review platform providing honest, structured insights from verified buyers.",
-    sameAs: [],
+    sameAs: [
+      "https://twitter.com/revieweriq",
+      "https://www.linkedin.com/company/revieweriq",
+      "https://www.facebook.com/revieweriq",
+    ],
   };
 }
 
@@ -46,7 +50,7 @@ export function breadcrumbSchema(
   };
 }
 
-export function productSchema(product: Product) {
+export function productSchema(product: Product, pageUrl?: string) {
   const ratingCount = product.reviewCount || product.reviews.length;
   const avgRating =
     product.reviews.length > 0
@@ -54,6 +58,7 @@ export function productSchema(product: Product) {
       : 0;
 
   const buildDate = new Date().toISOString().split("T")[0];
+  const canonicalUrl = pageUrl ? `${SITE_URL}${pageUrl}` : undefined;
 
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -65,6 +70,10 @@ export function productSchema(product: Product) {
     inLanguage: "en",
     datePublished: product.createdAt || buildDate,
     dateModified: product.updatedAt || product.createdAt || buildDate,
+    ...(canonicalUrl && {
+      url: canonicalUrl,
+      mainEntityOfPage: { "@type": "ItemPage", "@id": canonicalUrl },
+    }),
   };
 
   const offers = aggregateOfferFromProduct(product);
@@ -405,6 +414,29 @@ export function competitorFaqPageSchema(opts: {
       },
     },
   ];
+}
+
+export function categoryPageSchema(categoryName: string, description: string, categoryUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `Best ${categoryName}`,
+    description,
+    url: `${SITE_URL}${categoryUrl}`,
+    inLanguage: "en",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='buying-guide']"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Categories", item: `${SITE_URL}/categories` },
+        { "@type": "ListItem", position: 3, name: categoryName, item: `${SITE_URL}${categoryUrl}` },
+      ],
+    },
+  };
 }
 
 export function comparisonSchema(productA: Product, productB: Product) {
