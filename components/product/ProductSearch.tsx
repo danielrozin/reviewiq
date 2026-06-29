@@ -223,7 +223,7 @@ export function ProductSearch() {
           onChange={(e) => setFilter("q", e.target.value)}
           aria-label="Search by product name, brand, or keyword"
           placeholder="Search by product name, brand, or keyword..."
-          className="w-full pl-12 pr-4 py-3 text-base border border-gray-400 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-colors"
+          className="w-full pl-12 pr-4 py-3 text-base border border-gray-200 rounded-xl bg-white text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-colors"
         />
         {query && (
           <button
@@ -245,7 +245,7 @@ export function ProductSearch() {
         <select
           value={category}
           onChange={(e) => setFilter("category", e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
@@ -259,7 +259,7 @@ export function ProductSearch() {
         <select
           value={sort}
           onChange={(e) => setFilter("sort", e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           {SORT_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -272,7 +272,7 @@ export function ProductSearch() {
         <select
           value={minRating}
           onChange={(e) => setFilter("rating", Number(e.target.value))}
-          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
         >
           <option value={0}>Any Rating</option>
           {RATING_OPTIONS.map((opt) => (
@@ -291,7 +291,7 @@ export function ProductSearch() {
             min={GLOBAL_MIN_PRICE}
             max={priceMax}
             onChange={(e) => setFilter("priceMin", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm"
+            className="w-20 px-2 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm"
             aria-label="Minimum price"
             placeholder="Min"
           />
@@ -302,7 +302,7 @@ export function ProductSearch() {
             min={priceMin}
             max={GLOBAL_MAX_PRICE}
             onChange={(e) => setFilter("priceMax", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm"
+            className="w-20 px-2 py-2 border border-gray-200 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm"
             aria-label="Maximum price"
             placeholder="Max"
           />
@@ -452,7 +452,7 @@ export function ProductSearch() {
               <a
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors"
               >
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
@@ -471,7 +471,7 @@ export function ProductSearch() {
             type="button"
             disabled={safePage <= 1}
             onClick={() => setFilter("page", safePage - 1)}
-            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-400 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             Previous
           </button>
@@ -483,7 +483,7 @@ export function ProductSearch() {
               className={`w-10 h-10 text-sm font-medium rounded-xl transition-colors ${
                 p === safePage
                   ? "bg-brand-600 text-white"
-                  : "border border-gray-400 text-gray-700 hover:bg-gray-50"
+                  : "border border-gray-200 text-gray-700 hover:bg-gray-50"
               }`}
             >
               {p}
@@ -493,7 +493,7 @@ export function ProductSearch() {
             type="button"
             disabled={safePage >= totalPages}
             onClick={() => setFilter("page", safePage + 1)}
-            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-400 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
           >
             Next
           </button>

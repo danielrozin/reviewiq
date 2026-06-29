@@ -158,7 +158,7 @@ export function SurveyPopup() {
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${
                     answers.q1Intent === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
-                      : "border-gray-400 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
+                      : "border-gray-200 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
                   }`}
                 >
                   {opt.label}
@@ -179,7 +179,7 @@ export function SurveyPopup() {
                   setAnswers((a) => ({ ...a, q2Found: true }));
                   setStep("q3");
                 }}
-                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-400 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors"
+                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors"
               >
                 Yes
               </button>
@@ -189,7 +189,7 @@ export function SurveyPopup() {
                 className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors ${
                   answers.q2Found === false
                     ? "border-amber-400 bg-amber-50 text-amber-700"
-                    : "border-gray-400 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
+                    : "border-gray-200 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
                 }`}
               >
                 Not quite
@@ -201,7 +201,7 @@ export function SurveyPopup() {
                   value={answers.q2Missing}
                   onChange={(e) => setAnswers((a) => ({ ...a, q2Missing: e.target.value }))}
                   placeholder="What were you looking for?"
-                  className="w-full px-3 py-2 text-sm border border-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 resize-none"
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600/20 focus:border-brand-600 resize-none"
                   rows={2}
                 />
                 <button
@@ -254,7 +254,7 @@ export function SurveyPopup() {
               value={answers.q4Improvement}
               onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
               placeholder="Anything at all — we read every response."
-              className="w-full px-3 py-2 text-sm border border-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 resize-none"
+              className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600/20 focus:border-brand-600 resize-none"
               rows={3}
             />
             <div className="flex gap-3 mt-3">
@@ -289,7 +289,7 @@ export function SurveyPopup() {
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${
                     answers.q5Discovery === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
-                      : "border-gray-400 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
+                      : "border-gray-200 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
                   }`}
                 >
                   {opt.label}

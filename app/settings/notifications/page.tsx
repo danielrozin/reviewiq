@@ -44,7 +44,7 @@ const GROUPS = [
     iconBg: "bg-brand-50",
     iconColor: "text-brand-600",
     toggleColor: "bg-brand-600",
-    toggleRing: "focus:ring-brand-500",
+    toggleRing: "focus:ring-brand-600",
     toggles: [
       {
         key: "reviewAlerts" as PrefKey,

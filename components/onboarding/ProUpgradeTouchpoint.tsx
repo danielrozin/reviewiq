@@ -88,7 +88,7 @@ export function ProUpgradeTouchpoint() {
           <button
             type="button"
             onClick={dismissPro}
-            className="px-3 py-2.5 text-xs font-medium text-gray-500 hover:text-gray-700 transition-colors"
+            className="px-3 py-2.5 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors"
           >
             Not now
           </button>

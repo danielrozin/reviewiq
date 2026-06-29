@@ -353,13 +353,13 @@ export default function WriteReviewPage() {
             </a>
             <a
               href="/community"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Join the Community
             </a>
             <a
               href="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
             >
               Explore Products
             </a>
@@ -401,7 +401,7 @@ export default function WriteReviewPage() {
                 onBlur={() => markTouched("product")}
                 aria-describedby="error-product"
                 aria-invalid={touched.product === true && !selectedProduct ? true : undefined}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               >
                 <option value="">Select a product...</option>
                 {products.map((p) => (
@@ -430,7 +430,7 @@ export default function WriteReviewPage() {
                 maxLength={120}
                 aria-describedby="error-headline"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               />
               <div className="flex justify-between mt-1">
                 <FieldError
@@ -489,7 +489,7 @@ export default function WriteReviewPage() {
                 onBlur={() => markTouched("body")}
                 placeholder="Share your honest experience. What surprised you? What disappointed you? Would you buy it again?"
                 rows={6}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent resize-none"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
               />
               <p className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-400"}`}>
                 {body.length}/50 minimum characters
@@ -516,7 +516,7 @@ export default function WriteReviewPage() {
                       onChange={(e) => updatePro(i, e.target.value)}
                       aria-label={`Pro ${i + 1}`}
                       placeholder={`Pro ${i + 1}`}
-                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -542,7 +542,7 @@ export default function WriteReviewPage() {
                       onChange={(e) => updateCon(i, e.target.value)}
                       aria-label={`Con ${i + 1}`}
                       placeholder={`Con ${i + 1}`}
-                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -565,7 +565,7 @@ export default function WriteReviewPage() {
                   onBlur={() => markTouched("experienceLevel")}
                   aria-describedby="error-experienceLevel"
                   aria-invalid={touched.experienceLevel === true && !experienceLevel ? true : undefined}
-                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                 >
                   <option value="">Select...</option>
                   {experienceLevels.map((level) => (
@@ -590,7 +590,7 @@ export default function WriteReviewPage() {
                   onBlur={() => markTouched("timeOwned")}
                   aria-describedby="error-timeOwned"
                   aria-invalid={touched.timeOwned === true && !timeOwned ? true : undefined}
-                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
+                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                 >
                   <option value="">Select...</option>
                   {timeOwnedOptions.map((opt) => (
@@ -618,7 +618,7 @@ export default function WriteReviewPage() {
                     className={`flex items-center gap-3 p-3 border rounded-xl cursor-pointer transition-colors ${
                       verification === opt.value
                         ? "border-brand-300 bg-brand-50"
-                        : "border-gray-400 hover:border-gray-500"
+                        : "border-gray-200 hover:border-gray-500"
                     }`}
                   >
                     <input
