@@ -164,6 +164,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
             </svg>
             <select
+              aria-label="Sort reviews"
               value={sortBy}
               onChange={(e) => handleSortChange(e.target.value)}
               className="text-sm text-gray-600 bg-transparent border border-gray-400 rounded-xl px-3 py-1.5 pr-8 appearance-none cursor-pointer hover:border-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500"
@@ -242,7 +243,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
                 {review.pros.map((pro, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
                     <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
-                      <svg className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                      <svg aria-hidden="true" className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                     </span>
@@ -261,7 +262,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
                 {review.cons.map((con, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
                     <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
-                      <svg className="w-2.5 h-2.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                      <svg aria-hidden="true" className="w-2.5 h-2.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14" />
                       </svg>
                     </span>
