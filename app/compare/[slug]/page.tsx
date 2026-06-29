@@ -32,6 +32,8 @@ export async function generateMetadata({ params }: Props) {
     title: `${productA.name} vs ${productB.name} — Side-by-Side Comparison`,
     description: `Compare ${productA.name} (SmartScore ${productA.smartScore}) vs ${productB.name} (SmartScore ${productB.smartScore}). See specs, pros & cons, pricing, and which is better based on ${productA.reviewCount + productB.reviewCount} verified reviews.`,
     path: `/compare/${slug}`,
+    ogType: "article",
+    keywords: [productA.name, productB.name, "comparison", "vs", "review"],
   });
 }
 

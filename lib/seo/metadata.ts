@@ -11,23 +11,38 @@ export function buildMetadata(overrides: {
   path?: string;
   image?: string;
   noIndex?: boolean;
+  ogType?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
+  keywords?: string[];
 }): Metadata {
   const title = overrides.title
     ? `${overrides.title} | ${SITE_NAME}`
     : `${SITE_NAME} — Real Reviews, Real Intelligence`;
   const description = overrides.description || SITE_DESCRIPTION;
   const url = overrides.path ? `${SITE_URL}${overrides.path}` : SITE_URL;
+  const ogType = overrides.ogType || "website";
+
+  const ogArticleFields =
+    ogType === "article"
+      ? {
+          type: "article" as const,
+          ...(overrides.publishedTime && { publishedTime: overrides.publishedTime }),
+          ...(overrides.modifiedTime && { modifiedTime: overrides.modifiedTime }),
+        }
+      : { type: "website" as const };
 
   return {
     title,
     description,
+    ...(overrides.keywords && { keywords: overrides.keywords }),
     alternates: { canonical: url },
     openGraph: {
       title,
       description,
       url,
       siteName: SITE_NAME,
-      type: "website",
+      ...ogArticleFields,
       ...(overrides.image && { images: [{ url: overrides.image }] }),
     },
     twitter: {

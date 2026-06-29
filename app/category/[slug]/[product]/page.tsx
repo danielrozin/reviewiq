@@ -53,6 +53,10 @@ export async function generateMetadata({ params }: Props) {
     title: `${product.name} Review — SmartScore ${product.smartScore}/100`,
     description: `Honest ${product.name} review based on ${product.reviewCount} verified buyer experiences. See what people love, hate, and who this product is best for.`,
     path: `/category/${slug}/${productSlug}`,
+    ogType: "article",
+    publishedTime: product.createdAt,
+    modifiedTime: product.updatedAt || product.createdAt,
+    keywords: [product.name, product.brand, "review", "SmartScore", "verified buyer"],
   });
 }
 
