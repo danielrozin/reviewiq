@@ -247,7 +247,7 @@ export default function WhoIsThisForPage() {
             <article key={persona.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-5 p-6 sm:p-8">
-              <div className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>
+              <div aria-hidden="true" className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>
                 {persona.icon}
               </div>
               <div className="flex-1 min-w-0">
@@ -269,7 +269,7 @@ export default function WhoIsThisForPage() {
                 </div>
                 <div className="bg-emerald-50 border border-emerald-100 rounded-xl px-4 py-3">
                   <p className="text-sm text-emerald-800 leading-relaxed flex items-start gap-2">
-                    <svg className="w-4 h-4 shrink-0 mt-0.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <svg aria-hidden="true" className="w-4 h-4 shrink-0 mt-0.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                     <span><span className="font-semibold">What you get:</span> {persona.outcome}</span>
@@ -291,8 +291,8 @@ export default function WhoIsThisForPage() {
           {notForYou.map((item) => (
             <div key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-2 flex items-start gap-2.5">
-                <span className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
-                    <svg className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <span aria-hidden="true" className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+                    <svg aria-hidden="true" className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                   </span>
@@ -329,7 +329,7 @@ export default function WhoIsThisForPage() {
                   className="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors group"
                 >
                   {uc.cta.label}
-                  <svg className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
                 </Link>
@@ -390,7 +390,7 @@ export default function WhoIsThisForPage() {
             <details key={item.question} className="group border border-gray-100 rounded-xl">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-gray-900 font-medium">
                 {item.question}
-                <svg className="ml-4 w-4 h-4 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </summary>
