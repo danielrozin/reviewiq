@@ -40,14 +40,16 @@ type StepKey = (typeof STEPS)[number]["key"];
 
 function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typeof STEPS }) {
   return (
-    <div className="flex items-center gap-1 mb-8">
+    <div role="list" aria-label="Review steps" className="flex items-center gap-1 mb-8">
       {steps.map((step, i) => {
         const isCompleted = i < currentStep;
         const isCurrent = i === currentStep;
         return (
-          <div key={step.key} className="flex items-center flex-1">
+          <div key={step.key} role="listitem" className="flex items-center flex-1">
             <div className="flex flex-col items-center flex-1">
               <div
+                aria-current={isCurrent ? "step" : undefined}
+                aria-label={`Step ${i + 1}: ${step.label}${isCompleted ? " (completed)" : isCurrent ? " (current)" : ""}`}
                 className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-semibold transition-colors ${
                   isCompleted
                     ? "bg-emerald-500 text-white"
@@ -60,9 +62,10 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
                   <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
-                ) : i + 1}
+                ) : <span aria-hidden="true">{i + 1}</span>}
               </div>
               <span
+                aria-hidden="true"
                 className={`text-xs mt-1 font-medium ${
                   isCurrent ? "text-brand-600" : isCompleted ? "text-emerald-600" : "text-gray-400"
                 }`}
@@ -392,10 +395,11 @@ export default function WriteReviewPage() {
         {step === 0 && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <label htmlFor="select-product" className="block text-sm font-semibold text-gray-900 mb-2">
                 Product *
               </label>
               <select
+                id="select-product"
                 value={selectedProduct}
                 onChange={(e) => setSelectedProduct(e.target.value)}
                 onBlur={() => markTouched("product")}
@@ -418,10 +422,11 @@ export default function WriteReviewPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <label htmlFor="input-headline" className="block text-sm font-semibold text-gray-900 mb-2">
                 Review Headline *
               </label>
               <input
+                id="input-headline"
                 type="text"
                 value={headline}
                 onChange={(e) => setHeadline(e.target.value)}
@@ -480,10 +485,11 @@ export default function WriteReviewPage() {
         {step === 2 && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <label htmlFor="textarea-body" className="block text-sm font-semibold text-gray-900 mb-2">
                 Your Review *
               </label>
               <textarea
+                id="textarea-body"
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
                 onBlur={() => markTouched("body")}
@@ -556,10 +562,11 @@ export default function WriteReviewPage() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label htmlFor="select-experience" className="block text-sm font-semibold text-gray-900 mb-2">
                   Experience Level *
                 </label>
                 <select
+                  id="select-experience"
                   value={experienceLevel}
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   onBlur={() => markTouched("experienceLevel")}
@@ -581,10 +588,11 @@ export default function WriteReviewPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label htmlFor="select-time-owned" className="block text-sm font-semibold text-gray-900 mb-2">
                   Time Owned *
                 </label>
                 <select
+                  id="select-time-owned"
                   value={timeOwned}
                   onChange={(e) => setTimeOwned(e.target.value)}
                   onBlur={() => markTouched("timeOwned")}

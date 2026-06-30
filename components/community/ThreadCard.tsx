@@ -58,7 +58,10 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           <svg aria-hidden="true" className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
           </svg>
-          <span className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
+          <span
+            aria-label={`${formatNumber(netVotes)} net votes`}
+            className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}
+          >
             {formatNumber(netVotes)}
           </span>
           <svg aria-hidden="true" className="w-4 h-4 text-gray-200" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -134,16 +137,16 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
 
           {/* Tags */}
           {thread.tags.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-3">
+            <ul role="list" aria-label="Tags" className="flex flex-wrap gap-1.5 mt-3">
               {thread.tags.slice(0, 4).map((tag) => (
-                <span
+                <li
                   key={tag}
                   className="text-xs text-gray-600 bg-gray-50 px-2 py-0.5 rounded-full"
                 >
                   {tag}
-                </span>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
         </div>
       </div>
