@@ -60,7 +60,7 @@ export default async function UserProfilePage({ params }: Props) {
           <div className="bg-white border border-gray-100 rounded-2xl p-6 sticky top-24">
             {/* Avatar + name */}
             <div className="text-center mb-6">
-              <div className="w-20 h-20 rounded-full bg-brand-100 text-brand-600 font-bold text-2xl flex items-center justify-center mx-auto mb-4 ring-4 ring-brand-50">
+              <div aria-hidden="true" className="w-20 h-20 rounded-full bg-brand-100 text-brand-600 font-bold text-2xl flex items-center justify-center mx-auto mb-4 ring-4 ring-brand-50">
                 {initials}
               </div>
               <div className="flex items-center justify-center gap-2">
@@ -80,7 +80,7 @@ export default async function UserProfilePage({ params }: Props) {
             </p>
 
             {/* Stats grid */}
-            <div className="grid grid-cols-2 gap-2 mb-6">
+            <div role="list" className="grid grid-cols-2 gap-2 mb-6">
               {[
                 { value: user.reputationScore, label: "Reputation", color: "text-brand-600" },
                 { value: user.reviewCount, label: "Reviews", color: "text-emerald-600" },
@@ -89,7 +89,7 @@ export default async function UserProfilePage({ params }: Props) {
                 { value: user.verifiedProductCount, label: "Verified", color: "text-amber-600" },
                 { value: user.helpfulVotesReceived, label: "Helpful Votes", color: "text-gray-700" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl">
+                <div role="listitem" key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl">
                   <p className={`text-lg font-bold ${stat.color}`}>
                     {formatNumber(stat.value)}
                   </p>
@@ -105,11 +105,13 @@ export default async function UserProfilePage({ params }: Props) {
               <h3 className="text-xs text-gray-400 uppercase tracking-wider mb-3 font-semibold">
                 Badges
               </h3>
-              <div className="flex flex-wrap gap-1.5">
+              <ul role="list" aria-label="Badges" className="flex flex-wrap gap-1.5">
                 {user.badges.map((badge) => (
-                  <TrustBadge key={badge} badge={badge} size="md" />
+                  <li key={badge}>
+                    <TrustBadge badge={badge} size="md" />
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             {/* Expertise */}
@@ -118,17 +120,18 @@ export default async function UserProfilePage({ params }: Props) {
                 <h3 className="text-xs text-gray-400 uppercase tracking-wider mb-3 font-semibold">
                   Expertise
                 </h3>
-                <div className="flex flex-wrap gap-1.5">
+                <ul role="list" aria-label="Expertise categories" className="flex flex-wrap gap-1.5">
                   {user.expertiseCategories.map((cat) => (
-                    <Link
-                      key={cat}
-                      href={`/category/${cat}`}
-                      className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full hover:bg-brand-100 transition-colors"
-                    >
-                      {cat.replace(/-/g, " ")}
-                    </Link>
+                    <li key={cat}>
+                      <Link
+                        href={`/category/${cat}`}
+                        className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full hover:bg-brand-100 transition-colors"
+                      >
+                        {cat.replace(/-/g, " ")}
+                      </Link>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             )}
 

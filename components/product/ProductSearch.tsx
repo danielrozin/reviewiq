@@ -240,7 +240,7 @@ export function ProductSearch() {
       </div>
 
       {/* Filter bar */}
-      <div className="flex flex-wrap items-center gap-3">
+      <div role="group" aria-label="Filter products" className="flex flex-wrap items-center gap-3">
         {/* Category */}
         <select
           value={category}
@@ -286,8 +286,8 @@ export function ProductSearch() {
         </select>
 
         {/* Price range */}
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <span className="text-gray-400">$</span>
+        <div role="group" aria-label="Price range" className="flex items-center gap-2 text-sm text-gray-600">
+          <span aria-hidden="true" className="text-gray-400">$</span>
           <input
             type="number"
             value={priceMin}
@@ -298,7 +298,7 @@ export function ProductSearch() {
             aria-label="Minimum price"
             placeholder="Min"
           />
-          <span className="text-gray-400">—</span>
+          <span aria-hidden="true" className="text-gray-400">—</span>
           <input
             type="number"
             value={priceMax}
@@ -483,6 +483,7 @@ export function ProductSearch() {
               key={p}
               type="button"
               onClick={() => setFilter("page", p)}
+              aria-current={p === safePage ? "page" : undefined}
               className={`w-10 h-10 text-sm font-medium rounded-xl transition-colors ${
                 p === safePage
                   ? "bg-brand-600 text-white"
