@@ -75,7 +75,7 @@ export default async function FAQPage({ params }: Props) {
       </header>
 
       {/* FAQ list */}
-      <section className="max-w-3xl space-y-8 mb-16">
+      <section aria-label="Frequently asked questions" className="max-w-3xl space-y-8 mb-16">
         {page.faqs.map((faq, i) => (
           <article
             key={i}
@@ -95,7 +95,7 @@ export default async function FAQPage({ params }: Props) {
       </section>
 
       {/* CTA */}
-      <section className="max-w-3xl bg-brand-50 border border-brand-200 rounded-xl p-8 mb-12 text-center">
+      <section aria-label="Get started with ReviewIQ" className="max-w-3xl bg-brand-50 border border-brand-200 rounded-xl p-8 mb-12 text-center">
         <p className="text-lg font-semibold text-brand-900 mb-4">
           {page.ctaText}
         </p>

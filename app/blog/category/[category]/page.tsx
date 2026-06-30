@@ -140,7 +140,7 @@ export default async function BlogCategoryPage({
             {post.coverImage && (
               <div className="aspect-video bg-gray-100 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">
-                  <span className="text-4xl opacity-40">{emoji}</span>
+                  <span aria-hidden="true" className="text-4xl opacity-40">{emoji}</span>
                 </div>
               </div>
             )}

@@ -54,7 +54,7 @@ export default function FAQIndexPage() {
             href={`/faq/${page.slug}`}
             className="block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-brand-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group"
           >
-            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="p-6">
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
                 {page.title}
