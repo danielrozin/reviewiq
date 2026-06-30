@@ -28,6 +28,7 @@ export function ReviewFormCTA({ productName, productSlug, categorySlug }: Review
       </div>
       <Link
         href={`/write-review?product=${productSlug}&category=${categorySlug}`}
+        aria-label={`Write a Review for ${productName}`}
         onClick={() => {
           trackEvent("review_cta_clicked", {
             product_slug: productSlug,
