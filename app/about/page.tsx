@@ -162,7 +162,7 @@ export default function AboutPage() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20">
         {STATS.map((s) => (
           <div key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
-            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="p-5 text-center">
               <div aria-hidden="true" className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 {s.icon}
@@ -175,8 +175,8 @@ export default function AboutPage() {
       </div>
 
       {/* Why we built this */}
-      <section className="mb-20" data-speakable="about-why">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Why we built this</h2>
+      <section aria-labelledby="about-why-heading" className="mb-20" data-speakable="about-why">
+        <h2 id="about-why-heading" className="text-2xl font-bold text-gray-900 mb-2">Why we built this</h2>
         <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We were tired of reading hundreds of reviews and still not knowing if a product was right for us. A 4.2-star rating tells you almost nothing. What we really wanted to know:
         </p>
@@ -198,13 +198,13 @@ export default function AboutPage() {
       </section>
 
       {/* Principles */}
-      <section className="mb-20" data-speakable="about-principles">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">Our principles</h2>
+      <section aria-labelledby="about-principles-heading" className="mb-20" data-speakable="about-principles">
+        <h2 id="about-principles-heading" className="text-2xl font-bold text-gray-900 mb-2">Our principles</h2>
         <p className="text-gray-600 mb-8 max-w-2xl">Four rules we never break.</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {PRINCIPLES.map((p) => (
             <div key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
-              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-4 p-6">
                 <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
                   {p.icon}
@@ -220,15 +220,15 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="mb-20">
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">The team</h2>
+      <section aria-labelledby="about-team-heading" className="mb-20">
+        <h2 id="about-team-heading" className="text-2xl font-bold text-gray-900 mb-2">The team</h2>
         <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We&apos;re a small, opinionated team with strong feelings about how product information should work.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {TEAM.map((member) => (
             <div key={member.name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
-              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex flex-col items-center text-center p-6">
                 <div className={`w-16 h-16 rounded-2xl ${member.color} text-white flex items-center justify-center text-xl font-bold mb-4`}>
                   {member.initials}
@@ -243,8 +243,8 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gradient-to-br from-brand-600 to-brand-700 rounded-3xl p-10 text-center text-white">
-        <h2 className="text-2xl font-bold mb-3">Want to get involved?</h2>
+      <section aria-labelledby="about-cta-heading" className="bg-gradient-to-br from-brand-600 to-brand-700 rounded-3xl p-10 text-center text-white">
+        <h2 id="about-cta-heading" className="text-2xl font-bold mb-3">Want to get involved?</h2>
         <p className="text-brand-100 max-w-xl mx-auto mb-6">
           We&apos;re in early access and actively looking for feedback, early reviewers, and people who share our mission of fixing product reviews.
         </p>

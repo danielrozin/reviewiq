@@ -238,14 +238,14 @@ export default function WhoIsThisForPage() {
       </header>
 
       {/* This is for you if... */}
-      <section className="mb-20" data-speakable="personas">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section aria-labelledby="witf-for-heading" className="mb-20" data-speakable="personas">
+        <h2 id="witf-for-heading" className="text-2xl font-bold text-gray-900 mb-8">
           This is for you if&hellip;
         </h2>
         <div className="space-y-6 max-w-4xl">
           {personas.map((persona) => (
             <article key={persona.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
-              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-5 p-6 sm:p-8">
               <div aria-hidden="true" className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>
                 {persona.icon}
@@ -283,8 +283,8 @@ export default function WhoIsThisForPage() {
       </section>
 
       {/* This is NOT for you if... */}
-      <section className="mb-20 max-w-4xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section aria-labelledby="witf-not-heading" className="mb-20 max-w-4xl">
+        <h2 id="witf-not-heading" className="text-2xl font-bold text-gray-900 mb-8">
           This is NOT for you if&hellip;
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -307,8 +307,8 @@ export default function WhoIsThisForPage() {
       </section>
 
       {/* Use-case scenarios */}
-      <section className="mb-20 max-w-4xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section aria-labelledby="witf-usecases-heading" className="mb-20 max-w-4xl">
+        <h2 id="witf-usecases-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Real-world use cases
         </h2>
         <div className="space-y-6">
@@ -340,8 +340,8 @@ export default function WhoIsThisForPage() {
       </section>
 
       {/* How it works */}
-      <section className="mb-20 max-w-4xl" data-speakable="how-it-works">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section aria-labelledby="witf-howitworks-heading" className="mb-20 max-w-4xl" data-speakable="how-it-works">
+        <h2 id="witf-howitworks-heading" className="text-2xl font-bold text-gray-900 mb-8">
           How it works
         </h2>
         <div className="space-y-8">
@@ -366,8 +366,8 @@ export default function WhoIsThisForPage() {
       </section>
 
       {/* Proof with numbers */}
-      <section className="mb-20 bg-gray-50 rounded-2xl p-8 lg:p-12 max-w-4xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section aria-labelledby="witf-proof-heading" className="mb-20 bg-gray-50 rounded-2xl p-8 lg:p-12 max-w-4xl">
+        <h2 id="witf-proof-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Proof with numbers
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -381,8 +381,8 @@ export default function WhoIsThisForPage() {
       </section>
 
       {/* FAQ */}
-      <section className="mb-16 max-w-4xl">
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+      <section aria-labelledby="witf-faq-heading" className="mb-16 max-w-4xl">
+        <h2 id="witf-faq-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Frequently asked questions
         </h2>
         <div className="space-y-6">
@@ -403,8 +403,8 @@ export default function WhoIsThisForPage() {
       </section>
 
       {/* CTA */}
-      <section className="max-w-4xl text-center py-12 border-t border-gray-100">
-        <h2 className="text-xl font-bold text-gray-900 mb-3">
+      <section aria-labelledby="witf-cta-heading" className="max-w-4xl text-center py-12 border-t border-gray-100">
+        <h2 id="witf-cta-heading" className="text-xl font-bold text-gray-900 mb-3">
           Ready to find the right product?
         </h2>
         <p className="text-gray-600 mb-6">
