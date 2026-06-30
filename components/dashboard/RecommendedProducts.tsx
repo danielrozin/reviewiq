@@ -15,9 +15,9 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
         <Link
           key={product.id}
           href={`/category/${product.categorySlug}/${product.slug}`}
-          className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+          className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
         >
-          <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
           <div className="flex items-center gap-3 p-4">
           <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
             product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :

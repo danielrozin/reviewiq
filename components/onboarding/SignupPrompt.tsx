@@ -41,11 +41,11 @@ export function SignupPrompt() {
     <div className="fixed inset-0 z-[90] flex items-end sm:items-center justify-center p-4">
       <div aria-hidden="true" className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={dismissSignup} />
 
-      <div role="dialog" aria-modal="true" aria-label="Create a free account" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
+      <div role="dialog" aria-modal="true" aria-labelledby="signup-prompt-heading" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
         <button
           type="button"
           onClick={dismissSignup}
-          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           aria-label="Close"
         >
           <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -59,7 +59,7 @@ export function SignupPrompt() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0ZM4 19.235v-.11a6.375 6.375 0 0 1 12.75 0v.109A12.318 12.318 0 0 1 10.374 21c-2.331 0-4.512-.645-6.374-1.766Z" />
             </svg>
           </div>
-          <h3 className="text-lg font-bold text-gray-900 mb-1">
+          <h3 id="signup-prompt-heading" className="text-lg font-bold text-gray-900 mb-1">
             Enjoying ReviewIQ?
           </h3>
           <p className="text-sm text-gray-600">
@@ -82,14 +82,14 @@ export function SignupPrompt() {
           <Link
             href="/auth/signin"
             onClick={() => trackEvent("onboarding_signup_cta_clicked")}
-            className="w-full px-5 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors text-center shadow-sm"
+            className="w-full px-5 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors text-center shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
           >
             Create free account
           </Link>
           <button
             type="button"
             onClick={dismissSignup}
-            className="w-full px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors"
+            className="w-full px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-xl"
           >
             Maybe later
           </button>
