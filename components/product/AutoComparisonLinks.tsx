@@ -32,7 +32,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
           href={entityUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 transition-all group"
+          className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-1"
         >
           <div className="flex items-center gap-3">
             <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
@@ -59,7 +59,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
           href={alternativesUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 transition-all group"
+          className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-1"
         >
           <div className="flex items-center gap-3">
             <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
@@ -86,7 +86,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
           href={searchUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs text-purple-600 hover:text-purple-700 hover:underline"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs text-purple-600 hover:text-purple-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:rounded focus-visible:ring-offset-1"
         >
           Search all {productName} comparisons on A vs B
           <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
