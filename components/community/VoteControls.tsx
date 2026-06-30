@@ -104,7 +104,10 @@ export function VoteControls({
         >
           <UpIcon />
         </button>
-        <span className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}>
+        <span
+          aria-label={`${formatNumber(netVotes)} net votes`}
+          className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}
+        >
           {formatNumber(netVotes)}
         </span>
         <button
@@ -140,7 +143,10 @@ export function VoteControls({
         >
           <UpIcon />
         </button>
-        <span className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}>
+        <span
+          aria-label={`${formatNumber(netVotes)} net votes`}
+          className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}
+        >
           {formatNumber(netVotes)}
         </span>
         <button
