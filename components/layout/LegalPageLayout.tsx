@@ -51,7 +51,7 @@ export function LegalPageLayout({
       <nav className="mb-8 print:hidden">
         <ol className="flex items-center gap-2 text-sm text-gray-600">
           <li>
-            <Link href="/" className="hover:text-brand-600 transition-colors">
+            <Link href="/" className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Home
             </Link>
           </li>
@@ -73,7 +73,7 @@ export function LegalPageLayout({
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className={`block pl-4 py-1.5 text-sm transition-colors border-l-2 -ml-px ${
+                      className={`block pl-4 py-1.5 text-sm transition-colors border-l-2 -ml-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset ${
                         activeSection === section.id
                           ? "border-brand-600 text-brand-600 font-medium"
                           : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"
@@ -111,7 +111,7 @@ export function LegalPageLayout({
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="text-sm text-brand-600 hover:underline"
+                      className="text-sm text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                     >
                       {i + 1}. {section.title}
                     </a>
