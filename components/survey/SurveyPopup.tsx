@@ -106,7 +106,7 @@ export function SurveyPopup() {
         <button
           type="button"
           onClick={dismiss}
-          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors"
+          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           aria-label="Close survey"
         >
           <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -127,14 +127,14 @@ export function SurveyPopup() {
               <button
                 type="button"
                 onClick={dismiss}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 No thanks
               </button>
               <button
                 type="button"
                 onClick={() => setStep("q1")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
+                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
               >
                 Sure, I'll help
               </button>
@@ -155,7 +155,7 @@ export function SurveyPopup() {
                     setAnswers((a) => ({ ...a, q1Intent: opt.value }));
                     setStep("q2");
                   }}
-                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${
+                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q1Intent === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
                       : "border-gray-200 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
@@ -179,14 +179,14 @@ export function SurveyPopup() {
                   setAnswers((a) => ({ ...a, q2Found: true }));
                   setStep("q3");
                 }}
-                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors"
+                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 Yes
               </button>
               <button
                 type="button"
                 onClick={() => setAnswers((a) => ({ ...a, q2Found: false }))}
-                className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors ${
+                className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                   answers.q2Found === false
                     ? "border-amber-400 bg-amber-50 text-amber-700"
                     : "border-gray-200 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
@@ -207,7 +207,7 @@ export function SurveyPopup() {
                 <button
                   type="button"
                   onClick={() => setStep("q3")}
-                  className="mt-3 w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
+                  className="mt-3 w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                 >
                   Next
                 </button>
@@ -229,7 +229,7 @@ export function SurveyPopup() {
                     setAnswers((a) => ({ ...a, q3Rating: n }));
                     setStep("q4");
                   }}
-                  className={`w-12 h-12 rounded-xl text-lg font-bold transition-all ${
+                  className={`w-12 h-12 rounded-xl text-lg font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q3Rating === n
                       ? "bg-brand-600 text-white scale-110"
                       : "bg-gray-100 text-gray-500 hover:bg-gray-200"
@@ -261,14 +261,14 @@ export function SurveyPopup() {
               <button
                 type="button"
                 onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 Skip
               </button>
               <button
                 type="button"
                 onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
+                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
               >
                 Next
               </button>
@@ -286,7 +286,7 @@ export function SurveyPopup() {
                   key={opt.value}
                   type="button"
                   onClick={() => setAnswers((a) => ({ ...a, q5Discovery: opt.value }))}
-                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors ${
+                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q5Discovery === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
                       : "border-gray-200 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
@@ -300,7 +300,7 @@ export function SurveyPopup() {
               type="button"
               onClick={submit}
               disabled={submitting}
-              className="w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50"
+              className="w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               {submitting ? "Submitting..." : "Submit feedback"}
             </button>
@@ -319,7 +319,7 @@ export function SurveyPopup() {
             <button
               type="button"
               onClick={() => setVisible(false)}
-              className="px-6 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
+              className="px-6 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               Done
             </button>

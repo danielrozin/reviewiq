@@ -26,7 +26,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
       <button
         type="button"
         onClick={handleClick}
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors"
+        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
       >
         {isPro ? (
           <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -45,14 +45,14 @@ export function ExportButton({ onExport }: ExportButtonProps) {
           <button
             type="button"
             onClick={() => { onExport("csv"); setShowMenu(false); }}
-            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
           >
             Export as CSV
           </button>
           <button
             type="button"
             onClick={() => { onExport("pdf"); setShowMenu(false); }}
-            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50"
+            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
           >
             Export as PDF
           </button>
@@ -65,7 +65,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
           <button
             type="button"
             onClick={() => setShowGate(false)}
-            className="mt-1 text-xs text-gray-400 hover:text-gray-600 w-full text-right"
+            className="mt-1 text-xs text-gray-400 hover:text-gray-600 w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Dismiss
           </button>

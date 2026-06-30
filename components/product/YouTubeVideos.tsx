@@ -53,7 +53,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
               ) : (
                 <button
                   type="button"
-                  className="absolute inset-0 w-full h-full group"
+                  className="absolute inset-0 w-full h-full group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-inset"
                   onClick={() => setPlaying(video.id)}
                   aria-label={`Play: ${video.title}`}
                 >
