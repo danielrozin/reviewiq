@@ -16,7 +16,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
   const groupEntries = Object.entries(groups);
 
   return (
-    <section aria-labelledby="technical-specs-heading">
+    <section aria-labelledby="technical-specs-heading" data-speakable="specifications">
       <div className="flex items-center gap-2.5 mb-4">
         <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

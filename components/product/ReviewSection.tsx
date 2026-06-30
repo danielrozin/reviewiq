@@ -76,7 +76,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
   }, [reviews, sortBy]);
 
   return (
-    <section aria-labelledby="review-section-heading">
+    <section aria-labelledby="review-section-heading" data-speakable="reviews">
       {/* Rating Summary Stats */}
       <div className="bg-gray-50 rounded-xl p-6 mb-6">
         <div className="flex flex-col sm:flex-row gap-6">
