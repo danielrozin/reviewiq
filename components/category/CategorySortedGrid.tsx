@@ -106,6 +106,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
               {/* Top-3 rank badge — only meaningful when sorted by SmartScore */}
               {sortKey === "smartScore" && index < 3 && (
                 <div
+                  role="img"
                   aria-label={`Ranked #${index + 1}`}
                   className={`absolute -top-2 -left-2 z-10 w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shadow-sm border-2 border-white text-white ${
                     index === 0 ? "bg-amber-400" : index === 1 ? "bg-slate-400" : "bg-orange-700/80"
