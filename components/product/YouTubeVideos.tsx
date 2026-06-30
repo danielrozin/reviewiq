@@ -69,9 +69,9 @@ export function YouTubeVideos({ videos, productName }: Props) {
                     }
                   />
                   {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
+                  <div aria-hidden="true" className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
                   {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
+                  <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
                     <div className="w-14 h-14 bg-red-600 group-hover:bg-red-700 rounded-full flex items-center justify-center shadow-xl transition-all group-hover:scale-110">
                       <svg aria-hidden="true" className="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M8 5v14l11-7z" />

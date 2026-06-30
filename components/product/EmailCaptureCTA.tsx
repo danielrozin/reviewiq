@@ -128,7 +128,7 @@ export function EmailCaptureCTA({
       </form>
 
       {status === "error" && (
-        <p className="text-sm text-red-600 text-center mt-3">{errorMsg}</p>
+        <p role="alert" className="text-sm text-red-600 text-center mt-3">{errorMsg}</p>
       )}
 
       <p className="text-xs text-gray-500 text-center mt-3 inline-flex items-center gap-1 justify-center w-full">
