@@ -60,9 +60,9 @@ export function RecentlyViewedStrip() {
             <Link
               key={item.slug}
               href={`/category/${item.categorySlug}/${item.slug}`}
-              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
-              <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="p-3.5">
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs text-gray-500 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>
