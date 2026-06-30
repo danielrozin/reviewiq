@@ -10,7 +10,7 @@ export function BestForComparison({
   productB,
 }: BestForComparisonProps) {
   return (
-    <section aria-labelledby="who-should-buy-heading">
+    <section aria-labelledby="who-should-buy-heading" data-speakable="best-for-comparison">
       <div className="flex items-center gap-2.5 mb-4">
         <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

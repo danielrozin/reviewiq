@@ -8,7 +8,7 @@ interface MultiProsConsComparisonProps {
 
 export function MultiProsConsComparison({ products }: MultiProsConsComparisonProps) {
   return (
-    <section aria-labelledby="multi-pros-cons-heading">
+    <section aria-labelledby="multi-pros-cons-heading" data-speakable="pros-cons">
       <div className="flex items-center gap-2.5 mb-4">
         <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

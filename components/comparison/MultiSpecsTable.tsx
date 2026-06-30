@@ -31,7 +31,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
   const colTemplate = `160px ${products.map(() => "1fr").join(" ")}`;
 
   return (
-    <section aria-labelledby="specs-comparison-heading">
+    <section aria-labelledby="specs-comparison-heading" data-speakable="specs-comparison">
       <div className="flex items-center justify-between mb-4 gap-3">
         <div className="flex items-center gap-2.5">
           <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">

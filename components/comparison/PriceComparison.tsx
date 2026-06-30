@@ -10,7 +10,7 @@ export function PriceComparison({
   productB,
 }: PriceComparisonProps) {
   return (
-    <section aria-labelledby="price-comparison-heading">
+    <section aria-labelledby="price-comparison-heading" data-speakable="price-comparison">
       <div className="flex items-center gap-2.5 mb-4">
         <div aria-hidden="true" className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

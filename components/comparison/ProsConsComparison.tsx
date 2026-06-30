@@ -10,7 +10,7 @@ export function ProsConsComparison({
   productB,
 }: ProsConsComparisonProps) {
   return (
-    <section aria-labelledby="what-people-say">
+    <section aria-labelledby="what-people-say" data-speakable="pros-cons">
       <div className="flex items-center gap-2.5 mb-4">
         <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

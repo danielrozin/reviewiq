@@ -20,7 +20,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
   const scoreDiff = winner && loser ? winner.smartScore - loser.smartScore : 0;
 
   return (
-    <section aria-label="AI Verdict" className="overflow-hidden rounded-2xl border border-brand-200">
+    <section aria-label="AI Verdict" data-speakable="ai-verdict" className="overflow-hidden rounded-2xl border border-brand-200">
       {/* Header strip */}
       <div className="bg-gradient-to-r from-brand-600 to-brand-500 px-6 py-4 flex items-center gap-3">
         <div aria-hidden="true" className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center shrink-0">

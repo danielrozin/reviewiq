@@ -17,7 +17,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
   const minWidth = products.length > 2 ? `${products.length * 140}px` : undefined;
 
   return (
-    <section aria-labelledby="multi-smartscore-comparison" className="bg-gradient-to-br from-brand-50/40 to-white border border-brand-100 rounded-2xl p-4 lg:p-8">
+    <section aria-labelledby="multi-smartscore-comparison" data-speakable="score-comparison" className="bg-gradient-to-br from-brand-50/40 to-white border border-brand-100 rounded-2xl p-4 lg:p-8">
       <div className="flex items-center justify-center gap-2.5 mb-6">
         <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
