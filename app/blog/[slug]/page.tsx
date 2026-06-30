@@ -138,7 +138,7 @@ export default async function BlogPostPage({
             {post.excerpt}
           </p>
           <div className="flex items-center gap-4 mt-6 pt-6 border-t border-gray-100">
-            <div className="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center">
+            <div aria-hidden="true" className="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center">
               <span className="text-brand-600 font-bold text-sm">SR</span>
             </div>
             <div>
@@ -173,16 +173,16 @@ export default async function BlogPostPage({
         </header>
 
         {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-8">
+        <ul role="list" aria-label="Tags" className="flex flex-wrap gap-2 mb-8">
           {post.tags.map((tag) => (
-            <span
+            <li
               key={tag}
               className="text-xs text-gray-600 bg-gray-50 border border-gray-100 px-2.5 py-1 rounded-full"
             >
               {tag}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* Content */}
         <div
@@ -248,22 +248,25 @@ export default async function BlogPostPage({
                 <Link
                   key={product.id}
                   href={`/category/${product.categorySlug}/${product.slug}`}
+                  aria-label={`${product.name} — SmartScore ${product.smartScore}`}
                   className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
+                  <div
+                    aria-label={`SmartScore ${product.smartScore}`}
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
                     product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
                     product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
                     product.smartScore >= 55 ? "bg-amber-50 text-amber-700" :
                     "bg-gray-50 text-gray-600"
                   }`}>
-                    {product.smartScore}
+                    <span aria-hidden="true">{product.smartScore}</span>
                   </div>
                   <div className="min-w-0 flex-1">
                     <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                       {product.name}
                     </p>
                     <p className="text-xs text-gray-400 mt-0.5">
-                      ${product.priceRange.min}–${product.priceRange.max} &middot;{" "}
+                      ${product.priceRange.min}–${product.priceRange.max} <span aria-hidden="true">&middot;</span>{" "}
                       {product.reviewCount} reviews
                     </p>
                   </div>
@@ -292,15 +295,18 @@ export default async function BlogPostPage({
                   <Link
                     key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
+                    aria-label={`${product.name} — ${cat?.name ?? product.categorySlug}, SmartScore ${product.smartScore}`}
                     className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
                   >
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
+                    <div
+                      aria-label={`SmartScore ${product.smartScore}`}
+                      className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
                       product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
                       product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
                       product.smartScore >= 55 ? "bg-amber-50 text-amber-700" :
                       "bg-gray-50 text-gray-600"
                     }`}>
-                      {product.smartScore}
+                      <span aria-hidden="true">{product.smartScore}</span>
                     </div>
                     <div className="min-w-0 flex-1">
                       <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
@@ -308,7 +314,7 @@ export default async function BlogPostPage({
                       </p>
                       <p className="text-xs text-gray-400 mt-0.5">
                         <span className="text-brand-600 font-medium">{cat?.icon} {cat?.name}</span>
-                        {" "}&middot; ${product.priceRange.min}–${product.priceRange.max}
+                        {" "}<span aria-hidden="true">&middot;</span> ${product.priceRange.min}–${product.priceRange.max}
                       </p>
                     </div>
                     <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
