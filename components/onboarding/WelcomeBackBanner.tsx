@@ -24,7 +24,7 @@ export function WelcomeBackBanner() {
       <button
         type="button"
         onClick={() => setDismissed(true)}
-        className="absolute top-3 right-3 p-1 text-white/60 hover:text-white rounded-lg hover:bg-white/10 transition-colors"
+        className="absolute top-3 right-3 p-1 text-white/60 hover:text-white rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         aria-label="Dismiss"
       >
         <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -54,7 +54,7 @@ export function WelcomeBackBanner() {
                 <Link
                   key={slug}
                   href={`/products/${slug}`}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-medium rounded-lg transition-colors"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
                 >
                   {slug.replace(/-/g, " ")}
                 </Link>
@@ -65,7 +65,7 @@ export function WelcomeBackBanner() {
           <div className="flex flex-wrap gap-2">
             <Link
               href="/products"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Browse products
               <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -75,7 +75,7 @@ export function WelcomeBackBanner() {
             {session && (
               <Link
                 href="/dashboard"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
               >
                 My dashboard
               </Link>

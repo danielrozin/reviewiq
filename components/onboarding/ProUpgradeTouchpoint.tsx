@@ -45,7 +45,7 @@ export function ProUpgradeTouchpoint() {
         <button
           type="button"
           onClick={dismissPro}
-          className="absolute top-3 right-3 p-1 text-amber-400 hover:text-amber-600 rounded-lg hover:bg-amber-100 transition-colors"
+          className="absolute top-3 right-3 p-1 text-amber-400 hover:text-amber-600 rounded-lg hover:bg-amber-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           aria-label="Dismiss"
         >
           <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -78,7 +78,7 @@ export function ProUpgradeTouchpoint() {
           <Link
             href="/pricing"
             onClick={() => trackEvent("onboarding_pro_upgrade_clicked")}
-            className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-amber-600 text-white text-sm font-medium rounded-xl hover:bg-amber-700 transition-colors shadow-sm"
+            className="flex-1 inline-flex items-center justify-center gap-1.5 px-4 py-2.5 bg-amber-600 text-white text-sm font-medium rounded-xl hover:bg-amber-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-amber-600"
           >
             <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
@@ -88,7 +88,7 @@ export function ProUpgradeTouchpoint() {
           <button
             type="button"
             onClick={dismissPro}
-            className="px-3 py-2.5 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors"
+            className="px-3 py-2.5 text-xs font-medium text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
           >
             Not now
           </button>

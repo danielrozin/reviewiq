@@ -58,11 +58,11 @@ export function WelcomeModal() {
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
       <div aria-hidden="true" className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismissWelcome} />
 
-      <div role="dialog" aria-modal="true" aria-label="Welcome to ReviewIQ" className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+      <div role="dialog" aria-modal="true" aria-labelledby="welcome-modal-heading" className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
         <button
           type="button"
           onClick={dismissWelcome}
-          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors z-10"
+          className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           aria-label="Close"
         >
           <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -78,7 +78,7 @@ export function WelcomeModal() {
                   <path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              <h2 id="welcome-modal-heading" className="text-2xl font-bold text-gray-900 mb-2">
                 Welcome to ReviewIQ
               </h2>
               <p className="text-sm text-gray-600 max-w-sm mx-auto mb-8">
@@ -92,7 +92,7 @@ export function WelcomeModal() {
                     trackEvent("onboarding_welcome_explore");
                     setStep("props");
                   }}
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                 >
                   See what we offer
                   <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -102,7 +102,7 @@ export function WelcomeModal() {
                 <button
                   type="button"
                   onClick={dismissWelcome}
-                  className="px-6 py-3 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+                  className="px-6 py-3 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
                   I&apos;ll explore on my own
                 </button>
@@ -143,7 +143,7 @@ export function WelcomeModal() {
                 trackEvent("onboarding_welcome_get_started");
                 dismissWelcome();
               }}
-              className="w-full px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
+              className="w-full px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               Get started
             </button>

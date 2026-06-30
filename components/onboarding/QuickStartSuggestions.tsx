@@ -39,7 +39,7 @@ export function QuickStartSuggestions() {
           <Link
             key={cat.slug}
             href={`/category/${cat.slug}`}
-            className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm transition-all group"
+            className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             <div aria-hidden="true" className="w-6 h-6 bg-brand-50 rounded-md flex items-center justify-center shrink-0">
               <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -55,7 +55,7 @@ export function QuickStartSuggestions() {
 
       <Link
         href="/products"
-        className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors"
+        className="inline-flex items-center gap-1 mt-4 text-xs font-medium text-brand-600 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
       >
         Browse all products
         <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

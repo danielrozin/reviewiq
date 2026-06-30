@@ -23,7 +23,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
           </p>
           <Link
             href="/community"
-            className="inline-flex items-center px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors"
+            className="inline-flex items-center px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
           >
             Start a Discussion
           </Link>
@@ -50,7 +50,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
         </div>
         <Link
           href="/community"
-          className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors"
+          className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
         >
           View all →
         </Link>
@@ -65,7 +65,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
             <Link
               key={thread.id}
               href={`/community/thread/${thread.id}`}
-              className="flex gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all group"
+              className="flex gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               {/* Vote count */}
               <div className="flex flex-col items-center shrink-0 min-w-[40px]">
@@ -114,7 +114,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
       <div className="mt-4 pt-4 border-t border-gray-50 text-center">
         <Link
           href="/community"
-          className="inline-flex items-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
+          className="inline-flex items-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
         >
           Start a Discussion about {productName}
         </Link>

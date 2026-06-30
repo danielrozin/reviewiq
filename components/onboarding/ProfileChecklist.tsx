@@ -80,7 +80,7 @@ export function ProfileChecklist() {
             <Link
               key={item.key}
               href={done ? "#" : item.href}
-              className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${
+              className={`flex items-center gap-3 p-3 rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 done
                   ? "bg-emerald-50/50 cursor-default"
                   : "hover:bg-brand-50/40 hover:border hover:border-brand-100 cursor-pointer"

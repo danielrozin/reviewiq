@@ -21,7 +21,7 @@ export function UserChip({ user, showTrustLevel = true, showReputation = false, 
   return (
     <Link
       href={`/community/user/${user.username}`}
-      className="inline-flex items-center gap-1.5 group"
+      className="inline-flex items-center gap-1.5 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-full"
     >
       <div
         className={`${avatarSize} rounded-full bg-brand-100 text-brand-600 font-semibold flex items-center justify-center shrink-0`}
