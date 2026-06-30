@@ -37,7 +37,7 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
   };
 
   return (
-    <section aria-labelledby="recurring-issues-heading">
+    <section aria-labelledby="recurring-issues-heading" data-speakable="recurring-issues">
       <div className="flex items-center gap-2.5 mb-1">
         <div aria-hidden="true" className="w-7 h-7 bg-red-50 rounded-lg flex items-center justify-center shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
