@@ -123,7 +123,7 @@ export default async function BlogPostPage({
           <div className="flex items-center gap-3 mb-4">
             <Link
               href={`/category/${post.categorySlug}`}
-              className="text-sm font-medium text-brand-600 bg-brand-50 px-3 py-1 rounded-full hover:bg-brand-100 transition-colors"
+              className="text-sm font-medium text-brand-600 bg-brand-50 px-3 py-1 rounded-full hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               {post.categoryName}
             </Link>
@@ -208,7 +208,7 @@ export default async function BlogPostPage({
                   key={i}
                   className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 transition-colors"
                 >
-                  <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4">
+                  <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
                     <span>{item.question}</span>
                     <svg
                       aria-hidden="true"
@@ -249,7 +249,7 @@ export default async function BlogPostPage({
                   key={product.id}
                   href={`/category/${product.categorySlug}/${product.slug}`}
                   aria-label={`${product.name} — SmartScore ${product.smartScore}`}
-                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
                   <div
                     aria-label={`SmartScore ${product.smartScore}`}
@@ -296,7 +296,7 @@ export default async function BlogPostPage({
                     key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
                     aria-label={`${product.name} — ${cat?.name ?? product.categorySlug}, SmartScore ${product.smartScore}`}
-                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <div
                       aria-label={`SmartScore ${product.smartScore}`}
@@ -333,7 +333,7 @@ export default async function BlogPostPage({
                     <Link
                       key={s}
                       href={`/category/${s}`}
-                      className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors"
+                      className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                     >
                       Explore {cat.name} &rarr;
                     </Link>
@@ -355,7 +355,7 @@ export default async function BlogPostPage({
                 <Link
                   key={rp.id}
                   href={`/blog/${rp.slug}`}
-                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
                   <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
                     {rp.categoryName}

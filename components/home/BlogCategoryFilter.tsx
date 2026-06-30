@@ -67,9 +67,9 @@ export function BlogCategoryFilter({ posts }: Props) {
             key={post.id}
             href={`/blog/${post.slug}`}
             aria-label={`Read: ${post.title} — ${post.readingTime} min read`}
-            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200"
+            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
-            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="aspect-video bg-gray-100 relative overflow-hidden">
               {post.coverImage ? (
                 <Image
