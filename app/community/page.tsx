@@ -108,8 +108,8 @@ export default function CommunityPage() {
         <div className="lg:col-span-2 space-y-6">
           {/* Pinned threads */}
           {pinned.length > 0 && (
-            <section>
-              <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
+            <section aria-labelledby="pinned-threads-heading">
+              <h2 id="pinned-threads-heading" className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">
                 Pinned
               </h2>
               <div className="space-y-3">

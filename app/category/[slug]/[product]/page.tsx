@@ -275,8 +275,8 @@ export default async function ProductPage({ params }: Props) {
           )}
 
           {/* Key Facts */}
-          <section className="bg-gray-50 rounded-2xl p-6" data-speakable="key-facts">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <section aria-labelledby="key-facts-heading" className="bg-gray-50 rounded-2xl p-6" data-speakable="key-facts">
+            <h2 id="key-facts-heading" className="text-lg font-semibold text-gray-900 mb-4">
               Key Facts
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -285,7 +285,7 @@ export default async function ProductPage({ params }: Props) {
                   key={i}
                   className="flex items-center gap-2 text-sm text-gray-700"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                  <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
                   {fact}
                 </div>
               ))}
@@ -293,8 +293,8 @@ export default async function ProductPage({ params }: Props) {
           </section>
 
           {/* Rating Distribution */}
-          <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <section aria-labelledby="review-distribution-heading">
+            <h2 id="review-distribution-heading" className="text-lg font-semibold text-gray-900 mb-4">
               Review Distribution
             </h2>
             <div className="max-w-md">
