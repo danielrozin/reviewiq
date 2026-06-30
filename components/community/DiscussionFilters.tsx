@@ -52,7 +52,7 @@ export function DiscussionFilters({
   return (
     <div className="space-y-3">
       {/* Sort buttons */}
-      <div className="flex items-center gap-1 overflow-x-auto pb-1">
+      <div role="group" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto pb-1">
         {SORT_OPTIONS.map((option) => (
           <button
             key={option.value}
@@ -71,7 +71,7 @@ export function DiscussionFilters({
       </div>
 
       {/* Type filter pills */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+      <div role="group" aria-label="Filter by thread type" className="flex items-center gap-1.5 overflow-x-auto pb-1">
         <button
           type="button"
           aria-pressed={typeFilter === null}

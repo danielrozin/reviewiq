@@ -77,7 +77,7 @@ export function SortableDiscussions({
         </div>
       </div>
 
-      <div role="list" className="space-y-3">
+      <div role="list" aria-live="polite" aria-label={`${activeTab} discussions`} className="space-y-3">
         {threads.map((thread) => (
           <div role="listitem" key={thread.id}>
             <ThreadCard thread={thread} />

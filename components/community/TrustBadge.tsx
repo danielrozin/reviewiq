@@ -60,10 +60,12 @@ export function TrustBadge({ badge, size = "sm" }: TrustBadgeProps) {
 
   return (
     <span
+      role="img"
+      aria-label={`Badge: ${BADGE_LABELS[badge]}`}
       className={`inline-flex items-center gap-1 font-medium rounded-full border ${BADGE_STYLE[badge]} ${sizeClasses}`}
     >
       {BADGE_ICON[badge]}
-      {BADGE_LABELS[badge]}
+      <span aria-hidden="true">{BADGE_LABELS[badge]}</span>
     </span>
   );
 }
