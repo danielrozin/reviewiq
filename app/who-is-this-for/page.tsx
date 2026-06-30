@@ -326,7 +326,7 @@ export default function WhoIsThisForPage() {
                 </p>
                 <Link
                   href={uc.cta.href}
-                  className="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors group"
+                  className="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                 >
                   {uc.cta.label}
                   <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -388,7 +388,7 @@ export default function WhoIsThisForPage() {
         <div className="space-y-6">
           {faqItems.map((item) => (
             <details key={item.question} className="group border border-gray-100 rounded-xl">
-              <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-gray-900 font-medium">
+              <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-gray-900 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
                 {item.question}
                 <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
@@ -413,19 +413,19 @@ export default function WhoIsThisForPage() {
         <div className="flex flex-wrap justify-center gap-4">
           <Link
             href="/category/robot-vacuums"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
           >
             Robot Vacuums
           </Link>
           <Link
             href="/category/coffee-machines"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             Coffee Machines
           </Link>
           <Link
             href="/categories"
-            className="inline-flex items-center px-6 py-3 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+            className="inline-flex items-center px-6 py-3 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             All Categories
           </Link>
