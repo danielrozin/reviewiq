@@ -89,7 +89,7 @@ export function Footer() {
                 />
                 <button
                   type="submit"
-                  className="px-5 py-3 bg-white text-brand-700 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shrink-0 shadow-sm"
+                  className="px-5 py-3 bg-white text-brand-700 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shrink-0 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                 >
                   Subscribe
                 </button>
@@ -236,7 +236,7 @@ export function Footer() {
                       window.dispatchEvent(new CustomEvent("open-cookie-preferences"));
                     }
                   }}
-                  className="text-sm text-gray-600 hover:text-brand-600 transition-colors cursor-pointer"
+                  className="text-sm text-gray-600 hover:text-brand-600 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                 >
                   Cookie Preferences
                 </button>

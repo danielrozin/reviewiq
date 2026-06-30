@@ -34,7 +34,7 @@ export function ComparisonTray() {
             <button
               type="button"
               onClick={clear}
-              className="text-xs text-gray-400 hover:text-red-600 transition-colors"
+              className="text-xs text-gray-400 hover:text-red-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1 rounded"
             >
               Clear all
             </button>
@@ -49,6 +49,7 @@ export function ComparisonTray() {
                   className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-xl px-3 py-2 shrink-0"
                 >
                   <div
+                    aria-hidden="true"
                     className={cn(
                       "w-6 h-6 rounded-md text-white flex items-center justify-center text-xs font-bold shrink-0",
                       getScoreBgColor(product.smartScore)
