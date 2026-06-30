@@ -38,7 +38,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
   const allShown = [...pinned, ...regular];
 
   return (
-    <section aria-labelledby="community-discussion-heading">
+    <section aria-labelledby="community-discussion-heading" data-speakable="community-discussions">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 id="community-discussion-heading" className="text-lg font-semibold text-gray-900">
@@ -50,25 +50,27 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
         </div>
         <Link
           href="/community"
+          aria-label={`View all discussions about ${productName}`}
           className="text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
         >
           View all →
         </Link>
       </div>
 
-      <div className="space-y-3">
+      <ul role="list" aria-label={`Community discussions about ${productName}`} className="space-y-3">
         {allShown.map((thread) => {
           const author = getUserById(thread.authorId);
           const netVotes = thread.upvotes - thread.downvotes;
 
           return (
+            <li key={thread.id}>
             <Link
-              key={thread.id}
               href={`/community/thread/${thread.id}`}
+              aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""}${thread.isPinned ? " (Pinned)" : ""} — ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
               className="flex gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               {/* Vote count */}
-              <div className="flex flex-col items-center shrink-0 min-w-[40px]">
+              <div aria-hidden="true" className="flex flex-col items-center shrink-0 min-w-[40px]">
                 <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
                   {formatNumber(netVotes)}
                 </span>
@@ -106,9 +108,10 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
                 </div>
               </div>
             </Link>
+            </li>
           );
         })}
-      </div>
+      </ul>
 
       {/* Start discussion CTA */}
       <div className="mt-4 pt-4 border-t border-gray-50 text-center">

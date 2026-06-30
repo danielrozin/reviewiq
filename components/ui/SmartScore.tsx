@@ -20,10 +20,11 @@ function getScoreRingColor(score: number): string {
 export function SmartScore({ score, size = "md", showLabel = true, showRing = false, animateOnView = false }: SmartScoreProps) {
   const ringRef = useRef<SVGCircleElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [animated, setAnimated] = useState(!animateOnView);
+  const prefersReducedMotion = typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const [animated, setAnimated] = useState(!animateOnView || prefersReducedMotion);
 
   useEffect(() => {
-    if (!animateOnView || !showRing) return;
+    if (!animateOnView || !showRing || prefersReducedMotion) return;
     const el = containerRef.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -37,7 +38,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
     );
     obs.observe(el);
     return () => obs.disconnect();
-  }, [animateOnView, showRing]);
+  }, [animateOnView, showRing, prefersReducedMotion]);
   const sizeClasses = {
     sm: "w-10 h-10 text-sm",
     md: "w-14 h-14 text-lg",
