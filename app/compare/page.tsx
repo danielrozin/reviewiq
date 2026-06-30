@@ -35,6 +35,10 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
     <div ref={ref} className="relative w-full max-w-md">
       <input
         type="text"
+        role="combobox"
+        aria-expanded={open && query.length > 0}
+        aria-controls="compare-product-listbox"
+        aria-autocomplete="list"
         value={query}
         onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
@@ -43,23 +47,24 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
         className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
       />
       {open && query.length > 0 && (
-        <div className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
+        <ul id="compare-product-listbox" role="listbox" aria-label="Product search results" className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
           {filtered.length === 0 ? (
-            <p className="px-4 py-3 text-sm text-gray-400">No products found</p>
+            <li className="px-4 py-3 text-sm text-gray-400">No products found</li>
           ) : (
             filtered.slice(0, 8).map((p) => (
-              <button
-                type="button"
-                key={p.id}
-                onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
-                className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2"
-              >
-                <span className="font-medium text-gray-900">{p.brand}</span>
-                <span className="text-gray-600">{p.name}</span>
-              </button>
+              <li key={p.id}>
+                <button
+                  type="button"
+                  onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
+                  className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+                >
+                  <span className="font-medium text-gray-900">{p.brand}</span>
+                  <span className="text-gray-600">{p.name}</span>
+                </button>
+              </li>
             ))
           )}
-        </div>
+        </ul>
       )}
     </div>
   );
@@ -110,7 +115,7 @@ function CompareContent() {
         {/* Partial selection hint */}
         {compareProducts.length === 1 && (
           <p className="text-center text-sm text-brand-600 font-medium mb-6">
-            ✓ {compareProducts[0].name} added — search for one more product to compare.
+            <span aria-hidden="true">✓ </span>{compareProducts[0].name} added — search for one more product to compare.
           </p>
         )}
 
@@ -122,14 +127,14 @@ function CompareContent() {
             { icon: "📋", label: "Spec-by-spec table" },
           ].map((f) => (
             <div key={f.label} className="flex flex-col items-center gap-1.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 text-center">
-              <span className="text-xl">{f.icon}</span>
+              <span aria-hidden="true" className="text-xl">{f.icon}</span>
               <span className="text-xs font-medium text-gray-600">{f.label}</span>
             </div>
           ))}
         </div>
 
         {/* Suggested comparisons */}
-        <div className="border-t border-gray-100 pt-6">
+        <section aria-label="Popular comparisons" className="border-t border-gray-100 pt-6">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
           <div className="flex flex-col gap-2">
             {SUGGESTED_PAIRS.map((pair) => (
@@ -150,7 +155,7 @@ function CompareContent() {
               Browse all products →
             </a>
           </div>
-        </div>
+        </section>
       </div>
     );
   }
