@@ -29,7 +29,7 @@ function SignInError() {
 
   if (!error) return null;
   return (
-    <div className="p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-lg">
+    <div role="alert" className="p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-lg">
       {error}
     </div>
   );
@@ -105,7 +105,7 @@ export default function SignInPage() {
             ))}
           </ul>
           <div className="flex items-center gap-3 mt-8 pt-6 border-t border-gray-100">
-            <div className="flex -space-x-2">
+            <div aria-hidden="true" className="flex -space-x-2">
               {["bg-brand-400","bg-emerald-400","bg-amber-400","bg-pink-400"].map((c,i) => (
                 <div key={i} className={`w-7 h-7 rounded-full ${c} ring-2 ring-white flex items-center justify-center text-white text-xs font-bold`}>
                   {["JL","SA","MK","TR"][i]}
@@ -119,8 +119,8 @@ export default function SignInPage() {
         {/* Right — sign in form */}
         <div className="w-full max-w-sm mx-auto lg:mx-0">
           <div className="lg:hidden text-center mb-8">
-            <Link href="/" className="inline-flex items-center gap-2">
-              <div className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center">
+            <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2">
+              <div aria-hidden="true" className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xs">RIQ</span>
               </div>
             </Link>
@@ -152,7 +152,7 @@ export default function SignInPage() {
               {loading ? "Redirecting…" : "Continue with Google"}
             </button>
 
-            <div className="flex items-center gap-3 text-xs text-gray-400">
+            <div className="flex items-center gap-3 text-xs text-gray-400" aria-hidden="true">
               <div className="flex-1 h-px bg-gray-100" />
               <span>Free forever · No credit card</span>
               <div className="flex-1 h-px bg-gray-100" />

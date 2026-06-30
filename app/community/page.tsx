@@ -53,7 +53,7 @@ export default function CommunityPage() {
           <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
             <div>
               <div className="inline-flex items-center gap-2 bg-white/15 text-white/90 px-3 py-1 rounded-full text-xs font-medium mb-3 border border-white/20">
-                <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                <span aria-hidden="true" className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
                 {stats.activeContributors} contributors active now
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold mb-2">Community</h1>
@@ -148,7 +148,7 @@ export default function CommunityPage() {
                     className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-gray-50 transition-colors group"
                   >
                     <div className="flex items-center gap-2">
-                      <span className="text-base">{cat.icon}</span>
+                      <span aria-hidden="true" className="text-base">{cat.icon}</span>
                       <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
                         {cat.name}
                       </span>
@@ -178,13 +178,15 @@ export default function CommunityPage() {
             <div className="space-y-3">
               {topContributors.map((user, i) => (
                 <div key={user.id} className="flex items-center gap-3">
-                  <span className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
+                  <span
+                    aria-label={`Rank ${i + 1}`}
+                    className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                     i === 0 ? "bg-amber-400 text-white" :
                     i === 1 ? "bg-gray-300 text-white" :
                     i === 2 ? "bg-orange-400 text-white" :
                     "bg-gray-100 text-gray-400"
                   }`}>
-                    {i + 1}
+                    <span aria-hidden="true">{i + 1}</span>
                   </span>
                   <div className="flex-1 min-w-0">
                     <UserChip user={user} showTrustLevel showReputation size="sm" />
