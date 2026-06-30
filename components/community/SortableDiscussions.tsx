@@ -57,7 +57,7 @@ export function SortableDiscussions({
           </div>
           <h2 id="sortable-discussions-heading" className="text-lg font-semibold text-gray-900">{activeTab} Discussions</h2>
         </div>
-        <div className="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
+        <div role="group" aria-label="Sort discussions by" className="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
           {tabs.map(({ key, icon }) => (
             <button
               key={key}
@@ -77,9 +77,11 @@ export function SortableDiscussions({
         </div>
       </div>
 
-      <div className="space-y-3">
+      <div role="list" className="space-y-3">
         {threads.map((thread) => (
-          <ThreadCard key={thread.id} thread={thread} />
+          <div role="listitem" key={thread.id}>
+            <ThreadCard thread={thread} />
+          </div>
         ))}
       </div>
     </section>

@@ -91,7 +91,7 @@ export default async function ComparisonPage({ params }: Props) {
         </div>
 
         {/* Quick links to individual product pages */}
-        <div className="flex justify-center gap-4 mb-8">
+        <nav aria-label="Full product reviews" className="flex justify-center gap-4 mb-8">
           <Link
             href={`/category/${productA.categorySlug}/${productA.slug}`}
             className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2"
@@ -104,7 +104,7 @@ export default async function ComparisonPage({ params }: Props) {
           >
             Full {productB.name} review &rarr;
           </Link>
-        </div>
+        </nav>
 
         <div className="space-y-8">
           <ScoreComparison productA={productA} productB={productB} />
@@ -147,29 +147,30 @@ function RelatedComparisons({
       <h2 className="text-lg font-semibold text-gray-900 mb-4">
         More Comparisons
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {related.map((pair) => (
-          <Link
-            key={pair.slug}
-            href={`/compare/${pair.slug}`}
-            className="flex items-center gap-3 p-4 border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 transition-all group"
-          >
-            <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-xs font-bold shrink-0">
-              VS
-            </div>
-            <div>
-              <p className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors">
-                {pair.productA.name} vs {pair.productB.name}
-              </p>
-              {pair.searchVolume > 0 && (
-                <p className="text-xs text-gray-400">
-                  {pair.searchVolume.toLocaleString()} monthly searches
+          <li key={pair.slug}>
+            <Link
+              href={`/compare/${pair.slug}`}
+              className="flex items-center gap-3 p-4 border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 transition-all group"
+            >
+              <div aria-hidden="true" className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-xs font-bold shrink-0">
+                VS
+              </div>
+              <div>
+                <p className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors">
+                  {pair.productA.name} vs {pair.productB.name}
                 </p>
-              )}
-            </div>
-          </Link>
+                {pair.searchVolume > 0 && (
+                  <p className="text-xs text-gray-400">
+                    {pair.searchVolume.toLocaleString()} monthly searches
+                  </p>
+                )}
+              </div>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }
