@@ -19,7 +19,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
     return (
       <Link
         href={`/community/thread/${thread.id}`}
-        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group"
+        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
       >
         <div className="flex flex-col items-center min-w-[40px]">
           <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
@@ -51,7 +51,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
 
   return (
     <article aria-labelledby={`thread-${thread.id}-title`} className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
-      <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+      <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="flex gap-4 p-5">
         {/* Vote column */}
         <div className="flex flex-col items-center gap-1 shrink-0 pt-0.5">
@@ -91,7 +91,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           {/* Title */}
           <Link
             href={`/community/thread/${thread.id}`}
-            className="block mb-2 group"
+            className="block mb-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
           >
             <h3 id={`thread-${thread.id}-title`} className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug">
               {thread.title}
@@ -128,7 +128,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
             {showProduct && thread.productSlug && (
               <Link
                 href={`/category/${thread.categorySlug}/${thread.productSlug}`}
-                className="text-xs text-brand-600 hover:text-brand-700 font-medium"
+                className="text-xs text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
               >
                 {thread.productSlug?.replace(/-/g, " ")}
               </Link>
