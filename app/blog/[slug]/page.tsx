@@ -193,14 +193,14 @@ export default async function BlogPostPage({
 
         {/* FAQ Section */}
         {post.faq.length > 0 && (
-          <section className="mt-12 border-t border-gray-100 pt-8">
+          <section aria-labelledby="blog-faqs-heading" className="mt-12 border-t border-gray-100 pt-8">
             <div className="flex items-center gap-3 mb-6">
               <div aria-hidden="true" className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+              <h2 id="blog-faqs-heading" className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
             </div>
             <div className="space-y-3">
               {post.faq.map((item, i) => (
@@ -234,14 +234,14 @@ export default async function BlogPostPage({
 
         {/* Related Products */}
         {categoryProducts.length > 0 && (
-          <section className="mt-12 border-t border-gray-100 pt-8">
+          <section aria-labelledby="blog-top-products-heading" className="mt-12 border-t border-gray-100 pt-8">
             <div className="flex items-center gap-2.5 mb-6">
               <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                 </svg>
               </div>
-              <h2 className="text-2xl font-bold text-gray-900">Top {post.categoryName} on ReviewIQ</h2>
+              <h2 id="blog-top-products-heading" className="text-2xl font-bold text-gray-900">Top {post.categoryName} on ReviewIQ</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {categoryProducts.map((product) => (
@@ -281,8 +281,8 @@ export default async function BlogPostPage({
 
         {/* Cross-Category Products — Affinity Linking */}
         {crossCategoryProducts.length > 0 && (
-          <section className="mt-12 border-t border-gray-100 pt-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-1">
+          <section aria-labelledby="blog-also-like-heading" className="mt-12 border-t border-gray-100 pt-8">
+            <h2 id="blog-also-like-heading" className="text-2xl font-bold text-gray-900 mb-1">
               You Might Also Like
             </h2>
             <p className="text-sm text-gray-600 mb-6">
@@ -346,8 +346,8 @@ export default async function BlogPostPage({
 
         {/* Related Blog Posts */}
         {relatedPosts.length > 0 && (
-          <section className="mt-12 border-t border-gray-100 pt-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
+          <section aria-labelledby="blog-related-articles-heading" className="mt-12 border-t border-gray-100 pt-8">
+            <h2 id="blog-related-articles-heading" className="text-2xl font-bold text-gray-900 mb-6">
               Related Articles
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

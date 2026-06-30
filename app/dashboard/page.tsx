@@ -105,28 +105,28 @@ export default async function DashboardPage() {
       </div>
 
       {/* Onboarding Checklist */}
-      <section className="mb-8">
+      <div className="mb-8">
         <ProfileChecklist />
-      </section>
+      </div>
 
       {/* Quick Actions */}
-      <section className="mb-8">
+      <div className="mb-8">
         <QuickActions />
-      </section>
+      </div>
 
       {/* Stats */}
-      <section className="mb-8">
+      <div className="mb-8">
         <StatsOverview stats={stats} />
-      </section>
+      </div>
 
       {/* Main grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left column — 2/3 */}
         <div className="lg:col-span-2 space-y-8">
           {/* Saved Comparisons */}
-          <section>
+          <section aria-labelledby="dashboard-saved-heading">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 id="dashboard-saved-heading" className="text-lg font-semibold text-gray-900">
                 Saved Products
               </h2>
               <span className="text-xs text-gray-400">
@@ -137,9 +137,9 @@ export default async function DashboardPage() {
           </section>
 
           {/* Review History */}
-          <section>
+          <section aria-labelledby="dashboard-reviews-heading">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 id="dashboard-reviews-heading" className="text-lg font-semibold text-gray-900">
                 Your Reviews
               </h2>
               <Link
@@ -159,9 +159,9 @@ export default async function DashboardPage() {
         {/* Right column — 1/3 */}
         <div className="space-y-8">
           {/* Watchlist */}
-          <section>
+          <section aria-labelledby="dashboard-watchlist-heading">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 id="dashboard-watchlist-heading" className="text-lg font-semibold text-gray-900">
                 SmartScore Watchlist
               </h2>
               <span className="text-xs text-gray-400">
@@ -172,8 +172,8 @@ export default async function DashboardPage() {
           </section>
 
           {/* Badges */}
-          <section className="bg-white border border-gray-100 rounded-2xl p-5">
-            <h2 className="text-sm font-semibold text-gray-900 mb-3">
+          <section aria-labelledby="dashboard-badges-heading" className="bg-white border border-gray-100 rounded-2xl p-5">
+            <h2 id="dashboard-badges-heading" className="text-sm font-semibold text-gray-900 mb-3">
               Your Badges
             </h2>
             <div className="flex flex-wrap gap-1.5">
@@ -184,8 +184,8 @@ export default async function DashboardPage() {
           </section>
 
           {/* Recommendations */}
-          <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <section aria-labelledby="dashboard-recommended-heading">
+            <h2 id="dashboard-recommended-heading" className="text-lg font-semibold text-gray-900 mb-4">
               Recommended For You
             </h2>
             <RecommendedProducts products={recommended} />

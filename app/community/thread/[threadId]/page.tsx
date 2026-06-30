@@ -253,9 +253,9 @@ export default async function ThreadPage({ params }: Props) {
           </article>
 
           {/* Comments section */}
-          <section>
+          <section aria-labelledby="thread-replies-heading">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-lg font-semibold text-gray-900">
+              <h2 id="thread-replies-heading" className="text-lg font-semibold text-gray-900">
                 {thread.commentCount} Replies
               </h2>
               <div role="group" aria-label="Sort replies by" className="flex items-center gap-1">
