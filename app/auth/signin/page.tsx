@@ -52,7 +52,7 @@ export default function SignInPage() {
       <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left — value proposition */}
         <div className="hidden lg:block">
-          <Link href="/" className="inline-flex items-center gap-2.5 mb-8 group">
+          <Link href="/" className="inline-flex items-center gap-2.5 mb-8 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
             <div className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
               <span className="text-white font-bold text-xs">RIQ</span>
             </div>
@@ -119,7 +119,7 @@ export default function SignInPage() {
         {/* Right — sign in form */}
         <div className="w-full max-w-sm mx-auto lg:mx-0">
           <div className="lg:hidden text-center mb-8">
-            <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2">
+            <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
               <div aria-hidden="true" className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xs">RIQ</span>
               </div>
@@ -141,7 +141,7 @@ export default function SignInPage() {
               type="button"
               onClick={handleGoogle}
               disabled={loading}
-              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-sm"
+              className="w-full flex items-center justify-center gap-3 px-4 py-3 border border-gray-300 rounded-xl text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <svg aria-hidden="true" className="w-5 h-5" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
@@ -172,9 +172,9 @@ export default function SignInPage() {
 
           <p className="mt-4 text-center text-xs text-gray-400">
             By signing in, you agree to our{" "}
-            <Link href="/terms" className="underline hover:text-gray-600">Terms</Link>{" "}
+            <Link href="/terms" className="underline hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Terms</Link>{" "}
             and{" "}
-            <Link href="/privacy" className="underline hover:text-gray-600">Privacy Policy</Link>.
+            <Link href="/privacy" className="underline hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
           </p>
         </div>
       </div>

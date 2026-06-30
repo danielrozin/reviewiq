@@ -63,7 +63,7 @@ export default function CommunityPage() {
             </div>
             <Link
               href="/community/new"
-              className="inline-flex items-center gap-2 self-start sm:self-auto px-5 py-2.5 bg-white text-brand-600 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shadow-sm shrink-0"
+              className="inline-flex items-center gap-2 self-start sm:self-auto px-5 py-2.5 bg-white text-brand-600 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shadow-sm shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -145,7 +145,7 @@ export default function CommunityPage() {
                   <Link
                     key={cat.id}
                     href={`/category/${cat.slug}`}
-                    className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-gray-50 transition-colors group"
+                    className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-gray-50 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <div className="flex items-center gap-2">
                       <span aria-hidden="true" className="text-base">{cat.icon}</span>

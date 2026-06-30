@@ -127,7 +127,7 @@ export function PricingTiers() {
           type="button"
           onClick={handleSubscribe}
           disabled={loading}
-          className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-wait inline-flex items-center justify-center gap-2"
+          className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-wait inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         >
           {loading ? (
             <>

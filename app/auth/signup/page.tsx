@@ -51,7 +51,7 @@ export default function SignUpPage() {
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2">
+          <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
             <div aria-hidden="true" className="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">RIQ</span>
             </div>
@@ -73,7 +73,7 @@ export default function SignUpPage() {
             type="button"
             onClick={handleGoogle}
             disabled={loading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-2.5 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50"
+            className="w-full flex items-center justify-center gap-3 px-4 py-2.5 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             <svg aria-hidden="true" className="w-5 h-5" viewBox="0 0 24 24">
               <path
@@ -99,16 +99,16 @@ export default function SignUpPage() {
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <Link href="/auth/signin" className="text-brand-600 hover:text-brand-700 font-medium">
+          <Link href="/auth/signin" className="text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
             Sign in
           </Link>
         </p>
 
         <p className="mt-2 text-center text-xs text-gray-400">
           By creating an account, you agree to our{" "}
-          <Link href="/terms" className="underline hover:text-gray-600">Terms</Link>{" "}
+          <Link href="/terms" className="underline hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Terms</Link>{" "}
           and{" "}
-          <Link href="/privacy" className="underline hover:text-gray-600">Privacy Policy</Link>.
+          <Link href="/privacy" className="underline hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
         </p>
       </div>
     </div>

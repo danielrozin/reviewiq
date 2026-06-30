@@ -106,7 +106,7 @@ function StarRating({
           type="button"
           onMouseEnter={() => setHovered(star)}
           onClick={() => onChange(star)}
-          className={`transition-all touch-manipulation active:scale-110 ${
+          className={`transition-all touch-manipulation active:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 rounded ${
             star <= (hovered || value) ? "text-amber-400 scale-105" : "text-gray-200"
           } hover:text-amber-300`}
           aria-label={`Rate ${star} out of 5`}
@@ -280,7 +280,7 @@ export default function WriteReviewPage() {
           </p>
           <Link
             href="/auth/signin?callbackUrl=/write-review"
-            className="inline-flex px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors"
+            className="inline-flex px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
           >
             Sign in to continue
           </Link>
@@ -350,25 +350,25 @@ export default function WriteReviewPage() {
             <a
               href="/write-review"
               onClick={handleReset}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               Write Another Review
             </a>
             <a
               href="/community"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Join the Community
             </a>
             <a
               href="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Explore Products
             </a>
           </div>
           <div className="text-center mt-4">
-            <a href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
+            <a href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Back to Home
             </a>
           </div>
@@ -651,7 +651,7 @@ export default function WriteReviewPage() {
             <button
               type="button"
               onClick={goBack}
-              className="px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+              className="px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
             >
               Back
             </button>
@@ -664,7 +664,7 @@ export default function WriteReviewPage() {
               type="button"
               onClick={goNext}
               disabled={!canProceed}
-              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
                 canProceed
                   ? "bg-brand-600 text-white hover:bg-brand-700"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
@@ -684,7 +684,7 @@ export default function WriteReviewPage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={!canProceed || isSubmitting}
-                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors ${
+                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
                   canProceed && !isSubmitting
                     ? "bg-brand-600 text-white hover:bg-brand-700"
                     : "bg-gray-100 text-gray-400 cursor-not-allowed"

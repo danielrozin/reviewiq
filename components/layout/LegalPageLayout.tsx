@@ -102,7 +102,7 @@ export function LegalPageLayout({
 
           {/* Mobile TOC */}
           <details className="lg:hidden mb-8 bg-gray-50 border border-gray-200 rounded-xl p-4 print:hidden">
-            <summary className="text-sm font-semibold text-gray-900 cursor-pointer select-none">
+            <summary className="text-sm font-semibold text-gray-900 cursor-pointer select-none rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1">
               Table of Contents
             </summary>
             <nav className="mt-3">
