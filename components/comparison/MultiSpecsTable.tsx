@@ -100,7 +100,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                       <div className="px-4 py-3 text-gray-600 flex items-center gap-2">
                         <span className="truncate">{spec.label}</span>
                         {isDifferent && (
-                          <span className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none shrink-0">
+                          <span aria-label="values differ" className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none shrink-0">
                             diff
                           </span>
                         )}

@@ -54,7 +54,8 @@ function ScoreBlock({
     <div className="flex flex-col items-center gap-3 flex-1 max-w-[200px]">
       <div className="relative">
         <div
-          aria-label={`SmartScore: ${product.smartScore}`}
+          role="img"
+          aria-label={`SmartScore: ${product.smartScore} — ${getScoreLabel(product.smartScore)}`}
           className={cn(
             "w-20 h-20 rounded-2xl font-bold text-white flex items-center justify-center text-2xl",
             getScoreBgColor(product.smartScore)

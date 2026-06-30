@@ -29,15 +29,19 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
             key={product.id}
             className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
           >
-            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             {/* Product header */}
             <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3">
-              <div className={`w-8 h-8 rounded-xl font-bold text-white text-sm flex items-center justify-center shrink-0 ${
-                product.smartScore >= 85 ? "bg-emerald-500" :
-                product.smartScore >= 70 ? "bg-brand-500" :
-                product.smartScore >= 55 ? "bg-amber-500" : "bg-gray-400"
-              }`}>
-                {product.smartScore}
+              <div
+                role="img"
+                aria-label={`SmartScore: ${product.smartScore}`}
+                className={`w-8 h-8 rounded-xl font-bold text-white text-sm flex items-center justify-center shrink-0 ${
+                  product.smartScore >= 85 ? "bg-emerald-500" :
+                  product.smartScore >= 70 ? "bg-brand-500" :
+                  product.smartScore >= 55 ? "bg-amber-500" : "bg-gray-400"
+                }`}
+              >
+                <span aria-hidden="true">{product.smartScore}</span>
               </div>
               <Link
                 href={`/category/${product.categorySlug}/${product.slug}`}

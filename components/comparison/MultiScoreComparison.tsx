@@ -37,15 +37,17 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
               <div key={product.id} className="flex flex-col items-center gap-3">
                 <div className="relative">
                   <div
+                    role="img"
+                    aria-label={`SmartScore: ${product.smartScore} — ${getScoreLabel(product.smartScore)}`}
                     className={cn(
                       "w-20 h-20 rounded-2xl font-bold text-white flex items-center justify-center text-2xl",
                       getScoreBgColor(product.smartScore)
                     )}
                   >
-                    {product.smartScore}
+                    <span aria-hidden="true">{product.smartScore}</span>
                   </div>
                   {isWinner && products.length > 1 && (
-                    <div aria-label="Winner" className="absolute -top-2 -right-2 w-6 h-6 bg-amber-400 rounded-full flex items-center justify-center shadow-sm">
+                    <div role="img" aria-label="Winner" className="absolute -top-2 -right-2 w-6 h-6 bg-amber-400 rounded-full flex items-center justify-center shadow-sm">
                       <svg aria-hidden="true" className="w-3.5 h-3.5 text-white" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
                       </svg>

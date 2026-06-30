@@ -91,7 +91,7 @@ export function SpecsComparisonTable({
                         <span className="flex items-center gap-2">
                           {spec.label}
                           {differs && (
-                            <span className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none">
+                            <span aria-label="values differ" className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none">
                               diff
                             </span>
                           )}

@@ -52,7 +52,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               href={`/category/${winner.categorySlug}/${winner.slug}`}
               className="flex-1 flex items-center gap-3 bg-white border-2 border-emerald-200 rounded-xl p-3.5 hover:border-emerald-300 hover:shadow-sm transition-all group"
             >
-              <div aria-label={`SmartScore: ${winner.smartScore}`} className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(winner.smartScore)}`}>
+              <div role="img" aria-label={`SmartScore: ${winner.smartScore}`} className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(winner.smartScore)}`}>
                 <span aria-hidden="true">{winner.smartScore}</span>
               </div>
               <div className="min-w-0">
@@ -78,7 +78,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               href={`/category/${loser.categorySlug}/${loser.slug}`}
               className="flex-1 flex items-center gap-3 bg-white border border-gray-200 rounded-xl p-3.5 hover:border-gray-300 hover:shadow-sm transition-all group"
             >
-              <div aria-label={`SmartScore: ${loser.smartScore}`} className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(loser.smartScore)}`}>
+              <div role="img" aria-label={`SmartScore: ${loser.smartScore}`} className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(loser.smartScore)}`}>
                 <span aria-hidden="true">{loser.smartScore}</span>
               </div>
               <div className="min-w-0">
