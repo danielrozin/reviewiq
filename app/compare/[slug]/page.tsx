@@ -143,8 +143,8 @@ function RelatedComparisons({
   if (related.length === 0) return null;
 
   return (
-    <section className="mt-12">
-      <h2 className="text-lg font-semibold text-gray-900 mb-4">
+    <section aria-labelledby="related-comparisons-heading" className="mt-12">
+      <h2 id="related-comparisons-heading" className="text-lg font-semibold text-gray-900 mb-4">
         More Comparisons
       </h2>
       <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-4">

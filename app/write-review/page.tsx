@@ -476,7 +476,7 @@ export default function WriteReviewPage() {
             </div>
 
             {touched.rating && !stepValid.rating && (
-              <p className="text-xs text-red-600">Please rate all categories</p>
+              <p role="alert" className="text-xs text-red-600">Please rate all categories</p>
             )}
           </div>
         )}
@@ -678,7 +678,7 @@ export default function WriteReviewPage() {
           ) : (
             <div className="text-right">
               {submitError && (
-                <p className="text-sm text-red-600 mb-2">{submitError}</p>
+                <p role="alert" className="text-sm text-red-600 mb-2">{submitError}</p>
               )}
               <button
                 type="button"

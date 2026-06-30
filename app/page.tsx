@@ -49,7 +49,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6 animate-fade-in border border-brand-100">
-              <span className="w-2 h-2 bg-brand-500 rounded-full animate-pulse" />
+              <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full animate-pulse" />
               AI-Powered Review Intelligence
             </div>
             <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-fade-up">
@@ -103,7 +103,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 animate-fade-up delay-500">
               <div className="flex items-center gap-2">
                 {/* Avatar stack */}
-                <div className="flex -space-x-2">
+                <div aria-hidden="true" className="flex -space-x-2">
                   {["bg-brand-400", "bg-emerald-400", "bg-amber-400", "bg-pink-400", "bg-purple-400"].map((color, i) => (
                     <div key={i} className={`w-7 h-7 rounded-full ${color} ring-2 ring-white flex items-center justify-center text-white text-xs font-bold`}>
                       {["JL", "SA", "MK", "TR", "PW"][i]}
@@ -114,12 +114,12 @@ export default function HomePage() {
                   <span className="font-semibold text-gray-800">20,000+</span> verified reviews written
                 </span>
               </div>
-              <span className="hidden sm:block text-gray-200">|</span>
+              <span aria-hidden="true" className="hidden sm:block text-gray-200">|</span>
               <div className="flex items-center gap-1.5 text-sm text-gray-600">
                 <svg aria-hidden="true" className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z"/></svg>
                 <span className="font-semibold text-gray-800">4.8/5</span> avg product rating
               </div>
-              <span className="hidden sm:block text-gray-200">|</span>
+              <span aria-hidden="true" className="hidden sm:block text-gray-200">|</span>
               <div className="flex items-center gap-1.5 text-sm text-gray-600">
                 <svg aria-hidden="true" className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <span className="font-semibold text-gray-800">78%</span> verified buyers
@@ -233,7 +233,7 @@ export default function HomePage() {
               href={`/category/${cat.slug}`}
               className="group p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200"
             >
-              <span className="text-3xl mb-3 block group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
+              <span aria-hidden="true" className="text-3xl mb-3 block group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
                 {cat.name}
               </h3>
@@ -264,7 +264,7 @@ export default function HomePage() {
                 className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
               >
                 {/* Brand accent hover strip */}
-                <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 {/* Product image */}
                 <div className="relative h-44 bg-gray-50 overflow-hidden">
                   {product.image ? (
@@ -317,7 +317,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-3">
-              <span className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
+              <span aria-hidden="true" className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
               Live Community
             </div>
             <h2 id="trending-discussions" className="text-2xl font-bold text-gray-900">
