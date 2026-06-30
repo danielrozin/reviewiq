@@ -128,12 +128,12 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           type="button"
           onClick={handleCompare}
           disabled={!isSelected && isFull}
-          className={`w-full flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium rounded-xl transition-all ${
+          className={`w-full flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-medium rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
             isSelected
               ? "bg-brand-600 text-white shadow-sm"
               : isFull
                 ? "bg-gray-100 text-gray-300 cursor-not-allowed"
-                : "bg-gray-50 text-gray-600 border border-gray-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100"
+                : "bg-gray-50 text-gray-600 border border-gray-200 hover:border-brand-300 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
           }`}
           aria-label={isSelected ? `Remove ${product.name} from comparison` : isFull ? "Comparison list full — max 4 products" : `Add ${product.name} to compare`}
           aria-pressed={isSelected}
