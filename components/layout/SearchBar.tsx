@@ -100,7 +100,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
         matched.push({
           type: "discussion",
           name: d.title,
-          subtitle: `${d.commentCount} replies · ${d.upvotes} upvotes`,
+          subtitle: `${d.commentCount} replies — ${d.upvotes} upvotes`,
           href: `/community/thread/${d.id}`,
           score: d.upvotes,
         });
@@ -173,6 +173,11 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
         <input
           ref={inputRef}
           type="text"
+          role="combobox"
+          aria-expanded={open}
+          aria-autocomplete="list"
+          aria-controls="search-listbox"
+          aria-activedescendant={selectedIndex >= 0 ? `search-option-${selectedIndex}` : undefined}
           value={query}
           onChange={(e) => search(e.target.value)}
           onFocus={() => query.length >= 2 && results.length > 0 && setOpen(true)}
@@ -193,11 +198,14 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
       </div>
 
       {open && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
+        <div id="search-listbox" role="listbox" aria-label="Search suggestions" className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
           {results.map((result, i) => (
             <button
               type="button"
               key={result.href}
+              id={`search-option-${i}`}
+              role="option"
+              aria-selected={i === selectedIndex}
               onClick={() => {
                 trackSearchResultClicked(query, result.type, result.name, i);
                 navigate(result.href);
