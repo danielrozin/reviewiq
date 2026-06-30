@@ -23,7 +23,7 @@ const GROUPS = [
     iconBg: "bg-amber-50",
     iconColor: "text-amber-600",
     toggleColor: "bg-amber-500",
-    toggleRing: "focus:ring-amber-500",
+    toggleRing: "focus-visible:ring-amber-500",
     toggles: [
       {
         key: "priceAlerts" as PrefKey,
@@ -44,7 +44,7 @@ const GROUPS = [
     iconBg: "bg-brand-50",
     iconColor: "text-brand-600",
     toggleColor: "bg-brand-600",
-    toggleRing: "focus:ring-brand-600",
+    toggleRing: "focus-visible:ring-brand-600",
     toggles: [
       {
         key: "reviewAlerts" as PrefKey,
@@ -65,7 +65,7 @@ const GROUPS = [
     iconBg: "bg-purple-50",
     iconColor: "text-purple-600",
     toggleColor: "bg-purple-600",
-    toggleRing: "focus:ring-purple-500",
+    toggleRing: "focus-visible:ring-purple-500",
     toggles: [
       {
         key: "weeklyDigest" as PrefKey,
@@ -183,7 +183,7 @@ export default function NotificationsSettingsPage() {
 
               {/* Toggles */}
               {group.toggles.map(({ key, label, description, badge }) => (
-                <div key={key} className="flex items-center justify-between px-5 py-4 gap-4">
+                <div key={key} className="flex items-center justify-between px-5 py-4 gap-4 hover:bg-gray-50/60 transition-colors">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-medium text-gray-900 text-sm">{label}</h3>
@@ -205,7 +205,7 @@ export default function NotificationsSettingsPage() {
                     type="button"
                     onClick={() => toggle(key)}
                     disabled={saving === key}
-                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 ${group.toggleRing} focus:ring-offset-2 ${
+                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 ${group.toggleRing} focus-visible:ring-offset-2 ${
                       prefs[key] ? group.toggleColor : "bg-gray-200"
                     } ${saving === key ? "opacity-50 cursor-not-allowed" : ""}`}
                     role="switch"
