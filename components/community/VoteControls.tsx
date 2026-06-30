@@ -62,10 +62,6 @@ export function VoteControls({
       localStorage.removeItem(`vote_${itemId}`);
     }
 
-    if (newVote) {
-      trackVoteCast(itemType || "thread", newVote);
-    }
-
     // Ready for backend API when available:
     // fetch("/api/votes", {
     //   method: "POST",
@@ -164,7 +160,7 @@ export function VoteControls({
         </button>
       </div>
       {helpfulCount !== undefined && helpfulCount > 0 && (
-        <span className="text-xs text-gray-400">
+        <span aria-label={`${helpfulCount} ${helpfulCount === 1 ? "person" : "people"} found this helpful`} className="text-xs text-gray-400" aria-live="polite">
           {helpfulCount} found helpful
         </span>
       )}
