@@ -191,7 +191,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
           }`}
         />
         {size === "default" && !query && (
-          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-0.5 px-1.5 py-0.5 text-xs font-medium text-gray-400 bg-gray-100 border border-gray-200 rounded pointer-events-none">
+          <kbd aria-hidden="true" className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:flex items-center gap-0.5 px-1.5 py-0.5 text-xs font-medium text-gray-400 bg-gray-100 border border-gray-200 rounded pointer-events-none">
             <span className="text-xs">⌘</span>K
           </kbd>
         )}
@@ -234,7 +234,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                     <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
                   </svg>
                 ) : (
-                  <span className="text-xs font-bold text-brand-600">{result.score}</span>
+                  <span aria-hidden="true" className="text-xs font-bold text-brand-600">{result.score}</span>
                 )}
               </span>
               <div className="min-w-0">
@@ -252,7 +252,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
 
       {open && query.length >= 2 && results.length === 0 && (
         <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg p-4 z-50">
-          <p className="text-sm text-gray-600 text-center">
+          <p role="status" className="text-sm text-gray-600 text-center">
             No products found for &ldquo;{query}&rdquo;
           </p>
         </div>
