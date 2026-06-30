@@ -146,8 +146,8 @@ export default async function UserProfilePage({ params }: Props) {
         {/* Right column — activity */}
         <div className="lg:col-span-2 space-y-8">
           {/* Discussions */}
-          <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <section aria-labelledby="user-discussions-heading">
+            <h2 id="user-discussions-heading" className="text-lg font-semibold text-gray-900 mb-4">
               Discussions ({userThreads.length})
             </h2>
             {userThreads.length > 0 ? (
@@ -170,8 +170,8 @@ export default async function UserProfilePage({ params }: Props) {
           </section>
 
           {/* Recent comments */}
-          <section>
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">
+          <section aria-labelledby="user-comments-heading">
+            <h2 id="user-comments-heading" className="text-lg font-semibold text-gray-900 mb-4">
               Recent Comments ({userComments.length})
             </h2>
             {userComments.length > 0 ? (

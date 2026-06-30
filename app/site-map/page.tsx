@@ -109,9 +109,10 @@ function ContentSection({
   const blogs = items.filter((i) => i.type === "blog");
   const threadItems = items.filter((i) => i.type === "discussion");
 
+  const headingId = `sitemap-${title.toLowerCase().replace(/\s+/g, '-')}`;
   return (
-    <section className="mb-10">
-      <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+    <section aria-labelledby={headingId} className="mb-10">
+      <h2 id={headingId} className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
         {title}
       </h2>
 
@@ -200,8 +201,8 @@ export default function SiteMapPage() {
         )}
 
         {/* Browse by Category */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+        <section aria-labelledby="sitemap-categories-heading" className="mb-10">
+          <h2 id="sitemap-categories-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
             Browse by Category
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -249,8 +250,8 @@ export default function SiteMapPage() {
 
         {/* Blog Categories */}
         {blogCategories.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+          <section aria-labelledby="sitemap-blog-categories-heading" className="mb-10">
+            <h2 id="sitemap-blog-categories-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
               Blog Categories
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
@@ -275,8 +276,8 @@ export default function SiteMapPage() {
 
         {/* Comparisons */}
         {comparisonPairs.length > 0 && (
-          <section className="mb-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+          <section aria-labelledby="sitemap-comparisons-heading" className="mb-10">
+            <h2 id="sitemap-comparisons-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
               Comparisons
             </h2>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
@@ -295,8 +296,8 @@ export default function SiteMapPage() {
         )}
 
         {/* Pages */}
-        <section className="mb-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
+        <section aria-labelledby="sitemap-pages-heading" className="mb-10">
+          <h2 id="sitemap-pages-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
             Pages
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
