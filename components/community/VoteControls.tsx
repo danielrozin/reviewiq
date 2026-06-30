@@ -74,7 +74,7 @@ export function VoteControls({
     // }).catch(() => {});
   }, [vote, itemId, itemType]);
 
-  const buttonSize = size === "sm" ? "w-7 h-7 text-sm" : "w-9 h-9 text-base";
+  const buttonSize = size === "sm" ? "w-11 h-11 sm:w-7 sm:h-7 text-sm touch-manipulation" : "w-11 h-11 sm:w-9 sm:h-9 text-base touch-manipulation";
   const scoreSize = size === "sm" ? "text-sm" : "text-base";
 
   const UpIcon = () => (

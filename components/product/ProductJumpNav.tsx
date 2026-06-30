@@ -63,7 +63,7 @@ export function ProductJumpNav() {
       aria-label="Page sections"
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-0.5 sm:gap-1 h-9 sm:h-10 overflow-x-auto scrollbar-none">
+        <nav className="flex items-center gap-0.5 sm:gap-1 h-11 sm:h-10 overflow-x-auto scrollbar-none">
           {SECTIONS.map(({ id, label }) => (
             <button
               key={id}
@@ -71,7 +71,7 @@ export function ProductJumpNav() {
               onClick={() => scrollTo(id)}
               aria-label={`Jump to ${label} section`}
               aria-current={activeId === id ? "true" : undefined}
-              className={`shrink-0 px-2.5 sm:px-3 py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap ${
+              className={`shrink-0 px-2.5 sm:px-3 py-2 sm:py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap touch-manipulation ${
                 activeId === id
                   ? "bg-brand-600 text-white shadow-sm"
                   : "text-gray-500 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-100"
