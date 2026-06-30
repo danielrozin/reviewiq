@@ -27,7 +27,7 @@ export function Footer() {
               </span>
               <span>No affiliate bias — honest reviews only</span>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-gray-200" />
+            <div aria-hidden="true" className="hidden sm:block w-px h-4 bg-gray-200" />
             <div className="flex items-center gap-2">
               <span aria-hidden="true" className="w-5 h-5 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3 h-3 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -36,7 +36,7 @@ export function Footer() {
               </span>
               <span>AI-synthesized from 20,000+ verified reviews</span>
             </div>
-            <div className="hidden sm:block w-px h-4 bg-gray-200" />
+            <div aria-hidden="true" className="hidden sm:block w-px h-4 bg-gray-200" />
             <div className="flex items-center gap-2">
               <span aria-hidden="true" className="w-5 h-5 bg-amber-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3 h-3 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -102,8 +102,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           <div className="col-span-2 md:col-span-1">
-            <Link href="/" className="flex items-center gap-2 mb-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
-              <div className="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
+            <Link href="/" aria-label="ReviewIQ home" className="flex items-center gap-2 mb-4 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
+              <div aria-hidden="true" className="w-7 h-7 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
                 <span className="text-white font-bold text-xs">RIQ</span>
               </div>
               <span className="text-lg font-bold text-gray-900">

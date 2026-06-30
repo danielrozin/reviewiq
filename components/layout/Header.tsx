@@ -70,8 +70,8 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center h-16 gap-8">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2.5 shrink-0 group">
-              <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
+            <Link href="/" aria-label="ReviewIQ home" className="flex items-center gap-2.5 shrink-0 group">
+              <div aria-hidden="true" className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
                 <span className="text-white font-bold text-xs">RIQ</span>
               </div>
               <span className="text-xl font-bold text-gray-900 hidden sm:inline">

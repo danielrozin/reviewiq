@@ -58,7 +58,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
     const color = getScoreRingColor(score);
 
     return (
-      <div className="flex items-center gap-3" ref={containerRef}>
+      <div className="flex items-center gap-3" ref={containerRef} role="img" aria-label={`SmartScore: ${score} — ${getScoreLabel(score)}`}>
         <div className="relative flex items-center justify-center" style={{ width: ringSize[size], height: ringSize[size] }}>
           <svg
             width={ringSize[size]}
@@ -88,6 +88,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
             />
           </svg>
           <span
+            aria-hidden="true"
             className={cn("relative z-10 font-bold", {
               "text-xs": size === "sm",
               "text-base": size === "md",
@@ -99,7 +100,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
           </span>
         </div>
         {showLabel && (
-          <div className="flex flex-col">
+          <div aria-hidden="true" className="flex flex-col">
             <span className={cn("font-semibold text-sm", getScoreColor(score))}>
               {getScoreLabel(score)}
             </span>
@@ -121,7 +122,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
         aria-label={`SmartScore: ${score} — ${getScoreLabel(score)}`}
         role="img"
       >
-        {score}
+        <span aria-hidden="true">{score}</span>
       </div>
       {showLabel && (
         <div className="flex flex-col">
