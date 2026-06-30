@@ -66,6 +66,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           <Link
             key={post.id}
             href={`/blog/${post.slug}`}
+            aria-label={`Read: ${post.title} — ${post.readingTime} min read`}
             className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200"
           >
             <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -105,7 +106,7 @@ export function BlogCategoryFilter({ posts }: Props) {
                   </span>
                 </div>
                 <span className="text-xs text-gray-600 flex-1 truncate">{post.author.name}</span>
-                <span className="text-gray-200 text-xs shrink-0">·</span>
+                <span aria-hidden="true" className="text-gray-200 text-xs shrink-0">·</span>
                 <span className="inline-flex items-center gap-1 text-xs text-gray-500 shrink-0">
                   <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
