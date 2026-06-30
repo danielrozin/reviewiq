@@ -66,7 +66,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
         </div>
 
         {/* Star filter pills */}
-        <div className="flex items-center gap-1">
+        <div role="group" aria-label="Filter by star rating" className="flex items-center gap-1">
           {[5, 4, 3, 2, 1].map((star) => (
             <button
               key={star}
@@ -146,7 +146,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
       {/* Load more */}
       {hasMore && (
         <div className="mt-6 flex items-center gap-4">
-          <div className="flex-1 h-px bg-gray-100" />
+          <div aria-hidden="true" className="flex-1 h-px bg-gray-100" />
           <button
             type="button"
             onClick={() => setVisible((v) => v + 5)}
@@ -157,7 +157,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             </svg>
             Show {Math.min(5, filtered.length - visible)} more reviews
           </button>
-          <div className="flex-1 h-px bg-gray-100" />
+          <div aria-hidden="true" className="flex-1 h-px bg-gray-100" />
         </div>
       )}
     </section>

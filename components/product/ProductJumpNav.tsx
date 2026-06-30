@@ -60,10 +60,9 @@ export function ProductJumpNav() {
       className={`block sticky top-14 sm:top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
-      aria-label="Page sections"
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <nav className="flex items-center gap-0.5 sm:gap-1 h-11 sm:h-10 overflow-x-auto scrollbar-none">
+        <nav aria-label="Page sections" className="flex items-center gap-0.5 sm:gap-1 h-11 sm:h-10 overflow-x-auto scrollbar-none">
           {SECTIONS.map(({ id, label }) => (
             <button
               key={id}

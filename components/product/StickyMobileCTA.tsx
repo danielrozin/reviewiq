@@ -86,7 +86,7 @@ export function StickyMobileCTA({
                 <span className="text-xs text-gray-600 font-medium">SmartScore</span>
               </div>
             )}
-            <div className="w-px h-5 bg-gray-200 shrink-0" />
+            <div aria-hidden="true" className="w-px h-5 bg-gray-200 shrink-0" />
             <p className="flex-1 text-sm font-semibold text-gray-800 truncate">
               {productName}
             </p>
