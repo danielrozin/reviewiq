@@ -52,9 +52,9 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
       <p className="text-sm text-gray-600 mb-4 ml-9">
         Common problems reported by multiple verified buyers
       </p>
-      <div className="space-y-3">
+      <ul role="list" className="space-y-3">
         {issues.map((issue, i) => (
-          <div
+          <li
             key={i}
             className={cn(
               "border rounded-xl p-4 hover:shadow-sm transition-all duration-200",
@@ -63,12 +63,12 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span aria-hidden="true" className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0", {
+                <span className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0", {
                   "bg-yellow-100": issue.severity === "low",
                   "bg-orange-100": issue.severity === "medium",
                   "bg-red-100": issue.severity === "high",
-                })}>
-                  {severityIcons[issue.severity]}
+                })} aria-label={`${issue.severity} severity`}>
+                  <span aria-hidden="true">{severityIcons[issue.severity]}</span>
                 </span>
                 <h3 className="font-medium text-sm">{issue.title}</h3>
               </div>
@@ -80,9 +80,9 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
               </span>
             </div>
             <p className={cn("text-sm", descriptionColors[issue.severity])}>{issue.description}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

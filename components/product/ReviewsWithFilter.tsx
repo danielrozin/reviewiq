@@ -75,7 +75,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
                 setFilterRating(filterRating === star ? null : star);
                 setVisible(INITIAL_VISIBLE);
               }}
-              className={`flex items-center gap-0.5 px-2 py-1 rounded-lg text-xs font-medium transition-colors ${
+              className={`flex items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[36px] ${
                 filterRating === star
                   ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
                   : "bg-gray-100 text-gray-500 hover:bg-gray-200"
@@ -93,7 +93,8 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             <button
               type="button"
               onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
-              className="px-2 py-1 text-xs text-gray-600 hover:text-gray-800 transition-colors"
+              aria-label="Clear star filter"
+              className="px-2.5 py-1.5 text-xs text-gray-600 hover:text-gray-800 transition-colors touch-manipulation min-h-[36px]"
             >
               Clear
             </button>
@@ -149,7 +150,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <button
             type="button"
             onClick={() => setVisible((v) => v + 5)}
-            className="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full hover:bg-brand-100 transition-colors shrink-0"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full hover:bg-brand-100 transition-colors shrink-0 touch-manipulation min-h-[44px]"
           >
             <svg aria-hidden="true" className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
