@@ -63,7 +63,14 @@ export function ProfileChecklist() {
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden">
+          <div
+            role="progressbar"
+            aria-valuenow={progressPercent}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-label="Profile completion"
+            className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden"
+          >
             <div
               className="h-full bg-brand-500 rounded-full transition-all duration-500"
               style={{ width: `${progressPercent}%` }}

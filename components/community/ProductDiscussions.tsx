@@ -13,7 +13,7 @@ interface ProductDiscussionsProps {
 export function ProductDiscussions({ threads, productName }: ProductDiscussionsProps) {
   if (threads.length === 0) {
     return (
-      <section aria-labelledby="community-discussion-heading">
+      <section aria-labelledby="community-discussion-heading" data-speakable="community-discussions">
         <div className="flex items-center justify-between mb-6">
           <h2 id="community-discussion-heading" className="text-lg font-semibold text-gray-900">Community Discussion</h2>
         </div>
