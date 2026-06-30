@@ -124,7 +124,7 @@ function ContentSection({
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
                 <Link
                   href={item.href}
-                  className="text-gray-600 hover:text-brand-600 transition-colors"
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                 >
                   {item.title}
                 </Link>
@@ -144,7 +144,7 @@ function ContentSection({
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
                 <Link
                   href={item.href}
-                  className="text-gray-600 hover:text-brand-600 transition-colors"
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                 >
                   {item.title}
                 </Link>
@@ -181,7 +181,7 @@ export default function SiteMapPage() {
           For the XML sitemap, see{" "}
           <a
             href="/sitemap.xml"
-            className="text-brand-600 hover:text-brand-700 underline"
+            className="text-brand-600 hover:text-brand-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             sitemap.xml
           </a>
@@ -215,7 +215,7 @@ export default function SiteMapPage() {
                   <h3 className="font-semibold text-gray-900 mb-2">
                     <Link
                       href={`/category/${cat.slug}`}
-                      className="hover:text-brand-600 transition-colors"
+                      className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                     >
                       {cat.name}
                     </Link>
@@ -225,7 +225,7 @@ export default function SiteMapPage() {
                       <li key={p.slug}>
                         <Link
                           href={`/category/${cat.slug}/${p.slug}`}
-                          className="text-sm text-gray-500 hover:text-brand-600 transition-colors"
+                          className="text-sm text-gray-500 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                         >
                           {p.name}
                         </Link>
@@ -235,7 +235,7 @@ export default function SiteMapPage() {
                       <li>
                         <Link
                           href={`/category/${cat.slug}`}
-                          className="text-sm text-brand-600 hover:text-brand-700 font-medium"
+                          className="text-sm text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                         >
                           View all {catProducts.length} products →
                         </Link>
@@ -257,7 +257,7 @@ export default function SiteMapPage() {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               <Link
                 href="/blog"
-                className="text-gray-600 hover:text-brand-600 transition-colors font-medium"
+                className="text-gray-600 hover:text-brand-600 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
               >
                 All Articles
               </Link>
@@ -265,7 +265,7 @@ export default function SiteMapPage() {
                 <Link
                   key={cat.slug}
                   href={`/blog/category/${cat.slug}`}
-                  className="text-gray-600 hover:text-brand-600 transition-colors"
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                 >
                   {cat.name}
                 </Link>
@@ -285,7 +285,7 @@ export default function SiteMapPage() {
                 <li key={pair.slug}>
                   <Link
                     href={`/compare/${pair.slug}`}
-                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors"
+                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                   >
                     {pair.productA.name} vs {pair.productB.name}
                   </Link>
