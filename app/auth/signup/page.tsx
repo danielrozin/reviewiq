@@ -29,7 +29,7 @@ function SignUpError() {
 
   if (!error) return null;
   return (
-    <div className="p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-lg">
+    <div role="alert" className="p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-lg">
       {error}
     </div>
   );
@@ -51,8 +51,8 @@ export default function SignUpPage() {
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <Link href="/" className="inline-flex items-center gap-2">
-            <div className="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center">
+          <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2">
+            <div aria-hidden="true" className="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">RIQ</span>
             </div>
           </Link>

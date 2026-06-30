@@ -16,7 +16,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
   const isNested = depth > 0;
 
   return (
-    <div className={`${isNested ? "ml-6 pl-4 border-l-2 border-gray-100" : ""}`}>
+    <div role="listitem" className={`${isNested ? "ml-6 pl-4 border-l-2 border-gray-100" : ""}`}>
       <div className={`group py-4 px-1 rounded-xl transition-colors hover:bg-gray-50/60 ${depth === 0 ? "border-b border-gray-50" : ""}`}>
         {/* Comment header */}
         <div className="flex items-center gap-2 mb-2">
@@ -62,7 +62,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
         </div>
 
         {/* Comment actions */}
-        <div className="flex items-center gap-3">
+        <div role="group" aria-label="Comment actions" className="flex items-center gap-3">
           <VoteControls
             itemId={comment.id}
             itemType="comment"
@@ -90,7 +90,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
 
       {/* Nested replies */}
       {comment.replies && comment.replies.length > 0 && depth < maxDepth && (
-        <div>
+        <div role="list" aria-label="Replies">
           {comment.replies.map((reply) => (
             <SingleComment key={reply.id} comment={reply} depth={depth + 1} />
           ))}
@@ -109,7 +109,7 @@ export function CommentThread({ comments }: CommentThreadProps) {
   });
 
   return (
-    <div className="divide-y divide-gray-50">
+    <div role="list" aria-label="Comments" className="divide-y divide-gray-50">
       {sorted.map((comment) => (
         <SingleComment key={comment.id} comment={comment} depth={0} />
       ))}
