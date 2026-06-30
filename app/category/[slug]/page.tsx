@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: Props) {
           <div>
             <div className="flex items-center gap-4 mb-2">
               <div className="w-14 h-14 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm shrink-0">
-                <span className="text-3xl">{category.icon}</span>
+                <span aria-hidden="true" className="text-3xl">{category.icon}</span>
               </div>
               <h1 className="text-3xl font-bold text-gray-900">
                 Best {category.name}
@@ -106,7 +106,7 @@ export default async function CategoryPage({ params }: Props) {
         </div>
 
         {/* Contextual trust signals */}
-        <div className="flex flex-wrap gap-2 mt-5">
+        <ul role="list" aria-label="Trust signals" className="flex flex-wrap gap-2 mt-5">
           {[
             {
               label: "AI-analyzed reviews",
@@ -145,15 +145,15 @@ export default async function CategoryPage({ params }: Props) {
               ),
             },
           ].map((tag) => (
-            <span
+            <li
               key={tag.label}
               className={`inline-flex items-center gap-1.5 text-xs font-medium border px-3 py-1.5 rounded-full ${tag.color}`}
             >
               {tag.icon}
               {tag.label}
-            </span>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* Product grid with client-side sort + persistence */}
@@ -178,11 +178,11 @@ export default async function CategoryPage({ params }: Props) {
               <li key={index} className="flex gap-5 group pb-6 last:pb-0">
                 {/* Step number + connecting line */}
                 <div className="flex flex-col items-center shrink-0">
-                  <span className="w-9 h-9 rounded-full bg-brand-600 group-hover:bg-brand-700 text-white font-bold flex items-center justify-center text-sm shadow-md transition-colors z-10">
+                  <span aria-hidden="true" className="w-9 h-9 rounded-full bg-brand-600 group-hover:bg-brand-700 text-white font-bold flex items-center justify-center text-sm shadow-md transition-colors z-10">
                     {index + 1}
                   </span>
                   {index < buyingGuide.steps.length - 1 && (
-                    <div className="w-0.5 flex-1 bg-brand-100 mt-2 min-h-[24px]" />
+                    <div aria-hidden="true" className="w-0.5 flex-1 bg-brand-100 mt-2 min-h-[24px]" />
                   )}
                 </div>
                 <div className="flex-1 pb-1">

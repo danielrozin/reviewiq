@@ -63,7 +63,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
   return (
     <>
       {/* Sort bar */}
-      <div className="flex items-center gap-2 mb-6 flex-wrap">
+      <div role="group" aria-label="Sort products by" className="flex items-center gap-2 mb-6 flex-wrap">
         <span className="inline-flex items-center gap-1.5 text-sm text-gray-600 font-medium mr-1 shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
@@ -86,7 +86,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           </button>
         ))}
         {mounted && (
-          <span className="ml-auto text-xs text-gray-500 font-medium tabular-nums shrink-0">
+          <span aria-live="polite" className="ml-auto text-xs text-gray-500 font-medium tabular-nums shrink-0">
             {sorted.length} products
           </span>
         )}
