@@ -113,13 +113,14 @@ export function Header() {
               {items.length > 0 && (
                 <Link
                   href="/compare"
+                  aria-label={`Compare — ${items.length} ${items.length === 1 ? "product" : "products"} selected`}
                   className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-brand-700 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
                   <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
                   </svg>
-                  Compare
-                  <span className="w-5 h-5 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">
+                  <span aria-hidden="true">Compare</span>
+                  <span aria-hidden="true" className="w-5 h-5 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">
                     {items.length}
                   </span>
                 </Link>
@@ -158,8 +159,8 @@ export function Header() {
                       </span>
                     </button>
                     {userMenuOpen && (
-                      <div className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50 animate-scale-in">
-                        <div className="px-4 py-3 border-b border-gray-100">
+                      <div role="menu" aria-label="Account menu" className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50 animate-scale-in">
+                        <div className="px-4 py-3 border-b border-gray-100" role="presentation">
                           <div className="flex items-center gap-1.5">
                             <p className="text-sm font-medium text-gray-900 truncate">
                               {session.user?.name || "User"}
@@ -172,6 +173,7 @@ export function Header() {
                         </div>
                         {!isPro && (
                           <Link
+                            role="menuitem"
                             href="/pricing"
                             onClick={() => setUserMenuOpen(false)}
                             className="block px-4 py-2.5 text-sm text-amber-700 hover:bg-amber-50 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-inset"
@@ -185,6 +187,7 @@ export function Header() {
                           </Link>
                         )}
                         <Link
+                          role="menuitem"
                           href="/dashboard"
                           onClick={() => setUserMenuOpen(false)}
                           className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
@@ -192,14 +195,16 @@ export function Header() {
                           Dashboard
                         </Link>
                         <Link
+                          role="menuitem"
                           href="/settings"
                           onClick={() => setUserMenuOpen(false)}
                           className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
                         >
                           Settings
                         </Link>
-                        <div className="border-t border-gray-100 mt-1 pt-1">
+                        <div className="border-t border-gray-100 mt-1 pt-1" role="presentation">
                           <button
+                            role="menuitem"
                             type="button"
                             onClick={() => { setUserMenuOpen(false); signOut(); }}
                             className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
@@ -278,10 +283,11 @@ export function Header() {
                 <Link
                   href="/compare"
                   onClick={() => setMenuOpen(false)}
+                  aria-label={`Compare — ${items.length} ${items.length === 1 ? "product" : "products"} selected`}
                   className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-base font-medium text-brand-700 hover:bg-brand-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
-                  Compare
-                  <span className="w-5 h-5 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">
+                  <span aria-hidden="true">Compare</span>
+                  <span aria-hidden="true" className="w-5 h-5 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">
                     {items.length}
                   </span>
                 </Link>
