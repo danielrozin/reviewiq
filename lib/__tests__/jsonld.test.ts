@@ -12,6 +12,7 @@ import {
   categoryListSchema,
   videoObjectSchema,
   analysisAuthorSchema,
+  comparisonSchema,
 } from '../schema/jsonld'
 
 describe('organizationSchema', () => {
@@ -162,6 +163,42 @@ describe('videoObjectSchema', () => {
     expect(schema.contentUrl).toContain('youtube.com/watch?v=abc123')
     expect(schema.embedUrl).toContain('youtube.com/embed/abc123')
     expect(schema.thumbnailUrl).toContain('abc123')
+  })
+})
+
+describe('comparisonSchema', () => {
+  const mkProduct = (over: Record<string, any> = {}) =>
+    ({
+      name: 'Sony WH-1000XM5',
+      slug: 'sony-wh-1000xm5',
+      categorySlug: 'headphones',
+      brand: 'Sony',
+      description: 'Noise canceling headphones',
+      priceRange: { min: 300, max: 400, currency: 'USD' },
+      reviewCount: 10,
+      reviews: [{ rating: 5, headline: 'Great', body: 'Excellent', authorName: 'U', createdAt: '2025-01-01' }],
+      createdAt: '2025-01-01',
+      updatedAt: '2025-02-01',
+      ...over,
+    } as any)
+
+  it('nests each Product item with a valid image and canonical url', () => {
+    const schema = comparisonSchema(
+      mkProduct(),
+      mkProduct({ name: 'Bose QC45', slug: 'bose-qc45' })
+    ) as Record<string, any>
+    const items = schema.mainEntity.itemListElement
+    expect(items).toHaveLength(2)
+    for (const li of items) {
+      const p = li.item
+      expect(p['@type']).toBe('Product')
+      // image must resolve to the generated OG card, not a 404 raw image path
+      expect(p.image).toContain('/opengraph-image')
+      expect(p.image).toContain(`/category/${p.url.split('/category/')[1]}`)
+      expect(p.url).toContain('/category/')
+      // aggregateRating requires a valid image to render the rich result
+      expect(p.aggregateRating).toBeDefined()
+    }
   })
 })
 

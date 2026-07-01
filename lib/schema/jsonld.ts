@@ -370,6 +370,11 @@ function comparisonProductItem(product: Product) {
     name: product.name,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
+    // Mirror productSchema(): raw product.image paths 404, so point at the
+    // per-product generated OG card. A Product node carrying aggregateRating
+    // needs a valid image or Google suppresses the comparison rich result.
+    image: `${SITE_URL}/category/${product.categorySlug}/${product.slug}/opengraph-image`,
+    url: `${SITE_URL}/category/${product.categorySlug}/${product.slug}`,
   };
 
   const offers = aggregateOfferFromProduct(product);
