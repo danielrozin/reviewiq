@@ -1,78 +1,78 @@
-# SmartReview — Full Context
+# ReviewIQ — Full Context
 
-> Complete catalog of all reviewed products on smartreview.com. For a concise overview, see https://smartreview.com/llms.txt
+> Complete catalog of all reviewed products on revieweriq.com. For a concise overview, see https://revieweriq.com/llms.txt
 
 ## Products by Category
 
 ### Robot Vacuums (4 products)
 
-- [Roborock S8 MaxV Ultra](https://smartreview.com/category/robot-vacuums/roborock-s8-maxv-ultra): SmartScore 91 — Flagship robot vacuum/mop with 6000Pa suction, LiDAR+camera navigation, self-emptying dock. 342 reviews.
-- [iRobot Roomba j9+](https://smartreview.com/category/robot-vacuums/irobot-roomba-j9-plus): Smart mapping, auto-empty base, 3-stage cleaning. Well-known brand with strong support.
-- [Ecovacs Deebot X2 Omni](https://smartreview.com/category/robot-vacuums/ecovacs-deebot-x2-omni): Square design for better corner cleaning, hot water mop washing, YIKO voice assistant.
-- [Dreame L20 Ultra](https://smartreview.com/category/robot-vacuums/dreame-l20-ultra): 7000Pa suction, extending mop arm, MopExtend technology for edge cleaning.
+- [Roborock S8 MaxV Ultra](https://revieweriq.com/category/robot-vacuums/roborock-s8-maxv-ultra): SmartScore 91 — Flagship robot vacuum/mop with 6000Pa suction, LiDAR+camera navigation, self-emptying dock. 342 reviews.
+- [iRobot Roomba j9+](https://revieweriq.com/category/robot-vacuums/irobot-roomba-j9-plus): Smart mapping, auto-empty base, 3-stage cleaning. Well-known brand with strong support.
+- [Ecovacs Deebot X2 Omni](https://revieweriq.com/category/robot-vacuums/ecovacs-deebot-x2-omni): Square design for better corner cleaning, hot water mop washing, YIKO voice assistant.
+- [Dreame L20 Ultra](https://revieweriq.com/category/robot-vacuums/dreame-l20-ultra): 7000Pa suction, extending mop arm, MopExtend technology for edge cleaning.
 
 ### Coffee Machines (4 products)
 
-- [Breville Barista Express](https://smartreview.com/category/coffee-machines/breville-barista-express): Integrated grinder, PID temperature control, manual espresso experience.
-- [De'Longhi Magnifica Evo](https://smartreview.com/category/coffee-machines/delonghi-magnifica-evo): Fully automatic bean-to-cup, LatteCrema system, one-touch recipes.
-- [Nespresso Vertuo Next](https://smartreview.com/category/coffee-machines/nespresso-vertuo-next): Pod system, centrifusion brewing, 5 cup sizes, quick heat-up.
-- [Technivorm Moccamaster](https://smartreview.com/category/coffee-machines/technivorm-moccamaster): SCA-certified drip, handmade in Netherlands, 6-minute brew cycle.
+- [Breville Barista Express](https://revieweriq.com/category/coffee-machines/breville-barista-express): Integrated grinder, PID temperature control, manual espresso experience.
+- [De'Longhi Magnifica Evo](https://revieweriq.com/category/coffee-machines/delonghi-magnifica-evo): Fully automatic bean-to-cup, LatteCrema system, one-touch recipes.
+- [Nespresso Vertuo Next](https://revieweriq.com/category/coffee-machines/nespresso-vertuo-next): Pod system, centrifusion brewing, 5 cup sizes, quick heat-up.
+- [Technivorm Moccamaster](https://revieweriq.com/category/coffee-machines/technivorm-moccamaster): SCA-certified drip, handmade in Netherlands, 6-minute brew cycle.
 
 ### Air Fryers (4 products)
 
-- [Ninja Foodi DualZone](https://smartreview.com/category/air-fryers/ninja-foodi-dualzone): Dual basket, 6-in-1 functions, sync/match cooking.
-- [Cosori Pro LE](https://smartreview.com/category/air-fryers/cosori-pro-le): Budget-friendly, 5-quart, shake reminder, 12 presets.
-- [Philips Premium XXL](https://smartreview.com/category/air-fryers/philips-premium-xxl): Fat removal technology, 3-pound capacity, rapid air.
-- [Instant Vortex Plus](https://smartreview.com/category/air-fryers/instant-vortex-plus): ClearCook window, OdourErase filter, 6-quart capacity.
+- [Ninja Foodi DualZone](https://revieweriq.com/category/air-fryers/ninja-foodi-dualzone): Dual basket, 6-in-1 functions, sync/match cooking.
+- [Cosori Pro LE](https://revieweriq.com/category/air-fryers/cosori-pro-le): Budget-friendly, 5-quart, shake reminder, 12 presets.
+- [Philips Premium XXL](https://revieweriq.com/category/air-fryers/philips-premium-xxl): Fat removal technology, 3-pound capacity, rapid air.
+- [Instant Vortex Plus](https://revieweriq.com/category/air-fryers/instant-vortex-plus): ClearCook window, OdourErase filter, 6-quart capacity.
 
 ### Wireless Earbuds (4 products)
 
-- [Apple AirPods Pro 2](https://smartreview.com/category/wireless-earbuds/apple-airpods-pro-2): Active noise cancellation, spatial audio, USB-C, hearing health features.
-- [Sony WF-1000XM5](https://smartreview.com/category/wireless-earbuds/sony-wf-1000xm5): Industry-leading ANC, LDAC codec, 8-hour battery, multipoint.
-- [Samsung Galaxy Buds3 Pro](https://smartreview.com/category/wireless-earbuds/samsung-galaxy-buds3-pro): Blade design, 360 audio, Galaxy AI integration.
-- [Bose QuietComfort Ultra Earbuds](https://smartreview.com/category/wireless-earbuds/bose-qc-ultra-earbuds): CustomTune sound, immersive audio, world-class ANC.
+- [Apple AirPods Pro 2](https://revieweriq.com/category/wireless-earbuds/apple-airpods-pro-2): Active noise cancellation, spatial audio, USB-C, hearing health features.
+- [Sony WF-1000XM5](https://revieweriq.com/category/wireless-earbuds/sony-wf-1000xm5): Industry-leading ANC, LDAC codec, 8-hour battery, multipoint.
+- [Samsung Galaxy Buds3 Pro](https://revieweriq.com/category/wireless-earbuds/samsung-galaxy-buds3-pro): Blade design, 360 audio, Galaxy AI integration.
+- [Bose QuietComfort Ultra Earbuds](https://revieweriq.com/category/wireless-earbuds/bose-qc-ultra-earbuds): CustomTune sound, immersive audio, world-class ANC.
 
 ### Mattresses (4 products)
 
-- [Purple Hybrid Premier](https://smartreview.com/category/mattresses/purple-hybrid-premier): GelFlex Grid, temperature neutral, pressure relief for all positions.
-- [Casper Wave Hybrid Snow](https://smartreview.com/category/mattresses/casper-wave-hybrid-snow): Snow technology cooling, zoned support, ergonomic design.
-- [Tempur-Pedic Adapt](https://smartreview.com/category/mattresses/tempur-pedic-adapt): TEMPUR material, motion isolation, pressure relief.
-- [Saatva Classic](https://smartreview.com/category/mattresses/saatva-classic): Innerspring luxury, 3 firmness options, lumbar zone technology.
+- [Purple Hybrid Premier](https://revieweriq.com/category/mattresses/purple-hybrid-premier): GelFlex Grid, temperature neutral, pressure relief for all positions.
+- [Casper Wave Hybrid Snow](https://revieweriq.com/category/mattresses/casper-wave-hybrid-snow): Snow technology cooling, zoned support, ergonomic design.
+- [Tempur-Pedic Adapt](https://revieweriq.com/category/mattresses/tempur-pedic-adapt): TEMPUR material, motion isolation, pressure relief.
+- [Saatva Classic](https://revieweriq.com/category/mattresses/saatva-classic): Innerspring luxury, 3 firmness options, lumbar zone technology.
 
 ### Smart Watches (4 products)
 
-- [Apple Watch Ultra 2](https://smartreview.com/category/smart-watches/apple-watch-ultra-2): Titanium, dual-frequency GPS, 36-hour battery, depth gauge.
-- [Samsung Galaxy Watch 6 Classic](https://smartreview.com/category/smart-watches/samsung-galaxy-watch-6-classic): Rotating bezel, BioActive sensor, Wear OS, sleep coaching.
-- [Garmin Fenix 8](https://smartreview.com/category/smart-watches/garmin-fenix-8): Multi-sport GPS, 28-day battery, solar charging, advanced training.
-- [Google Pixel Watch 3](https://smartreview.com/category/smart-watches/google-pixel-watch-3): Fitbit integration, Google AI, Wear OS, heart rhythm monitoring.
+- [Apple Watch Ultra 2](https://revieweriq.com/category/smart-watches/apple-watch-ultra-2): Titanium, dual-frequency GPS, 36-hour battery, depth gauge.
+- [Samsung Galaxy Watch 6 Classic](https://revieweriq.com/category/smart-watches/samsung-galaxy-watch-6-classic): Rotating bezel, BioActive sensor, Wear OS, sleep coaching.
+- [Garmin Fenix 8](https://revieweriq.com/category/smart-watches/garmin-fenix-8): Multi-sport GPS, 28-day battery, solar charging, advanced training.
+- [Google Pixel Watch 3](https://revieweriq.com/category/smart-watches/google-pixel-watch-3): Fitbit integration, Google AI, Wear OS, heart rhythm monitoring.
 
 ### Standing Desks (4 products)
 
-- [Uplift V2 Commercial](https://smartreview.com/category/standing-desks/uplift-v2-commercial): Dual motor, 355lb capacity, advanced keypad, wire management.
-- [Flexispot E7 Pro](https://smartreview.com/category/standing-desks/flexispot-e7-pro): Dual motor, anti-collision, 4 memory presets, child lock.
-- [Fully Jarvis Bamboo](https://smartreview.com/category/standing-desks/fully-jarvis-bamboo): Sustainable bamboo top, programmable, 15-year warranty.
-- [Branch Standing Desk](https://smartreview.com/category/standing-desks/branch-standing-desk): Clean design, quiet motor, cable management, 30-day trial.
+- [Uplift V2 Commercial](https://revieweriq.com/category/standing-desks/uplift-v2-commercial): Dual motor, 355lb capacity, advanced keypad, wire management.
+- [Flexispot E7 Pro](https://revieweriq.com/category/standing-desks/flexispot-e7-pro): Dual motor, anti-collision, 4 memory presets, child lock.
+- [Fully Jarvis Bamboo](https://revieweriq.com/category/standing-desks/fully-jarvis-bamboo): Sustainable bamboo top, programmable, 15-year warranty.
+- [Branch Standing Desk](https://revieweriq.com/category/standing-desks/branch-standing-desk): Clean design, quiet motor, cable management, 30-day trial.
 
 ### Blenders (4 products)
 
-- [Vitamix A3500](https://smartreview.com/category/blenders/vitamix-a3500): Self-detect containers, touchscreen, variable speed, 10-year warranty.
-- [Ninja Professional Plus](https://smartreview.com/category/blenders/ninja-professional-plus): Auto-iQ, 1400W, 72oz pitcher, budget-friendly power.
-- [Blendtec Total Classic](https://smartreview.com/category/blenders/blendtec-total-classic): Pre-programmed cycles, blunt blade technology, BPA-free.
-- [KitchenAid K400](https://smartreview.com/category/blenders/kitchenaid-k400): Asymmetric blade, soft start, die-cast metal base.
+- [Vitamix A3500](https://revieweriq.com/category/blenders/vitamix-a3500): Self-detect containers, touchscreen, variable speed, 10-year warranty.
+- [Ninja Professional Plus](https://revieweriq.com/category/blenders/ninja-professional-plus): Auto-iQ, 1400W, 72oz pitcher, budget-friendly power.
+- [Blendtec Total Classic](https://revieweriq.com/category/blenders/blendtec-total-classic): Pre-programmed cycles, blunt blade technology, BPA-free.
+- [KitchenAid K400](https://revieweriq.com/category/blenders/kitchenaid-k400): Asymmetric blade, soft start, die-cast metal base.
 
 ### Laptops (4 products)
 
-- [MacBook Air M3](https://smartreview.com/category/laptops/macbook-air-m3): M3 chip, 18-hour battery, fanless design, 15.3" Liquid Retina.
-- [Dell XPS 14](https://smartreview.com/category/laptops/dell-xps-14): Intel Core Ultra, OLED display, haptic trackpad.
-- [Lenovo ThinkPad X1 Carbon Gen 12](https://smartreview.com/category/laptops/lenovo-thinkpad-x1-carbon-gen-12): Business ultrabook, Intel vPro, 2.48 lbs, MIL-STD tested.
-- [ASUS ROG Zephyrus G16](https://smartreview.com/category/laptops/asus-rog-zephyrus-g16): RTX 4070, OLED Nebula display, gaming + productivity.
+- [MacBook Air M3](https://revieweriq.com/category/laptops/macbook-air-m3): M3 chip, 18-hour battery, fanless design, 15.3" Liquid Retina.
+- [Dell XPS 14](https://revieweriq.com/category/laptops/dell-xps-14): Intel Core Ultra, OLED display, haptic trackpad.
+- [Lenovo ThinkPad X1 Carbon Gen 12](https://revieweriq.com/category/laptops/lenovo-thinkpad-x1-carbon-gen-12): Business ultrabook, Intel vPro, 2.48 lbs, MIL-STD tested.
+- [ASUS ROG Zephyrus G16](https://revieweriq.com/category/laptops/asus-rog-zephyrus-g16): RTX 4070, OLED Nebula display, gaming + productivity.
 
 ### Electric Toothbrushes (4 products)
 
-- [Oral-B iO Series 9](https://smartreview.com/category/electric-toothbrushes/oral-b-io-series-9): 3D tracking, AI recognition, magnetic drive, 7 modes.
-- [Philips Sonicare DiamondClean](https://smartreview.com/category/electric-toothbrushes/philips-sonicare-diamondclean): 62,000 brush strokes/min, BrushSync, premium glass charger.
-- [Quip Smart Electric](https://smartreview.com/category/electric-toothbrushes/quip-smart-electric): Subscription model, travel-friendly, 3-month battery, minimal design.
-- [Waterpik Sonic-Fusion 2.0](https://smartreview.com/category/electric-toothbrushes/waterpik-sonic-fusion-2): Combined brush + water flosser, 10 pressure settings.
+- [Oral-B iO Series 9](https://revieweriq.com/category/electric-toothbrushes/oral-b-io-series-9): 3D tracking, AI recognition, magnetic drive, 7 modes.
+- [Philips Sonicare DiamondClean](https://revieweriq.com/category/electric-toothbrushes/philips-sonicare-diamondclean): 62,000 brush strokes/min, BrushSync, premium glass charger.
+- [Quip Smart Electric](https://revieweriq.com/category/electric-toothbrushes/quip-smart-electric): Subscription model, travel-friendly, 3-month battery, minimal design.
+- [Waterpik Sonic-Fusion 2.0](https://revieweriq.com/category/electric-toothbrushes/waterpik-sonic-fusion-2): Combined brush + water flosser, 10 pressure settings.
 
 ## Data Freshness
 
