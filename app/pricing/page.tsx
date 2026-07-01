@@ -52,7 +52,7 @@ export default function PricingPage() {
             real-time alerts, and expert insights — all for less than a coffee.
           </p>
           <div className="mt-6 inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full text-sm font-medium">
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
             </svg>
             30-day money-back guarantee — no risk
@@ -64,7 +64,7 @@ export default function PricingPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
         <div className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600">
           <div className="flex items-center gap-3">
-            <div className="flex -space-x-2">
+            <div className="flex -space-x-2" aria-hidden="true">
               {["A","B","C","D"].map((l) => (
                 <span key={l} className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-xs border-2 border-white shadow-sm">{l}</span>
               ))}

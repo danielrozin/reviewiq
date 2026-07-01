@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useOnboarding } from "./OnboardingProvider";
 import { trackEvent } from "@/lib/tracking/analytics";
 
@@ -51,6 +51,11 @@ const VALUE_PROPS: { icon: React.ReactElement; title: string; description: strin
 export function WelcomeModal() {
   const { isNewVisitor, dismissWelcome } = useOnboarding();
   const [step, setStep] = useState<"welcome" | "props">("welcome");
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (isNewVisitor) closeRef.current?.focus();
+  }, [isNewVisitor]);
 
   if (!isNewVisitor) return null;
 
@@ -60,6 +65,7 @@ export function WelcomeModal() {
 
       <div role="dialog" aria-modal="true" aria-labelledby="welcome-modal-heading" className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
         <button
+          ref={closeRef}
           type="button"
           onClick={dismissWelcome}
           className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"

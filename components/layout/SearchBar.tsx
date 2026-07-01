@@ -200,8 +200,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
       {open && results.length > 0 && (
         <div id="search-listbox" role="listbox" aria-label="Search suggestions" className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
           {results.map((result, i) => (
-            <button
-              type="button"
+            <div
               key={result.href}
               id={`search-option-${i}`}
               role="option"
@@ -210,7 +209,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                 trackSearchResultClicked(query, result.type, result.name, i);
                 navigate(result.href);
               }}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset ${
+              className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors cursor-pointer ${
                 i === selectedIndex
                   ? "bg-brand-50"
                   : "hover:bg-gray-50"
@@ -245,7 +244,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                   {result.subtitle}
                 </p>
               </div>
-            </button>
+            </div>
           ))}
         </div>
       )}

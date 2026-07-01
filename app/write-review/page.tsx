@@ -256,7 +256,7 @@ export default function WriteReviewPage() {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-2xl mx-auto text-center py-20">
-          <div className="w-8 h-8 border-2 border-brand-600 border-t-transparent rounded-full animate-spin mx-auto" />
+          <div className="w-8 h-8 border-2 border-brand-600 border-t-transparent rounded-full animate-spin mx-auto" role="status" aria-label="Loading" />
         </div>
       </div>
     );
@@ -452,27 +452,30 @@ export default function WriteReviewPage() {
         {/* Step 2: Ratings */}
         {step === 1 && (
           <div className="space-y-6 animate-in fade-in duration-200">
-            <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-3">
+            <fieldset className="border-0 p-0 m-0">
+              <legend className="block text-sm font-semibold text-gray-900 mb-3">
                 Overall Rating *
-              </label>
+              </legend>
               <StarRating value={rating} onChange={setRating} size="lg" />
-            </div>
+            </fieldset>
 
             <div className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
-              <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+              <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide" aria-hidden="true">
                 Category Ratings
               </p>
               {[
                 { label: "Reliability", value: reliabilityRating, setter: setReliabilityRating },
                 { label: "Ease of Use", value: easeOfUseRating, setter: setEaseOfUseRating },
                 { label: "Value for Money", value: valueRating, setter: setValueRating },
-              ].map(({ label, value, setter }) => (
-                <div key={label} className="flex items-center justify-between">
-                  <label className="text-sm font-medium text-gray-700">{label}</label>
-                  <StarRating value={value} onChange={setter} size="sm" />
-                </div>
-              ))}
+              ].map(({ label, value, setter }) => {
+                const id = `rating-label-${label.replace(/\s+/g, "-").toLowerCase()}`;
+                return (
+                  <div key={label} role="group" aria-labelledby={id} className="flex items-center justify-between">
+                    <span id={id} className="text-sm font-medium text-gray-700">{label}</span>
+                    <StarRating value={value} onChange={setter} size="sm" />
+                  </div>
+                );
+              })}
             </div>
 
             {touched.rating && !stepValid.rating && (
@@ -504,10 +507,10 @@ export default function WriteReviewPage() {
             </div>
 
             {/* Pros */}
-            <div>
-              <label className="block text-sm font-semibold text-emerald-700 mb-2">
+            <fieldset className="border-0 p-0 m-0">
+              <legend className="block text-sm font-semibold text-emerald-700 mb-2">
                 Pros (optional)
-              </label>
+              </legend>
               <div className="space-y-2">
                 {pros.map((pro, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -527,13 +530,13 @@ export default function WriteReviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </fieldset>
 
             {/* Cons */}
-            <div>
-              <label className="block text-sm font-semibold text-red-600 mb-2">
+            <fieldset className="border-0 p-0 m-0">
+              <legend className="block text-sm font-semibold text-red-600 mb-2">
                 Cons (optional)
-              </label>
+              </legend>
               <div className="space-y-2">
                 {cons.map((con, i) => (
                   <div key={i} className="flex items-center gap-2">
@@ -553,7 +556,7 @@ export default function WriteReviewPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            </fieldset>
           </div>
         )}
 

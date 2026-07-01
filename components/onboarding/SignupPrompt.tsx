@@ -1,6 +1,7 @@
 "use client";
 
 import type React from "react";
+import { useRef, useEffect } from "react";
 import Link from "next/link";
 import { useOnboarding } from "./OnboardingProvider";
 import { trackEvent } from "@/lib/tracking/analytics";
@@ -34,6 +35,11 @@ const BENEFITS: { icon: React.ReactElement; text: string }[] = [
 
 export function SignupPrompt() {
   const { shouldShowSignupPrompt, dismissSignup } = useOnboarding();
+  const closeRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (shouldShowSignupPrompt) closeRef.current?.focus();
+  }, [shouldShowSignupPrompt]);
 
   if (!shouldShowSignupPrompt) return null;
 
@@ -43,6 +49,7 @@ export function SignupPrompt() {
 
       <div role="dialog" aria-modal="true" aria-labelledby="signup-prompt-heading" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
         <button
+          ref={closeRef}
           type="button"
           onClick={dismissSignup}
           className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
