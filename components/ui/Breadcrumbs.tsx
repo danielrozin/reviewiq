@@ -11,12 +11,17 @@ interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ items }: BreadcrumbsProps) {
+  // The visible <nav> below always renders "Home" as the first crumb, so the
+  // BreadcrumbList JSON-LD must include it too — otherwise the structured trail
+  // is offset-by-one from the visible one and Google drops the breadcrumb
+  // rich result. Prepend Home here (callers pass items without it).
+  const schemaItems = [{ name: "Home", url: "/" }, ...items];
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema(items)),
+          __html: JSON.stringify(breadcrumbSchema(schemaItems)),
         }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-gray-500">
