@@ -27,7 +27,7 @@ export function BlogCategoryFilter({ posts }: Props) {
   return (
     <>
       {/* Category filter tabs */}
-      <div className="flex flex-wrap gap-2 mb-8">
+      <div role="group" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8">
         <button
           type="button"
           aria-pressed={activeCategory === "all"}
@@ -61,10 +61,10 @@ export function BlogCategoryFilter({ posts }: Props) {
       </div>
 
       {/* Post grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul role="list" aria-label="Blog posts" aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
+          <li key={post.id}>
           <Link
-            key={post.id}
             href={`/blog/${post.slug}`}
             aria-label={`Read: ${post.title} — ${post.readingTime} min read`}
             className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
@@ -93,9 +93,9 @@ export function BlogCategoryFilter({ posts }: Props) {
               </div>
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <h2 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
+              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
                 {post.title}
-              </h2>
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1 mb-4">
                 {post.excerpt}
               </p>
@@ -116,8 +116,9 @@ export function BlogCategoryFilter({ posts }: Props) {
               </div>
             </div>
           </Link>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {filtered.length === 0 && (
         <div className="text-center py-12 text-gray-500">

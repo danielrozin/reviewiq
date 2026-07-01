@@ -32,19 +32,29 @@ export function VerificationBadge({ tier, compact = false }: VerificationBadgePr
       </svg>
     );
 
+  const compactLabel = confidence >= 85 ? "Verified" : confidence >= 40 ? "Declared" : "Unverified";
+
   if (compact) {
     return (
-      <span className={cn("inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border", colorClass)}>
+      <span
+        role="img"
+        aria-label={`Reviewer verification: ${compactLabel}`}
+        className={cn("inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border", colorClass)}
+      >
         {tierIcon}
-        {confidence >= 85 ? "Verified" : confidence >= 40 ? "Declared" : "Unverified"}
+        <span aria-hidden="true">{compactLabel}</span>
       </span>
     );
   }
 
   return (
-    <span className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border", colorClass)}>
+    <span
+      role="img"
+      aria-label={`Reviewer verification: ${label}`}
+      className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border", colorClass)}
+    >
       {tierIcon}
-      {label}
+      <span aria-hidden="true">{label}</span>
     </span>
   );
 }

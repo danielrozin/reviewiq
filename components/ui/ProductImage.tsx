@@ -68,9 +68,9 @@ export function ProductImage({
         </>
       ) : (
         /* Placeholder design */
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4">
+        <div role="img" aria-label={alt} className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4">
           {/* Decorative background pattern */}
-          <div className="absolute inset-0 opacity-[0.03]">
+          <div aria-hidden="true" className="absolute inset-0 opacity-[0.03]">
             <div
               className="w-full h-full"
               style={{
@@ -98,6 +98,7 @@ export function ProductImage({
 
           {/* Product name */}
           <span
+            aria-hidden="true"
             className={cn(
               "text-gray-400 text-center line-clamp-2 px-2 leading-tight",
               config.nameText

@@ -55,12 +55,13 @@ export function RecentlyViewedStrip() {
       <div className="relative">
         {/* Right fade gradient — scroll hint on mobile */}
         <div className="pointer-events-none absolute right-0 top-0 bottom-2 w-12 bg-gradient-to-l from-white to-transparent z-10 sm:hidden" />
-        <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-thin">
+        <ul role="list" aria-label="Recently viewed products" className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-thin">
           {items.map((item) => (
+            <li key={item.slug} className="snap-start shrink-0 w-44">
             <Link
-              key={item.slug}
               href={`/category/${item.categorySlug}/${item.slug}`}
-              className="snap-start shrink-0 w-44 bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              aria-label={`${item.name} by ${item.brand} — SmartScore ${item.smartScore}`}
+              className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="p-3.5">
@@ -78,8 +79,9 @@ export function RecentlyViewedStrip() {
               )}
               </div>
             </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
