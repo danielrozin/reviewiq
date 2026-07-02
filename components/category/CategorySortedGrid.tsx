@@ -63,8 +63,8 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
   return (
     <>
       {/* Sort bar */}
-      <div role="group" aria-label="Sort products by" className="flex items-center gap-2 mb-6 flex-wrap">
-        <span className="inline-flex items-center gap-1.5 text-sm text-gray-600 font-medium mr-1 shrink-0">
+      <div role="radiogroup" aria-label="Sort products by" className="flex items-center gap-2 mb-6 flex-wrap">
+        <span aria-hidden="true" className="inline-flex items-center gap-1.5 text-sm text-gray-600 font-medium mr-1 shrink-0">
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
           </svg>
@@ -74,7 +74,8 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           <button
             key={opt.key}
             type="button"
-            aria-pressed={sortKey === opt.key}
+            role="radio"
+            aria-checked={sortKey === opt.key}
             onClick={() => handleSort(opt.key)}
             className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               sortKey === opt.key

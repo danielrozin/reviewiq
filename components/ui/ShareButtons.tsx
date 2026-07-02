@@ -80,7 +80,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           title={`Share on ${link.name}`}
-          aria-label={`Share on ${link.name}`}
+          aria-label={`Share on ${link.name} (opens in new tab)`}
           className={`inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-600 transition-colors ${link.color}`}
         >
           {link.icon}
