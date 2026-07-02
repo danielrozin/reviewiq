@@ -312,8 +312,8 @@ export default function AdminDashboard() {
 
   if (checking) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <RefreshCw className="w-6 h-6 text-gray-400 animate-spin" />
+      <div role="status" aria-label="Loading admin panel" className="min-h-screen flex items-center justify-center bg-gray-50">
+        <RefreshCw aria-hidden="true" className="w-6 h-6 text-gray-400 animate-spin" />
       </div>
     );
   }
@@ -491,8 +491,8 @@ export default function AdminDashboard() {
         )}
 
         {activeTab === "overview" && !stats && (
-          <div className="flex items-center justify-center py-20">
-            <RefreshCw className="w-6 h-6 text-gray-400 animate-spin" />
+          <div role="status" aria-label="Loading dashboard statistics" className="flex items-center justify-center py-20">
+            <RefreshCw aria-hidden="true" className="w-6 h-6 text-gray-400 animate-spin" />
           </div>
         )}
 
@@ -970,8 +970,8 @@ export default function AdminDashboard() {
         )}
 
         {activeTab === "analytics" && !stats && (
-          <div className="flex items-center justify-center py-20">
-            <RefreshCw className="w-6 h-6 text-gray-400 animate-spin" />
+          <div role="status" aria-label="Loading analytics" className="flex items-center justify-center py-20">
+            <RefreshCw aria-hidden="true" className="w-6 h-6 text-gray-400 animate-spin" />
           </div>
         )}
       </div>
