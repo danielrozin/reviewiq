@@ -349,11 +349,15 @@ export default function AdminDashboard() {
       {/* Tabs */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex gap-1 overflow-x-auto py-2">
+          <div role="tablist" aria-label="Admin sections" className="flex gap-1 overflow-x-auto py-2">
             {tabs.map((tab) => (
               <button
                 key={tab.key}
                 type="button"
+                role="tab"
+                id={`admin-tab-${tab.key}`}
+                aria-selected={activeTab === tab.key}
+                aria-controls={`admin-panel-${tab.key}`}
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                   activeTab === tab.key
@@ -361,10 +365,10 @@ export default function AdminDashboard() {
                     : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
                 }`}
               >
-                <tab.icon className="w-4 h-4" />
+                <tab.icon className="w-4 h-4" aria-hidden="true" />
                 {tab.label}
                 {tab.badge && tab.badge > 0 ? (
-                  <span className="ml-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full">
+                  <span className="ml-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full" aria-label={`${tab.badge} pending`}>
                     {tab.badge}
                   </span>
                 ) : null}
@@ -375,7 +379,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" role="tabpanel" id={`admin-panel-${activeTab}`} aria-labelledby={`admin-tab-${activeTab}`}>
         {/* ──── Overview Tab ──── */}
         {activeTab === "overview" && stats && (
           <div className="space-y-8">
@@ -459,11 +463,11 @@ export default function AdminDashboard() {
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="text-left text-gray-500 border-b border-gray-100">
-                      <th className="pb-2 font-medium">#</th>
-                      <th className="pb-2 font-medium">Product</th>
-                      <th className="pb-2 font-medium hidden sm:table-cell">Category</th>
-                      <th className="pb-2 font-medium text-right">Reviews</th>
-                      <th className="pb-2 font-medium text-right">Score</th>
+                      <th scope="col" className="pb-2 font-medium">#</th>
+                      <th scope="col" className="pb-2 font-medium">Product</th>
+                      <th scope="col" className="pb-2 font-medium hidden sm:table-cell">Category</th>
+                      <th scope="col" className="pb-2 font-medium text-right">Reviews</th>
+                      <th scope="col" className="pb-2 font-medium text-right">Score</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -512,13 +516,13 @@ export default function AdminDashboard() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200 text-left">
-                    <th className="px-4 py-3 font-semibold text-gray-600">Product</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Brand</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 hidden lg:table-cell">Category</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 text-right">Score</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 text-right">Reviews</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 text-right">Price</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 text-right">Actions</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600">Product</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Brand</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 hidden lg:table-cell">Category</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 text-right">Score</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 text-right">Reviews</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 text-right">Price</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -535,6 +539,7 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3 text-right">
                         <span className={`font-bold ${p.smartScore >= 80 ? "text-emerald-600" : p.smartScore >= 60 ? "text-yellow-600" : "text-red-500"}`}>
                           {p.smartScore}
+                          <span className="sr-only">{p.smartScore >= 80 ? " (good)" : p.smartScore >= 60 ? " (average)" : " (poor)"}</span>
                         </span>
                       </td>
                       <td className="px-4 py-3 text-right text-gray-600">{p._count?.reviews ?? p.reviewCount}</td>
@@ -579,19 +584,21 @@ export default function AdminDashboard() {
                 <div className="flex gap-2">
                   <button
                     type="button"
+                    aria-label="Go to previous page"
                     onClick={() => setProductPage((p) => Math.max(1, p - 1))}
                     disabled={productPage === 1}
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </button>
                   <button
                     type="button"
+                    aria-label="Go to next page"
                     onClick={() => setProductPage((p) => p + 1)}
                     disabled={productPage >= Math.ceil(productTotal / 15)}
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
                   </button>
                 </div>
               </div>
@@ -652,9 +659,10 @@ export default function AdminDashboard() {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200 text-left">
-                    <th className="px-4 py-3 w-8">
+                    <th scope="col" className="px-4 py-3 w-8">
                       <input
                         type="checkbox"
+                        aria-label="Select all reviews"
                         onChange={(e) => {
                           if (e.target.checked) {
                             setSelectedReviews(new Set(reviews.map((r) => r.id)));
@@ -666,12 +674,12 @@ export default function AdminDashboard() {
                         className="rounded border-gray-300"
                       />
                     </th>
-                    <th className="px-4 py-3 font-semibold text-gray-600">Review</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Product</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 hidden lg:table-cell">Author</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600">Rating</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600">Status</th>
-                    <th className="px-4 py-3 font-semibold text-gray-600 text-right">Actions</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600">Review</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Product</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 hidden lg:table-cell">Author</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600">Rating</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600">Status</th>
+                    <th scope="col" className="px-4 py-3 font-semibold text-gray-600 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody>

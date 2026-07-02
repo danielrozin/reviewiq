@@ -63,6 +63,7 @@ export function SortableDiscussions({
               key={key}
               type="button"
               aria-pressed={activeTab === key}
+              aria-controls="sortable-discussion-list"
               onClick={() => setActiveTab(key)}
               className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 activeTab === key
@@ -77,7 +78,7 @@ export function SortableDiscussions({
         </div>
       </div>
 
-      <div role="list" aria-live="polite" aria-label={`${activeTab} discussions`} className="space-y-3">
+      <div id="sortable-discussion-list" role="list" aria-live="polite" aria-label={`${activeTab} discussions`} className="space-y-3">
         {threads.map((thread) => (
           <div role="listitem" key={thread.id}>
             <ThreadCard thread={thread} />

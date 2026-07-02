@@ -6,6 +6,7 @@ import { VoteControls } from "@/components/community/VoteControls";
 import { UserChip } from "@/components/community/UserChip";
 import { TrustBadge } from "@/components/community/TrustBadge";
 import { ThreadCard } from "@/components/community/ThreadCard";
+import { ReplySortButtons } from "@/components/community/ReplySortButtons";
 import {
   discussions,
   getDiscussionById,
@@ -258,22 +259,7 @@ export default async function ThreadPage({ params }: Props) {
               <h2 id="thread-replies-heading" className="text-lg font-semibold text-gray-900">
                 {thread.commentCount} Replies
               </h2>
-              <div role="group" aria-label="Sort replies by" className="flex items-center gap-1">
-                {["Top", "Recent", "Verified"].map((tab, i) => (
-                  <button
-                    key={tab}
-                    type="button"
-                    aria-pressed={i === 0}
-                    className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset ${
-                      i === 0
-                        ? "bg-brand-50 text-brand-600"
-                        : "text-gray-600 hover:bg-gray-50"
-                    }`}
-                  >
-                    {tab}
-                  </button>
-                ))}
-              </div>
+              <ReplySortButtons />
             </div>
 
             {/* Comment composer */}

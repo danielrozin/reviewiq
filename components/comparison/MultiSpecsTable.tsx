@@ -52,18 +52,20 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
 
       <div className="border border-gray-100 rounded-xl overflow-hidden">
         <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
-          <div style={{ minWidth: `${160 + products.length * 140}px` }}>
+          <div style={{ minWidth: `${160 + products.length * 140}px` }} role="table" aria-label="Specs comparison">
             {/* Sticky header */}
             <div
+              role="row"
               className="grid bg-gray-50 border-b border-gray-100 sticky top-0 z-10"
               style={{ gridTemplateColumns: colTemplate }}
             >
-              <div className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              <div role="columnheader" className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 Spec
               </div>
               {products.map((product, i) => (
                 <div
                   key={product.id}
+                  role="columnheader"
                   className={cn(
                     "px-4 py-3 text-xs font-semibold uppercase tracking-wider text-center",
                     i === 0 ? "text-brand-700" : "text-gray-500"
@@ -76,9 +78,9 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
             </div>
 
             {Array.from(groups.entries()).map(([groupName, specs], gi) => (
-              <div key={groupName}>
+              <div key={groupName} role="rowgroup">
                 {groups.size > 1 && (
-                  <div className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100">
+                  <div className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100" aria-hidden="true">
                     {groupName}
                   </div>
                 )}
@@ -90,6 +92,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                   return (
                     <div
                       key={spec.label}
+                      role="row"
                       className={cn(
                         "grid text-sm",
                         !isLast && "border-b border-gray-50",
@@ -97,7 +100,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                       )}
                       style={{ gridTemplateColumns: colTemplate }}
                     >
-                      <div className="px-4 py-3 text-gray-600 flex items-center gap-2">
+                      <div role="rowheader" className="px-4 py-3 text-gray-600 flex items-center gap-2">
                         <span className="truncate">{spec.label}</span>
                         {isDifferent && (
                           <span aria-label="values differ" className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none shrink-0">
@@ -110,6 +113,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                         return (
                           <div
                             key={product.id}
+                            role="cell"
                             className={cn(
                               "px-4 py-3 font-medium text-center",
                               value
