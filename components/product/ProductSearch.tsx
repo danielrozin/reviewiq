@@ -428,9 +428,9 @@ export function ProductSearch() {
               <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-1">
+          <h2 className="text-lg font-semibold text-gray-900 mb-1">
             No products found
-          </h3>
+          </h2>
           <p className="text-sm text-gray-600 mb-6">
             Try a different search term, or browse a popular category below.
           </p>
