@@ -369,6 +369,13 @@ export function comparisonSchema(productA: Product, productB: Product) {
         { "@type": "ListItem", position: 2, item: comparisonProductItem(productB) },
       ],
     },
+    // AEO/voice: the AI Verdict paragraph (VerdictCard) directly answers the
+    // "which is better, A or B?" query — the top intent for "X vs Y" searches.
+    // Attached to the existing WebPage node so there is no duplicate entity.
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='ai-verdict']"],
+    },
   };
 }
 

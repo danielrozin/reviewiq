@@ -30,7 +30,12 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
           </p>
         </div>
       </div>
-      <p className="text-gray-700 text-sm leading-relaxed mb-4">{verdict}</p>
+      <p
+        data-speakable="ai-verdict"
+        className="text-gray-700 text-sm leading-relaxed mb-4"
+      >
+        {verdict}
+      </p>
       {winner && (
         <div className="flex items-center gap-2 text-sm">
           <span className="text-yellow-500">&#9733;</span>
