@@ -8,7 +8,7 @@ export default function NotFound() {
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-12">
         {/* Branded illustration */}
-        <div className="relative inline-flex items-center justify-center mb-8">
+        <div aria-hidden="true" className="relative inline-flex items-center justify-center mb-8">
           <div className="absolute w-40 h-40 bg-brand-50 rounded-full blur-2xl opacity-80" />
           <div className="relative w-28 h-28 bg-white border-2 border-gray-100 rounded-3xl shadow-lg flex items-center justify-center">
             <div className="text-center">
