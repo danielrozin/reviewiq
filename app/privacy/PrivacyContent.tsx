@@ -24,15 +24,15 @@ export function PrivacyContent() {
       lastUpdatedISO="2026-03"
       sections={SECTIONS}
     >
-      <section>
+      <section aria-label="Privacy Policy introduction">
         <p>
           Welcome to ReviewIQ. This Privacy Policy explains how we collect, use, disclose, and safeguard
           your information when you visit our website. Please read this policy carefully.
         </p>
       </section>
 
-      <section id="information-we-collect">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Information We Collect</h2>
+      <section id="information-we-collect" aria-labelledby="information-we-collect-h">
+        <h2 id="information-we-collect-h" className="text-2xl font-bold text-gray-900 mb-4">1. Information We Collect</h2>
         <h3 className="text-lg font-semibold text-gray-900 mb-2">Information You Provide</h3>
         <p className="mb-4">
           When you create an account, write a review, or contact us, we collect the information you provide
@@ -48,8 +48,8 @@ export function PrivacyContent() {
         </ul>
       </section>
 
-      <section id="cookies">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Cookies and Tracking Technologies</h2>
+      <section id="cookies" aria-labelledby="cookies-h">
+        <h2 id="cookies-h" className="text-2xl font-bold text-gray-900 mb-4">2. Cookies and Tracking Technologies</h2>
         <p className="mb-4">ReviewIQ uses cookies to enhance your experience:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong className="text-gray-900">Essential cookies:</strong> Required for the website to function.</li>
@@ -58,16 +58,16 @@ export function PrivacyContent() {
         </ul>
       </section>
 
-      <section id="analytics">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Analytics</h2>
+      <section id="analytics" aria-labelledby="analytics-h">
+        <h2 id="analytics-h" className="text-2xl font-bold text-gray-900 mb-4">3. Analytics</h2>
         <p>
           We use third-party analytics services to understand usage patterns. Analytics data is
           retained in aggregated, anonymized form and is not sold to third parties.
         </p>
       </section>
 
-      <section id="how-we-use">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">4. How We Use Your Information</h2>
+      <section id="how-we-use" aria-labelledby="how-we-use-h">
+        <h2 id="how-we-use-h" className="text-2xl font-bold text-gray-900 mb-4">4. How We Use Your Information</h2>
         <ul className="list-disc pl-6 space-y-1">
           <li>Operate and improve ReviewIQ</li>
           <li>Display and moderate reviews</li>
@@ -78,8 +78,8 @@ export function PrivacyContent() {
         </ul>
       </section>
 
-      <section id="data-sharing">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Data Sharing</h2>
+      <section id="data-sharing" aria-labelledby="data-sharing-h">
+        <h2 id="data-sharing-h" className="text-2xl font-bold text-gray-900 mb-4">5. Data Sharing</h2>
         <p className="mb-4">We do not sell your personal information. We may share data with:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li><strong className="text-gray-900">Service providers:</strong> Trusted vendors under confidentiality obligations.</li>
@@ -88,8 +88,8 @@ export function PrivacyContent() {
         </ul>
       </section>
 
-      <section id="your-rights">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Your Rights</h2>
+      <section id="your-rights" aria-labelledby="your-rights-h">
+        <h2 id="your-rights-h" className="text-2xl font-bold text-gray-900 mb-4">6. Your Rights</h2>
         <p className="mb-4">Depending on your location, you may have the right to:</p>
         <ul className="list-disc pl-6 space-y-1">
           <li>Access your personal data</li>
@@ -101,31 +101,31 @@ export function PrivacyContent() {
         </ul>
       </section>
 
-      <section id="data-retention">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Data Retention</h2>
+      <section id="data-retention" aria-labelledby="data-retention-h">
+        <h2 id="data-retention-h" className="text-2xl font-bold text-gray-900 mb-4">7. Data Retention</h2>
         <p>We retain personal data only as long as necessary for the purposes described in this policy.</p>
       </section>
 
-      <section id="data-security">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">8. Data Security</h2>
+      <section id="data-security" aria-labelledby="data-security-h">
+        <h2 id="data-security-h" className="text-2xl font-bold text-gray-900 mb-4">8. Data Security</h2>
         <p>
           We implement industry-standard measures including HTTPS encryption, access controls,
           and regular security reviews to protect your information.
         </p>
       </section>
 
-      <section id="childrens-privacy">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Children&apos;s Privacy</h2>
+      <section id="childrens-privacy" aria-labelledby="childrens-privacy-h">
+        <h2 id="childrens-privacy-h" className="text-2xl font-bold text-gray-900 mb-4">9. Children&apos;s Privacy</h2>
         <p>ReviewIQ is not directed to children under 13. We do not knowingly collect personal information from children.</p>
       </section>
 
-      <section id="changes">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">10. Changes to This Policy</h2>
+      <section id="changes" aria-labelledby="changes-h">
+        <h2 id="changes-h" className="text-2xl font-bold text-gray-900 mb-4">10. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. Material changes will be reflected in the &ldquo;Last updated&rdquo; date.</p>
       </section>
 
-      <section id="contact">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
+      <section id="contact" aria-labelledby="contact-h">
+        <h2 id="contact-h" className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
         <p>If you have questions about this Privacy Policy, please contact us:</p>
         <div className="mt-4 bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
           <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>

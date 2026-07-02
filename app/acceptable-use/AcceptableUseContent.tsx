@@ -21,7 +21,7 @@ export function AcceptableUseContent() {
       lastUpdatedISO="2026-03"
       sections={SECTIONS}
     >
-      <section>
+      <section aria-label="Acceptable Use Policy introduction">
         <p>
           This Acceptable Use Policy sets out the rules for using ReviewIQ. By accessing our
           platform, you agree to comply with this policy alongside our{" "}
@@ -29,16 +29,16 @@ export function AcceptableUseContent() {
         </p>
       </section>
 
-      <section id="purpose">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Purpose</h2>
+      <section id="purpose" aria-labelledby="purpose-h">
+        <h2 id="purpose-h" className="text-2xl font-bold text-gray-900 mb-4">1. Purpose</h2>
         <p>
           ReviewIQ exists to provide honest, AI-powered product reviews built on real buyer
           experiences. This policy ensures the platform remains trustworthy, safe, and useful for everyone.
         </p>
       </section>
 
-      <section id="prohibited-activities">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">2. Prohibited Activities</h2>
+      <section id="prohibited-activities" aria-labelledby="prohibited-activities-h">
+        <h2 id="prohibited-activities-h" className="text-2xl font-bold text-gray-900 mb-4">2. Prohibited Activities</h2>
         <p className="mb-4">You must not:</p>
         <ul className="list-disc pl-6 space-y-2">
           <li>Post fake, misleading, or incentivized reviews</li>
@@ -53,8 +53,8 @@ export function AcceptableUseContent() {
         </ul>
       </section>
 
-      <section id="review-guidelines">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">3. Review Guidelines</h2>
+      <section id="review-guidelines" aria-labelledby="review-guidelines-h">
+        <h2 id="review-guidelines-h" className="text-2xl font-bold text-gray-900 mb-4">3. Review Guidelines</h2>
         <p className="mb-4">Reviews on ReviewIQ must:</p>
         <ul className="list-disc pl-6 space-y-1">
           <li>Be based on genuine personal experience with the product</li>
@@ -65,8 +65,8 @@ export function AcceptableUseContent() {
         </ul>
       </section>
 
-      <section id="enforcement">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">4. Enforcement</h2>
+      <section id="enforcement" aria-labelledby="enforcement-h">
+        <h2 id="enforcement-h" className="text-2xl font-bold text-gray-900 mb-4">4. Enforcement</h2>
         <p className="mb-4">Violations may result in:</p>
         <ul className="list-disc pl-6 space-y-1">
           <li>Content removal</li>
@@ -76,21 +76,21 @@ export function AcceptableUseContent() {
         </ul>
       </section>
 
-      <section id="reporting">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">5. Reporting Violations</h2>
+      <section id="reporting" aria-labelledby="reporting-h">
+        <h2 id="reporting-h" className="text-2xl font-bold text-gray-900 mb-4">5. Reporting Violations</h2>
         <p>
           If you encounter content that violates this policy, please report it using the report
           feature on the platform or contact us directly. We investigate all reports promptly.
         </p>
       </section>
 
-      <section id="changes">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Changes to This Policy</h2>
+      <section id="changes" aria-labelledby="aup-changes-h">
+        <h2 id="aup-changes-h" className="text-2xl font-bold text-gray-900 mb-4">6. Changes to This Policy</h2>
         <p>We may update this policy at any time. Material changes will be reflected in the &ldquo;Last updated&rdquo; date.</p>
       </section>
 
-      <section id="contact">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Contact Us</h2>
+      <section id="contact" aria-labelledby="aup-contact-h">
+        <h2 id="aup-contact-h" className="text-2xl font-bold text-gray-900 mb-4">7. Contact Us</h2>
         <p className="mb-4">Questions about this policy? Contact us:</p>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
           <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>
