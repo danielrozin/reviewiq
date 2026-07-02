@@ -79,9 +79,10 @@ export default async function FAQPage({ params }: Props) {
         {page.faqs.map((faq, i) => (
           <article
             key={i}
+            aria-labelledby={`faq-q-${i}`}
             className="bg-white border border-gray-200 rounded-xl p-6 sm:p-8 shadow-sm"
           >
-            <h2 className="text-xl font-semibold text-gray-900 mb-3">
+            <h2 id={`faq-q-${i}`} className="text-xl font-semibold text-gray-900 mb-3">
               {faq.question}
             </h2>
             <p
