@@ -155,14 +155,17 @@ export default function WeeklyReportPage() {
             </div>
             <div className="flex gap-2">
               <button
+                type="button"
                 onClick={() => setShowMarkdown(!showMarkdown)}
-                className="px-3 py-1.5 text-xs font-medium border border-gray-300 rounded-lg hover:bg-gray-50"
+                aria-pressed={showMarkdown}
+                className="px-3 py-1.5 text-xs font-medium border border-gray-300 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 {showMarkdown ? "Dashboard" : "Markdown"}
               </button>
               <button
+                type="button"
                 onClick={() => navigator.clipboard.writeText(data.markdown)}
-                className="px-3 py-1.5 text-xs font-medium bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
+                className="px-3 py-1.5 text-xs font-medium bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
               >
                 Copy Report
               </button>

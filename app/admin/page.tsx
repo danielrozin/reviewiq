@@ -630,7 +630,7 @@ export default function AdminDashboard() {
                 value={reviewFilter}
                 onChange={(e) => { setReviewFilter(e.target.value); setReviewPage(1); }}
                 aria-label="Filter reviews by status"
-                className="px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 focus:outline-none"
+                className="px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-400"
               >
                 <option value="">All statuses</option>
                 <option value="published">Published</option>
