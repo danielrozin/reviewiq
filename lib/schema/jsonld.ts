@@ -226,12 +226,18 @@ export function analysisAuthorSchema() {
 }
 
 export function blogPostSchema(post: BlogPost) {
+  // post.coverImage holds relative /images/blog/*.jpg paths that (a) are not the
+  // absolute URLs schema.org requires and (b) 404 in production — the same raw-path
+  // trap productSchema()/comparisonProductItem() avoid. A relative or 404 image drops
+  // the Article rich result, so only trust coverImage when it is a real absolute URL;
+  // otherwise fall back to the per-post generated OG route (absolute, verified 200).
+  const coverIsAbsolute = !!post.coverImage && /^https?:\/\//i.test(post.coverImage);
   return {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.seo.metaDescription,
-    image: post.coverImage || `${SITE_URL}/blog/${post.slug}/opengraph-image`,
+    image: coverIsAbsolute ? post.coverImage : `${SITE_URL}/blog/${post.slug}/opengraph-image`,
     author: {
       "@type": "Organization",
       name: post.author.name,
