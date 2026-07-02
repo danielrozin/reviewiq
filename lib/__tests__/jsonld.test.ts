@@ -13,6 +13,7 @@ import {
   videoObjectSchema,
   analysisAuthorSchema,
   comparisonSchema,
+  blogPostSchema,
 } from '../schema/jsonld'
 
 describe('organizationSchema', () => {
@@ -219,5 +220,40 @@ describe('analysisAuthorSchema', () => {
     expect(schema['@type']).toBe('Person')
     expect(schema.name).toContain('ReviewIQ')
     expect(schema.worksFor['@type']).toBe('Organization')
+  })
+})
+
+describe('blogPostSchema', () => {
+  const basePost = {
+    slug: 'best-mattress-for-back-pain-2026',
+    title: 'Best Mattress for Back Pain (2026)',
+    publishedAt: '2026-01-01',
+    updatedAt: '2026-02-01',
+    author: { name: 'ReviewIQ Team' },
+    seo: { metaDescription: 'Our picks', focusKeyword: 'mattress', secondaryKeywords: ['back pain'] },
+  } as any
+
+  it('falls back to the absolute OG route when coverImage is a relative path (404 in prod)', () => {
+    const schema = blogPostSchema({ ...basePost, coverImage: '/images/blog/best-mattress-back-pain.jpg' }) as Record<string, any>
+    expect(schema.image).toBe('https://revieweriq.com/blog/best-mattress-for-back-pain-2026/opengraph-image')
+    expect(schema.image.startsWith('http')).toBe(true)
+  })
+
+  it('falls back to the OG route when coverImage is missing', () => {
+    const schema = blogPostSchema({ ...basePost, coverImage: undefined }) as Record<string, any>
+    expect(schema.image).toBe('https://revieweriq.com/blog/best-mattress-for-back-pain-2026/opengraph-image')
+  })
+
+  it('keeps coverImage when it is a real absolute URL', () => {
+    const abs = 'https://cdn.example.com/cover.jpg'
+    const schema = blogPostSchema({ ...basePost, coverImage: abs }) as Record<string, any>
+    expect(schema.image).toBe(abs)
+  })
+
+  it('never emits a relative or protocol-less image', () => {
+    for (const cover of ['/images/blog/x.jpg', '', undefined, 'images/blog/x.jpg']) {
+      const schema = blogPostSchema({ ...basePost, coverImage: cover }) as Record<string, any>
+      expect(/^https?:\/\//.test(schema.image)).toBe(true)
+    }
   })
 })
