@@ -127,14 +127,14 @@ export default function CommunityPage() {
         {/* Right sidebar */}
         <aside className="space-y-8">
           {/* Category discussions */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+          <section aria-labelledby="sidebar-categories-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-4">
               <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-gray-900">Browse by Category</h3>
+              <h2 id="sidebar-categories-heading" className="font-semibold text-gray-900">Browse by Category</h2>
             </div>
             <div className="space-y-1">
               {categories.map((cat) => {
@@ -163,17 +163,17 @@ export default function CommunityPage() {
                 );
               })}
             </div>
-          </div>
+          </section>
 
           {/* Top contributors */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+          <section aria-labelledby="sidebar-contributors-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-4">
               <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-gray-900">Top Contributors</h3>
+              <h2 id="sidebar-contributors-heading" className="font-semibold text-gray-900">Top Contributors</h2>
             </div>
             <div className="space-y-3">
               {topContributors.map((user, i) => (
@@ -199,17 +199,17 @@ export default function CommunityPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Community guidelines */}
-          <div className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+          <section aria-labelledby="sidebar-guidelines-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-3">
               <div aria-hidden="true" className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
                 </svg>
               </div>
-              <h3 className="font-semibold text-gray-900">Community Guidelines</h3>
+              <h2 id="sidebar-guidelines-heading" className="font-semibold text-gray-900">Community Guidelines</h2>
             </div>
             <ul className="space-y-2 text-sm text-gray-600">
               {[
@@ -229,7 +229,7 @@ export default function CommunityPage() {
                 </li>
               ))}
             </ul>
-          </div>
+          </section>
         </aside>
       </div>
     </div>
