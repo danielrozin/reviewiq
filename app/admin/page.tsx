@@ -172,6 +172,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Admin password"
+          aria-label="Admin password"
           className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
           autoFocus
         />
@@ -506,6 +507,7 @@ export default function AdminDashboard() {
                   value={productSearch}
                   onChange={(e) => { setProductSearch(e.target.value); setProductPage(1); }}
                   placeholder="Search products..."
+                  aria-label="Search products"
                   className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
@@ -619,12 +621,14 @@ export default function AdminDashboard() {
                   value={reviewSearch}
                   onChange={(e) => { setReviewSearch(e.target.value); setReviewPage(1); }}
                   placeholder="Search reviews..."
+                  aria-label="Search reviews"
                   className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
               <select
                 value={reviewFilter}
                 onChange={(e) => { setReviewFilter(e.target.value); setReviewPage(1); }}
+                aria-label="Filter reviews by status"
                 className="px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 focus:outline-none"
               >
                 <option value="">All statuses</option>
@@ -691,6 +695,7 @@ export default function AdminDashboard() {
                         <input
                           type="checkbox"
                           checked={selectedReviews.has(r.id)}
+                          aria-label={`Select review: ${r.headline}`}
                           onChange={(e) => {
                             const next = new Set(selectedReviews);
                             if (e.target.checked) next.add(r.id);
