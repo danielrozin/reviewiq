@@ -100,19 +100,21 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
   return (
     <div className="space-y-4">
       {/* Stat cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div role="list" aria-label="Account statistics" className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {statItems.map((stat, i) => (
           <div
             key={stat.label}
+            role="listitem"
+            aria-label={`${stat.label}: ${formatNumber(stat.value)}`}
             className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} hover:-translate-y-0.5 transition-all duration-200`}
           >
             <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${STAT_COLORS[i].icon} flex items-center justify-center mb-3`}>
               {STAT_ICONS[i]}
             </div>
-            <p className="text-2xl font-bold text-gray-900">
+            <p aria-hidden="true" className="text-2xl font-bold text-gray-900">
               {formatNumber(stat.value)}
             </p>
-            <p className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
+            <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -145,8 +147,16 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
             </span>
           )}
         </div>
-        <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+        <div
+          role="progressbar"
+          aria-valuenow={progressPct}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label={nextLevel ? `Reputation progress toward ${TRUST_LEVEL_LABELS[nextLevel]}: ${progressPct}%` : "Maximum reputation level reached"}
+          className="h-2 bg-gray-100 rounded-full overflow-hidden"
+        >
           <div
+            aria-hidden="true"
             className="h-full bg-gradient-to-r from-brand-500 to-brand-400 rounded-full transition-all duration-700"
             style={{ width: `${progressPct}%` }}
           />

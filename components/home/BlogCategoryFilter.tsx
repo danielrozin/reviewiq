@@ -27,10 +27,12 @@ export function BlogCategoryFilter({ posts }: Props) {
   return (
     <>
       {/* Category filter tabs */}
-      <div role="group" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8">
+      <div role="tablist" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8">
         <button
           type="button"
-          aria-pressed={activeCategory === "all"}
+          role="tab"
+          aria-selected={activeCategory === "all"}
+          aria-controls="blog-post-list"
           onClick={() => setActiveCategory("all")}
           className={`px-4 py-2.5 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
             activeCategory === "all"
@@ -46,7 +48,9 @@ export function BlogCategoryFilter({ posts }: Props) {
             <button
               key={cat.slug}
               type="button"
-              aria-pressed={activeCategory === cat.slug}
+              role="tab"
+              aria-selected={activeCategory === cat.slug}
+              aria-controls="blog-post-list"
               onClick={() => setActiveCategory(cat.slug)}
               className={`px-4 py-2.5 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 activeCategory === cat.slug
@@ -61,7 +65,7 @@ export function BlogCategoryFilter({ posts }: Props) {
       </div>
 
       {/* Post grid */}
-      <ul role="list" aria-label="Blog posts" aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul id="blog-post-list" role="list" aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`} aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
           <li key={post.id}>
           <Link

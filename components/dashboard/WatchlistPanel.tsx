@@ -41,18 +41,19 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
           <Link
             key={item.id}
             href={`/category/${item.categorySlug}/${item.productSlug}`}
+            aria-label={`${item.productName} — SmartScore ${item.currentScore}${scoreDiff > 0 ? `, up ${scoreDiff} points` : scoreDiff < 0 ? `, down ${Math.abs(scoreDiff)} points` : ", no change"}`}
             className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
-            <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="flex items-center gap-4 p-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-brand-50 to-brand-100 rounded-xl flex items-center justify-center shrink-0">
+            <div aria-hidden="true" className="w-12 h-12 bg-gradient-to-br from-brand-50 to-brand-100 rounded-xl flex items-center justify-center shrink-0">
               <span className="text-brand-400 text-xs font-bold">
                 {item.productName.slice(0, 2).toUpperCase()}
               </span>
             </div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
+              <h3 aria-hidden="true" className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
                 {item.productName}
               </h3>
               <p className="text-xs text-gray-500 mt-0.5">
@@ -60,7 +61,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
               </p>
             </div>
 
-            <div className="text-right shrink-0">
+            <div aria-hidden="true" className="text-right shrink-0">
               <p className={`text-lg font-bold ${getScoreColor(item.currentScore)}`}>
                 {item.currentScore}
               </p>
