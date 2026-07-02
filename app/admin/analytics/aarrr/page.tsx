@@ -325,10 +325,12 @@ export default function AARRRDashboard() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 overflow-x-auto">
+      <div role="tablist" aria-label="AARRR metric views" className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 overflow-x-auto">
         {tabs.map((tab) => (
           <button
             key={tab.key}
+            role="tab"
+            aria-selected={activeTab === tab.key}
             onClick={() => setActiveTab(tab.key)}
             className={`px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap ${
               activeTab === tab.key

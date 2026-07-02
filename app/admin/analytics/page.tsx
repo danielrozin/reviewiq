@@ -167,10 +167,12 @@ export default function ReviewIQAnalytics() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 w-fit">
+      <div role="tablist" aria-label="Analytics views" className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 w-fit">
         {tabs.map((tab) => (
           <button
             key={tab.key}
+            role="tab"
+            aria-selected={activeTab === tab.key}
             onClick={() => {
               setActiveTab(tab.key);
               if (tab.key === "report") loadReport();
