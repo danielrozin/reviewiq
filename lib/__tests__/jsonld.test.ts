@@ -23,6 +23,12 @@ describe('organizationSchema', () => {
     expect(schema.name).toBe('ReviewIQ')
     expect(schema.url).toBeDefined()
   })
+
+  it('carries a stable @id so answer engines consolidate the entity', () => {
+    const schema = organizationSchema()
+    expect(schema['@id']).toBeDefined()
+    expect(String(schema['@id'])).toContain('#organization')
+  })
 })
 
 describe('websiteSchema', () => {
@@ -36,6 +42,11 @@ describe('websiteSchema', () => {
     expect(schema.potentialAction.target.urlTemplate).toContain('/products?q=')
     expect(schema.potentialAction.target.urlTemplate).toContain('{search_term_string}')
     expect(schema.potentialAction['query-input']).toBe('required name=search_term_string')
+  })
+
+  it('links to the Organization entity via publisher @id', () => {
+    const schema = websiteSchema()
+    expect(schema.publisher['@id']).toContain('#organization')
   })
 })
 

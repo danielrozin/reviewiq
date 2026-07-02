@@ -10,10 +10,18 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").
 // data at those routes instead. BRAND_IMAGE is the site-level branded OG banner.
 const BRAND_IMAGE = `${SITE_URL}/opengraph-image`;
 
+// Stable entity @ids so every page resolves the same ReviewIQ Organization /
+// WebSite node instead of emitting duplicate, unlinked entities. Answer engines
+// (Google KG, ChatGPT/Perplexity) consolidate structured-data entities by @id;
+// inline publisher/worksFor nodes below reference ORG_ID to merge into this one.
+const ORG_ID = `${SITE_URL}/#organization`;
+const WEBSITE_ID = `${SITE_URL}/#website`;
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": ORG_ID,
     name: "ReviewIQ",
     url: SITE_URL,
     logo: BRAND_IMAGE,
@@ -27,8 +35,12 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": WEBSITE_ID,
     name: "ReviewIQ",
     url: SITE_URL,
+    // Link the site to the canonical Organization entity emitted in the same
+    // <head> (root layout renders organizationSchema() on every page).
+    publisher: { "@id": ORG_ID },
     potentialAction: {
       "@type": "SearchAction",
       // Point at the real search-results surface. There is no /search page
@@ -205,6 +217,7 @@ export function analysisAuthorSchema() {
     url: `${SITE_URL}/about`,
     worksFor: {
       "@type": "Organization",
+      "@id": ORG_ID,
       name: "ReviewIQ",
       url: SITE_URL,
     },
@@ -225,6 +238,7 @@ export function blogPostSchema(post: BlogPost) {
     },
     publisher: {
       "@type": "Organization",
+      "@id": ORG_ID,
       name: "ReviewIQ",
       logo: { "@type": "ImageObject", url: BRAND_IMAGE },
     },
