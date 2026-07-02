@@ -157,13 +157,13 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-2xl p-8 w-full max-w-sm shadow-sm">
+      <form onSubmit={handleSubmit} aria-labelledby="admin-login-heading" className="bg-white border border-gray-200 rounded-2xl p-8 w-full max-w-sm shadow-sm">
         <div className="flex items-center gap-3 mb-6">
           <div aria-hidden="true" className="w-10 h-10 bg-gray-900 rounded-lg flex items-center justify-center">
             <Shield className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
+            <h1 id="admin-login-heading" className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
             <p className="text-xs text-gray-400">Enter password to continue</p>
           </div>
         </div>
@@ -173,6 +173,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Admin password"
           aria-label="Admin password"
+          autoComplete="current-password"
           className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
           autoFocus
         />
@@ -180,7 +181,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
         <button
           type="submit"
           disabled={loading || !password}
-          className="w-full mt-4 px-4 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 disabled:opacity-50 transition-colors"
+          className="w-full mt-4 px-4 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-medium hover:bg-gray-800 disabled:opacity-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
         >
           {loading ? "Signing in..." : "Sign In"}
         </button>
