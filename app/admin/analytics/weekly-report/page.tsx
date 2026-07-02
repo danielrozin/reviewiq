@@ -181,8 +181,8 @@ export default function WeeklyReportPage() {
         ) : (
           <div className="space-y-8">
             {/* Summary Cards */}
-            <section>
-              <h2 className="text-lg font-bold text-gray-900 mb-4">Week-over-Week Summary</h2>
+            <section aria-labelledby="weekly-summary-heading">
+              <h2 id="weekly-summary-heading" className="text-lg font-bold text-gray-900 mb-4">Week-over-Week Summary</h2>
               <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
                 {Object.entries(data.summary).map(([key, metric]) => (
                   <MetricCard key={key} label={summaryLabels[key] || key} {...metric} />
@@ -192,8 +192,8 @@ export default function WeeklyReportPage() {
 
             {/* Daily + Funnel */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <section className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="text-sm font-bold text-gray-700 mb-3">Daily Activity (7d)</h3>
+              <section aria-labelledby="weekly-daily-activity-heading" className="bg-white border border-gray-200 rounded-xl p-5">
+                <h3 id="weekly-daily-activity-heading" className="text-sm font-bold text-gray-700 mb-3">Daily Activity (7d)</h3>
                 <div className="space-y-2">
                   {data.dailyBreakdown.map((d) => {
                     const max = Math.max(...data.dailyBreakdown.map((r) => r.signups + r.reviews), 1);
@@ -215,8 +215,8 @@ export default function WeeklyReportPage() {
                 </div>
               </section>
 
-              <section className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="text-sm font-bold text-gray-700 mb-3">Activation Funnel</h3>
+              <section aria-labelledby="weekly-funnel-heading" className="bg-white border border-gray-200 rounded-xl p-5">
+                <h3 id="weekly-funnel-heading" className="text-sm font-bold text-gray-700 mb-3">Activation Funnel</h3>
                 {data.funnel.map((step) => (
                   <FunnelBar key={step.stage} step={step} maxValue={maxFunnel} />
                 ))}
@@ -226,8 +226,8 @@ export default function WeeklyReportPage() {
 
             {/* Top Products + Trust Levels */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <section className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="text-sm font-bold text-gray-700 mb-3">Top Products by Reviews</h3>
+              <section aria-labelledby="weekly-top-products-heading" className="bg-white border border-gray-200 rounded-xl p-5">
+                <h3 id="weekly-top-products-heading" className="text-sm font-bold text-gray-700 mb-3">Top Products by Reviews</h3>
                 <div className="space-y-1.5">
                   {data.topProducts.length === 0 ? (
                     <p className="text-xs text-gray-400">No products yet</p>
@@ -243,8 +243,8 @@ export default function WeeklyReportPage() {
                 </div>
               </section>
 
-              <section className="bg-white border border-gray-200 rounded-xl p-5">
-                <h3 className="text-sm font-bold text-gray-700 mb-3">Trust Level Distribution</h3>
+              <section aria-labelledby="weekly-trust-heading" className="bg-white border border-gray-200 rounded-xl p-5">
+                <h3 id="weekly-trust-heading" className="text-sm font-bold text-gray-700 mb-3">Trust Level Distribution</h3>
                 <div className="space-y-1.5">
                   {data.trustLevels.map((t) => (
                     <div key={t.level} className="flex items-center gap-2 text-xs">
@@ -257,8 +257,8 @@ export default function WeeklyReportPage() {
             </div>
 
             {/* Platform Inventory */}
-            <section className="bg-white border border-gray-200 rounded-xl p-5">
-              <h3 className="text-sm font-bold text-gray-700 mb-3">Platform Inventory</h3>
+            <section aria-labelledby="weekly-inventory-heading" className="bg-white border border-gray-200 rounded-xl p-5">
+              <h3 id="weekly-inventory-heading" className="text-sm font-bold text-gray-700 mb-3">Platform Inventory</h3>
               <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
                 {[
                   { label: "Users", value: data.platform.totalUsers },

@@ -130,7 +130,7 @@ export default function HomePage() {
       </section>
 
       {/* Onboarding — Welcome Back / Quick Start */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <section aria-label="Getting started" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <HomeOnboardingSection />
       </section>
 

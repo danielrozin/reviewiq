@@ -48,7 +48,7 @@ export function LegalPageLayout({
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
-      <nav className="mb-8 print:hidden">
+      <nav aria-label="Breadcrumb" className="mb-8 print:hidden">
         <ol className="flex items-center gap-2 text-sm text-gray-600">
           <li>
             <Link href="/" className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
@@ -67,7 +67,7 @@ export function LegalPageLayout({
             <h2 id="legal-toc-heading" className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-4">
               On this page
             </h2>
-            <nav>
+            <nav aria-label="Page sections">
               <ul className="space-y-1 border-l border-gray-200">
                 {sections.map((section) => (
                   <li key={section.id}>
@@ -105,7 +105,7 @@ export function LegalPageLayout({
             <summary className="text-sm font-semibold text-gray-900 cursor-pointer select-none rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1">
               Table of Contents
             </summary>
-            <nav className="mt-3">
+            <nav aria-label="Table of contents" className="mt-3">
               <ol className="space-y-1.5">
                 {sections.map((section, i) => (
                   <li key={section.id}>
