@@ -34,6 +34,7 @@ export function ComparisonTray() {
             <button
               type="button"
               onClick={clear}
+              aria-label="Clear all products from comparison tray"
               className="text-xs text-gray-400 hover:text-red-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1 rounded"
             >
               Clear all
@@ -77,6 +78,7 @@ export function ComparisonTray() {
               {Array.from({ length: Math.max(0, 2 - items.length) }).map((_, i) => (
                 <div
                   key={`empty-${i}`}
+                  aria-hidden="true"
                   className="w-[140px] h-[42px] border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center shrink-0"
                 >
                   <span className="text-xs text-gray-300">+ Add product</span>
@@ -87,10 +89,13 @@ export function ComparisonTray() {
             {/* Compare Now CTA */}
             <Link
               href={compareUrl}
+              aria-disabled={items.length < 2}
+              aria-label={items.length >= 2 ? `Compare ${items.map(p => p.name).join(" and ")}` : "Add at least 2 products to compare"}
+              tabIndex={items.length < 2 ? -1 : undefined}
               className={cn(
                 "shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all",
                 items.length >= 2
-                  ? "bg-brand-600 text-white hover:bg-brand-700 shadow-sm"
+                  ? "bg-brand-600 text-white hover:bg-brand-700 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                   : "bg-gray-100 text-gray-400 pointer-events-none"
               )}
             >

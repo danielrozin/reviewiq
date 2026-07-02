@@ -39,11 +39,12 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
   return (
     <div className="space-y-3">
       {reviews.map(({ review, productName, productSlug, categorySlug }) => (
-        <div
+        <article
           key={review.id}
+          aria-labelledby={`rh-headline-${review.id}`}
           className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
         >
-          <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+          <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
           <div className="p-4">
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
@@ -53,7 +54,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
               >
                 {productName}
               </Link>
-              <h3 className="text-sm font-semibold text-gray-900 mt-1 truncate">
+              <h3 id={`rh-headline-${review.id}`} className="text-sm font-semibold text-gray-900 mt-1 truncate">
                 {review.headline}
               </h3>
               <p className="text-xs text-gray-600 mt-1 line-clamp-2 leading-relaxed">
@@ -81,7 +82,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
                   <svg aria-hidden="true" className="w-2.5 h-2.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                   </svg>
-                  Verified
+                  Verified purchase
                 </span>
               )}
             </div>
@@ -113,7 +114,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
             )}
           </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
   );
