@@ -49,7 +49,7 @@ function ProgressRing({ progress, size = 80, strokeWidth = 6 }: { progress: numb
 
   return (
     <div className="relative" style={{ width: size, height: size }}>
-      <svg width={size} height={size} className="-rotate-90">
+      <svg aria-hidden="true" width={size} height={size} className="-rotate-90">
         <circle cx={size / 2} cy={size / 2} r={radius} stroke="#e5e7eb" strokeWidth={strokeWidth} fill="none" />
         <circle
           cx={size / 2} cy={size / 2} r={radius}
@@ -199,13 +199,13 @@ export default function OKRDashboard() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
         {/* Company OKR */}
-        <section>
+        <section aria-label="Company OKR">
           <OKRCard okr={data.companyOKR} isCompany />
         </section>
 
         {/* Health Metrics */}
-        <section>
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Health Metrics</h2>
+        <section aria-labelledby="okr-health-heading">
+          <h2 id="okr-health-heading" className="text-lg font-bold text-gray-900 mb-4">Health Metrics</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {data.healthMetrics.map((m) => (
               <HealthCard key={m.name} metric={m} />
@@ -214,8 +214,8 @@ export default function OKRDashboard() {
         </section>
 
         {/* Team OKRs */}
-        <section>
-          <h2 className="text-lg font-bold text-gray-900 mb-4">Team OKRs</h2>
+        <section aria-labelledby="okr-team-heading">
+          <h2 id="okr-team-heading" className="text-lg font-bold text-gray-900 mb-4">Team OKRs</h2>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {data.teamOKRs.map((okr) => (
               <OKRCard key={okr.id} okr={okr} />
@@ -224,8 +224,8 @@ export default function OKRDashboard() {
         </section>
 
         {/* Legend / Guide */}
-        <section className="bg-white border border-gray-200 rounded-xl p-5">
-          <h3 className="text-sm font-bold text-gray-700 mb-2">How to read this dashboard</h3>
+        <section aria-labelledby="okr-legend-heading" className="bg-white border border-gray-200 rounded-xl p-5">
+          <h3 id="okr-legend-heading" className="text-sm font-bold text-gray-700 mb-2">How to read this dashboard</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-600">
             <div>
               <p><strong>OKR progress</strong> shows % toward each Key Result. OKRs should be ambitious &mdash; 70% completion is a strong result.</p>

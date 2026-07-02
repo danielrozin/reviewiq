@@ -154,7 +154,7 @@ function HealthGauge({ score }: { score: number }) {
   return (
     <div className="flex flex-col items-center gap-2">
       <div className="relative w-32 h-32">
-        <svg viewBox="0 0 36 36" className="w-full h-full">
+        <svg aria-hidden="true" viewBox="0 0 36 36" className="w-full h-full">
           <path
             d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
             fill="none"
