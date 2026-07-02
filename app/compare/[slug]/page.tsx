@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { getAllComparisonPairs, getComparisonBySlug } from "@/data/comparisons";
+import { getAllComparisonPairs, getComparisonBySlug, comparisonFaq } from "@/data/comparisons";
 import { getCategoryBySlug } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ScoreComparison } from "@/components/comparison/ScoreComparison";
@@ -12,6 +12,7 @@ import { PriceComparison } from "@/components/comparison/PriceComparison";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { comparisonSchema } from "@/lib/schema/jsonld";
 import { AnalysisDisclosure } from "@/components/product/AnalysisDisclosure";
+import { FAQSection } from "@/components/product/FAQSection";
 import { ShareButtons } from "@/components/ui/ShareButtons";
 
 interface Props {
@@ -112,6 +113,7 @@ export default async function ComparisonPage({ params }: Props) {
           <SpecsComparisonTable productA={productA} productB={productB} />
           <ProsConsComparison productA={productA} productB={productB} />
           <BestForComparison productA={productA} productB={productB} />
+          <FAQSection items={comparisonFaq(productA, productB)} />
           <AnalysisDisclosure productName={`${productA.name} vs ${productB.name}`} />
         </div>
 

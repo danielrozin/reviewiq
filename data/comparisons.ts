@@ -1,5 +1,6 @@
 import { products, getAllProducts } from "@/data/products";
-import type { Product } from "@/types";
+import { formatPrice } from "@/lib/affiliate/merchants";
+import type { Product, FAQItem } from "@/types";
 
 export interface ComparisonPair {
   slug: string; // e.g. "roborock-s8-maxv-ultra-vs-irobot-roomba-j7-plus"
@@ -63,4 +64,50 @@ export function generateVerdict(a: Product, b: Product): string {
     return `The ${winner.name} edges out the ${loser.name} with a SmartScore of ${winner.smartScore} vs ${loser.smartScore}. While both are solid choices, the ${winner.name} offers a slightly better overall experience based on verified buyer feedback.`;
   }
   return `The ${winner.name} is the clear winner with a SmartScore of ${winner.smartScore} compared to ${loser.smartScore} for the ${loser.name}. Based on hundreds of verified reviews, the ${winner.name} consistently delivers a superior experience.`;
+}
+
+/**
+ * Build a comparison FAQ derived entirely from guaranteed, on-page product
+ * fields (name, SmartScore, price, review counts) — never invented content.
+ * These target "X vs Y" People-Also-Ask / AI-answer-engine queries. The answers
+ * mirror what is rendered visibly on the comparison page, so the accompanying
+ * FAQPage JSON-LD satisfies Google's content-match policy.
+ */
+export function comparisonFaq(a: Product, b: Product): FAQItem[] {
+  const scoreWinner =
+    a.smartScore >= b.smartScore ? a : b;
+  const scoreLoser = scoreWinner === a ? b : a;
+  const scoreTie = a.smartScore === b.smartScore;
+
+  const aLow = a.priceRange.min;
+  const bLow = b.priceRange.min;
+  const cheaper = aLow <= bLow ? a : b;
+  const pricier = cheaper === a ? b : a;
+  const priceTie = aLow === bLow;
+
+  const faq: FAQItem[] = [];
+
+  // Q1 — the headline "which is better" question.
+  faq.push({
+    question: `Which is better, the ${a.name} or the ${b.name}?`,
+    answer: scoreTie
+      ? `The ${a.name} and ${b.name} are tied on our SmartScore (${a.smartScore}/100 each), so the right pick comes down to which features and price matter most for your needs.`
+      : `The ${scoreWinner.name} scores higher overall with a SmartScore of ${scoreWinner.smartScore}/100 versus ${scoreLoser.smartScore}/100 for the ${scoreLoser.name}, based on verified buyer reviews. See the full verdict and spec-by-spec breakdown below.`,
+  });
+
+  // Q2 — price/value, another top comparison intent.
+  faq.push({
+    question: `Which is cheaper, the ${a.name} or the ${b.name}?`,
+    answer: priceTie
+      ? `Both the ${a.name} and the ${b.name} start at around ${formatPrice(aLow, a.priceRange.currency)}, so price is unlikely to be the deciding factor between them.`
+      : `The ${cheaper.name} is the more affordable option, starting at ${formatPrice(cheaper.priceRange.min, cheaper.priceRange.currency)} versus ${formatPrice(pricier.priceRange.min, pricier.priceRange.currency)} for the ${pricier.name}.`,
+  });
+
+  // Q3 — how the comparison is backed (trust / E-E-A-T signal).
+  faq.push({
+    question: `How many reviews is the ${a.name} vs ${b.name} comparison based on?`,
+    answer: `This comparison draws on ${(a.reviewCount + b.reviewCount).toLocaleString()} verified buyer reviews — ${a.reviewCount.toLocaleString()} for the ${a.name} and ${b.reviewCount.toLocaleString()} for the ${b.name} — condensed into each product's SmartScore.`,
+  });
+
+  return faq;
 }
