@@ -80,22 +80,25 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           title={`Share on ${link.name}`}
+          aria-label={`Share on ${link.name}`}
           className={`inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-500 transition-colors ${link.color}`}
         >
-          {link.icon}
+          <span aria-hidden="true">{link.icon}</span>
         </a>
       ))}
       <button
         onClick={handleCopyLink}
-        title="Copy link"
+        title={copied ? "Copied!" : "Copy link"}
+        aria-label={copied ? "Link copied to clipboard" : "Copy link to clipboard"}
+        aria-pressed={copied}
         className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-gray-500 transition-colors hover:bg-gray-100"
       >
         {copied ? (
-          <svg className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg aria-hidden="true" className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         ) : (
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
           </svg>
         )}

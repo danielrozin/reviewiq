@@ -79,6 +79,9 @@ export function Header() {
                   <button
                     type="button"
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
+                    aria-expanded={userMenuOpen}
+                    aria-haspopup="menu"
+                    aria-label={userMenuOpen ? "Close user menu" : "Open user menu"}
                     className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
                   >
                     <div className="w-8 h-8 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs font-bold">
@@ -89,7 +92,7 @@ export function Header() {
                     </span>
                   </button>
                   {userMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50">
+                    <div role="menu" aria-label="User menu" className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50">
                       <div className="px-4 py-3 border-b border-gray-100">
                         <div className="flex items-center gap-1.5">
                           <p className="text-sm font-medium text-gray-900 truncate">
