@@ -250,8 +250,8 @@ export default function AARRRDashboard() {
 
   if (loading) {
     return (
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="animate-pulse space-y-4">
+      <div role="status" aria-label="Loading AARRR metrics" className="max-w-7xl mx-auto px-4 py-8">
+        <div aria-hidden="true" className="animate-pulse space-y-4">
           <div className="h-8 bg-gray-200 rounded w-1/3" />
           <div className="h-64 bg-gray-200 rounded" />
         </div>

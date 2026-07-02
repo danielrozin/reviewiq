@@ -36,7 +36,7 @@ export default function ProductsPage() {
 
 function ProductSearchSkeleton() {
   return (
-    <div className="animate-pulse space-y-6">
+    <div role="status" aria-label="Loading products" className="animate-pulse space-y-6">
       <div className="h-12 bg-gray-100 rounded-xl" />
       <div className="flex gap-3">
         {Array.from({ length: 4 }).map((_, i) => (
