@@ -80,7 +80,7 @@ export function ProfileChecklist() {
         </div>
       </div>
 
-      <div className="space-y-1.5">
+      <ul role="list" aria-label="Profile completion checklist" className="space-y-1.5">
         {CHECKLIST_ITEMS.map((item) => {
           const done = state.checklist[item.key];
           const inner = (
@@ -104,11 +104,11 @@ export function ProfileChecklist() {
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p className={`text-sm font-medium ${done ? "text-gray-400 line-through" : "text-gray-900"}`}>
+                <p aria-hidden="true" className={`text-sm font-medium ${done ? "text-gray-400 line-through" : "text-gray-900"}`}>
                   {item.label}
                 </p>
                 {!done && (
-                  <p className="text-xs text-gray-600 mt-0.5">{item.description}</p>
+                  <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5">{item.description}</p>
                 )}
               </div>
               {!done && (
@@ -119,24 +119,27 @@ export function ProfileChecklist() {
             </>
           );
           return done ? (
-            <div
-              key={item.key}
-              aria-label={`${item.label} — completed`}
-              className="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50"
-            >
-              {inner}
-            </div>
+            <li key={item.key}>
+              <div
+                aria-label={`${item.label} — completed`}
+                className="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50"
+              >
+                {inner}
+              </div>
+            </li>
           ) : (
-            <Link
-              key={item.key}
-              href={item.href}
-              className="flex items-center gap-3 p-3 rounded-xl transition-colors hover:bg-brand-50/40 hover:border hover:border-brand-100 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
-            >
-              {inner}
-            </Link>
+            <li key={item.key}>
+              <Link
+                href={item.href}
+                aria-label={`${item.label} — ${item.description}`}
+                className="flex items-center gap-3 p-3 rounded-xl transition-colors hover:bg-brand-50/40 hover:border hover:border-brand-100 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              >
+                {inner}
+              </Link>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </div>
   );
 }
