@@ -46,7 +46,7 @@ export function SpecsComparisonTable({
         <h2 id="specs-comparison" className="text-lg font-semibold text-gray-900">Specs Comparison</h2>
       </div>
       <div className="border border-gray-100 rounded-xl overflow-hidden">
-        <table className="w-full table-fixed">
+        <table className="w-full table-fixed" aria-labelledby="specs-comparison">
           <colgroup>
             <col className="w-1/2" />
             <col className="w-1/4" />

@@ -461,7 +461,7 @@ export default function AdminDashboard() {
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Top Products by Reviews</h3>
               {stats.topProducts.length > 0 ? (
-                <table className="w-full text-sm">
+                <table className="w-full text-sm" aria-label="Top products by reviews">
                   <thead>
                     <tr className="text-left text-gray-500 border-b border-gray-100">
                       <th scope="col" className="pb-2 font-medium">#</th>
@@ -515,7 +515,7 @@ export default function AdminDashboard() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-              <table className="w-full text-sm">
+              <table className="w-full text-sm" aria-label="Products list">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200 text-left">
                     <th scope="col" className="px-4 py-3 font-semibold text-gray-600">Product</th>
@@ -663,7 +663,7 @@ export default function AdminDashboard() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-              <table className="w-full text-sm">
+              <table className="w-full text-sm" aria-label="Reviews list">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200 text-left">
                     <th scope="col" className="px-4 py-3 w-8">

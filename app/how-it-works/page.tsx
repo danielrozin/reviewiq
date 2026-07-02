@@ -204,7 +204,7 @@ export default function HowItWorksPage() {
         </div>
         <p className="text-gray-600 text-sm mb-6">See exactly how we&apos;re different in the ways that matter.</p>
         <div className="overflow-hidden rounded-2xl border border-gray-200 shadow-sm">
-          <table className="w-full text-sm">
+          <table className="w-full text-sm" aria-labelledby="hiw-vs-heading">
             <thead>
               <tr className="bg-gray-50 border-b border-gray-200">
                 <th scope="col" className="text-left px-5 py-3.5 text-xs font-semibold text-gray-600 uppercase tracking-wider w-2/5">Feature</th>

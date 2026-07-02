@@ -190,13 +190,13 @@ function CohortTable({ cohorts }: { cohorts: CohortRow[] }) {
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full text-sm">
+      <table className="w-full text-sm" aria-label="User retention cohort data">
         <thead>
           <tr className="border-b border-gray-200">
-            <th className="text-left py-2 px-3 font-semibold text-gray-600">Cohort</th>
-            <th className="text-right py-2 px-3 font-semibold text-gray-600">Users</th>
+            <th scope="col" className="text-left py-2 px-3 font-semibold text-gray-600">Cohort</th>
+            <th scope="col" className="text-right py-2 px-3 font-semibold text-gray-600">Users</th>
             {weekHeaders.map((w) => (
-              <th key={w} className="text-right py-2 px-3 font-semibold text-gray-600">{w}</th>
+              <th key={w} scope="col" className="text-right py-2 px-3 font-semibold text-gray-600">{w}</th>
             ))}
           </tr>
         </thead>

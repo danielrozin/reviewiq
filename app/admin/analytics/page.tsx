@@ -439,13 +439,13 @@ export default function ReviewIQAnalytics() {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold text-gray-900">Custom Events ({config.events.length})</h3>
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm" aria-label="Custom events">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Event</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600">Category</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Description</th>
-                  <th className="text-left px-4 py-3 font-semibold text-gray-600 hidden lg:table-cell">Parameters</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-gray-600">Event</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-gray-600">Category</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-gray-600 hidden md:table-cell">Description</th>
+                  <th scope="col" className="text-left px-4 py-3 font-semibold text-gray-600 hidden lg:table-cell">Parameters</th>
                 </tr>
               </thead>
               <tbody>
@@ -537,14 +537,14 @@ export default function ReviewIQAnalytics() {
               {report.topProducts.length > 0 && (
                 <div className="bg-white border border-gray-200 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">Top Products</h3>
-                  <table className="w-full text-sm">
+                  <table className="w-full text-sm" aria-label="Top products">
                     <thead>
                       <tr className="border-b border-gray-200">
-                        <th className="text-left py-2 text-gray-500 font-medium">#</th>
-                        <th className="text-left py-2 text-gray-500 font-medium">Product</th>
-                        <th className="text-left py-2 text-gray-500 font-medium hidden sm:table-cell">Category</th>
-                        <th className="text-right py-2 text-gray-500 font-medium">Reviews</th>
-                        <th className="text-right py-2 text-gray-500 font-medium">Score</th>
+                        <th scope="col" className="text-left py-2 text-gray-500 font-medium">#</th>
+                        <th scope="col" className="text-left py-2 text-gray-500 font-medium">Product</th>
+                        <th scope="col" className="text-left py-2 text-gray-500 font-medium hidden sm:table-cell">Category</th>
+                        <th scope="col" className="text-right py-2 text-gray-500 font-medium">Reviews</th>
+                        <th scope="col" className="text-right py-2 text-gray-500 font-medium">Score</th>
                       </tr>
                     </thead>
                     <tbody>

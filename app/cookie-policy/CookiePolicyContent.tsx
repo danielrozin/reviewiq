@@ -40,7 +40,7 @@ export function CookiePolicyContent() {
       <section id="cookies-we-use" aria-labelledby="cookies-we-use-h">
         <h2 id="cookies-we-use-h" className="text-2xl font-bold text-gray-900 mb-4">2. Cookies We Use</h2>
         <div className="overflow-x-auto">
-          <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden">
+          <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden" aria-label="Cookies we use">
             <thead className="bg-gray-50">
               <tr>
                 <th scope="col" className="text-left px-4 py-3 font-semibold text-gray-900">Category</th>
