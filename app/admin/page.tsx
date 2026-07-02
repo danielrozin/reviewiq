@@ -565,8 +565,9 @@ export default function AdminDashboard() {
                             onClick={() => handleDeleteProduct(p.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                             title="Delete product"
+                            aria-label={`Delete product: ${p.name}`}
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 aria-hidden="true" className="w-4 h-4" />
                           </button>
                         </div>
                       </td>
@@ -724,8 +725,9 @@ export default function AdminDashboard() {
                               onClick={() => handleQueueAction(r.id, "published")}
                               className="p-1.5 text-gray-400 hover:text-emerald-600 rounded"
                               title="Approve"
+                              aria-label={`Approve review: ${r.headline}`}
                             >
-                              <Check className="w-4 h-4" />
+                              <Check aria-hidden="true" className="w-4 h-4" />
                             </button>
                           )}
                           {r.status !== "rejected" && (
@@ -734,8 +736,9 @@ export default function AdminDashboard() {
                               onClick={() => handleQueueAction(r.id, "rejected")}
                               className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                               title="Reject"
+                              aria-label={`Reject review: ${r.headline}`}
                             >
-                              <X className="w-4 h-4" />
+                              <X aria-hidden="true" className="w-4 h-4" />
                             </button>
                           )}
                           <button
@@ -743,8 +746,9 @@ export default function AdminDashboard() {
                             onClick={() => handleDeleteReview(r.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 rounded"
                             title="Delete"
+                            aria-label={`Delete review: ${r.headline}`}
                           >
-                            <Trash2 className="w-4 h-4" />
+                            <Trash2 aria-hidden="true" className="w-4 h-4" />
                           </button>
                         </div>
                       </td>
@@ -767,17 +771,19 @@ export default function AdminDashboard() {
                     type="button"
                     onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
                     disabled={reviewPage === 1}
+                    aria-label="Go to previous page"
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
-                    <ChevronLeft className="w-4 h-4" />
+                    <ChevronLeft aria-hidden="true" className="w-4 h-4" />
                   </button>
                   <button
                     type="button"
                     onClick={() => setReviewPage((p) => p + 1)}
                     disabled={reviewPage >= Math.ceil(reviewTotal / 15)}
+                    aria-label="Go to next page"
                     className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
-                    <ChevronRight className="w-4 h-4" />
+                    <ChevronRight aria-hidden="true" className="w-4 h-4" />
                   </button>
                 </div>
               </div>
@@ -803,7 +809,7 @@ export default function AdminDashboard() {
 
             {pendingReviews.length === 0 ? (
               <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
-                <Check className="w-12 h-12 text-emerald-300 mx-auto mb-3" />
+                <Check aria-hidden="true" className="w-12 h-12 text-emerald-300 mx-auto mb-3" />
                 <p className="text-gray-500 font-medium">All caught up!</p>
                 <p className="text-gray-400 text-sm mt-1">No pending reviews to moderate.</p>
               </div>
@@ -837,21 +843,21 @@ export default function AdminDashboard() {
                           onClick={() => handleQueueAction(r.id, "published")}
                           className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700"
                         >
-                          <Check className="w-3.5 h-3.5" /> Approve
+                          <Check aria-hidden="true" className="w-3.5 h-3.5" /> Approve
                         </button>
                         <button
                           type="button"
                           onClick={() => handleQueueAction(r.id, "flagged")}
                           className="flex items-center gap-1.5 px-3 py-1.5 border border-yellow-300 text-yellow-700 text-xs rounded-lg hover:bg-yellow-50"
                         >
-                          <AlertTriangle className="w-3.5 h-3.5" /> Flag
+                          <AlertTriangle aria-hidden="true" className="w-3.5 h-3.5" /> Flag
                         </button>
                         <button
                           type="button"
                           onClick={() => handleQueueAction(r.id, "rejected")}
                           className="flex items-center gap-1.5 px-3 py-1.5 border border-red-300 text-red-700 text-xs rounded-lg hover:bg-red-50"
                         >
-                          <X className="w-3.5 h-3.5" /> Reject
+                          <X aria-hidden="true" className="w-3.5 h-3.5" /> Reject
                         </button>
                       </div>
                     </div>
@@ -929,7 +935,7 @@ export default function AdminDashboard() {
                     href="/admin/analytics"
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                   >
-                    <TrendingUp className="w-5 h-5 text-gray-500" />
+                    <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">GA4 Analytics</p>
                       <p className="text-xs text-gray-400">View detailed funnel and event analytics</p>
@@ -940,7 +946,7 @@ export default function AdminDashboard() {
                     onClick={() => setActiveTab("queue")}
                     className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
                   >
-                    <AlertTriangle className="w-5 h-5 text-gray-500" />
+                    <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Moderate Reviews</p>
                       <p className="text-xs text-gray-400">{stats.summary.pendingReviews} reviews pending</p>
@@ -951,7 +957,7 @@ export default function AdminDashboard() {
                     onClick={() => setActiveTab("products")}
                     className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
                   >
-                    <Pin className="w-5 h-5 text-gray-500" />
+                    <Pin aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Manage Products</p>
                       <p className="text-xs text-gray-400">Feature or unfeature products on homepage</p>
