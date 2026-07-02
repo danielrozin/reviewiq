@@ -151,6 +151,7 @@ export function SurveyPopup() {
                 <button
                   key={opt.value}
                   type="button"
+                  aria-pressed={answers.q1Intent === opt.value}
                   onClick={() => {
                     setAnswers((a) => ({ ...a, q1Intent: opt.value }));
                     setStep("q2");
@@ -175,6 +176,7 @@ export function SurveyPopup() {
             <div className="flex gap-3 mb-4">
               <button
                 type="button"
+                aria-pressed={answers.q2Found === true}
                 onClick={() => {
                   setAnswers((a) => ({ ...a, q2Found: true }));
                   setStep("q3");
@@ -185,6 +187,7 @@ export function SurveyPopup() {
               </button>
               <button
                 type="button"
+                aria-pressed={answers.q2Found === false}
                 onClick={() => setAnswers((a) => ({ ...a, q2Found: false }))}
                 className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                   answers.q2Found === false
@@ -201,6 +204,7 @@ export function SurveyPopup() {
                   value={answers.q2Missing}
                   onChange={(e) => setAnswers((a) => ({ ...a, q2Missing: e.target.value }))}
                   placeholder="What were you looking for?"
+                  aria-label="What were you looking for?"
                   className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600/20 focus:border-brand-600 resize-none"
                   rows={2}
                 />
@@ -225,6 +229,8 @@ export function SurveyPopup() {
                 <button
                   key={n}
                   type="button"
+                  aria-label={`Rate ${n} out of 5`}
+                  aria-pressed={answers.q3Rating === n}
                   onClick={() => {
                     setAnswers((a) => ({ ...a, q3Rating: n }));
                     setStep("q4");
@@ -235,7 +241,7 @@ export function SurveyPopup() {
                       : "bg-gray-100 text-gray-500 hover:bg-gray-200"
                   }`}
                 >
-                  {n}
+                  <span aria-hidden="true">{n}</span>
                 </button>
               ))}
             </div>
@@ -254,6 +260,7 @@ export function SurveyPopup() {
               value={answers.q4Improvement}
               onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
               placeholder="Anything at all — we read every response."
+              aria-label="What could we improve?"
               className="w-full px-3 py-2 text-sm border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-brand-600/20 focus:border-brand-600 resize-none"
               rows={3}
             />
@@ -285,6 +292,7 @@ export function SurveyPopup() {
                 <button
                   key={opt.value}
                   type="button"
+                  aria-pressed={answers.q5Discovery === opt.value}
                   onClick={() => setAnswers((a) => ({ ...a, q5Discovery: opt.value }))}
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q5Discovery === opt.value
