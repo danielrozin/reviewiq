@@ -60,6 +60,12 @@ export default function RootLayout({
               <CompareProvider>
                 <OnboardingProvider>
                   <ExperimentProvider>
+                    <a
+                      href="#main-content"
+                      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-white focus:text-brand-600 focus:font-semibold focus:px-4 focus:py-2 focus:rounded-lg focus:shadow-lg focus:ring-2 focus:ring-brand-600 focus:ring-offset-1"
+                    >
+                      Skip to main content
+                    </a>
                     <Header />
                     <OnboardingOrchestrator />
                     <main id="main-content" className="flex-1">{children}</main>
