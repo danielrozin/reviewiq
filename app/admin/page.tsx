@@ -551,10 +551,12 @@ export default function AdminDashboard() {
                           <a
                             href={`/category/${p.category.slug}/${p.slug}`}
                             target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${p.name} (opens in new tab)`}
                             className="p-1.5 text-gray-400 hover:text-gray-600 rounded"
                             title="View product"
                           >
-                            <Eye className="w-4 h-4" />
+                            <Eye aria-hidden="true" className="w-4 h-4" />
                           </a>
                           <button
                             type="button"

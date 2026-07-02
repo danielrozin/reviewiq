@@ -57,12 +57,13 @@ export function SortableDiscussions({
           </div>
           <h2 id="sortable-discussions-heading" className="text-lg font-semibold text-gray-900">{activeTab} Discussions</h2>
         </div>
-        <div role="group" aria-label="Sort discussions by" className="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
+        <div role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
           {tabs.map(({ key, icon }) => (
             <button
               key={key}
               type="button"
-              aria-pressed={activeTab === key}
+              role="radio"
+              aria-checked={activeTab === key}
               aria-controls="sortable-discussion-list"
               onClick={() => setActiveTab(key)}
               className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${

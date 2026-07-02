@@ -9,12 +9,13 @@ export function ReplySortButtons() {
   const [active, setActive] = useState<Sort>("Top");
 
   return (
-    <div role="group" aria-label="Sort replies by" className="flex items-center gap-1">
+    <div role="radiogroup" aria-label="Sort replies by" className="flex items-center gap-1">
       {SORTS.map((tab) => (
         <button
           key={tab}
           type="button"
-          aria-pressed={active === tab}
+          role="radio"
+          aria-checked={active === tab}
           onClick={() => setActive(tab)}
           className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset ${
             active === tab
