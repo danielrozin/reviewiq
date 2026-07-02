@@ -39,7 +39,7 @@ export function CookiePolicyContent() {
 
       <section id="cookies-we-use" aria-labelledby="cookies-we-use-h">
         <h2 id="cookies-we-use-h" className="text-2xl font-bold text-gray-900 mb-4">2. Cookies We Use</h2>
-        <div className="overflow-x-auto">
+        <div role="region" aria-label="Cookies we use — scrollable table" tabIndex={0} className="overflow-x-auto">
           <table className="w-full text-sm border border-gray-200 rounded-lg overflow-hidden" aria-label="Cookies we use">
             <thead className="bg-gray-50">
               <tr>

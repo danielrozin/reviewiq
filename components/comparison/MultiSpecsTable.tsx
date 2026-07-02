@@ -51,7 +51,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
       </div>
 
       <div className="border border-gray-100 rounded-xl overflow-hidden">
-        <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
+        <div role="region" aria-label="Specs comparison — scrollable table" tabIndex={0} className="overflow-x-auto -webkit-overflow-scrolling-touch">
           <div style={{ minWidth: `${160 + products.length * 140}px` }} role="table" aria-label="Specs comparison">
             {/* Sticky header */}
             <div

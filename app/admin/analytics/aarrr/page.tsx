@@ -189,7 +189,7 @@ function CohortTable({ cohorts }: { cohorts: CohortRow[] }) {
   const weekHeaders = Array.from({ length: maxWeeks }, (_, i) => `W${i + 1}`);
 
   return (
-    <div className="overflow-x-auto">
+    <div role="region" aria-label="User retention cohort data — scrollable table" tabIndex={0} className="overflow-x-auto">
       <table className="w-full text-sm" aria-label="User retention cohort data">
         <thead>
           <tr className="border-b border-gray-200">
