@@ -277,10 +277,11 @@ export default function ReviewIQAnalytics() {
               href={`https://analytics.google.com/analytics/web/#/p${config.ga4Property.replace("G-", "")}/reports`}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Google Analytics — ${config.ga4Property} (opens in new tab)`}
               className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition-all"
             >
-              <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
-              <div>
+              <div aria-hidden="true" className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
+              <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Google Analytics</p>
                 <p className="text-xs text-gray-400">{config.ga4Property}</p>
               </div>
@@ -289,10 +290,11 @@ export default function ReviewIQAnalytics() {
               href={`https://clarity.microsoft.com/projects/view/${config.clarityProject}`}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Microsoft Clarity — ${config.clarityProject} (opens in new tab)`}
               className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-purple-300 hover:shadow-sm transition-all"
             >
-              <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
-              <div>
+              <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
+              <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Microsoft Clarity</p>
                 <p className="text-xs text-gray-400">{config.clarityProject}</p>
               </div>
@@ -301,10 +303,11 @@ export default function ReviewIQAnalytics() {
               href="https://search.google.com/search-console"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Search Console — GSC data (opens in new tab)"
               className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-green-300 hover:shadow-sm transition-all"
             >
-              <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
-              <div>
+              <div aria-hidden="true" className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
+              <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Search Console</p>
                 <p className="text-xs text-gray-400">GSC data</p>
               </div>
