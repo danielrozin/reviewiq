@@ -78,7 +78,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
             </div>
 
             {Array.from(groups.entries()).map(([groupName, specs], gi) => (
-              <div key={groupName} role="rowgroup">
+              <div key={groupName} role="rowgroup" aria-label={groups.size > 1 ? groupName : undefined}>
                 {groups.size > 1 && (
                   <div className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-400 uppercase tracking-widest border-b border-gray-100" aria-hidden="true">
                     {groupName}

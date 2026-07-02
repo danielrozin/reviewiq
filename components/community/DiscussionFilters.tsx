@@ -51,13 +51,14 @@ export function DiscussionFilters({
 
   return (
     <div className="space-y-3">
-      {/* Sort buttons */}
-      <div role="group" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto pb-1">
+      {/* Sort buttons — mutually exclusive, so radiogroup pattern */}
+      <div role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto pb-1">
         {SORT_OPTIONS.map((option) => (
           <button
             key={option.value}
             type="button"
-            aria-pressed={sort === option.value}
+            role="radio"
+            aria-checked={sort === option.value}
             onClick={() => handleSort(option.value)}
             className={`text-xs font-medium px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               sort === option.value
