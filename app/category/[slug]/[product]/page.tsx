@@ -324,10 +324,10 @@ export default async function ProductPage({ params }: Props) {
         </div>
 
         {/* Right Column — Sidebar */}
-        <aside className="space-y-8">
+        <aside aria-label="Product sidebar" className="space-y-8">
           {/* Quick Stats */}
           <div className="bg-gray-50 rounded-2xl p-6 space-y-4 sticky top-24">
-            <h3 className="font-semibold text-gray-900">Quick Stats</h3>
+            <h2 className="font-semibold text-gray-900">Quick Stats</h2>
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">SmartScore</span>
@@ -363,9 +363,9 @@ export default async function ProductPage({ params }: Props) {
 
             {/* Top Complaints */}
             <div className="pt-4 border-t border-gray-200">
-              <h4 className="text-sm font-semibold text-red-600 mb-2">
+              <h3 className="text-sm font-semibold text-red-600 mb-2">
                 Top Complaints
-              </h4>
+              </h3>
               <ul className="space-y-1.5">
                 {product.aiSummary.topComplaints.map((c, i) => (
                   <li

@@ -56,7 +56,7 @@ export default async function UserProfilePage({ params }: Props) {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8">
         {/* Left column — profile */}
-        <aside>
+        <aside aria-label="User profile">
           <div className="bg-white border border-gray-100 rounded-2xl p-6 sticky top-24">
             {/* Avatar + name */}
             <div className="text-center mb-6">

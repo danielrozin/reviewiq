@@ -62,9 +62,9 @@ export function LegalPageLayout({
 
       <div className="lg:grid lg:grid-cols-[240px_1fr] lg:gap-12">
         {/* Sidebar TOC */}
-        <aside className="hidden lg:block print:hidden">
+        <aside aria-labelledby="legal-toc-heading" className="hidden lg:block print:hidden">
           <div className="sticky top-24">
-            <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-4">
+            <h2 id="legal-toc-heading" className="text-xs font-semibold uppercase tracking-wider text-gray-600 mb-4">
               On this page
             </h2>
             <nav>
