@@ -329,9 +329,11 @@ export default function AARRRDashboard() {
         {tabs.map((tab) => (
           <button
             key={tab.key}
+            id={`aarrr-tab-${tab.key}`}
             type="button"
             role="tab"
             aria-selected={activeTab === tab.key}
+            aria-controls={`aarrr-panel-${tab.key}`}
             onClick={() => setActiveTab(tab.key)}
             className={`px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               activeTab === tab.key
@@ -346,7 +348,7 @@ export default function AARRRDashboard() {
 
       {/* Overview Tab */}
       {activeTab === "overview" && (
-        <div className="space-y-8">
+        <div id="aarrr-panel-overview" role="tabpanel" aria-labelledby="aarrr-tab-overview" className="space-y-8">
           {/* AARRR Summary Cards */}
           <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
             <StatCard
@@ -421,7 +423,7 @@ export default function AARRRDashboard() {
 
       {/* Acquisition Tab */}
       {activeTab === "acquisition" && (
-        <div className="space-y-8">
+        <div id="aarrr-panel-acquisition" role="tabpanel" aria-labelledby="aarrr-tab-acquisition" className="space-y-8">
           <SectionHeader
             title="Acquisition"
             emoji="A"
@@ -493,7 +495,7 @@ export default function AARRRDashboard() {
 
       {/* Activation Tab */}
       {activeTab === "activation" && (
-        <div className="space-y-8">
+        <div id="aarrr-panel-activation" role="tabpanel" aria-labelledby="aarrr-tab-activation" className="space-y-8">
           <SectionHeader
             title="Activation"
             emoji="A"
@@ -586,7 +588,7 @@ export default function AARRRDashboard() {
 
       {/* Retention Tab */}
       {activeTab === "retention" && (
-        <div className="space-y-8">
+        <div id="aarrr-panel-retention" role="tabpanel" aria-labelledby="aarrr-tab-retention" className="space-y-8">
           <SectionHeader
             title="Retention"
             emoji="R"
@@ -675,7 +677,7 @@ export default function AARRRDashboard() {
 
       {/* Revenue Tab */}
       {activeTab === "revenue" && (
-        <div className="space-y-8">
+        <div id="aarrr-panel-revenue" role="tabpanel" aria-labelledby="aarrr-tab-revenue" className="space-y-8">
           <SectionHeader
             title="Revenue"
             emoji="R"
@@ -756,7 +758,7 @@ export default function AARRRDashboard() {
 
       {/* Referral Tab */}
       {activeTab === "referral" && (
-        <div className="space-y-8">
+        <div id="aarrr-panel-referral" role="tabpanel" aria-labelledby="aarrr-tab-referral" className="space-y-8">
           <SectionHeader
             title="Referral"
             emoji="R"

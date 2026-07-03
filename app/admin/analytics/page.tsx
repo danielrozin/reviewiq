@@ -171,9 +171,11 @@ export default function ReviewIQAnalytics() {
         {tabs.map((tab) => (
           <button
             key={tab.key}
+            id={`tab-${tab.key}`}
             type="button"
             role="tab"
             aria-selected={activeTab === tab.key}
+            aria-controls={`panel-${tab.key}`}
             onClick={() => {
               setActiveTab(tab.key);
               if (tab.key === "report") loadReport();
@@ -191,7 +193,7 @@ export default function ReviewIQAnalytics() {
 
       {/* Overview */}
       {activeTab === "overview" && (
-        <div className="space-y-8">
+        <div id="panel-overview" role="tabpanel" aria-labelledby="tab-overview" className="space-y-8">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             <StatCard label="Total Products" value={live.summary.totalProducts} />
             <StatCard label="Total Reviews" value={live.summary.totalReviews} subtitle={`${live.summary.recentReviews} this week`} />
@@ -321,7 +323,7 @@ export default function ReviewIQAnalytics() {
 
       {/* Funnel */}
       {activeTab === "funnel" && (
-        <div className="space-y-6">
+        <div id="panel-funnel" role="tabpanel" aria-labelledby="tab-funnel" className="space-y-6">
           <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-6">
             <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">North Star Metric</p>
             <h2 className="text-xl font-bold text-gray-900">{config.kpis.northStar.metric}</h2>
@@ -371,7 +373,7 @@ export default function ReviewIQAnalytics() {
 
       {/* New Features */}
       {activeTab === "features" && config.featureFunnels && (
-        <div className="space-y-8">
+        <div id="panel-features" role="tabpanel" aria-labelledby="tab-features" className="space-y-8">
           <div className="bg-gradient-to-r from-violet-50 to-purple-50 border border-violet-100 rounded-2xl p-6">
             <h2 className="text-xl font-bold text-gray-900">New Feature Tracking</h2>
             <p className="text-sm text-gray-600 mt-1">
@@ -437,7 +439,7 @@ export default function ReviewIQAnalytics() {
 
       {/* Events */}
       {activeTab === "events" && (
-        <div className="space-y-4">
+        <div id="panel-events" role="tabpanel" aria-labelledby="tab-events" className="space-y-4">
           <h3 className="text-lg font-semibold text-gray-900">Custom Events ({config.events.length})</h3>
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
             <table className="w-full text-sm" aria-label="Custom events">
@@ -478,7 +480,7 @@ export default function ReviewIQAnalytics() {
 
       {/* Report */}
       {activeTab === "report" && (
-        <div className="space-y-6">
+        <div id="panel-report" role="tabpanel" aria-labelledby="tab-report" className="space-y-6">
           {reportLoading && (
             <div role="status" aria-label="Loading report">
               <div aria-hidden="true" className="animate-pulse space-y-4">
