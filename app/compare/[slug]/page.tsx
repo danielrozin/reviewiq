@@ -77,7 +77,7 @@ export default async function ComparisonPage({ params }: Props) {
             Side-by-side comparison based on {productA.reviewCount + productB.reviewCount} verified buyer reviews
           </p>
           {searchVolume > 0 && (
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-500 mt-1">
               {searchVolume.toLocaleString()} monthly searches for this comparison
             </p>
           )}
@@ -162,7 +162,7 @@ function RelatedComparisons({
                   {pair.productA.name} vs {pair.productB.name}
                 </p>
                 {pair.searchVolume > 0 && (
-                  <p className="text-xs text-gray-400">
+                  <p className="text-xs text-gray-500">
                     {pair.searchVolume.toLocaleString()} monthly searches
                   </p>
                 )}

@@ -95,7 +95,7 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
-              : "text-gray-400 hover:bg-gray-50 hover:text-gray-600"
+              : "text-gray-500 hover:bg-gray-50 hover:text-gray-600"
           }`}
         >
           <UpIcon />
@@ -114,7 +114,7 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
-              : "text-gray-400 hover:bg-gray-50 hover:text-gray-600"
+              : "text-gray-500 hover:bg-gray-50 hover:text-gray-600"
           }`}
         >
           <DownIcon />
@@ -134,7 +134,7 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-l-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
-              : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+              : "text-gray-500 hover:bg-gray-100 hover:text-gray-600"
           }`}
         >
           <UpIcon />
@@ -153,7 +153,7 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-r-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
-              : "text-gray-400 hover:bg-gray-100 hover:text-gray-600"
+              : "text-gray-500 hover:bg-gray-100 hover:text-gray-600"
           }`}
         >
           <DownIcon />
