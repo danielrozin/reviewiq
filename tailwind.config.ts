@@ -70,7 +70,7 @@ const config: Config = {
         border: "#e2e8f0",
         text: {
           DEFAULT: "#0f172a",
-          secondary: "#64748b",
+          secondary: "#475569",
         },
       },
       fontFamily: {
