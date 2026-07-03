@@ -29,6 +29,7 @@ export function BlogCategoryFilter({ posts }: Props) {
       {/* Category filter tabs */}
       <div role="tablist" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8">
         <button
+          id="blog-tab-all"
           type="button"
           role="tab"
           aria-selected={activeCategory === "all"}
@@ -47,6 +48,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           return (
             <button
               key={cat.slug}
+              id={`blog-tab-${cat.slug}`}
               type="button"
               role="tab"
               aria-selected={activeCategory === cat.slug}
@@ -65,7 +67,13 @@ export function BlogCategoryFilter({ posts }: Props) {
       </div>
 
       {/* Post grid */}
-      <ul id="blog-post-list" role="list" aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`} aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div
+        id="blog-post-list"
+        role="tabpanel"
+        aria-labelledby={`blog-tab-${activeCategory}`}
+        aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`}
+      >
+      <ul role="list" aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
           <li key={post.id}>
           <Link
@@ -123,12 +131,12 @@ export function BlogCategoryFilter({ posts }: Props) {
           </li>
         ))}
       </ul>
-
       {filtered.length === 0 && (
         <div className="text-center py-12 text-gray-500">
           <p className="text-lg">No posts in this category yet.</p>
         </div>
       )}
+      </div>
     </>
   );
 }
