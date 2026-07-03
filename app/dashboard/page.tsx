@@ -87,7 +87,7 @@ export default async function DashboardPage() {
               >
                 {TRUST_LEVEL_LABELS[user.trustLevel]}
               </span>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-500">
                 {user.reputationScore} reputation
               </span>
             </div>
@@ -129,7 +129,7 @@ export default async function DashboardPage() {
               <h2 id="dashboard-saved-heading" className="text-lg font-semibold text-gray-900">
                 Saved Products
               </h2>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-500">
                 {saved.length} saved
               </span>
             </div>
@@ -164,7 +164,7 @@ export default async function DashboardPage() {
               <h2 id="dashboard-watchlist-heading" className="text-lg font-semibold text-gray-900">
                 SmartScore Watchlist
               </h2>
-              <span className="text-xs text-gray-400">
+              <span className="text-xs text-gray-500">
                 {watchlist.length} watching
               </span>
             </div>

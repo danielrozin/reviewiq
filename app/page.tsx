@@ -646,7 +646,7 @@ export default function HomePage() {
               <div aria-hidden="true" className={`w-20 h-20 ${item.iconBg} ${item.iconColor} rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm`}>
                 {item.icon}
               </div>
-              <span className="text-xs font-bold text-gray-300 tracking-widest uppercase mb-1 block">{item.step}</span>
+              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-1 block">{item.step}</span>
               <h3 className="font-semibold text-gray-900 text-lg mb-2">
                 {item.title}
               </h3>
