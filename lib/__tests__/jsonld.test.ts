@@ -11,6 +11,7 @@ import {
   faqSchema,
   categoryListSchema,
   videoObjectSchema,
+  videoObjectListSchema,
   analysisAuthorSchema,
   comparisonSchema,
   blogPostSchema,
@@ -175,6 +176,33 @@ describe('videoObjectSchema', () => {
     expect(schema.contentUrl).toContain('youtube.com/watch?v=abc123')
     expect(schema.embedUrl).toContain('youtube.com/embed/abc123')
     expect(schema.thumbnailUrl).toContain('abc123')
+  })
+})
+
+describe('videoObjectListSchema', () => {
+  it('maps active videos to VideoObject nodes', () => {
+    const list = videoObjectListSchema(
+      [
+        { id: 'a1', title: 'First' },
+        { id: 'b2', title: 'Second' },
+      ] as any,
+      'Sony WH-1000XM5'
+    )
+    expect(list).toHaveLength(2)
+    expect(list.every((v) => v['@type'] === 'VideoObject')).toBe(true)
+    expect(list[0].contentUrl).toContain('a1')
+  })
+
+  it('drops videos explicitly marked inactive so no empty node is emitted', () => {
+    const list = videoObjectListSchema(
+      [
+        { id: 'a1', title: 'Active' },
+        { id: 'b2', title: 'Inactive', isActive: false },
+      ] as any,
+      'Sony WH-1000XM5'
+    )
+    expect(list).toHaveLength(1)
+    expect(list[0].name).toBe('Active')
   })
 })
 

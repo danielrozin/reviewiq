@@ -17,7 +17,7 @@ import { FAQSection } from "@/components/product/FAQSection";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productSchema, speakableSchema, faqSchema } from "@/lib/schema/jsonld";
+import { productSchema, speakableSchema, faqSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
@@ -95,6 +95,14 @@ export default async function ProductPage({ params }: Props) {
   const affinityProducts = getAffinityProducts(slug, product.slug, 4);
 
   const pSchema = productSchema(product);
+  // Emit VideoObject structured data for the YouTube reviews rendered below so
+  // they're eligible for Google video rich results / the video carousel. The
+  // list helper filters inactive videos; guard on the *filtered* length so we
+  // never emit an empty JSON-LD array. Thumbnail/content/embed URLs all resolve
+  // from the video id, so no 404-image trap.
+  const videoSchemas = product.youtubeVideos?.length
+    ? videoObjectListSchema(product.youtubeVideos, product.name)
+    : [];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24 lg:pb-8">
@@ -116,6 +124,14 @@ export default async function ProductPage({ params }: Props) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(faqSchema(product.faq)),
+          }}
+        />
+      )}
+      {videoSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(videoSchemas),
           }}
         />
       )}
