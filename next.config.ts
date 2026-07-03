@@ -56,14 +56,10 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       { source: "/reviews/:category", destination: "/category/:category", permanent: true },
-      // Google Sites share links carry a ?usp=… query the app never emits itself;
-      // collapse any such crawl to the homepage rather than serving a soft-404.
-      {
-        source: "/:path*",
-        has: [{ type: "query", key: "usp" }],
-        destination: "/",
-        permanent: true,
-      },
+      // NOTE: the DAN-942 map also had a "/:path* with ?usp= -> /" rule for Google
+      // Sites share links, but Next.js forwards the unmatched usp query to the
+      // destination, so /?usp=… re-matches and loops (ERR_TOO_MANY_REDIRECTS,
+      // verified). That is worse than the soft-404 it targeted, so it is omitted.
     ];
   },
   async headers() {
