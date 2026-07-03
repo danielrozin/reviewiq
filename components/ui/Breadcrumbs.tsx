@@ -16,7 +16,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema(items)),
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Home", url: "/" }, ...items])),
         }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-gray-600">
@@ -30,7 +30,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             <li key={item.url} className="flex items-center gap-1.5">
               <span aria-hidden="true" className="text-gray-400">/</span>
               {index === items.length - 1 ? (
-                <span aria-current="page" className="text-gray-900 font-medium">{item.name}</span>
+                <span aria-current="page" title={item.name} className="text-gray-900 font-medium truncate max-w-[10rem] sm:max-w-xs">{item.name}</span>
               ) : (
                 <Link
                   href={item.url}

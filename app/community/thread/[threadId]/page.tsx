@@ -16,7 +16,7 @@ import {
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema, discussionForumPostingSchema } from "@/lib/schema/jsonld";
+import { discussionForumPostingSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
@@ -59,17 +59,6 @@ export default async function ThreadPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Community", url: "/community" },
-              { name: thread.title, url: `/community/thread/${threadId}` },
-            ])
-          ),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
             discussionForumPostingSchema(
               thread,
               author?.displayName ?? author?.username ?? "ReviewIQ Community Member"
@@ -80,7 +69,7 @@ export default async function ThreadPage({ params }: Props) {
       <Breadcrumbs
         items={[
           { name: "Community", url: "/community" },
-          { name: thread.title.slice(0, 40) + (thread.title.length > 40 ? "..." : ""), url: `/community/thread/${threadId}` },
+          { name: thread.title, url: `/community/thread/${threadId}` },
         ]}
       />
 
