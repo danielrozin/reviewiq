@@ -20,7 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteUrl}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${siteUrl}/write-review`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${siteUrl}/search`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
+    // NOTE: /search intentionally omitted — there is no /search page route (only the
+    // /api/search handler), so listing it submitted a 404 URL and eroded crawl trust.
     { url: `${siteUrl}/site-map`, lastModified: now, changeFrequency: "daily", priority: 0.6 },
     // High-value indexable pages previously absent from the sitemap (discovery gap).
     { url: `${siteUrl}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
@@ -47,6 +48,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     lastModified: now,
     changeFrequency: "weekly" as const,
     priority: 0.7,
+  }));
+
+  // "Where to buy X" sub-pages — indexable (self-canonical), commercial-intent, and
+  // statically generated for every product, but previously absent from the sitemap.
+  // Scoped to static `products` only: the route resolves via getProductBySlug (static
+  // data), so DB-only products 404 here and must be excluded.
+  const whereToBuyPages: MetadataRoute.Sitemap = products.map((p) => ({
+    url: `${siteUrl}/category/${p.categorySlug}/${p.slug}/where-to-buy`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
   }));
 
   // Static community discussion threads
@@ -158,6 +170,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...staticPages,
     ...categoryPages,
     ...productPages,
+    ...whereToBuyPages,
     ...comparisonPages,
     ...communityPages,
     ...blogPages,
