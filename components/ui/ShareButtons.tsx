@@ -72,6 +72,9 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
 
   return (
     <div className="flex items-center gap-2">
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {copied ? "Link copied to clipboard" : ""}
+      </span>
       <span className="text-sm text-gray-600 mr-1">Share:</span>
       {shareLinks.map((link) => (
         <a

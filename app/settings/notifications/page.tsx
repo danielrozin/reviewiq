@@ -125,6 +125,11 @@ export default function NotificationsSettingsPage() {
         ]}
       />
 
+      {/* Screen-reader live region for toggle save feedback */}
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {saved ? "Preference saved" : ""}
+      </span>
+
       {/* Header */}
       <div className="mt-6 mb-8">
         <div className="flex items-start justify-between">

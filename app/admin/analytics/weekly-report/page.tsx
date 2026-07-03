@@ -97,6 +97,7 @@ export default function WeeklyReportPage() {
   const [data, setData] = useState<ReportData | null>(null);
   const [loading, setLoading] = useState(true);
   const [showMarkdown, setShowMarkdown] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     fetch("/api/analytics/weekly-report")
@@ -164,11 +165,19 @@ export default function WeeklyReportPage() {
               </button>
               <button
                 type="button"
-                onClick={() => navigator.clipboard.writeText(data.markdown)}
+                onClick={() => {
+                  navigator.clipboard.writeText(data.markdown);
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                }}
+                aria-label={copied ? "Report copied" : "Copy report to clipboard"}
                 className="px-3 py-1.5 text-xs font-medium bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
               >
-                Copy Report
+                {copied ? "Copied!" : "Copy Report"}
               </button>
+              <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+                {copied ? "Report copied to clipboard" : ""}
+              </span>
             </div>
           </div>
         </div>
