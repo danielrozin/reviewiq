@@ -74,7 +74,7 @@ export default async function BlogPostPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema(post.faq)),
+            __html: JSON.stringify(faqSchema(post.faq, `/blog/${post.slug}`)),
           }}
         />
       )}

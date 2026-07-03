@@ -121,7 +121,7 @@ export default function PricingPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })))),
+          __html: JSON.stringify(faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })), '/pricing')),
         }}
       />
       <div className="bg-gray-50 py-16">

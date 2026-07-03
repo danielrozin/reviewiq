@@ -45,9 +45,11 @@ export function websiteSchema() {
 export function breadcrumbSchema(
   items: { name: string; url: string }[]
 ) {
+  const lastItem = items[items.length - 1];
   return {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    ...(lastItem && { "@id": `${SITE_URL}${lastItem.url}#breadcrumb` }),
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -135,10 +137,17 @@ export function reviewSchema(review: Review) {
   };
 }
 
-export function faqSchema(items: FAQItem[]) {
+export function faqSchema(items: FAQItem[], pageUrl?: string) {
+  const fullUrl = pageUrl ? `${SITE_URL}${pageUrl}` : undefined;
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    ...(fullUrl && {
+      "@id": `${fullUrl}#faq`,
+      url: fullUrl,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    }),
     mainEntity: items.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -267,6 +276,7 @@ export function blogPostSchema(post: BlogPost) {
     inLanguage: "en",
     author: {
       "@type": "Person",
+      "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
       name: post.author.name,
       ...(post.author.bio && { description: post.author.bio }),
     },
@@ -438,6 +448,10 @@ export function competitorFaqPageSchema(opts: {
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
+      "@id": `${SITE_URL}${opts.pageUrl}#faq`,
+      url: `${SITE_URL}${opts.pageUrl}`,
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
       mainEntity: opts.faqs.map((faq) => ({
         "@type": "Question",
         name: faq.question,

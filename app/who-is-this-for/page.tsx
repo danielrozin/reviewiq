@@ -224,7 +224,7 @@ export default function WhoIsThisForPage() {
       <Breadcrumbs items={[{ name: "Who Is This For", url: "/who-is-this-for" }]} />
 
       {/* JSON-LD Schemas */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqItems)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqItems, '/who-is-this-for')) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
 
       {/* Hero / Intro */}

@@ -136,7 +136,7 @@ export default async function ProductPage({ params }: Props) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema(product.faq)),
+            __html: JSON.stringify(faqSchema(product.faq, `/category/${slug}/${productSlug}`)),
           }}
         />
       )}
