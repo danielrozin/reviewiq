@@ -280,6 +280,7 @@ export function blogPostSchema(post: BlogPost) {
       name: post.author.name,
       ...(post.author.bio && { description: post.author.bio }),
     },
+    isPartOf: { "@id": `${SITE_URL}/blog` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
@@ -331,6 +332,27 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       ...(step.image ? { image: `${SITE_URL}${step.image}` } : {}),
     })),
     url: schemaUrl,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
+export function communityPageSchema() {
+  const pageUrl = `${SITE_URL}/community`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": pageUrl,
+    name: "ReviewIQ Community",
+    description: "Real conversations about real products. Ask questions, share experiences, and help others make smarter buying decisions.",
+    url: pageUrl,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='community-hero']", "[data-speakable='community-discussions']"],
+    },
   };
 }
 
@@ -343,6 +365,7 @@ export function homePageSchema() {
     description: "AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.",
     url: SITE_URL,
     inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
     speakable: {
@@ -430,11 +453,7 @@ export function discussionForumPostingSchema(
       },
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
-    isPartOf: {
-      "@type": "WebPage",
-      name: "ReviewIQ Community",
-      url: `${SITE_URL}/community`,
-    },
+    isPartOf: { "@id": `${SITE_URL}/community` },
   };
 }
 

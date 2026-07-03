@@ -8,6 +8,7 @@ import { SortableDiscussions } from "@/components/community/SortableDiscussions"
 import { getTopContributors } from "@/data/users";
 import { categories } from "@/data/categories";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { communityPageSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Community — ReviewIQ",
@@ -32,12 +33,16 @@ export default function CommunityPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(communityPageSchema()) }}
+      />
       <Breadcrumbs
         items={[{ name: "Community", url: "/community" }]}
       />
 
       {/* Hero — gradient banner */}
-      <header className="mt-6 mb-10">
+      <header className="mt-6 mb-10" data-speakable="community-hero">
         <div className="relative overflow-hidden bg-gradient-to-br from-brand-600 via-brand-500 to-brand-400 rounded-2xl px-6 sm:px-10 py-8 sm:py-10 text-white mb-6">
           {/* Background orb */}
           <div className="pointer-events-none absolute -top-12 -right-12 w-64 h-64 rounded-full bg-white/5 blur-2xl" aria-hidden="true" />
