@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import type { BlogPost } from "@/types";
@@ -11,6 +11,7 @@ interface Props {
 
 export function BlogCategoryFilter({ posts }: Props) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const tablistRef = useRef<HTMLDivElement>(null);
 
   // Derive unique categories from posts
   const categories = Array.from(
@@ -19,21 +20,48 @@ export function BlogCategoryFilter({ posts }: Props) {
     ).values()
   );
 
+  const allSlugs = ["all", ...categories.map((c) => c.slug)];
+
   const filtered =
     activeCategory === "all"
       ? posts
       : posts.filter((p) => p.categorySlug === activeCategory);
 
+  function handleTabKeyDown(e: React.KeyboardEvent) {
+    const idx = allSlugs.indexOf(activeCategory);
+    if (e.key === "ArrowRight") {
+      e.preventDefault();
+      const next = allSlugs[(idx + 1) % allSlugs.length];
+      setActiveCategory(next);
+      (tablistRef.current?.querySelector(`[id="blog-tab-${next}"]`) as HTMLButtonElement | null)?.focus();
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prev = allSlugs[(idx - 1 + allSlugs.length) % allSlugs.length];
+      setActiveCategory(prev);
+      (tablistRef.current?.querySelector(`[id="blog-tab-${prev}"]`) as HTMLButtonElement | null)?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActiveCategory("all");
+      (tablistRef.current?.querySelector('[id="blog-tab-all"]') as HTMLButtonElement | null)?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      const last = allSlugs[allSlugs.length - 1];
+      setActiveCategory(last);
+      (tablistRef.current?.querySelector(`[id="blog-tab-${last}"]`) as HTMLButtonElement | null)?.focus();
+    }
+  }
+
   return (
     <>
       {/* Category filter tabs */}
-      <div role="tablist" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8">
+      <div ref={tablistRef} role="tablist" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8" onKeyDown={handleTabKeyDown}>
         <button
           id="blog-tab-all"
           type="button"
           role="tab"
           aria-selected={activeCategory === "all"}
           aria-controls="blog-post-list"
+          tabIndex={activeCategory === "all" ? 0 : -1}
           onClick={() => setActiveCategory("all")}
           className={`px-4 py-2.5 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
             activeCategory === "all"
@@ -53,6 +81,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               role="tab"
               aria-selected={activeCategory === cat.slug}
               aria-controls="blog-post-list"
+              tabIndex={activeCategory === cat.slug ? 0 : -1}
               onClick={() => setActiveCategory(cat.slug)}
               className={`px-4 py-2.5 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 activeCategory === cat.slug
@@ -70,8 +99,10 @@ export function BlogCategoryFilter({ posts }: Props) {
       <div
         id="blog-post-list"
         role="tabpanel"
+        tabIndex={0}
         aria-labelledby={`blog-tab-${activeCategory}`}
         aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`}
+        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 rounded-lg"
       >
       <ul role="list" aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
