@@ -138,7 +138,7 @@ export default function HomePage() {
       <RecentlyViewedStrip />
 
       {/* Trust Signals */}
-      <section aria-label="Site statistics" className="border-y border-gray-100 bg-white">
+      <section aria-label="Site statistics" className="border-y border-gray-100 bg-white" data-speakable="hero-stats">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[

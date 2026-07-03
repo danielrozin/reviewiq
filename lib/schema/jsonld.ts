@@ -221,15 +221,18 @@ export function productListSchema(products: Product[], categoryName: string) {
 }
 
 export function videoObjectSchema(video: YouTubeVideo, productName: string) {
+  const contentUrl = `https://www.youtube.com/watch?v=${video.id}`;
   return {
     "@context": "https://schema.org",
     "@type": "VideoObject",
+    "@id": contentUrl,
     name: video.title,
     description: `${video.title} — video review for ${productName}`,
     thumbnailUrl: `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`,
     uploadDate: new Date().toISOString().split("T")[0],
-    contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
+    contentUrl,
     embedUrl: `https://www.youtube.com/embed/${video.id}`,
+    publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
 
@@ -243,13 +246,10 @@ export function analysisAuthorSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
+    "@id": `${SITE_URL}/about#ai-review-team`,
     name: "ReviewIQ AI Analysis Team",
     url: `${SITE_URL}/about`,
-    worksFor: {
-      "@type": "Organization",
-      name: "ReviewIQ",
-      url: SITE_URL,
-    },
+    worksFor: { "@id": `${SITE_URL}/#organization` },
     knowsAbout: ["Product Reviews", "Consumer Electronics", "Buyer Guidance"],
   };
 }
@@ -303,9 +303,11 @@ export function blogListSchema(posts: BlogPost[]) {
 }
 
 export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlug: string) {
+  const schemaUrl = `${SITE_URL}/category/${categorySlug}`;
   return {
     "@context": "https://schema.org",
     "@type": "HowTo",
+    "@id": `${schemaUrl}#howto`,
     name: title,
     description: `Step-by-step guide to choosing the best ${title.replace(/^How to Choose the (?:Best |Right )?/i, "").toLowerCase()}.`,
     step: steps.map((step, index) => ({
@@ -315,7 +317,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       text: step.text,
       ...(step.image ? { image: `${SITE_URL}${step.image}` } : {}),
     })),
-    url: `${SITE_URL}/category/${categorySlug}`,
+    url: schemaUrl,
   };
 }
 
@@ -323,18 +325,16 @@ export function homePageSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${SITE_URL}/`,
     name: "ReviewIQ — Real Reviews, Real Intelligence",
     description: "AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.",
     url: SITE_URL,
     inLanguage: "en",
-    about: {
-      "@type": "Organization",
-      name: "ReviewIQ",
-      url: SITE_URL,
-    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    about: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='hero-tagline']"],
+      cssSelector: ["[data-speakable='hero-tagline']", "[data-speakable='hero-stats']"],
     },
   };
 }
@@ -379,13 +379,15 @@ export function discussionForumPostingSchema(
   thread: DiscussionThread,
   authorName: string
 ) {
+  const threadUrl = `${SITE_URL}/community/thread/${thread.id}`;
   return {
     "@context": "https://schema.org",
     "@type": "DiscussionForumPosting",
+    "@id": threadUrl,
     headline: thread.title,
     text: thread.body,
     inLanguage: "en",
-    url: `${SITE_URL}/community/thread/${thread.id}`,
+    url: threadUrl,
     datePublished: thread.createdAt,
     dateModified: thread.lastActivityAt,
     author: {
