@@ -334,8 +334,11 @@ export function speakableSchema(productName: string, productUrl: string) {
       "@type": "SpeakableSpecification",
       cssSelector: [
         "[data-speakable='ai-summary']",
+        "[data-speakable='verdict']",
         "[data-speakable='key-facts']",
         "[data-speakable='smart-score']",
+        "[data-speakable='best-for']",
+        "[data-speakable='faq-answer']",
       ],
     },
   };
@@ -479,6 +482,16 @@ export function comparisonSchema(productA: Product, productB: Product) {
     url: `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`,
     datePublished,
     dateModified,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [
+        "[data-speakable='ai-verdict']",
+        "[data-speakable='comparison-verdict']",
+        "[data-speakable='best-for-comparison']",
+        "[data-speakable='pros-cons']",
+        "[data-speakable='score-comparison']",
+      ],
+    },
     mainEntity: {
       "@type": "ItemList",
       name: `${productA.name} vs ${productB.name}`,
