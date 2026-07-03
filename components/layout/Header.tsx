@@ -40,6 +40,8 @@ export function Header() {
   const { isPro } = useSubscription();
   const { items } = useCompare();
   const userMenuRef = useRef<HTMLDivElement>(null);
+  const userMenuBtnRef = useRef<HTMLButtonElement>(null);
+  const menuBtnRef = useRef<HTMLButtonElement>(null);
 
   // Close user menu on outside click
   useEffect(() => {
@@ -53,6 +55,23 @@ export function Header() {
     }
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, [userMenuOpen]);
+
+  // Close menus on Escape and return focus to trigger (WCAG 2.1.1 / 2.4.3)
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key !== "Escape") return;
+      if (userMenuOpen) {
+        setUserMenuOpen(false);
+        userMenuBtnRef.current?.focus();
+      }
+      if (menuOpen) {
+        setMenuOpen(false);
+        menuBtnRef.current?.focus();
+      }
+    }
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [userMenuOpen, menuOpen]);
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
@@ -144,10 +163,11 @@ export function Header() {
                 session ? (
                   <div className="relative" ref={userMenuRef}>
                     <button
+                      ref={userMenuBtnRef}
                       type="button"
                       onClick={() => setUserMenuOpen(!userMenuOpen)}
                       aria-expanded={userMenuOpen}
-                      aria-haspopup="true"
+                      aria-haspopup="menu"
                       aria-label="Account menu"
                       className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                     >
@@ -227,6 +247,7 @@ export function Header() {
 
               {/* Mobile hamburger */}
               <button
+                ref={menuBtnRef}
                 type="button"
                 className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 onClick={() => setMenuOpen(!menuOpen)}
