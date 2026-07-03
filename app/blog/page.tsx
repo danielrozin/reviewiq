@@ -1,7 +1,7 @@
 import { getAllBlogPosts } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { blogListSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { blogListSchema } from "@/lib/schema/jsonld";
 import { BlogCategoryFilter } from "@/components/home/BlogCategoryFilter";
 
 export const metadata = buildMetadata({
@@ -20,12 +20,6 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(blogListSchema(posts)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Blog", url: "/blog" }])),
         }}
       />
       <Breadcrumbs items={[{ name: "Blog", url: "/blog" }]} />
