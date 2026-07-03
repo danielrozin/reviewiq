@@ -288,10 +288,13 @@ export function blogListSchema(posts: BlogPost[]) {
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
+    "@id": `${SITE_URL}/blog`,
     name: "ReviewIQ Blog",
     description: "Expert buying guides, product comparisons, and review insights from ReviewIQ.",
     url: `${SITE_URL}/blog`,
     inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     hasPart: posts.map((post) => ({
       "@type": "BlogPosting",
       "@id": `${SITE_URL}/blog/${post.slug}`,
@@ -340,11 +343,16 @@ export function homePageSchema() {
 }
 
 export function speakableSchema(productName: string, productUrl: string) {
+  const pageUrl = `${SITE_URL}${productUrl}`;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": pageUrl,
     name: `${productName} Review`,
-    url: `${SITE_URL}${productUrl}`,
+    url: pageUrl,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -360,11 +368,16 @@ export function speakableSchema(productName: string, productUrl: string) {
 }
 
 export function blogPostSpeakableSchema(title: string, url: string) {
+  const pageUrl = `${SITE_URL}${url}`;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": pageUrl,
     name: title,
-    url: `${SITE_URL}${url}`,
+    url: pageUrl,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -437,18 +450,18 @@ export function competitorFaqPageSchema(opts: {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
+      "@id": `${SITE_URL}${opts.pageUrl}`,
       name: opts.pageName,
       url: `${SITE_URL}${opts.pageUrl}`,
+      inLanguage: "en",
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
       about: {
         "@type": opts.competitor.type,
         name: opts.competitor.name,
         url: opts.competitor.url,
       },
-      mentions: {
-        "@type": "Organization",
-        name: "ReviewIQ",
-        url: SITE_URL,
-      },
+      mentions: { "@id": `${SITE_URL}/#organization` },
       speakable: {
         "@type": "SpeakableSpecification",
         cssSelector: ["[data-speakable='faq-answer']"],
@@ -458,13 +471,17 @@ export function competitorFaqPageSchema(opts: {
 }
 
 export function categoryPageSchema(categoryName: string, description: string, categoryUrl: string) {
+  const pageUrl = `${SITE_URL}${categoryUrl}`;
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": pageUrl,
     name: `Best ${categoryName}`,
     description,
-    url: `${SITE_URL}${categoryUrl}`,
+    url: pageUrl,
     inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-speakable='buying-guide']"],
@@ -474,7 +491,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
         { "@type": "ListItem", position: 2, name: "Categories", item: `${SITE_URL}/categories` },
-        { "@type": "ListItem", position: 3, name: categoryName, item: `${SITE_URL}${categoryUrl}` },
+        { "@type": "ListItem", position: 3, name: categoryName, item: pageUrl },
       ],
     },
   };
@@ -490,13 +507,18 @@ export function comparisonSchema(productA: Product, productB: Product) {
     productA.updatedAt && productB.updatedAt
       ? [productA.updatedAt, productB.updatedAt].sort().reverse()[0]
       : productA.updatedAt || productB.updatedAt || buildDate;
+  const pageUrl = `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`;
 
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": pageUrl,
     name: `${productA.name} vs ${productB.name} — Comparison`,
     description: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`,
-    url: `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`,
+    url: pageUrl,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     datePublished,
     dateModified,
     speakable: {
