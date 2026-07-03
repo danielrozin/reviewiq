@@ -118,10 +118,10 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                               "px-4 py-3 font-medium text-center",
                               value
                                 ? isDifferent && i === 0 ? "text-brand-700" : "text-gray-900"
-                                : "text-gray-300"
+                                : "text-gray-500"
                             )}
                           >
-                            {value || "—"}
+                            {value || <span aria-label="not available">—</span>}
                           </div>
                         );
                       })}

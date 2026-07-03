@@ -104,7 +104,7 @@ export default function PricingPage() {
               <p className="text-sm text-gray-600 leading-relaxed italic mb-3">&ldquo;{t.quote}&rdquo;</p>
               <div>
                 <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                <p className="text-xs text-gray-400">{t.role}</p>
+                <p className="text-xs text-gray-500">{t.role}</p>
               </div>
               </div>
             </div>
