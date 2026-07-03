@@ -204,7 +204,7 @@ export default async function ProductPage({ params }: Props) {
                 <p className="text-lg font-semibold text-gray-900">
                   ${product.priceRange.min} — ${product.priceRange.max}
                 </p>
-                <p className="text-sm text-gray-400">Price range</p>
+                <p className="text-sm text-gray-500">Price range</p>
               </div>
 
               <div className="h-12 w-px bg-gray-200 hidden sm:block" />
@@ -213,7 +213,7 @@ export default async function ProductPage({ params }: Props) {
                 <p className="text-lg font-semibold text-emerald-600">
                   {product.verifiedPurchaseRate}%
                 </p>
-                <p className="text-sm text-gray-400">Verified buyers</p>
+                <p className="text-sm text-gray-500">Verified buyers</p>
               </div>
             </div>
 

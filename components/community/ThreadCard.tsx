@@ -23,7 +23,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
         className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
       >
         <div className="flex flex-col items-center min-w-[40px]" aria-hidden="true">
-          <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
+          <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}>
             {formatNumber(netVotes)}
           </span>
           <span className="text-xs text-gray-500">votes</span>
@@ -61,7 +61,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           </svg>
           <span
             aria-label={`${formatNumber(netVotes)} net votes`}
-            className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}
+            className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}
           >
             {formatNumber(netVotes)}
           </span>

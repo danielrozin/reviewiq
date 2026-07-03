@@ -71,7 +71,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
             >
               {/* Vote count */}
               <div aria-hidden="true" className="flex flex-col items-center shrink-0 min-w-[40px]">
-                <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-400"}`}>
+                <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}>
                   {formatNumber(netVotes)}
                 </span>
                 <span className="text-xs text-gray-500">votes</span>

@@ -99,7 +99,7 @@ export function UpgradePrompt({ gate, compact = false }: UpgradePromptProps) {
             </svg>
             Upgrade to Pro
           </Link>
-          <span className="text-xs text-gray-400">Starting at $9/month</span>
+          <span className="text-xs text-gray-600">Starting at $9/month</span>
         </div>
         <div className="flex items-center justify-center gap-4 mt-4 text-xs text-gray-600">
           <span className="flex items-center gap-1">
