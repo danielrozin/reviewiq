@@ -116,7 +116,7 @@ export default async function BlogPostPage({
             >
               {post.categoryName}
             </Link>
-            <span className="text-sm text-gray-400">
+            <span className="text-sm text-gray-500">
               {post.readingTime} min read
             </span>
           </div>
@@ -134,7 +134,7 @@ export default async function BlogPostPage({
               <p className="text-sm font-medium text-gray-900">
                 {post.author.name}
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-gray-500">
                 Published{" "}
                 <time dateTime={post.publishedAt}>
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
@@ -254,7 +254,7 @@ export default async function BlogPostPage({
                     <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                       {product.name}
                     </p>
-                    <p className="text-xs text-gray-400 mt-0.5">
+                    <p className="text-xs text-gray-500 mt-0.5">
                       ${product.priceRange.min}–${product.priceRange.max} <span aria-hidden="true">&middot;</span>{" "}
                       {product.reviewCount} reviews
                     </p>
@@ -301,7 +301,7 @@ export default async function BlogPostPage({
                       <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                         {product.name}
                       </p>
-                      <p className="text-xs text-gray-400 mt-0.5">
+                      <p className="text-xs text-gray-500 mt-0.5">
                         <span className="text-brand-600 font-medium">{cat?.icon} {cat?.name}</span>
                         {" "}<span aria-hidden="true">&middot;</span> ${product.priceRange.min}–${product.priceRange.max}
                       </p>
