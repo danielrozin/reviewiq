@@ -43,7 +43,7 @@ export default async function OGImage({
           >
             {post.categoryName}
           </div>
-          <span style={{ fontSize: 16, color: "#64748b" }}>
+          <span style={{ fontSize: 16, color: "#475569" }}>
             {post.readingTime} min read
           </span>
         </div>
@@ -84,7 +84,7 @@ export default async function OGImage({
             <span style={{ fontSize: 16, fontWeight: 600, color: "#0f172a" }}>
               {post.author.name}
             </span>
-            <span style={{ fontSize: 14, color: "#64748b" }}>
+            <span style={{ fontSize: 14, color: "#475569" }}>
               {new Date(post.publishedAt).toLocaleDateString("en-US", {
                 month: "long",
                 day: "numeric",

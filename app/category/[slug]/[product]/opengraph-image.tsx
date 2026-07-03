@@ -97,10 +97,10 @@ export default async function OGImage({
               {product.smartScore}
             </div>
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: 14, color: "#64748b", fontWeight: 500 }}>
+              <span style={{ fontSize: 14, color: "#475569", fontWeight: 500 }}>
                 SmartScore
               </span>
-              <span style={{ fontSize: 14, color: "#64748b" }}>out of 100</span>
+              <span style={{ fontSize: 14, color: "#475569" }}>out of 100</span>
             </div>
           </div>
 
@@ -115,7 +115,7 @@ export default async function OGImage({
               </span>
               <span style={{ fontSize: 20, color: "#f59e0b" }}>★</span>
             </div>
-            <span style={{ fontSize: 14, color: "#64748b" }}>
+            <span style={{ fontSize: 14, color: "#475569" }}>
               {product.reviewCount.toLocaleString()} reviews
             </span>
           </div>
@@ -128,7 +128,7 @@ export default async function OGImage({
             <span style={{ fontSize: 22, fontWeight: 700, color: "#10b981" }}>
               {product.verifiedPurchaseRate}%
             </span>
-            <span style={{ fontSize: 14, color: "#64748b" }}>Verified buyers</span>
+            <span style={{ fontSize: 14, color: "#475569" }}>Verified buyers</span>
           </div>
         </div>
       </div>

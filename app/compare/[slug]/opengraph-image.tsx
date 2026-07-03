@@ -96,7 +96,7 @@ export default async function OGImage({
               <span style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>
                 {productA.name}
               </span>
-              <span style={{ fontSize: 13, color: "#64748b" }}>
+              <span style={{ fontSize: 13, color: "#475569" }}>
                 {productA.reviewCount.toLocaleString()} reviews
               </span>
             </div>
@@ -127,7 +127,7 @@ export default async function OGImage({
               <span style={{ fontSize: 14, fontWeight: 600, color: "#0f172a" }}>
                 {productB.name}
               </span>
-              <span style={{ fontSize: 13, color: "#64748b" }}>
+              <span style={{ fontSize: 13, color: "#475569" }}>
                 {productB.reviewCount.toLocaleString()} reviews
               </span>
             </div>

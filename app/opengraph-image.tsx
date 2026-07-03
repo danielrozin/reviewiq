@@ -57,7 +57,7 @@ export default function OGImage() {
           </div>
 
           {/* Tagline */}
-          <div style={{ fontSize: 24, color: "#64748b", display: "flex" }}>
+          <div style={{ fontSize: 24, color: "#475569", display: "flex" }}>
             Real Reviews, Real Intelligence
           </div>
 

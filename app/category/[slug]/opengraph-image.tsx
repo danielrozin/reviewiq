@@ -51,14 +51,14 @@ export default async function OGImage({
             <span style={{ fontSize: 36, fontWeight: 800, color: "#005fd4" }}>
               {products.length}
             </span>
-            <span style={{ fontSize: 16, color: "#64748b" }}>Products reviewed</span>
+            <span style={{ fontSize: 16, color: "#475569" }}>Products reviewed</span>
           </div>
 
           <div style={{ width: 1, height: 48, background: "#e2e8f0", display: "flex" }} />
 
           {topProduct && (
             <div style={{ display: "flex", flexDirection: "column" }}>
-              <span style={{ fontSize: 16, color: "#64748b" }}>Top rated</span>
+              <span style={{ fontSize: 16, color: "#475569" }}>Top rated</span>
               <span style={{ fontSize: 22, fontWeight: 700, color: "#0f172a" }}>
                 {topProduct.name}
               </span>
@@ -75,7 +75,7 @@ export default async function OGImage({
                 >
                   {topProduct.smartScore}/100
                 </span>
-                <span style={{ fontSize: 14, color: "#64748b" }}>SmartScore</span>
+                <span style={{ fontSize: 14, color: "#475569" }}>SmartScore</span>
               </div>
             </div>
           )}
