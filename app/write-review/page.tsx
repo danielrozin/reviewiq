@@ -404,6 +404,7 @@ export default function WriteReviewPage() {
                 onChange={(e) => setSelectedProduct(e.target.value)}
                 onBlur={() => markTouched("product")}
                 aria-describedby="error-product"
+                aria-required="true"
                 aria-invalid={touched.product === true && !selectedProduct ? true : undefined}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               >
@@ -434,6 +435,7 @@ export default function WriteReviewPage() {
                 placeholder="Summarize your experience in one sentence"
                 maxLength={120}
                 aria-describedby="error-headline"
+                aria-required="true"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               />
@@ -498,9 +500,11 @@ export default function WriteReviewPage() {
                 onBlur={() => markTouched("body")}
                 placeholder="Share your honest experience. What surprised you? What disappointed you? Would you buy it again?"
                 rows={6}
+                aria-required="true"
+                aria-describedby="body-char-count"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
               />
-              <p className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-400"}`}>
+              <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-400"}`}>
                 {body.length}/50 minimum characters
                 {body.length >= 50 && " \u2713"}
               </p>
@@ -574,6 +578,7 @@ export default function WriteReviewPage() {
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   onBlur={() => markTouched("experienceLevel")}
                   aria-describedby="error-experienceLevel"
+                  aria-required="true"
                   aria-invalid={touched.experienceLevel === true && !experienceLevel ? true : undefined}
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                 >
@@ -600,6 +605,7 @@ export default function WriteReviewPage() {
                   onChange={(e) => setTimeOwned(e.target.value)}
                   onBlur={() => markTouched("timeOwned")}
                   aria-describedby="error-timeOwned"
+                  aria-required="true"
                   aria-invalid={touched.timeOwned === true && !timeOwned ? true : undefined}
                   className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                 >
@@ -619,10 +625,10 @@ export default function WriteReviewPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <p id="verification-group-label" className="block text-sm font-semibold text-gray-900 mb-2">
                 Purchase Verification *
-              </label>
-              <div className="space-y-2">
+              </p>
+              <div role="radiogroup" aria-labelledby="verification-group-label" aria-required="true" className="space-y-2">
                 {verificationOptions.map((opt) => (
                   <label
                     key={opt.value}
@@ -687,6 +693,8 @@ export default function WriteReviewPage() {
                 type="button"
                 onClick={handleSubmit}
                 disabled={!canProceed || isSubmitting}
+                aria-busy={isSubmitting}
+                aria-label={isSubmitting ? "Submitting your review, please wait" : "Submit your review"}
                 className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
                   canProceed && !isSubmitting
                     ? "bg-brand-600 text-white hover:bg-brand-700"
