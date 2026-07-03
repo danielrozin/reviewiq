@@ -7,9 +7,14 @@ export function organizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
     name: "ReviewIQ",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.png`,
+    logo: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}/logo.png`,
+      contentUrl: `${SITE_URL}/logo.png`,
+    },
     description:
       "AI-powered product review platform providing honest, structured insights from verified buyers.",
     sameAs: [
@@ -24,9 +29,11 @@ export function websiteSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}/#website`,
     name: "ReviewIQ",
     url: SITE_URL,
     inLanguage: "en",
+    publisher: { "@id": `${SITE_URL}/#organization` },
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/search?q={search_term_string}`,
@@ -263,11 +270,7 @@ export function blogPostSchema(post: BlogPost) {
       name: post.author.name,
       ...(post.author.bio && { description: post.author.bio }),
     },
-    publisher: {
-      "@type": "Organization",
-      name: "ReviewIQ",
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/logo.png` },
-    },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     mainEntityOfPage: {
