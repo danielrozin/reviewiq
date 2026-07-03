@@ -46,6 +46,16 @@ export function ProductJumpNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Prevent keyboard focus on hidden buttons (WCAG 2.4.3)
+  useEffect(() => {
+    if (!navRef.current) return;
+    if (visible) {
+      navRef.current.removeAttribute("inert");
+    } else {
+      navRef.current.setAttribute("inert", "");
+    }
+  }, [visible]);
+
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -57,7 +67,6 @@ export function ProductJumpNav() {
   return (
     <div
       ref={navRef}
-      aria-hidden={!visible}
       className={`block sticky top-14 sm:top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
