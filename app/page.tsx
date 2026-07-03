@@ -329,7 +329,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/community"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all →
           </Link>
@@ -395,7 +395,7 @@ export default function HomePage() {
         <div className="text-center mt-6 sm:hidden">
           <Link
             href="/community"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all discussions →
           </Link>
@@ -416,7 +416,7 @@ export default function HomePage() {
             </div>
             <Link
               href="/blog"
-              className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
             >
               View all articles &rarr;
             </Link>
@@ -447,7 +447,7 @@ export default function HomePage() {
                   </div>
                   <span className="text-xs text-gray-600 truncate">{post.author.name}</span>
                   <span className="text-gray-200 text-xs">·</span>
-                  <span className="text-xs text-gray-400 shrink-0">{post.readingTime} min</span>
+                  <span className="text-xs text-gray-500 shrink-0">{post.readingTime} min</span>
                 </div>
                 </div>
               </Link>
@@ -456,7 +456,7 @@ export default function HomePage() {
           <div className="text-center mt-6 sm:hidden">
             <Link
               href="/blog"
-              className="text-sm font-medium text-brand-600 hover:text-brand-700"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
             >
               View all articles &rarr;
             </Link>
@@ -483,7 +483,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/categories"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Browse all &rarr;
           </Link>
@@ -672,13 +672,13 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Link
               href="/write-review"
-              className="w-full sm:w-auto px-8 py-3.5 bg-white text-brand-600 font-semibold rounded-xl hover:bg-brand-50 transition-colors"
+              className="w-full sm:w-auto px-8 py-3.5 bg-white text-brand-600 font-semibold rounded-xl hover:bg-brand-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               Write a Review
             </Link>
             <Link
               href="/community"
-              className="w-full sm:w-auto px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl border border-brand-400 hover:bg-brand-400 transition-colors"
+              className="w-full sm:w-auto px-8 py-3.5 bg-brand-500 text-white font-semibold rounded-xl border border-brand-400 hover:bg-brand-400 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-500"
             >
               Join Community
             </Link>
