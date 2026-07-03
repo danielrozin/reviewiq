@@ -247,17 +247,17 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-200 mt-10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-600">
             &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved. No affiliate commissions.
           </p>
           <nav aria-label="Footer legal links" className="flex items-center gap-6">
-            <Link href="/privacy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <Link href="/privacy" className="text-sm text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Privacy
             </Link>
-            <Link href="/terms" className="text-sm text-gray-400 hover:text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <Link href="/terms" className="text-sm text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Terms
             </Link>
-            <Link href="/cookie-policy" className="text-sm text-gray-400 hover:text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <Link href="/cookie-policy" className="text-sm text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Cookies
             </Link>
           </nav>
