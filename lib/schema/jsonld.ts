@@ -63,6 +63,7 @@ export function productSchema(product: Product, pageUrl?: string) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
+    ...(canonicalUrl && { "@id": canonicalUrl }),
     name: product.name,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
@@ -193,6 +194,7 @@ export function productListSchema(products: Product[], categoryName: string) {
         position: index + 1,
         item: {
           "@type": "Product",
+          "@id": `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
           name: p.name,
           url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
           brand: { "@type": "Brand", name: p.brand },
@@ -521,9 +523,12 @@ function comparisonProductItem(product: Product) {
       ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
       : 0;
 
+  const productUrl = `${SITE_URL}/category/${product.categorySlug}/${product.slug}`;
   const item: Record<string, unknown> = {
     "@type": "Product",
+    "@id": productUrl,
     name: product.name,
+    url: productUrl,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
   };
