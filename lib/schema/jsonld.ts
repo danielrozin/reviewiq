@@ -246,9 +246,12 @@ export function analysisAuthorSchema() {
 }
 
 export function blogPostSchema(post: BlogPost) {
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
   return {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": postUrl,
+    url: postUrl,
     headline: post.title,
     description: post.seo.metaDescription,
     image: post.coverImage || `${SITE_URL}/og-default.jpg`,
@@ -265,8 +268,14 @@ export function blogPostSchema(post: BlogPost) {
     },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
     keywords: [post.seo.focusKeyword, ...post.seo.secondaryKeywords].join(", "),
+    ...(post.readingTime > 0 && {
+      timeRequired: `PT${post.readingTime}M`,
+    }),
   };
 }
 
@@ -279,7 +288,8 @@ export function blogListSchema(posts: BlogPost[]) {
     url: `${SITE_URL}/blog`,
     inLanguage: "en",
     hasPart: posts.map((post) => ({
-      "@type": "Article",
+      "@type": "BlogPosting",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
       headline: post.title,
       url: `${SITE_URL}/blog/${post.slug}`,
       datePublished: post.publishedAt,
