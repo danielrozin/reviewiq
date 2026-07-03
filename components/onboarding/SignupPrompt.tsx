@@ -41,6 +41,15 @@ export function SignupPrompt() {
     if (shouldShowSignupPrompt) closeRef.current?.focus();
   }, [shouldShowSignupPrompt]);
 
+  useEffect(() => {
+    if (!shouldShowSignupPrompt) return;
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") dismissSignup();
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [shouldShowSignupPrompt, dismissSignup]);
+
   if (!shouldShowSignupPrompt) return null;
 
   return (

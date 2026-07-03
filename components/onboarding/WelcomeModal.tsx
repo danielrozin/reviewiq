@@ -57,6 +57,15 @@ export function WelcomeModal() {
     if (isNewVisitor) closeRef.current?.focus();
   }, [isNewVisitor]);
 
+  useEffect(() => {
+    if (!isNewVisitor) return;
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") dismissWelcome();
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [isNewVisitor, dismissWelcome]);
+
   if (!isNewVisitor) return null;
 
   return (

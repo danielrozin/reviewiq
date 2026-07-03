@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { trackEvent } from "@/lib/tracking/analytics";
 
 const STORAGE_KEY = "sr_survey_completed";
@@ -45,6 +45,7 @@ export function SurveyPopup() {
     q5Discovery: "",
   });
   const [submitting, setSubmitting] = useState(false);
+  const closeRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -62,6 +63,19 @@ export function SurveyPopup() {
     setVisible(false);
     trackEvent("survey_popup_dismissed", { step });
   }, [step]);
+
+  useEffect(() => {
+    if (visible) closeRef.current?.focus();
+  }, [visible]);
+
+  useEffect(() => {
+    if (!visible) return;
+    function handleKey(e: KeyboardEvent) {
+      if (e.key === "Escape") dismiss();
+    }
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [visible, dismiss]);
 
   const submit = useCallback(async () => {
     setSubmitting(true);
@@ -104,6 +118,7 @@ export function SurveyPopup() {
       <div role="dialog" aria-modal="true" aria-label="Quick survey" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
         {/* Close */}
         <button
+          ref={closeRef}
           type="button"
           onClick={dismiss}
           className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
@@ -308,6 +323,8 @@ export function SurveyPopup() {
               type="button"
               onClick={submit}
               disabled={submitting}
+              aria-busy={submitting}
+              aria-label={submitting ? "Submitting feedback, please wait" : "Submit feedback"}
               className="w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               {submitting ? "Submitting..." : "Submit feedback"}
