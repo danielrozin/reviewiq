@@ -42,6 +42,30 @@ const nextConfig: NextConfig = {
     ],
   },
   trailingSlash: false,
+  async redirects() {
+    // Legacy URL structure (pre-revieweriq.com, from the lifted Google Sites /
+    // reviewiq.net content — DAN-942 Phase 1b) → current routes. None of these
+    // source paths correspond to a live route, so the rules only fire on stale
+    // inbound links, preserving 301 link equity and preventing soft-404s.
+    return [
+      { source: "/home", destination: "/", permanent: true },
+      { source: "/reviews", destination: "/categories", permanent: true },
+      {
+        source: "/reviews/:category/:slug",
+        destination: "/category/:category/:slug",
+        permanent: true,
+      },
+      { source: "/reviews/:category", destination: "/category/:category", permanent: true },
+      // Google Sites share links carry a ?usp=… query the app never emits itself;
+      // collapse any such crawl to the homepage rather than serving a soft-404.
+      {
+        source: "/:path*",
+        has: [{ type: "query", key: "usp" }],
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
