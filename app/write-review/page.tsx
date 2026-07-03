@@ -284,7 +284,7 @@ export default function WriteReviewPage() {
           >
             Sign in to continue
           </Link>
-          <p className="text-xs text-gray-400 mt-4">
+          <p className="text-xs text-gray-600 mt-4">
             Free account — takes less than 30 seconds
           </p>
         </div>
@@ -317,7 +317,7 @@ export default function WriteReviewPage() {
             <p className="text-gray-600 leading-relaxed mb-1">
               Your review has been queued for verification. We check every review before publishing to keep the data honest.
             </p>
-            <p className="text-sm text-gray-400 mb-6">
+            <p className="text-sm text-gray-500 mb-6">
               Typically live within 24–48 hours.
             </p>
 
@@ -368,7 +368,7 @@ export default function WriteReviewPage() {
             </a>
           </div>
           <div className="text-center mt-4">
-            <a href="/" className="text-sm text-gray-400 hover:text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <a href="/" className="text-sm text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Back to Home
             </a>
           </div>
@@ -445,7 +445,7 @@ export default function WriteReviewPage() {
                   show={touched.headline === true && !headline}
                   message="Headline is required"
                 />
-                <p className="text-xs text-gray-400">{headline.length}/120</p>
+                <p className="text-xs text-gray-500">{headline.length}/120</p>
               </div>
             </div>
           </div>
@@ -504,7 +504,7 @@ export default function WriteReviewPage() {
                 aria-describedby="body-char-count"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
               />
-              <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-400"}`}>
+              <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-500"}`}>
                 {body.length}/50 minimum characters
                 {body.length >= 50 && " \u2713"}
               </p>
@@ -717,7 +717,7 @@ export default function WriteReviewPage() {
                   </>
                 )}
               </button>
-              <p className="text-xs text-gray-400 mt-2">
+              <p className="text-xs text-gray-600 mt-2">
                 Your review will be verified before publishing.
               </p>
             </div>

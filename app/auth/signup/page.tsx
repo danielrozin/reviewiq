@@ -104,11 +104,11 @@ export default function SignUpPage() {
           </Link>
         </p>
 
-        <p className="mt-2 text-center text-xs text-gray-400">
+        <p className="mt-2 text-center text-xs text-gray-600">
           By creating an account, you agree to our{" "}
-          <Link href="/terms" className="underline hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Terms</Link>{" "}
+          <Link href="/terms" className="underline hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Terms</Link>{" "}
           and{" "}
-          <Link href="/privacy" className="underline hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
+          <Link href="/privacy" className="underline hover:text-gray-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
         </p>
       </div>
     </div>

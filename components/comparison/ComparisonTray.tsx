@@ -35,7 +35,7 @@ export function ComparisonTray() {
               type="button"
               onClick={clear}
               aria-label="Clear all products from comparison tray"
-              className="text-xs text-gray-400 hover:text-red-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1 rounded"
+              className="text-xs text-gray-600 hover:text-red-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1 rounded"
             >
               Clear all
             </button>

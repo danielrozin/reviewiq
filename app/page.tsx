@@ -367,7 +367,7 @@ export default function HomePage() {
                   <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug mb-2">
                     {thread.title}
                   </h3>
-                  <div className="flex items-center gap-3 text-xs text-gray-400">
+                  <div className="flex items-center gap-3 text-xs text-gray-500">
                     {author && (
                       <span className="font-medium text-gray-600">
                         {author.displayName}

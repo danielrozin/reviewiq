@@ -182,7 +182,7 @@ export default function NotificationsSettingsPage() {
                 </div>
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">{group.title}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{group.description}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{group.description}</p>
                 </div>
               </div>
 

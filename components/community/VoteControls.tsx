@@ -160,7 +160,7 @@ export function VoteControls({
         </button>
       </div>
       {helpfulCount !== undefined && helpfulCount > 0 && (
-        <span aria-label={`${helpfulCount} ${helpfulCount === 1 ? "person" : "people"} found this helpful`} className="text-xs text-gray-400" aria-live="polite">
+        <span aria-label={`${helpfulCount} ${helpfulCount === 1 ? "person" : "people"} found this helpful`} className="text-xs text-gray-600" aria-live="polite">
           {helpfulCount} found helpful
         </span>
       )}
