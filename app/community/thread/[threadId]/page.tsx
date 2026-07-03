@@ -116,7 +116,7 @@ export default async function ThreadPage({ params }: Props) {
                 </div>
 
                 {/* Title */}
-                <h1 id="thread-title" className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-4">
+                <h1 id="thread-title" data-speakable="thread-title" className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-4">
                   {thread.title}
                 </h1>
 
@@ -134,7 +134,7 @@ export default async function ThreadPage({ params }: Props) {
                 </div>
 
                 {/* Body */}
-                <div className="prose prose-sm max-w-none text-gray-700 leading-relaxed mb-6">
+                <div data-speakable="thread-body" className="prose prose-sm max-w-none text-gray-700 leading-relaxed mb-6">
                   {thread.body.split("\n").map((line, i) => {
                     if (line.startsWith("**") && line.endsWith("**")) {
                       return (

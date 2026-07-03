@@ -83,6 +83,8 @@ export function productSchema(product: Product, pageUrl?: string) {
     ...(canonicalUrl && {
       url: canonicalUrl,
       mainEntityOfPage: { "@type": "ItemPage", "@id": canonicalUrl },
+      isPartOf: { "@id": `${SITE_URL}/#website` },
+      publisher: { "@id": `${SITE_URL}/#organization` },
     }),
   };
 
@@ -454,6 +456,13 @@ export function discussionForumPostingSchema(
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
     isPartOf: { "@id": `${SITE_URL}/community` },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [
+        "[data-speakable='thread-title']",
+        "[data-speakable='thread-body']",
+      ],
+    },
   };
 }
 

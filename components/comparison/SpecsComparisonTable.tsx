@@ -101,10 +101,10 @@ export function SpecsComparisonTable({
                         "px-4 py-3 font-medium text-center",
                         differs ? "text-brand-700" : "text-gray-900"
                       )}>
-                        {spec.a || <span className="text-gray-300">—</span>}
+                        {spec.a || <span aria-label="not available" className="text-gray-500">—</span>}
                       </td>
                       <td className="px-4 py-3 text-gray-700 font-medium text-center">
-                        {spec.b || <span className="text-gray-300">—</span>}
+                        {spec.b || <span aria-label="not available" className="text-gray-500">—</span>}
                       </td>
                     </tr>
                   );
