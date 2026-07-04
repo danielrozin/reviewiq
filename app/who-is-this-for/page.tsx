@@ -1,6 +1,6 @@
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { faqSchema } from "@/lib/schema/jsonld";
+import { faqSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import Link from "next/link";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
@@ -225,6 +225,12 @@ export default function WhoIsThisForPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Who Is This For", url: "/who-is-this-for" }])),
+        }}
+      />
       <Breadcrumbs items={[{ name: "Who Is This For", url: "/who-is-this-for" }]} />
 
       {/* JSON-LD Schemas */}

@@ -6,7 +6,7 @@ import {
   getBlogCategories,
 } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blogListSchema, blogCategoryPageSchema } from "@/lib/schema/jsonld";
+import { blogListSchema, blogCategoryPageSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 
 export function generateStaticParams() {
   return getBlogCategories().map((cat) => ({ category: cat.slug }));
@@ -87,6 +87,15 @@ export default async function BlogCategoryPage({
             `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`,
             cat.slug
           )),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([
+            { name: "Blog", url: "/blog" },
+            { name: cat.name, url: `/blog/category/${cat.slug}` },
+          ])),
         }}
       />
       <Breadcrumbs
