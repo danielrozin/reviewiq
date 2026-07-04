@@ -385,7 +385,7 @@ export function communityPageSchema() {
 export function homePageSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": ["WebPage", "CollectionPage"],
     "@id": `${SITE_URL}/`,
     name: "ReviewIQ — Real Reviews, Real Intelligence",
     description: "AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.",
