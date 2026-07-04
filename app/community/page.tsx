@@ -107,7 +107,7 @@ export default function CommunityPage() {
           {/* Pinned threads */}
           {pinned.length > 0 && (
             <section aria-labelledby="pinned-threads-heading">
-              <h2 id="pinned-threads-heading" className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+              <h2 id="pinned-threads-heading" className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">
                 Pinned
               </h2>
               <div className="space-y-3">
@@ -152,7 +152,7 @@ export default function CommunityPage() {
                       </span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <span className="text-xs text-gray-500">{count}</span>
+                      <span className="text-xs text-gray-600">{count}</span>
                       <svg aria-hidden="true" className="w-3 h-3 text-gray-300 group-hover:text-brand-400 transition-colors" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                       </svg>

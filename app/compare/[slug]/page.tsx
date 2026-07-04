@@ -162,7 +162,7 @@ function RelatedComparisons({
                   {pair.productA.name} vs {pair.productB.name}
                 </p>
                 {pair.searchVolume > 0 && (
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-600">
                     {pair.searchVolume.toLocaleString()} monthly searches
                   </p>
                 )}
