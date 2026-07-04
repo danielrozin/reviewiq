@@ -464,7 +464,7 @@ export function discussionForumPostingSchema(
   return {
     "@context": "https://schema.org",
     "@type": "DiscussionForumPosting",
-    "@id": threadUrl,
+    "@id": `${threadUrl}#discussion`,
     headline: thread.title,
     text: thread.body,
     inLanguage: "en",
@@ -488,6 +488,21 @@ export function discussionForumPostingSchema(
       },
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": threadUrl },
+  };
+}
+
+export function threadPageSpeakableSchema(title: string, url: string) {
+  const pageUrl = `${SITE_URL}${url}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": pageUrl,
+    name: title,
+    url: pageUrl,
+    inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
