@@ -14,6 +14,10 @@ const pricingWebPageSchema = {
   inLanguage: "en",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='pricing-intro']"],
+  },
 };
 import { GuaranteeBadge } from "@/components/premium/GuaranteeBadge";
 
@@ -27,6 +31,7 @@ export const metadata = buildMetadata({
 const proOfferSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
+  "@id": `${SITE_URL}/pricing#product`,
   name: "ReviewIQ Pro",
   description: "Ad-free experience, price tracking alerts, advanced comparison tools, and expert consultation.",
   brand: { "@type": "Brand", name: "ReviewIQ" },
@@ -61,7 +66,7 @@ export default function PricingPage() {
             Smarter reviews.{" "}
             <span className="text-brand-600">Better decisions.</span>
           </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p data-speakable="pricing-intro" className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
             Get the most out of ReviewIQ with our Pro plan. Advanced tools,
             real-time alerts, and expert insights — all for less than a coffee.
           </p>
