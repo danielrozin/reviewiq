@@ -278,7 +278,7 @@ export function blogPostSchema(post: BlogPost) {
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "@id": postUrl,
+    "@id": `${postUrl}#article`,
     url: postUrl,
     headline: post.title,
     description: post.seo.metaDescription,
