@@ -14,10 +14,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const aboutPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": `${SITE_URL}/about`,
   name: "About ReviewIQ — AI-Powered Honest Product Reviews",
   url: `${SITE_URL}/about`,
+  inLanguage: "en",
   description:
     "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: [
@@ -66,11 +70,7 @@ const teamPersonsJsonLd = {
     name: member.name,
     jobTitle: member.role,
     description: member.bio,
-    worksFor: {
-      "@type": "Organization",
-      name: "ReviewIQ",
-      url: SITE_URL,
-    },
+    worksFor: { "@id": `${SITE_URL}/#organization` },
   })),
 };
 
