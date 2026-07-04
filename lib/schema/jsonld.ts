@@ -1,4 +1,4 @@
-import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep } from "@/types";
+import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
@@ -382,6 +382,114 @@ export function comparisonSchema(productA: Product, productB: Product) {
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-speakable='ai-verdict']"],
     },
+  };
+}
+
+// Community thread pages carried only BreadcrumbList/Organization schema — the
+// discussion content itself (question, answers, replies) was invisible to Google
+// and AI answer engines. Emit QAPage for question threads (the type Google shows
+// with the Q&A rich result and mines for "People also ask") and
+// DiscussionForumPosting for every other thread type (forum rich result +
+// interaction counts). Both are attached to the same URL; only one is emitted.
+export function communityThreadSchema(
+  thread: DiscussionThread,
+  comments: Comment[],
+  resolveAuthorName: (authorId: string) => string
+) {
+  const threadUrl = `${SITE_URL}/community/thread/${thread.id}`;
+  const authorName = resolveAuthorName(thread.authorId) || "Community Member";
+
+  // getCommentsByThread returns top-level comments with nested replies; flatten
+  // so every reply becomes a schema answer/comment node, ordered top-level first.
+  const flat: Comment[] = [];
+  for (const c of comments) {
+    flat.push(c);
+    if (c.replies) flat.push(...c.replies);
+  }
+
+  const answerNode = (c: Comment) => ({
+    "@type": "Answer",
+    text: c.body,
+    url: `${threadUrl}#comment-${c.id}`,
+    datePublished: c.createdAt,
+    upvoteCount: c.upvotes,
+    author: {
+      "@type": "Person",
+      name: resolveAuthorName(c.authorId) || "Community Member",
+    },
+  });
+
+  // A QAPage rich result needs the Question plus at least one answer. Question
+  // threads with no replies fall through to DiscussionForumPosting so we never
+  // emit an answer-less (invalid) QAPage node.
+  if (thread.threadType === "question" && flat.length > 0) {
+    // Prefer the human-marked top answer, else the highest-voted reply.
+    const accepted =
+      flat.find((c) => c.isTopAnswer) ||
+      [...flat].sort((a, b) => b.upvotes - a.upvotes)[0];
+    const suggested = flat.filter((c) => c.id !== accepted.id);
+
+    return {
+      "@context": "https://schema.org",
+      "@type": "QAPage",
+      mainEntity: {
+        "@type": "Question",
+        name: thread.title,
+        text: thread.body,
+        answerCount: flat.length,
+        upvoteCount: thread.upvotes,
+        datePublished: thread.createdAt,
+        author: { "@type": "Person", name: authorName },
+        acceptedAnswer: answerNode(accepted),
+        ...(suggested.length > 0
+          ? { suggestedAnswer: suggested.map(answerNode) }
+          : {}),
+      },
+    };
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "DiscussionForumPosting",
+    headline: thread.title,
+    articleBody: thread.body,
+    url: threadUrl,
+    datePublished: thread.createdAt,
+    dateModified: thread.lastActivityAt,
+    author: { "@type": "Person", name: authorName },
+    publisher: { "@id": ORG_ID },
+    interactionStatistic: [
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/LikeAction",
+        userInteractionCount: thread.upvotes,
+      },
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/CommentAction",
+        userInteractionCount: thread.commentCount,
+      },
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/ViewAction",
+        userInteractionCount: thread.viewCount,
+      },
+    ],
+    ...(flat.length > 0
+      ? {
+          comment: flat.map((c) => ({
+            "@type": "Comment",
+            text: c.body,
+            url: `${threadUrl}#comment-${c.id}`,
+            datePublished: c.createdAt,
+            upvoteCount: c.upvotes,
+            author: {
+              "@type": "Person",
+              name: resolveAuthorName(c.authorId) || "Community Member",
+            },
+          })),
+        }
+      : {}),
   };
 }
 

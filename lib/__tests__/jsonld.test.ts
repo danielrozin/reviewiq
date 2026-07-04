@@ -15,7 +15,9 @@ import {
   analysisAuthorSchema,
   comparisonSchema,
   blogPostSchema,
+  communityThreadSchema,
 } from '../schema/jsonld'
+import type { DiscussionThread, Comment } from '@/types'
 
 describe('organizationSchema', () => {
   it('returns valid Organization schema', () => {
@@ -283,5 +285,104 @@ describe('blogPostSchema', () => {
       const schema = blogPostSchema({ ...basePost, coverImage: cover }) as Record<string, any>
       expect(/^https?:\/\//.test(schema.image)).toBe(true)
     }
+  })
+})
+
+describe('communityThreadSchema', () => {
+  const baseThread: DiscussionThread = {
+    id: 'thread-x',
+    title: 'Is the Roborock S8 worth it?',
+    body: 'Considering the S8 MaxV Ultra. Anyone regret the price?',
+    threadType: 'question',
+    authorId: 'u1',
+    upvotes: 12,
+    downvotes: 1,
+    commentCount: 2,
+    viewCount: 340,
+    isPinned: false,
+    isResolved: true,
+    tags: ['robot-vacuums'],
+    createdAt: '2026-02-18',
+    lastActivityAt: '2026-03-13',
+  }
+  const mkComment = (over: Partial<Comment>): Comment => ({
+    id: 'c1',
+    threadId: 'thread-x',
+    authorId: 'u2',
+    body: 'Yes, worth it.',
+    upvotes: 5,
+    downvotes: 0,
+    isTopAnswer: false,
+    isOwnerVerified: false,
+    helpfulCount: 0,
+    createdAt: '2026-02-19',
+    ...over,
+  })
+  const names: Record<string, string> = { u1: 'Sarah K.', u2: 'Marcus T.', u3: 'Jess L.' }
+  const resolve = (id: string) => names[id] || ''
+
+  it('emits QAPage for question threads with at least one answer', () => {
+    const schema = communityThreadSchema(
+      baseThread,
+      [mkComment({ id: 'c1', upvotes: 3 }), mkComment({ id: 'c2', authorId: 'u3', upvotes: 9 })],
+      resolve
+    ) as Record<string, any>
+    expect(schema['@type']).toBe('QAPage')
+    expect(schema.mainEntity['@type']).toBe('Question')
+    expect(schema.mainEntity.answerCount).toBe(2)
+    expect(schema.mainEntity.author.name).toBe('Sarah K.')
+  })
+
+  it('picks the highest-voted reply as acceptedAnswer when none is flagged top', () => {
+    const schema = communityThreadSchema(
+      baseThread,
+      [mkComment({ id: 'c1', upvotes: 3 }), mkComment({ id: 'c2', upvotes: 9 })],
+      resolve
+    ) as Record<string, any>
+    expect(schema.mainEntity.acceptedAnswer.url).toContain('#comment-c2')
+    expect(schema.mainEntity.suggestedAnswer).toHaveLength(1)
+  })
+
+  it('prefers a human-flagged top answer over vote count', () => {
+    const schema = communityThreadSchema(
+      baseThread,
+      [mkComment({ id: 'c1', upvotes: 3, isTopAnswer: true }), mkComment({ id: 'c2', upvotes: 9 })],
+      resolve
+    ) as Record<string, any>
+    expect(schema.mainEntity.acceptedAnswer.url).toContain('#comment-c1')
+  })
+
+  it('flattens nested replies into answer nodes', () => {
+    const parent = mkComment({ id: 'c1', replies: [mkComment({ id: 'c1r', authorId: 'u3' })] })
+    const schema = communityThreadSchema(baseThread, [parent], resolve) as Record<string, any>
+    expect(schema.mainEntity.answerCount).toBe(2)
+  })
+
+  it('falls back to DiscussionForumPosting for a question with no answers', () => {
+    const schema = communityThreadSchema(baseThread, [], resolve) as Record<string, any>
+    expect(schema['@type']).toBe('DiscussionForumPosting')
+    expect(schema.interactionStatistic).toHaveLength(3)
+    expect(schema.comment).toBeUndefined()
+  })
+
+  it('emits DiscussionForumPosting with comments for non-question threads', () => {
+    const schema = communityThreadSchema(
+      { ...baseThread, threadType: 'discussion' },
+      [mkComment({ id: 'c1' })],
+      resolve
+    ) as Record<string, any>
+    expect(schema['@type']).toBe('DiscussionForumPosting')
+    expect(schema.comment).toHaveLength(1)
+    expect(schema.comment[0]['@type']).toBe('Comment')
+    expect(schema.author.name).toBe('Sarah K.')
+  })
+
+  it('falls back to a generic author name when the user is unknown', () => {
+    const schema = communityThreadSchema(
+      { ...baseThread, authorId: 'ghost', threadType: 'tip' },
+      [],
+      resolve
+    ) as Record<string, any>
+    expect(schema.author.name).toBe('Community Member')
   })
 })
