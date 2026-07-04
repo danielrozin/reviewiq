@@ -4,6 +4,23 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { blogListSchema } from "@/lib/schema/jsonld";
 import { BlogCategoryFilter } from "@/components/home/BlogCategoryFilter";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const blogIndexWebPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/blog#page`,
+  name: "ReviewIQ Blog — Buying Guides, Comparisons & Expert Reviews",
+  url: `${SITE_URL}/blog`,
+  inLanguage: "en",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='blog-list-intro']"],
+  },
+};
+
 export const metadata = buildMetadata({
   title: "Blog — Buying Guides, Comparisons & Expert Reviews",
   description:
@@ -22,13 +39,17 @@ export default function BlogPage() {
           __html: JSON.stringify(blogListSchema(posts)),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexWebPageJsonLd) }}
+      />
       <Breadcrumbs items={[{ name: "Blog", url: "/blog" }]} />
 
       <div className="mt-8 mb-10">
         <h1 className="text-3xl font-bold text-gray-900">
           ReviewIQ Blog
         </h1>
-        <p className="text-gray-600 mt-2 max-w-2xl">
+        <p data-speakable="blog-list-intro" className="text-gray-600 mt-2 max-w-2xl">
           Expert buying guides, product comparisons, and review insights —
           all backed by real owner data and AI-powered analysis.
         </p>

@@ -4,12 +4,29 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { categoryListSchema } from "@/lib/schema/jsonld";
 import { CategorySearch } from "@/components/category/CategorySearch";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
 export const metadata = buildMetadata({
   title: "All Product Categories — AI Reviews & Comparisons",
   description:
     "Browse all product categories on ReviewIQ. Find honest, AI-powered reviews across robot vacuums, coffee machines, air fryers, wireless earbuds, mattresses, smart watches, standing desks, blenders, laptops, and electric toothbrushes.",
   path: "/categories",
 });
+
+const categoriesWebPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/categories`,
+  name: "All Product Categories — AI Reviews & Comparisons",
+  url: `${SITE_URL}/categories`,
+  inLanguage: "en",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='categories-intro']"],
+  },
+};
 
 export default function CategoriesPage() {
   const totalProducts = categories.reduce((sum, c) => sum + c.productCount, 0);
@@ -22,6 +39,10 @@ export default function CategoriesPage() {
           __html: JSON.stringify(categoryListSchema(categories)),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoriesWebPageJsonLd) }}
+      />
       <Breadcrumbs items={[{ name: "Categories", url: "/categories" }]} />
 
       {/* Page header */}
@@ -30,7 +51,7 @@ export default function CategoriesPage() {
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Product Categories
           </h1>
-          <p className="text-gray-600 max-w-2xl leading-relaxed">
+          <p data-speakable="categories-intro" className="text-gray-600 max-w-2xl leading-relaxed">
             {categories.length} categories · {totalProducts}+ products · AI-analyzed reviews from verified buyers
           </p>
         </div>
