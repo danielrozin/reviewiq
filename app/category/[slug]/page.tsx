@@ -50,7 +50,7 @@ export default async function CategoryPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            productListSchema(categoryProducts, category.name)
+            productListSchema(categoryProducts, category.name, slug)
           ),
         }}
       />

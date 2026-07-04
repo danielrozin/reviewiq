@@ -179,7 +179,7 @@ export function categoryListSchema(categories: Category[]) {
   };
 }
 
-export function productListSchema(products: Product[], categoryName: string) {
+export function productListSchema(products: Product[], categoryName: string, categorySlug?: string) {
   const avgCategoryRating =
     products.length > 0
       ? products.reduce((sum, p) => {
@@ -194,9 +194,12 @@ export function productListSchema(products: Product[], categoryName: string) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    ...(categorySlug && { "@id": `${SITE_URL}/category/${categorySlug}#product-list` }),
     name: `Best ${categoryName}`,
     description: `Top-rated ${categoryName} ranked by SmartScore from verified buyer reviews`,
     numberOfItems: products.length,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     ...(avgCategoryRating > 0 && {
       aggregateRating: {
         "@type": "AggregateRating",
@@ -424,6 +427,7 @@ export function blogPostSpeakableSchema(title: string, url: string) {
       cssSelector: [
         "[data-speakable='blog-headline']",
         "[data-speakable='blog-intro']",
+        "[data-speakable='blog-body']",
       ],
     },
   };
@@ -461,7 +465,8 @@ export function discussionForumPostingSchema(
       },
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
-    isPartOf: { "@id": `${SITE_URL}/community` },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
