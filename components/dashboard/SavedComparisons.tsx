@@ -24,7 +24,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
           </svg>
         </div>
         <p className="text-sm font-semibold text-gray-900 mb-1">No saved products yet</p>
-        <p className="text-xs text-gray-500 mb-4 leading-relaxed">
+        <p className="text-xs text-gray-600 mb-4 leading-relaxed">
           Bookmark products you&apos;re considering to compare SmartScores side by side.
         </p>
         <Link
@@ -66,7 +66,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
             {item.note && (
               <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate">{item.note}</p>
             )}
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-600 mt-1">
               Saved {item.savedAt}
             </p>
           </div>
@@ -75,7 +75,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
             <p className={`text-lg font-bold ${getScoreColor(item.productScore)}`}>
               {item.productScore}
             </p>
-            <p className="text-xs text-gray-500">
+            <p className="text-xs text-gray-600">
               {getScoreLabel(item.productScore)}
             </p>
           </div>

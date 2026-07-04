@@ -130,7 +130,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
               <p className="text-sm font-semibold text-gray-900">
                 {TRUST_LEVEL_LABELS[stats.trustLevel]}
               </p>
-              <p className="text-xs text-gray-500">{formatNumber(stats.reputationScore)} reputation</p>
+              <p className="text-xs text-gray-600">{formatNumber(stats.reputationScore)} reputation</p>
             </div>
           </div>
           {nextLevel && (
@@ -138,7 +138,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
               <p className="text-xs text-gray-600">
                 <span className="font-semibold text-gray-700">{pointsToNext}</span> pts to {TRUST_LEVEL_LABELS[nextLevel]}
               </p>
-              <p className="inline-flex items-center gap-1 text-xs text-gray-500 mt-0.5"><span aria-hidden="true">{TRUST_LEVEL_ICONS[nextLevel]}</span> Next level</p>
+              <p className="inline-flex items-center gap-1 text-xs text-gray-600 mt-0.5"><span aria-hidden="true">{TRUST_LEVEL_ICONS[nextLevel]}</span> Next level</p>
             </div>
           )}
           {!nextLevel && (
@@ -163,9 +163,9 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
         </div>
         {nextLevel && (
           <div className="flex justify-between mt-1.5">
-            <span className="text-xs text-gray-500">{TRUST_LEVEL_LABELS[stats.trustLevel]}</span>
-            <span className="text-xs text-gray-500">{progressPct}%</span>
-            <span className="text-xs text-gray-500">{TRUST_LEVEL_LABELS[nextLevel]}</span>
+            <span className="text-xs text-gray-600">{TRUST_LEVEL_LABELS[stats.trustLevel]}</span>
+            <span className="text-xs text-gray-600">{progressPct}%</span>
+            <span className="text-xs text-gray-600">{TRUST_LEVEL_LABELS[nextLevel]}</span>
           </div>
         )}
       </div>

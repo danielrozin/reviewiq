@@ -44,7 +44,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
           <h2 id="community-discussion-heading" className="text-lg font-semibold text-gray-900">
             Community Discussion
           </h2>
-          <p className="text-sm text-gray-500 mt-0.5">
+          <p className="text-sm text-gray-600 mt-0.5">
             {threads.length} threads about {productName}
           </p>
         </div>
@@ -71,10 +71,10 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
             >
               {/* Vote count */}
               <div aria-hidden="true" className="flex flex-col items-center shrink-0 min-w-[40px]">
-                <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}>
+                <span className={`text-sm font-bold ${netVotes > 0 ? "text-brand-600" : "text-gray-600"}`}>
                   {formatNumber(netVotes)}
                 </span>
-                <span className="text-xs text-gray-500">votes</span>
+                <span className="text-xs text-gray-600">votes</span>
               </div>
 
               <div className="flex-1 min-w-0">
@@ -98,7 +98,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
                   {thread.title}
                 </h3>
 
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-500">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-gray-600">
                   {author && (
                     <span className="font-medium text-gray-600">{author.displayName}</span>
                   )}

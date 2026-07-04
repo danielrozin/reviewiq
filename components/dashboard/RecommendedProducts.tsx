@@ -32,13 +32,13 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
             <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
               {product.name}
             </h3>
-            <p className="text-xs text-gray-500 mt-0.5">
+            <p className="text-xs text-gray-600 mt-0.5">
               {product.brand} · {product.reviewCount} reviews
             </p>
           </div>
 
           <div className="shrink-0">
-            <p className="text-xs text-gray-500 text-right">
+            <p className="text-xs text-gray-600 text-right">
               {getScoreLabel(product.smartScore)}
             </p>
             <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors ml-auto mt-0.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

@@ -23,10 +23,10 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
         className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
       >
         <div className="flex flex-col items-center min-w-[40px]" aria-hidden="true">
-          <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}>
+          <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-600"}`}>
             {formatNumber(netVotes)}
           </span>
-          <span className="text-xs text-gray-500">votes</span>
+          <span className="text-xs text-gray-600">votes</span>
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 mb-0.5">
@@ -43,7 +43,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
             {thread.title}
           </h3>
         </div>
-        <div className="text-xs text-gray-500 shrink-0">
+        <div className="text-xs text-gray-600 shrink-0">
           {thread.commentCount} replies
         </div>
       </Link>
@@ -61,7 +61,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           </svg>
           <span
             aria-label={`${formatNumber(netVotes)} net votes`}
-            className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}
+            className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-600"}`}
           >
             {formatNumber(netVotes)}
           </span>
@@ -109,10 +109,10 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           {/* Meta row */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
             {author && <UserChip user={author} showTrustLevel size="sm" />}
-            <time dateTime={thread.createdAt} className="text-xs text-gray-500">
+            <time dateTime={thread.createdAt} className="text-xs text-gray-600">
               {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
             </time>
-            <div className="flex items-center gap-3 text-xs text-gray-500">
+            <div className="flex items-center gap-3 text-xs text-gray-600">
               <span className="flex items-center gap-1">
                 <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
