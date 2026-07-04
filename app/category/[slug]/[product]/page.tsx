@@ -358,7 +358,7 @@ export default async function ProductPage({ params }: Props) {
                     key={i}
                     className="text-sm text-gray-600 flex items-start gap-2"
                   >
-                    <span className="text-red-400 shrink-0">!</span>
+                    <span aria-hidden="true" className="text-red-400 shrink-0">!</span>
                     {c}
                   </li>
                 ))}
