@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { CookiePolicyContent } from "./CookiePolicyContent";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Cookie Policy",
@@ -30,6 +31,10 @@ export default function CookiePolicyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(cookiePolicySchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Cookie Policy", url: "/cookie-policy" }])) }}
       />
       <CookiePolicyContent />
     </>

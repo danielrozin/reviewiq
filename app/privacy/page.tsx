@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { PrivacyContent } from "./PrivacyContent";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -30,6 +31,10 @@ export default function PrivacyPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(privacyWebPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Privacy Policy", url: "/privacy" }])) }}
       />
       <PrivacyContent />
     </>

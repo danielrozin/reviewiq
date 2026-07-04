@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { TermsContent } from "./TermsContent";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -30,6 +31,10 @@ export default function TermsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(termsWebPageJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Terms of Service", url: "/terms" }])) }}
       />
       <TermsContent />
     </>

@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { AcceptableUseContent } from "./AcceptableUseContent";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Acceptable Use Policy",
@@ -30,6 +31,10 @@ export default function AcceptableUsePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(acceptableUseSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Acceptable Use Policy", url: "/acceptable-use" }])) }}
       />
       <AcceptableUseContent />
     </>
