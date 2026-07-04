@@ -10,7 +10,7 @@ import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { formatNumber } from "@/lib/utils";
 import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { homePageSchema, categoryListSchema } from "@/lib/schema/jsonld";
+import { homePageSchema, categoryListSchema, productListSchema } from "@/lib/schema/jsonld";
 import { HeroSearch } from "@/components/home/HeroSearch";
 import { RecentlyViewedStrip } from "@/components/home/RecentlyViewedStrip";
 
@@ -37,6 +37,10 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryListSchema(categories)) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productListSchema(topProducts, "Top Rated Products")) }}
       />
       {/* Hero Section */}
       <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">

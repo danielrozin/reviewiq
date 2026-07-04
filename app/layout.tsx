@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { organizationSchema, websiteSchema } from "@/lib/schema/jsonld";
+import { organizationSchema, websiteSchema, analysisAuthorSchema } from "@/lib/schema/jsonld";
 import { AppProvider } from "@/lib/context/AppContext";
 import { SessionProvider } from "@/components/providers/SessionProvider";
 import { SubscriptionProvider } from "@/lib/context/SubscriptionContext";
@@ -72,7 +72,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema(), websiteSchema()]),
+            __html: JSON.stringify([organizationSchema(), websiteSchema(), analysisAuthorSchema()]),
           }}
         />
         <SessionProvider>
