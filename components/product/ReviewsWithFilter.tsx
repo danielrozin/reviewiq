@@ -60,7 +60,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <h2 id="verified-reviews-heading" className="text-lg font-semibold text-gray-900 shrink-0">
             Verified Reviews
           </h2>
-          <span aria-live="polite" aria-atomic="true" className="ml-auto text-xs text-gray-500 font-medium tabular-nums shrink-0">
+          <span aria-live="polite" aria-atomic="true" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
             {filterRating ? `${filtered.length} of ${totalCount.toLocaleString()} reviews` : `${totalCount.toLocaleString()} total`}
           </span>
         </div>
@@ -78,7 +78,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
               className={`flex items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[36px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 filterRating === star
                   ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
-                  : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                  : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
               aria-pressed={filterRating === star}
               aria-label={`Filter by ${star} stars`}
@@ -123,7 +123,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             </svg>
           </div>
           <p className="text-sm font-semibold text-gray-900 mb-1">No reviews match this filter</p>
-          <p className="text-xs text-gray-500 mb-3">Try a different star rating</p>
+          <p className="text-xs text-gray-600 mb-3">Try a different star rating</p>
           <button
             type="button"
             onClick={() => setFilterRating(null)}
