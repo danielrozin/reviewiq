@@ -550,7 +550,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     description,
     url: pageUrl,
     inLanguage: "en",
-    isPartOf: { "@id": `${SITE_URL}/blog` },
+    isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
