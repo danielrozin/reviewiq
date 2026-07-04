@@ -2,6 +2,19 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { PricingTiers } from "./PricingTiers";
 import { PricingFAQAccordion } from "./PricingFAQAccordion";
 import { faqSchema } from "@/lib/schema/jsonld";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const pricingWebPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/pricing`,
+  name: "Pro Plans & Pricing — ReviewIQ",
+  url: `${SITE_URL}/pricing`,
+  inLanguage: "en",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
 import { GuaranteeBadge } from "@/components/premium/GuaranteeBadge";
 
 export const metadata = buildMetadata({
@@ -36,6 +49,7 @@ export default function PricingPage() {
   return (
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(proOfferSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingWebPageSchema) }} />
       <GuaranteeBadge />
       {/* Hero */}
       <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">

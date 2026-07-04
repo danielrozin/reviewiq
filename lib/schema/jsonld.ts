@@ -512,6 +512,45 @@ export function competitorFaqPageSchema(opts: {
   ];
 }
 
+export function profilePageSchema(username: string, displayName: string, bio?: string, expertiseCategories?: string[]) {
+  const pageUrl = `${SITE_URL}/community/user/${username}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": pageUrl,
+    name: `${displayName} — ReviewIQ Community`,
+    url: pageUrl,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${pageUrl}#person`,
+      name: displayName,
+      url: pageUrl,
+      ...(bio && { description: bio }),
+      ...(expertiseCategories && expertiseCategories.length > 0 && {
+        knowsAbout: expertiseCategories.map((s) => s.replace(/-/g, " ")),
+      }),
+    },
+  };
+}
+
+export function blogCategoryPageSchema(categoryName: string, description: string, categorySlug: string) {
+  const pageUrl = `${SITE_URL}/blog/category/${categorySlug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": pageUrl,
+    name: `${categoryName} Buying Guides & Reviews`,
+    description,
+    url: pageUrl,
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/blog` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function categoryPageSchema(categoryName: string, description: string, categoryUrl: string) {
   const pageUrl = `${SITE_URL}${categoryUrl}`;
   return {

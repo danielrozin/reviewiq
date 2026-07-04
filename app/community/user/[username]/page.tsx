@@ -9,6 +9,7 @@ import { TRUST_LEVEL_LABELS, TRUST_LEVEL_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { formatNumber } from "@/lib/utils";
 import { UserProBadge } from "@/components/premium/UserProBadge";
+import { profilePageSchema } from "@/lib/schema/jsonld";
 
 interface Props {
   params: Promise<{ username: string }>;
@@ -47,6 +48,12 @@ export default async function UserProfilePage({ params }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories)),
+        }}
+      />
       <Breadcrumbs
         items={[
           { name: "Community", url: "/community" },

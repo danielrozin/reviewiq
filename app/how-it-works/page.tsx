@@ -96,10 +96,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const howToJsonLd = {
   "@context": "https://schema.org",
   "@type": "HowTo",
+  "@id": `${SITE_URL}/how-it-works#howto`,
   name: "How ReviewIQ Works",
   description:
     "ReviewIQ's 4-step system: verified buyer reviews, AI analysis, SmartScore ranking, and data-driven buying decisions.",
   url: `${SITE_URL}/how-it-works`,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   step: steps.map((step, index) => ({
     "@type": "HowToStep",
     position: index + 1,
@@ -111,8 +114,12 @@ const howToJsonLd = {
 const howItWorksWebPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
+  "@id": `${SITE_URL}/how-it-works`,
   name: "How ReviewIQ Works",
   url: `${SITE_URL}/how-it-works`,
+  inLanguage: "en",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: [
