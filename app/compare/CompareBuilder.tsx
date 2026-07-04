@@ -39,6 +39,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
         aria-expanded={open && query.length > 0}
         aria-controls="compare-product-listbox"
         aria-autocomplete="list"
+        aria-haspopup="listbox"
         value={query}
         onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
@@ -49,18 +50,20 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
       {open && query.length > 0 && (
         <ul id="compare-product-listbox" role="listbox" aria-label="Product search results" className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
           {filtered.length === 0 ? (
-            <li className="px-4 py-3 text-sm text-gray-600">No products found</li>
+            <li role="option" aria-selected="false" aria-disabled="true" className="px-4 py-3 text-sm text-gray-600">No products found</li>
           ) : (
             filtered.slice(0, 8).map((p) => (
-              <li key={p.id}>
-                <button
-                  type="button"
-                  onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
-                  className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
-                >
-                  <span className="font-medium text-gray-900">{p.brand}</span>
-                  <span className="text-gray-600">{p.name}</span>
-                </button>
+              <li
+                key={p.id}
+                role="option"
+                aria-selected="false"
+                tabIndex={0}
+                onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
+                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onAdd(p.id); setQuery(""); setOpen(false); } }}
+                className="px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+              >
+                <span className="font-medium text-gray-900">{p.brand}</span>
+                <span className="text-gray-600">{p.name}</span>
               </li>
             ))
           )}
