@@ -7,7 +7,7 @@ import { getProductsByCategory, getAffinityProducts } from "@/data/products";
 import { getAffinityCategorySlugs } from "@/data/category-affinity";
 import { getCategoryBySlug } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blogPostSchema, faqSchema, blogPostSpeakableSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { blogPostSchema, faqSchema, blogPostSpeakableSchema } from "@/lib/schema/jsonld";
 
 export function generateStaticParams() {
   return getAllBlogPosts().map((post) => ({ slug: post.slug }));
@@ -70,16 +70,6 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(blogPostSchema(post)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Blog", url: "/blog" },
-            { name: post.title, url: `/blog/${post.slug}` },
-          ])),
         }}
       />
       {post.faq.length > 0 && (

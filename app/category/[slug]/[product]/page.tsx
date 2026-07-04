@@ -17,7 +17,7 @@ import { YouTubeVideos } from "@/components/product/YouTubeVideos";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productSchema, speakableSchema, faqSchema, videoObjectListSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { productSchema, speakableSchema, faqSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
@@ -117,17 +117,6 @@ export default async function ProductPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(productSchema(product, `/category/${slug}/${productSlug}`)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Categories", url: "/categories" },
-            { name: category.name, url: `/category/${slug}` },
-            { name: product.name, url: `/category/${slug}/${productSlug}` },
-          ])),
         }}
       />
       {product.youtubeVideos && product.youtubeVideos.length > 0 && (
