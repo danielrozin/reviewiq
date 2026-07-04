@@ -95,14 +95,14 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
-              : "text-gray-500 hover:bg-gray-50 hover:text-gray-600"
+              : "text-gray-600 hover:bg-gray-50 hover:text-gray-700"
           }`}
         >
           <UpIcon />
         </button>
         <span
           aria-label={`${formatNumber(netVotes)} net votes`}
-          className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}
+          className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-600"}`}
         >
           {formatNumber(netVotes)}
         </span>
@@ -114,7 +114,7 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
-              : "text-gray-500 hover:bg-gray-50 hover:text-gray-600"
+              : "text-gray-600 hover:bg-gray-50 hover:text-gray-700"
           }`}
         >
           <DownIcon />
@@ -134,14 +134,14 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-l-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
-              : "text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+              : "text-gray-600 hover:bg-gray-100 hover:text-gray-700"
           }`}
         >
           <UpIcon />
         </button>
         <span
           aria-label={`${formatNumber(netVotes)} net votes`}
-          className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-500"}`}
+          className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-600"}`}
         >
           {formatNumber(netVotes)}
         </span>
@@ -153,7 +153,7 @@ export function VoteControls({
           className={`${buttonSize} flex items-center justify-center rounded-r-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
-              : "text-gray-500 hover:bg-gray-100 hover:text-gray-600"
+              : "text-gray-600 hover:bg-gray-100 hover:text-gray-700"
           }`}
         >
           <DownIcon />

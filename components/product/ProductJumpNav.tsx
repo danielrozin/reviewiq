@@ -83,7 +83,7 @@ export function ProductJumpNav() {
               className={`shrink-0 px-2.5 sm:px-3 py-2 sm:py-1 rounded-full text-xs font-medium transition-colors whitespace-nowrap touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 activeId === id
                   ? "bg-brand-600 text-white shadow-sm"
-                  : "text-gray-500 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-100"
+                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-100"
               }`}
             >
               {label}

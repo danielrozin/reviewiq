@@ -30,7 +30,7 @@ export function RatingDistribution({ distribution, totalReviews }: RatingDistrib
                 style={{ width: `${percentage}%` }}
               />
             </div>
-            <span className="w-10 text-right text-gray-500 text-xs" aria-hidden="true">
+            <span className="w-10 text-right text-gray-600 text-xs" aria-hidden="true">
               {count}
             </span>
           </div>

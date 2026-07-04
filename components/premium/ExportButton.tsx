@@ -65,7 +65,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
           <button
             type="button"
             onClick={() => setShowGate(false)}
-            className="mt-1 text-xs text-gray-500 hover:text-gray-600 w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="mt-1 text-xs text-gray-600 hover:text-gray-700 w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Dismiss
           </button>

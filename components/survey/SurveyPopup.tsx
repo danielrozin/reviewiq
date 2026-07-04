@@ -278,14 +278,14 @@ export function SurveyPopup() {
                   className={`w-12 h-12 rounded-xl text-lg font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q3Rating === n
                       ? "bg-brand-600 text-white scale-110"
-                      : "bg-gray-100 text-gray-500 hover:bg-gray-200"
+                      : "bg-gray-100 text-gray-600 hover:bg-gray-200"
                   }`}
                 >
                   <span aria-hidden="true">{n}</span>
                 </button>
               ))}
             </div>
-            <div className="flex justify-between text-xs text-gray-500 px-1">
+            <div className="flex justify-between text-xs text-gray-600 px-1">
               <span>Poor</span>
               <span>Excellent</span>
             </div>
