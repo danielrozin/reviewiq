@@ -318,7 +318,7 @@ export default function SiteMapPage() {
               <Link
                 key={page.href}
                 href={page.href}
-                className="text-gray-600 hover:text-brand-600 transition-colors"
+                className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
               >
                 {page.label}
               </Link>

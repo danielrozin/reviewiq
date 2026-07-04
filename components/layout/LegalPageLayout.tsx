@@ -55,7 +55,7 @@ export function LegalPageLayout({
               Home
             </Link>
           </li>
-          <li>/</li>
+          <li aria-hidden="true">/</li>
           <li className="text-gray-900 font-medium">{title}</li>
         </ol>
       </nav>
