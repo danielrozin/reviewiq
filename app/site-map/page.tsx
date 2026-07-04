@@ -1,6 +1,24 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
+
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const siteMapWebPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/site-map`,
+  name: "Site Map — ReviewIQ",
+  url: `${SITE_URL}/site-map`,
+  inLanguage: "en",
+  description: "Browse all content on ReviewIQ — product reviews, blog articles, comparisons, and community discussions organized by date and category.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='sitemap-intro']"],
+  },
+};
 import { categories } from "@/data/categories";
 import { getAllBlogPosts, getBlogCategories } from "@/data/blog-posts";
 import { discussions } from "@/data/discussions";
@@ -170,13 +188,17 @@ export default function SiteMapPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteMapWebPageJsonLd) }}
+      />
       <Breadcrumbs items={[{ name: "Site Map", url: "/site-map" }]} />
 
       <div className="mt-8 max-w-4xl">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           Site Map
         </h1>
-        <p className="text-lg text-gray-600 leading-relaxed mb-10">
+        <p data-speakable="sitemap-intro" className="text-lg text-gray-600 leading-relaxed mb-10">
           Browse all recently published content on ReviewIQ, organized by date.
           For the XML sitemap, see{" "}
           <a
