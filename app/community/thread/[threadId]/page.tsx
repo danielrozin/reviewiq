@@ -253,8 +253,11 @@ export default async function ThreadPage({ params }: Props) {
 
             {/* Comment composer */}
             <div className="border border-gray-400 rounded-xl p-4 mb-6">
+              <label htmlFor="thread-reply-textarea" className="block text-xs font-medium text-gray-600 mb-2">
+                Write a reply
+              </label>
               <textarea
-                aria-label="Write a reply"
+                id="thread-reply-textarea"
                 placeholder="Share your experience or answer this question..."
                 className="w-full text-sm text-gray-700 placeholder-gray-400 resize-none border-0 focus:ring-0 focus:outline-none min-h-[80px]"
                 rows={3}
