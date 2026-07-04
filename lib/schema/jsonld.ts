@@ -670,7 +670,7 @@ function comparisonProductItem(product: Product) {
   const productUrl = `${SITE_URL}/category/${product.categorySlug}/${product.slug}`;
   const item: Record<string, unknown> = {
     "@type": "Product",
-    "@id": productUrl,
+    "@id": `${productUrl}#product`,
     name: product.name,
     url: productUrl,
     brand: { "@type": "Brand", name: product.brand },
