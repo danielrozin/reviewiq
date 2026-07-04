@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
@@ -141,6 +141,7 @@ export function WriteReviewForm() {
   const [submitted, setSubmitted] = useState(false);
   const [step, setStep] = useState(0);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const stepContainerRef = useRef<HTMLDivElement>(null);
 
   const [selectedProduct, setSelectedProduct] = useState("");
   const [headline, setHeadline] = useState("");
@@ -170,6 +171,10 @@ export function WriteReviewForm() {
   };
 
   const canProceed = stepValid[STEPS[step].key];
+
+  useEffect(() => {
+    stepContainerRef.current?.focus();
+  }, [step]);
 
   const goNext = () => {
     if (canProceed && step < STEPS.length - 1) {
@@ -394,7 +399,7 @@ export function WriteReviewForm() {
 
         {/* Step 1: Product & Headline */}
         {step === 0 && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 1 of 4: Select product and write a headline" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
             <div>
               <label htmlFor="select-product" className="block text-sm font-semibold text-gray-900 mb-2">
                 Product *
@@ -454,8 +459,8 @@ export function WriteReviewForm() {
 
         {/* Step 2: Ratings */}
         {step === 1 && (
-          <div className="space-y-6 animate-in fade-in duration-200">
-            <fieldset className="border-0 p-0 m-0">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 2 of 4: Rate the product" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
+            <fieldset aria-describedby="error-ratings" className="border-0 p-0 m-0">
               <legend className="block text-sm font-semibold text-gray-900 mb-3">
                 Overall Rating *
               </legend>
@@ -481,15 +486,20 @@ export function WriteReviewForm() {
               })}
             </div>
 
-            {touched.rating && !stepValid.rating && (
-              <p role="alert" className="text-xs text-red-600">Please rate all categories</p>
-            )}
+            <p
+              id="error-ratings"
+              role="alert"
+              aria-live="polite"
+              className={`text-xs ${touched.rating && !stepValid.rating ? "text-red-600" : "sr-only"}`}
+            >
+              {touched.rating && !stepValid.rating ? "Please rate all categories before continuing" : ""}
+            </p>
           </div>
         )}
 
         {/* Step 3: Review Content */}
         {step === 2 && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 3 of 4: Write your review" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
             <div>
               <label htmlFor="textarea-body" className="block text-sm font-semibold text-gray-900 mb-2">
                 Your Review *
@@ -502,6 +512,7 @@ export function WriteReviewForm() {
                 placeholder="Share your honest experience. What surprised you? What disappointed you? Would you buy it again?"
                 rows={6}
                 aria-required="true"
+                aria-invalid={touched.body === true && body.length < 50 ? true : undefined}
                 aria-describedby="body-char-count"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
               />
@@ -567,7 +578,7 @@ export function WriteReviewForm() {
 
         {/* Step 4: Details & Verification */}
         {step === 3 && (
-          <div className="space-y-6 animate-in fade-in duration-200">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 4 of 4: Add details and verify your purchase" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="select-experience" className="block text-sm font-semibold text-gray-900 mb-2">
