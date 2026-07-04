@@ -52,9 +52,16 @@ export function WelcomeModal() {
   const { isNewVisitor, dismissWelcome } = useOnboarding();
   const [step, setStep] = useState<"welcome" | "props">("welcome");
   const closeRef = useRef<HTMLButtonElement>(null);
+  const prevFocusRef = useRef<Element | null>(null);
 
   useEffect(() => {
-    if (isNewVisitor) closeRef.current?.focus();
+    if (isNewVisitor) {
+      prevFocusRef.current = document.activeElement;
+      closeRef.current?.focus();
+    } else {
+      (prevFocusRef.current as HTMLElement | null)?.focus();
+      prevFocusRef.current = null;
+    }
   }, [isNewVisitor]);
 
   useEffect(() => {
@@ -72,7 +79,25 @@ export function WelcomeModal() {
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
       <div aria-hidden="true" className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismissWelcome} />
 
-      <div role="dialog" aria-modal="true" aria-labelledby="welcome-modal-heading" className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="welcome-modal-heading"
+        onKeyDown={(e) => {
+          if (e.key !== "Tab") return;
+          const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>(
+            'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+          ));
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (!first) return;
+          if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+            e.preventDefault();
+            (e.shiftKey ? last : first).focus();
+          }
+        }}
+        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300"
+      >
         <button
           ref={closeRef}
           type="button"

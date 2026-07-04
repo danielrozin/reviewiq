@@ -36,9 +36,16 @@ const BENEFITS: { icon: React.ReactElement; text: string }[] = [
 export function SignupPrompt() {
   const { shouldShowSignupPrompt, dismissSignup } = useOnboarding();
   const closeRef = useRef<HTMLButtonElement>(null);
+  const prevFocusRef = useRef<Element | null>(null);
 
   useEffect(() => {
-    if (shouldShowSignupPrompt) closeRef.current?.focus();
+    if (shouldShowSignupPrompt) {
+      prevFocusRef.current = document.activeElement;
+      closeRef.current?.focus();
+    } else {
+      (prevFocusRef.current as HTMLElement | null)?.focus();
+      prevFocusRef.current = null;
+    }
   }, [shouldShowSignupPrompt]);
 
   useEffect(() => {
@@ -56,7 +63,25 @@ export function SignupPrompt() {
     <div className="fixed inset-0 z-[90] flex items-end sm:items-center justify-center p-4">
       <div aria-hidden="true" className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={dismissSignup} />
 
-      <div role="dialog" aria-modal="true" aria-labelledby="signup-prompt-heading" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="signup-prompt-heading"
+        onKeyDown={(e) => {
+          if (e.key !== "Tab") return;
+          const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>(
+            'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+          ));
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (!first) return;
+          if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+            e.preventDefault();
+            (e.shiftKey ? last : first).focus();
+          }
+        }}
+        className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300"
+      >
         <button
           ref={closeRef}
           type="button"

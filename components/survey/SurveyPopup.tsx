@@ -46,6 +46,7 @@ export function SurveyPopup() {
   });
   const [submitting, setSubmitting] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
+  const prevFocusRef = useRef<Element | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -65,7 +66,13 @@ export function SurveyPopup() {
   }, [step]);
 
   useEffect(() => {
-    if (visible) closeRef.current?.focus();
+    if (visible) {
+      prevFocusRef.current = document.activeElement;
+      closeRef.current?.focus();
+    } else {
+      (prevFocusRef.current as HTMLElement | null)?.focus();
+      prevFocusRef.current = null;
+    }
   }, [visible]);
 
   useEffect(() => {
@@ -115,7 +122,25 @@ export function SurveyPopup() {
       <div aria-hidden="true" className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismiss} />
 
       {/* Card */}
-      <div role="dialog" aria-modal="true" aria-label="Quick survey" className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-label="Quick survey"
+        onKeyDown={(e) => {
+          if (e.key !== "Tab") return;
+          const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>(
+            'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+          ));
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (!first) return;
+          if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+            e.preventDefault();
+            (e.shiftKey ? last : first).focus();
+          }
+        }}
+        className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300"
+      >
         {/* Close */}
         <button
           ref={closeRef}
