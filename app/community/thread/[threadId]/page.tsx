@@ -16,7 +16,7 @@ import {
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { discussionForumPostingSchema, threadPageSpeakableSchema } from "@/lib/schema/jsonld";
+import { discussionForumPostingSchema, threadPageSpeakableSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
@@ -70,6 +70,15 @@ export default async function ThreadPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(threadPageSpeakableSchema(thread.title, `/community/thread/${threadId}`)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([
+            { name: "Community", url: "/community" },
+            { name: thread.title, url: `/community/thread/${threadId}` },
+          ])),
         }}
       />
       <Breadcrumbs
