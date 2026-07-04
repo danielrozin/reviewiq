@@ -127,10 +127,11 @@ function FieldError({ id, show, message }: { id: string; show: boolean; message:
   return (
     <p
       id={id}
+      role="alert"
       aria-live="polite"
       className={`text-xs mt-1 ${show ? "text-red-600" : "sr-only"}`}
     >
-      {message}
+      {show ? message : ""}
     </p>
   );
 }
