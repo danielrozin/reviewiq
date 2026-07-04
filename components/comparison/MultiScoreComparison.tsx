@@ -64,7 +64,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
                   <p className={cn("text-xs font-medium", getScoreColor(product.smartScore))}>
                     {getScoreLabel(product.smartScore)}
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     {product.reviewCount} reviews
                   </p>
                 </div>
@@ -81,7 +81,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
               const isLowest = product.priceRange.min === lowestPrice;
               return (
                 <div key={product.id}>
-                  <p className="text-xs text-gray-500 mb-1">Price Range</p>
+                  <p className="text-xs text-gray-600 mb-1">Price Range</p>
                   <p className={cn("text-sm font-semibold", isLowest ? "text-emerald-600" : "text-gray-900")}>
                     ${product.priceRange.min}–${product.priceRange.max}
                     {isLowest && products.length > 1 && (

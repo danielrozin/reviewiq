@@ -107,7 +107,7 @@ export function ComparisonTray() {
           </div>
 
           {items.length < 2 && (
-            <p className="text-xs text-gray-500 mt-2">
+            <p className="text-xs text-gray-600 mt-2">
               Add at least 2 products to compare
             </p>
           )}

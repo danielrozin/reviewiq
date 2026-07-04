@@ -217,7 +217,7 @@ export default function SiteMapPage() {
         <ContentSection title="Last Week" items={lastWeek} />
 
         {!hasRecentContent && (
-          <p className="text-gray-500 italic mb-10">
+          <p className="text-gray-600 italic mb-10">
             No recently published content. Browse by category below.
           </p>
         )}
@@ -247,7 +247,7 @@ export default function SiteMapPage() {
                       <li key={p.slug}>
                         <Link
                           href={`/category/${cat.slug}/${p.slug}`}
-                          className="text-sm text-gray-500 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                          className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                         >
                           {p.name}
                         </Link>

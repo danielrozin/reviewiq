@@ -51,10 +51,10 @@ function PriceCard({ product, isLowest }: { product: Product; isLowest: boolean 
       <p className="text-2xl font-bold text-gray-900">
         {formatter.format(min)}
         {max !== min && (
-          <span className="text-gray-500"> – {formatter.format(max)}</span>
+          <span className="text-gray-600"> – {formatter.format(max)}</span>
         )}
       </p>
-      <p className="text-xs text-gray-500 mt-1">
+      <p className="text-xs text-gray-600 mt-1">
         Verified purchase rate: {product.verifiedPurchaseRate}%
       </p>
     </div>

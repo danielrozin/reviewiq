@@ -45,7 +45,7 @@ export function ExternalComparisonLinks({
                 <p className="text-sm font-medium text-gray-900 group-hover:text-purple-600 transition-colors">
                   {comp.title}
                 </p>
-                <p className="text-xs text-gray-500">                  on {comp.source}
+                <p className="text-xs text-gray-600">                  on {comp.source}
                 </p>
               </div>
             </div>

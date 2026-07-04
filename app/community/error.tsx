@@ -16,7 +16,7 @@ export default function CommunityError({
         <h2 className="text-2xl font-bold text-gray-900 mb-3">
           Community unavailable
         </h2>
-        <p className="text-gray-500 mb-6">
+        <p className="text-gray-600 mb-6">
           We had trouble loading the community section. Please try again.
         </p>
         <button

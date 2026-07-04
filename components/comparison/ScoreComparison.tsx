@@ -79,7 +79,7 @@ function ScoreBlock({
         <p className={cn("text-xs font-medium", getScoreColor(product.smartScore))}>
           {getScoreLabel(product.smartScore)}
         </p>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-gray-600 mt-1">
           {product.reviewCount} reviews
         </p>
       </div>

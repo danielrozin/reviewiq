@@ -42,7 +42,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
           <h2 id="specs-comparison-heading" className="text-lg font-semibold text-gray-900">Specs Comparison</h2>
         </div>
         {/* Mobile scroll hint */}
-        <p className="text-xs text-gray-500 sm:hidden flex items-center gap-1">
+        <p className="text-xs text-gray-600 sm:hidden flex items-center gap-1">
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 3M21 7.5H7.5" />
           </svg>
@@ -59,7 +59,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
               className="grid bg-gray-50 border-b border-gray-100 sticky top-0 z-10"
               style={{ gridTemplateColumns: colTemplate }}
             >
-              <div role="columnheader" className="px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">
+              <div role="columnheader" className="px-4 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider">
                 Spec
               </div>
               {products.map((product, i) => (
@@ -68,11 +68,11 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                   role="columnheader"
                   className={cn(
                     "px-4 py-3 text-xs font-semibold uppercase tracking-wider text-center",
-                    i === 0 ? "text-brand-700" : "text-gray-500"
+                    i === 0 ? "text-brand-700" : "text-gray-600"
                   )}
                 >
                   <span className="block truncate">{product.brand}</span>
-                  <span className="block text-xs font-normal text-gray-500 truncate">{product.name}</span>
+                  <span className="block text-xs font-normal text-gray-600 truncate">{product.name}</span>
                 </div>
               ))}
             </div>
@@ -118,7 +118,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                               "px-4 py-3 font-medium text-center",
                               value
                                 ? isDifferent && i === 0 ? "text-brand-700" : "text-gray-900"
-                                : "text-gray-500"
+                                : "text-gray-600"
                             )}
                           >
                             {value || <span aria-label="not available">—</span>}
