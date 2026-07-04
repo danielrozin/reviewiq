@@ -144,7 +144,7 @@ export default function NotificationsSettingsPage() {
               <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                 enabledCount > 0
                   ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                  : "bg-gray-100 text-gray-500 border border-gray-200"
+                  : "bg-gray-100 text-gray-600 border border-gray-200"
               }`}>
                 <span className={`w-1.5 h-1.5 rounded-full ${enabledCount > 0 ? "bg-emerald-500" : "bg-gray-400"}`} />
                 {enabledCount} of {Object.keys(prefs).length} active
@@ -192,7 +192,7 @@ export default function NotificationsSettingsPage() {
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-medium text-gray-900 text-sm">{label}</h3>
-                      <span className="text-xs font-medium px-2 py-0.5 bg-gray-100 text-gray-500 rounded-full">
+                      <span className="text-xs font-medium px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full">
                         {badge}
                       </span>
                       {saved === key && (

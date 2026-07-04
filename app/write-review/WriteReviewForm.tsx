@@ -324,7 +324,7 @@ export function WriteReviewForm() {
             <p className="text-gray-600 leading-relaxed mb-1">
               Your review has been queued for verification. We check every review before publishing to keep the data honest.
             </p>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-gray-600 mb-6">
               Typically live within 24–48 hours.
             </p>
 
@@ -452,7 +452,7 @@ export function WriteReviewForm() {
                   show={touched.headline === true && !headline}
                   message="Headline is required"
                 />
-                <p className="text-xs text-gray-500">{headline.length}/120</p>
+                <p className="text-xs text-gray-600">{headline.length}/120</p>
               </div>
             </div>
           </div>
@@ -517,7 +517,7 @@ export function WriteReviewForm() {
                 aria-describedby="body-char-count"
                 className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
               />
-              <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-500"}`}>
+              <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-600"}`}>
                 {body.length}/50 minimum characters
                 {body.length >= 50 && " ✓"}
               </p>
