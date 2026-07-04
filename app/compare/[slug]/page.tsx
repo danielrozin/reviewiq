@@ -10,7 +10,7 @@ import { VerdictCard } from "@/components/comparison/VerdictCard";
 import { BestForComparison } from "@/components/comparison/BestForComparison";
 import { PriceComparison } from "@/components/comparison/PriceComparison";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { comparisonSchema } from "@/lib/schema/jsonld";
+import { comparisonSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { AnalysisDisclosure } from "@/components/product/AnalysisDisclosure";
 import { ShareButtons } from "@/components/ui/ShareButtons";
 
@@ -64,6 +64,12 @@ export default async function ComparisonPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)),
+        }}
+      />
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Breadcrumbs items={breadcrumbItems} />
@@ -77,7 +83,7 @@ export default async function ComparisonPage({ params }: Props) {
             Side-by-side comparison based on {productA.reviewCount + productB.reviewCount} verified buyer reviews
           </p>
           {searchVolume > 0 && (
-            <p className="text-xs text-gray-500 mt-1">
+            <p className="text-xs text-gray-600 mt-1">
               {searchVolume.toLocaleString()} monthly searches for this comparison
             </p>
           )}
