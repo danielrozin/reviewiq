@@ -38,7 +38,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
                   {groupName}
                 </span>
-                <span aria-hidden="true" className="text-xs text-gray-500">{groupSpecs.length}</span>
+                <span aria-hidden="true" className="text-xs text-gray-600">{groupSpecs.length}</span>
               </div>
             )}
             {groupSpecs.map((spec, si) => (

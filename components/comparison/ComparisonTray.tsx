@@ -65,7 +65,7 @@ export function ComparisonTray() {
                     type="button"
                     onClick={() => remove(product.id)}
                     aria-label={`Remove ${product.name} from comparison`}
-                    className="p-2 -m-1.5 rounded text-gray-500 hover:text-red-600 transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1"
+                    className="p-2 -m-1.5 rounded text-gray-600 hover:text-red-600 transition-colors shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-400 focus-visible:ring-offset-1"
                   >
                     <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
