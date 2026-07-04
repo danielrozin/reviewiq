@@ -101,8 +101,9 @@ export function productSchema(product: Product, pageUrl?: string) {
     };
   }
 
-  if (product.reviews.length > 0) {
-    schema.review = product.reviews.slice(0, 5).map((r) => reviewSchema(r));
+  const reviewsWithBody = product.reviews.filter((r) => r.body && r.body.trim());
+  if (reviewsWithBody.length > 0) {
+    schema.review = reviewsWithBody.slice(0, 5).map((r) => reviewSchema(r));
   }
 
   return schema;
