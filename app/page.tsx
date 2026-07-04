@@ -200,7 +200,7 @@ export default function HomePage() {
                     {stat.value}
                   </p>
                   <p className="text-sm font-medium text-gray-700 mt-0.5">{stat.label}</p>
-                  <p className="text-xs text-gray-500">{stat.sublabel}</p>
+                  <p className="text-xs text-gray-600">{stat.sublabel}</p>
                 </div>
               </div>
             ))}
@@ -237,7 +237,7 @@ export default function HomePage() {
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
                 {cat.name}
               </h3>
-              <p className="text-sm text-gray-500 mt-1">
+              <p className="text-sm text-gray-600 mt-1">
                 {cat.productCount} products
               </p>
             </Link>
@@ -300,7 +300,7 @@ export default function HomePage() {
                     {product.name}
                   </h3>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">{formatNumber(product.reviewCount)} reviews</span>
+                    <span className="text-gray-600">{formatNumber(product.reviewCount)} reviews</span>
                     <span className="text-gray-600 font-medium">
                       ${product.priceRange.min}–${product.priceRange.max}
                     </span>
@@ -349,7 +349,7 @@ export default function HomePage() {
                   <svg aria-hidden="true" className={`w-4 h-4 mb-0.5 ${netVotes > 0 ? "text-brand-400" : "text-gray-300"}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
                   </svg>
-                  <span className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-500"}`}>
+                  <span className={`text-sm font-bold tabular-nums leading-none ${netVotes > 0 ? "text-brand-600" : "text-gray-600"}`}>
                     {formatNumber(netVotes)}
                   </span>
                 </div>
@@ -367,7 +367,7 @@ export default function HomePage() {
                   <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 leading-snug mb-2">
                     {thread.title}
                   </h3>
-                  <div className="flex items-center gap-3 text-xs text-gray-500">
+                  <div className="flex items-center gap-3 text-xs text-gray-600">
                     {author && (
                       <span className="font-medium text-gray-600">
                         {author.displayName}
@@ -447,7 +447,7 @@ export default function HomePage() {
                   </div>
                   <span className="text-xs text-gray-600 truncate">{post.author.name}</span>
                   <span className="text-gray-200 text-xs">·</span>
-                  <span className="text-xs text-gray-500 shrink-0">{post.readingTime} min</span>
+                  <span className="text-xs text-gray-600 shrink-0">{post.readingTime} min</span>
                 </div>
                 </div>
               </Link>
@@ -576,7 +576,7 @@ export default function HomePage() {
                       </div>
                       <div className="flex items-center justify-between mt-2">
                         <SmartScore score={product.smartScore} size="sm" showLabel={false} />
-                        <span className="text-xs text-gray-500">{formatNumber(product.reviewCount)} reviews</span>
+                        <span className="text-xs text-gray-600">{formatNumber(product.reviewCount)} reviews</span>
                       </div>
                     </div>
                   </Link>
@@ -646,7 +646,7 @@ export default function HomePage() {
               <div aria-hidden="true" className={`w-20 h-20 ${item.iconBg} ${item.iconColor} rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm`}>
                 {item.icon}
               </div>
-              <span className="text-xs font-bold text-gray-500 tracking-widest uppercase mb-1 block">{item.step}</span>
+              <span className="text-xs font-bold text-gray-600 tracking-widest uppercase mb-1 block">{item.step}</span>
               <h3 className="font-semibold text-gray-900 text-lg mb-2">
                 {item.title}
               </h3>
