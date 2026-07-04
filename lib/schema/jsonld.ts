@@ -405,7 +405,7 @@ export function speakableSchema(productName: string, productUrl: string) {
   const pageUrl = `${SITE_URL}${productUrl}`;
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": ["WebPage", "ItemPage"],
     "@id": pageUrl,
     name: `${productName} Review`,
     url: pageUrl,
