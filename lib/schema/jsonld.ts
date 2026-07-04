@@ -17,6 +17,14 @@ export function organizationSchema() {
     },
     description:
       "AI-powered product review platform providing honest, structured insights from verified buyers.",
+    email: "hello@reviewiq.com",
+    areaServed: ["US", "CA", "GB", "AU"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "hello@reviewiq.com",
+      contactType: "customer support",
+      availableLanguage: "English",
+    },
     sameAs: [
       "https://twitter.com/revieweriq",
       "https://www.linkedin.com/company/revieweriq",
@@ -316,6 +324,8 @@ export function blogPostSchema(post: BlogPost) {
       "@id": postUrl,
     },
     keywords: [post.seo.focusKeyword, ...post.seo.secondaryKeywords].join(", "),
+    articleSection: post.categoryName,
+    wordCount: post.content.split(/\s+/).filter(Boolean).length,
     ...(post.readingTime > 0 && {
       timeRequired: `PT${post.readingTime}M`,
     }),

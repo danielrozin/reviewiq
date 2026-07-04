@@ -203,6 +203,21 @@ const faqItems = [
   },
 ];
 
+const howToJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "@id": `${SITE_URL}/who-is-this-for#howto`,
+  name: "How to Use ReviewIQ",
+  description: "4 steps to find the right product using ReviewIQ's AI-powered review platform.",
+  url: `${SITE_URL}/who-is-this-for`,
+  step: steps.map((step, index) => ({
+    "@type": "HowToStep",
+    position: index + 1,
+    name: step.title,
+    text: step.description,
+  })),
+};
+
 export default function WhoIsThisForPage() {
   const speakableJsonLd = {
     "@context": "https://schema.org",
@@ -236,6 +251,7 @@ export default function WhoIsThisForPage() {
       {/* JSON-LD Schemas */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema(faqItems, '/who-is-this-for')) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />
 
       {/* Hero / Intro */}
       <header className="mt-8 mb-16 max-w-3xl" data-speakable="page-intro">
