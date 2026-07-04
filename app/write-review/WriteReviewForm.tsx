@@ -106,9 +106,9 @@ function StarRating({
           type="button"
           onMouseEnter={() => setHovered(star)}
           onClick={() => onChange(star)}
-          className={`transition-all touch-manipulation active:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-offset-1 rounded ${
-            star <= (hovered || value) ? "text-amber-400 scale-105" : "text-gray-200"
-          } hover:text-amber-300`}
+          className={`transition-all touch-manipulation active:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-1 rounded ${
+            star <= (hovered || value) ? "text-amber-600 scale-105" : "text-gray-400"
+          } hover:text-amber-500`}
           aria-label={`Rate ${star} out of 5`}
         >
           <svg aria-hidden="true" className={iconSize} fill="currentColor" viewBox="0 0 20 20">
