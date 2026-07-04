@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { WriteReviewForm } from "./WriteReviewForm";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Write a Product Review — Share Your Experience | ReviewIQ",
@@ -9,5 +10,15 @@ export const metadata = buildMetadata({
 });
 
 export default function WriteReviewPage() {
-  return <WriteReviewForm />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Write a Review", url: "/write-review" }])),
+        }}
+      />
+      <WriteReviewForm />
+    </>
+  );
 }

@@ -1,5 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { CompareBuilder } from "./CompareBuilder";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -29,6 +30,12 @@ export default function ComparePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(compareHubJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Compare", url: "/compare" }])),
+        }}
       />
       <CompareBuilder />
     </>
