@@ -22,6 +22,16 @@ export const metadata: Metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
   ),
+  openGraph: {
+    title: "ReviewIQ — Real Reviews, Real Intelligence",
+    description: "Honest, AI-powered product reviews. See what real buyers love, hate, and wish they knew before purchasing.",
+    siteName: "ReviewIQ",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/opengraph-image"],
+  },
 };
 
 export default function RootLayout({

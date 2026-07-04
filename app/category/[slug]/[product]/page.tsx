@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: Props) {
     publishedTime: product.createdAt,
     modifiedTime: product.updatedAt || product.createdAt,
     keywords: [product.name, product.brand, "review", "SmartScore", "verified buyer"],
+    image: product.image,
   });
 }
 

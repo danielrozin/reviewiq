@@ -37,11 +37,13 @@ export async function generateMetadata({
       modifiedTime: post.updatedAt,
       authors: [post.author.name],
       tags: post.tags,
+      images: [{ url: post.coverImage || `${siteUrl}/opengraph-image`, width: 1200, height: 630, alt: post.seo.metaTitle }],
     },
     twitter: {
       card: "summary_large_image",
       title: post.seo.metaTitle,
       description: post.seo.metaDescription,
+      images: [post.coverImage || `${siteUrl}/opengraph-image`],
     },
   };
 }

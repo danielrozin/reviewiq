@@ -43,12 +43,13 @@ export function buildMetadata(overrides: {
       url,
       siteName: SITE_NAME,
       ...ogArticleFields,
-      ...(overrides.image && { images: [{ url: overrides.image }] }),
+      images: [{ url: overrides.image || `${SITE_URL}/opengraph-image`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [overrides.image || `${SITE_URL}/opengraph-image`],
     },
     robots: overrides.noIndex
       ? { index: false, follow: false }
