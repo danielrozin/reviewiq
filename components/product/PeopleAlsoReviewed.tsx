@@ -35,6 +35,8 @@ export function PeopleAlsoReviewed({ products }: PeopleAlsoReviewedProps) {
             "@type": "ItemList",
             name: "People Also Reviewed",
             numberOfItems: products.length,
+            isPartOf: { "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com"}/#website` },
+            publisher: { "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com"}/#organization` },
             itemListElement: products.map((product, index) => ({
               "@type": "ListItem",
               position: index + 1,

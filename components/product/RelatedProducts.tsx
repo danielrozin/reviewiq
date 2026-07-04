@@ -48,6 +48,8 @@ export function RelatedProducts({
             "@type": "ItemList",
             name: `Related ${categoryName} Products`,
             numberOfItems: products.length,
+            isPartOf: { "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com"}/#website` },
+            publisher: { "@id": `${process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com"}/#organization` },
             itemListElement: products.map((product, index) => ({
               "@type": "ListItem",
               position: index + 1,

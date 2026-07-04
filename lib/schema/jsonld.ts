@@ -401,6 +401,8 @@ export function speakableSchema(productName: string, productUrl: string) {
         "[data-speakable='smart-score']",
         "[data-speakable='best-for']",
         "[data-speakable='faq-answer']",
+        "[data-speakable='specifications']",
+        "[data-speakable='compare-with']",
       ],
     },
   };
