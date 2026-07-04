@@ -89,7 +89,7 @@ export default async function CategoryPage({ params }: Props) {
           </div>
           <div className="shrink-0 text-right">
             <p className="text-2xl font-bold text-gray-900">{categoryProducts.length}</p>
-            <p className="text-sm text-gray-500">products reviewed</p>
+            <p className="text-sm text-gray-600">products reviewed</p>
           </div>
         </div>
 

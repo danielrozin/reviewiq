@@ -48,7 +48,7 @@ export default function NotFound() {
 
       {/* Popular categories */}
       <div>
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider text-center mb-5">
+        <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider text-center mb-5">
           Popular categories
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
