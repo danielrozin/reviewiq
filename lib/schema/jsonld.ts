@@ -598,7 +598,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='buying-guide']"],
+      cssSelector: ["[data-speakable='category-description']", "[data-speakable='buying-guide']"],
     },
     breadcrumb: {
       "@type": "BreadcrumbList",
