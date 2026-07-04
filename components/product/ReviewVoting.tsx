@@ -90,7 +90,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           className={`inline-flex items-center gap-1 min-h-[44px] px-3 py-2 rounded-lg text-xs transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-brand-400 ${
             voted === "helpful"
               ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
-              : "text-gray-400 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
+              : "text-gray-500 hover:text-emerald-600 hover:bg-emerald-50 border border-transparent"
           } disabled:opacity-50`}
         >
           <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -107,7 +107,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           className={`inline-flex items-center gap-1 min-h-[44px] px-3 py-2 rounded-lg text-xs transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-brand-400 ${
             voted === "not_helpful"
               ? "bg-red-50 text-red-600 border border-red-200"
-              : "text-gray-400 hover:text-red-600 hover:bg-red-50 border border-transparent"
+              : "text-gray-500 hover:text-red-600 hover:bg-red-50 border border-transparent"
           } disabled:opacity-50`}
         >
           <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
