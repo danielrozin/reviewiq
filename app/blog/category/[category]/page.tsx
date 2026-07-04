@@ -149,7 +149,7 @@ export default async function BlogCategoryPage({
                 <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2 py-1 rounded-full">
                   {post.categoryName}
                 </span>
-                <span className="text-xs text-gray-500">
+                <span className="text-xs text-gray-600">
                   {post.readingTime} min read
                 </span>
               </div>
@@ -160,7 +160,7 @@ export default async function BlogCategoryPage({
                 {post.excerpt}
               </p>
               <div className="mt-4 flex items-center justify-between">
-                <time dateTime={post.publishedAt} className="text-xs text-gray-500">
+                <time dateTime={post.publishedAt} className="text-xs text-gray-600">
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
                     month: "short",
                     day: "numeric",

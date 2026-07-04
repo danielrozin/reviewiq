@@ -100,7 +100,7 @@ export default async function UserProfilePage({ params }: Props) {
                   <p className={`text-lg font-bold ${stat.color}`}>
                     {formatNumber(stat.value)}
                   </p>
-                  <p className="text-xs text-gray-500 uppercase tracking-wider mt-0.5">
+                  <p className="text-xs text-gray-600 uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </p>
                 </div>
@@ -109,7 +109,7 @@ export default async function UserProfilePage({ params }: Props) {
 
             {/* Badges */}
             <div className="border-t border-gray-100 pt-4 mb-4">
-              <h3 className="text-xs text-gray-500 uppercase tracking-wider mb-3 font-semibold">
+              <h3 className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-semibold">
                 Badges
               </h3>
               <ul role="list" aria-label="Badges" className="flex flex-wrap gap-1.5">
@@ -124,7 +124,7 @@ export default async function UserProfilePage({ params }: Props) {
             {/* Expertise */}
             {user.expertiseCategories.length > 0 && (
               <div className="border-t border-gray-100 pt-4 mb-4">
-                <h3 className="text-xs text-gray-500 uppercase tracking-wider mb-3 font-semibold">
+                <h3 className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-semibold">
                   Expertise
                 </h3>
                 <ul role="list" aria-label="Expertise categories" className="flex flex-wrap gap-1.5">
@@ -143,7 +143,7 @@ export default async function UserProfilePage({ params }: Props) {
             )}
 
             {/* Meta */}
-            <div className="border-t border-gray-100 pt-4 text-xs text-gray-500 space-y-1">
+            <div className="border-t border-gray-100 pt-4 text-xs text-gray-600 space-y-1">
               <p>Joined <time dateTime={user.joinedAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.joinedAt))}</time></p>
               <p>Last active <time dateTime={user.lastActiveAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.lastActiveAt))}</time></p>
             </div>
@@ -171,7 +171,7 @@ export default async function UserProfilePage({ params }: Props) {
                   </svg>
                 </div>
                 <p className="text-sm font-semibold text-gray-900 mb-1">No discussions started yet</p>
-                <p className="text-xs text-gray-500">Discussions this user starts will appear here.</p>
+                <p className="text-xs text-gray-600">Discussions this user starts will appear here.</p>
               </div>
             )}
           </section>
@@ -198,7 +198,7 @@ export default async function UserProfilePage({ params }: Props) {
                           <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                         </svg>
                       </Link>
-                      <time dateTime={comment.createdAt} className="text-xs text-gray-500">{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(comment.createdAt))}</time>
+                      <time dateTime={comment.createdAt} className="text-xs text-gray-600">{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(comment.createdAt))}</time>
                       {comment.isTopAnswer && (
                         <span className="text-xs font-medium text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-full">
                           Top Answer
@@ -209,7 +209,7 @@ export default async function UserProfilePage({ params }: Props) {
                       {comment.body.replace(/\*\*/g, "").slice(0, 200)}
                       {comment.body.length > 200 && "..."}
                     </p>
-                    <div className="flex items-center gap-3 mt-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-3 mt-2 text-xs text-gray-600">
                       <span className="flex items-center gap-1">
                         <svg aria-hidden="true" className="w-3 h-3 text-brand-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
@@ -229,7 +229,7 @@ export default async function UserProfilePage({ params }: Props) {
                   </svg>
                 </div>
                 <p className="text-sm font-semibold text-gray-900 mb-1">No comments yet</p>
-                <p className="text-xs text-gray-500">Comments this user leaves on threads will appear here.</p>
+                <p className="text-xs text-gray-600">Comments this user leaves on threads will appear here.</p>
               </div>
             )}
           </section>
