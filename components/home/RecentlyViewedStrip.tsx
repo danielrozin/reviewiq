@@ -66,14 +66,14 @@ export function RecentlyViewedStrip() {
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="p-3.5">
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-xs text-gray-500 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>
+                <span className="text-xs text-gray-600 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>
                 <SmartScore score={item.smartScore} size="sm" />
               </div>
               <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-600 line-clamp-2 leading-snug transition-colors mb-1.5">
                 {item.name}
               </p>
               {item.categorySlug && (
-                <p className="text-xs text-gray-500 truncate capitalize">
+                <p className="text-xs text-gray-600 truncate capitalize">
                   {item.categorySlug.replace(/-/g, " ")}
                 </p>
               )}

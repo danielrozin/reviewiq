@@ -98,7 +98,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           </button>
         ))}
         {mounted && (
-          <span aria-live="polite" className="ml-auto text-xs text-gray-500 font-medium tabular-nums shrink-0">
+          <span aria-live="polite" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
             {sorted.length} products
           </span>
         )}

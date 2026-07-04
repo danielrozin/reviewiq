@@ -57,7 +57,7 @@ export function ComparisonModule({
                     {currentProduct} vs {comp.productName}
                   </p>
                   {comp.searchVolume && (
-                    <p className="text-xs text-gray-500 flex items-center gap-1 mt-0.5">
+                    <p className="text-xs text-gray-600 flex items-center gap-1 mt-0.5">
                       <svg aria-hidden="true" className="w-3 h-3 text-gray-300 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                       </svg>
