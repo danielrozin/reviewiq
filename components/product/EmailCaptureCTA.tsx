@@ -97,6 +97,8 @@ export function EmailCaptureCTA({
           type="email"
           required
           aria-label="Email address"
+          aria-invalid={status === "error"}
+          aria-describedby={status === "error" ? "email-capture-error" : undefined}
           placeholder="you@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -129,7 +131,7 @@ export function EmailCaptureCTA({
       </form>
 
       {status === "error" && (
-        <p role="alert" className="text-sm text-red-600 text-center mt-3">{errorMsg}</p>
+        <p id="email-capture-error" role="alert" className="text-sm text-red-600 text-center mt-3">{errorMsg}</p>
       )}
 
       <p className="text-xs text-gray-600 text-center mt-3 inline-flex items-center gap-1 justify-center w-full">

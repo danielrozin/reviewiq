@@ -173,11 +173,13 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Admin password"
           aria-label="Admin password"
+          aria-invalid={!!error}
+          aria-describedby={error ? "admin-pwd-error" : undefined}
           autoComplete="current-password"
           className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
           autoFocus
         />
-        {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+        {error && <p id="admin-pwd-error" role="alert" className="text-red-500 text-xs mt-2">{error}</p>}
         <button
           type="submit"
           disabled={loading || !password}
