@@ -41,7 +41,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           </svg>
           <div>
             <span className={`text-sm font-bold ${verdict.color}`}>{verdict.label}</span>
-            <span className={`text-sm ${verdict.color} opacity-80`}> — {verdict.sublabel}</span>
+            <span className={`text-sm ${verdict.color}`}> — {verdict.sublabel}</span>
           </div>
         </div>
       )}
