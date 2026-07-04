@@ -51,11 +51,15 @@ export function PricingFAQAccordion({ faqs }: Props) {
                 </svg>
               </span>
             </button>
-            {isOpen && (
-              <div id={panelId} role="region" aria-labelledby={btnId} className="px-6 pb-5">
-                <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
-              </div>
-            )}
+            <div
+              id={panelId}
+              role="region"
+              aria-labelledby={btnId}
+              hidden={!isOpen}
+              className="px-6 pb-5"
+            >
+              <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+            </div>
           </div>
         );
       })}

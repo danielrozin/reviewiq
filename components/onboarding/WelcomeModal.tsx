@@ -153,7 +153,7 @@ export function WelcomeModal() {
 
         {step === "props" && (
           <div className="p-6 sm:p-8">
-            <h3 className="text-lg font-bold text-gray-900 mb-1">
+            <h3 id="welcome-modal-heading" className="text-lg font-bold text-gray-900 mb-1">
               Here&apos;s what you can do
             </h3>
             <p className="text-sm text-gray-600 mb-5">
