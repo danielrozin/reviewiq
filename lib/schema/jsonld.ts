@@ -644,6 +644,7 @@ export function comparisonSchema(productA: Product, productB: Product) {
         "[data-speakable='pros-cons']",
         "[data-speakable='score-comparison']",
         "[data-speakable='specs-comparison']",
+        "[data-speakable='price-comparison']",
       ],
     },
     mainEntity: {
