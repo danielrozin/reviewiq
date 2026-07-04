@@ -18,6 +18,10 @@ const acceptableUseSchema = {
   inLanguage: "en",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='acceptable-use-intro']"],
+  },
 };
 
 export default function AcceptableUsePage() {

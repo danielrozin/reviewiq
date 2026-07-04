@@ -18,6 +18,10 @@ const cookiePolicySchema = {
   inLanguage: "en",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='cookie-policy-intro']"],
+  },
 };
 
 export default function CookiePolicyPage() {

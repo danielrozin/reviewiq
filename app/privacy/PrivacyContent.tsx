@@ -25,7 +25,7 @@ export function PrivacyContent() {
       sections={SECTIONS}
     >
       <section aria-label="Privacy Policy introduction">
-        <p>
+        <p data-speakable="privacy-intro">
           Welcome to ReviewIQ. This Privacy Policy explains how we collect, use, disclose, and safeguard
           your information when you visit our website. Please read this policy carefully.
         </p>

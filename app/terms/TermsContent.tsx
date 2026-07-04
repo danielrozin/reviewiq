@@ -25,7 +25,7 @@ export function TermsContent() {
       sections={SECTIONS}
     >
       <section aria-label="Terms of Service introduction">
-        <p>
+        <p data-speakable="terms-intro">
           Please read these Terms of Service carefully before using ReviewIQ. By accessing the site,
           you agree to be bound by these terms.
         </p>

@@ -22,7 +22,7 @@ export function AcceptableUseContent() {
       sections={SECTIONS}
     >
       <section aria-label="Acceptable Use Policy introduction">
-        <p>
+        <p data-speakable="acceptable-use-intro">
           This Acceptable Use Policy sets out the rules for using ReviewIQ. By accessing our
           platform, you agree to comply with this policy alongside our{" "}
           <Link href="/terms" className="text-brand-600 hover:underline">Terms of Service</Link>.

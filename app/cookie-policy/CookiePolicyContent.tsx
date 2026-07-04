@@ -22,7 +22,7 @@ export function CookiePolicyContent() {
       sections={SECTIONS}
     >
       <section aria-label="Cookie Policy introduction">
-        <p>
+        <p data-speakable="cookie-policy-intro">
           This Cookie Policy explains how ReviewIQ uses cookies and similar technologies.
           Please read it alongside our{" "}
           <Link href="/privacy" className="text-brand-600 hover:underline">Privacy Policy</Link>.
