@@ -24,6 +24,21 @@ const faqIndexJsonLd = {
   })),
 };
 
+const faqIndexWebPageJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE_URL}/faq`,
+  name: "Frequently Asked Questions — ReviewIQ",
+  url: `${SITE_URL}/faq`,
+  inLanguage: "en",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='faq-intro']"],
+  },
+};
+
 export const metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
@@ -35,6 +50,7 @@ export default function FAQIndexPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexWebPageJsonLd) }} />
       <Breadcrumbs items={[{ name: "FAQ", url: "/faq" }]} />
 
       <header className="mt-8 mb-12 max-w-3xl">
