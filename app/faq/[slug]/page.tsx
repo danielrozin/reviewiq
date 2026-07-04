@@ -65,7 +65,7 @@ export default async function FAQPage({ params }: Props) {
       />
 
       {/* Hero */}
-      <header className="mt-8 mb-12 max-w-3xl">
+      <header data-speakable="faq-hero" className="mt-8 mb-12 max-w-3xl">
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           {page.heroHeadline}
         </h1>

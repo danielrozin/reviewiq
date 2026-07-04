@@ -555,7 +555,7 @@ export function competitorFaqPageSchema(opts: {
       mentions: { "@id": `${SITE_URL}/#organization` },
       speakable: {
         "@type": "SpeakableSpecification",
-        cssSelector: ["[data-speakable='faq-answer']"],
+        cssSelector: ["[data-speakable='faq-hero']", "[data-speakable='faq-answer']"],
       },
     },
   ];
