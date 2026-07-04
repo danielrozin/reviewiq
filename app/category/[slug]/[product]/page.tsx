@@ -242,7 +242,7 @@ export default async function ProductPage({ params }: Props) {
           />
 
           {/* AI Summary */}
-          <div id="section-summary" data-speakable="ai-summary">
+          <div id="section-summary">
             <AISummaryCard summary={product.aiSummary} score={product.smartScore} />
           </div>
 

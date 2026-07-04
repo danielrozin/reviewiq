@@ -428,8 +428,6 @@ export function speakableSchema(productName: string, productUrl: string) {
         "[data-speakable='related-products']",
         "[data-speakable='reviews']",
         "[data-speakable='video-reviews']",
-        "[data-speakable='comparison-links']",
-        "[data-speakable='external-comparisons']",
       ],
     },
   };
