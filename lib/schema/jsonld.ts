@@ -625,7 +625,7 @@ export function comparisonSchema(productA: Product, productB: Product) {
 
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": ["WebPage", "ItemPage"],
     "@id": pageUrl,
     name: `${productA.name} vs ${productB.name} — Comparison`,
     description: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`,
