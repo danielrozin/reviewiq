@@ -82,7 +82,7 @@ export default async function UserProfilePage({ params }: Props) {
             </div>
 
             {/* Bio */}
-            <p className="text-sm text-gray-600 leading-relaxed mb-6">
+            <p data-speakable="profile-bio" className="text-sm text-gray-600 leading-relaxed mb-6">
               {user.bio}
             </p>
 

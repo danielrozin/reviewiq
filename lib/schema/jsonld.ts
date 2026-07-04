@@ -572,6 +572,12 @@ export function profilePageSchema(username: string, displayName: string, bio?: s
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    ...(bio && {
+      speakable: {
+        "@type": "SpeakableSpecification",
+        cssSelector: ["[data-speakable='profile-bio']"],
+      },
+    }),
     mainEntity: {
       "@type": "Person",
       "@id": `${pageUrl}#person`,
