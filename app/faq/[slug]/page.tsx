@@ -111,7 +111,7 @@ export default async function FAQPage({ params }: Props) {
         </p>
         <Link
           href="/categories"
-          className="inline-flex items-center gap-2 bg-brand-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-brand-700 transition-colors"
+          className="inline-flex items-center gap-2 bg-brand-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         >
           Browse Verified Reviews
           <span aria-hidden="true">&rarr;</span>
@@ -128,7 +128,7 @@ export default async function FAQPage({ params }: Props) {
             <li key={link.href}>
               <Link
                 href={link.href}
-                className="text-sm text-brand-600 hover:text-brand-800 underline underline-offset-2"
+                className="text-sm text-brand-600 hover:text-brand-800 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
               >
                 {link.label}
               </Link>
@@ -150,7 +150,7 @@ export default async function FAQPage({ params }: Props) {
                 <li key={p.slug}>
                   <Link
                     href={`/faq/${p.slug}`}
-                    className="block p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200"
+                    className="block p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <span className="font-medium text-gray-900 text-sm">
                       {p.title}

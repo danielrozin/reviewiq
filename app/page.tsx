@@ -79,7 +79,7 @@ export default function HomePage() {
                   key={tile.href + tile.label}
                   href={tile.href}
                   aria-label={`${tile.label} ${tile.desc}`}
-                  className="group p-3 bg-white/80 hover:bg-white border border-gray-200/80 hover:border-brand-200 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm"
+                  className="group p-3 bg-white/80 hover:bg-white border border-gray-200/80 hover:border-brand-200 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
                   <span aria-hidden="true" className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
@@ -265,7 +265,7 @@ export default function HomePage() {
               <Link
                 key={product.id}
                 href={`/category/${product.categorySlug}/${product.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 {/* Brand accent hover strip */}
                 <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -347,7 +347,7 @@ export default function HomePage() {
               <Link
                 key={thread.id}
                 href={`/community/thread/${thread.id}`}
-                className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all"
+                className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 <div className="flex flex-col items-center shrink-0 min-w-9">
                   <svg aria-hidden="true" className={`w-4 h-4 mb-0.5 ${netVotes > 0 ? "text-brand-400" : "text-gray-300"}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -430,7 +430,7 @@ export default function HomePage() {
               <Link
                 key={post.id}
                 href={`/blog/${post.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 <div className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 <div className="p-6 flex flex-col flex-1">
@@ -503,7 +503,7 @@ export default function HomePage() {
               {/* Featured pick — takes 3/5 columns */}
               <Link
                 href={`/category/${featured.categorySlug}/${featured.slug}`}
-                className="group lg:col-span-3 relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex flex-col"
+                className="group lg:col-span-3 relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 <div className="absolute top-4 left-4 z-10">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full shadow-sm">
@@ -549,7 +549,7 @@ export default function HomePage() {
                   <Link
                     key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
-                    className="group flex-1 bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex"
+                    className="group flex-1 bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <div className="relative w-28 shrink-0 bg-gray-50 overflow-hidden">
                       {product.image ? (
