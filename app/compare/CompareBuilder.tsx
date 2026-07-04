@@ -49,7 +49,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
       {open && query.length > 0 && (
         <ul id="compare-product-listbox" role="listbox" aria-label="Product search results" className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
           {filtered.length === 0 ? (
-            <li className="px-4 py-3 text-sm text-gray-500">No products found</li>
+            <li className="px-4 py-3 text-sm text-gray-600">No products found</li>
           ) : (
             filtered.slice(0, 8).map((p) => (
               <li key={p.id}>
@@ -135,7 +135,7 @@ function CompareContent() {
 
         {/* Suggested comparisons */}
         <section aria-label="Popular comparisons" className="border-t border-gray-100 pt-6">
-          <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
+          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
           <div className="flex flex-col gap-2">
             {SUGGESTED_PAIRS.map((pair) => (
               <a
@@ -210,7 +210,7 @@ function CompareContent() {
       <div className="space-y-8">
         <MultiScoreComparison products={compareProducts} />
         <AdPlacement slot="compare-mid" className="my-6">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center text-xs text-gray-500">
+          <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center text-xs text-gray-600">
             Advertisement
           </div>
         </AdPlacement>

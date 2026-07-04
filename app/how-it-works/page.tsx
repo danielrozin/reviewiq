@@ -223,7 +223,7 @@ export default function HowItWorksPage() {
                     ReviewIQ
                   </span>
                 </th>
-                <th scope="col" className="text-center px-4 py-3.5 text-xs font-semibold text-gray-500 uppercase tracking-wider w-[30%]">Traditional Sites</th>
+                <th scope="col" className="text-center px-4 py-3.5 text-xs font-semibold text-gray-600 uppercase tracking-wider w-[30%]">Traditional Sites</th>
               </tr>
             </thead>
             <tbody>
