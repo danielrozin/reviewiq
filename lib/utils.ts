@@ -12,15 +12,15 @@ export function formatNumber(num: number): string {
 }
 
 export function getScoreColor(score: number): string {
-  if (score >= 80) return "text-trust-green";
-  if (score >= 60) return "text-yellow-500";
-  return "text-trust-red";
+  if (score >= 80) return "text-emerald-700";
+  if (score >= 60) return "text-amber-700";
+  return "text-red-700";
 }
 
 export function getScoreBgColor(score: number): string {
-  if (score >= 80) return "bg-trust-green";
-  if (score >= 60) return "bg-yellow-500";
-  return "bg-trust-red";
+  if (score >= 80) return "bg-emerald-700";
+  if (score >= 60) return "bg-amber-700";
+  return "bg-red-700";
 }
 
 export function getScoreLabel(score: number): string {

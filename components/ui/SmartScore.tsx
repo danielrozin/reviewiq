@@ -12,9 +12,9 @@ interface SmartScoreProps {
 }
 
 function getScoreRingColor(score: number): string {
-  if (score >= 80) return "#10b981"; // emerald
-  if (score >= 60) return "#f59e0b"; // amber
-  return "#ef4444"; // red
+  if (score >= 80) return "#047857"; // emerald-700, 5.47:1 on white
+  if (score >= 60) return "#b45309"; // amber-700, 5.02:1 on white
+  return "#b91c1c"; // red-700, 6.33:1 on white
 }
 
 export function SmartScore({ score, size = "md", showLabel = true, showRing = false, animateOnView = false }: SmartScoreProps) {

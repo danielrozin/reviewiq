@@ -20,7 +20,7 @@ export function RatingStars({ rating, maxRating = 5, size = "md", showValue = fa
         {Array.from({ length: maxRating }, (_, i) => (
           <svg
             key={i}
-            className={cn(STAR_SIZE[size], i < Math.floor(rating) ? "text-amber-400" : "text-gray-200")}
+            className={cn(STAR_SIZE[size], i < Math.floor(rating) ? "text-amber-600" : "text-gray-300")}
             viewBox="0 0 24 24"
             fill="currentColor"
           >
