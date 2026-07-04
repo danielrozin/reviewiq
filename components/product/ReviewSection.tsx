@@ -103,7 +103,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
               }
               size="sm"
             />
-            <span className="text-xs text-gray-500 mt-1">
+            <span className="text-xs text-gray-600 mt-1">
               {totalReviews} reviews
             </span>
           </div>
@@ -129,12 +129,12 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
                     />
                   </div>
                   <span
-                    className="w-8 text-right text-gray-500 text-xs"
+                    className="w-8 text-right text-gray-600 text-xs"
                     aria-label={`${star} stars: ${count} reviews, ${percentage.toFixed(0)}%`}
                   >
                     {count}
                   </span>
-                  <span aria-hidden="true" className="w-10 text-right text-gray-500 text-xs">
+                  <span aria-hidden="true" className="w-10 text-right text-gray-600 text-xs">
                     {percentage.toFixed(0)}%
                   </span>
                 </div>
@@ -154,7 +154,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
           </div>
           <h2 id="review-section-heading" className="text-lg font-semibold text-gray-900">
             Verified Reviews
-            <span className="text-sm font-normal text-gray-500 ml-2">{reviews.length} shown</span>
+            <span className="text-sm font-normal text-gray-600 ml-2">{reviews.length} shown</span>
           </h2>
         </div>
 
@@ -225,7 +225,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-500 mb-4">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-600 mb-4">
         <span>By {review.authorName}</span>
         {review.timeOwned && <span>Owned {review.timeOwned}</span>}
         <span className="capitalize">{review.experienceLevel} user</span>
@@ -278,7 +278,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>
 
       <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-        <div className="flex gap-4 text-xs text-gray-500">
+        <div className="flex gap-4 text-xs text-gray-600">
           {review.reliabilityRating != null && (
             <span>Reliability: {review.reliabilityRating}/5</span>
           )}
@@ -300,7 +300,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
           {review.aiTopics.map((topic) => (
             <li
               key={topic}
-              className="px-2 py-0.5 bg-gray-50 text-gray-500 rounded-full text-xs"
+              className="px-2 py-0.5 bg-gray-50 text-gray-600 rounded-full text-xs"
             >
               {topic}
             </li>

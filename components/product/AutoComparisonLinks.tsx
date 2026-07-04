@@ -45,7 +45,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
               <p className="text-sm font-medium text-gray-900 group-hover:text-purple-600 transition-colors">
                 All {productName} Comparisons
               </p>
-              <p className="text-xs text-gray-500">on aversusb.net</p>
+              <p className="text-xs text-gray-600">on aversusb.net</p>
             </div>
           </div>
           <span aria-hidden="true" className="inline-flex items-center gap-1 text-purple-600 text-xs font-medium shrink-0 ml-3">
@@ -73,7 +73,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
               <p className="text-sm font-medium text-gray-900 group-hover:text-purple-600 transition-colors">
                 Alternatives to {productName}
               </p>
-              <p className="text-xs text-gray-500">on aversusb.net</p>
+              <p className="text-xs text-gray-600">on aversusb.net</p>
             </div>
           </div>
           <span aria-hidden="true" className="inline-flex items-center gap-1 text-purple-600 text-xs font-medium shrink-0 ml-3">

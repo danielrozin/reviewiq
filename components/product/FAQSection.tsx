@@ -24,7 +24,7 @@ export function FAQSection({ items }: FAQSectionProps) {
         <h2 id="faq-section-heading" className="text-lg font-semibold text-gray-900">
           Frequently Asked Questions
         </h2>
-        <span className="ml-auto text-xs text-gray-500 font-medium tabular-nums">{items.length} questions</span>
+        <span className="ml-auto text-xs text-gray-600 font-medium tabular-nums">{items.length} questions</span>
       </div>
       <div className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100">
         {items.map((item, i) => {
