@@ -37,10 +37,11 @@ export function StickyMobileCTA({
 
   return (
     <div
+      inert={!visible || undefined}
+      aria-hidden={!visible}
       className={`fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-sm border-t border-gray-200 transition-transform duration-300 safe-area-bottom ${
         visible ? "translate-y-0" : "translate-y-full"
       }`}
-      aria-hidden={!visible}
     >
       {/* Mobile layout */}
       <div className="lg:hidden px-3 py-2.5">
