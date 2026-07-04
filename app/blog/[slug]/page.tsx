@@ -178,7 +178,7 @@ export default async function BlogPostPage({
         {/* Content */}
         <div
           data-speakable="blog-body"
-          className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-brand-600 prose-strong:text-gray-900 prose-li:text-gray-600 prose-table:text-sm"
+          className="prose prose-lg max-w-prose prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-brand-600 prose-strong:text-gray-900 prose-li:text-gray-600 prose-table:text-sm"
           dangerouslySetInnerHTML={{ __html: markdownToHtml(post.content) }}
         />
 
@@ -387,15 +387,23 @@ function markdownToHtml(md: string): string {
   });
 
   // Headers
-  html = html.replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold mt-8 mb-3">$1</h3>');
-  html = html.replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold mt-10 mb-4">$1</h2>');
+  html = html.replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold text-gray-900 mt-8 mb-3">$1</h3>');
+  html = html.replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">$1</h2>');
 
   // Bold and italic
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   html = html.replace(/\*(.+?)\*/g, "<em>$1</em>");
 
-  // Links
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-brand-600 hover:underline">$1</a>');
+  // External links (http/https) — open in new tab with security attributes
+  html = html.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">$1</a>'
+  );
+  // Internal links — same-tab navigation, no rel override
+  html = html.replace(
+    /\[([^\]]+)\]\((?!https?:\/\/)([^)]+)\)/g,
+    '<a href="$2" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">$1</a>'
+  );
 
   // Unordered lists
   html = html.replace(/^- (.+)$/gm, '<li class="ml-4">$1</li>');
