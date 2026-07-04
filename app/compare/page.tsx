@@ -15,6 +15,10 @@ const compareHubJsonLd = {
   inLanguage: "en",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  speakable: {
+    "@type": "SpeakableSpecification",
+    cssSelector: ["[data-speakable='compare-intro']"],
+  },
 };
 
 export const metadata = buildMetadata({

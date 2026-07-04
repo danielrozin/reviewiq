@@ -47,7 +47,7 @@ export function SortableDiscussions({
   const threads = activeTab === "Trending" ? trending : activeTab === "Recent" ? recent : top;
 
   return (
-    <section aria-labelledby="sortable-discussions-heading">
+    <section data-speakable="community-discussions" aria-labelledby="sortable-discussions-heading">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
           <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">

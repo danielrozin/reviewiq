@@ -102,7 +102,7 @@ function CompareContent() {
             </svg>
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Compare Products Side-by-Side</h1>
-          <p className="text-gray-600 max-w-md mx-auto">
+          <p data-speakable="compare-intro" className="text-gray-600 max-w-md mx-auto">
             Search and add 2–4 products to see SmartScores, specs, pros & cons, and an AI verdict — all in one view.
           </p>
         </div>
