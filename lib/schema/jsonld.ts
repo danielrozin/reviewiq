@@ -72,7 +72,7 @@ export function productSchema(product: Product, pageUrl?: string) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
-    ...(canonicalUrl && { "@id": canonicalUrl }),
+    ...(canonicalUrl && { "@id": `${canonicalUrl}#product` }),
     name: product.name,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
