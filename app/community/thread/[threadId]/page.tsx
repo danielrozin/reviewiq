@@ -131,10 +131,10 @@ export default async function ThreadPage({ params }: Props) {
                   {author && (
                     <UserChip user={author} showTrustLevel size="md" />
                   )}
-                  <time dateTime={thread.createdAt} className="text-sm text-gray-500">
+                  <time dateTime={thread.createdAt} className="text-sm text-gray-600">
                     {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
                   </time>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-600">
                     {formatNumber(thread.viewCount)} views
                   </span>
                 </div>
@@ -206,7 +206,7 @@ export default async function ThreadPage({ params }: Props) {
                       </svg>
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-xs text-gray-500 uppercase tracking-wider font-medium mb-0.5">Related Product</p>
+                      <p className="text-xs text-gray-600 uppercase tracking-wider font-medium mb-0.5">Related Product</p>
                       <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors capitalize truncate">
                         {thread.productSlug.replace(/-/g, " ")}
                       </p>
@@ -308,19 +308,19 @@ export default async function ThreadPage({ params }: Props) {
                 <div key={stat.label} className="text-center p-2.5 bg-gray-50 rounded-xl">
                   <div aria-hidden="true" className={`flex items-center justify-center mb-1 ${stat.color}`}>{stat.icon}</div>
                   <p className="text-sm font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{stat.label}</p>
+                  <p className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
                 </div>
               ))}
             </div>
             <div className="space-y-2 text-sm border-t border-gray-50 pt-4">
               <div className="flex justify-between">
-                <span className="text-gray-500">Created</span>
+                <span className="text-gray-600">Created</span>
                 <time dateTime={thread.createdAt} className="font-medium text-gray-700 text-xs">
                   {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
                 </time>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-500">Last activity</span>
+                <span className="text-gray-600">Last activity</span>
                 <time dateTime={thread.lastActivityAt} className="font-medium text-gray-700 text-xs">
                   {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.lastActivityAt))}
                 </time>
@@ -330,7 +330,7 @@ export default async function ThreadPage({ params }: Props) {
             {/* Author card */}
             {author && (
               <div className="mt-6 pt-4 border-t border-gray-200">
-                <p className="text-xs text-gray-500 uppercase tracking-wider mb-3 font-medium">
+                <p className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-medium">
                   Posted by
                 </p>
                 <UserChip user={author} showTrustLevel showReputation size="md" />
