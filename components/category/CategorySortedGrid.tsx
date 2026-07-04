@@ -46,6 +46,15 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
     saveSort(categorySlug, key);
   }
 
+  function handleSortKeyDown(e: React.KeyboardEvent, index: number) {
+    if (e.key !== "ArrowRight" && e.key !== "ArrowDown" && e.key !== "ArrowLeft" && e.key !== "ArrowUp") return;
+    e.preventDefault();
+    const delta = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
+    const next = (index + delta + SORT_OPTIONS.length) % SORT_OPTIONS.length;
+    handleSort(SORT_OPTIONS[next].key);
+    (e.currentTarget.closest('[role="radiogroup"]')?.querySelectorAll<HTMLElement>('[role="radio"]')[next])?.focus();
+  }
+
   const sorted = useMemo(() => {
     const arr = [...products];
     switch (sortKey) {
@@ -70,13 +79,15 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           </svg>
           Sort:
         </span>
-        {SORT_OPTIONS.map((opt) => (
+        {SORT_OPTIONS.map((opt, index) => (
           <button
             key={opt.key}
             type="button"
             role="radio"
             aria-checked={sortKey === opt.key}
+            tabIndex={sortKey === opt.key ? 0 : -1}
             onClick={() => handleSort(opt.key)}
+            onKeyDown={(e) => handleSortKeyDown(e, index)}
             className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               sortKey === opt.key
                 ? "bg-brand-600 text-white shadow-sm ring-1 ring-brand-600/30"
