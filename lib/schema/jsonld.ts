@@ -597,6 +597,10 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='blog-category-intro']"],
+    },
   };
 }
 

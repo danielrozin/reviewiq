@@ -100,7 +100,7 @@ export default async function BlogCategoryPage({
         <h1 className="text-3xl font-bold text-gray-900">
           {emoji} {cat.name} — Guides & Reviews
         </h1>
-        <p className="text-gray-600 mt-2 max-w-2xl">
+        <p data-speakable="blog-category-intro" className="text-gray-600 mt-2 max-w-2xl">
           Expert buying guides, in-depth comparisons, and review insights for{" "}
           {cat.name.toLowerCase()} — backed by real owner data and AI analysis.
         </p>
