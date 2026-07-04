@@ -3,6 +3,21 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProductSearch } from "@/components/product/ProductSearch";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
+
+const productsPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "SearchResultsPage",
+  "@id": `${SITE_URL}/products`,
+  name: "Browse All Products — ReviewIQ",
+  url: `${SITE_URL}/products`,
+  inLanguage: "en",
+  description:
+    "Search and filter products across all categories on ReviewIQ. Every SmartScore is based on verified buyer reviews.",
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
 export const metadata = buildMetadata({
   title: "Browse All Products — Search & Filter",
   description:
@@ -13,6 +28,10 @@ export const metadata = buildMetadata({
 export default function ProductsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productsPageSchema) }}
+      />
       <Breadcrumbs
         items={[{ name: "Products", url: "/products" }]}
       />

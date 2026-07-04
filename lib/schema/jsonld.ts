@@ -165,7 +165,11 @@ export function categoryListSchema(categories: Category[]) {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "@id": `${SITE_URL}/categories#category-list`,
     name: "Product Categories",
+    numberOfItems: categories.length,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    publisher: { "@id": `${SITE_URL}/#organization` },
     itemListElement: categories.map((cat, index) => ({
       "@type": "ListItem",
       position: index + 1,
