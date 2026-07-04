@@ -707,7 +707,7 @@ export function WriteReviewForm() {
                 onClick={handleSubmit}
                 disabled={!canProceed || isSubmitting}
                 aria-busy={isSubmitting}
-                aria-label={isSubmitting ? "Submitting your review, please wait" : "Submit your review"}
+                aria-label={isSubmitting ? "Submitting your review, please wait" : "Submit Review"}
                 className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
                   canProceed && !isSubmitting
                     ? "bg-brand-600 text-white hover:bg-brand-700"
