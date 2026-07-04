@@ -252,7 +252,7 @@ export function Header() {
                 className="lg:hidden inline-flex items-center justify-center p-3 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 onClick={() => setMenuOpen(!menuOpen)}
                 aria-expanded={menuOpen}
-                aria-controls="mobile-nav"
+                {...(menuOpen ? { "aria-controls": "mobile-nav" } : {})}
                 aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
               >
                 {menuOpen ? (
