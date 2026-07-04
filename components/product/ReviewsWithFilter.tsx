@@ -48,7 +48,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
   const hasMore = visible < filtered.length;
 
   return (
-    <section id="section-reviews" aria-labelledby="verified-reviews-heading" data-speakable="reviews">
+    <section id="section-reviews" aria-labelledby="verified-reviews-heading">
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
         <div className="flex items-center gap-2.5 flex-1 min-w-0">
@@ -136,7 +136,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           </button>
         </div>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-4" data-speakable="review-list">
           {shown.map((review) => (
             <ReviewCard key={review.id} review={review} />
           ))}

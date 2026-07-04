@@ -427,7 +427,7 @@ export function speakableSchema(productName: string, productUrl: string) {
         "[data-speakable='recurring-issues']",
         "[data-speakable='people-also-reviewed']",
         "[data-speakable='related-products']",
-        "[data-speakable='reviews']",
+        "[data-speakable='review-list']",
         "[data-speakable='video-reviews']",
       ],
     },
