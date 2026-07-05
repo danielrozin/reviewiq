@@ -16,7 +16,7 @@ import {
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { discussionForumPostingSchema, threadPageSpeakableSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { discussionForumPostingSchema, threadPageSpeakableSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
@@ -55,35 +55,6 @@ export default async function ThreadPage({ params }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            discussionForumPostingSchema(
-              thread,
-              author?.displayName ?? author?.username ?? "ReviewIQ Community Member",
-              author?.username
-            )
-          ),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(threadPageSpeakableSchema(thread.title, `/community/thread/${threadId}`, thread.createdAt, thread.lastActivityAt || thread.createdAt)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Community", url: "/community" },
-              { name: thread.title, url: `/community/thread/${threadId}` },
-            ])
-          ),
-        }}
-      />
       <Breadcrumbs
         items={[
           { name: "Community", url: "/community" },

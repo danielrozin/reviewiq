@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqPages } from "@/data/faq-pages";
-import { breadcrumbSchema, faqSchema } from "@/lib/schema/jsonld";
+import { faqSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -71,12 +71,6 @@ export default function FAQIndexPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexWebPageJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexFAQPageJsonLd) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "FAQ", url: "/faq" }])),
-        }}
-      />
       <Breadcrumbs items={[{ name: "FAQ", url: "/faq" }]} />
 
       <header className="mt-8 mb-12 max-w-3xl">

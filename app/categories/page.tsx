@@ -1,7 +1,7 @@
 import { categories } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { categoryListSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { categoryListSchema } from "@/lib/schema/jsonld";
 import { CategorySearch } from "@/components/category/CategorySearch";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
@@ -36,22 +36,6 @@ export default function CategoriesPage() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(categoryListSchema(categories)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(categoriesWebPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Categories", url: "/categories" }])),
-        }}
-      />
       <Breadcrumbs items={[{ name: "Categories", url: "/categories" }]} />
 
       {/* Page header */}

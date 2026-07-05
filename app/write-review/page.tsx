@@ -1,6 +1,5 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { WriteReviewForm } from "./WriteReviewForm";
-import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -43,16 +42,6 @@ export const metadata = buildMetadata({
 export default function WriteReviewPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(writeReviewWebPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Write a Review", url: "/write-review" }])),
-        }}
-      />
       <WriteReviewForm />
     </>
   );

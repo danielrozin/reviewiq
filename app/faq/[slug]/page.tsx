@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { competitorFaqPageSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { competitorFaqPageSchema } from "@/lib/schema/jsonld";
 import { faqPages, getFAQPageBySlug, getAllFAQSlugs } from "@/data/faq-pages";
 
 interface Props {
@@ -54,21 +54,6 @@ export default async function FAQPage({ params }: Props) {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "FAQ", url: "/faq" },
-              { name: page.title, url: `/faq/${page.slug}` },
-            ])
-          ),
-        }}
-      />
       <Breadcrumbs
         items={[
           { name: "FAQ", url: "/faq" },

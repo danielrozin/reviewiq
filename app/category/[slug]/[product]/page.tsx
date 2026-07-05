@@ -17,7 +17,7 @@ import { YouTubeVideos } from "@/components/product/YouTubeVideos";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productSchema, speakableSchema, faqSchema, videoObjectListSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { productSchema, speakableSchema, faqSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
@@ -112,46 +112,6 @@ export default async function ProductPage({ params }: Props) {
         brand={product.brand}
         categorySlug={category.slug}
         smartScore={product.smartScore}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema(product, `/category/${slug}/${productSlug}`)),
-        }}
-      />
-      {product.youtubeVideos && product.youtubeVideos.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(videoObjectListSchema(product.youtubeVideos, product.name)),
-          }}
-        />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`, product.createdAt, product.updatedAt || product.createdAt)),
-        }}
-      />
-      {product.faq.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema(product.faq, `/category/${slug}/${productSlug}`)),
-          }}
-        />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Categories", url: "/categories" },
-              { name: category.name, url: `/category/${slug}` },
-              { name: product.name, url: `/category/${slug}/${productSlug}` },
-            ])
-          ),
-        }}
       />
       <Breadcrumbs
         items={[

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { breadcrumbSchema, organizationSchema } from "@/lib/schema/jsonld";
+import { organizationSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "About ReviewIQ — AI-Powered Honest Product Reviews",
@@ -157,12 +157,6 @@ export default function AboutPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema()) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(teamPersonsJsonLd) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "About", url: "/about" }])),
-        }}
-      />
       <Breadcrumbs items={[{ name: "About", url: "/about" }]} />
 
       {/* Hero */}

@@ -4,7 +4,7 @@ import { getProductsByCategory } from "@/data/products";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CategorySortedGrid } from "@/components/category/CategorySortedGrid";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productListSchema, howToSchema, categoryPageSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { productListSchema, howToSchema, categoryPageSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
 import { TrackCategoryView } from "@/components/tracking/TrackCategoryView";
@@ -40,47 +40,6 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackCategoryView slug={slug} productCount={categoryProducts.length} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(categoryPageSchema(
-            category.name,
-            category.description,
-            `/category/${slug}`,
-            categoryProducts.length > 0 ? [...categoryProducts].sort((a, b) => (a.createdAt || "").localeCompare(b.createdAt || "")).find((p) => p.createdAt)?.createdAt : undefined,
-            categoryProducts.length > 0 ? [...categoryProducts].sort((a, b) => ((b.updatedAt || b.createdAt || "") as string).localeCompare((a.updatedAt || a.createdAt || "") as string)).find((p) => p.updatedAt || p.createdAt)?.updatedAt || undefined : undefined,
-          )),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            productListSchema(categoryProducts, category.name, slug)
-          ),
-        }}
-      />
-      {buyingGuide && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(
-              howToSchema(buyingGuide.title, buyingGuide.steps, slug)
-            ),
-          }}
-        />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Categories", url: "/categories" },
-              { name: category.name, url: `/category/${slug}` },
-            ])
-          ),
-        }}
-      />
       <Breadcrumbs
         items={[
           { name: "Categories", url: "/categories" },

@@ -6,7 +6,7 @@ import {
   getBlogCategories,
 } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blogListSchema, blogCategoryPageSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { blogListSchema, blogCategoryPageSchema } from "@/lib/schema/jsonld";
 
 export function generateStaticParams() {
   return getBlogCategories().map((cat) => ({ category: cat.slug }));
@@ -73,35 +73,6 @@ export default async function BlogCategoryPage({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(blogListSchema(posts)),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(blogCategoryPageSchema(
-            cat.name,
-            `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`,
-            cat.slug,
-            posts.length > 0 ? [...posts].sort((a, b) => a.publishedAt.localeCompare(b.publishedAt))[0].publishedAt : undefined,
-            posts.length > 0 ? [...posts].sort((a, b) => (b.updatedAt || b.publishedAt).localeCompare(a.updatedAt || a.publishedAt))[0].updatedAt || undefined : undefined,
-          )),
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            breadcrumbSchema([
-              { name: "Blog", url: "/blog" },
-              { name: cat.name, url: `/blog/category/${cat.slug}` },
-            ])
-          ),
-        }}
-      />
       <Breadcrumbs
         items={[
           { name: "Blog", url: "/blog" },
