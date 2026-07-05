@@ -231,6 +231,8 @@ export default function WhoIsThisForPage() {
     name: "Who Is ReviewIQ For?",
     url: `${SITE_URL}/who-is-this-for`,
     inLanguage: "en",
+    datePublished: "2024-01-01",
+    dateModified: "2025-06-01",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {

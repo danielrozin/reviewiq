@@ -95,7 +95,7 @@ export function productSchema(product: Product, pageUrl?: string) {
     ...(product.updatedAt || product.createdAt ? { dateModified: product.updatedAt || product.createdAt } : {}),
     ...(canonicalUrl && {
       url: canonicalUrl,
-      mainEntityOfPage: { "@type": "ItemPage", "@id": canonicalUrl },
+      mainEntityOfPage: { "@type": "ItemPage", "@id": `${canonicalUrl}#page` },
       isPartOf: { "@id": `${SITE_URL}/#website` },
       publisher: { "@id": `${SITE_URL}/#organization` },
     }),
@@ -343,7 +343,7 @@ export function blogPostSchema(post: BlogPost) {
     dateModified: post.updatedAt,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": postUrl,
+      "@id": `${postUrl}#page`,
     },
     keywords: [post.seo.focusKeyword, ...post.seo.secondaryKeywords].join(", "),
     articleSection: post.categoryName,
@@ -370,10 +370,10 @@ export function blogListSchema(posts: BlogPost[]) {
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    mainEntity: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/blog#post-list`, name: "ReviewIQ Blog Posts" },
     hasPart: posts.map((post) => ({
       "@type": "BlogPosting",
-      "@id": `${SITE_URL}/blog/${post.slug}`,
+      "@id": `${SITE_URL}/blog/${post.slug}#article`,
       headline: post.title,
       url: `${SITE_URL}/blog/${post.slug}`,
       datePublished: post.publishedAt,
@@ -502,7 +502,7 @@ export function blogPostSpeakableSchema(title: string, url: string) {
     name: title,
     url: pageUrl,
     inLanguage: "en",
-    mainEntity: { "@id": pageUrl },
+    mainEntity: { "@id": `${pageUrl}#article` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
@@ -568,7 +568,7 @@ export function discussionForumPostingSchema(
       },
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
-    isPartOf: { "@id": `${SITE_URL}/community` },
+    isPartOf: { "@id": `${SITE_URL}/community#page` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntityOfPage: { "@type": "WebPage", "@id": `${threadUrl}#page` },
   };
