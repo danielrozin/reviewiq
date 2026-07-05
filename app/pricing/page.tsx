@@ -38,10 +38,17 @@ const proOfferSchema = {
   name: "ReviewIQ Pro",
   description: "Ad-free experience, price tracking alerts, advanced comparison tools, and expert consultation.",
   brand: { "@type": "Brand", name: "ReviewIQ" },
+  image: {
+    "@type": "ImageObject",
+    url: `${SITE_URL}/logo.png`,
+    width: 200,
+    height: 60,
+  },
   offers: {
     "@type": "Offer",
     price: "9.99",
     priceCurrency: "USD",
+    priceValidUntil: "2027-07-05",
     priceSpecification: {
       "@type": "UnitPriceSpecification",
       price: "9.99",

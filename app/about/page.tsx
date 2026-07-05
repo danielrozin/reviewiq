@@ -67,6 +67,13 @@ const TEAM = [
   },
 ];
 
+const TEAM_KNOWS_ABOUT: Record<string, string[]> = {
+  "Alex Chen": ["Product Strategy", "E-commerce", "Consumer Trust", "Product Reviews", "Startup Leadership"],
+  "Sarah Kim": ["Machine Learning", "Natural Language Processing", "AI Analysis", "Product Reviews", "Data Science"],
+  "Marcus Webb": ["Data Science", "Consumer Insights", "Review Quality Analysis", "Structured Data", "Statistical Modeling"],
+  "Priya Nair": ["Product Design", "Consumer Technology", "UX Research", "Information Architecture", "Product Reviews"],
+};
+
 const teamPersonsJsonLd = {
   "@context": "https://schema.org",
   "@graph": TEAM.map((member) => ({
@@ -77,6 +84,8 @@ const teamPersonsJsonLd = {
     jobTitle: member.role,
     description: member.bio,
     worksFor: { "@id": `${SITE_URL}/#organization` },
+    knowsAbout: TEAM_KNOWS_ABOUT[member.name] ?? [],
+    sameAs: [`${SITE_URL}/about`],
   })),
 };
 
