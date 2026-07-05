@@ -403,6 +403,7 @@ export function blogPostSchema(post: BlogPost) {
       url: `${SITE_URL}/about`,
       jobTitle: "Consumer Technology Analyst",
       sameAs: [`${SITE_URL}/about`],
+      knowsAbout: ["Product Reviews", "Consumer Electronics", "Buyer Guidance", "Comparative Product Analysis"],
       ...(post.author.bio && { description: post.author.bio }),
     },
     isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -947,6 +948,21 @@ function comparisonProductItem(product: Product) {
       bestRating: 5,
       worstRating: 1,
     };
+  }
+
+  if (product.smartScore > 0) {
+    item.additionalProperty = [
+      {
+        "@type": "PropertyValue",
+        propertyID: "SmartScore",
+        name: "SmartScore",
+        value: product.smartScore,
+        minValue: 0,
+        maxValue: 100,
+        description: "AI-aggregated score from verified buyer reviews (0-100)",
+        url: productUrl,
+      },
+    ];
   }
 
   return item;
