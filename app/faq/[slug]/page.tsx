@@ -49,7 +49,7 @@ export default async function FAQPage({ params }: Props) {
     pageName: page.metaTitle,
     competitor: page.competitor,
     datePublished: "2024-01-01",
-    dateModified: "2025-06-01",
+    dateModified: "2026-07-05",
   });
 
   return (

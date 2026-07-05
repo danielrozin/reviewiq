@@ -36,7 +36,7 @@ const faqIndexWebPageJsonLd = {
   url: `${SITE_URL}/faq`,
   inLanguage: "en",
   datePublished: "2024-01-01",
-  dateModified: "2025-06-01",
+  dateModified: "2026-07-05",
   mainEntity: { "@id": `${SITE_URL}/faq#faq-topics` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },

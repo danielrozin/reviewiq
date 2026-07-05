@@ -16,6 +16,8 @@ const productsPageSchema = {
   description:
     "Search and filter products across all categories on ReviewIQ. Every SmartScore is based on verified buyer reviews.",
   mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/products#product-list`, name: "All Reviewed Products", url: `${SITE_URL}/products` },
+  datePublished: "2024-01-01",
+  dateModified: "2026-07-05",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

@@ -141,6 +141,21 @@ export function productSchema(product: Product, pageUrl?: string) {
     schema.review = reviewsWithBody.slice(0, 5).map((r) => reviewSchema(r, productRef));
   }
 
+  if (product.smartScore > 0) {
+    schema.additionalProperty = [
+      {
+        "@type": "PropertyValue",
+        propertyID: "SmartScore",
+        name: "SmartScore",
+        value: product.smartScore,
+        minValue: 0,
+        maxValue: 100,
+        description: "AI-aggregated score from verified buyer reviews (0-100)",
+        url: canonicalUrl,
+      },
+    ];
+  }
+
   return schema;
 }
 
