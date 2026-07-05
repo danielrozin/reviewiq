@@ -450,10 +450,11 @@ export function speakableSchema(productName: string, productUrl: string) {
   return {
     "@context": "https://schema.org",
     "@type": ["WebPage", "ItemPage"],
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: `${productName} Review`,
     url: pageUrl,
     inLanguage: "en",
+    mainEntity: { "@type": "Product", "@id": `${pageUrl}#product` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
@@ -545,9 +546,9 @@ export function discussionForumPostingSchema(
       },
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
-    isPartOf: { "@id": `${SITE_URL}/#website` },
+    isPartOf: { "@id": `${SITE_URL}/community` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    mainEntityOfPage: { "@type": "WebPage", "@id": threadUrl },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${threadUrl}#page` },
   };
 }
 
@@ -556,10 +557,11 @@ export function threadPageSpeakableSchema(title: string, url: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: title,
     url: pageUrl,
     inLanguage: "en",
+    mainEntity: { "@id": `${pageUrl}#discussion` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {

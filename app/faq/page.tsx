@@ -30,11 +30,12 @@ const faqIndexJsonLd = {
 
 const faqIndexWebPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": `${SITE_URL}/faq`,
+  "@type": ["WebPage", "CollectionPage"],
+  "@id": `${SITE_URL}/faq#page`,
   name: "Frequently Asked Questions — ReviewIQ",
   url: `${SITE_URL}/faq`,
   inLanguage: "en",
+  mainEntity: { "@id": `${SITE_URL}/faq#faq-topics` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
