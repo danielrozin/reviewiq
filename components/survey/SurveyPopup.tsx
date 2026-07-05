@@ -84,6 +84,13 @@ export function SurveyPopup() {
     return () => document.removeEventListener("keydown", handleKey);
   }, [visible, dismiss]);
 
+  const stepHeadingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (visible && step !== "intro") {
+      stepHeadingRef.current?.focus();
+    }
+  }, [step, visible]);
+
   const submit = useCallback(async () => {
     setSubmitting(true);
     try {
@@ -125,7 +132,7 @@ export function SurveyPopup() {
       <div
         role="dialog"
         aria-modal="true"
-        aria-label="Quick survey"
+        aria-labelledby="survey-dialog-heading"
         onKeyDown={(e) => {
           if (e.key !== "Tab") return;
           const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>(
@@ -159,7 +166,7 @@ export function SurveyPopup() {
             <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">💬</span>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Quick feedback?</h3>
+            <h3 id="survey-dialog-heading" className="text-lg font-bold text-gray-900 mb-2">Quick feedback?</h3>
             <p className="text-sm text-gray-600 mb-6">
               Help us make ReviewIQ better. Takes less than 30 seconds.
             </p>
@@ -185,7 +192,7 @@ export function SurveyPopup() {
         {step === "q1" && (
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">1 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">What brought you here today?</h3>
+            <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">What brought you here today?</h3>
             <div className="space-y-2">
               {INTENT_OPTIONS.map((opt) => (
                 <button
@@ -212,7 +219,7 @@ export function SurveyPopup() {
         {step === "q2" && (
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">2 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">Did you find what you were looking for?</h3>
+            <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">Did you find what you were looking for?</h3>
             <div className="flex gap-3 mb-4">
               <button
                 type="button"
@@ -263,7 +270,7 @@ export function SurveyPopup() {
         {step === "q3" && (
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">3 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">How would you rate your experience?</h3>
+            <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How would you rate your experience?</h3>
             <div className="flex justify-center gap-2 mb-4">
               {[1, 2, 3, 4, 5].map((n) => (
                 <button
@@ -295,7 +302,7 @@ export function SurveyPopup() {
         {step === "q4" && (
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">4 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">What could we improve?</h3>
+            <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">What could we improve?</h3>
             <textarea
               value={answers.q4Improvement}
               onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
@@ -326,7 +333,7 @@ export function SurveyPopup() {
         {step === "q5" && (
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">5 of 5</p>
-            <h3 className="text-base font-bold text-gray-900 mb-4">How did you discover ReviewIQ?</h3>
+            <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How did you discover ReviewIQ?</h3>
             <div className="space-y-2 mb-4">
               {DISCOVERY_OPTIONS.map((opt) => (
                 <button
@@ -362,7 +369,7 @@ export function SurveyPopup() {
             <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">🙏</span>
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Thank you!</h3>
+            <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-lg font-bold text-gray-900 mb-2">Thank you!</h3>
             <p className="text-sm text-gray-600 mb-4">
               Your feedback helps us build a better review platform for everyone.
             </p>
