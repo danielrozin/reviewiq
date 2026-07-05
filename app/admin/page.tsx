@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   BarChart3, Package, MessageSquare, Users, Star, Shield,
   LogOut, Search, ChevronLeft, ChevronRight, Trash2, Check,
@@ -217,6 +217,7 @@ export default function AdminDashboard() {
   const [pendingReviews, setPendingReviews] = useState<ReviewItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [actionMsg, setActionMsg] = useState("");
+  const tablistRef = useRef<HTMLDivElement>(null);
 
   // Check if already authenticated
   useEffect(() => {
@@ -364,7 +365,27 @@ export default function AdminDashboard() {
       {/* Tabs */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div role="tablist" aria-label="Admin sections" className="flex gap-1 overflow-x-auto py-2">
+          <div
+            ref={tablistRef}
+            role="tablist"
+            aria-label="Admin sections"
+            className="flex gap-1 overflow-x-auto py-2"
+            onKeyDown={(e) => {
+              const tabKeys = tabs.map(t => t.key);
+              const idx = tabKeys.indexOf(activeTab);
+              if (e.key === "ArrowRight") {
+                e.preventDefault();
+                const next = tabKeys[(idx + 1) % tabKeys.length];
+                setActiveTab(next as Tab);
+                (tablistRef.current?.querySelector(`#admin-tab-${next}`) as HTMLButtonElement)?.focus();
+              } else if (e.key === "ArrowLeft") {
+                e.preventDefault();
+                const prev = tabKeys[(idx - 1 + tabKeys.length) % tabKeys.length];
+                setActiveTab(prev as Tab);
+                (tablistRef.current?.querySelector(`#admin-tab-${prev}`) as HTMLButtonElement)?.focus();
+              }
+            }}
+          >
             {tabs.map((tab) => (
               <button
                 key={tab.key}
@@ -372,7 +393,8 @@ export default function AdminDashboard() {
                 role="tab"
                 id={`admin-tab-${tab.key}`}
                 aria-selected={activeTab === tab.key}
-                aria-controls={activeTab === tab.key ? `admin-panel-${tab.key}` : undefined}
+                aria-controls={`admin-panel-${tab.key}`}
+                tabIndex={activeTab === tab.key ? 0 : -1}
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                   activeTab === tab.key

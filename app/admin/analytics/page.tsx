@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell,
@@ -87,6 +87,7 @@ export default function ReviewIQAnalytics() {
   const [loading, setLoading] = useState(true);
   const [reportLoading, setReportLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<"overview" | "funnel" | "features" | "events" | "report">("overview");
+  const analyticsTablistRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("/api/analytics")
@@ -167,7 +168,27 @@ export default function ReviewIQAnalytics() {
       </div>
 
       {/* Tabs */}
-      <div role="tablist" aria-label="Analytics views" className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 w-fit">
+      <div
+        ref={analyticsTablistRef}
+        role="tablist"
+        aria-label="Analytics views"
+        className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 w-fit"
+        onKeyDown={(e) => {
+          const tabKeys = tabs.map(t => t.key);
+          const idx = tabKeys.indexOf(activeTab);
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            const next = tabKeys[(idx + 1) % tabKeys.length];
+            setActiveTab(next);
+            (analyticsTablistRef.current?.querySelector(`#tab-${next}`) as HTMLButtonElement)?.focus();
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            const prev = tabKeys[(idx - 1 + tabKeys.length) % tabKeys.length];
+            setActiveTab(prev);
+            (analyticsTablistRef.current?.querySelector(`#tab-${prev}`) as HTMLButtonElement)?.focus();
+          }
+        }}
+      >
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -175,7 +196,8 @@ export default function ReviewIQAnalytics() {
             type="button"
             role="tab"
             aria-selected={activeTab === tab.key}
-            aria-controls={activeTab === tab.key ? `panel-${tab.key}` : undefined}
+            aria-controls={`panel-${tab.key}`}
+            tabIndex={activeTab === tab.key ? 0 : -1}
             onClick={() => {
               setActiveTab(tab.key);
               if (tab.key === "report") loadReport();
