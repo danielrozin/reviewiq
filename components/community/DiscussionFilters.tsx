@@ -31,6 +31,8 @@ const THREAD_TYPES: ThreadType[] = [
   "tip",
 ];
 
+const TYPE_VALUES: (ThreadType | null)[] = [null, ...THREAD_TYPES];
+
 export function DiscussionFilters({
   onSortChange,
   onTypeFilter,
@@ -40,6 +42,7 @@ export function DiscussionFilters({
   const [sort, setSort] = useState(activeSort);
   const [typeFilter, setTypeFilter] = useState<ThreadType | null>(activeType);
   const sortGroupRef = useRef<HTMLDivElement>(null);
+  const typeGroupRef = useRef<HTMLDivElement>(null);
   const sortValues = SORT_OPTIONS.map((o) => o.value);
 
   function handleSortKeyDown(e: React.KeyboardEvent) {
@@ -76,6 +79,28 @@ export function DiscussionFilters({
     onTypeFilter?.(type);
   };
 
+  function handleTypeKeyDown(e: React.KeyboardEvent) {
+    const idx = TYPE_VALUES.indexOf(typeFilter);
+    const focusType = (t: ThreadType | null) => {
+      handleTypeFilter(t);
+      const key = t ?? "all";
+      (typeGroupRef.current?.querySelector(`[data-typekey="${key}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      focusType(TYPE_VALUES[(idx + 1) % TYPE_VALUES.length]);
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      focusType(TYPE_VALUES[(idx - 1 + TYPE_VALUES.length) % TYPE_VALUES.length]);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      focusType(TYPE_VALUES[0]);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      focusType(TYPE_VALUES[TYPE_VALUES.length - 1]);
+    }
+  }
+
   return (
     <div className="space-y-3">
       {/* Sort buttons — mutually exclusive, so radiogroup pattern */}
@@ -100,11 +125,14 @@ export function DiscussionFilters({
         ))}
       </div>
 
-      {/* Type filter pills */}
-      <div role="group" aria-label="Filter by thread type" className="flex items-center gap-1.5 overflow-x-auto pb-1">
+      {/* Type filter pills — single-select, so radiogroup pattern */}
+      <div ref={typeGroupRef} role="radiogroup" aria-label="Filter by thread type" className="flex items-center gap-1.5 overflow-x-auto pb-1" onKeyDown={handleTypeKeyDown}>
         <button
           type="button"
-          aria-pressed={typeFilter === null}
+          role="radio"
+          data-typekey="all"
+          aria-checked={typeFilter === null}
+          tabIndex={typeFilter === null ? 0 : -1}
           onClick={() => handleTypeFilter(null)}
           className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
             typeFilter === null
@@ -118,8 +146,11 @@ export function DiscussionFilters({
           <button
             key={type}
             type="button"
-            aria-pressed={typeFilter === type}
-            onClick={() => handleTypeFilter(typeFilter === type ? null : type)}
+            role="radio"
+            data-typekey={type}
+            aria-checked={typeFilter === type}
+            tabIndex={typeFilter === type ? 0 : -1}
+            onClick={() => handleTypeFilter(type)}
             className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               typeFilter === type
                 ? THREAD_TYPE_COLORS[type]
