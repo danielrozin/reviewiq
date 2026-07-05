@@ -528,6 +528,7 @@ export function speakableSchema(productName: string, productUrl: string, datePub
     mainEntity: { "@type": "Product", "@id": `${pageUrl}#product` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    author: { "@id": `${SITE_URL}/about#ai-review-team` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [

@@ -24,7 +24,7 @@ const aboutPageJsonLd = {
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   datePublished: "2024-01-01",
-  dateModified: "2025-06-01",
+  dateModified: "2026-07-05",
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",
