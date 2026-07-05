@@ -227,7 +227,7 @@ export default function WhoIsThisForPage() {
   const speakableJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": `${SITE_URL}/who-is-this-for`,
+    "@id": `${SITE_URL}/who-is-this-for#page`,
     name: "Who Is ReviewIQ For?",
     url: `${SITE_URL}/who-is-this-for`,
     inLanguage: "en",

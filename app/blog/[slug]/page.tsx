@@ -7,7 +7,7 @@ import { getProductsByCategory, getAffinityProducts } from "@/data/products";
 import { getAffinityCategorySlugs } from "@/data/category-affinity";
 import { getCategoryBySlug } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { blogPostSchema, faqSchema, blogPostSpeakableSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { blogPostSchema, faqSchema, blogPostSpeakableSchema, breadcrumbSchema, productListSchema } from "@/lib/schema/jsonld";
 
 export function generateStaticParams() {
   return getAllBlogPosts().map((post) => ({ slug: post.slug }));
@@ -235,6 +235,10 @@ export default async function BlogPostPage({
         {/* Related Products */}
         {categoryProducts.length > 0 && (
           <section aria-labelledby="blog-top-products-heading" className="mt-12 border-t border-gray-100 pt-8">
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{ __html: JSON.stringify(productListSchema(categoryProducts, post.categoryName, post.categorySlug)) }}
+            />
             <div className="flex items-center gap-2.5 mb-6">
               <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

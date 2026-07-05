@@ -8,7 +8,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const siteMapWebPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/site-map`,
+  "@id": `${SITE_URL}/site-map#page`,
   name: "Site Map — ReviewIQ",
   url: `${SITE_URL}/site-map`,
   inLanguage: "en",
