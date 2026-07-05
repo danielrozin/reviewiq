@@ -30,6 +30,15 @@ export function organizationSchema() {
     },
     foundingDate: "2023",
     numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
+    slogan: "Real Reviews. Real Intelligence.",
+    knowsAbout: [
+      "Product Reviews",
+      "Consumer Electronics",
+      "Buyer Guidance",
+      "AI-Powered Analysis",
+      "Comparative Product Research",
+      "Verified Purchase Reviews",
+    ],
     sameAs: [
       "https://twitter.com/revieweriq",
       "https://www.linkedin.com/company/revieweriq",
@@ -457,7 +466,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
   };
 }
 
-export function communityPageSchema() {
+export function communityPageSchema(datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}/community`;
   return {
     "@context": "https://schema.org",
@@ -467,8 +476,8 @@ export function communityPageSchema() {
     description: "Real conversations about real products. Ask questions, share experiences, and help others make smarter buying decisions.",
     url: pageUrl,
     inLanguage: "en",
-    datePublished: "2024-01-01",
-    dateModified: "2025-06-01",
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@type": "Thing", name: "Product Reviews & Discussions" },
@@ -540,7 +549,7 @@ export function speakableSchema(productName: string, productUrl: string, datePub
   };
 }
 
-export function blogPostSpeakableSchema(title: string, url: string) {
+export function blogPostSpeakableSchema(title: string, url: string, datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}${url}`;
   return {
     "@context": "https://schema.org",
@@ -549,6 +558,8 @@ export function blogPostSpeakableSchema(title: string, url: string) {
     name: title,
     url: pageUrl,
     inLanguage: "en",
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     mainEntity: { "@id": `${pageUrl}#article` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },

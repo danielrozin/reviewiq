@@ -35,7 +35,10 @@ export default function CommunityPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(communityPageSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(communityPageSchema(
+          discussions.length > 0 ? [...discussions].sort((a, b) => a.createdAt.localeCompare(b.createdAt))[0].createdAt : undefined,
+          discussions.length > 0 ? [...discussions].sort((a, b) => (b.lastActivityAt || b.createdAt).localeCompare(a.lastActivityAt || a.createdAt))[0].lastActivityAt || undefined : undefined,
+        )) }}
       />
       <Breadcrumbs
         items={[{ name: "Community", url: "/community" }]}

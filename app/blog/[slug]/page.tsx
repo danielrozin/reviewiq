@@ -83,7 +83,7 @@ export default async function BlogPostPage({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(blogPostSpeakableSchema(post.title, `/blog/${post.slug}`)),
+          __html: JSON.stringify(blogPostSpeakableSchema(post.title, `/blog/${post.slug}`, post.publishedAt, post.updatedAt || post.publishedAt)),
         }}
       />
 
