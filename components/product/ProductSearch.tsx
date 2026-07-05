@@ -475,7 +475,7 @@ export function ProductSearch() {
             disabled={safePage <= 1}
             onClick={() => setFilter("page", safePage - 1)}
             aria-label="Go to previous page"
-            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             Previous
           </button>
@@ -486,7 +486,7 @@ export function ProductSearch() {
               onClick={() => setFilter("page", p)}
               aria-label={`Go to page ${p}`}
               aria-current={p === safePage ? "page" : undefined}
-              className={`w-10 h-10 text-sm font-medium rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+              className={`w-11 h-11 text-sm font-medium rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 p === safePage
                   ? "bg-brand-600 text-white"
                   : "border border-gray-200 text-gray-700 hover:bg-gray-50"
@@ -500,7 +500,7 @@ export function ProductSearch() {
             disabled={safePage >= totalPages}
             onClick={() => setFilter("page", safePage + 1)}
             aria-label="Go to next page"
-            className="px-3 py-2 text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             Next
           </button>
