@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import type React from "react";
 import { trackEvent } from "@/lib/tracking/analytics";
 
 const STORAGE_KEY = "sr_survey_completed";
@@ -47,6 +48,10 @@ export function SurveyPopup() {
   const [submitting, setSubmitting] = useState(false);
   const closeRef = useRef<HTMLButtonElement>(null);
   const prevFocusRef = useRef<Element | null>(null);
+  const q1GroupRef = useRef<HTMLDivElement>(null);
+  const q2GroupRef = useRef<HTMLDivElement>(null);
+  const q3GroupRef = useRef<HTMLDivElement>(null);
+  const q5GroupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -121,6 +126,57 @@ export function SurveyPopup() {
     }
   }, [answers]);
 
+  function handleQ1KeyDown(e: React.KeyboardEvent) {
+    const idx = INTENT_OPTIONS.findIndex((o) => o.value === answers.q1Intent);
+    const effective = idx === -1 ? 0 : idx;
+    const focus = (i: number) => {
+      const opt = INTENT_OPTIONS[i];
+      setAnswers((a) => ({ ...a, q1Intent: opt.value }));
+      (q1GroupRef.current?.querySelector(`[data-q1key="${opt.value}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); focus((effective + 1) % INTENT_OPTIONS.length); }
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); focus((effective - 1 + INTENT_OPTIONS.length) % INTENT_OPTIONS.length); }
+    else if (e.key === "Home") { e.preventDefault(); focus(0); }
+    else if (e.key === "End") { e.preventDefault(); focus(INTENT_OPTIONS.length - 1); }
+  }
+
+  function handleQ2KeyDown(e: React.KeyboardEvent) {
+    const curr = answers.q2Found === false ? 1 : 0;
+    const focus = (i: number) => {
+      setAnswers((a) => ({ ...a, q2Found: i === 0 ? true : false }));
+      const key = i === 0 ? "yes" : "no";
+      (q2GroupRef.current?.querySelector(`[data-q2key="${key}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); focus((curr + 1) % 2); }
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); focus((curr - 1 + 2) % 2); }
+  }
+
+  function handleQ3KeyDown(e: React.KeyboardEvent) {
+    const idx = answers.q3Rating ? answers.q3Rating - 1 : 0;
+    const focus = (i: number) => {
+      setAnswers((a) => ({ ...a, q3Rating: i + 1 }));
+      (q3GroupRef.current?.querySelector(`[data-q3rating="${i + 1}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); focus((idx + 1) % 5); }
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); focus((idx - 1 + 5) % 5); }
+    else if (e.key === "Home") { e.preventDefault(); focus(0); }
+    else if (e.key === "End") { e.preventDefault(); focus(4); }
+  }
+
+  function handleQ5KeyDown(e: React.KeyboardEvent) {
+    const idx = DISCOVERY_OPTIONS.findIndex((o) => o.value === answers.q5Discovery);
+    const effective = idx === -1 ? 0 : idx;
+    const focus = (i: number) => {
+      const opt = DISCOVERY_OPTIONS[i];
+      setAnswers((a) => ({ ...a, q5Discovery: opt.value }));
+      (q5GroupRef.current?.querySelector(`[data-q5key="${opt.value}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") { e.preventDefault(); focus((effective + 1) % DISCOVERY_OPTIONS.length); }
+    else if (e.key === "ArrowUp" || e.key === "ArrowLeft") { e.preventDefault(); focus((effective - 1 + DISCOVERY_OPTIONS.length) % DISCOVERY_OPTIONS.length); }
+    else if (e.key === "Home") { e.preventDefault(); focus(0); }
+    else if (e.key === "End") { e.preventDefault(); focus(DISCOVERY_OPTIONS.length - 1); }
+  }
+
   if (!visible) return null;
 
   return (
@@ -193,12 +249,15 @@ export function SurveyPopup() {
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">1 of 5</p>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">What brought you here today?</h3>
-            <div className="space-y-2">
-              {INTENT_OPTIONS.map((opt) => (
+            <div ref={q1GroupRef} role="radiogroup" aria-label="What brought you here today?" className="space-y-2" onKeyDown={handleQ1KeyDown}>
+              {INTENT_OPTIONS.map((opt, idx) => (
                 <button
                   key={opt.value}
                   type="button"
-                  aria-pressed={answers.q1Intent === opt.value}
+                  role="radio"
+                  data-q1key={opt.value}
+                  aria-checked={answers.q1Intent === opt.value}
+                  tabIndex={answers.q1Intent === opt.value || (answers.q1Intent === "" && idx === 0) ? 0 : -1}
                   onClick={() => {
                     setAnswers((a) => ({ ...a, q1Intent: opt.value }));
                     setStep("q2");
@@ -220,10 +279,13 @@ export function SurveyPopup() {
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">2 of 5</p>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">Did you find what you were looking for?</h3>
-            <div className="flex gap-3 mb-4">
+            <div ref={q2GroupRef} role="radiogroup" aria-label="Did you find what you were looking for?" className="flex gap-3 mb-4" onKeyDown={handleQ2KeyDown}>
               <button
                 type="button"
-                aria-pressed={answers.q2Found === true}
+                role="radio"
+                data-q2key="yes"
+                aria-checked={answers.q2Found === true}
+                tabIndex={answers.q2Found !== false ? 0 : -1}
                 onClick={() => {
                   setAnswers((a) => ({ ...a, q2Found: true }));
                   setStep("q3");
@@ -234,7 +296,10 @@ export function SurveyPopup() {
               </button>
               <button
                 type="button"
-                aria-pressed={answers.q2Found === false}
+                role="radio"
+                data-q2key="no"
+                aria-checked={answers.q2Found === false}
+                tabIndex={answers.q2Found === false ? 0 : -1}
                 onClick={() => setAnswers((a) => ({ ...a, q2Found: false }))}
                 className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                   answers.q2Found === false
@@ -271,13 +336,16 @@ export function SurveyPopup() {
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">3 of 5</p>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How would you rate your experience?</h3>
-            <div className="flex justify-center gap-2 mb-4">
+            <div ref={q3GroupRef} role="radiogroup" aria-label="How would you rate your experience?" className="flex justify-center gap-2 mb-4" onKeyDown={handleQ3KeyDown}>
               {[1, 2, 3, 4, 5].map((n) => (
                 <button
                   key={n}
                   type="button"
+                  role="radio"
+                  data-q3rating={n}
                   aria-label={`Rate ${n} out of 5`}
-                  aria-pressed={answers.q3Rating === n}
+                  aria-checked={answers.q3Rating === n}
+                  tabIndex={answers.q3Rating === n || (answers.q3Rating === 0 && n === 1) ? 0 : -1}
                   onClick={() => {
                     setAnswers((a) => ({ ...a, q3Rating: n }));
                     setStep("q4");
@@ -334,12 +402,15 @@ export function SurveyPopup() {
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">5 of 5</p>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How did you discover ReviewIQ?</h3>
-            <div className="space-y-2 mb-4">
-              {DISCOVERY_OPTIONS.map((opt) => (
+            <div ref={q5GroupRef} role="radiogroup" aria-label="How did you discover ReviewIQ?" className="space-y-2 mb-4" onKeyDown={handleQ5KeyDown}>
+              {DISCOVERY_OPTIONS.map((opt, idx) => (
                 <button
                   key={opt.value}
                   type="button"
-                  aria-pressed={answers.q5Discovery === opt.value}
+                  role="radio"
+                  data-q5key={opt.value}
+                  aria-checked={answers.q5Discovery === opt.value}
+                  tabIndex={answers.q5Discovery === opt.value || (answers.q5Discovery === "" && idx === 0) ? 0 : -1}
                   onClick={() => setAnswers((a) => ({ ...a, q5Discovery: opt.value }))}
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q5Discovery === opt.value
