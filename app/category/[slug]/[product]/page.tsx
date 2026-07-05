@@ -276,17 +276,17 @@ export default async function ProductPage({ params }: Props) {
             <h2 id="key-facts-heading" className="text-lg font-semibold text-gray-900 mb-4">
               Key Facts
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {product.aiSummary.keyFacts.map((fact, i) => (
-                <div
+                <li
                   key={i}
                   className="flex items-center gap-2 text-sm text-gray-700"
                 >
                   <span aria-hidden="true" className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
                   {fact}
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* Rating Distribution */}

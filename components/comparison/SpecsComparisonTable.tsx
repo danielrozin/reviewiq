@@ -70,7 +70,7 @@ export function SpecsComparisonTable({
               <Fragment key={groupName}>
                 {groups.size > 1 && (
                   <tr>
-                    <th colSpan={3} scope="colgroup" className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-100 text-left font-semibold">
+                    <th colSpan={3} aria-hidden="true" className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-100 text-left font-semibold">
                       {groupName}
                     </th>
                   </tr>
