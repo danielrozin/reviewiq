@@ -60,8 +60,9 @@ export function RelatedProducts({
         }}
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none p-0 m-0">
         {products.map((product) => (
+          <li key={product.slug} className="contents">
           <Link
             key={product.slug}
             href={`/category/${categorySlug}/${product.slug}`}
@@ -101,8 +102,9 @@ export function RelatedProducts({
               </div>
             </div>
           </Link>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <Link
         href={`/category/${categorySlug}`}
