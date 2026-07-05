@@ -693,7 +693,7 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </summary>
-              <dd className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</dd>
+              <dd data-speakable="faq-answer" className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</dd>
             </details>
           ))}
         </dl>

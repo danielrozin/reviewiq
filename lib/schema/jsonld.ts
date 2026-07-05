@@ -60,7 +60,7 @@ export function websiteSchema() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+        urlTemplate: `${SITE_URL}/products?q={search_term_string}`,
       },
       "query-input": "required name=search_term_string",
     },
@@ -554,7 +554,7 @@ export function homePageSchema() {
     mainEntity: { "@id": `${SITE_URL}/categories#category-list` },
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='hero-tagline']", "[data-speakable='hero-stats']"],
+      cssSelector: ["[data-speakable='hero-tagline']", "[data-speakable='hero-stats']", "[data-speakable='faq-answer']"],
     },
   };
 }
