@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   LineChart, Line, PieChart, Pie, Cell, AreaChart, Area,
@@ -239,6 +239,7 @@ export default function AARRRDashboard() {
   const [data, setData] = useState<AARRRData | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<TabKey>("overview");
+  const tablistRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("/api/analytics/aarrr")
@@ -325,7 +326,37 @@ export default function AARRRDashboard() {
       </div>
 
       {/* Tabs */}
-      <div role="tablist" aria-label="AARRR metric views" className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 overflow-x-auto">
+      <div
+        ref={tablistRef}
+        role="tablist"
+        aria-label="AARRR metric views"
+        className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 overflow-x-auto"
+        onKeyDown={(e) => {
+          const tabKeys = tabs.map((t) => t.key);
+          const idx = tabKeys.indexOf(activeTab);
+          if (e.key === "ArrowRight") {
+            e.preventDefault();
+            const next = tabKeys[(idx + 1) % tabKeys.length] as TabKey;
+            setActiveTab(next);
+            (tablistRef.current?.querySelector(`#aarrr-tab-${next}`) as HTMLButtonElement)?.focus();
+          } else if (e.key === "ArrowLeft") {
+            e.preventDefault();
+            const prev = tabKeys[(idx - 1 + tabKeys.length) % tabKeys.length] as TabKey;
+            setActiveTab(prev);
+            (tablistRef.current?.querySelector(`#aarrr-tab-${prev}`) as HTMLButtonElement)?.focus();
+          } else if (e.key === "Home") {
+            e.preventDefault();
+            const first = tabKeys[0] as TabKey;
+            setActiveTab(first);
+            (tablistRef.current?.querySelector(`#aarrr-tab-${first}`) as HTMLButtonElement)?.focus();
+          } else if (e.key === "End") {
+            e.preventDefault();
+            const last = tabKeys[tabKeys.length - 1] as TabKey;
+            setActiveTab(last);
+            (tablistRef.current?.querySelector(`#aarrr-tab-${last}`) as HTMLButtonElement)?.focus();
+          }
+        }}
+      >
         {tabs.map((tab) => (
           <button
             key={tab.key}
@@ -334,6 +365,7 @@ export default function AARRRDashboard() {
             role="tab"
             aria-selected={activeTab === tab.key}
             aria-controls={`aarrr-panel-${tab.key}`}
+            tabIndex={activeTab === tab.key ? 0 : -1}
             onClick={() => setActiveTab(tab.key)}
             className={`px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               activeTab === tab.key
