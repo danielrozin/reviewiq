@@ -208,7 +208,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
       <div className="flex items-start justify-between mb-3">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <h4 id={`rs-${review.id}-headline`} className="font-semibold text-gray-900">{review.headline}</h4>
+            <h3 id={`rs-${review.id}-headline`} className="font-semibold text-gray-900">{review.headline}</h3>
             {review.verifiedPurchase && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 bg-emerald-50 text-emerald-600 text-xs font-medium rounded-full">
                 <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
