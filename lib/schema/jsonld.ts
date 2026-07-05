@@ -277,6 +277,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
           name: p.name,
           url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
           brand: { "@type": "Brand", name: p.brand },
+          ...(p.image && { image: { "@type": "ImageObject", url: p.image } }),
           ...(avgRating > 0 && {
             aggregateRating: {
               "@type": "AggregateRating",
@@ -327,8 +328,11 @@ export function analysisAuthorSchema() {
     "@id": `${SITE_URL}/about#ai-review-team`,
     name: "ReviewIQ AI Analysis Team",
     url: `${SITE_URL}/about`,
+    jobTitle: "Consumer Technology Analyst",
+    description: "Data-driven consumer technology analysts who aggregate verified buyer reviews and apply AI analysis to produce honest product insights.",
+    sameAs: [`${SITE_URL}/about`],
     worksFor: { "@id": `${SITE_URL}/#organization` },
-    knowsAbout: ["Product Reviews", "Consumer Electronics", "Buyer Guidance"],
+    knowsAbout: ["Product Reviews", "Consumer Electronics", "Buyer Guidance", "Comparative Product Analysis"],
   };
 }
 
@@ -439,7 +443,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
     "@id": `${schemaUrl}#howto`,
     name: title,
     description: `Step-by-step guide to choosing the best ${title.replace(/^How to Choose the (?:Best |Right )?/i, "").toLowerCase()}.`,
-    totalTime: `PT${steps.length * 2}M`,
+    totalTime: `PT${Math.max(1, steps.reduce((sum, s) => sum + Math.ceil(s.text.split(/\s+/).filter(Boolean).length / 100), 0))}M`,
     step: steps.map((step, index) => ({
       "@type": "HowToStep",
       position: index + 1,
@@ -777,7 +781,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
   };
 }
 
-export function categoryPageSchema(categoryName: string, description: string, categoryUrl: string) {
+export function categoryPageSchema(categoryName: string, description: string, categoryUrl: string, datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}${categoryUrl}`;
   return {
     "@context": "https://schema.org",
@@ -787,6 +791,8 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     description,
     url: pageUrl,
     inLanguage: "en",
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     about: { "@type": "Thing", name: categoryName },
     mainEntity: { "@type": "ItemList", "@id": `${pageUrl}#product-list`, name: `Best ${categoryName}` },
     isPartOf: { "@id": `${SITE_URL}/#website` },

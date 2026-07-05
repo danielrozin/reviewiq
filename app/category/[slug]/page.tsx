@@ -43,7 +43,13 @@ export default async function CategoryPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(categoryPageSchema(category.name, category.description, `/category/${slug}`)),
+          __html: JSON.stringify(categoryPageSchema(
+            category.name,
+            category.description,
+            `/category/${slug}`,
+            categoryProducts.length > 0 ? [...categoryProducts].sort((a, b) => (a.createdAt || "").localeCompare(b.createdAt || "")).find((p) => p.createdAt)?.createdAt : undefined,
+            categoryProducts.length > 0 ? [...categoryProducts].sort((a, b) => ((b.updatedAt || b.createdAt || "") as string).localeCompare((a.updatedAt || a.createdAt || "") as string)).find((p) => p.updatedAt || p.createdAt)?.updatedAt || undefined : undefined,
+          )),
         }}
       />
       <script
