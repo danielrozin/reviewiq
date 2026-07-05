@@ -23,6 +23,8 @@ const aboutPageJsonLd = {
     "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  datePublished: "2024-01-01",
+  dateModified: "2025-06-01",
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",

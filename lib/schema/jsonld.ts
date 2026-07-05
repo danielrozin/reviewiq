@@ -152,7 +152,7 @@ export function reviewSchema(review: Review) {
     },
     author: {
       "@type": "Person",
-      "@id": `${SITE_URL}/community/user/${review.authorName.toLowerCase().replace(/\s+/g, "-")}#person`,
+      "@id": `${SITE_URL}/community/user/${encodeURIComponent(review.authorName.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""))}#person`,
       name: review.authorName,
     },
     datePublished: review.createdAt,
@@ -451,6 +451,7 @@ export function homePageSchema() {
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: { "@id": `${SITE_URL}/categories#category-list` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-speakable='hero-tagline']", "[data-speakable='hero-stats']"],
@@ -708,6 +709,12 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     url: pageUrl,
     inLanguage: "en",
     about: { "@type": "Thing", name: categoryName },
+    mainEntity: {
+      "@type": "ItemList",
+      "@id": `${pageUrl}#post-list`,
+      name: `${categoryName} Blog Posts`,
+      url: pageUrl,
+    },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
