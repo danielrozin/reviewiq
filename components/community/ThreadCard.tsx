@@ -39,9 +39,9 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
               </span>
             )}
           </div>
-          <h3 className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors truncate">
+          <span className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors truncate block">
             {thread.title}
-          </h3>
+          </span>
         </div>
         <div className="text-xs text-gray-600 shrink-0">
           {thread.commentCount} replies

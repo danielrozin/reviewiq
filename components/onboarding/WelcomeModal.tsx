@@ -52,6 +52,7 @@ export function WelcomeModal() {
   const { isNewVisitor, dismissWelcome } = useOnboarding();
   const [step, setStep] = useState<"welcome" | "props">("welcome");
   const closeRef = useRef<HTMLButtonElement>(null);
+  const propsHeadingRef = useRef<HTMLHeadingElement>(null);
   const prevFocusRef = useRef<Element | null>(null);
 
   useEffect(() => {
@@ -63,6 +64,8 @@ export function WelcomeModal() {
       prevFocusRef.current = null;
     }
   }, [isNewVisitor]);
+
+  useEffect(() => { if (step === "props") propsHeadingRef.current?.focus(); }, [step]);
 
   useEffect(() => {
     if (!isNewVisitor) return;
@@ -153,7 +156,7 @@ export function WelcomeModal() {
 
         {step === "props" && (
           <div className="p-6 sm:p-8">
-            <h3 id="welcome-modal-heading" className="text-lg font-bold text-gray-900 mb-1">
+            <h3 ref={propsHeadingRef} tabIndex={-1} id="welcome-modal-heading" className="text-lg font-bold text-gray-900 mb-1 focus:outline-none">
               Here&apos;s what you can do
             </h3>
             <p className="text-sm text-gray-600 mb-5">

@@ -42,7 +42,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <div>
-          <h5 className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
+          <h5 className="text-xs font-medium text-emerald-700 uppercase tracking-wider mb-1.5">
             Pros
           </h5>
           <ul className="space-y-1">

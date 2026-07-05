@@ -186,7 +186,7 @@ export default function CommunityPage() {
                     aria-label={`Rank ${i + 1}`}
                     className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
                     i === 0 ? "bg-amber-400 text-white" :
-                    i === 1 ? "bg-gray-300 text-white" :
+                    i === 1 ? "bg-gray-500 text-white" :
                     i === 2 ? "bg-orange-400 text-white" :
                     "bg-gray-100 text-gray-600"
                   }`}>
