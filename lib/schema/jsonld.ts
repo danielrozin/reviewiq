@@ -255,8 +255,8 @@ export function productListSchema(products: Product[], categoryName: string, cat
       aggregateRating: {
         "@type": "AggregateRating",
         ratingValue: avgCategoryRating.toFixed(1),
-        bestRating: "5",
-        worstRating: "1",
+        bestRating: 5,
+        worstRating: 1,
         ratingCount: products.reduce((sum, p) => sum + p.reviewCount, 0),
         reviewCount: products.reduce((sum, p) => sum + p.reviewCount, 0),
       },
@@ -305,6 +305,10 @@ export function videoObjectSchema(video: YouTubeVideo, productName: string) {
     contentUrl,
     embedUrl: `https://www.youtube.com/embed/${video.id}`,
     ...(video.duration && { duration: video.duration }),
+    potentialAction: {
+      "@type": "WatchAction",
+      target: contentUrl,
+    },
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
@@ -348,6 +352,8 @@ export function blogPostSchema(post: BlogPost) {
       "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
       name: post.author.name,
       url: `${SITE_URL}/about`,
+      jobTitle: "Consumer Technology Analyst",
+      sameAs: [`${SITE_URL}/about`],
       ...(post.author.bio && { description: post.author.bio }),
     },
     isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -426,7 +432,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       position: index + 1,
       name: step.name,
       text: step.text,
-      ...(step.image ? { image: `${SITE_URL}${step.image}` } : {}),
+      ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}` } } : {}),
     })),
     url: schemaUrl,
     isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -858,7 +864,7 @@ function comparisonProductItem(product: Product) {
     url: productUrl,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
-    ...(product.image && { image: product.image }),
+    ...(product.image && { image: { "@type": "ImageObject", url: product.image } }),
   };
 
   const offers = aggregateOfferFromProduct(product);
