@@ -54,15 +54,6 @@ export default async function UserProfilePage({ params }: Props) {
           __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories, user.joinedAt, user.lastActiveAt, user.reviewCount, user.commentCount)),
         }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([
-            { name: "Community", url: "/community" },
-            { name: user.displayName, url: `/community/user/${username}` },
-          ])),
-        }}
-      />
       <Breadcrumbs
         items={[
           { name: "Community", url: "/community" },

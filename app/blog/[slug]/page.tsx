@@ -87,19 +87,8 @@ export default async function BlogPostPage({
         }}
       />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([
-            { name: "Home", url: "/" },
-            { name: "Blog", url: "/blog" },
-            { name: post.title, url: `/blog/${post.slug}` },
-          ])),
-        }}
-      />
       <Breadcrumbs
         items={[
-          { name: "Home", url: "/" },
           { name: "Blog", url: "/blog" },
           { name: post.title, url: `/blog/${post.slug}` },
         ]}

@@ -37,12 +37,6 @@ export default function CommunityPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(communityPageSchema()) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Community", url: "/community" }])),
-        }}
-      />
       <Breadcrumbs
         items={[{ name: "Community", url: "/community" }]}
       />
