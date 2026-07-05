@@ -374,7 +374,12 @@ export function blogListSchema(posts: BlogPost[]) {
       ...(post.coverImage && {
         image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
       }),
-      author: { "@type": "Person", name: post.author.name },
+      author: {
+        "@type": "Person",
+        "@id": `${SITE_URL}/blog/author/${post.author.name.toLowerCase().replace(/\s+/g, "-")}#person`,
+        name: post.author.name,
+      },
+      dateModified: post.updatedAt || post.publishedAt,
       articleSection: post.categoryName,
     })),
   };
@@ -477,10 +482,11 @@ export function blogPostSpeakableSchema(title: string, url: string) {
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: title,
     url: pageUrl,
     inLanguage: "en",
+    mainEntity: { "@id": pageUrl },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
@@ -678,6 +684,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     description,
     url: pageUrl,
     inLanguage: "en",
+    about: { "@type": "Thing", name: categoryName },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
@@ -697,6 +704,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     description,
     url: pageUrl,
     inLanguage: "en",
+    about: { "@type": "Thing", name: categoryName },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {

@@ -8,11 +8,12 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
 const blogIndexWebPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": ["WebPage", "CollectionPage"],
   "@id": `${SITE_URL}/blog#page`,
   name: "ReviewIQ Blog — Buying Guides, Comparisons & Expert Reviews",
   url: `${SITE_URL}/blog`,
   inLanguage: "en",
+  mainEntity: { "@id": `${SITE_URL}/blog` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

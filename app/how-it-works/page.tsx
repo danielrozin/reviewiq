@@ -116,10 +116,11 @@ const howToJsonLd = {
 const howItWorksWebPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/how-it-works`,
+  "@id": `${SITE_URL}/how-it-works#page`,
   name: "How ReviewIQ Works",
   url: `${SITE_URL}/how-it-works`,
   inLanguage: "en",
+  mainEntity: { "@id": `${SITE_URL}/how-it-works#howto` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
