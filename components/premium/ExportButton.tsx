@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
+import type React from "react";
 import { useSubscription } from "@/lib/context/SubscriptionContext";
 import { UpgradePrompt } from "./UpgradePrompt";
 
@@ -12,6 +13,17 @@ export function ExportButton({ onExport }: ExportButtonProps) {
   const { isPro } = useSubscription();
   const [showGate, setShowGate] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const csvRef = useRef<HTMLButtonElement>(null);
+  const gateRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (showMenu) csvRef.current?.focus();
+  }, [showMenu]);
+
+  useEffect(() => {
+    if (showGate) gateRef.current?.focus();
+  }, [showGate]);
 
   const handleClick = () => {
     if (!isPro) {
@@ -21,11 +33,35 @@ export function ExportButton({ onExport }: ExportButtonProps) {
     setShowMenu(!showMenu);
   };
 
+  function handleMenuKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "Escape") {
+      setShowMenu(false);
+      triggerRef.current?.focus();
+    } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const items = [csvRef.current, e.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitem"]')[1]].filter(Boolean) as HTMLButtonElement[];
+      const current = document.activeElement as HTMLButtonElement;
+      const idx = items.indexOf(current);
+      const next = e.key === "ArrowDown" ? (idx + 1) % items.length : (idx - 1 + items.length) % items.length;
+      items[next]?.focus();
+    }
+  }
+
+  function handleGateKeyDown(e: React.KeyboardEvent) {
+    if (e.key === "Escape") {
+      setShowGate(false);
+      triggerRef.current?.focus();
+    }
+  }
+
   return (
     <div className="relative">
       <button
+        ref={triggerRef}
         type="button"
         onClick={handleClick}
+        aria-haspopup={isPro ? "menu" : undefined}
+        aria-expanded={isPro ? showMenu : undefined}
         className="inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
       >
         {isPro ? (
@@ -41,17 +77,25 @@ export function ExportButton({ onExport }: ExportButtonProps) {
       </button>
 
       {showMenu && isPro && (
-        <div className="absolute right-0 mt-1 w-36 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10">
+        <div
+          role="menu"
+          aria-label="Export options"
+          className="absolute right-0 mt-1 w-36 bg-white border border-gray-200 rounded-lg shadow-lg py-1 z-10"
+          onKeyDown={handleMenuKeyDown}
+        >
           <button
+            ref={csvRef}
             type="button"
-            onClick={() => { onExport("csv"); setShowMenu(false); }}
+            role="menuitem"
+            onClick={() => { onExport("csv"); setShowMenu(false); triggerRef.current?.focus(); }}
             className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
           >
             Export as CSV
           </button>
           <button
             type="button"
-            onClick={() => { onExport("pdf"); setShowMenu(false); }}
+            role="menuitem"
+            onClick={() => { onExport("pdf"); setShowMenu(false); triggerRef.current?.focus(); }}
             className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
           >
             Export as PDF
@@ -60,11 +104,17 @@ export function ExportButton({ onExport }: ExportButtonProps) {
       )}
 
       {showGate && !isPro && (
-        <div className="absolute right-0 mt-2 w-80 z-20">
+        <div
+          ref={gateRef}
+          role="alert"
+          tabIndex={-1}
+          className="absolute right-0 mt-2 w-80 z-20 focus-visible:outline-none"
+          onKeyDown={handleGateKeyDown}
+        >
           <UpgradePrompt gate="export" compact />
           <button
             type="button"
-            onClick={() => setShowGate(false)}
+            onClick={() => { setShowGate(false); triggerRef.current?.focus(); }}
             className="mt-1 text-xs text-gray-600 hover:text-gray-700 w-full text-right focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Dismiss
