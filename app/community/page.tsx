@@ -40,6 +40,12 @@ export default function CommunityPage() {
           discussions.length > 0 ? [...discussions].sort((a, b) => (b.lastActivityAt || b.createdAt).localeCompare(a.lastActivityAt || a.createdAt))[0].lastActivityAt || undefined : undefined,
         )) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Community", url: "/community" }])),
+        }}
+      />
       <Breadcrumbs
         items={[{ name: "Community", url: "/community" }]}
       />

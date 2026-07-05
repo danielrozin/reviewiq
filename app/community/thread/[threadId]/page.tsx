@@ -73,6 +73,17 @@ export default async function ThreadPage({ params }: Props) {
           __html: JSON.stringify(threadPageSpeakableSchema(thread.title, `/community/thread/${threadId}`, thread.createdAt, thread.lastActivityAt || thread.createdAt)),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Community", url: "/community" },
+              { name: thread.title, url: `/community/thread/${threadId}` },
+            ])
+          ),
+        }}
+      />
       <Breadcrumbs
         items={[
           { name: "Community", url: "/community" },
