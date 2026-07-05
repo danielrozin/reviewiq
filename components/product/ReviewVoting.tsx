@@ -1,16 +1,20 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import type React from "react";
 
 interface ReviewVotingProps {
   reviewId: string;
   initialHelpfulCount: number;
 }
 
+const VOTE_VALUES: Array<"helpful" | "not_helpful"> = ["helpful", "not_helpful"];
+
 export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProps) {
   const [helpfulCount, setHelpfulCount] = useState(initialHelpfulCount);
   const [voted, setVoted] = useState<"helpful" | "not_helpful" | null>(null);
   const [loading, setLoading] = useState(false);
+  const groupRef = useRef<HTMLDivElement>(null);
 
   async function handleVote(type: "helpful" | "not_helpful") {
     if (loading) return;
@@ -71,6 +75,18 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
     }
   }
 
+  function handleVoteKeyDown(e: React.KeyboardEvent) {
+    const idx = voted === null ? 0 : VOTE_VALUES.indexOf(voted);
+    const focus = (i: number) => {
+      const v = VOTE_VALUES[(i + VOTE_VALUES.length) % VOTE_VALUES.length];
+      groupRef.current?.querySelector<HTMLButtonElement>(`[data-votekey="${v}"]`)?.focus();
+    };
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); focus(idx + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); focus(idx - 1); }
+    else if (e.key === "Home") { e.preventDefault(); focus(0); }
+    else if (e.key === "End") { e.preventDefault(); focus(VOTE_VALUES.length - 1); }
+  }
+
   return (
     <div role="group" aria-label="Review helpfulness" className="flex items-center gap-3">
       <span role="status" aria-live="polite" aria-atomic="true" className="text-xs text-gray-600 transition-all duration-200">
@@ -80,12 +96,21 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
             ? `${helpfulCount} found this helpful`
             : "Was this helpful?"}
       </span>
-      <div className="flex items-center gap-1">
+      <div
+        role="radiogroup"
+        aria-label="Vote on helpfulness"
+        ref={groupRef}
+        className="flex items-center gap-1"
+        onKeyDown={handleVoteKeyDown}
+      >
         <button
           type="button"
           onClick={() => handleVote("helpful")}
           disabled={loading}
-          aria-pressed={voted === "helpful"}
+          role="radio"
+          aria-checked={voted === "helpful"}
+          tabIndex={voted === "helpful" || voted === null ? 0 : -1}
+          data-votekey="helpful"
           aria-label="Mark as helpful"
           className={`inline-flex items-center gap-1 min-h-[44px] px-3 py-2 rounded-lg text-xs transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-brand-400 ${
             voted === "helpful"
@@ -102,7 +127,10 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           type="button"
           onClick={() => handleVote("not_helpful")}
           disabled={loading}
-          aria-pressed={voted === "not_helpful"}
+          role="radio"
+          aria-checked={voted === "not_helpful"}
+          tabIndex={voted === "not_helpful" ? 0 : -1}
+          data-votekey="not_helpful"
           aria-label="Mark as not helpful"
           className={`inline-flex items-center gap-1 min-h-[44px] px-3 py-2 rounded-lg text-xs transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-brand-400 ${
             voted === "not_helpful"

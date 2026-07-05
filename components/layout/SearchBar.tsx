@@ -180,7 +180,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
           role="combobox"
           aria-expanded={open}
           aria-autocomplete="list"
-          aria-controls="search-listbox"
+          aria-controls={open && results.length > 0 ? "search-listbox" : undefined}
           aria-activedescendant={selectedIndex >= 0 ? `search-option-${selectedIndex}` : undefined}
           value={query}
           onChange={(e) => search(e.target.value)}

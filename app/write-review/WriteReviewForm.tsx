@@ -344,7 +344,7 @@ export function WriteReviewForm() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <span className="absolute -top-1 -right-1 text-2xl animate-bounce">🎉</span>
+              <span aria-hidden="true" className="absolute -top-1 -right-1 text-2xl animate-bounce">🎉</span>
             </div>
             <h1 className="text-3xl font-extrabold text-gray-900 mb-3">
               Review submitted!

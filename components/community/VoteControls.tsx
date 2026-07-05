@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
+import type React from "react";
 import { formatNumber } from "@/lib/utils";
 import { trackVoteCast } from "@/lib/tracking/analytics";
 
@@ -21,6 +22,8 @@ function getStoredVote(itemId: string): "up" | "down" | null {
   return stored === "up" || stored === "down" ? stored : null;
 }
 
+const VOTE_KEYS: Array<"up" | "down"> = ["up", "down"];
+
 export function VoteControls({
   itemId,
   itemType = "thread",
@@ -34,6 +37,7 @@ export function VoteControls({
   const [vote, setVote] = useState<"up" | "down" | null>(null);
   const [currentUpvotes, setCurrentUpvotes] = useState(upvotes);
   const [currentDownvotes, setCurrentDownvotes] = useState(downvotes);
+  const groupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setVote(getStoredVote(itemId));
@@ -72,6 +76,19 @@ export function VoteControls({
     // }).catch(() => {});
   }, [vote, itemId, itemType]);
 
+  function handleVoteKeyDown(e: React.KeyboardEvent) {
+    const idx = vote === null ? 0 : VOTE_KEYS.indexOf(vote);
+    const select = (i: number) => {
+      const v = VOTE_KEYS[(i + VOTE_KEYS.length) % VOTE_KEYS.length];
+      if (v !== vote) handleVote(v);
+      groupRef.current?.querySelector<HTMLButtonElement>(`[data-votekey="${v}"]`)?.focus();
+    };
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); select(idx + 1); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); select(idx - 1); }
+    else if (e.key === "Home") { e.preventDefault(); select(0); }
+    else if (e.key === "End") { e.preventDefault(); select(VOTE_KEYS.length - 1); }
+  }
+
   const buttonSize = size === "sm" ? "w-11 h-11 text-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1" : "w-11 h-11 text-base touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1";
   const scoreSize = size === "sm" ? "text-sm" : "text-base";
 
@@ -88,11 +105,20 @@ export function VoteControls({
 
   if (layout === "vertical") {
     return (
-      <div className="flex flex-col items-center gap-0.5">
+      <div
+        role="radiogroup"
+        aria-label={ariaContext ? `Vote on ${ariaContext}` : "Vote"}
+        ref={groupRef}
+        className="flex flex-col items-center gap-0.5"
+        onKeyDown={handleVoteKeyDown}
+      >
         <button
           type="button"
           onClick={() => handleVote("up")}
-          aria-pressed={vote === "up"}
+          role="radio"
+          aria-checked={vote === "up"}
+          tabIndex={vote === "up" || vote === null ? 0 : -1}
+          data-votekey="up"
           aria-label={ariaContext ? `Upvote ${ariaContext}` : "Upvote"}
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "up"
@@ -113,7 +139,10 @@ export function VoteControls({
         <button
           type="button"
           onClick={() => handleVote("down")}
-          aria-pressed={vote === "down"}
+          role="radio"
+          aria-checked={vote === "down"}
+          tabIndex={vote === "down" ? 0 : -1}
+          data-votekey="down"
           aria-label={ariaContext ? `Downvote ${ariaContext}` : "Downvote"}
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "down"
@@ -129,11 +158,20 @@ export function VoteControls({
 
   return (
     <div className="flex items-center gap-2">
-      <div className="flex items-center gap-0.5 bg-gray-50 rounded-lg">
+      <div
+        role="radiogroup"
+        aria-label={ariaContext ? `Vote on ${ariaContext}` : "Vote"}
+        ref={groupRef}
+        className="flex items-center gap-0.5 bg-gray-50 rounded-lg"
+        onKeyDown={handleVoteKeyDown}
+      >
         <button
           type="button"
           onClick={() => handleVote("up")}
-          aria-pressed={vote === "up"}
+          role="radio"
+          aria-checked={vote === "up"}
+          tabIndex={vote === "up" || vote === null ? 0 : -1}
+          data-votekey="up"
           aria-label={ariaContext ? `Upvote ${ariaContext}` : "Upvote"}
           className={`${buttonSize} flex items-center justify-center rounded-l-lg transition-colors ${
             vote === "up"
@@ -154,7 +192,10 @@ export function VoteControls({
         <button
           type="button"
           onClick={() => handleVote("down")}
-          aria-pressed={vote === "down"}
+          role="radio"
+          aria-checked={vote === "down"}
+          tabIndex={vote === "down" ? 0 : -1}
+          data-votekey="down"
           aria-label={ariaContext ? `Downvote ${ariaContext}` : "Downvote"}
           className={`${buttonSize} flex items-center justify-center rounded-r-lg transition-colors ${
             vote === "down"
