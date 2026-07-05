@@ -120,7 +120,7 @@ export default function SignInPage() {
         <div className="w-full max-w-sm mx-auto lg:mx-0">
           <div className="lg:hidden text-center mb-8">
             <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
-              <div aria-hidden="true" className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center">
+              <div aria-hidden="true" className="w-11 h-11 bg-brand-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xs">RIQ</span>
               </div>
             </Link>
@@ -152,7 +152,7 @@ export default function SignInPage() {
               {loading ? "Redirecting…" : "Continue with Google"}
             </button>
 
-            <div className="flex items-center gap-3 text-xs text-gray-400" aria-hidden="true">
+            <div className="flex items-center gap-3 text-xs text-gray-500" aria-hidden="true">
               <div className="flex-1 h-px bg-gray-100" />
               <span>Free forever · No credit card</span>
               <div className="flex-1 h-px bg-gray-100" />

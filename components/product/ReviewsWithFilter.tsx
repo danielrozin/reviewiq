@@ -75,7 +75,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
                 setFilterRating(filterRating === star ? null : star);
                 setVisible(INITIAL_VISIBLE);
               }}
-              className={`flex items-center gap-0.5 px-2.5 py-1.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[36px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+              className={`flex items-center gap-0.5 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 filterRating === star
                   ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -94,7 +94,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
               type="button"
               onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
               aria-label="Clear star filter"
-              className="px-2.5 py-1.5 text-xs text-gray-600 hover:text-gray-800 transition-colors touch-manipulation min-h-[36px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
+              className="px-3 py-2.5 text-xs text-gray-600 hover:text-gray-800 transition-colors touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
             >
               Clear
             </button>
@@ -105,7 +105,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
         <select
           value={sort}
           onChange={(e) => { setSort(e.target.value as SortKey); setVisible(INITIAL_VISIBLE); }}
-          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-xl px-3 py-1.5 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent cursor-pointer"
+          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-xl px-3 py-3 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent cursor-pointer"
           aria-label="Sort reviews"
         >
           {SORT_OPTIONS.map((o) => (

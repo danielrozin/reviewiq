@@ -66,7 +66,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
             <li key={thread.id}>
             <Link
               href={`/community/thread/${thread.id}`}
-              aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""}${thread.isPinned ? " (Pinned)" : ""} — ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
+              aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""}${thread.isPinned ? " (Pinned)" : ""} — ${netVotes} ${netVotes === 1 ? "vote" : "votes"}, ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
               className="flex gap-4 p-4 border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               {/* Vote count */}
