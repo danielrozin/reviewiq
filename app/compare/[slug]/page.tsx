@@ -30,9 +30,21 @@ export async function generateMetadata({ params }: Props) {
 
   const { productA, productB } = pair;
   const year = new Date().getFullYear();
+
+  // Keep the meta description under Google's ~160-char SERP truncation limit so
+  // the click-driving tail (review count / "which wins") isn't cut off. Product
+  // names vary in length, so degrade gracefully for very long pairs.
+  const names = `${productA.name} vs ${productB.name}`;
+  const totalReviews = productA.reviewCount + productB.reviewCount;
+  const full = `Compare ${names}: SmartScores, specs, pros & cons & pricing from ${totalReviews} verified reviews. See which wins.`;
+  const mid = `Compare ${names}: SmartScores, specs, pros & cons & pricing from ${totalReviews} verified reviews.`;
+  const short = `${names}: compare SmartScores, specs, pros & cons & pricing. See which is better.`;
+  const description =
+    full.length <= 160 ? full : mid.length <= 160 ? mid : short;
+
   return buildMetadata({
     title: `${productA.name} vs ${productB.name} (${year}) — Which Is Better?`,
-    description: `Compare ${productA.name} (SmartScore ${productA.smartScore}) vs ${productB.name} (SmartScore ${productB.smartScore}). See specs, pros & cons, pricing, and which is better based on ${productA.reviewCount + productB.reviewCount} verified reviews.`,
+    description,
     path: `/compare/${slug}`,
   });
 }
