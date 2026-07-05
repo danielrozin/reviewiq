@@ -56,12 +56,6 @@ export default function FAQIndexPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexWebPageJsonLd) }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "FAQ", url: "/faq" }])),
-        }}
-      />
       <Breadcrumbs items={[{ name: "FAQ", url: "/faq" }]} />
 
       <header className="mt-8 mb-12 max-w-3xl">

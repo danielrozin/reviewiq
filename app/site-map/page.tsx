@@ -194,12 +194,6 @@ export default function SiteMapPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(siteMapWebPageJsonLd) }}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Site Map", url: "/site-map" }])),
-        }}
-      />
       <Breadcrumbs items={[{ name: "Site Map", url: "/site-map" }]} />
 
       <div className="mt-8 max-w-4xl">

@@ -13,7 +13,7 @@ const blogIndexWebPageJsonLd = {
   name: "ReviewIQ Blog — Buying Guides, Comparisons & Expert Reviews",
   url: `${SITE_URL}/blog`,
   inLanguage: "en",
-  mainEntity: { "@id": `${SITE_URL}/blog` },
+  mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/blog#post-list`, name: "Blog Posts" },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
@@ -43,12 +43,6 @@ export default function BlogPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexWebPageJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema([{ name: "Blog", url: "/blog" }])),
-        }}
       />
       <Breadcrumbs items={[{ name: "Blog", url: "/blog" }]} />
 

@@ -736,6 +736,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     url: pageUrl,
     inLanguage: "en",
     about: { "@type": "Thing", name: categoryName },
+    mainEntity: { "@type": "ItemList", "@id": `${pageUrl}#product-list`, name: `Best ${categoryName}` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
