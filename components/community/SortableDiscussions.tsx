@@ -17,6 +17,7 @@ export function SortableDiscussions({
   top: DiscussionThread[];
 }) {
   const [activeTab, setActiveTab] = useState<SortTab>("Trending");
+  const [sortAnnouncement, setSortAnnouncement] = useState("");
   const tabKeys: SortTab[] = ["Trending", "Recent", "Top"];
   const radioGroupRef = useRef<HTMLDivElement>(null);
 
@@ -26,20 +27,24 @@ export function SortableDiscussions({
       e.preventDefault();
       const next = tabKeys[(idx + 1) % tabKeys.length];
       setActiveTab(next);
+      setSortAnnouncement(`Showing ${next} discussions`);
       (radioGroupRef.current?.querySelector(`[data-key="${next}"]`) as HTMLButtonElement)?.focus();
     } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
       e.preventDefault();
       const prev = tabKeys[(idx - 1 + tabKeys.length) % tabKeys.length];
       setActiveTab(prev);
+      setSortAnnouncement(`Showing ${prev} discussions`);
       (radioGroupRef.current?.querySelector(`[data-key="${prev}"]`) as HTMLButtonElement)?.focus();
     } else if (e.key === "Home") {
       e.preventDefault();
       setActiveTab(tabKeys[0]);
+      setSortAnnouncement(`Showing ${tabKeys[0]} discussions`);
       (radioGroupRef.current?.querySelector(`[data-key="${tabKeys[0]}"]`) as HTMLButtonElement)?.focus();
     } else if (e.key === "End") {
       e.preventDefault();
       const last = tabKeys[tabKeys.length - 1];
       setActiveTab(last);
+      setSortAnnouncement(`Showing ${last} discussions`);
       (radioGroupRef.current?.querySelector(`[data-key="${last}"]`) as HTMLButtonElement)?.focus();
     }
   }
@@ -93,7 +98,7 @@ export function SortableDiscussions({
               aria-checked={activeTab === key}
               tabIndex={activeTab === key ? 0 : -1}
               aria-controls="sortable-discussion-list"
-              onClick={() => setActiveTab(key)}
+              onClick={() => { setActiveTab(key); setSortAnnouncement(`Showing ${key} discussions`); }}
               className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-3 min-h-[44px] rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 activeTab === key
                   ? "bg-white text-brand-600 shadow-sm border border-gray-100"
@@ -107,7 +112,8 @@ export function SortableDiscussions({
         </div>
       </div>
 
-      <div id="sortable-discussion-list" role="list" aria-live="polite" aria-label={`${activeTab} discussions`} className="space-y-3">
+      <p role="status" aria-live="polite" aria-atomic="true" className="sr-only">{sortAnnouncement}</p>
+      <div id="sortable-discussion-list" role="list" aria-label={`${activeTab} discussions`} className="space-y-3">
         {threads.map((thread) => (
           <div role="listitem" key={thread.id}>
             <ThreadCard thread={thread} />
