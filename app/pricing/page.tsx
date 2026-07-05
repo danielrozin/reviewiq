@@ -19,7 +19,7 @@ const pricingWebPageSchema = {
   mainEntity: { "@type": "Product", "@id": `${SITE_URL}/pricing#product` },
   speakable: {
     "@type": "SpeakableSpecification",
-    cssSelector: ["[data-speakable='pricing-intro']"],
+    cssSelector: ["[data-speakable='pricing-intro']", "[data-speakable='faq-answer']"],
   },
 };
 import { GuaranteeBadge } from "@/components/premium/GuaranteeBadge";

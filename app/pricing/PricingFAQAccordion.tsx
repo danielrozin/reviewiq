@@ -58,7 +58,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
               hidden={!isOpen}
               className="px-6 pb-5"
             >
-              <p className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
+              <p data-speakable="faq-answer" className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
             </div>
           </div>
         );

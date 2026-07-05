@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqPages } from "@/data/faq-pages";
-import { breadcrumbSchema } from "@/lib/schema/jsonld";
+import { breadcrumbSchema, faqSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -46,6 +46,18 @@ const faqIndexWebPageJsonLd = {
   },
 };
 
+const faqIndexFAQPageJsonLd = faqSchema(
+  [
+    { question: "How does ReviewIQ verify buyer reviews?", answer: "ReviewIQ uses receipt uploads and retailer order verification to confirm purchases before publishing a review. Every review displays its verification tier — Verified Purchase, Receipt Verified, or Community Verified — so you always know how trustworthy it is." },
+    { question: "What is a SmartScore?", answer: "SmartScore is ReviewIQ's 0–100 composite rating that synthesizes verified-buyer reviews, reliability data, ease-of-use ratings, and value feedback into a single comparable number — not a simple average of stars. It lets you compare products across brands on a level playing field." },
+    { question: "Does ReviewIQ earn affiliate commissions?", answer: "No. ReviewIQ has zero affiliate links and earns nothing from your purchases. Our only revenue comes from the Pro subscription plan. Our sole incentive is helping you make the right buying decision." },
+    { question: "Are online product reviews reliable?", answer: "Many online reviews are incentivized, fake, or from unverified purchasers. ReviewIQ addresses this by requiring purchase verification before a review can be published, by using AI to flag patterns consistent with fake or incentivized reviews, and by displaying a verification badge on every review so readers know the source." },
+    { question: "How is ReviewIQ different from Amazon reviews?", answer: "Unlike Amazon, ReviewIQ has no financial stake in which products you buy — there are no affiliate links. All reviews are purchase-verified. ReviewIQ also provides AI-generated SmartScore summaries, reliability statistics, and side-by-side product comparisons that Amazon does not offer." },
+    { question: "What is ReviewIQ Pro and what does it include?", answer: "ReviewIQ Pro is a paid subscription that unlocks advanced review filters (by verification tier, reviewer profile, and date range), price-drop alerts, unlimited side-by-side product comparisons, and early access to new product categories. The free tier gives full access to all reviews and SmartScores." },
+  ],
+  '/faq'
+);
+
 export const metadata = buildMetadata({
   title: "Frequently Asked Questions",
   description:
@@ -58,6 +70,7 @@ export default function FAQIndexPage() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexWebPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqIndexFAQPageJsonLd) }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
