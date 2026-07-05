@@ -639,8 +639,12 @@ export function discussionForumPostingSchema(
     dateModified: thread.lastActivityAt,
     author: {
       "@type": "Person",
-      ...(authorUsername && { "@id": `${SITE_URL}/community/user/${authorUsername}#person` }),
+      ...(authorUsername && {
+        "@id": `${SITE_URL}/community/user/${authorUsername}#person`,
+        sameAs: [`${SITE_URL}/community/user/${authorUsername}`],
+      }),
       name: authorName,
+      ...(thread.tags.length > 0 && { knowsAbout: thread.tags.map((t) => t.replace(/-/g, " ")) }),
     },
     ...(thread.productSlug && thread.categorySlug && {
       about: {
