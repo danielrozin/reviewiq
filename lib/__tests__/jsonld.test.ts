@@ -18,7 +18,7 @@ describe('organizationSchema', () => {
   it('returns valid Organization schema', () => {
     const schema = organizationSchema()
     expect(schema['@context']).toBe('https://schema.org')
-    expect(schema['@type']).toBe('Organization')
+    expect(schema['@type']).toContain('Organization')
     expect(schema.name).toBe('ReviewIQ')
     expect(schema.url).toBeDefined()
   })
@@ -29,7 +29,7 @@ describe('websiteSchema', () => {
     const schema = websiteSchema()
     expect(schema['@type']).toBe('WebSite')
     expect(schema.potentialAction['@type']).toBe('SearchAction')
-    expect(schema.potentialAction.target).toContain('{search_term_string}')
+    expect(schema.potentialAction.target.urlTemplate).toContain('{search_term_string}')
   })
 })
 
@@ -101,6 +101,74 @@ describe('productSchema', () => {
   })
 })
 
+describe('productSchema — Google star-rating rich-result contract', () => {
+  // Mirrors https://developers.google.com/search/docs/appearance/structured-data/review-snippet
+  const product = {
+    name: 'Sony WH-1000XM5',
+    slug: 'sony-wh-1000xm5',
+    brand: 'Sony',
+    categorySlug: 'headphones',
+    description: 'Noise canceling headphones',
+    image: 'https://revieweriq.com/sony.jpg',
+    priceRange: { min: 300, max: 400, currency: 'USD' },
+    smartScore: 92,
+    reviewCount: 128,
+    createdAt: '2025-01-01',
+    updatedAt: '2025-06-01',
+    reviews: [
+      { id: 'r1', rating: 5, headline: 'Great', body: 'Excellent noise cancelling', authorName: 'Ada Lovelace', createdAt: '2025-01-01' },
+      { id: 'r2', rating: 4, headline: 'Good', body: 'Comfortable for long flights', authorName: 'Alan Turing', createdAt: '2025-01-02' },
+    ],
+  } as any
+  const pageUrl = '/category/headphones/sony-wh-1000xm5'
+
+  it('emits a Product with a name (required by Google)', () => {
+    const schema = productSchema(product, pageUrl)
+    expect(schema['@type']).toBe('Product')
+    expect(schema.name).toBeTruthy()
+  })
+
+  it('emits AggregateRating with count and an in-range ratingValue', () => {
+    const schema = productSchema(product, pageUrl) as any
+    const agg = schema.aggregateRating
+    expect(agg['@type']).toBe('AggregateRating')
+    const value = Number(agg.ratingValue)
+    expect(value).toBeGreaterThanOrEqual(agg.worstRating)
+    expect(value).toBeLessThanOrEqual(agg.bestRating)
+    // Google requires ratingCount or reviewCount > 0.
+    expect(agg.ratingCount).toBeGreaterThan(0)
+    expect(agg.reviewCount).toBeGreaterThan(0)
+  })
+
+  it('emits Review items with author, in-range reviewRating, and datePublished', () => {
+    const schema = productSchema(product, pageUrl) as any
+    expect(Array.isArray(schema.review)).toBe(true)
+    for (const review of schema.review) {
+      expect(review['@type']).toBe('Review')
+      expect(review.author?.name).toBeTruthy()
+      const rating = Number(review.reviewRating.ratingValue)
+      expect(rating).toBeGreaterThanOrEqual(review.reviewRating.worstRating)
+      expect(rating).toBeLessThanOrEqual(review.reviewRating.bestRating)
+      expect(review.datePublished).toBeTruthy()
+    }
+  })
+
+  it('never lets ratingValue exceed bestRating (a common Rich Results error)', () => {
+    const perfect = { ...product, reviews: [{ id: 'r', rating: 5, headline: 'x', body: 'x', authorName: 'x', createdAt: '2025-01-01' }] }
+    const schema = productSchema(perfect, pageUrl) as any
+    expect(Number(schema.aggregateRating.ratingValue)).toBeLessThanOrEqual(schema.aggregateRating.bestRating)
+  })
+
+  it('omits the whole schema block gracefully when review data is absent', () => {
+    const noData = { ...product, reviews: [], reviewCount: 0 }
+    const schema = productSchema(noData, pageUrl) as any
+    expect(schema.aggregateRating).toBeUndefined()
+    expect(schema.review).toBeUndefined()
+    // Product itself is still valid (name present) — no empty rating block emitted.
+    expect(schema.name).toBeTruthy()
+  })
+})
+
 describe('reviewSchema', () => {
   it('returns valid Review schema', () => {
     const schema = reviewSchema({
@@ -138,7 +206,7 @@ describe('categoryListSchema', () => {
     expect(schema['@type']).toBe('ItemList')
     expect(schema.itemListElement).toHaveLength(2)
     expect(schema.itemListElement[0].position).toBe(1)
-    expect(schema.itemListElement[1].url).toContain('/category/audio')
+    expect(schema.itemListElement[1].item.url).toContain('/category/audio')
   })
 })
 
@@ -160,6 +228,6 @@ describe('analysisAuthorSchema', () => {
     const schema = analysisAuthorSchema()
     expect(schema['@type']).toBe('Person')
     expect(schema.name).toContain('ReviewIQ')
-    expect(schema.worksFor['@type']).toBe('Organization')
+    expect(schema.worksFor['@id']).toContain('#organization')
   })
 })
