@@ -346,7 +346,7 @@ export function blogPostSchema(post: BlogPost) {
     abstract: post.seo.metaDescription,
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='blog-headline']", "[data-speakable='blog-intro']"],
+      cssSelector: ["[data-speakable='blog-headline']", "[data-speakable='blog-intro']", "[data-speakable='blog-body']"],
     },
     ...(post.readingTime > 0 && {
       timeRequired: `PT${post.readingTime}M`,

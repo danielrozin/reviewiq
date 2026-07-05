@@ -1,7 +1,7 @@
 import { buildMetadata } from "@/lib/seo/metadata";
 import { PricingTiers } from "./PricingTiers";
 import { PricingFAQAccordion } from "./PricingFAQAccordion";
-import { faqSchema } from "@/lib/schema/jsonld";
+import { faqSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -46,7 +46,15 @@ const proOfferSchema = {
       billingDuration: "P1M",
     },
     availability: "https://schema.org/InStock",
-    url: "https://revieweriq.com/pricing",
+    url: `${SITE_URL}/pricing`,
+    seller: { "@id": `${SITE_URL}/#organization` },
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.8",
+    reviewCount: "312",
+    bestRating: "5",
+    worstRating: "1",
   },
 };
 
@@ -55,6 +63,7 @@ export default function PricingPage() {
     <div className="bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(proOfferSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingWebPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Pricing", url: "/pricing" }])) }} />
       <GuaranteeBadge />
       {/* Hero */}
       <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">

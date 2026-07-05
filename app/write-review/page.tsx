@@ -18,8 +18,16 @@ const writeReviewWebPageJsonLd = {
     cssSelector: ["[data-speakable='write-review-intro']"],
   },
   potentialAction: {
-    "@type": "ReviewAction",
-    target: `${SITE_URL}/write-review`,
+    "@type": "CreateAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/write-review`,
+      actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
+    },
+    result: {
+      "@type": "Review",
+      name: "Product Review",
+    },
   },
 };
 
