@@ -50,13 +50,13 @@ export function ComparisonTray() {
                   className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-xl px-3 py-2 shrink-0"
                 >
                   <div
-                    aria-hidden="true"
+                    aria-label={`SmartScore: ${product.smartScore}`}
                     className={cn(
                       "w-6 h-6 rounded-md text-white flex items-center justify-center text-xs font-bold shrink-0",
                       getScoreBgColor(product.smartScore)
                     )}
                   >
-                    {product.smartScore}
+                    <span aria-hidden="true">{product.smartScore}</span>
                   </div>
                   <span className="text-sm font-medium text-gray-700 max-w-[120px] truncate">
                     {product.name}

@@ -93,10 +93,11 @@ export function EmailCaptureCTA({
         aria-label={`Get notified when SmartScore changes for ${productName}`}
         className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto"
       >
+        <label htmlFor="email-capture-input" className="sr-only">Email address</label>
         <input
+          id="email-capture-input"
           type="email"
           required
-          aria-label="Email address"
           aria-invalid={status === "error"}
           aria-describedby={status === "error" ? "email-capture-error" : undefined}
           placeholder="you@example.com"
