@@ -25,6 +25,8 @@ export function organizationSchema() {
       contactType: "customer support",
       availableLanguage: "English",
     },
+    foundingDate: "2023",
+    numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
     sameAs: [
       "https://twitter.com/revieweriq",
       "https://www.linkedin.com/company/revieweriq",
@@ -103,6 +105,7 @@ export function productSchema(product: Product, pageUrl?: string) {
     schema.aggregateRating = {
       "@type": "AggregateRating",
       ratingValue: avgRating.toFixed(1),
+      ratingCount: ratingCount,
       reviewCount: ratingCount,
       bestRating: 5,
       worstRating: 1,
@@ -215,6 +218,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
         ratingValue: avgCategoryRating.toFixed(1),
         bestRating: "5",
         worstRating: "1",
+        ratingCount: products.reduce((sum, p) => sum + p.reviewCount, 0),
         reviewCount: products.reduce((sum, p) => sum + p.reviewCount, 0),
       },
     }),
@@ -502,6 +506,11 @@ export function discussionForumPostingSchema(
         interactionType: "https://schema.org/CommentAction",
         userInteractionCount: thread.commentCount,
       },
+      {
+        "@type": "InteractionCounter",
+        interactionType: "https://schema.org/ViewAction",
+        userInteractionCount: thread.viewCount,
+      },
     ],
     ...(thread.tags.length > 0 && { keywords: thread.tags.join(", ") }),
     isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -725,6 +734,7 @@ function comparisonProductItem(product: Product) {
     item.aggregateRating = {
       "@type": "AggregateRating",
       ratingValue: avgRating.toFixed(1),
+      ratingCount: ratingCount,
       reviewCount: ratingCount,
       bestRating: 5,
       worstRating: 1,

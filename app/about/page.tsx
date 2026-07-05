@@ -68,6 +68,8 @@ const teamPersonsJsonLd = {
   "@context": "https://schema.org",
   "@graph": TEAM.map((member) => ({
     "@type": "Person",
+    "@id": `${SITE_URL}/about#person-${member.name.toLowerCase().replace(/\s+/g, "-")}`,
+    url: `${SITE_URL}/about`,
     name: member.name,
     jobTitle: member.role,
     description: member.bio,
