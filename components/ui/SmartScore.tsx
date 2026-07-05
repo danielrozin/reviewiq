@@ -126,7 +126,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
         <span aria-hidden="true">{score}</span>
       </div>
       {showLabel && (
-        <div className="flex flex-col">
+        <div className="flex flex-col" aria-hidden="true">
           <span className={cn("font-semibold text-sm", getScoreColor(score))}>
             {getScoreLabel(score)}
           </span>

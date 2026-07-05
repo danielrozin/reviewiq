@@ -110,7 +110,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Quick Actions */}
-      <div className="mb-8" aria-live="polite" aria-atomic="true">
+      <div className="mb-8">
         <QuickActions />
       </div>
 
