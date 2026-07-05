@@ -59,7 +59,7 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
     const color = getScoreRingColor(score);
 
     return (
-      <div className="flex items-center gap-3" ref={containerRef} role="img" aria-label={`SmartScore: ${score} — ${getScoreLabel(score)}`}>
+      <div className="flex items-center gap-3" ref={containerRef} role="meter" aria-valuenow={score} aria-valuemin={0} aria-valuemax={100} aria-valuetext={`${score}/100 — ${getScoreLabel(score)}`} aria-label="SmartScore">
         <div className="relative flex items-center justify-center" style={{ width: ringSize[size], height: ringSize[size] }}>
           <svg
             width={ringSize[size]}
@@ -120,8 +120,12 @@ export function SmartScore({ score, size = "md", showLabel = true, showRing = fa
           getScoreBgColor(score),
           sizeClasses[size]
         )}
-        aria-label={`SmartScore: ${score} — ${getScoreLabel(score)}`}
-        role="img"
+        role="meter"
+        aria-valuenow={score}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuetext={`${score}/100 — ${getScoreLabel(score)}`}
+        aria-label="SmartScore"
       >
         <span aria-hidden="true">{score}</span>
       </div>
