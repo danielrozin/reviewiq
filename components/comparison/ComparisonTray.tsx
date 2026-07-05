@@ -81,7 +81,7 @@ export function ComparisonTray() {
                   aria-hidden="true"
                   className="w-[140px] h-[42px] border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center shrink-0"
                 >
-                  <span className="text-xs text-gray-300">+ Add product</span>
+                  <span className="text-xs text-gray-500">+ Add product</span>
                 </div>
               ))}
             </div>

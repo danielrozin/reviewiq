@@ -55,7 +55,7 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
                     ? "bg-emerald-500 text-white"
                     : isCurrent
                       ? "bg-brand-600 text-white ring-4 ring-brand-100"
-                      : "bg-gray-100 text-gray-400"
+                      : "bg-gray-100 text-gray-600"
                 }`}
               >
                 {isCompleted ? (

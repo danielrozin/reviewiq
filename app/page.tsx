@@ -225,6 +225,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/categories"
+            aria-label="View all categories"
             className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all &rarr;
@@ -333,6 +334,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/community"
+            aria-label="View all community discussions"
             className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all →
@@ -487,6 +489,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/categories"
+            aria-label="Browse all product categories"
             className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Browse all &rarr;

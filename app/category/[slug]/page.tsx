@@ -201,8 +201,8 @@ export default async function CategoryPage({ params }: Props) {
             category can be overwhelming. ReviewIQ analyzes verified buyer
             experiences to help you understand what matters most — from
             performance and reliability to value and common issues. Browse the
-            products above to see AI-powered review summaries, recurring
-            complaints, and structured comparisons.
+            products in this category to see AI-powered review summaries,
+            recurring complaints, and structured comparisons.
           </p>
         )}
       </section>
