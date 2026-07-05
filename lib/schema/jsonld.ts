@@ -796,6 +796,12 @@ export function profilePageSchema(
       ...(expertiseCategories && expertiseCategories.length > 0 && {
         knowsAbout: expertiseCategories.map((s) => s.replace(/-/g, " ")),
       }),
+      memberOf: {
+        "@type": "Organization",
+        "@id": `${SITE_URL}/#organization`,
+        name: "ReviewIQ",
+        url: SITE_URL,
+      },
       ...((reviewCount !== undefined || commentCount !== undefined) && {
         interactionStatistic: [
           ...(reviewCount !== undefined ? [{
