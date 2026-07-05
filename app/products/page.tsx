@@ -9,13 +9,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const productsPageSchema = {
   "@context": "https://schema.org",
   "@type": "SearchResultsPage",
-  "@id": `${SITE_URL}/products`,
+  "@id": `${SITE_URL}/products#page`,
   name: "Browse All Products — ReviewIQ",
   url: `${SITE_URL}/products`,
   inLanguage: "en",
   description:
     "Search and filter products across all categories on ReviewIQ. Every SmartScore is based on verified buyer reviews.",
-  mainEntity: { "@type": "ItemList", name: "All Reviewed Products", url: `${SITE_URL}/products` },
+  mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/products#product-list`, name: "All Reviewed Products", url: `${SITE_URL}/products` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

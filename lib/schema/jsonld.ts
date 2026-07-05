@@ -413,7 +413,7 @@ export function communityPageSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: "ReviewIQ Community",
     description: "Real conversations about real products. Ask questions, share experiences, and help others make smarter buying decisions.",
     url: pageUrl,
@@ -421,9 +421,15 @@ export function communityPageSchema() {
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@type": "Thing", name: "Product Reviews & Discussions" },
+    mainEntity: {
+      "@type": "ItemList",
+      "@id": `${pageUrl}#thread-list`,
+      name: "Community Discussion Threads",
+      url: pageUrl,
+    },
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='community-hero']"],
+      cssSelector: ["[data-speakable='community-hero']", "[data-speakable='community-discussions']"],
     },
   };
 }
@@ -432,7 +438,7 @@ export function homePageSchema() {
   return {
     "@context": "https://schema.org",
     "@type": ["WebPage", "CollectionPage"],
-    "@id": `${SITE_URL}/`,
+    "@id": `${SITE_URL}/#page`,
     name: "ReviewIQ — Real Reviews, Real Intelligence",
     description: "AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.",
     url: SITE_URL,
@@ -637,7 +643,7 @@ export function profilePageSchema(
   return {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: `${displayName} — ReviewIQ Community`,
     url: pageUrl,
     inLanguage: "en",
@@ -684,7 +690,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: `${categoryName} Buying Guides & Reviews`,
     description,
     url: pageUrl,
@@ -704,7 +710,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: `Best ${categoryName}`,
     description,
     url: pageUrl,
@@ -734,7 +740,7 @@ export function comparisonSchema(productA: Product, productB: Product) {
   return {
     "@context": "https://schema.org",
     "@type": ["WebPage", "ItemPage"],
-    "@id": pageUrl,
+    "@id": `${pageUrl}#page`,
     name: `${productA.name} vs ${productB.name} — Comparison`,
     description: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`,
     url: pageUrl,
