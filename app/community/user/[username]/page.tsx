@@ -51,7 +51,7 @@ export default async function UserProfilePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories, user.joinedAt, user.lastActiveAt, user.reviewCount, user.commentCount)),
+          __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories, user.joinedAt, user.lastActiveAt, user.reviewCount, user.commentCount, user.threadCount)),
         }}
       />
       <script

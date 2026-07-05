@@ -614,7 +614,6 @@ export function blogPostSpeakableSchema(title: string, url: string, datePublishe
       cssSelector: [
         "[data-speakable='blog-headline']",
         "[data-speakable='blog-intro']",
-        "[data-speakable='blog-body']",
         "[data-speakable='faq-answer']",
       ],
     },
@@ -721,6 +720,7 @@ export function competitorFaqPageSchema(opts: {
       "@type": "FAQPage",
       "@id": `${SITE_URL}${opts.pageUrl}#faq`,
       url: `${SITE_URL}${opts.pageUrl}`,
+      inLanguage: "en",
       isPartOf: { "@id": `${SITE_URL}/#website` },
       publisher: { "@id": `${SITE_URL}/#organization` },
       mainEntity: opts.faqs.map((faq, index) => ({
@@ -766,7 +766,8 @@ export function profilePageSchema(
   joinedAt?: string,
   lastActiveAt?: string,
   reviewCount?: number,
-  commentCount?: number
+  commentCount?: number,
+  threadCount?: number
 ) {
   const pageUrl = `${SITE_URL}/community/user/${username}`;
   return {
@@ -802,7 +803,7 @@ export function profilePageSchema(
         name: "ReviewIQ",
         url: SITE_URL,
       },
-      ...((reviewCount !== undefined || commentCount !== undefined) && {
+      ...((reviewCount !== undefined || commentCount !== undefined || threadCount !== undefined) && {
         interactionStatistic: [
           ...(reviewCount !== undefined ? [{
             "@type": "InteractionCounter",
@@ -813,6 +814,11 @@ export function profilePageSchema(
             "@type": "InteractionCounter",
             interactionType: "https://schema.org/CommentAction",
             userInteractionCount: commentCount,
+          }] : []),
+          ...(threadCount !== undefined ? [{
+            "@type": "InteractionCounter",
+            interactionType: "https://schema.org/CreateAction",
+            userInteractionCount: threadCount,
           }] : []),
         ],
       }),
