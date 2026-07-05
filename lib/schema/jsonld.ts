@@ -150,7 +150,11 @@ export function reviewSchema(review: Review) {
       bestRating: 5,
       worstRating: 1,
     },
-    author: { "@type": "Person", name: review.authorName },
+    author: {
+      "@type": "Person",
+      "@id": `${SITE_URL}/community/user/${review.authorName.toLowerCase().replace(/\s+/g, "-")}#person`,
+      name: review.authorName,
+    },
     datePublished: review.createdAt,
     reviewBody: review.body,
     inLanguage: "en",
@@ -171,7 +175,7 @@ export function faqSchema(items: FAQItem[], pageUrl?: string) {
     }),
     mainEntity: items.map((item, index) => ({
       "@type": "Question",
-      ...(fullUrl && { "@id": `${fullUrl}#faq-${index}` }),
+      ...(fullUrl && { "@id": `${fullUrl}#faq-${item.question.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}` }),
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
