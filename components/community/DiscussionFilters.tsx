@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import type React from "react";
 import type { ThreadType } from "@/types";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 
@@ -38,6 +39,32 @@ export function DiscussionFilters({
 }: DiscussionFiltersProps) {
   const [sort, setSort] = useState(activeSort);
   const [typeFilter, setTypeFilter] = useState<ThreadType | null>(activeType);
+  const sortGroupRef = useRef<HTMLDivElement>(null);
+  const sortValues = SORT_OPTIONS.map((o) => o.value);
+
+  function handleSortKeyDown(e: React.KeyboardEvent) {
+    const idx = sortValues.indexOf(sort);
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = sortValues[(idx + 1) % sortValues.length];
+      handleSort(next);
+      (sortGroupRef.current?.querySelector(`[data-key="${next}"]`) as HTMLButtonElement)?.focus();
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const prev = sortValues[(idx - 1 + sortValues.length) % sortValues.length];
+      handleSort(prev);
+      (sortGroupRef.current?.querySelector(`[data-key="${prev}"]`) as HTMLButtonElement)?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      handleSort(sortValues[0]);
+      (sortGroupRef.current?.querySelector(`[data-key="${sortValues[0]}"]`) as HTMLButtonElement)?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      const last = sortValues[sortValues.length - 1];
+      handleSort(last);
+      (sortGroupRef.current?.querySelector(`[data-key="${last}"]`) as HTMLButtonElement)?.focus();
+    }
+  }
 
   const handleSort = (value: string) => {
     setSort(value);
@@ -52,13 +79,15 @@ export function DiscussionFilters({
   return (
     <div className="space-y-3">
       {/* Sort buttons — mutually exclusive, so radiogroup pattern */}
-      <div role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto pb-1">
+      <div ref={sortGroupRef} role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto pb-1" onKeyDown={handleSortKeyDown}>
         {SORT_OPTIONS.map((option) => (
           <button
             key={option.value}
+            data-key={option.value}
             type="button"
             role="radio"
             aria-checked={sort === option.value}
+            tabIndex={sort === option.value ? 0 : -1}
             onClick={() => handleSort(option.value)}
             className={`text-xs font-medium px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               sort === option.value

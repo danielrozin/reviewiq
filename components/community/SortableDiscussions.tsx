@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import type React from "react";
 import { ThreadCard } from "@/components/community/ThreadCard";
 import type { DiscussionThread } from "@/types";
@@ -17,6 +17,32 @@ export function SortableDiscussions({
   top: DiscussionThread[];
 }) {
   const [activeTab, setActiveTab] = useState<SortTab>("Trending");
+  const tabKeys: SortTab[] = ["Trending", "Recent", "Top"];
+  const radioGroupRef = useRef<HTMLDivElement>(null);
+
+  function handleRadioKeyDown(e: React.KeyboardEvent) {
+    const idx = tabKeys.indexOf(activeTab);
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      const next = tabKeys[(idx + 1) % tabKeys.length];
+      setActiveTab(next);
+      (radioGroupRef.current?.querySelector(`[data-key="${next}"]`) as HTMLButtonElement)?.focus();
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      const prev = tabKeys[(idx - 1 + tabKeys.length) % tabKeys.length];
+      setActiveTab(prev);
+      (radioGroupRef.current?.querySelector(`[data-key="${prev}"]`) as HTMLButtonElement)?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      setActiveTab(tabKeys[0]);
+      (radioGroupRef.current?.querySelector(`[data-key="${tabKeys[0]}"]`) as HTMLButtonElement)?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      const last = tabKeys[tabKeys.length - 1];
+      setActiveTab(last);
+      (radioGroupRef.current?.querySelector(`[data-key="${last}"]`) as HTMLButtonElement)?.focus();
+    }
+  }
 
   const tabs: { key: SortTab; icon: React.ReactNode }[] = [
     {
@@ -57,13 +83,15 @@ export function SortableDiscussions({
           </div>
           <h2 id="sortable-discussions-heading" className="text-lg font-semibold text-gray-900">{activeTab} Discussions</h2>
         </div>
-        <div role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 bg-gray-50 rounded-xl p-1">
+        <div ref={radioGroupRef} role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 bg-gray-50 rounded-xl p-1" onKeyDown={handleRadioKeyDown}>
           {tabs.map(({ key, icon }) => (
             <button
               key={key}
+              data-key={key}
               type="button"
               role="radio"
               aria-checked={activeTab === key}
+              tabIndex={activeTab === key ? 0 : -1}
               aria-controls="sortable-discussion-list"
               onClick={() => setActiveTab(key)}
               className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-3 min-h-[44px] rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${

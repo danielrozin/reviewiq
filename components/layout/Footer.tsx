@@ -69,14 +69,18 @@ export function Footer() {
                 ))}
               </div>
             </div>
-            {submitted ? (
-              <div role="status" className="flex items-center gap-2 text-sm text-white font-medium bg-white/20 px-5 py-3 rounded-xl">
-                <svg aria-hidden="true" className="w-5 h-5 text-emerald-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                </svg>
-                You&rsquo;re in — check your inbox!
-              </div>
-            ) : (
+            {/* role="status" must always be in DOM so the live region is registered before content changes (WCAG 4.1.3) */}
+            <div role="status" aria-live="polite" aria-atomic="true">
+              {submitted && (
+                <div className="flex items-center gap-2 text-sm text-white font-medium bg-white/20 px-5 py-3 rounded-xl">
+                  <svg aria-hidden="true" className="w-5 h-5 text-emerald-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  You&rsquo;re in — check your inbox!
+                </div>
+              )}
+            </div>
+            {!submitted && (
               <form onSubmit={handleNewsletter} aria-label="Newsletter signup" className="flex gap-2 w-full sm:w-auto">
                 <label htmlFor="newsletter-email" className="sr-only">Email address</label>
                 <input
