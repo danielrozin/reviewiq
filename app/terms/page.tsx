@@ -12,7 +12,7 @@ const termsWebPageJsonLd = {
   url: `${SITE_URL}/terms`,
   inLanguage: "en",
   datePublished: "2024-01-01",
-  dateModified: "2025-06-01",
+  dateModified: "2026-07-05",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

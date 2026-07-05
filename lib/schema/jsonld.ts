@@ -198,6 +198,26 @@ export function reviewSchema(review: Review, productRef?: { name: string; url: s
     reviewBody: review.body,
     inLanguage: "en",
     publisher: { "@id": `${SITE_URL}/#organization` },
+    ...(review.pros && review.pros.length > 0 && {
+      positiveNotes: {
+        "@type": "ItemList",
+        itemListElement: review.pros.map((pro, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: pro,
+        })),
+      },
+    }),
+    ...(review.cons && review.cons.length > 0 && {
+      negativeNotes: {
+        "@type": "ItemList",
+        itemListElement: review.cons.map((con, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          name: con,
+        })),
+      },
+    }),
     ...(productRef && {
       itemReviewed: {
         "@type": "Product",
