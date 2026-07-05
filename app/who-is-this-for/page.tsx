@@ -210,6 +210,8 @@ const howToJsonLd = {
   name: "How to Use ReviewIQ",
   description: "4 steps to find the right product using ReviewIQ's AI-powered review platform.",
   url: `${SITE_URL}/who-is-this-for`,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   step: steps.map((step, index) => ({
     "@type": "HowToStep",
     position: index + 1,

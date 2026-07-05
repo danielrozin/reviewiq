@@ -349,6 +349,12 @@ export function blogListSchema(posts: BlogPost[]) {
       headline: post.title,
       url: `${SITE_URL}/blog/${post.slug}`,
       datePublished: post.publishedAt,
+      ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
+      ...(post.coverImage && {
+        image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
+      }),
+      author: { "@type": "Person", name: post.author.name },
+      articleSection: post.categoryName,
     })),
   };
 }

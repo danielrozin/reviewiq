@@ -392,7 +392,7 @@ export function WriteReviewForm() {
         <h1 id="write-review-heading" className="text-3xl font-bold text-gray-900 mb-2">
           Write a Review
         </h1>
-        <p className="text-gray-600 mb-6">
+        <p data-speakable="write-review-intro" className="text-gray-600 mb-6">
           Share your honest experience to help others make smarter buying decisions.
         </p>
 

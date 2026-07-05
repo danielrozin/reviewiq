@@ -9,10 +9,13 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const faqIndexJsonLd = {
   "@context": "https://schema.org",
   "@type": "ItemList",
+  "@id": `${SITE_URL}/faq#faq-topics`,
   name: "ReviewIQ FAQ Topics",
   description:
     "Frequently asked questions about product review platforms, fake reviews, and how ReviewIQ provides verified, AI-powered product intelligence.",
   url: `${SITE_URL}/faq`,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  publisher: { "@id": `${SITE_URL}/#organization` },
   itemListElement: faqPages.map((page, index) => ({
     "@type": "ListItem",
     position: index + 1,
