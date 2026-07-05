@@ -216,6 +216,7 @@ export default function AdminDashboard() {
   const [selectedReviews, setSelectedReviews] = useState<Set<string>>(new Set());
   const [pendingReviews, setPendingReviews] = useState<ReviewItem[]>([]);
   const [loading, setLoading] = useState(false);
+  const [actionMsg, setActionMsg] = useState("");
 
   // Check if already authenticated
   useEffect(() => {
@@ -289,6 +290,8 @@ export default function AdminDashboard() {
     setSelectedReviews(new Set());
     loadReviews();
     setLoading(false);
+    setActionMsg(`${selectedReviews.size} review(s) ${status === "published" ? "approved" : "rejected"}`);
+    setTimeout(() => setActionMsg(""), 3000);
   };
 
   const handleQueueAction = async (id: string, status: string) => {
@@ -299,6 +302,8 @@ export default function AdminDashboard() {
     });
     loadPendingReviews();
     loadStats();
+    setActionMsg(`Review ${status}`);
+    setTimeout(() => setActionMsg(""), 3000);
   };
 
   const handleDeleteProduct = async (id: string) => {
@@ -342,6 +347,7 @@ export default function AdminDashboard() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
+        <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">{actionMsg}</span>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div aria-hidden="true" className="w-8 h-8 bg-gray-900 rounded-lg flex items-center justify-center">

@@ -104,7 +104,7 @@ export function BlogCategoryFilter({ posts }: Props) {
         aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`}
         className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 rounded-lg"
       >
-      <ul role="list" aria-live="polite" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
           <li key={post.id}>
           <Link

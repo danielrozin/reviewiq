@@ -70,6 +70,8 @@ export function GoogleTagManagerNoScript() {
         src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
         height="0"
         width="0"
+        title="Google Tag Manager"
+        aria-hidden="true"
         style={{ display: "none", visibility: "hidden" }}
       />
     </noscript>
