@@ -23,7 +23,8 @@ export function RatingDistribution({ distribution, totalReviews }: RatingDistrib
               aria-valuenow={Math.round(percentage)}
               aria-valuemin={0}
               aria-valuemax={100}
-              aria-label={`${star} star: ${count} review${count !== 1 ? "s" : ""} (${Math.round(percentage)}%)`}
+              aria-valuetext={`${Math.round(percentage)}% — ${count} ${count !== 1 ? "reviews" : "review"}`}
+              aria-label={`${star} star ratings`}
             >
               <div
                 className="bg-amber-400 h-full rounded-full transition-all duration-500"
