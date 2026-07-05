@@ -586,8 +586,9 @@ export function competitorFaqPageSchema(opts: {
       url: `${SITE_URL}${opts.pageUrl}`,
       isPartOf: { "@id": `${SITE_URL}/#website` },
       publisher: { "@id": `${SITE_URL}/#organization` },
-      mainEntity: opts.faqs.map((faq) => ({
+      mainEntity: opts.faqs.map((faq, index) => ({
         "@type": "Question",
+        "@id": `${SITE_URL}${opts.pageUrl}#faq-q-${index}`,
         name: faq.question,
         acceptedAnswer: {
           "@type": "Answer",
@@ -739,6 +740,10 @@ export function comparisonSchema(productA: Product, productB: Product) {
     author: { "@id": `${SITE_URL}/about#ai-review-team` },
     datePublished,
     dateModified,
+    about: [
+      { "@type": "Product", "@id": `${SITE_URL}/category/${productA.categorySlug}/${productA.slug}#product` },
+      { "@type": "Product", "@id": `${SITE_URL}/category/${productB.categorySlug}/${productB.slug}#product` },
+    ],
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [

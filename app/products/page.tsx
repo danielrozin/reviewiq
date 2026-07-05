@@ -15,6 +15,7 @@ const productsPageSchema = {
   inLanguage: "en",
   description:
     "Search and filter products across all categories on ReviewIQ. Every SmartScore is based on verified buyer reviews.",
+  mainEntity: { "@type": "ItemList", name: "All Reviewed Products", url: `${SITE_URL}/products` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
