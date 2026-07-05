@@ -115,12 +115,17 @@ function CompareContent() {
           <ProductSearch selectedIds={ids} onAdd={addProduct} />
         </div>
 
-        {/* Partial selection hint */}
-        {compareProducts.length === 1 && (
-          <p className="text-center text-sm text-brand-600 font-medium mb-6">
-            <span aria-hidden="true">✓ </span>{compareProducts[0].name} added — search for one more product to compare.
-          </p>
-        )}
+        {/* Partial selection hint — always-in-DOM live region so AT announces on add */}
+        <p
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          className="text-center text-sm text-brand-600 font-medium mb-6"
+        >
+          {compareProducts.length === 1
+            ? `${compareProducts[0].name} added — search for one more product to compare.`
+            : ""}
+        </p>
 
         {/* Feature chips */}
         <div className="grid grid-cols-3 gap-3 mb-8 mt-6">
