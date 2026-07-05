@@ -77,13 +77,13 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
   }
 
   return (
-    <div ref={ref} className="relative w-full max-w-md">
+    <div ref={ref} className="relative w-full max-w-md" onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen(false); }}>
       <input
         ref={inputRef}
         type="text"
         role="combobox"
         aria-expanded={open && query.length > 0}
-        aria-controls="compare-product-listbox"
+        aria-controls={open && query.length > 0 ? "compare-product-listbox" : undefined}
         aria-autocomplete="list"
         aria-haspopup="listbox"
         value={query}

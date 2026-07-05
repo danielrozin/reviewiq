@@ -408,7 +408,7 @@ export function ProductSearch() {
           )}
         </p>
         {totalPages > 1 && (
-          <p className="text-sm text-gray-600">
+          <p role="status" aria-live="polite" aria-atomic="true" className="text-sm text-gray-600">
             Page {safePage} of {totalPages}
           </p>
         )}
