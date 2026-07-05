@@ -15,11 +15,12 @@ export const metadata = buildMetadata({
 
 const categoriesWebPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": `${SITE_URL}/categories`,
+  "@type": ["WebPage", "CollectionPage"],
+  "@id": `${SITE_URL}/categories#page`,
   name: "All Product Categories — AI Reviews & Comparisons",
   url: `${SITE_URL}/categories`,
   inLanguage: "en",
+  mainEntity: { "@id": `${SITE_URL}/categories#category-list` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

@@ -102,11 +102,12 @@ export function productSchema(product: Product, pageUrl?: string) {
   };
 
   const offers = aggregateOfferFromProduct(product);
-  if (offers) schema.offers = offers;
+  if (offers) schema.offers = canonicalUrl ? { ...offers, url: canonicalUrl } : offers;
 
   if (ratingCount > 0 && avgRating > 0) {
     schema.aggregateRating = {
       "@type": "AggregateRating",
+      ...(canonicalUrl && { "@id": `${canonicalUrl}#aggregate-rating` }),
       ratingValue: avgRating.toFixed(1),
       ratingCount: ratingCount,
       reviewCount: ratingCount,
@@ -244,7 +245,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
         position: index + 1,
         item: {
           "@type": "Product",
-          "@id": `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
+          "@id": `${SITE_URL}/category/${p.categorySlug}/${p.slug}#product`,
           name: p.name,
           url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
           brand: { "@type": "Brand", name: p.brand },
@@ -393,6 +394,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
     "@id": `${schemaUrl}#howto`,
     name: title,
     description: `Step-by-step guide to choosing the best ${title.replace(/^How to Choose the (?:Best |Right )?/i, "").toLowerCase()}.`,
+    totalTime: `PT${steps.length * 2}M`,
     step: steps.map((step, index) => ({
       "@type": "HowToStep",
       position: index + 1,
