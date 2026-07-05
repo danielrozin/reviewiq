@@ -91,8 +91,8 @@ export function productSchema(product: Product, pageUrl?: string) {
     description: product.description,
     image: product.image,
     inLanguage: "en",
-    datePublished: product.createdAt || buildDate,
-    dateModified: product.updatedAt || product.createdAt || buildDate,
+    ...(product.createdAt ? { datePublished: product.createdAt } : {}),
+    ...(product.updatedAt || product.createdAt ? { dateModified: product.updatedAt || product.createdAt } : {}),
     ...(canonicalUrl && {
       url: canonicalUrl,
       mainEntityOfPage: { "@type": "ItemPage", "@id": canonicalUrl },
@@ -369,6 +369,7 @@ export function blogListSchema(posts: BlogPost[]) {
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    mainEntity: { "@id": `${SITE_URL}/#organization` },
     hasPart: posts.map((post) => ({
       "@type": "BlogPosting",
       "@id": `${SITE_URL}/blog/${post.slug}`,
@@ -381,7 +382,7 @@ export function blogListSchema(posts: BlogPost[]) {
       }),
       author: {
         "@type": "Person",
-        "@id": `${SITE_URL}/blog/author/${post.author.name.toLowerCase().replace(/\s+/g, "-")}#person`,
+        "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
         name: post.author.name,
       },
       dateModified: post.updatedAt || post.publishedAt,
