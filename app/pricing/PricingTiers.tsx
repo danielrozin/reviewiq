@@ -42,9 +42,9 @@ export function PricingTiers() {
         <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-gray-200 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
         <div className="p-8 flex flex-col flex-1">
         <div className="mb-6">
-          <h3 id="plan-free-name" className="text-lg font-semibold text-gray-900">
+          <h2 id="plan-free-name" className="text-lg font-semibold text-gray-900">
             {PLANS.free.name}
-          </h3>
+          </h2>
           <div className="mt-3 flex items-baseline gap-1">
             <span className="text-4xl font-extrabold text-gray-900" aria-label="Free, $0 per month">$0</span>
             <span aria-hidden="true" className="text-gray-600 text-sm">/month</span>
@@ -93,10 +93,10 @@ export function PricingTiers() {
         </div>
 
         <div className="mb-6">
-          <h3 id="plan-pro-name" className="text-lg font-semibold text-gray-900">
+          <h2 id="plan-pro-name" className="text-lg font-semibold text-gray-900">
             {PLANS.pro.name}
             <span className="sr-only"> — Most Popular</span>
-          </h3>
+          </h2>
           <div className="mt-3 flex items-baseline gap-1">
             <span className="text-4xl font-extrabold text-gray-900" aria-label={`$${(PLANS.pro.price / 100).toFixed(2)} per month`}>
               ${(PLANS.pro.price / 100).toFixed(2)}

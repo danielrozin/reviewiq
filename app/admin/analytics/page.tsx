@@ -205,8 +205,9 @@ export default function ReviewIQAnalytics() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Rating Distribution */}
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Rating Distribution</h3>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Rating Distribution</h2>
               {live.ratingDistribution.some((r) => r.count > 0) ? (
+                <div role="img" aria-label="Bar chart: review count per star rating (1–5 stars)">
                 <ResponsiveContainer width="100%" height={250}>
                   <BarChart data={live.ratingDistribution}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -220,6 +221,7 @@ export default function ReviewIQAnalytics() {
                     </Bar>
                   </BarChart>
                 </ResponsiveContainer>
+                </div>
               ) : (
                 <div className="h-48 flex items-center justify-center text-gray-400">No review data yet.</div>
               )}
@@ -227,8 +229,9 @@ export default function ReviewIQAnalytics() {
 
             {/* Top Categories */}
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Categories by Products</h3>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Categories by Products</h2>
               {live.topCategories.length > 0 ? (
+                <div role="img" aria-label="Pie chart: product count by category">
                 <ResponsiveContainer width="100%" height={250}>
                   <PieChart>
                     <Pie
@@ -248,6 +251,7 @@ export default function ReviewIQAnalytics() {
                     <Tooltip />
                   </PieChart>
                 </ResponsiveContainer>
+                </div>
               ) : (
                 <div className="h-48 flex items-center justify-center text-gray-400">No category data yet.</div>
               )}
@@ -257,7 +261,8 @@ export default function ReviewIQAnalytics() {
           {/* Top Products */}
           {live.topProducts.length > 0 && (
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Top Products by Reviews</h3>
+              <h2 className="text-lg font-semibold text-gray-900 mb-4">Top Products by Reviews</h2>
+              <div role="img" aria-label="Horizontal bar chart: top products ranked by review count">
               <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={live.topProducts.slice(0, 8)} layout="vertical">
                   <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
@@ -273,6 +278,7 @@ export default function ReviewIQAnalytics() {
                   <Bar dataKey="reviewCount" fill="#10b981" radius={[0, 4, 4, 0]} name="Reviews" />
                 </BarChart>
               </ResponsiveContainer>
+              </div>
             </div>
           )}
 
@@ -440,7 +446,7 @@ export default function ReviewIQAnalytics() {
       {/* Events */}
       {activeTab === "events" && (
         <div id="panel-events" role="tabpanel" aria-labelledby="tab-events" className="space-y-4">
-          <h3 className="text-lg font-semibold text-gray-900">Custom Events ({config.events.length})</h3>
+          <h2 className="text-lg font-semibold text-gray-900">Custom Events ({config.events.length})</h2>
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
             <table className="w-full text-sm" aria-label="Custom events">
               <thead>
@@ -508,7 +514,7 @@ export default function ReviewIQAnalytics() {
 
               {report.ratingDistribution.some((r) => r.count > 0) && (
                 <div className="bg-white border border-gray-200 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">Rating Distribution</h3>
+                  <h2 className="text-lg font-semibold text-gray-900 mb-4">Rating Distribution</h2>
                   <ResponsiveContainer width="100%" height={200}>
                     <BarChart data={report.ratingDistribution}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />

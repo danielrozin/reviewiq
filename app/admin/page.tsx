@@ -106,6 +106,11 @@ function RatingBar({ rating, count, max }: { rating: number; count: number; max:
       <span className="w-6 text-right text-gray-500 font-medium">{rating}★</span>
       <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
         <div
+          role="progressbar"
+          aria-valuenow={count}
+          aria-valuemax={max}
+          aria-valuemin={0}
+          aria-label={`${rating} star: ${count} reviews`}
           className={`h-full rounded-full ${colors[rating]}`}
           style={{ width: max > 0 ? `${(count / max) * 100}%` : "0%" }}
         />
@@ -716,8 +721,8 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{r.product.name}</td>
                       <td className="px-4 py-3 text-gray-500 hidden lg:table-cell">{r.user.name || r.user.email}</td>
                       <td className="px-4 py-3">
-                        <span className="text-yellow-500">{"★".repeat(r.rating)}</span>
-                        <span className="text-gray-200">{"★".repeat(5 - r.rating)}</span>
+                        <span aria-hidden="true"><span className="text-yellow-500">{"★".repeat(r.rating)}</span><span className="text-gray-200">{"★".repeat(5 - r.rating)}</span></span>
+                        <span className="sr-only">{r.rating} out of 5 stars</span>
                       </td>
                       <td className="px-4 py-3"><StatusBadge status={r.status} /></td>
                       <td className="px-4 py-3 text-right">
@@ -844,6 +849,7 @@ export default function AdminDashboard() {
                         <button
                           type="button"
                           onClick={() => handleQueueAction(r.id, "published")}
+                          aria-label={`Approve review: ${r.headline}`}
                           className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700"
                         >
                           <Check aria-hidden="true" className="w-3.5 h-3.5" /> Approve
@@ -851,6 +857,7 @@ export default function AdminDashboard() {
                         <button
                           type="button"
                           onClick={() => handleQueueAction(r.id, "flagged")}
+                          aria-label={`Flag review: ${r.headline}`}
                           className="flex items-center gap-1.5 px-3 py-1.5 border border-yellow-300 text-yellow-700 text-xs rounded-lg hover:bg-yellow-50"
                         >
                           <AlertTriangle aria-hidden="true" className="w-3.5 h-3.5" /> Flag
@@ -858,6 +865,7 @@ export default function AdminDashboard() {
                         <button
                           type="button"
                           onClick={() => handleQueueAction(r.id, "rejected")}
+                          aria-label={`Reject review: ${r.headline}`}
                           className="flex items-center gap-1.5 px-3 py-1.5 border border-red-300 text-red-700 text-xs rounded-lg hover:bg-red-50"
                         >
                           <X aria-hidden="true" className="w-3.5 h-3.5" /> Reject
