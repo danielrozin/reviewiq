@@ -607,6 +607,8 @@ export function competitorFaqPageSchema(opts: {
   pageUrl: string;
   pageName: string;
   competitor: { name: string; url: string; type: string };
+  datePublished?: string;
+  dateModified?: string;
 }) {
   return [
     {
@@ -633,6 +635,8 @@ export function competitorFaqPageSchema(opts: {
       name: opts.pageName,
       url: `${SITE_URL}${opts.pageUrl}`,
       inLanguage: "en",
+      ...(opts.datePublished && { datePublished: opts.datePublished }),
+      ...(opts.dateModified && { dateModified: opts.dateModified }),
       isPartOf: { "@id": `${SITE_URL}/#website` },
       publisher: { "@id": `${SITE_URL}/#organization` },
       about: {

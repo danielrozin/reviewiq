@@ -11,6 +11,8 @@ const writeReviewWebPageJsonLd = {
   name: "Write a Product Review — Share Your Experience | ReviewIQ",
   url: `${SITE_URL}/write-review`,
   inLanguage: "en",
+  datePublished: "2024-01-01",
+  dateModified: "2025-06-01",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const termsWebPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/terms`,
+  "@id": `${SITE_URL}/terms#page`,
   name: "Terms of Service — ReviewIQ",
   url: `${SITE_URL}/terms`,
   inLanguage: "en",

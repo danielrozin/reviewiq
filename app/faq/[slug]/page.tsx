@@ -48,6 +48,8 @@ export default async function FAQPage({ params }: Props) {
     pageUrl: `/faq/${page.slug}`,
     pageName: page.metaTitle,
     competitor: page.competitor,
+    datePublished: "2024-01-01",
+    dateModified: "2025-06-01",
   });
 
   return (

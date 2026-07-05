@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const privacyWebPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/privacy`,
+  "@id": `${SITE_URL}/privacy#page`,
   name: "Privacy Policy — ReviewIQ",
   url: `${SITE_URL}/privacy`,
   inLanguage: "en",
