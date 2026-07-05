@@ -86,6 +86,7 @@ export function productSchema(product: Product, pageUrl?: string) {
     "@type": "Product",
     ...(canonicalUrl && { "@id": `${canonicalUrl}#product` }),
     name: product.name,
+    sku: product.slug,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
     image: product.image,
@@ -133,6 +134,8 @@ function aggregateOfferFromProduct(product: Product) {
     priceCurrency: currency,
     offerCount: 1,
     availability: "https://schema.org/InStock",
+    itemCondition: "https://schema.org/NewCondition",
+    seller: { "@type": "Organization", name: "ReviewIQ", "@id": `${SITE_URL}/#organization` },
   };
 }
 
@@ -609,7 +612,16 @@ export function competitorFaqPageSchema(opts: {
   ];
 }
 
-export function profilePageSchema(username: string, displayName: string, bio?: string, expertiseCategories?: string[]) {
+export function profilePageSchema(
+  username: string,
+  displayName: string,
+  bio?: string,
+  expertiseCategories?: string[],
+  joinedAt?: string,
+  lastActiveAt?: string,
+  reviewCount?: number,
+  commentCount?: number
+) {
   const pageUrl = `${SITE_URL}/community/user/${username}`;
   return {
     "@context": "https://schema.org",
@@ -620,6 +632,8 @@ export function profilePageSchema(username: string, displayName: string, bio?: s
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    ...(joinedAt && { dateCreated: joinedAt }),
+    ...(lastActiveAt && { dateModified: lastActiveAt }),
     ...(bio && {
       speakable: {
         "@type": "SpeakableSpecification",
@@ -631,9 +645,24 @@ export function profilePageSchema(username: string, displayName: string, bio?: s
       "@id": `${pageUrl}#person`,
       name: displayName,
       url: pageUrl,
+      identifier: { "@type": "PropertyValue", propertyID: "username", value: username },
       ...(bio && { description: bio }),
       ...(expertiseCategories && expertiseCategories.length > 0 && {
         knowsAbout: expertiseCategories.map((s) => s.replace(/-/g, " ")),
+      }),
+      ...((reviewCount !== undefined || commentCount !== undefined) && {
+        interactionStatistic: [
+          ...(reviewCount !== undefined ? [{
+            "@type": "InteractionCounter",
+            interactionType: "https://schema.org/WriteAction",
+            userInteractionCount: reviewCount,
+          }] : []),
+          ...(commentCount !== undefined ? [{
+            "@type": "InteractionCounter",
+            interactionType: "https://schema.org/CommentAction",
+            userInteractionCount: commentCount,
+          }] : []),
+        ],
       }),
     },
   };

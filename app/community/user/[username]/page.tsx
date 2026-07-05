@@ -51,7 +51,7 @@ export default async function UserProfilePage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories)),
+          __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories, user.joinedAt, user.lastActiveAt, user.reviewCount, user.commentCount)),
         }}
       />
       <script
@@ -118,9 +118,9 @@ export default async function UserProfilePage({ params }: Props) {
 
             {/* Badges */}
             <div className="border-t border-gray-100 pt-4 mb-4">
-              <h3 className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-semibold">
+              <h2 className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-semibold">
                 Badges
-              </h3>
+              </h2>
               <ul role="list" aria-label="Badges" className="flex flex-wrap gap-1.5">
                 {user.badges.map((badge) => (
                   <li key={badge}>
@@ -133,9 +133,9 @@ export default async function UserProfilePage({ params }: Props) {
             {/* Expertise */}
             {user.expertiseCategories.length > 0 && (
               <div className="border-t border-gray-100 pt-4 mb-4">
-                <h3 className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-semibold">
+                <h2 className="text-xs text-gray-600 uppercase tracking-wider mb-3 font-semibold">
                   Expertise
-                </h3>
+                </h2>
                 <ul role="list" aria-label="Expertise categories" className="flex flex-wrap gap-1.5">
                   {user.expertiseCategories.map((cat) => (
                     <li key={cat}>
