@@ -3,6 +3,10 @@ import type { FAQEntry } from "@/data/faq-pages";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
+function toBrandSlug(brand: string): string {
+  return brand.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
@@ -104,7 +108,8 @@ export function productSchema(product: Product, pageUrl?: string) {
     ...(product.gtin12 && { gtin12: product.gtin12 }),
     ...(product.gtin13 && { gtin13: product.gtin13 }),
     ...(product.gtin14 && { gtin14: product.gtin14 }),
-    brand: { "@type": "Brand", name: product.brand },
+    brand: { "@type": "Brand", "@id": `${SITE_URL}/brand/${toBrandSlug(product.brand)}#brand`, name: product.brand },
+    ...(product.categorySlug && { category: product.categorySlug }),
     description: product.description,
     image: product.image
       ? { "@type": "ImageObject", url: product.image }
@@ -328,7 +333,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
           "@id": `${SITE_URL}/category/${p.categorySlug}/${p.slug}#product`,
           name: p.name,
           url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
-          brand: { "@type": "Brand", name: p.brand },
+          brand: { "@type": "Brand", "@id": `${SITE_URL}/brand/${toBrandSlug(p.brand)}#brand`, name: p.brand },
           ...(p.image && { image: { "@type": "ImageObject", url: p.image } }),
           ...(avgRating > 0 && {
             aggregateRating: {
@@ -970,7 +975,7 @@ function comparisonProductItem(product: Product) {
     "@id": `${productUrl}#product`,
     name: product.name,
     url: productUrl,
-    brand: { "@type": "Brand", name: product.brand },
+    brand: { "@type": "Brand", "@id": `${SITE_URL}/brand/${toBrandSlug(product.brand)}#brand`, name: product.brand },
     description: product.description,
     ...(product.image && { image: { "@type": "ImageObject", url: product.image } }),
   };
