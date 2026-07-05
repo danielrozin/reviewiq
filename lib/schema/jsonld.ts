@@ -274,6 +274,7 @@ export function categoryListSchema(categories: Category[]) {
     numberOfItems: categories.length,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en",
     itemListElement: categories.map((cat, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -309,6 +310,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
     numberOfItems: products.length,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en",
     ...(avgCategoryRating > 0 && {
       aggregateRating: {
         "@type": "AggregateRating",
@@ -369,6 +371,8 @@ export function videoObjectSchema(video: YouTubeVideo, productName: string) {
       target: contentUrl,
     },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    inLanguage: "en",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
   };
 }
 
@@ -520,6 +524,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       applicationCategory: "UtilitiesApplication",
       description: "AI-powered product review platform for verified buyer analysis",
     }],
+    inLanguage: "en",
   };
 }
 
@@ -851,7 +856,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     inLanguage: "en",
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
-    about: { "@type": "Thing", name: categoryName },
+    about: { "@type": "Thing", "@id": `${SITE_URL}/category/${categorySlug}#page`, name: categoryName, url: `${SITE_URL}/category/${categorySlug}` },
     mainEntity: {
       "@type": "ItemList",
       "@id": `${pageUrl}#post-list`,
