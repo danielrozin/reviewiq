@@ -508,6 +508,13 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
     url: schemaUrl,
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    tool: [{
+      "@type": "WebApplication",
+      name: "ReviewIQ",
+      url: SITE_URL,
+      applicationCategory: "UtilitiesApplication",
+      description: "AI-powered product review platform for verified buyer analysis",
+    }],
   };
 }
 
@@ -525,7 +532,8 @@ export function communityPageSchema(datePublished?: string, dateModified?: strin
     ...(dateModified && { dateModified }),
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    about: { "@type": "Thing", name: "Product Reviews & Discussions" },
+    about: { "@id": `${SITE_URL}/#organization` },
+    mentions: [{ "@id": `${SITE_URL}/#organization` }],
     mainEntity: {
       "@type": "ItemList",
       "@id": `${pageUrl}#thread-list`,
@@ -866,7 +874,13 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     inLanguage: "en",
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
-    about: { "@type": "Thing", name: categoryName },
+    about: {
+      "@type": "Thing",
+      "@id": `${pageUrl}#category-subject`,
+      name: categoryName,
+      description,
+      url: pageUrl,
+    },
     mainEntity: { "@type": "ItemList", "@id": `${pageUrl}#product-list`, name: `Best ${categoryName}` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },

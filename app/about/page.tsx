@@ -26,6 +26,7 @@ const aboutPageJsonLd = {
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   publisher: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/about#ai-review-team` },
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: [
@@ -85,7 +86,6 @@ const teamPersonsJsonLd = {
     description: member.bio,
     worksFor: { "@id": `${SITE_URL}/#organization` },
     knowsAbout: TEAM_KNOWS_ABOUT[member.name] ?? [],
-    sameAs: [`${SITE_URL}/about`],
   })),
 };
 

@@ -214,6 +214,8 @@ const howToJsonLd = {
   totalTime: "PT5M",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/about#ai-review-team` },
+  tool: [{ "@type": "WebApplication", name: "ReviewIQ", url: SITE_URL }],
   step: steps.map((step, index) => ({
     "@type": "HowToStep",
     position: index + 1,
@@ -236,6 +238,7 @@ export default function WhoIsThisForPage() {
     mainEntity: { "@id": `${SITE_URL}/who-is-this-for#howto` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    author: { "@id": `${SITE_URL}/about#ai-review-team` },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
