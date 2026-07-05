@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { YouTubeVideo } from "@/types";
 
 interface Props {
@@ -12,6 +12,13 @@ export function YouTubeVideos({ videos, productName }: Props) {
   const activeVideos = videos.filter((v) => v.isActive !== false);
   const [failedIds, setFailedIds] = useState<Set<string>>(new Set());
   const [playing, setPlaying] = useState<string | null>(null);
+  const activeIframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    if (playing) {
+      activeIframeRef.current?.focus();
+    }
+  }, [playing]);
 
   const visibleVideos = activeVideos
     .filter((v) => !failedIds.has(v.id))
@@ -38,6 +45,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
             <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 group-hover/card:shadow-md transition-shadow duration-200">
               {playing === video.id ? (
                 <iframe
+                  ref={activeIframeRef}
                   src={`https://www.youtube.com/embed/${video.id}?rel=0&autoplay=1`}
                   title={video.title}
                   width={560}
@@ -57,7 +65,6 @@ export function YouTubeVideos({ videos, productName }: Props) {
                   onClick={() => setPlaying(video.id)}
                   aria-label={`Play: ${video.title}`}
                 >
-                  {/* Thumbnail */}
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={`https://img.youtube.com/vi/${video.id}/hqdefault.jpg`}
@@ -68,9 +75,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
                       setFailedIds((prev) => new Set(prev).add(video.id))
                     }
                   />
-                  {/* Dark overlay */}
                   <div aria-hidden="true" className="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors" />
-                  {/* Play button */}
                   <div aria-hidden="true" className="absolute inset-0 flex items-center justify-center">
                     <div className="w-14 h-14 bg-red-600 group-hover:bg-red-700 rounded-full flex items-center justify-center shadow-xl transition-all group-hover:scale-110">
                       <svg aria-hidden="true" className="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
