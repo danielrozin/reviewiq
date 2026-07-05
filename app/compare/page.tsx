@@ -7,12 +7,14 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const compareHubJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/compare`,
+  "@id": `${SITE_URL}/compare#page`,
   name: "Compare Products Side-by-Side — Up to 4 Products | ReviewIQ",
   description:
     "Search and add 2–4 products to compare SmartScores, specs, pros & cons, and get an AI verdict in one view. Free, no sign-in needed.",
   url: `${SITE_URL}/compare`,
   inLanguage: "en",
+  datePublished: "2024-01-01",
+  dateModified: "2025-06-01",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

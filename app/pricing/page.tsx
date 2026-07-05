@@ -16,6 +16,7 @@ const pricingWebPageSchema = {
   dateModified: "2025-06-01",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
+  mainEntity: { "@type": "Product", "@id": `${SITE_URL}/pricing#product` },
   speakable: {
     "@type": "SpeakableSpecification",
     cssSelector: ["[data-speakable='pricing-intro']"],

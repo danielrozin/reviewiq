@@ -233,6 +233,7 @@ export default function WhoIsThisForPage() {
     inLanguage: "en",
     datePublished: "2024-01-01",
     dateModified: "2025-06-01",
+    mainEntity: { "@id": `${SITE_URL}/who-is-this-for#howto` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {

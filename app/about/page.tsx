@@ -14,7 +14,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
 const aboutPageJsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebPage",
+  "@type": "AboutPage",
   "@id": `${SITE_URL}/about#page`,
   name: "About ReviewIQ — AI-Powered Honest Product Reviews",
   url: `${SITE_URL}/about`,

@@ -13,6 +13,7 @@ const siteMapWebPageJsonLd = {
   url: `${SITE_URL}/site-map`,
   inLanguage: "en",
   description: "Browse all content on ReviewIQ — product reviews, blog articles, comparisons, and community discussions organized by date and category.",
+  datePublished: "2024-01-01",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   dateModified: new Date().toISOString().split("T")[0],
