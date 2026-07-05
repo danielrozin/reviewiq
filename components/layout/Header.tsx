@@ -42,6 +42,7 @@ export function Header() {
   const userMenuRef = useRef<HTMLDivElement>(null);
   const userMenuBtnRef = useRef<HTMLButtonElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
+  const mobileNavRef = useRef<HTMLElement>(null);
 
   // Close user menu on outside click
   useEffect(() => {
@@ -73,10 +74,12 @@ export function Header() {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [userMenuOpen, menuOpen]);
 
-  // Lock body scroll when mobile menu is open
+  // Lock body scroll when mobile menu is open; move focus into drawer on open
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
+      const firstFocusable = mobileNavRef.current?.querySelector<HTMLElement>("a, button");
+      firstFocusable?.focus();
     } else {
       document.body.style.overflow = "";
     }
@@ -276,7 +279,26 @@ export function Header() {
 
         {/* Mobile navigation drawer */}
         {menuOpen && (
-          <nav id="mobile-nav" className="lg:hidden border-t border-gray-100 bg-white/98 backdrop-blur-lg" aria-label="Mobile navigation">
+          <nav
+            id="mobile-nav"
+            ref={mobileNavRef}
+            className="lg:hidden border-t border-gray-100 bg-white/98 backdrop-blur-lg"
+            aria-label="Mobile navigation"
+            onKeyDown={(e) => {
+              if (e.key !== "Tab") return;
+              const focusable = mobileNavRef.current?.querySelectorAll<HTMLElement>("a, button");
+              if (!focusable || focusable.length === 0) return;
+              const first = focusable[0];
+              const last = focusable[focusable.length - 1];
+              if (e.shiftKey && document.activeElement === first) {
+                e.preventDefault();
+                last.focus();
+              } else if (!e.shiftKey && document.activeElement === last) {
+                e.preventDefault();
+                first.focus();
+              }
+            }}
+          >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 space-y-0.5">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
