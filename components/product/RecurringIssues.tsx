@@ -13,9 +13,9 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
   };
 
   const descriptionColors = {
-    low: "text-yellow-700/80",
-    medium: "text-orange-700/80",
-    high: "text-red-700/80",
+    low: "text-yellow-700",
+    medium: "text-orange-700",
+    high: "text-red-700",
   };
 
   const severityIcons = {
@@ -63,7 +63,7 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0", {
+                <span role="img" className={cn("w-5 h-5 rounded-full flex items-center justify-center shrink-0", {
                   "bg-yellow-100": issue.severity === "low",
                   "bg-orange-100": issue.severity === "medium",
                   "bg-red-100": issue.severity === "high",
