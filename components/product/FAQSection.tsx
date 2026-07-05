@@ -66,7 +66,6 @@ export function FAQSection({ items }: FAQSectionProps) {
               </button>
               <div
                 id={panelId}
-                role="region"
                 aria-labelledby={btnId}
                 aria-hidden={!isOpen}
                 className={cn(
