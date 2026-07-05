@@ -41,6 +41,7 @@ export function Header() {
   const { items } = useCompare();
   const userMenuRef = useRef<HTMLDivElement>(null);
   const userMenuBtnRef = useRef<HTMLButtonElement>(null);
+  const userMenuListRef = useRef<HTMLDivElement>(null);
   const menuBtnRef = useRef<HTMLButtonElement>(null);
   const mobileNavRef = useRef<HTMLElement>(null);
 
@@ -73,6 +74,14 @@ export function Header() {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [userMenuOpen, menuOpen]);
+
+  // Focus first menuitem when account menu opens (WCAG 2.1.1 — APG menu pattern)
+  useEffect(() => {
+    if (userMenuOpen) {
+      const firstItem = userMenuListRef.current?.querySelector<HTMLElement>('[role="menuitem"]');
+      firstItem?.focus();
+    }
+  }, [userMenuOpen]);
 
   // Lock body scroll when mobile menu is open; move focus into drawer on open
   useEffect(() => {
@@ -182,7 +191,33 @@ export function Header() {
                       </span>
                     </button>
                     {userMenuOpen && (
-                      <div role="menu" aria-label="Account menu" className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50 animate-scale-in">
+                      <div
+                        ref={userMenuListRef}
+                        role="menu"
+                        aria-label="Account menu"
+                        className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50 animate-scale-in"
+                        onKeyDown={(e) => {
+                          const items = userMenuListRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]');
+                          if (!items) return;
+                          const arr = Array.from(items);
+                          const idx = arr.indexOf(document.activeElement as HTMLElement);
+                          if (e.key === "ArrowDown") {
+                            e.preventDefault();
+                            arr[(idx + 1) % arr.length]?.focus();
+                          } else if (e.key === "ArrowUp") {
+                            e.preventDefault();
+                            arr[(idx - 1 + arr.length) % arr.length]?.focus();
+                          } else if (e.key === "Home") {
+                            e.preventDefault();
+                            arr[0]?.focus();
+                          } else if (e.key === "End") {
+                            e.preventDefault();
+                            arr[arr.length - 1]?.focus();
+                          } else if (e.key === "Tab") {
+                            setUserMenuOpen(false);
+                          }
+                        }}
+                      >
                         <div className="px-4 py-3 border-b border-gray-100" role="presentation">
                           <div className="flex items-center gap-1.5">
                             <p className="text-sm font-medium text-gray-900 truncate">
@@ -197,6 +232,7 @@ export function Header() {
                         {!isPro && (
                           <Link
                             role="menuitem"
+                            tabIndex={-1}
                             href="/pricing"
                             onClick={() => setUserMenuOpen(false)}
                             className="block px-4 py-2.5 text-sm text-amber-700 hover:bg-amber-50 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-inset"
@@ -211,6 +247,7 @@ export function Header() {
                         )}
                         <Link
                           role="menuitem"
+                          tabIndex={-1}
                           href="/dashboard"
                           onClick={() => setUserMenuOpen(false)}
                           className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
@@ -219,6 +256,7 @@ export function Header() {
                         </Link>
                         <Link
                           role="menuitem"
+                          tabIndex={-1}
                           href="/settings"
                           onClick={() => setUserMenuOpen(false)}
                           className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
@@ -228,6 +266,7 @@ export function Header() {
                         <div className="border-t border-gray-100 mt-1 pt-1" role="presentation">
                           <button
                             role="menuitem"
+                            tabIndex={-1}
                             type="button"
                             onClick={() => { setUserMenuOpen(false); signOut(); }}
                             className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
