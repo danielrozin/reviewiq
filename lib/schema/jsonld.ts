@@ -48,7 +48,10 @@ export function websiteSchema() {
     publisher: { "@id": `${SITE_URL}/#organization` },
     potentialAction: {
       "@type": "SearchAction",
-      target: `${SITE_URL}/search?q={search_term_string}`,
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/search?q={search_term_string}`,
+      },
       "query-input": "required name=search_term_string",
     },
   };
@@ -349,10 +352,6 @@ export function blogPostSchema(post: BlogPost) {
     articleSection: post.categoryName,
     wordCount: post.content.split(/\s+/).filter(Boolean).length,
     abstract: post.seo.metaDescription,
-    speakable: {
-      "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='blog-headline']", "[data-speakable='blog-intro']", "[data-speakable='blog-body']"],
-    },
     ...(post.readingTime > 0 && {
       timeRequired: `PT${post.readingTime}M`,
     }),
@@ -511,6 +510,7 @@ export function blogPostSpeakableSchema(title: string, url: string) {
         "[data-speakable='blog-headline']",
         "[data-speakable='blog-intro']",
         "[data-speakable='blog-body']",
+        "[data-speakable='faq-answer']",
       ],
     },
   };

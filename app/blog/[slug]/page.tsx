@@ -213,7 +213,7 @@ export default async function BlogPostPage({
                     </svg>
                   </summary>
                   <div className="px-5 pb-5 border-t border-gray-50">
-                    <p className="mt-3 text-gray-600 leading-relaxed text-sm">
+                    <p data-speakable="faq-answer" className="mt-3 text-gray-600 leading-relaxed text-sm">
                       {item.answer}
                     </p>
                   </div>
