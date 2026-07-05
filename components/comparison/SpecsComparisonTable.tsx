@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import type { Product } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -65,53 +64,51 @@ export function SpecsComparisonTable({
               </th>
             </tr>
           </thead>
-          <tbody>
-            {Array.from(groups.entries()).map(([groupName, specs], gi) => (
-              <Fragment key={groupName}>
-                {groups.size > 1 && (
-                  <tr>
-                    <th colSpan={3} scope="rowgroup" className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-100 text-left font-semibold">
-                      {groupName}
+          {Array.from(groups.entries()).map(([groupName, specs], gi) => (
+            <tbody key={groupName}>
+              {groups.size > 1 && (
+                <tr>
+                  <th colSpan={3} scope="rowgroup" className="px-4 py-2 bg-gray-50/60 text-xs font-semibold text-gray-600 uppercase tracking-widest border-b border-gray-100 text-left">
+                    {groupName}
+                  </th>
+                </tr>
+              )}
+              {specs.map((spec, si) => {
+                const differs = spec.a && spec.b && spec.a !== spec.b;
+                const isLast = si === specs.length - 1 && gi === groups.size - 1;
+                return (
+                  <tr
+                    key={spec.label}
+                    className={cn(
+                      "text-sm",
+                      !isLast && "border-b border-gray-50",
+                      differs && "bg-amber-50/40"
+                    )}
+                  >
+                    <th scope="row" className="px-4 py-3 text-gray-600 font-normal text-left">
+                      <span className="flex items-center gap-2">
+                        {spec.label}
+                        {differs && (
+                          <span aria-label="values differ" className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none">
+                            diff
+                          </span>
+                        )}
+                      </span>
                     </th>
+                    <td className={cn(
+                      "px-4 py-3 font-medium text-center",
+                      differs ? "text-brand-700" : "text-gray-900"
+                    )}>
+                      {spec.a || <span aria-label="not available" className="text-gray-600">—</span>}
+                    </td>
+                    <td className="px-4 py-3 text-gray-700 font-medium text-center">
+                      {spec.b || <span aria-label="not available" className="text-gray-600">—</span>}
+                    </td>
                   </tr>
-                )}
-                {specs.map((spec, si) => {
-                  const differs = spec.a && spec.b && spec.a !== spec.b;
-                  const isLast = si === specs.length - 1 && gi === groups.size - 1;
-                  return (
-                    <tr
-                      key={spec.label}
-                      className={cn(
-                        "text-sm",
-                        !isLast && "border-b border-gray-50",
-                        differs && "bg-amber-50/40"
-                      )}
-                    >
-                      <th scope="row" className="px-4 py-3 text-gray-600 font-normal text-left">
-                        <span className="flex items-center gap-2">
-                          {spec.label}
-                          {differs && (
-                            <span aria-label="values differ" className="text-xs font-semibold text-amber-600 bg-amber-100 px-1.5 py-0.5 rounded-lg leading-none">
-                              diff
-                            </span>
-                          )}
-                        </span>
-                      </th>
-                      <td className={cn(
-                        "px-4 py-3 font-medium text-center",
-                        differs ? "text-brand-700" : "text-gray-900"
-                      )}>
-                        {spec.a || <span aria-label="not available" className="text-gray-600">—</span>}
-                      </td>
-                      <td className="px-4 py-3 text-gray-700 font-medium text-center">
-                        {spec.b || <span aria-label="not available" className="text-gray-600">—</span>}
-                      </td>
-                    </tr>
-                  );
-                })}
-              </Fragment>
-            ))}
-          </tbody>
+                );
+              })}
+            </tbody>
+          ))}
         </table>
       </div>
     </section>
