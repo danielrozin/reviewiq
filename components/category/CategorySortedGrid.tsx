@@ -47,10 +47,13 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
   }
 
   function handleSortKeyDown(e: React.KeyboardEvent, index: number) {
-    if (e.key !== "ArrowRight" && e.key !== "ArrowDown" && e.key !== "ArrowLeft" && e.key !== "ArrowUp") return;
+    let next = index;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") next = (index + 1) % SORT_OPTIONS.length;
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") next = (index - 1 + SORT_OPTIONS.length) % SORT_OPTIONS.length;
+    else if (e.key === "Home") next = 0;
+    else if (e.key === "End") next = SORT_OPTIONS.length - 1;
+    else return;
     e.preventDefault();
-    const delta = e.key === "ArrowRight" || e.key === "ArrowDown" ? 1 : -1;
-    const next = (index + delta + SORT_OPTIONS.length) % SORT_OPTIONS.length;
     handleSort(SORT_OPTIONS[next].key);
     (e.currentTarget.closest('[role="radiogroup"]')?.querySelectorAll<HTMLElement>('[role="radio"]')[next])?.focus();
   }
@@ -98,7 +101,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           </button>
         ))}
         {mounted && (
-          <span aria-live="polite" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
+          <span aria-live="polite" aria-atomic="true" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
             {sorted.length} products
           </span>
         )}
