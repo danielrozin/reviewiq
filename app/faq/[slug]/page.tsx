@@ -56,6 +56,7 @@ export default async function FAQPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema([
+            { name: "Home", url: "/" },
             { name: "FAQ", url: "/faq" },
             { name: page.title, url: `/faq/${page.slug}` },
           ])),
@@ -63,6 +64,7 @@ export default async function FAQPage({ params }: Props) {
       />
       <Breadcrumbs
         items={[
+          { name: "Home", url: "/" },
           { name: "FAQ", url: "/faq" },
           { name: page.title, url: `/faq/${page.slug}` },
         ]}

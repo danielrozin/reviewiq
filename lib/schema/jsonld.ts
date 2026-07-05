@@ -774,6 +774,17 @@ export function comparisonSchema(productA: Product, productB: Product) {
       { "@type": "Product", "@id": `${SITE_URL}/category/${productA.categorySlug}/${productA.slug}#product` },
       { "@type": "Product", "@id": `${SITE_URL}/category/${productB.categorySlug}/${productB.slug}#product` },
     ],
+    mentions: [
+      { "@type": "Product", "@id": `${SITE_URL}/category/${productA.categorySlug}/${productA.slug}#product`, name: productA.name },
+      { "@type": "Product", "@id": `${SITE_URL}/category/${productB.categorySlug}/${productB.slug}#product`, name: productB.name },
+    ],
+    potentialAction: {
+      "@type": "CompareAction",
+      object: [
+        { "@type": "Product", "@id": `${SITE_URL}/category/${productA.categorySlug}/${productA.slug}#product` },
+        { "@type": "Product", "@id": `${SITE_URL}/category/${productB.categorySlug}/${productB.slug}#product` },
+      ],
+    },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [

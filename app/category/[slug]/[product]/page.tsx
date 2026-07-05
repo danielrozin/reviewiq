@@ -145,6 +145,7 @@ export default async function ProductPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(breadcrumbSchema([
+            { name: "Home", url: "/" },
             { name: "Categories", url: "/categories" },
             { name: category.name, url: `/category/${slug}` },
             { name: product.name, url: `/category/${slug}/${productSlug}` },
@@ -153,6 +154,7 @@ export default async function ProductPage({ params }: Props) {
       />
       <Breadcrumbs
         items={[
+          { name: "Home", url: "/" },
           { name: "Categories", url: "/categories" },
           { name: category.name, url: `/category/${slug}` },
           {
