@@ -70,6 +70,17 @@ export default async function CategoryPage({ params }: Props) {
           }}
         />
       )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Categories", url: "/categories" },
+              { name: category.name, url: `/category/${slug}` },
+            ])
+          ),
+        }}
+      />
       <Breadcrumbs
         items={[
           { name: "Categories", url: "/categories" },
