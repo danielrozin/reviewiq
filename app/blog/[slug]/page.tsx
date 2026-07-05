@@ -387,7 +387,7 @@ function markdownToHtml(md: string): string {
 
   // Convert markdown tables
   html = html.replace(/^(\|.+\|)\n(\|[-| :]+\|)\n((?:\|.+\|\n?)*)/gm, (_match, header, _sep, body) => {
-    const headers = header.split("|").filter((c: string) => c.trim()).map((c: string) => `<th class="px-4 py-2 text-left font-medium text-gray-900 bg-gray-50">${c.trim()}</th>`).join("");
+    const headers = header.split("|").filter((c: string) => c.trim()).map((c: string) => `<th scope="col" class="px-4 py-2 text-left font-medium text-gray-900 bg-gray-50">${c.trim()}</th>`).join("");
     const rows = body.trim().split("\n").map((row: string) => {
       const cells = row.split("|").filter((c: string) => c.trim()).map((c: string) => `<td class="px-4 py-2 border-t border-gray-100">${c.trim()}</td>`).join("");
       return `<tr>${cells}</tr>`;

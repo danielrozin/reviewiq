@@ -71,7 +71,7 @@ export default async function DashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 mb-8">
         <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-full bg-brand-100 text-brand-600 font-bold text-xl flex items-center justify-center">
+          <div aria-hidden="true" className="w-14 h-14 rounded-full bg-brand-100 text-brand-600 font-bold text-xl flex items-center justify-center">
             {initials}
           </div>
           <div>
@@ -105,12 +105,12 @@ export default async function DashboardPage() {
       </div>
 
       {/* Onboarding Checklist */}
-      <div className="mb-8">
+      <div className="mb-8" aria-live="polite" aria-atomic="true">
         <ProfileChecklist />
       </div>
 
       {/* Quick Actions */}
-      <div className="mb-8">
+      <div className="mb-8" aria-live="polite" aria-atomic="true">
         <QuickActions />
       </div>
 
