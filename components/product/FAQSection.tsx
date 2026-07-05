@@ -68,6 +68,7 @@ export function FAQSection({ items }: FAQSectionProps) {
                 id={panelId}
                 role="region"
                 aria-labelledby={btnId}
+                aria-hidden={!isOpen}
                 className={cn(
                   "overflow-hidden transition-all duration-200",
                   isOpen ? "max-h-[32rem]" : "max-h-0"
