@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface EmailCaptureCTAProps {
   productId: string;
@@ -18,6 +18,13 @@ export function EmailCaptureCTA({
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+
+  useEffect(() => {
+    if (status === "success") {
+      successHeadingRef.current?.focus();
+    }
+  }, [status]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -56,7 +63,7 @@ export function EmailCaptureCTA({
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h3 id="email-capture-success-heading" className="text-lg font-semibold text-emerald-800 mb-1">
+        <h3 ref={successHeadingRef} tabIndex={-1} id="email-capture-success-heading" className="text-lg font-semibold text-emerald-800 mb-1 focus:outline-none">
           You&apos;re on the list!
         </h3>
         <p className="text-sm text-emerald-700 mb-3">
@@ -98,8 +105,8 @@ export function EmailCaptureCTA({
           id="email-capture-input"
           type="email"
           required
-          aria-invalid={status === "error"}
-          aria-describedby={status === "error" ? "email-capture-error" : undefined}
+          aria-invalid={status === "error" || undefined}
+          aria-describedby="email-capture-error"
           placeholder="you@example.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -131,9 +138,9 @@ export function EmailCaptureCTA({
         </button>
       </form>
 
-      {status === "error" && (
-        <p id="email-capture-error" role="alert" className="text-sm text-red-600 text-center mt-3">{errorMsg}</p>
-      )}
+      <p id="email-capture-error" role="alert" aria-live="assertive" aria-atomic="true" className="text-sm text-red-600 text-center mt-3">
+        {status === "error" ? errorMsg : ""}
+      </p>
 
       <p className="text-xs text-gray-600 text-center mt-3 inline-flex items-center gap-1 justify-center w-full">
         <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
