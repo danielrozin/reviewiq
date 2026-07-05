@@ -496,8 +496,8 @@ export function WriteReviewForm() {
               <StarRating value={rating} onChange={setRating} size="lg" />
             </fieldset>
 
-            <div className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
-              <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide" aria-hidden="true">
+            <div role="group" aria-labelledby="category-ratings-label" className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
+              <p id="category-ratings-label" className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
                 Category Ratings
               </p>
               {[

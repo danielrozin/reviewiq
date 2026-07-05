@@ -23,7 +23,15 @@ export function WelcomeBackBanner() {
 
       <button
         type="button"
-        onClick={() => setDismissed(true)}
+        onClick={() => {
+          const main = document.querySelector<HTMLElement>("main");
+          if (main) {
+            main.setAttribute("tabindex", "-1");
+            main.focus({ preventScroll: true });
+            main.addEventListener("blur", () => main.removeAttribute("tabindex"), { once: true });
+          }
+          setDismissed(true);
+        }}
         className="absolute top-3 right-3 p-1 text-white/60 hover:text-white rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         aria-label="Dismiss"
       >
