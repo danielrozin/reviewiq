@@ -187,6 +187,7 @@ function aggregateOfferFromProduct(product: Product) {
 export function reviewSchema(review: Review, productRef?: { name: string; url: string }) {
   return {
     "@type": "Review",
+    ...(productRef && { "@id": `${SITE_URL}${productRef.url}#review-${review.id}` }),
     headline: review.headline,
     reviewRating: {
       "@type": "Rating",
@@ -632,6 +633,7 @@ export function blogPostSpeakableSchema(title: string, url: string, datePublishe
       cssSelector: [
         "[data-speakable='blog-headline']",
         "[data-speakable='blog-intro']",
+        "[data-speakable='blog-body']",
         "[data-speakable='faq-answer']",
       ],
     },
@@ -982,6 +984,8 @@ function comparisonProductItem(product: Product) {
     url: productUrl,
     brand: { "@type": "Brand", "@id": `${SITE_URL}/brand/${toBrandSlug(product.brand)}#brand`, name: product.brand },
     description: product.description,
+    ...(product.categorySlug && { category: product.categorySlug }),
+    inLanguage: "en",
     ...(product.image && { image: { "@type": "ImageObject", url: product.image } }),
   };
 
