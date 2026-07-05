@@ -410,6 +410,7 @@ export default function HomePage() {
         <div className="text-center mt-6 sm:hidden">
           <Link
             href="/community"
+            aria-label="View all community discussions"
             className="text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all discussions →
@@ -471,6 +472,7 @@ export default function HomePage() {
           <div className="text-center mt-6 sm:hidden">
             <Link
               href="/blog"
+              aria-label="View all blog articles"
               className="text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
             >
               View all articles &rarr;
@@ -679,7 +681,7 @@ export default function HomePage() {
         <h2 id="home-faq-heading" className="text-2xl font-bold text-gray-900 text-center mb-8">
           Frequently Asked Questions
         </h2>
-        <dl className="space-y-4">
+        <div className="space-y-4">
           {[
             { q: "How does ReviewIQ verify buyer reviews?", a: "ReviewIQ uses receipt uploads and retailer order verification to confirm purchases before a review is published. Every review displays its verification tier so you always know how trustworthy it is." },
             { q: "Is ReviewIQ free to use?", a: "Yes. Browsing product reviews, SmartScores, buying guides, and side-by-side comparisons is completely free. A Pro plan unlocks advanced filters, price tracking alerts, and comparison tools." },
@@ -688,15 +690,15 @@ export default function HomePage() {
           ].map((item) => (
             <details key={item.q} className="group border border-gray-100 rounded-xl bg-white">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
-                <dt>{item.q}</dt>
+                {item.q}
                 <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </summary>
-              <dd data-speakable="faq-answer" className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</dd>
+              <div data-speakable="faq-answer" className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</div>
             </details>
           ))}
-        </dl>
+        </div>
       </section>
 
       {/* CTA */}
@@ -705,7 +707,7 @@ export default function HomePage() {
           <h2 id="join-cta" className="text-2xl sm:text-3xl font-bold text-white mb-4">
             Join the conversation
           </h2>
-          <p className="text-brand-200 max-w-xl mx-auto mb-6">
+          <p className="text-white max-w-xl mx-auto mb-6">
             Help others make smarter buying decisions. Write reviews, share your
             experience, and participate in product discussions with a community
             that values truth over hype.

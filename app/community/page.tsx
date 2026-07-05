@@ -64,7 +64,7 @@ export default function CommunityPage() {
                 {stats.activeContributors} contributors active now
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold mb-2">Community</h1>
-              <p className="text-brand-100 max-w-lg leading-relaxed text-sm sm:text-base">
+              <p className="max-w-lg leading-relaxed text-sm sm:text-base">
                 Real conversations about real products. Ask questions, share your experience, and help others make smarter buying decisions.
               </p>
             </div>

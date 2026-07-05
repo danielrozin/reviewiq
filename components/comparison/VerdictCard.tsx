@@ -30,7 +30,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
         </div>
         <div>
           <p className="text-white font-semibold text-sm">AI Verdict</p>
-          <p className="text-brand-200 text-xs">Based on verified buyer reviews</p>
+          <p className="text-white text-xs">Based on verified buyer reviews</p>
         </div>
         {winner && (
           <div className="ml-auto flex items-center gap-1.5 bg-white/15 text-white text-xs font-medium px-3 py-1.5 rounded-full border border-white/20">
