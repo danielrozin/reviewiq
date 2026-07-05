@@ -40,6 +40,13 @@ export function RecentlyViewedStrip() {
         <button
           type="button"
           onClick={() => {
+            // Move focus before unmounting so keyboard users don't lose position (WCAG 2.4.3)
+            const main = document.querySelector<HTMLElement>("main");
+            if (main) {
+              main.setAttribute("tabindex", "-1");
+              main.focus({ preventScroll: true });
+              main.addEventListener("blur", () => main.removeAttribute("tabindex"), { once: true });
+            }
             localStorage.removeItem(KEY);
             setItems([]);
           }}
