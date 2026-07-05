@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef } from "react";
+import type React from "react";
 import type { Review } from "@/types";
 import { ReviewCard } from "./ReviewCard";
 
@@ -47,6 +48,25 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
   const shown = filtered.slice(0, visible);
   const hasMore = visible < filtered.length;
 
+  const ratingGroupRef = useRef<HTMLDivElement>(null);
+  const RATING_VALUES: (number | null)[] = [null, 5, 4, 3, 2, 1];
+
+  function handleRatingKeyDown(e: React.KeyboardEvent) {
+    const idx = RATING_VALUES.indexOf(filterRating);
+    const effective = idx === -1 ? 0 : idx;
+    const focus = (i: number) => {
+      const val = RATING_VALUES[i];
+      setFilterRating(val);
+      setVisible(INITIAL_VISIBLE);
+      const key = val === null ? "all" : String(val);
+      (ratingGroupRef.current?.querySelector(`[data-ratingkey="${key}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); focus((effective + 1) % RATING_VALUES.length); }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); focus((effective - 1 + RATING_VALUES.length) % RATING_VALUES.length); }
+    else if (e.key === "Home") { e.preventDefault(); focus(0); }
+    else if (e.key === "End") { e.preventDefault(); focus(RATING_VALUES.length - 1); }
+  }
+
   return (
     <section id="section-reviews" aria-labelledby="verified-reviews-heading">
       {/* Controls */}
@@ -65,22 +85,37 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           </span>
         </div>
 
-        {/* Star filter pills */}
-        <div role="group" aria-label="Filter by star rating" className="flex items-center gap-1">
+        {/* Star filter pills — single-select, radiogroup pattern */}
+        <div ref={ratingGroupRef} role="radiogroup" aria-label="Filter by star rating" className="flex items-center gap-1" onKeyDown={handleRatingKeyDown}>
+          <button
+            type="button"
+            role="radio"
+            data-ratingkey="all"
+            aria-checked={filterRating === null}
+            tabIndex={filterRating === null ? 0 : -1}
+            onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
+            className={`px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+              filterRating === null
+                ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
+                : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+            }`}
+          >
+            All
+          </button>
           {[5, 4, 3, 2, 1].map((star) => (
             <button
               key={star}
               type="button"
-              onClick={() => {
-                setFilterRating(filterRating === star ? null : star);
-                setVisible(INITIAL_VISIBLE);
-              }}
+              role="radio"
+              data-ratingkey={String(star)}
+              aria-checked={filterRating === star}
+              tabIndex={filterRating === star ? 0 : -1}
+              onClick={() => { setFilterRating(star); setVisible(INITIAL_VISIBLE); }}
               className={`flex items-center gap-0.5 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 filterRating === star
                   ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
               }`}
-              aria-pressed={filterRating === star}
               aria-label={`Filter by ${star} stars`}
             >
               <svg aria-hidden="true" className="w-3 h-3 text-amber-400 fill-current" viewBox="0 0 20 20">
@@ -89,16 +124,6 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
               {star}
             </button>
           ))}
-          {filterRating && (
-            <button
-              type="button"
-              onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
-              aria-label="Clear star filter"
-              className="px-3 py-2.5 text-xs text-gray-600 hover:text-gray-800 transition-colors touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
-            >
-              Clear
-            </button>
-          )}
         </div>
 
         {/* Sort select */}

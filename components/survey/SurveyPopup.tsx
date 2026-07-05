@@ -219,7 +219,7 @@ export function SurveyPopup() {
 
         {step === "intro" && (
           <div className="text-center">
-            <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div aria-hidden="true" className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">💬</span>
             </div>
             <h3 id="survey-dialog-heading" className="text-lg font-bold text-gray-900 mb-2">Quick feedback?</h3>
@@ -437,7 +437,7 @@ export function SurveyPopup() {
 
         {step === "thanks" && (
           <div className="text-center py-4">
-            <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
+            <div aria-hidden="true" className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">🙏</span>
             </div>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-lg font-bold text-gray-900 mb-2">Thank you!</h3>
