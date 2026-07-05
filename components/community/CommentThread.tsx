@@ -70,15 +70,16 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
             downvotes={comment.downvotes}
             helpfulCount={comment.helpfulCount}
             size="sm"
+            ariaContext={`comment by ${author?.displayName ?? author?.username ?? "user"}`}
           />
           <div className="flex items-center gap-1 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-within:opacity-100 transition-opacity">
-            <button type="button" aria-label="Reply to this comment" className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-brand-600 transition-colors font-medium min-h-[44px] px-3 py-2 rounded-lg hover:bg-brand-50 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1">
+            <button type="button" aria-label={`Reply to comment by ${author?.displayName ?? author?.username ?? "user"}`} className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-brand-600 transition-colors font-medium min-h-[44px] px-3 py-2 rounded-lg hover:bg-brand-50 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1">
               <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
               </svg>
               Reply
             </button>
-            <button type="button" aria-label="Report this comment" className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 transition-colors min-h-[44px] px-3 py-2 rounded-lg hover:bg-gray-100 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-1">
+            <button type="button" aria-label={`Report comment by ${author?.displayName ?? author?.username ?? "user"}`} className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 transition-colors min-h-[44px] px-3 py-2 rounded-lg hover:bg-gray-100 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-1">
               <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2.25a2.25 2.25 0 0 1 2.25 2.25v.094a2.25 2.25 0 0 0 2.25 2.25h9.372c1.399 0 2.361-1.37 1.866-2.682L19.5 3M3 3v18m0-18 1.5 13.5M21 3l-1.5 7.5M3 21h18" />
               </svg>

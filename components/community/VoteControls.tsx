@@ -12,6 +12,7 @@ interface VoteControlsProps {
   helpfulCount?: number;
   layout?: "vertical" | "horizontal";
   size?: "sm" | "md";
+  ariaContext?: string;
 }
 
 function getStoredVote(itemId: string): "up" | "down" | null {
@@ -28,6 +29,7 @@ export function VoteControls({
   helpfulCount,
   layout = "horizontal",
   size = "sm",
+  ariaContext,
 }: VoteControlsProps) {
   const [vote, setVote] = useState<"up" | "down" | null>(null);
   const [currentUpvotes, setCurrentUpvotes] = useState(upvotes);
@@ -91,7 +93,7 @@ export function VoteControls({
           type="button"
           onClick={() => handleVote("up")}
           aria-pressed={vote === "up"}
-          aria-label="Upvote"
+          aria-label={ariaContext ? `Upvote ${ariaContext}` : "Upvote"}
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
@@ -112,7 +114,7 @@ export function VoteControls({
           type="button"
           onClick={() => handleVote("down")}
           aria-pressed={vote === "down"}
-          aria-label="Downvote"
+          aria-label={ariaContext ? `Downvote ${ariaContext}` : "Downvote"}
           className={`${buttonSize} flex items-center justify-center rounded-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"
@@ -132,7 +134,7 @@ export function VoteControls({
           type="button"
           onClick={() => handleVote("up")}
           aria-pressed={vote === "up"}
-          aria-label="Upvote"
+          aria-label={ariaContext ? `Upvote ${ariaContext}` : "Upvote"}
           className={`${buttonSize} flex items-center justify-center rounded-l-lg transition-colors ${
             vote === "up"
               ? "bg-brand-50 text-brand-600"
@@ -153,7 +155,7 @@ export function VoteControls({
           type="button"
           onClick={() => handleVote("down")}
           aria-pressed={vote === "down"}
-          aria-label="Downvote"
+          aria-label={ariaContext ? `Downvote ${ariaContext}` : "Downvote"}
           className={`${buttonSize} flex items-center justify-center rounded-r-lg transition-colors ${
             vote === "down"
               ? "bg-red-50 text-red-600"

@@ -7,16 +7,14 @@ import { cn, getScoreBgColor } from "@/lib/utils";
 export function ComparisonTray() {
   const { items, remove, clear } = useCompare();
 
-  if (items.length === 0) return null;
-
   const compareUrl = `/compare?ids=${items.map((p) => p.id).join(",")}`;
 
   return (
-    <div
+    <div aria-live="polite" aria-atomic="false" className="fixed bottom-0 inset-x-0 z-50 pointer-events-none">
+      {items.length > 0 && <div
       role="region"
       aria-label="Product comparison tray"
-      aria-live="polite"
-      className="fixed bottom-0 inset-x-0 z-50 animate-in slide-in-from-bottom-4 duration-300"
+      className="animate-in slide-in-from-bottom-4 duration-300 pointer-events-auto"
     >
       <div className="max-w-4xl mx-auto px-4 pb-4">
         <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-4">
@@ -113,6 +111,6 @@ export function ComparisonTray() {
           )}
         </div>
       </div>
-    </div>
+    </div>}</div>
   );
 }
