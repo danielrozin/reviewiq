@@ -76,6 +76,7 @@ export function PricingTiers() {
           type="button"
           disabled
           aria-disabled="true"
+          aria-label="Free — Current Plan"
           className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-gray-100 text-gray-600 cursor-default"
         >
           Current Plan

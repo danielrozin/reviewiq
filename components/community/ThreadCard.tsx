@@ -19,7 +19,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
     return (
       <Link
         href={`/community/thread/${thread.id}`}
-        aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""} — ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
+        aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""} — ${formatNumber(netVotes)} ${netVotes === 1 ? "vote" : "votes"}, ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
         className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
       >
         <div className="flex flex-col items-center min-w-[40px]" aria-hidden="true">
