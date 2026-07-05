@@ -181,7 +181,7 @@ export default function NotificationsSettingsPage() {
                   {group.icon}
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-900 text-sm">{group.title}</p>
+                  <h2 className="font-semibold text-gray-900 text-sm">{group.title}</h2>
                   <p className="text-xs text-gray-600 mt-0.5">{group.description}</p>
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function NotificationsSettingsPage() {
                     type="button"
                     onClick={() => toggle(key)}
                     disabled={saving === key}
-                    className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 ${group.toggleRing} focus-visible:ring-offset-2 ${
+                    className={`relative inline-flex h-6 w-11 min-h-[44px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 ${group.toggleRing} focus-visible:ring-offset-2 ${
                       prefs[key] ? group.toggleColor : "bg-gray-200"
                     } ${saving === key ? "opacity-50 cursor-not-allowed" : ""}`}
                     role="switch"

@@ -121,7 +121,7 @@ export default async function FAQPage({ params }: Props) {
       {/* Related links */}
       <nav className="max-w-3xl" aria-label="Related pages">
         <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">
-          Learn More
+          Related Guides
         </h2>
         <ul className="flex flex-wrap gap-3">
           {page.relatedLinks.map((link) => (
