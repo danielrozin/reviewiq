@@ -173,6 +173,7 @@ export function reviewSchema(review: Review, productRef?: { name: string; url: s
     datePublished: review.createdAt,
     reviewBody: review.body,
     inLanguage: "en",
+    publisher: { "@id": `${SITE_URL}/#organization` },
     ...(productRef && {
       itemReviewed: {
         "@type": "Product",
@@ -382,6 +383,16 @@ export function blogPostSchema(post: BlogPost) {
     ...(post.readingTime > 0 && {
       timeRequired: `PT${post.readingTime}M`,
     }),
+    ...(post.relatedProductSlugs.length > 0 && {
+      mentions: post.relatedProductSlugs.map((slug) => ({
+        "@type": "Product",
+        name: slug.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()),
+      })),
+      about: post.relatedProductSlugs.slice(0, 1).map((slug) => ({
+        "@type": "Product",
+        name: slug.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()),
+      })),
+    }),
   };
 }
 
@@ -411,6 +422,8 @@ export function blogListSchema(posts: BlogPost[]) {
         "@type": "Person",
         "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
         name: post.author.name,
+        jobTitle: "Consumer Technology Analyst",
+        sameAs: [`${SITE_URL}/about`],
       },
       dateModified: post.updatedAt || post.publishedAt,
       articleSection: post.categoryName,
@@ -736,7 +749,7 @@ export function profilePageSchema(
   };
 }
 
-export function blogCategoryPageSchema(categoryName: string, description: string, categorySlug: string) {
+export function blogCategoryPageSchema(categoryName: string, description: string, categorySlug: string, datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}/blog/category/${categorySlug}`;
   return {
     "@context": "https://schema.org",
@@ -746,6 +759,8 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     description,
     url: pageUrl,
     inLanguage: "en",
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     about: { "@type": "Thing", name: categoryName },
     mainEntity: {
       "@type": "ItemList",

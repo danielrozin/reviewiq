@@ -85,7 +85,9 @@ export default async function BlogCategoryPage({
           __html: JSON.stringify(blogCategoryPageSchema(
             cat.name,
             `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`,
-            cat.slug
+            cat.slug,
+            posts.length > 0 ? [...posts].sort((a, b) => a.publishedAt.localeCompare(b.publishedAt))[0].publishedAt : undefined,
+            posts.length > 0 ? [...posts].sort((a, b) => (b.updatedAt || b.publishedAt).localeCompare(a.updatedAt || a.publishedAt))[0].updatedAt || undefined : undefined,
           )),
         }}
       />
