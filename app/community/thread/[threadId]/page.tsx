@@ -61,7 +61,8 @@ export default async function ThreadPage({ params }: Props) {
           __html: JSON.stringify(
             discussionForumPostingSchema(
               thread,
-              author?.displayName ?? author?.username ?? "ReviewIQ Community Member"
+              author?.displayName ?? author?.username ?? "ReviewIQ Community Member",
+              author?.username
             )
           ),
         }}

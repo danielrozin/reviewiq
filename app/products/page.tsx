@@ -21,6 +21,11 @@ const productsPageSchema = {
     "@type": "SpeakableSpecification",
     cssSelector: ["[data-speakable='products-intro']"],
   },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${SITE_URL}/products?q={query}`,
+    "query-input": "required name=query",
+  },
 };
 
 export const metadata = buildMetadata({

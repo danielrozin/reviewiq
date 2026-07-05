@@ -338,6 +338,11 @@ export function blogPostSchema(post: BlogPost) {
     keywords: [post.seo.focusKeyword, ...post.seo.secondaryKeywords].join(", "),
     articleSection: post.categoryName,
     wordCount: post.content.split(/\s+/).filter(Boolean).length,
+    abstract: post.seo.metaDescription,
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable='blog-headline']", "[data-speakable='blog-intro']"],
+    },
     ...(post.readingTime > 0 && {
       timeRequired: `PT${post.readingTime}M`,
     }),
@@ -487,7 +492,8 @@ export function blogPostSpeakableSchema(title: string, url: string) {
 
 export function discussionForumPostingSchema(
   thread: DiscussionThread,
-  authorName: string
+  authorName: string,
+  authorUsername?: string
 ) {
   const threadUrl = `${SITE_URL}/community/thread/${thread.id}`;
   return {
@@ -502,8 +508,15 @@ export function discussionForumPostingSchema(
     dateModified: thread.lastActivityAt,
     author: {
       "@type": "Person",
+      ...(authorUsername && { "@id": `${SITE_URL}/community/user/${authorUsername}#person` }),
       name: authorName,
     },
+    ...(thread.productSlug && thread.categorySlug && {
+      about: {
+        "@type": "Product",
+        "@id": `${SITE_URL}/category/${thread.categorySlug}/${thread.productSlug}#product`,
+      },
+    }),
     interactionStatistic: [
       {
         "@type": "InteractionCounter",
