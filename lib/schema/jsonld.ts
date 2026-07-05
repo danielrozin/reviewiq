@@ -14,6 +14,8 @@ export function organizationSchema() {
       "@type": "ImageObject",
       url: `${SITE_URL}/logo.png`,
       contentUrl: `${SITE_URL}/logo.png`,
+      width: 200,
+      height: 60,
     },
     description:
       "AI-powered product review platform providing honest, structured insights from verified buyers.",
@@ -162,8 +164,9 @@ export function faqSchema(items: FAQItem[], pageUrl?: string) {
       isPartOf: { "@id": `${SITE_URL}/#website` },
       publisher: { "@id": `${SITE_URL}/#organization` },
     }),
-    mainEntity: items.map((item) => ({
+    mainEntity: items.map((item, index) => ({
       "@type": "Question",
+      ...(fullUrl && { "@id": `${fullUrl}#faq-${index}` }),
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
@@ -186,7 +189,12 @@ export function categoryListSchema(categories: Category[]) {
       "@type": "ListItem",
       position: index + 1,
       name: cat.name,
-      url: `${SITE_URL}/category/${cat.slug}`,
+      item: {
+        "@type": "ItemList",
+        "@id": `${SITE_URL}/category/${cat.slug}`,
+        name: cat.name,
+        url: `${SITE_URL}/category/${cat.slug}`,
+      },
     })),
   };
 }
@@ -396,9 +404,10 @@ export function communityPageSchema() {
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    about: { "@type": "Thing", name: "Product Reviews & Discussions" },
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='community-hero']", "[data-speakable='community-discussions']"],
+      cssSelector: ["[data-speakable='community-hero']"],
     },
   };
 }
@@ -684,6 +693,7 @@ export function comparisonSchema(productA: Product, productB: Product) {
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    author: { "@id": `${SITE_URL}/about#ai-review-team` },
     datePublished,
     dateModified,
     speakable: {
@@ -725,6 +735,7 @@ function comparisonProductItem(product: Product) {
     url: productUrl,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
+    ...(product.image && { image: product.image }),
   };
 
   const offers = aggregateOfferFromProduct(product);

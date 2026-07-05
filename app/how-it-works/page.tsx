@@ -102,6 +102,7 @@ const howToJsonLd = {
   description:
     "ReviewIQ's 4-step system: verified buyer reviews, AI analysis, SmartScore ranking, and data-driven buying decisions.",
   url: `${SITE_URL}/how-it-works`,
+  inLanguage: "en",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   step: steps.map((step, index) => ({
