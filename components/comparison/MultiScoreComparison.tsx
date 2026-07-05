@@ -42,7 +42,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
                     aria-valuemin={0}
                     aria-valuemax={100}
                     aria-valuetext={`${product.smartScore}/100 — ${getScoreLabel(product.smartScore)}`}
-                    aria-label="SmartScore"
+                    aria-label={`SmartScore for ${product.name}`}
                     className={cn(
                       "w-20 h-20 rounded-2xl font-bold text-white flex items-center justify-center text-2xl",
                       getScoreBgColor(product.smartScore)

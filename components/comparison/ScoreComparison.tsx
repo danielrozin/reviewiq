@@ -29,8 +29,11 @@ export function ScoreComparison({ productA, productB }: ScoreComparisonProps) {
         <div className="flex flex-col items-center gap-2 shrink-0">
           <span aria-hidden="true" className="text-xs font-bold text-gray-400 bg-gray-100 border border-gray-200 px-2.5 py-1 rounded-full tracking-wider">VS</span>
           {diff !== 0 && (
-            <span className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full">
-              {Math.abs(diff)} pt{Math.abs(diff) !== 1 ? "s" : ""}
+            <span
+              aria-label={`SmartScore difference: ${Math.abs(diff)} point${Math.abs(diff) !== 1 ? "s" : ""}`}
+              className="text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-100 px-2 py-0.5 rounded-full"
+            >
+              <span aria-hidden="true">{Math.abs(diff)} pt{Math.abs(diff) !== 1 ? "s" : ""}</span>
             </span>
           )}
         </div>
@@ -59,7 +62,7 @@ function ScoreBlock({
           aria-valuemin={0}
           aria-valuemax={100}
           aria-valuetext={`${product.smartScore}/100 — ${getScoreLabel(product.smartScore)}`}
-          aria-label="SmartScore"
+          aria-label={`SmartScore for ${product.name}`}
           className={cn(
             "w-20 h-20 rounded-2xl font-bold text-white flex items-center justify-center text-2xl",
             getScoreBgColor(product.smartScore)
