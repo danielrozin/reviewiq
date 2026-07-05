@@ -46,6 +46,12 @@ export default function CategoriesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(categoriesWebPageJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Categories", url: "/categories" }])),
+        }}
+      />
       <Breadcrumbs items={[{ name: "Categories", url: "/categories" }]} />
 
       {/* Page header */}
