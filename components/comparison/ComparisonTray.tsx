@@ -48,6 +48,7 @@ export function ComparisonTray() {
                   className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-xl px-3 py-2 shrink-0"
                 >
                   <div
+                    role="img"
                     aria-label={`SmartScore: ${product.smartScore}`}
                     className={cn(
                       "w-6 h-6 rounded-md text-white flex items-center justify-center text-xs font-bold shrink-0",
@@ -89,7 +90,7 @@ export function ComparisonTray() {
               href={compareUrl}
               aria-disabled={items.length < 2}
               aria-label={items.length >= 2 ? `Compare ${items.map(p => p.name).join(" and ")}` : "Add at least 2 products to compare"}
-              tabIndex={items.length < 2 ? -1 : undefined}
+              onClick={(e) => { if (items.length < 2) e.preventDefault(); }}
               className={cn(
                 "shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all",
                 items.length >= 2
