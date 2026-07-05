@@ -34,12 +34,10 @@ export function SpecsTable({ specs }: SpecsTableProps) {
         {groupEntries.map(([groupName, groupSpecs], gi) => (
           <div key={groupName}>
             {groupEntries.length > 1 && (
-              <div className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
-                <h3 className="text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                  {groupName}
-                </h3>
+              <dt className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+                <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{groupName}</span>
                 <span aria-hidden="true" className="text-xs text-gray-600">{groupSpecs.length}</span>
-              </div>
+              </dt>
             )}
             {groupSpecs.map((spec, si) => (
               <div
