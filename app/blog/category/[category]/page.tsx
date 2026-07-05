@@ -91,6 +91,17 @@ export default async function BlogCategoryPage({
           )),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            breadcrumbSchema([
+              { name: "Blog", url: "/blog" },
+              { name: cat.name, url: `/blog/category/${cat.slug}` },
+            ])
+          ),
+        }}
+      />
       <Breadcrumbs
         items={[
           { name: "Blog", url: "/blog" },

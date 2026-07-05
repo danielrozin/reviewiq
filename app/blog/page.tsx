@@ -46,6 +46,12 @@ export default function BlogPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexWebPageJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbSchema([{ name: "Blog", url: "/blog" }])),
+        }}
+      />
       <Breadcrumbs items={[{ name: "Blog", url: "/blog" }]} />
 
       <div className="mt-8 mb-10">
