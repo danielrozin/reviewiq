@@ -158,6 +158,7 @@ export function faqSchema(items: FAQItem[], pageUrl?: string) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: "en",
     ...(fullUrl && {
       "@id": `${fullUrl}#faq`,
       url: fullUrl,
@@ -672,14 +673,6 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-speakable='category-description']", "[data-speakable='buying-guide']"],
-    },
-    breadcrumb: {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-        { "@type": "ListItem", position: 2, name: "Categories", item: `${SITE_URL}/categories` },
-        { "@type": "ListItem", position: 3, name: categoryName, item: pageUrl },
-      ],
     },
   };
 }
