@@ -143,6 +143,7 @@ export function WriteReviewForm() {
   const [step, setStep] = useState(0);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
   const stepContainerRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
 
   const [selectedProduct, setSelectedProduct] = useState("");
   const [headline, setHeadline] = useState("");
@@ -176,6 +177,8 @@ export function WriteReviewForm() {
   useEffect(() => {
     stepContainerRef.current?.focus();
   }, [step]);
+
+  useEffect(() => { if (submitted) successRef.current?.focus(); }, [submitted]);
 
   const goNext = () => {
     if (canProceed && step < STEPS.length - 1) {
@@ -306,7 +309,7 @@ export function WriteReviewForm() {
     }
 
     return (
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div ref={successRef} role="status" tabIndex={-1} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-2xl mx-auto py-16">
           {/* Success card */}
           <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-3xl p-10 text-center mb-8">

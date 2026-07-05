@@ -274,7 +274,7 @@ export default async function ThreadPage({ params }: Props) {
               <textarea
                 id="thread-reply-textarea"
                 placeholder="Share your experience or answer this question..."
-                className="w-full text-sm text-gray-700 placeholder-gray-400 resize-none border-0 focus:ring-0 focus:outline-none min-h-[80px]"
+                className="w-full text-sm text-gray-700 placeholder-gray-400 resize-none border-0 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:ring-inset rounded-lg min-h-[80px]"
                 rows={3}
               />
               <div className="flex items-center justify-between pt-3 border-t border-gray-100">

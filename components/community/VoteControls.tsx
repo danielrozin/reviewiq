@@ -70,7 +70,7 @@ export function VoteControls({
     // }).catch(() => {});
   }, [vote, itemId, itemType]);
 
-  const buttonSize = size === "sm" ? "w-11 h-11 sm:w-7 sm:h-7 text-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1" : "w-11 h-11 sm:w-9 sm:h-9 text-base touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1";
+  const buttonSize = size === "sm" ? "w-11 h-11 text-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1" : "w-11 h-11 text-base touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1";
   const scoreSize = size === "sm" ? "text-sm" : "text-base";
 
   const UpIcon = () => (
@@ -101,6 +101,8 @@ export function VoteControls({
           <UpIcon />
         </button>
         <span
+          aria-live="polite"
+          aria-atomic="true"
           aria-label={`${formatNumber(netVotes)} net votes`}
           className={`${scoreSize} font-semibold tabular-nums ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-600"}`}
         >
@@ -140,6 +142,8 @@ export function VoteControls({
           <UpIcon />
         </button>
         <span
+          aria-live="polite"
+          aria-atomic="true"
           aria-label={`${formatNumber(netVotes)} net votes`}
           className={`${scoreSize} font-semibold tabular-nums px-1.5 ${netVotes > 0 ? "text-brand-600" : netVotes < 0 ? "text-red-600" : "text-gray-600"}`}
         >
