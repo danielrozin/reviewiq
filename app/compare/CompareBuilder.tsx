@@ -15,6 +15,8 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const listboxRef = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -31,9 +33,53 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
         p.brand.toLowerCase().includes(query.toLowerCase()))
   );
 
+  function handleInputKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if ((e.key === "ArrowDown" || e.key === "ArrowUp") && open && query.length > 0) {
+      e.preventDefault();
+      const items = listboxRef.current?.querySelectorAll<HTMLElement>('[role="option"]:not([aria-disabled="true"])');
+      if (items && items.length > 0) {
+        (e.key === "ArrowDown" ? items[0] : items[items.length - 1]).focus();
+      }
+    } else if (e.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  function selectOption(id: string) {
+    onAdd(id);
+    setQuery("");
+    setOpen(false);
+    inputRef.current?.focus();
+  }
+
+  function handleOptionKeyDown(e: React.KeyboardEvent<HTMLLIElement>, id: string) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      selectOption(id);
+    } else if (e.key === "ArrowDown") {
+      e.preventDefault();
+      (e.currentTarget.nextElementSibling as HTMLElement | null)?.focus();
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      const prev = e.currentTarget.previousElementSibling as HTMLElement | null;
+      if (prev) prev.focus(); else inputRef.current?.focus();
+    } else if (e.key === "Escape") {
+      setOpen(false);
+      inputRef.current?.focus();
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      (listboxRef.current?.querySelector<HTMLElement>('[role="option"]:not([aria-disabled="true"])'))?.focus();
+    } else if (e.key === "End") {
+      e.preventDefault();
+      const items = listboxRef.current?.querySelectorAll<HTMLElement>('[role="option"]:not([aria-disabled="true"])');
+      if (items && items.length > 0) items[items.length - 1].focus();
+    }
+  }
+
   return (
     <div ref={ref} className="relative w-full max-w-md">
       <input
+        ref={inputRef}
         type="text"
         role="combobox"
         aria-expanded={open && query.length > 0}
@@ -43,12 +89,13 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
         value={query}
         onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
+        onKeyDown={handleInputKeyDown}
         aria-label="Search products to compare"
         placeholder="Search products to compare..."
         className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
       />
       {open && query.length > 0 && (
-        <ul id="compare-product-listbox" role="listbox" aria-label="Product search results" className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
+        <ul ref={listboxRef} id="compare-product-listbox" role="listbox" aria-label="Product search results" className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
           {filtered.length === 0 ? (
             <li role="option" aria-selected="false" aria-disabled="true" className="px-4 py-3 text-sm text-gray-600">No products found</li>
           ) : (
@@ -57,9 +104,9 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
                 key={p.id}
                 role="option"
                 aria-selected="false"
-                tabIndex={0}
-                onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
-                onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onAdd(p.id); setQuery(""); setOpen(false); } }}
+                tabIndex={-1}
+                onClick={() => selectOption(p.id)}
+                onKeyDown={(e) => handleOptionKeyDown(e, p.id)}
                 className="px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
               >
                 <span className="font-medium text-gray-900">{p.brand}</span>
