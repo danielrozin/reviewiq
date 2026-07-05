@@ -67,7 +67,7 @@ export default function CommunityPage() {
             </div>
             <Link
               href="/community/new"
-              className="inline-flex items-center gap-2 self-start sm:self-auto px-5 py-2.5 bg-white text-brand-600 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shadow-sm shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="inline-flex items-center gap-2 self-start sm:self-auto px-5 py-3 min-h-[44px] bg-white text-brand-600 text-sm font-semibold rounded-xl hover:bg-brand-50 transition-colors shadow-sm shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -140,14 +140,14 @@ export default function CommunityPage() {
               </div>
               <h2 id="sidebar-categories-heading" className="font-semibold text-gray-900">Browse by Category</h2>
             </div>
-            <div className="space-y-1">
+            <ul className="space-y-1 list-none p-0 m-0">
               {categories.map((cat) => {
                 const count = discussions.filter(
                   (d) => d.categorySlug === cat.slug
                 ).length;
                 return (
+                  <li key={cat.id}>
                   <Link
-                    key={cat.id}
                     href={`/category/${cat.slug}`}
                     className="flex items-center justify-between py-2 px-3 rounded-xl hover:bg-gray-50 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
@@ -164,9 +164,10 @@ export default function CommunityPage() {
                       </svg>
                     </div>
                   </Link>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
           </section>
 
           {/* Top contributors */}
@@ -179,9 +180,9 @@ export default function CommunityPage() {
               </div>
               <h2 id="sidebar-contributors-heading" className="font-semibold text-gray-900">Top Contributors</h2>
             </div>
-            <div className="space-y-3">
+            <ul className="space-y-3 list-none p-0 m-0">
               {topContributors.map((user, i) => (
-                <div key={user.id} className="flex items-center gap-3">
+                <li key={user.id} className="flex items-center gap-3">
                   <span
                     aria-label={`Rank ${i + 1}`}
                     className={`w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
@@ -200,9 +201,9 @@ export default function CommunityPage() {
                       ))}
                     </div>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* Community guidelines */}

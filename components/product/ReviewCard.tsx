@@ -22,7 +22,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
       <div className="p-6">
       <div className="flex items-start justify-between mb-3">
         <div>
-          <h4 id={`review-${review.id}-headline`} className="font-semibold text-gray-900 mb-1">{review.headline}</h4>
+          <h3 id={`review-${review.id}-headline`} className="font-semibold text-gray-900 mb-1">{review.headline}</h3>
           <div className="flex items-center gap-3">
             <RatingStars rating={review.rating} size="sm" />
             <VerificationBadge tier={review.verificationTier} compact />
@@ -42,9 +42,9 @@ export function ReviewCard({ review }: ReviewCardProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <div>
-          <h5 className="text-xs font-medium text-emerald-700 uppercase tracking-wider mb-1.5">
+          <h4 className="text-xs font-medium text-emerald-700 uppercase tracking-wider mb-1.5">
             Pros
-          </h5>
+          </h4>
           <ul className="space-y-1">
             {review.pros.map((pro, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
@@ -59,9 +59,9 @@ export function ReviewCard({ review }: ReviewCardProps) {
           </ul>
         </div>
         <div>
-          <h5 className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
+          <h4 className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
             Cons
-          </h5>
+          </h4>
           <ul className="space-y-1">
             {review.cons.map((con, i) => (
               <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
