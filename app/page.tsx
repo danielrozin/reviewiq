@@ -10,7 +10,7 @@ import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { formatNumber } from "@/lib/utils";
 import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { homePageSchema, categoryListSchema, productListSchema } from "@/lib/schema/jsonld";
+import { homePageSchema, categoryListSchema, productListSchema, faqSchema } from "@/lib/schema/jsonld";
 import { HeroSearch } from "@/components/home/HeroSearch";
 import { RecentlyViewedStrip } from "@/components/home/RecentlyViewedStrip";
 
@@ -41,6 +41,15 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productListSchema(topProducts, "Top Rated Products")) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema([
+          { question: "How does ReviewIQ verify buyer reviews?", answer: "ReviewIQ uses receipt uploads and retailer order verification to confirm purchases before a review is published. Every review displays its verification tier so you always know how trustworthy it is." },
+          { question: "Is ReviewIQ free to use?", answer: "Yes. Browsing product reviews, SmartScores, buying guides, and side-by-side comparisons is completely free. A Pro plan unlocks advanced filters, price tracking alerts, and comparison tools." },
+          { question: "What is a SmartScore?", answer: "SmartScore is ReviewIQ's 0–100 rating that synthesizes verified-buyer reviews, reliability scores, ease-of-use ratings, and value feedback into a single comparable number — not just an average of stars." },
+          { question: "Does ReviewIQ earn affiliate commissions?", answer: "No. ReviewIQ has zero affiliate links and earns nothing from your purchases. Our only incentive is helping you make the right buying decision." },
+        ], "/")) }}
       />
       {/* Hero Section */}
       <section aria-labelledby="hero-heading" className="relative overflow-hidden bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">
@@ -663,6 +672,31 @@ export default function HomePage() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* FAQ */}
+      <section aria-labelledby="home-faq-heading" className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 id="home-faq-heading" className="text-2xl font-bold text-gray-900 text-center mb-8">
+          Frequently Asked Questions
+        </h2>
+        <dl className="space-y-4">
+          {[
+            { q: "How does ReviewIQ verify buyer reviews?", a: "ReviewIQ uses receipt uploads and retailer order verification to confirm purchases before a review is published. Every review displays its verification tier so you always know how trustworthy it is." },
+            { q: "Is ReviewIQ free to use?", a: "Yes. Browsing product reviews, SmartScores, buying guides, and side-by-side comparisons is completely free. A Pro plan unlocks advanced filters, price tracking alerts, and comparison tools." },
+            { q: "What is a SmartScore?", a: "SmartScore is ReviewIQ's 0–100 rating that synthesizes verified-buyer reviews, reliability scores, ease-of-use ratings, and value feedback into a single comparable number — not just an average of stars." },
+            { q: "Does ReviewIQ earn affiliate commissions?", a: "No. ReviewIQ has zero affiliate links and earns nothing from your purchases. Our only incentive is helping you make the right buying decision." },
+          ].map((item) => (
+            <details key={item.q} className="group border border-gray-100 rounded-xl bg-white">
+              <summary className="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
+                <dt>{item.q}</dt>
+                <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-400 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+              </summary>
+              <dd className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</dd>
+            </details>
+          ))}
+        </dl>
       </section>
 
       {/* CTA */}

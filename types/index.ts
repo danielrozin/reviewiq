@@ -43,6 +43,8 @@ export interface Product {
 export interface YouTubeVideo {
   id: string; // YouTube video ID (e.g. "dQw4w9WgXcQ")
   title: string;
+  uploadDate?: string; // ISO date string, e.g. "2024-03-15"
+  duration?: string; // ISO 8601 duration, e.g. "PT6M42S"
   isActive?: boolean;
   status?: string;
 }

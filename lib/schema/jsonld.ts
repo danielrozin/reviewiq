@@ -202,8 +202,8 @@ export function categoryListSchema(categories: Category[]) {
       position: index + 1,
       name: cat.name,
       item: {
-        "@type": "ItemList",
-        "@id": `${SITE_URL}/category/${cat.slug}`,
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/category/${cat.slug}#page`,
         name: cat.name,
         url: `${SITE_URL}/category/${cat.slug}`,
       },
@@ -261,8 +261,9 @@ export function productListSchema(products: Product[], categoryName: string, cat
             aggregateRating: {
               "@type": "AggregateRating",
               ratingValue: avgRating.toFixed(1),
-              bestRating: "5",
-              worstRating: "1",
+              bestRating: 5,
+              worstRating: 1,
+              ratingCount: p.reviewCount,
               reviewCount: p.reviewCount,
             },
           }),
@@ -281,9 +282,10 @@ export function videoObjectSchema(video: YouTubeVideo, productName: string) {
     name: video.title,
     description: `${video.title} — video review for ${productName}`,
     thumbnailUrl: `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`,
-    uploadDate: new Date().toISOString().split("T")[0],
+    uploadDate: video.uploadDate ?? "2024-01-01",
     contentUrl,
     embedUrl: `https://www.youtube.com/embed/${video.id}`,
+    ...(video.duration && { duration: video.duration }),
     publisher: { "@id": `${SITE_URL}/#organization` },
   };
 }
