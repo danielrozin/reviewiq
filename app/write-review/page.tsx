@@ -7,7 +7,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 const writeReviewWebPageJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "@id": `${SITE_URL}/write-review`,
+  "@id": `${SITE_URL}/write-review#page`,
   name: "Write a Product Review — Share Your Experience | ReviewIQ",
   url: `${SITE_URL}/write-review`,
   inLanguage: "en",

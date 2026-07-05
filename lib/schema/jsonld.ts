@@ -247,6 +247,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
       return {
         "@type": "ListItem",
         position: index + 1,
+        url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
         item: {
           "@type": "Product",
           "@id": `${SITE_URL}/category/${p.categorySlug}/${p.slug}#product`,
@@ -622,7 +623,7 @@ export function competitorFaqPageSchema(opts: {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
-      "@id": `${SITE_URL}${opts.pageUrl}`,
+      "@id": `${SITE_URL}${opts.pageUrl}#page`,
       name: opts.pageName,
       url: `${SITE_URL}${opts.pageUrl}`,
       inLanguage: "en",

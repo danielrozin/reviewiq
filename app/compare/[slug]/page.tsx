@@ -47,13 +47,9 @@ export default async function ComparisonPage({ params }: Props) {
   const category = getCategoryBySlug(productA.categorySlug);
 
   const breadcrumbItems = [
-    ...(category
-      ? [{ name: category.name, url: `/category/${category.slug}` }]
-      : []),
-    {
-      name: `${productA.name} vs ${productB.name}`,
-      url: `/compare/${slug}`,
-    },
+    { name: "Categories", url: "/categories" },
+    ...(category ? [{ name: category.name, url: `/category/${category.slug}` }] : []),
+    { name: `${productA.name} vs ${productB.name}`, url: `/compare/${slug}` },
   ];
 
   const jsonLd = comparisonSchema(productA, productB);
