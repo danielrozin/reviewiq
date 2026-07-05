@@ -189,11 +189,19 @@ export function reviewSchema(review: Review, productRef?: { name: string; url: s
       bestRating: 5,
       worstRating: 1,
     },
-    author: {
-      "@type": "Person",
-      "@id": `${SITE_URL}/community/user/${encodeURIComponent(review.authorName.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""))}#person`,
-      name: review.authorName,
-    },
+    author: (() => {
+      const authorSlug = encodeURIComponent(review.authorName.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, ""));
+      const profileUrl = `${SITE_URL}/community/user/${authorSlug}`;
+      return {
+        "@type": "Person",
+        "@id": `${profileUrl}#person`,
+        name: review.authorName,
+        sameAs: [profileUrl],
+        ...(review.aiTopics && review.aiTopics.length > 0 && {
+          knowsAbout: review.aiTopics,
+        }),
+      };
+    })(),
     datePublished: review.createdAt,
     reviewBody: review.body,
     inLanguage: "en",
@@ -473,6 +481,7 @@ export function blogListSchema(posts: BlogPost[]) {
         name: post.author.name,
         jobTitle: "Consumer Technology Analyst",
         sameAs: [`${SITE_URL}/about`],
+        knowsAbout: ["Product Reviews", "Consumer Electronics", "Buyer Guidance", "Comparative Product Analysis"],
       },
       dateModified: post.updatedAt || post.publishedAt,
       articleSection: post.categoryName,
