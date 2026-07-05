@@ -36,6 +36,10 @@ export interface Product {
   faq: FAQItem[];
   reviews: Review[];
   youtubeVideos?: YouTubeVideo[];
+  mpn?: string;
+  gtin12?: string;
+  gtin13?: string;
+  gtin14?: string;
   createdAt?: string;
   updatedAt?: string;
 }

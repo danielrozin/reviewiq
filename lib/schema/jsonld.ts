@@ -6,7 +6,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 export function organizationSchema() {
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": ["Organization", "Corporation"],
     "@id": `${SITE_URL}/#organization`,
     name: "ReviewIQ",
     url: SITE_URL,
@@ -26,6 +26,7 @@ export function organizationSchema() {
       email: "hello@reviewiq.com",
       contactType: "customer support",
       availableLanguage: "English",
+      url: `${SITE_URL}/about`,
     },
     foundingDate: "2023",
     numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
@@ -90,9 +91,15 @@ export function productSchema(product: Product, pageUrl?: string) {
     ...(canonicalUrl && { "@id": `${canonicalUrl}#product` }),
     name: product.name,
     sku: product.slug,
+    ...(product.mpn && { mpn: product.mpn }),
+    ...(product.gtin12 && { gtin12: product.gtin12 }),
+    ...(product.gtin13 && { gtin13: product.gtin13 }),
+    ...(product.gtin14 && { gtin14: product.gtin14 }),
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
-    image: product.image,
+    image: product.image
+      ? { "@type": "ImageObject", url: product.image }
+      : undefined,
     inLanguage: "en",
     ...(product.createdAt ? { datePublished: product.createdAt } : {}),
     ...(product.updatedAt || product.createdAt ? { dateModified: product.updatedAt || product.createdAt } : {}),
@@ -121,7 +128,8 @@ export function productSchema(product: Product, pageUrl?: string) {
 
   const reviewsWithBody = product.reviews.filter((r) => r.body && r.body.trim());
   if (reviewsWithBody.length > 0) {
-    schema.review = reviewsWithBody.slice(0, 5).map((r) => reviewSchema(r));
+    const productRef = canonicalUrl ? { name: product.name, url: pageUrl! } : undefined;
+    schema.review = reviewsWithBody.slice(0, 5).map((r) => reviewSchema(r, productRef));
   }
 
   return schema;
@@ -131,11 +139,15 @@ function aggregateOfferFromProduct(product: Product) {
   const { min, max, currency } = product.priceRange;
   if (!currency || min == null || min <= 0) return null;
   const highPrice = max && max >= min ? max : min;
+  const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .split("T")[0];
   return {
     "@type": "AggregateOffer",
     lowPrice: min,
     highPrice,
     priceCurrency: currency,
+    priceValidUntil,
     offerCount: 1,
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
@@ -143,7 +155,7 @@ function aggregateOfferFromProduct(product: Product) {
   };
 }
 
-export function reviewSchema(review: Review) {
+export function reviewSchema(review: Review, productRef?: { name: string; url: string }) {
   return {
     "@type": "Review",
     headline: review.headline,
@@ -161,6 +173,13 @@ export function reviewSchema(review: Review) {
     datePublished: review.createdAt,
     reviewBody: review.body,
     inLanguage: "en",
+    ...(productRef && {
+      itemReviewed: {
+        "@type": "Product",
+        "@id": `${SITE_URL}${productRef.url}#product`,
+        name: productRef.name,
+      },
+    }),
   };
 }
 
