@@ -88,7 +88,7 @@ export default async function CategoryPage({ params }: Props) {
               <div className="w-14 h-14 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm shrink-0">
                 <span aria-hidden="true" className="text-3xl">{category.icon}</span>
               </div>
-              <h1 className="text-3xl font-bold text-gray-900">
+              <h1 data-speakable="category-name" className="text-3xl font-bold text-gray-900">
                 Best {category.name}
               </h1>
             </div>

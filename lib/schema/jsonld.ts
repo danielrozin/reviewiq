@@ -538,6 +538,13 @@ export function discussionForumPostingSchema(
       about: {
         "@type": "Product",
         "@id": `${SITE_URL}/category/${thread.categorySlug}/${thread.productSlug}#product`,
+        name: thread.productSlug.replace(/-/g, " "),
+        url: `${SITE_URL}/category/${thread.categorySlug}/${thread.productSlug}`,
+      },
+      mentions: {
+        "@type": "Product",
+        "@id": `${SITE_URL}/category/${thread.categorySlug}/${thread.productSlug}#product`,
+        name: thread.productSlug.replace(/-/g, " "),
       },
     }),
     interactionStatistic: [
@@ -724,7 +731,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='category-description']", "[data-speakable='buying-guide']"],
+      cssSelector: ["[data-speakable='category-name']", "[data-speakable='category-description']", "[data-speakable='buying-guide']"],
     },
   };
 }
@@ -761,6 +768,8 @@ export function comparisonSchema(productA: Product, productB: Product) {
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
+        "[data-speakable='comparison-headline']",
+        "[data-speakable='comparison-summary']",
         "[data-speakable='ai-verdict']",
         "[data-speakable='comparison-verdict']",
         "[data-speakable='best-for-comparison']",
