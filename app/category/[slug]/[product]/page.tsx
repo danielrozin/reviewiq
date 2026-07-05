@@ -130,7 +130,7 @@ export default async function ProductPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`)),
+          __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`, product.createdAt, product.updatedAt || product.createdAt)),
         }}
       />
       {product.faq.length > 0 && (

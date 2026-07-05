@@ -423,6 +423,8 @@ export function communityPageSchema() {
     description: "Real conversations about real products. Ask questions, share experiences, and help others make smarter buying decisions.",
     url: pageUrl,
     inLanguage: "en",
+    datePublished: "2024-01-01",
+    dateModified: "2025-06-01",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@type": "Thing", name: "Product Reviews & Discussions" },
@@ -459,7 +461,7 @@ export function homePageSchema() {
   };
 }
 
-export function speakableSchema(productName: string, productUrl: string) {
+export function speakableSchema(productName: string, productUrl: string, datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}${productUrl}`;
   return {
     "@context": "https://schema.org",
@@ -468,6 +470,8 @@ export function speakableSchema(productName: string, productUrl: string) {
     name: `${productName} Review`,
     url: pageUrl,
     inLanguage: "en",
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     mainEntity: { "@type": "Product", "@id": `${pageUrl}#product` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -574,7 +578,7 @@ export function discussionForumPostingSchema(
   };
 }
 
-export function threadPageSpeakableSchema(title: string, url: string) {
+export function threadPageSpeakableSchema(title: string, url: string, datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}${url}`;
   return {
     "@context": "https://schema.org",
@@ -583,6 +587,8 @@ export function threadPageSpeakableSchema(title: string, url: string) {
     name: title,
     url: pageUrl,
     inLanguage: "en",
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     mainEntity: { "@id": `${pageUrl}#discussion` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
