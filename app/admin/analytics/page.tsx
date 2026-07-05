@@ -175,7 +175,7 @@ export default function ReviewIQAnalytics() {
             type="button"
             role="tab"
             aria-selected={activeTab === tab.key}
-            aria-controls={`panel-${tab.key}`}
+            aria-controls={activeTab === tab.key ? `panel-${tab.key}` : undefined}
             onClick={() => {
               setActiveTab(tab.key);
               if (tab.key === "report") loadReport();

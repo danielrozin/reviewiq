@@ -361,7 +361,7 @@ export default function AdminDashboard() {
                 role="tab"
                 id={`admin-tab-${tab.key}`}
                 aria-selected={activeTab === tab.key}
-                aria-controls={`admin-panel-${tab.key}`}
+                aria-controls={activeTab === tab.key ? `admin-panel-${tab.key}` : undefined}
                 onClick={() => setActiveTab(tab.key)}
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
                   activeTab === tab.key
