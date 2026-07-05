@@ -363,7 +363,7 @@ export function videoObjectSchema(video: YouTubeVideo, productName: string) {
     name: video.title,
     description: `${video.title} — video review for ${productName}`,
     thumbnailUrl: `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`,
-    uploadDate: video.uploadDate ?? "2024-01-01",
+    ...(video.uploadDate && { uploadDate: video.uploadDate }),
     contentUrl,
     embedUrl: `https://www.youtube.com/embed/${video.id}`,
     ...(video.duration && { duration: video.duration }),
@@ -516,6 +516,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}` } } : {}),
     })),
     url: schemaUrl,
+    author: { "@id": `${SITE_URL}/about#ai-review-team` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     tool: [{
@@ -609,6 +610,8 @@ export function speakableSchema(productName: string, productUrl: string, datePub
         "[data-speakable='related-products']",
         "[data-speakable='review-list']",
         "[data-speakable='video-reviews']",
+        "[data-speakable='comparison-links']",
+        "[data-speakable='external-comparisons']",
       ],
     },
   };
@@ -656,16 +659,18 @@ export function discussionForumPostingSchema(
     url: threadUrl,
     datePublished: thread.createdAt,
     dateModified: thread.lastActivityAt,
-    author: {
-      "@type": "Person",
-      ...(authorUsername && {
-        "@id": `${SITE_URL}/community/user/${authorUsername}#person`,
-        sameAs: [`${SITE_URL}/community/user/${authorUsername}`],
-      }),
-      name: authorName,
-      ...(thread.tags.length > 0 && { knowsAbout: thread.tags.map((t) => t.replace(/-/g, " ")) }),
-    },
-    ...(thread.productSlug && thread.categorySlug && {
+    author: (() => {
+      const slug = authorUsername ?? authorName.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+      const profileUrl = `${SITE_URL}/community/user/${slug}`;
+      return {
+        "@type": "Person",
+        "@id": `${profileUrl}#person`,
+        sameAs: [profileUrl],
+        name: authorName,
+        ...(thread.tags.length > 0 && { knowsAbout: thread.tags.map((t) => t.replace(/-/g, " ")) }),
+      };
+    })(),
+    ...(thread.productSlug && thread.categorySlug ? {
       about: {
         "@type": "Product",
         "@id": `${SITE_URL}/category/${thread.categorySlug}/${thread.productSlug}#product`,
@@ -677,7 +682,14 @@ export function discussionForumPostingSchema(
         "@id": `${SITE_URL}/category/${thread.categorySlug}/${thread.productSlug}#product`,
         name: thread.productSlug.replace(/-/g, " "),
       },
-    }),
+    } : thread.categorySlug ? {
+      about: {
+        "@type": "CollectionPage",
+        "@id": `${SITE_URL}/category/${thread.categorySlug}#page`,
+        name: thread.categorySlug.replace(/-/g, " "),
+        url: `${SITE_URL}/category/${thread.categorySlug}`,
+      },
+    } : {}),
     interactionStatistic: [
       {
         "@type": "InteractionCounter",
