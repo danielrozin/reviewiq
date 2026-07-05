@@ -34,12 +34,12 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
   }
 
   return (
-    <div className="space-y-3">
+    <ul className="space-y-3 list-none p-0 m-0">
       {items.map((item) => {
         const scoreDiff = item.currentScore - item.lastKnownScore;
         return (
+          <li key={item.id}>
           <Link
-            key={item.id}
             href={`/category/${item.categorySlug}/${item.productSlug}`}
             aria-label={`${item.productName} — SmartScore ${item.currentScore}${scoreDiff > 0 ? `, up ${scoreDiff} points` : scoreDiff < 0 ? `, down ${Math.abs(scoreDiff)} points` : ", no change"}`}
             className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
@@ -81,8 +81,9 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
             </div>
             </div>
           </Link>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }
