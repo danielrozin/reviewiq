@@ -45,6 +45,10 @@ export default function ProductsPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productsPageSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Products", url: "/products" }])) }}
+      />
       <Breadcrumbs
         items={[{ name: "Products", url: "/products" }]}
       />
