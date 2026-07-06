@@ -619,7 +619,7 @@ export function communityPageSchema(threads?: DiscussionThread[], datePublished?
   };
 }
 
-export function homePageSchema() {
+export function homePageSchema(featuredPosts?: BlogPost[]) {
   return {
     "@context": "https://schema.org",
     "@type": ["WebPage", "CollectionPage"],
@@ -632,9 +632,30 @@ export function homePageSchema() {
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
     mainEntity: { "@id": `${SITE_URL}/categories#category-list` },
+    ...(featuredPosts && featuredPosts.length > 0 && {
+      mentions: featuredPosts.map((post) => ({
+        "@type": "BlogPosting",
+        "@id": `${SITE_URL}/blog/${post.slug}#article`,
+        headline: post.title,
+        url: `${SITE_URL}/blog/${post.slug}`,
+        datePublished: post.publishedAt,
+        ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
+        author: {
+          "@type": "Person",
+          "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
+          name: post.author.name,
+        },
+        isPartOf: { "@id": `${SITE_URL}/blog#blog` },
+      })),
+    }),
     speakable: {
       "@type": "SpeakableSpecification",
-      cssSelector: ["[data-speakable='hero-tagline']", "[data-speakable='hero-stats']", "[data-speakable='faq-answer']"],
+      cssSelector: [
+        "[data-speakable='hero-tagline']",
+        "[data-speakable='hero-stats']",
+        "[data-speakable='featured-guides']",
+        "[data-speakable='faq-answer']",
+      ],
     },
   };
 }

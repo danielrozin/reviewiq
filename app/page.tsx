@@ -32,7 +32,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema()) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homePageSchema(getRecentBlogPosts(3))) }}
       />
       <script
         type="application/ld+json"
@@ -423,7 +423,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="flex items-end justify-between mb-8">
             <div>
-              <h2 id="buying-guides" className="text-2xl font-bold text-gray-900">
+              <h2 id="buying-guides" data-speakable="featured-guides" className="text-2xl font-bold text-gray-900">
                 Buying Guides & Comparisons
               </h2>
               <p className="text-gray-600 mt-1">
