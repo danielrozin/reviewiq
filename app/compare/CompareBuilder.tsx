@@ -207,7 +207,7 @@ function CompareContent() {
           </div>
           <div className="text-center mt-4">
             <a href="/products" className="text-sm text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
-              Browse all products →
+              Browse all products <span aria-hidden="true">→</span>
             </a>
           </div>
         </section>

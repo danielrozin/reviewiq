@@ -329,7 +329,7 @@ export default async function BlogPostPage({
                       href={`/category/${s}`}
                       className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                     >
-                      Explore {cat.name} &rarr;
+                      Explore {cat.name} <span aria-hidden="true">&rarr;</span>
                     </Link>
                   );
                 })}

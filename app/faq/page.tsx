@@ -99,7 +99,7 @@ export default function FAQIndexPage() {
                 {page.heroSubtext}
               </p>
               <span className="inline-block mt-3 text-sm text-brand-600 font-medium">
-                {page.faqs.length} questions &rarr;
+                {page.faqs.length} questions <span aria-hidden="true">&rarr;</span>
               </span>
             </div>
           </Link>

@@ -89,13 +89,13 @@ export default async function ComparisonPage({ params }: Props) {
             href={`/category/${productA.categorySlug}/${productA.slug}`}
             className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
-            Full {productA.name} review &rarr;
+            Full {productA.name} review <span aria-hidden="true">&rarr;</span>
           </Link>
           <Link
             href={`/category/${productB.categorySlug}/${productB.slug}`}
             className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
-            Full {productB.name} review &rarr;
+            Full {productB.name} review <span aria-hidden="true">&rarr;</span>
           </Link>
         </nav>
 

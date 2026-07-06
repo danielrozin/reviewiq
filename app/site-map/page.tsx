@@ -262,7 +262,7 @@ export default function SiteMapPage() {
                           href={`/category/${cat.slug}`}
                           className="text-sm text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                         >
-                          View all {catProducts.length} products →
+                          View all {catProducts.length} products <span aria-hidden="true">→</span>
                         </Link>
                       </li>
                     )}

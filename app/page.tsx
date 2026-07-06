@@ -432,9 +432,10 @@ export default function HomePage() {
             </div>
             <Link
               href="/blog"
+              aria-label="View all blog articles"
               className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
             >
-              View all articles &rarr;
+              View all articles <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

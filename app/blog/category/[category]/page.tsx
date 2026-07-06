@@ -153,7 +153,7 @@ export default async function BlogCategoryPage({
                     year: "numeric",
                   })}
                 </time>
-                <span className="text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                <span aria-hidden="true" className="text-sm font-medium text-brand-600 opacity-0 group-hover:opacity-100 transition-opacity">
                   Read more &rarr;
                 </span>
               </div>
@@ -171,7 +171,7 @@ export default async function BlogCategoryPage({
           href={`/category/${category}`}
           className="inline-flex items-center gap-2 text-brand-600 font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
         >
-          Browse all {cat.name} reviews &rarr;
+          Browse all {cat.name} reviews <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>
     </div>
