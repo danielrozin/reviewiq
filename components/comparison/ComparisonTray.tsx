@@ -89,7 +89,7 @@ export function ComparisonTray() {
             <Link
               href={compareUrl}
               aria-disabled={items.length < 2}
-              aria-label={items.length >= 2 ? `Compare ${items.map(p => p.name).join(" and ")}` : "Add at least 2 products to compare"}
+              aria-label={items.length >= 2 ? `Compare Now: ${items.map(p => p.name).join(" and ")}` : "Compare Now — add at least 2 products first"}
               onClick={(e) => { if (items.length < 2) e.preventDefault(); }}
               className={cn(
                 "shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all",

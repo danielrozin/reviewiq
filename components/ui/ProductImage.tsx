@@ -100,7 +100,7 @@ export function ProductImage({
           <span
             aria-hidden="true"
             className={cn(
-              "text-gray-400 text-center line-clamp-2 px-2 leading-tight",
+              "text-gray-600 text-center line-clamp-2 px-2 leading-tight",
               config.nameText
             )}
           >

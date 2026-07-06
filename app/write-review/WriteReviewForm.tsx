@@ -67,7 +67,7 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
               <span
                 aria-hidden="true"
                 className={`text-xs mt-1 font-medium ${
-                  isCurrent ? "text-brand-600" : isCompleted ? "text-emerald-600" : "text-gray-400"
+                  isCurrent ? "text-brand-600" : isCompleted ? "text-emerald-600" : "text-gray-500"
                 }`}
               >
                 {step.label}
@@ -394,13 +394,13 @@ export function WriteReviewForm() {
             </a>
             <a
               href="/community"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Join the Community
             </a>
             <a
               href="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Explore Products
             </a>
@@ -682,7 +682,7 @@ export function WriteReviewForm() {
                     className={`flex items-center gap-3 p-3 border rounded-xl cursor-pointer transition-colors ${
                       verification === opt.value
                         ? "border-brand-300 bg-brand-50"
-                        : "border-gray-200 hover:border-gray-500"
+                        : "border-gray-400 hover:border-gray-500"
                     }`}
                   >
                     <input
