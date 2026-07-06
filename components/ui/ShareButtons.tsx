@@ -84,7 +84,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
           rel="noopener noreferrer"
           title={`Share on ${link.name}`}
           aria-label={`Share on ${link.name} (opens in new tab)`}
-          className={`inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 ${link.color}`}
+          className={`inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-400 text-gray-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 ${link.color}`}
         >
           {link.icon}
         </a>
@@ -94,7 +94,7 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
         onClick={handleCopyLink}
         title="Copy link"
         aria-label={copied ? "Link copied" : "Copy link"}
-        className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-200 text-gray-600 transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
+        className="inline-flex items-center justify-center w-11 h-11 rounded-full border border-gray-400 text-gray-600 transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2"
       >
         {copied ? (
           <svg aria-hidden="true" className="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
