@@ -370,7 +370,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
           name: p.name,
           url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
           brand: { "@type": "Brand", "@id": `${SITE_URL}/brand/${toBrandSlug(p.brand)}#brand`, name: p.brand },
-          ...(p.image && { image: { "@type": "ImageObject", url: p.image } }),
+          ...(p.image && { image: { "@type": "ImageObject", url: p.image, contentUrl: p.image, name: p.name, isAccessibleForFree: true } }),
           ...(avgRating > 0 && {
             aggregateRating: {
               "@type": "AggregateRating",
@@ -407,6 +407,7 @@ export function videoObjectSchema(video: YouTubeVideo, productName: string) {
     },
     publisher: { "@id": `${SITE_URL}/#organization` },
     inLanguage: "en",
+    isAccessibleForFree: true,
     isPartOf: { "@id": `${SITE_URL}/#website` },
   };
 }
@@ -551,7 +552,7 @@ export function blogListSchema(posts: BlogPost[]) {
             dateModified: post.updatedAt || post.publishedAt,
             ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
             ...(post.coverImage && {
-              image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
+              image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, ...(post.seo?.metaDescription && { caption: post.seo.metaDescription }), isAccessibleForFree: true },
             }),
             author: {
               "@type": "Person",
@@ -572,7 +573,7 @@ export function blogListSchema(posts: BlogPost[]) {
       datePublished: post.publishedAt,
       ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
       ...(post.coverImage && {
-        image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
+        image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, ...(post.seo?.metaDescription && { caption: post.seo.metaDescription }), isAccessibleForFree: true },
       }),
       author: {
         "@type": "Person",
@@ -616,6 +617,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       description: "AI-powered product review platform for verified buyer analysis",
     }],
     inLanguage: "en",
+    isAccessibleForFree: true,
   };
 }
 
@@ -797,10 +799,11 @@ export function discussionForumPostingSchema(
     "@id": `${threadUrl}#discussion`,
     headline: thread.title,
     text: thread.body,
-    inLanguage: "en",
     url: threadUrl,
     datePublished: thread.createdAt,
     dateModified: thread.lastActivityAt,
+    inLanguage: "en",
+    isAccessibleForFree: true,
     author: (() => {
       const slug = authorUsername ?? authorName.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
       const profileUrl = `${SITE_URL}/community/user/${slug}`;
@@ -1175,7 +1178,23 @@ function comparisonProductItem(product: Product) {
     description: product.description,
     ...(product.categorySlug && { category: product.categorySlug }),
     inLanguage: "en",
-    ...(product.image && { image: { "@type": "ImageObject", url: product.image } }),
+    ...(product.image && {
+      image: {
+        "@type": "ImageObject",
+        "@id": `${productUrl}#primary-image`,
+        url: product.image,
+        contentUrl: product.image,
+        name: product.name,
+        caption: product.description,
+        creditText: "ReviewIQ",
+        creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL },
+        copyrightHolder: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL },
+        license: `${SITE_URL}/terms`,
+        acquireLicensePage: `${SITE_URL}/about`,
+        isAccessibleForFree: true,
+        isPartOf: { "@id": `${productUrl}#page` },
+      },
+    }),
   };
 
   const offers = aggregateOfferFromProduct(product);
