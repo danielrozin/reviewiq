@@ -136,7 +136,7 @@ function RelatedComparisons({
   if (related.length === 0) return null;
 
   return (
-    <section aria-labelledby="related-comparisons-heading" className="mt-12">
+    <section aria-labelledby="related-comparisons-heading" data-speakable="comparison-links" className="mt-12">
       <h2 id="related-comparisons-heading" className="text-lg font-semibold text-gray-900 mb-4">
         More Comparisons
       </h2>

@@ -21,6 +21,16 @@ const compareHubJsonLd = {
     "@type": "SpeakableSpecification",
     cssSelector: ["[data-speakable='compare-intro']"],
   },
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${SITE_URL}/compare?ids={product_ids}`,
+      actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"],
+    },
+    "query-input": "required name=product_ids",
+    description: "Search for products to compare side-by-side on ReviewIQ",
+  },
 };
 
 export const metadata = buildMetadata({
