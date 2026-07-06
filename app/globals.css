@@ -8,6 +8,7 @@
   html {
     @apply antialiased;
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem; /* matches sticky h-16 header — prevents focus obscured by header (WCAG 2.4.11) */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

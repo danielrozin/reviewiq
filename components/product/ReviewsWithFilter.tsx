@@ -130,7 +130,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
         <select
           value={sort}
           onChange={(e) => { setSort(e.target.value as SortKey); setVisible(INITIAL_VISIBLE); }}
-          className="text-sm text-gray-600 bg-white border border-gray-200 rounded-xl px-3 py-3 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent cursor-pointer"
+          className="text-sm text-gray-600 bg-white border border-gray-400 rounded-xl px-3 py-3 min-h-[44px] focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent cursor-pointer"
           aria-label="Sort reviews"
         >
           {SORT_OPTIONS.map((o) => (

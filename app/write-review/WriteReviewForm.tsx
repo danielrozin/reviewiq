@@ -423,8 +423,11 @@ export function WriteReviewForm() {
         <h1 id="write-review-heading" className="text-3xl font-bold text-gray-900 mb-2">
           Write a Review
         </h1>
-        <p data-speakable="write-review-intro" className="text-gray-600 mb-6">
+        <p data-speakable="write-review-intro" className="text-gray-600 mb-2">
           Share your honest experience to help others make smarter buying decisions.
+        </p>
+        <p className="text-xs text-gray-600 mb-6">
+          Fields marked <span aria-hidden="true">*</span><span className="sr-only">with an asterisk</span> are required.
         </p>
 
         <StepIndicator currentStep={step} steps={STEPS} />
@@ -444,7 +447,7 @@ export function WriteReviewForm() {
                 aria-describedby="error-product"
                 aria-required="true"
                 aria-invalid={touched.product === true && !selectedProduct ? true : undefined}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               >
                 <option value="">Select a product...</option>
                 {products.map((p) => (
@@ -475,7 +478,7 @@ export function WriteReviewForm() {
                 aria-describedby="error-headline"
                 aria-required="true"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
               />
               <div className="flex justify-between mt-1">
                 <FieldError
@@ -546,7 +549,7 @@ export function WriteReviewForm() {
                 aria-required="true"
                 aria-invalid={touched.body === true && body.length < 50 ? true : undefined}
                 aria-describedby="body-char-count"
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
               />
               <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-600"}`}>
                 {body.length}/50 minimum characters
@@ -573,7 +576,7 @@ export function WriteReviewForm() {
                       onChange={(e) => updatePro(i, e.target.value)}
                       aria-label={`Pro ${i + 1}`}
                       placeholder={`Pro ${i + 1}`}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -599,7 +602,7 @@ export function WriteReviewForm() {
                       onChange={(e) => updateCon(i, e.target.value)}
                       aria-label={`Con ${i + 1}`}
                       placeholder={`Con ${i + 1}`}
-                      className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     />
                   </div>
                 ))}
@@ -624,7 +627,7 @@ export function WriteReviewForm() {
                   aria-describedby="error-experienceLevel"
                   aria-required="true"
                   aria-invalid={touched.experienceLevel === true && !experienceLevel ? true : undefined}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                 >
                   <option value="">Select...</option>
                   {experienceLevels.map((level) => (
@@ -651,7 +654,7 @@ export function WriteReviewForm() {
                   aria-describedby="error-timeOwned"
                   aria-required="true"
                   aria-invalid={touched.timeOwned === true && !timeOwned ? true : undefined}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                 >
                   <option value="">Select...</option>
                   {timeOwnedOptions.map((opt) => (
