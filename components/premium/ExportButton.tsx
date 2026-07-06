@@ -106,7 +106,9 @@ export function ExportButton({ onExport }: ExportButtonProps) {
       {showGate && !isPro && (
         <div
           ref={gateRef}
-          role="alert"
+          role="alertdialog"
+          aria-modal="true"
+          aria-label="Upgrade required to export"
           tabIndex={-1}
           className="absolute right-0 mt-2 w-80 z-20 focus-visible:outline-none"
           onKeyDown={handleGateKeyDown}
