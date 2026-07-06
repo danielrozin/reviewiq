@@ -292,7 +292,7 @@ export default function HomePage() {
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-4xl font-black text-gray-200">
+                      <span aria-hidden="true" className="text-4xl font-black text-gray-200">
                         {product.brand[0]}
                       </span>
                     </div>
@@ -462,7 +462,7 @@ export default function HomePage() {
                     </span>
                   </div>
                   <span className="text-xs text-gray-600 truncate">{post.author.name}</span>
-                  <span className="text-gray-200 text-xs">·</span>
+                  <span aria-hidden="true" className="text-gray-200 text-xs">·</span>
                   <span className="text-xs text-gray-600 shrink-0">{post.readingTime} min</span>
                 </div>
                 </div>
@@ -537,7 +537,7 @@ export default function HomePage() {
                       className="object-contain p-8 group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <span className="text-8xl font-black text-gray-200">{featured.brand[0]}</span>
+                    <span aria-hidden="true" className="text-8xl font-black text-gray-200">{featured.brand[0]}</span>
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-1">
@@ -576,7 +576,7 @@ export default function HomePage() {
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-3xl font-black text-gray-200">{product.brand[0]}</span>
+                          <span aria-hidden="true" className="text-3xl font-black text-gray-200">{product.brand[0]}</span>
                         </div>
                       )}
                     </div>
