@@ -49,6 +49,10 @@ export default function SignInPage() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12">
+      {/* WCAG 4.1.3 — announce redirecting state to AT (disabled button loses focus, sr can't re-read it) */}
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {loading ? "Redirecting to Google sign-in, please wait…" : ""}
+      </span>
       <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left — value proposition */}
         <div className="hidden lg:block">

@@ -49,6 +49,10 @@ export default function SignUpPage() {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
+      {/* WCAG 4.1.3 — announce redirecting state to AT (disabled button loses focus, sr can't re-read it) */}
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {loading ? "Redirecting to Google sign-in, please wait…" : ""}
+      </span>
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
