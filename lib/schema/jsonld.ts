@@ -40,7 +40,10 @@ export function organizationSchema() {
     },
     foundingDate: "2023",
     numberOfEmployees: { "@type": "QuantitativeValue", value: 4 },
+    legalName: "ReviewIQ",
     slogan: "Real Reviews. Real Intelligence.",
+    publishingPrinciples: `${SITE_URL}/about`,
+    ethicsPolicy: `${SITE_URL}/acceptable-use`,
     knowsAbout: [
       "Product Reviews",
       "Consumer Electronics",
@@ -67,6 +70,9 @@ export function websiteSchema() {
     url: SITE_URL,
     inLanguage: "en",
     publisher: { "@id": `${SITE_URL}/#organization` },
+    copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+    license: `${SITE_URL}/terms`,
+    publishingPrinciples: `${SITE_URL}/about`,
     potentialAction: {
       "@type": "SearchAction",
       target: {
@@ -501,6 +507,12 @@ export function blogPostSchema(post: BlogPost) {
     },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
+    copyrightYear: new Date(post.publishedAt).getFullYear(),
+    copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+    license: `${SITE_URL}/terms`,
+    acquireLicensePage: `${SITE_URL}/about`,
+    accessMode: ["textual", "visual"],
+    accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${postUrl}#page`,
