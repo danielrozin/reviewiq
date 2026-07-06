@@ -62,7 +62,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6 animate-fade-in border border-brand-100">
-              <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full animate-pulse" />
+              <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full motion-safe:animate-pulse" />
               AI-Powered Review Intelligence
             </div>
             <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-fade-up">
@@ -331,7 +331,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-3">
-              <span aria-hidden="true" className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
+              <span aria-hidden="true" className="w-2 h-2 bg-trust-green rounded-full motion-safe:animate-pulse" />
               Live Community
             </div>
             <h2 id="trending-discussions" className="text-2xl font-bold text-gray-900">

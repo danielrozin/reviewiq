@@ -171,7 +171,7 @@ export default function NotificationsSettingsPage() {
       {!prefs && !error && (
         <div role="status" aria-label="Loading notification preferences" className="space-y-4">
           {[1, 2, 3].map((i) => (
-            <div key={i} aria-hidden="true" className="h-28 bg-gray-100 rounded-2xl animate-pulse" />
+            <div key={i} aria-hidden="true" className="h-28 bg-gray-100 rounded-2xl motion-safe:animate-pulse" />
           ))}
         </div>
       )}

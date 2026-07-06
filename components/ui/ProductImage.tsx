@@ -45,7 +45,7 @@ export function ProductImage({
         <>
           {/* Loading skeleton */}
           {!imgLoaded && (
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-50 animate-pulse" />
+            <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-50 motion-safe:animate-pulse" />
           )}
 
           {/* Real product image */}

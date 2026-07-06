@@ -286,7 +286,7 @@ export function CompareBuilder() {
 
 function CompareLoadingSkeleton() {
   return (
-    <div role="status" aria-label="Loading comparison" className="max-w-6xl mx-auto px-4 py-16 animate-pulse">
+    <div role="status" aria-label="Loading comparison" className="max-w-6xl mx-auto px-4 py-16 motion-safe:animate-pulse">
       <div className="h-8 bg-gray-100 rounded-lg w-96 mx-auto mb-4" />
       <div className="h-4 bg-gray-100 rounded w-64 mx-auto mb-8" />
       <div className="h-64 bg-gray-100 rounded-2xl mb-8" />

@@ -48,7 +48,7 @@ export default function CommunityPage() {
           <div className="relative flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
             <div>
               <div className="inline-flex items-center gap-2 bg-white/15 text-white/90 px-3 py-1 rounded-full text-xs font-medium mb-3 border border-white/20">
-                <span aria-hidden="true" className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                <span aria-hidden="true" className="w-1.5 h-1.5 bg-emerald-400 rounded-full motion-safe:animate-pulse" />
                 {stats.activeContributors} contributors active now
               </div>
               <h1 className="text-2xl sm:text-3xl font-bold mb-2">Community</h1>
