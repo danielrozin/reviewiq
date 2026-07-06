@@ -239,23 +239,27 @@ export default async function ProductPage({ params }: Props) {
           />
 
           {/* AI Summary */}
-          <div id="section-summary">
+          <div id="section-summary" data-speakable="ai-summary">
             <AISummaryCard summary={product.aiSummary} score={product.smartScore} />
           </div>
 
           {/* Best For / Not Ideal For */}
-          <BestFor
-            summary={product.aiSummary}
-            productName={product.name}
-            productSlug={`${slug}/${productSlug}`}
-          />
+          <div data-speakable="best-for">
+            <BestFor
+              summary={product.aiSummary}
+              productName={product.name}
+              productSlug={`${slug}/${productSlug}`}
+            />
+          </div>
 
           {/* YouTube Videos */}
           {product.youtubeVideos && product.youtubeVideos.length > 0 && (
-            <YouTubeVideos
-              videos={product.youtubeVideos}
-              productName={product.name}
-            />
+            <div data-speakable="video-reviews">
+              <YouTubeVideos
+                videos={product.youtubeVideos}
+                productName={product.name}
+              />
+            </div>
           )}
 
           {/* Key Facts */}
@@ -291,14 +295,18 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Recurring Issues */}
           {product.recurringIssues.length > 0 && (
-            <RecurringIssues issues={product.recurringIssues} />
+            <div data-speakable="recurring-issues">
+              <RecurringIssues issues={product.recurringIssues} />
+            </div>
           )}
 
           {/* Reviews */}
-          <ReviewsWithFilter
-            reviews={product.reviews}
-            totalCount={product.reviewCount}
-          />
+          <div data-speakable="review-list">
+            <ReviewsWithFilter
+              reviews={product.reviews}
+              totalCount={product.reviewCount}
+            />
+          </div>
 
           {/* Community Discussion */}
           <ProductDiscussions
@@ -365,12 +373,12 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Specs */}
-          <div id="section-specs">
+          <div id="section-specs" data-speakable="specifications">
             <SpecsTable specs={product.specs} />
           </div>
 
           {/* Comparisons */}
-          <div id="section-compare">
+          <div id="section-compare" data-speakable="compare-with">
             <ComparisonModule
               currentProduct={product.name}
               currentProductSlug={product.slug}
@@ -387,14 +395,18 @@ export default async function ProductPage({ params }: Props) {
       </div>
 
       {/* Related Products — Same Category */}
-      <RelatedProducts
-        products={relatedSameCategory}
-        categorySlug={slug}
-        categoryName={category.name}
-      />
+      <div data-speakable="related-products">
+        <RelatedProducts
+          products={relatedSameCategory}
+          categorySlug={slug}
+          categoryName={category.name}
+        />
+      </div>
 
       {/* People Also Reviewed — Cross-Category Affinity */}
-      <PeopleAlsoReviewed products={affinityProducts} />
+      <div data-speakable="people-also-reviewed">
+        <PeopleAlsoReviewed products={affinityProducts} />
+      </div>
     </div>
   );
 }
