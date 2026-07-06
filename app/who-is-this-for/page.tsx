@@ -346,7 +346,7 @@ export default function WhoIsThisForPage() {
           {useCases.map((uc, i) => (
             <div key={i} className="flex gap-5">
               <div className="shrink-0">
-                <div className="w-10 h-10 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center font-bold text-sm">
+                <div aria-hidden="true" className="w-10 h-10 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center font-bold text-sm">
                   {i + 1}
                 </div>
               </div>

@@ -592,7 +592,6 @@ export default function AdminDashboard() {
                             rel="noopener noreferrer"
                             aria-label={`View ${p.name} (opens in new tab)`}
                             className="p-1.5 text-gray-400 hover:text-gray-600 rounded"
-                            title="View product"
                           >
                             <Eye aria-hidden="true" className="w-4 h-4" />
                           </a>
@@ -600,7 +599,6 @@ export default function AdminDashboard() {
                             type="button"
                             onClick={() => handleDeleteProduct(p.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 rounded"
-                            title="Delete product"
                             aria-label={`Delete product: ${p.name}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
@@ -760,7 +758,6 @@ export default function AdminDashboard() {
                               type="button"
                               onClick={() => handleQueueAction(r.id, "published")}
                               className="p-1.5 text-gray-400 hover:text-emerald-600 rounded"
-                              title="Approve"
                               aria-label={`Approve review: ${r.headline}`}
                             >
                               <Check aria-hidden="true" className="w-4 h-4" />
@@ -771,7 +768,6 @@ export default function AdminDashboard() {
                               type="button"
                               onClick={() => handleQueueAction(r.id, "rejected")}
                               className="p-1.5 text-gray-400 hover:text-red-600 rounded"
-                              title="Reject"
                               aria-label={`Reject review: ${r.headline}`}
                             >
                               <X aria-hidden="true" className="w-4 h-4" />
@@ -781,7 +777,6 @@ export default function AdminDashboard() {
                             type="button"
                             onClick={() => handleDeleteReview(r.id)}
                             className="p-1.5 text-gray-400 hover:text-red-600 rounded"
-                            title="Delete"
                             aria-label={`Delete review: ${r.headline}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />

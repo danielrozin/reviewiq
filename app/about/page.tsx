@@ -204,7 +204,7 @@ export default function AboutPage() {
             "How does it compare to the alternative everyone's considering?",
           ].map((q, i) => (
             <div key={i} className="flex items-start gap-3 bg-white border border-gray-100 rounded-xl p-4 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200">
-              <div className="w-7 h-7 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+              <div aria-hidden="true" className="w-7 h-7 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                 {i + 1}
               </div>
               <p className="text-gray-700 text-sm leading-relaxed">{q}</p>
