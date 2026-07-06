@@ -36,7 +36,7 @@ export function ScrollToTop() {
         window.scrollTo({ top: 0, behavior: reduced ? "instant" : "smooth" });
       }}
       className={`fixed bottom-6 right-6 z-40 w-11 h-11 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-brand-600 hover:border-brand-300 hover:shadow-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 ${
-        visible ? "opacity-100 animate-fade-in pointer-events-auto" : "opacity-0 pointer-events-none"
+        visible ? "opacity-100 motion-safe:animate-fade-in pointer-events-auto" : "opacity-0 pointer-events-none"
       }`}
       aria-label="Scroll to top"
     >

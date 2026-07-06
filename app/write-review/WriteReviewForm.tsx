@@ -347,7 +347,7 @@ export function WriteReviewForm() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <span aria-hidden="true" className="absolute -top-1 -right-1 text-2xl animate-bounce">🎉</span>
+              <span aria-hidden="true" className="absolute -top-1 -right-1 text-2xl motion-safe:animate-bounce">🎉</span>
             </div>
             <h1 className="text-3xl font-extrabold text-gray-900 mb-3">
               Review submitted!
@@ -431,7 +431,7 @@ export function WriteReviewForm() {
 
         {/* Step 1: Product & Headline */}
         {step === 0 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 1 of 4: Select product and write a headline" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 1 of 4: Select product and write a headline" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none">
             <div>
               <label htmlFor="select-product" className="block text-sm font-semibold text-gray-900 mb-2">
                 Product *
@@ -491,7 +491,7 @@ export function WriteReviewForm() {
 
         {/* Step 2: Ratings */}
         {step === 1 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 2 of 4: Rate the product" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 2 of 4: Rate the product" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none">
             <fieldset aria-describedby="error-ratings" className="border-0 p-0 m-0">
               <legend className="block text-sm font-semibold text-gray-900 mb-3">
                 Overall Rating *
@@ -531,7 +531,7 @@ export function WriteReviewForm() {
 
         {/* Step 3: Review Content */}
         {step === 2 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 3 of 4: Write your review" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 3 of 4: Write your review" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none">
             <div>
               <label htmlFor="textarea-body" className="block text-sm font-semibold text-gray-900 mb-2">
                 Your Review *
@@ -610,7 +610,7 @@ export function WriteReviewForm() {
 
         {/* Step 4: Details & Verification */}
         {step === 3 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 4 of 4: Add details and verify your purchase" className="space-y-6 animate-in fade-in duration-200 focus:outline-none">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 4 of 4: Add details and verify your purchase" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="select-experience" className="block text-sm font-semibold text-gray-900 mb-2">

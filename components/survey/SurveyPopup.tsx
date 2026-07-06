@@ -202,7 +202,7 @@ export function SurveyPopup() {
             (e.shiftKey ? last : first).focus();
           }
         }}
-        className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 animate-in slide-in-from-bottom-4 duration-300"
+        className="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-6 motion-safe:animate-in slide-in-from-bottom-4 duration-300"
       >
         {/* Close */}
         <button

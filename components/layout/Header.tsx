@@ -195,7 +195,7 @@ export function Header() {
                         ref={userMenuListRef}
                         role="menu"
                         aria-label="Account menu"
-                        className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50 animate-scale-in"
+                        className="absolute right-0 mt-2 w-52 bg-white border border-gray-200 rounded-xl shadow-lg py-1 z-50 motion-safe:animate-scale-in"
                         onKeyDown={(e) => {
                           const items = userMenuListRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]');
                           if (!items) return;

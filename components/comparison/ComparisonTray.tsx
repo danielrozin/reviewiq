@@ -14,7 +14,7 @@ export function ComparisonTray() {
       {items.length > 0 && <div
       role="region"
       aria-label="Product comparison tray"
-      className="animate-in slide-in-from-bottom-4 duration-300 pointer-events-auto"
+      className="motion-safe:animate-in slide-in-from-bottom-4 duration-300 pointer-events-auto"
     >
       <div className="max-w-4xl mx-auto px-4 pb-4">
         <div className="bg-white border border-gray-200 rounded-2xl shadow-2xl p-4">

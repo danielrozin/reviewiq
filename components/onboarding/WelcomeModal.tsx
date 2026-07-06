@@ -99,7 +99,7 @@ export function WelcomeModal() {
             (e.shiftKey ? last : first).focus();
           }
         }}
-        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300"
+        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden motion-safe:animate-in slide-in-from-bottom-4 duration-300"
       >
         <button
           ref={closeRef}

@@ -40,7 +40,7 @@ export function ProUpgradeTouchpoint() {
   if (!shouldShowProUpgrade || isPro) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-[80] w-full max-w-sm animate-in slide-in-from-bottom-4 duration-300">
+    <div className="fixed bottom-4 right-4 z-[80] w-full max-w-sm motion-safe:animate-in slide-in-from-bottom-4 duration-300">
       <div className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 border border-amber-200 rounded-2xl p-5 shadow-xl">
         <button
           type="button"
