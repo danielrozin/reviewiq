@@ -146,19 +146,33 @@ export function productSchema(product: Product, pageUrl?: string) {
     schema.review = reviewsWithBody.slice(0, 5).map((r) => reviewSchema(r, productRef));
   }
 
+  const additionalProps: Record<string, unknown>[] = [];
+
   if (product.smartScore > 0) {
-    schema.additionalProperty = [
-      {
+    additionalProps.push({
+      "@type": "PropertyValue",
+      propertyID: "SmartScore",
+      name: "SmartScore",
+      value: product.smartScore,
+      minValue: 0,
+      maxValue: 100,
+      description: "AI-aggregated score from verified buyer reviews (0-100)",
+      url: canonicalUrl,
+    });
+  }
+
+  if (product.specs && product.specs.length > 0) {
+    product.specs.forEach((spec) => {
+      additionalProps.push({
         "@type": "PropertyValue",
-        propertyID: "SmartScore",
-        name: "SmartScore",
-        value: product.smartScore,
-        minValue: 0,
-        maxValue: 100,
-        description: "AI-aggregated score from verified buyer reviews (0-100)",
-        url: canonicalUrl,
-      },
-    ];
+        name: spec.label,
+        value: spec.value,
+      });
+    });
+  }
+
+  if (additionalProps.length > 0) {
+    schema.additionalProperty = additionalProps;
   }
 
   return schema;
