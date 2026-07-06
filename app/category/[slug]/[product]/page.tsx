@@ -113,6 +113,34 @@ export default async function ProductPage({ params }: Props) {
         categorySlug={category.slug}
         smartScore={product.smartScore}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema(product, `/category/${slug}/${productSlug}`)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`, product.createdAt, product.updatedAt)),
+        }}
+      />
+      {product.faq && product.faq.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema(product.faq, `/category/${slug}/${productSlug}`)),
+          }}
+        />
+      )}
+      {product.youtubeVideos && product.youtubeVideos.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(videoObjectListSchema(product.youtubeVideos, product.name)),
+          }}
+        />
+      )}
       <Breadcrumbs
         items={[
           { name: "Categories", url: "/categories" },

@@ -40,6 +40,26 @@ export default async function CategoryPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackCategoryView slug={slug} productCount={categoryProducts.length} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(categoryPageSchema(category.name, category.description, `/category/${slug}`)),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productListSchema(categoryProducts, category.name, slug)),
+        }}
+      />
+      {buyingGuide && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(howToSchema(buyingGuide.title, buyingGuide.steps, slug)),
+          }}
+        />
+      )}
       <Breadcrumbs
         items={[
           { name: "Categories", url: "/categories" },

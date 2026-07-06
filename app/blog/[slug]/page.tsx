@@ -72,6 +72,26 @@ export default async function BlogPostPage({
           { name: post.title, url: `/blog/${post.slug}` },
         ]}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostSchema(post)),
+        }}
+      />
+      {post.faq && post.faq.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema(post.faq, `/blog/${post.slug}`)),
+          }}
+        />
+      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostSpeakableSchema(post.title, `/blog/${post.slug}`, post.publishedAt, post.updatedAt)),
+        }}
+      />
 
       <article className="mt-8 max-w-4xl mx-auto" aria-labelledby="blog-post-title">
         {/* Cover image */}
