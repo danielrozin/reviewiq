@@ -468,11 +468,15 @@ export function blogPostSchema(post: BlogPost) {
     ...(post.relatedProductSlugs.length > 0 && {
       mentions: post.relatedProductSlugs.map((slug) => ({
         "@type": "Product",
+        "@id": `${SITE_URL}/category/${post.categorySlug}/${slug}#product`,
         name: slug.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()),
+        url: `${SITE_URL}/category/${post.categorySlug}/${slug}`,
       })),
       about: post.relatedProductSlugs.slice(0, 1).map((slug) => ({
         "@type": "Product",
+        "@id": `${SITE_URL}/category/${post.categorySlug}/${slug}#product`,
         name: slug.replace(/-/g, " ").replace(/\b\w/g, (c: string) => c.toUpperCase()),
+        url: `${SITE_URL}/category/${post.categorySlug}/${slug}`,
       })),
     }),
   };
@@ -1138,19 +1142,33 @@ function comparisonProductItem(product: Product) {
     };
   }
 
+  const additionalProps: Record<string, unknown>[] = [];
+
   if (product.smartScore > 0) {
-    item.additionalProperty = [
-      {
+    additionalProps.push({
+      "@type": "PropertyValue",
+      propertyID: "SmartScore",
+      name: "SmartScore",
+      value: product.smartScore,
+      minValue: 0,
+      maxValue: 100,
+      description: "AI-aggregated score from verified buyer reviews (0-100)",
+      url: productUrl,
+    });
+  }
+
+  if (product.specs && product.specs.length > 0) {
+    product.specs.forEach((spec) => {
+      additionalProps.push({
         "@type": "PropertyValue",
-        propertyID: "SmartScore",
-        name: "SmartScore",
-        value: product.smartScore,
-        minValue: 0,
-        maxValue: 100,
-        description: "AI-aggregated score from verified buyer reviews (0-100)",
-        url: productUrl,
-      },
-    ];
+        name: spec.label,
+        value: spec.value,
+      });
+    });
+  }
+
+  if (additionalProps.length > 0) {
+    item.additionalProperty = additionalProps;
   }
 
   return item;
