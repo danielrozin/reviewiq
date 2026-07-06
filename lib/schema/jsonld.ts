@@ -475,7 +475,38 @@ export function blogListSchema(posts: BlogPost[]) {
     inLanguage: "en",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
-    mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/blog#post-list`, name: "ReviewIQ Blog Posts" },
+    mainEntity: {
+      "@type": "ItemList",
+      "@id": `${SITE_URL}/blog#post-list`,
+      name: "ReviewIQ Blog Posts",
+      numberOfItems: posts.length,
+      ...(posts.length > 0 && {
+        itemListElement: posts.map((post, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE_URL}/blog/${post.slug}`,
+          item: {
+            "@type": "BlogPosting",
+            "@id": `${SITE_URL}/blog/${post.slug}#article`,
+            headline: post.title,
+            url: `${SITE_URL}/blog/${post.slug}`,
+            datePublished: post.publishedAt,
+            dateModified: post.updatedAt || post.publishedAt,
+            ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
+            ...(post.coverImage && {
+              image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
+            }),
+            author: {
+              "@type": "Person",
+              "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
+              name: post.author.name,
+            },
+            articleSection: post.categoryName,
+            isPartOf: { "@id": `${SITE_URL}/blog#post-list` },
+          },
+        })),
+      }),
+    },
     hasPart: posts.map((post) => ({
       "@type": "BlogPosting",
       "@id": `${SITE_URL}/blog/${post.slug}#article`,
@@ -887,7 +918,7 @@ export function profilePageSchema(
   };
 }
 
-export function blogCategoryPageSchema(categoryName: string, description: string, categorySlug: string, datePublished?: string, dateModified?: string) {
+export function blogCategoryPageSchema(categoryName: string, description: string, categorySlug: string, posts?: BlogPost[], datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}/blog/category/${categorySlug}`;
   return {
     "@context": "https://schema.org",
@@ -905,6 +936,33 @@ export function blogCategoryPageSchema(categoryName: string, description: string
       "@id": `${pageUrl}#post-list`,
       name: `${categoryName} Blog Posts`,
       url: pageUrl,
+      ...(posts && posts.length > 0 && {
+        numberOfItems: posts.length,
+        itemListElement: posts.map((post, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE_URL}/blog/${post.slug}`,
+          item: {
+            "@type": "BlogPosting",
+            "@id": `${SITE_URL}/blog/${post.slug}#article`,
+            headline: post.title,
+            url: `${SITE_URL}/blog/${post.slug}`,
+            datePublished: post.publishedAt,
+            dateModified: post.updatedAt || post.publishedAt,
+            ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
+            ...(post.coverImage && {
+              image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
+            }),
+            author: {
+              "@type": "Person",
+              "@id": `${SITE_URL}/about#author-${post.author.name.toLowerCase().replace(/\s+/g, "-")}`,
+              name: post.author.name,
+            },
+            articleSection: post.categoryName,
+            isPartOf: { "@id": `${pageUrl}#post-list` },
+          },
+        })),
+      }),
     },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
