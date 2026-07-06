@@ -531,7 +531,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
   };
 }
 
-export function communityPageSchema(datePublished?: string, dateModified?: string) {
+export function communityPageSchema(threads?: DiscussionThread[], datePublished?: string, dateModified?: string) {
   const pageUrl = `${SITE_URL}/community`;
   return {
     "@context": "https://schema.org",
@@ -552,6 +552,34 @@ export function communityPageSchema(datePublished?: string, dateModified?: strin
       "@id": `${pageUrl}#thread-list`,
       name: "Community Discussion Threads",
       url: pageUrl,
+      ...(threads && threads.length > 0 && {
+        numberOfItems: threads.length,
+        itemListElement: threads.map((t, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${SITE_URL}/community/thread/${t.id}`,
+          item: {
+            "@type": "DiscussionForumPosting",
+            "@id": `${SITE_URL}/community/thread/${t.id}#discussion`,
+            headline: t.title,
+            url: `${SITE_URL}/community/thread/${t.id}`,
+            datePublished: t.createdAt,
+            dateModified: t.lastActivityAt,
+            ...(t.productSlug && t.categorySlug ? {
+              about: {
+                "@type": "Product",
+                "@id": `${SITE_URL}/category/${t.categorySlug}/${t.productSlug}#product`,
+                name: t.productSlug.replace(/-/g, " "),
+              },
+            } : {}),
+            interactionStatistic: [
+              { "@type": "InteractionCounter", interactionType: "https://schema.org/LikeAction", userInteractionCount: t.upvotes },
+              { "@type": "InteractionCounter", interactionType: "https://schema.org/CommentAction", userInteractionCount: t.commentCount },
+            ],
+            isPartOf: { "@id": `${pageUrl}#page` },
+          },
+        })),
+      }),
     },
     speakable: {
       "@type": "SpeakableSpecification",

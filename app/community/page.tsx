@@ -36,7 +36,7 @@ export default function CommunityPage() {
       <Breadcrumbs
         items={[{ name: "Community", url: "/community" }]}
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(communityPageSchema()) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(communityPageSchema(trending)) }} />
 
       {/* Hero — gradient banner */}
       <header className="mt-6 mb-10" data-speakable="community-hero">
