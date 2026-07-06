@@ -42,6 +42,7 @@ export const metadata = buildMetadata({
 export default function WriteReviewPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(writeReviewWebPageJsonLd) }} />
       <WriteReviewForm />
     </>
   );

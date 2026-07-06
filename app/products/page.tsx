@@ -43,6 +43,7 @@ export default function ProductsPage() {
       <Breadcrumbs
         items={[{ name: "Products", url: "/products" }]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsPageSchema) }} />
 
       <div className="mt-8 mb-8">
         <h1 className="text-3xl font-bold text-gray-900">
