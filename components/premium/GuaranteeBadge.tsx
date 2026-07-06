@@ -24,7 +24,7 @@ export function GuaranteeBadge() {
           <circle cx="50" cy="50" r="42" fill="none" stroke="#34d399" strokeWidth="1.5" strokeDasharray="4 3" />
         </svg>
         {/* Inner text */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center leading-tight">
+        <div aria-hidden="true" className="absolute inset-0 flex flex-col items-center justify-center text-center leading-tight">
           <span className="text-white font-black text-lg leading-none">30</span>
           <span className="text-emerald-200 text-[9px] font-semibold uppercase tracking-wide">day</span>
           <span className="text-white text-[9px] font-bold uppercase tracking-wide">guarantee</span>

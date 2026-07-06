@@ -104,7 +104,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
             </span>
-            <p className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
+            <p title={product.aiSummary.whatPeopleLove[0]} className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
               <span className="sr-only">Pro: </span>
               {product.aiSummary.whatPeopleLove[0]}
             </p>
@@ -115,7 +115,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
               </svg>
             </span>
-            <p className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
+            <p title={product.aiSummary.whatPeopleHate[0]} className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
               <span className="sr-only">Con: </span>
               {product.aiSummary.whatPeopleHate[0]}
             </p>

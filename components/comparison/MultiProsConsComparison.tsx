@@ -64,7 +64,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                       </svg>
                     </span>
-                    <span className="line-clamp-2">{item}</span>
+                    <span title={item} className="line-clamp-2">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -83,7 +83,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                         <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
                       </svg>
                     </span>
-                    <span className="line-clamp-2">{item}</span>
+                    <span title={item} className="line-clamp-2">{item}</span>
                   </li>
                 ))}
               </ul>
