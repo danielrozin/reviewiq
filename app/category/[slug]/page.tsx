@@ -43,7 +43,7 @@ export default async function CategoryPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(categoryPageSchema(category.name, category.description, `/category/${slug}`)),
+          __html: JSON.stringify(categoryPageSchema(category.name, category.description, `/category/${slug}`, "2024-01-01", "2026-07-06")),
         }}
       />
       <script

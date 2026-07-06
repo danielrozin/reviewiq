@@ -272,6 +272,7 @@ export function reviewSchema(review: Review, productRef?: { name: string; url: s
         "@id": `${SITE_URL}${productRef.url}#product`,
         name: productRef.name,
       },
+      isPartOf: { "@id": `${SITE_URL}${productRef.url}#page` },
     }),
   };
 }
@@ -555,6 +556,7 @@ export function blogListSchema(posts: BlogPost[]) {
             "@id": `${SITE_URL}/blog/${post.slug}#article`,
             headline: post.title,
             url: `${SITE_URL}/blog/${post.slug}`,
+            inLanguage: "en",
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
             ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
@@ -577,6 +579,7 @@ export function blogListSchema(posts: BlogPost[]) {
       "@id": `${SITE_URL}/blog/${post.slug}#article`,
       headline: post.title,
       url: `${SITE_URL}/blog/${post.slug}`,
+      inLanguage: "en",
       datePublished: post.publishedAt,
       ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
       ...(post.coverImage && {
@@ -610,7 +613,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       position: index + 1,
       name: step.name,
       text: step.text,
-      ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}` } } : {}),
+      ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}`, contentUrl: `${SITE_URL}${step.image}`, name: step.name, isAccessibleForFree: true } } : {}),
     })),
     url: schemaUrl,
     author: { "@id": `${SITE_URL}/about#ai-review-team` },

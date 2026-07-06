@@ -79,7 +79,7 @@ export default async function BlogCategoryPage({
           { name: cat.name, url: `/blog/category/${cat.slug}` },
         ]}
       />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogCategoryPageSchema(cat.name, `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`, cat.slug, posts)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogCategoryPageSchema(cat.name, `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`, cat.slug, posts, [...posts].sort((a, b) => a.publishedAt < b.publishedAt ? -1 : 1)[0]?.publishedAt, [...posts].sort((a, b) => (b.updatedAt || b.publishedAt) < (a.updatedAt || a.publishedAt) ? -1 : 1)[0]?.updatedAt || posts[0]?.publishedAt)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema(posts)) }} />
 
       <div className="mt-8 mb-10">

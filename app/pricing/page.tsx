@@ -41,9 +41,14 @@ const proOfferSchema = {
   brand: { "@type": "Brand", name: "ReviewIQ" },
   image: {
     "@type": "ImageObject",
+    "@id": `${SITE_URL}/#logo`,
     url: `${SITE_URL}/logo.png`,
+    contentUrl: `${SITE_URL}/logo.png`,
     width: 200,
     height: 60,
+    name: "ReviewIQ Logo",
+    caption: "ReviewIQ — Real Reviews, Real Intelligence",
+    isAccessibleForFree: true,
   },
   offers: {
     "@type": "Offer",
