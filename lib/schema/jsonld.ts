@@ -620,6 +620,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       position: index + 1,
       name: step.name,
       text: step.text,
+      url: `${schemaUrl}#step-${index + 1}`,
       ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}`, contentUrl: `${SITE_URL}${step.image}`, name: step.name, isAccessibleForFree: true } } : {}),
     })),
     url: schemaUrl,
@@ -671,6 +672,8 @@ export function communityPageSchema(threads?: DiscussionThread[], datePublished?
             "@id": `${SITE_URL}/community/thread/${t.id}#discussion`,
             headline: t.title,
             url: `${SITE_URL}/community/thread/${t.id}`,
+            inLanguage: "en",
+            isAccessibleForFree: true,
             datePublished: t.createdAt,
             dateModified: t.lastActivityAt,
             ...(t.productSlug && t.categorySlug ? {

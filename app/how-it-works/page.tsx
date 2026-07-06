@@ -110,6 +110,7 @@ const howToJsonLd = {
     position: index + 1,
     name: step.title,
     text: step.description,
+    url: `${SITE_URL}/how-it-works#step-${index + 1}`,
   })),
 };
 
