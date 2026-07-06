@@ -128,9 +128,9 @@ export default function NotificationsSettingsPage() {
         ]}
       />
 
-      {/* Screen-reader live region for toggle save feedback */}
+      {/* Screen-reader live region for toggle save feedback (WCAG 4.1.3) */}
       <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
-        {saved ? "Preference saved" : saveError ?? ""}
+        {saving ? "Saving preference…" : saved ? "Preference saved" : saveError ?? ""}
       </span>
 
       {/* Header */}
@@ -144,13 +144,15 @@ export default function NotificationsSettingsPage() {
           </div>
           {prefs && (
             <div className="shrink-0 ml-4">
-              <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
+              <span
+                aria-label={`${enabledCount} of ${Object.keys(prefs).length} notification channels active`}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                 enabledCount > 0
                   ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
                   : "bg-gray-100 text-gray-600 border border-gray-200"
               }`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${enabledCount > 0 ? "bg-emerald-500" : "bg-gray-400"}`} />
-                {enabledCount} of {Object.keys(prefs).length} active
+                <span aria-hidden="true" className={`w-1.5 h-1.5 rounded-full ${enabledCount > 0 ? "bg-emerald-500" : "bg-gray-400"}`} />
+                <span aria-hidden="true">{enabledCount} of {Object.keys(prefs).length} active</span>
               </span>
             </div>
           )}
