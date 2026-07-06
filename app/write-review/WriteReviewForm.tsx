@@ -91,10 +91,12 @@ function StarRating({
   value,
   onChange,
   size = "lg",
+  ariaLabel,
 }: {
   value: number;
   onChange: (v: number) => void;
   size?: "sm" | "lg";
+  ariaLabel?: string;
 }) {
   const [hovered, setHovered] = useState(0);
   const groupRef = useRef<HTMLDivElement>(null);
@@ -118,6 +120,7 @@ function StarRating({
     <div
       ref={groupRef}
       role="radiogroup"
+      aria-label={ariaLabel}
       className="flex items-center gap-0.5"
       onMouseLeave={() => setHovered(0)}
       onKeyDown={handleKeyDown}
@@ -493,7 +496,7 @@ export function WriteReviewForm() {
               <legend className="block text-sm font-semibold text-gray-900 mb-3">
                 Overall Rating *
               </legend>
-              <StarRating value={rating} onChange={setRating} size="lg" />
+              <StarRating value={rating} onChange={setRating} size="lg" ariaLabel="Overall rating" />
             </fieldset>
 
             <div role="group" aria-labelledby="category-ratings-label" className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
@@ -509,7 +512,7 @@ export function WriteReviewForm() {
                 return (
                   <div key={label} role="group" aria-labelledby={id} className="flex items-center justify-between">
                     <span id={id} className="text-sm font-medium text-gray-700">{label}</span>
-                    <StarRating value={value} onChange={setter} size="sm" />
+                    <StarRating value={value} onChange={setter} size="sm" ariaLabel={`${label} rating`} />
                   </div>
                 );
               })}
