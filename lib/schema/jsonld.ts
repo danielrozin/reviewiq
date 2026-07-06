@@ -600,7 +600,6 @@ export function speakableSchema(productName: string, productUrl: string, datePub
       "@type": "SpeakableSpecification",
       cssSelector: [
         "[data-speakable='ai-summary']",
-        "[data-speakable='verdict']",
         "[data-speakable='key-facts']",
         "[data-speakable='smart-score']",
         "[data-speakable='best-for']",
@@ -612,8 +611,6 @@ export function speakableSchema(productName: string, productUrl: string, datePub
         "[data-speakable='related-products']",
         "[data-speakable='review-list']",
         "[data-speakable='video-reviews']",
-        "[data-speakable='comparison-links']",
-        "[data-speakable='external-comparisons']",
       ],
     },
   };
@@ -966,7 +963,6 @@ export function comparisonSchema(productA: Product, productB: Product) {
         "[data-speakable='comparison-headline']",
         "[data-speakable='comparison-summary']",
         "[data-speakable='ai-verdict']",
-        "[data-speakable='comparison-verdict']",
         "[data-speakable='best-for-comparison']",
         "[data-speakable='pros-cons']",
         "[data-speakable='score-comparison']",

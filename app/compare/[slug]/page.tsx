@@ -100,12 +100,24 @@ export default async function ComparisonPage({ params }: Props) {
         </nav>
 
         <div className="space-y-8">
-          <ScoreComparison productA={productA} productB={productB} />
-          <VerdictCard productA={productA} productB={productB} />
-          <PriceComparison productA={productA} productB={productB} />
-          <SpecsComparisonTable productA={productA} productB={productB} />
-          <ProsConsComparison productA={productA} productB={productB} />
-          <BestForComparison productA={productA} productB={productB} />
+          <div data-speakable="score-comparison">
+            <ScoreComparison productA={productA} productB={productB} />
+          </div>
+          <div data-speakable="ai-verdict">
+            <VerdictCard productA={productA} productB={productB} />
+          </div>
+          <div data-speakable="price-comparison">
+            <PriceComparison productA={productA} productB={productB} />
+          </div>
+          <div data-speakable="specs-comparison">
+            <SpecsComparisonTable productA={productA} productB={productB} />
+          </div>
+          <div data-speakable="pros-cons">
+            <ProsConsComparison productA={productA} productB={productB} />
+          </div>
+          <div data-speakable="best-for-comparison">
+            <BestForComparison productA={productA} productB={productB} />
+          </div>
           <AnalysisDisclosure productName={`${productA.name} vs ${productB.name}`} />
         </div>
 
