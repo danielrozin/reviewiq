@@ -600,6 +600,7 @@ export function speakableSchema(productName: string, productUrl: string, datePub
       "@type": "SpeakableSpecification",
       cssSelector: [
         "[data-speakable='ai-summary']",
+        "[data-speakable='verdict']",
         "[data-speakable='key-facts']",
         "[data-speakable='smart-score']",
         "[data-speakable='best-for']",

@@ -187,7 +187,7 @@ export default async function ProductPage({ params }: Props) {
 
             <div className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
               {!product.image && <SmartScore score={product.smartScore} size="lg" showRing animateOnView />}
-              {!product.image && <div className="h-12 w-px bg-gray-200 hidden sm:block" />}
+              {!product.image && <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />}
 
               <div>
                 <RatingStars rating={avgRating} size="md" showValue />
@@ -196,7 +196,7 @@ export default async function ProductPage({ params }: Props) {
                 </p>
               </div>
 
-              <div className="h-12 w-px bg-gray-200 hidden sm:block" />
+              <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />
 
               <div>
                 <p className="text-lg font-semibold text-gray-900">
@@ -205,7 +205,7 @@ export default async function ProductPage({ params }: Props) {
                 <p className="text-sm text-gray-600">Price range</p>
               </div>
 
-              <div className="h-12 w-px bg-gray-200 hidden sm:block" />
+              <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />
 
               <div>
                 <p className="text-lg font-semibold text-emerald-600">
