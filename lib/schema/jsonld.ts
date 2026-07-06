@@ -245,6 +245,7 @@ export function reviewSchema(review: Review, productRef?: { name: string; url: s
     datePublished: review.createdAt,
     reviewBody: review.body,
     inLanguage: "en",
+    isAccessibleForFree: true,
     publisher: { "@id": `${SITE_URL}/#organization` },
     ...(review.pros && review.pros.length > 0 && {
       positiveNotes: {
@@ -293,9 +294,11 @@ export function faqSchema(items: FAQItem[], pageUrl?: string) {
     mainEntity: items.map((item, index) => ({
       "@type": "Question",
       ...(fullUrl && { "@id": `${fullUrl}#faq-${item.question.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "").slice(0, 60)}` }),
+      inLanguage: "en",
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
+        inLanguage: "en",
         text: item.answer,
       },
     })),
@@ -321,6 +324,8 @@ export function categoryListSchema(categories: Category[]) {
         "@id": `${SITE_URL}/category/${cat.slug}#page`,
         name: cat.name,
         url: `${SITE_URL}/category/${cat.slug}`,
+        inLanguage: "en",
+        isAccessibleForFree: true,
       },
     })),
   };
@@ -557,6 +562,7 @@ export function blogListSchema(posts: BlogPost[]) {
             headline: post.title,
             url: `${SITE_URL}/blog/${post.slug}`,
             inLanguage: "en",
+            isAccessibleForFree: true,
             datePublished: post.publishedAt,
             dateModified: post.updatedAt || post.publishedAt,
             ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
@@ -580,6 +586,7 @@ export function blogListSchema(posts: BlogPost[]) {
       headline: post.title,
       url: `${SITE_URL}/blog/${post.slug}`,
       inLanguage: "en",
+      isAccessibleForFree: true,
       datePublished: post.publishedAt,
       ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
       ...(post.coverImage && {
@@ -710,6 +717,8 @@ export function homePageSchema(featuredPosts?: BlogPost[]) {
         headline: post.title,
         url: `${SITE_URL}/blog/${post.slug}`,
         datePublished: post.publishedAt,
+        inLanguage: "en",
+        isAccessibleForFree: true,
         ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
         author: {
           "@type": "Person",
@@ -1051,7 +1060,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
             dateModified: post.updatedAt || post.publishedAt,
             ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
             ...(post.coverImage && {
-              image: { "@type": "ImageObject", url: post.coverImage, width: 1200, height: 630 },
+              image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, isAccessibleForFree: true },
             }),
             author: {
               "@type": "Person",
