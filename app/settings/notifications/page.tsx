@@ -149,7 +149,7 @@ export default function NotificationsSettingsPage() {
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                 enabledCount > 0
                   ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
-                  : "bg-gray-100 text-gray-600 border border-gray-200"
+                  : "bg-gray-100 text-gray-600 border border-gray-400"
               }`}>
                 <span aria-hidden="true" className={`w-1.5 h-1.5 rounded-full ${enabledCount > 0 ? "bg-emerald-500" : "bg-gray-400"}`} />
                 <span aria-hidden="true">{enabledCount} of {Object.keys(prefs).length} active</span>

@@ -305,7 +305,7 @@ export const THREAD_TYPE_LABELS: Record<ThreadType, string> = {
 
 export const THREAD_TYPE_COLORS: Record<ThreadType, string> = {
   question: "text-blue-700 bg-blue-50 border-blue-200",
-  discussion: "text-gray-700 bg-gray-50 border-gray-200",
+  discussion: "text-gray-700 bg-gray-50 border-gray-400",
   issue: "text-red-700 bg-red-50 border-red-200",
   recommendation: "text-emerald-700 bg-emerald-50 border-emerald-200",
   comparison: "text-purple-700 bg-purple-50 border-purple-200",

@@ -181,7 +181,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           aria-invalid={!!error}
           aria-describedby={error ? "admin-pwd-error" : undefined}
           autoComplete="current-password"
-          className="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+          className="w-full px-4 py-2.5 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
           autoFocus
         />
         {error && <p id="admin-pwd-error" role="alert" className="text-red-500 text-xs mt-2">{error}</p>}
@@ -544,7 +544,7 @@ export default function AdminDashboard() {
                   onChange={(e) => { setProductSearch(e.target.value); setProductPage(1); }}
                   placeholder="Search products..."
                   aria-label="Search products"
-                  className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+                  className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
               <span className="text-sm text-gray-400">{productTotal} products</span>
@@ -626,7 +626,7 @@ export default function AdminDashboard() {
                     aria-label="Go to previous page"
                     onClick={() => setProductPage((p) => Math.max(1, p - 1))}
                     disabled={productPage === 1}
-                    className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
                     <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -635,7 +635,7 @@ export default function AdminDashboard() {
                     aria-label="Go to next page"
                     onClick={() => setProductPage((p) => p + 1)}
                     disabled={productPage >= Math.ceil(productTotal / 15)}
-                    className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
                     <ChevronRight className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -657,14 +657,14 @@ export default function AdminDashboard() {
                   onChange={(e) => { setReviewSearch(e.target.value); setReviewPage(1); }}
                   placeholder="Search reviews..."
                   aria-label="Search reviews"
-                  className="w-full pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+                  className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
               <select
                 value={reviewFilter}
                 onChange={(e) => { setReviewFilter(e.target.value); setReviewPage(1); }}
                 aria-label="Filter reviews by status"
-                className="px-3 py-2 border border-gray-200 rounded-lg text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-400"
+                className="px-3 py-2 border border-gray-400 rounded-lg text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-400"
               >
                 <option value="">All statuses</option>
                 <option value="published">Published</option>
@@ -803,7 +803,7 @@ export default function AdminDashboard() {
                     onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
                     disabled={reviewPage === 1}
                     aria-label="Go to previous page"
-                    className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
                     <ChevronLeft aria-hidden="true" className="w-4 h-4" />
                   </button>
@@ -812,7 +812,7 @@ export default function AdminDashboard() {
                     onClick={() => setReviewPage((p) => p + 1)}
                     disabled={reviewPage >= Math.ceil(reviewTotal / 15)}
                     aria-label="Go to next page"
-                    className="p-2 border border-gray-200 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
                   >
                     <ChevronRight aria-hidden="true" className="w-4 h-4" />
                   </button>
@@ -832,7 +832,7 @@ export default function AdminDashboard() {
               <button
                 type="button"
                 onClick={loadPendingReviews}
-                className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-200 rounded-lg"
+                className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-400 rounded-lg"
               >
                 <RefreshCw className="w-3.5 h-3.5" /> Refresh
               </button>
