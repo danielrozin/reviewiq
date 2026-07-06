@@ -59,6 +59,7 @@ export default async function ComparisonPage({ params }: Props) {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Breadcrumbs items={breadcrumbItems} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
         {/* Header */}
         <div className="text-center mb-8">

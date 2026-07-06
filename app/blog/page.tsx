@@ -37,6 +37,8 @@ export default function BlogPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs items={[{ name: "Blog", url: "/blog" }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexWebPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema(posts)) }} />
 
       <div className="mt-8 mb-10">
         <h1 className="text-3xl font-bold text-gray-900">

@@ -54,6 +54,7 @@ export default async function UserProfilePage({ params }: Props) {
           { name: user.displayName, url: `/community/user/${username}` },
         ]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema(username, user.displayName, user.bio, user.expertiseCategories, user.joinedAt, user.lastActiveAt, undefined, userComments.length, userThreads.length)) }} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8">
         {/* Left column — profile */}

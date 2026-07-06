@@ -61,6 +61,8 @@ export default async function ThreadPage({ params }: Props) {
           { name: thread.title, url: `/community/thread/${threadId}` },
         ]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(discussionForumPostingSchema(thread, author?.displayName ?? "Anonymous", author?.username)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(threadPageSpeakableSchema(thread.title, `/community/thread/${threadId}`, thread.createdAt, thread.lastActivityAt)) }} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8">
         {/* Main content */}

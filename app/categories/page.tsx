@@ -37,6 +37,8 @@ export default function CategoriesPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs items={[{ name: "Categories", url: "/categories" }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categoriesWebPageJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryListSchema(categories)) }} />
 
       {/* Page header */}
       <div className="mt-8 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">

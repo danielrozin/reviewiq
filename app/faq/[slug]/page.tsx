@@ -60,6 +60,7 @@ export default async function FAQPage({ params }: Props) {
           { name: page.title, url: `/faq/${page.slug}` },
         ]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
 
       {/* Hero */}
       <header data-speakable="faq-hero" className="mt-8 mb-12 max-w-3xl">
