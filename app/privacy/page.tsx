@@ -11,6 +11,7 @@ const privacyWebPageJsonLd = {
   name: "Privacy Policy — ReviewIQ",
   url: `${SITE_URL}/privacy`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   isPartOf: { "@id": `${SITE_URL}/#website` },

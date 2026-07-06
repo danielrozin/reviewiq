@@ -12,6 +12,7 @@ const productsPageSchema = {
   name: "Browse All Products — ReviewIQ",
   url: `${SITE_URL}/products`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   description:
     "Search and filter products across all categories on ReviewIQ. Every SmartScore is based on verified buyer reviews.",
   mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/products#product-list`, name: "All Reviewed Products", url: `${SITE_URL}/products` },

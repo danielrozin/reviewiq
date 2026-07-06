@@ -17,6 +17,7 @@ const acceptableUseSchema = {
   name: "Acceptable Use Policy — ReviewIQ",
   url: `${SITE_URL}/acceptable-use`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   isPartOf: { "@id": `${SITE_URL}/#website` },

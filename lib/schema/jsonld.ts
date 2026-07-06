@@ -63,6 +63,7 @@ export function websiteSchema() {
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     name: "ReviewIQ",
+    description: "AI-powered product review platform providing honest, structured insights from verified buyers.",
     url: SITE_URL,
     inLanguage: "en",
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -85,6 +86,7 @@ export function breadcrumbSchema(
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     ...(lastItem && { "@id": `${SITE_URL}${lastItem.url}#breadcrumb` }),
+    inLanguage: "en",
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -522,6 +524,9 @@ export function blogPostSchema(post: BlogPost) {
 }
 
 export function blogListSchema(posts: BlogPost[]) {
+  const sorted = [...posts].sort((a, b) => (a.publishedAt < b.publishedAt ? -1 : 1));
+  const datePublished = sorted[0]?.publishedAt;
+  const dateModified = [...posts].sort((a, b) => ((b.updatedAt || b.publishedAt) < (a.updatedAt || a.publishedAt) ? -1 : 1))[0]?.updatedAt || posts[0]?.publishedAt;
   return {
     "@context": "https://schema.org",
     "@type": "Blog",
@@ -531,6 +536,8 @@ export function blogListSchema(posts: BlogPost[]) {
     url: `${SITE_URL}/blog`,
     inLanguage: "en",
     isAccessibleForFree: true,
+    ...(datePublished && { datePublished }),
+    ...(dateModified && { dateModified }),
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     mainEntity: {

@@ -13,6 +13,7 @@ const blogIndexWebPageJsonLd = {
   name: "ReviewIQ Blog — Buying Guides, Comparisons & Expert Reviews",
   url: `${SITE_URL}/blog`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   mainEntity: { "@type": "ItemList", "@id": `${SITE_URL}/blog#post-list`, name: "Blog Posts" },

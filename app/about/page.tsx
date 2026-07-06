@@ -19,6 +19,7 @@ const aboutPageJsonLd = {
   name: "About ReviewIQ — AI-Powered Honest Product Reviews",
   url: `${SITE_URL}/about`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   description:
     "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },

@@ -10,6 +10,7 @@ const writeReviewWebPageJsonLd = {
   name: "Write a Product Review — Share Your Experience | ReviewIQ",
   url: `${SITE_URL}/write-review`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   isPartOf: { "@id": `${SITE_URL}/#website` },

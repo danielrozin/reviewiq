@@ -12,6 +12,7 @@ const pricingWebPageSchema = {
   name: "Pro Plans & Pricing — ReviewIQ",
   url: `${SITE_URL}/pricing`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   isPartOf: { "@id": `${SITE_URL}/#website` },

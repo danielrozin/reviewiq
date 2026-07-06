@@ -102,6 +102,7 @@ const howToJsonLd = {
     "ReviewIQ's 4-step system: verified buyer reviews, AI analysis, SmartScore ranking, and data-driven buying decisions.",
   url: `${SITE_URL}/how-it-works`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   step: steps.map((step, index) => ({
@@ -119,6 +120,7 @@ const howItWorksWebPageJsonLd = {
   name: "How ReviewIQ Works",
   url: `${SITE_URL}/how-it-works`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   mainEntity: { "@id": `${SITE_URL}/how-it-works#howto` },

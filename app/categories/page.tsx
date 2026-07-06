@@ -20,6 +20,7 @@ const categoriesWebPageJsonLd = {
   name: "All Product Categories — AI Reviews & Comparisons",
   url: `${SITE_URL}/categories`,
   inLanguage: "en",
+  isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-05",
   mainEntity: { "@id": `${SITE_URL}/categories#category-list` },
