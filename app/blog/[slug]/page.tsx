@@ -402,7 +402,7 @@ function markdownToHtml(md: string): string {
   // External links (http/https) — open in new tab with security attributes
   html = html.replace(
     /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">$1</a>'
+    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">$1<span class="sr-only"> (opens in new tab)</span></a>'
   );
   // Internal links — same-tab navigation, no rel override
   html = html.replace(
