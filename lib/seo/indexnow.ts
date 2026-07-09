@@ -9,9 +9,11 @@
  *
  * Setup:
  *   1. Set INDEXNOW_KEY in the environment to a random hex string (8–128 chars).
- *   2. The key is served for verification at `/api/indexnow/key.txt`
- *      (see app/api/indexnow/key.txt/route.ts). This matches the `keyLocation`
- *      sent in every submission, so the receiving engine can confirm ownership.
+ *   2. The key is served for verification at the site root `/indexnow-key.txt`
+ *      (see app/indexnow-key.txt/route.ts). This matches the `keyLocation` sent
+ *      in every submission, so the receiving engine can confirm ownership. It
+ *      MUST be root-level: IndexNow only authorizes URLs at or below the key
+ *      file's directory, so a subfolder key can't index the whole site.
  *   3. Submit URLs via `submitAllProductReviewUrls()` (see scripts/submit-indexnow.ts).
  */
 import { products } from "@/data/products";
@@ -24,8 +26,16 @@ export const INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow";
 /** IndexNow accepts at most 10,000 URLs per request. */
 export const MAX_URLS_PER_REQUEST = 10000;
 
-/** Path (relative to the site root) where the ownership key is served. */
-export const KEY_PATH = "/api/indexnow/key.txt";
+/**
+ * Path (relative to the site root) where the ownership key is served.
+ *
+ * MUST be at the site ROOT. IndexNow only authorizes submission of URLs at or
+ * below the directory of `keyLocation`, so a key served from a subfolder (e.g.
+ * `/api/indexnow/key.txt`) can only submit URLs under that subfolder — whole-
+ * site submissions are rejected with HTTP 422. A root-level path authorizes the
+ * entire host. See app/indexnow-key.txt/route.ts.
+ */
+export const KEY_PATH = "/indexnow-key.txt";
 
 function trimTrailingSlash(url: string): string {
   return url.replace(/\/+$/, "");
