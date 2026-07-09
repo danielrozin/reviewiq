@@ -253,10 +253,10 @@ export default async function ThreadPage({ params }: Props) {
         </div>
 
         {/* Sidebar */}
-        <aside aria-label="Thread sidebar" className="space-y-8">
+        <aside aria-labelledby="thread-sidebar-heading" className="space-y-8">
           {/* Thread stats */}
           <div className="bg-white border border-gray-100 rounded-2xl p-6 sticky top-24">
-            <h2 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider text-gray-600">
+            <h2 id="thread-sidebar-heading" className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider text-gray-600">
               Thread Info
             </h2>
             <div className="grid grid-cols-3 gap-3 mb-5">

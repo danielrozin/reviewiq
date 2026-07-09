@@ -83,7 +83,7 @@ export default function RootLayout({
                   <ExperimentProvider>
                     <Header />
                     <OnboardingOrchestrator />
-                    <main id="main-content" className="flex-1">{children}</main>
+                    <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">{children}</main>
                     <Footer />
                     <ComparisonTray />
                     <ScrollToTop />
