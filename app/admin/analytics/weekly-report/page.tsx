@@ -70,7 +70,7 @@ function MetricCard({ label, current, previous, change, trend }: { label: string
         <p className="text-2xl font-bold text-gray-900">{current.toLocaleString()}</p>
         <TrendBadge change={change} trend={trend} />
       </div>
-      <p className="text-xs text-gray-400 mt-0.5">prev: {previous.toLocaleString()}</p>
+      <p className="text-xs text-gray-500 mt-0.5">prev: {previous.toLocaleString()}</p>
     </div>
   );
 }
@@ -110,7 +110,7 @@ export default function WeeklyReportPage() {
   if (loading) {
     return (
       <div role="status" aria-label="Generating weekly report" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div aria-hidden="true" className="animate-pulse text-gray-400">Generating weekly report...</div>
+        <div aria-hidden="true" className="animate-pulse text-gray-500">Generating weekly report...</div>
       </div>
     );
   }
@@ -141,11 +141,11 @@ export default function WeeklyReportPage() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <Link href="/admin/analytics" className="text-gray-400 hover:text-gray-600 text-sm">&larr; Analytics</Link>
+                <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm">&larr; Analytics</Link>
                 <span className="text-gray-300">|</span>
-                <Link href="/admin/analytics/aarrr" className="text-gray-400 hover:text-gray-600 text-sm">AARRR</Link>
+                <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm">AARRR</Link>
                 <span className="text-gray-300">|</span>
-                <Link href="/admin/analytics/okr" className="text-gray-400 hover:text-gray-600 text-sm">OKR</Link>
+                <Link href="/admin/analytics/okr" className="text-gray-500 hover:text-gray-700 text-sm">OKR</Link>
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mt-1">
                 Weekly Report W{data.weekNumber}
@@ -216,7 +216,7 @@ export default function WeeklyReportPage() {
                           <div className="bg-emerald-400 h-4 rounded" style={{ width: `${Math.max((d.signups / max) * 100, 2)}%` }} title={`${d.signups} signups`} />
                           <div className="bg-indigo-400 h-4 rounded" style={{ width: `${Math.max((d.reviews / max) * 100, 2)}%` }} title={`${d.reviews} reviews`} />
                         </div>
-                        <span className="w-12 text-right text-gray-400">{d.signups + d.reviews}</span>
+                        <span className="w-12 text-right text-gray-500">{d.signups + d.reviews}</span>
                       </div>
                     );
                   })}
@@ -232,7 +232,7 @@ export default function WeeklyReportPage() {
                 {data.funnel.map((step) => (
                   <FunnelBar key={step.stage} step={step} maxValue={maxFunnel} />
                 ))}
-                <p className="text-xs text-gray-400 mt-2">Activation rate: {data.activationRate}%</p>
+                <p className="text-xs text-gray-500 mt-2">Activation rate: {data.activationRate}%</p>
               </section>
             </div>
 
@@ -242,11 +242,11 @@ export default function WeeklyReportPage() {
                 <h3 id="weekly-top-products-heading" className="text-sm font-bold text-gray-700 mb-3">Top Products by Reviews</h3>
                 <div className="space-y-1.5">
                   {data.topProducts.length === 0 ? (
-                    <p className="text-xs text-gray-400">No products yet</p>
+                    <p className="text-xs text-gray-500">No products yet</p>
                   ) : (
                     data.topProducts.map((p, i) => (
                       <div key={p.slug} className="flex items-center gap-2 text-xs">
-                        <span className="w-5 text-gray-400 font-medium">{i + 1}.</span>
+                        <span className="w-5 text-gray-500 font-medium">{i + 1}.</span>
                         <span className="flex-1 text-gray-700 truncate">{p.name}</span>
                         <span className="text-gray-500 font-medium">{p.reviews}</span>
                       </div>

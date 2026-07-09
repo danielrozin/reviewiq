@@ -115,7 +115,7 @@ function RatingBar({ rating, count, max }: { rating: number; count: number; max:
           style={{ width: max > 0 ? `${(count / max) * 100}%` : "0%" }}
         />
       </div>
-      <span className="w-8 text-right text-gray-400 text-xs">{count}</span>
+      <span className="w-8 text-right text-gray-500 text-xs">{count}</span>
     </div>
   );
 }
@@ -169,7 +169,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           </div>
           <div>
             <h1 id="admin-login-heading" className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
-            <p className="text-xs text-gray-400">Enter password to continue</p>
+            <p className="text-xs text-gray-500">Enter password to continue</p>
           </div>
         </div>
         <input
@@ -455,16 +455,16 @@ export default function AdminDashboard() {
                       <div key={u.id} className="flex items-center justify-between text-sm">
                         <div>
                           <span className="font-medium text-gray-900">{u.name || "Anonymous"}</span>
-                          <span className="text-gray-400 ml-2 text-xs">{u.email}</span>
+                          <span className="text-gray-500 ml-2 text-xs">{u.email}</span>
                         </div>
-                        <span className="text-xs text-gray-400">
+                        <span className="text-xs text-gray-500">
                           {new Date(u.createdAt).toLocaleDateString()}
                         </span>
                       </div>
                     ))}
                   </div>
                 ) : (
-                  <p className="text-gray-400 text-sm">No recent signups</p>
+                  <p className="text-gray-500 text-sm">No recent signups</p>
                 )}
               </div>
             </div>
@@ -481,7 +481,7 @@ export default function AdminDashboard() {
                           <span className="font-medium text-sm text-gray-900 truncate">{r.headline}</span>
                           <StatusBadge status={r.status} />
                         </div>
-                        <p className="text-xs text-gray-400">
+                        <p className="text-xs text-gray-500">
                           {r.product.name} · {r.user.name || r.user.email} · {"★".repeat(r.rating)} · {new Date(r.createdAt).toLocaleDateString()}
                         </p>
                       </div>
@@ -489,7 +489,7 @@ export default function AdminDashboard() {
                   ))}
                 </div>
               ) : (
-                <p className="text-gray-400 text-sm">No reviews yet</p>
+                <p className="text-gray-500 text-sm">No reviews yet</p>
               )}
             </div>
 
@@ -510,7 +510,7 @@ export default function AdminDashboard() {
                   <tbody>
                     {stats.topProducts.slice(0, 10).map((p, i) => (
                       <tr key={p.id} className="border-b border-gray-50 last:border-0">
-                        <td className="py-2 text-gray-400">{i + 1}</td>
+                        <td className="py-2 text-gray-500">{i + 1}</td>
                         <td className="py-2 text-gray-900 font-medium">{p.name}</td>
                         <td className="py-2 text-gray-500 hidden sm:table-cell">{p.category.name}</td>
                         <td className="py-2 text-right text-emerald-600 font-medium">{p.reviewCount}</td>
@@ -520,7 +520,7 @@ export default function AdminDashboard() {
                   </tbody>
                 </table>
               ) : (
-                <p className="text-gray-400 text-sm">No products yet</p>
+                <p className="text-gray-500 text-sm">No products yet</p>
               )}
             </div>
           </div>
@@ -547,7 +547,7 @@ export default function AdminDashboard() {
                   className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
                 />
               </div>
-              <span className="text-sm text-gray-400">{productTotal} products</span>
+              <span className="text-sm text-gray-500">{productTotal} products</span>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -570,7 +570,7 @@ export default function AdminDashboard() {
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-gray-900">{p.name}</span>
                         </div>
-                        <span className="text-xs text-gray-400">/{p.slug}</span>
+                        <span className="text-xs text-gray-500">/{p.slug}</span>
                       </td>
                       <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{p.brand}</td>
                       <td className="px-4 py-3 text-gray-500 hidden lg:table-cell">{p.category.name}</td>
@@ -610,14 +610,14 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
               {products.length === 0 && (
-                <div className="text-center py-12 text-gray-400 text-sm">No products found</div>
+                <div className="text-center py-12 text-gray-500 text-sm">No products found</div>
               )}
             </div>
 
             {/* Pagination */}
             {productTotal > 15 && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">
+                <span className="text-sm text-gray-500">
                   Page {productPage} of {Math.ceil(productTotal / 15)}
                 </span>
                 <div className="flex gap-2">
@@ -693,7 +693,7 @@ export default function AdminDashboard() {
                   </button>
                 </div>
               )}
-              <span className="text-sm text-gray-400 ml-auto">{reviewTotal} reviews</span>
+              <span className="text-sm text-gray-500 ml-auto">{reviewTotal} reviews</span>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -742,7 +742,7 @@ export default function AdminDashboard() {
                       </td>
                       <td className="px-4 py-3">
                         <span className="font-medium text-gray-900">{r.headline}</span>
-                        <p className="text-xs text-gray-400 mt-0.5 line-clamp-1">{r.body}</p>
+                        <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{r.body}</p>
                       </td>
                       <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{r.product.name}</td>
                       <td className="px-4 py-3 text-gray-500 hidden lg:table-cell">{r.user.name || r.user.email}</td>
@@ -788,13 +788,13 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
               {reviews.length === 0 && (
-                <div className="text-center py-12 text-gray-400 text-sm">No reviews found</div>
+                <div className="text-center py-12 text-gray-500 text-sm">No reviews found</div>
               )}
             </div>
 
             {reviewTotal > 15 && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-400">
+                <span className="text-sm text-gray-500">
                   Page {reviewPage} of {Math.ceil(reviewTotal / 15)}
                 </span>
                 <div className="flex gap-2">
@@ -842,7 +842,7 @@ export default function AdminDashboard() {
               <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
                 <Check aria-hidden="true" className="w-12 h-12 text-emerald-300 mx-auto mb-3" />
                 <p className="text-gray-500 font-medium">All caught up!</p>
-                <p className="text-gray-400 text-sm mt-1">No pending reviews to moderate.</p>
+                <p className="text-gray-500 text-sm mt-1">No pending reviews to moderate.</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -972,7 +972,7 @@ export default function AdminDashboard() {
                     <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">GA4 Analytics</p>
-                      <p className="text-xs text-gray-400">View detailed funnel and event analytics</p>
+                      <p className="text-xs text-gray-500">View detailed funnel and event analytics</p>
                     </div>
                   </a>
                   <button
@@ -983,7 +983,7 @@ export default function AdminDashboard() {
                     <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Moderate Reviews</p>
-                      <p className="text-xs text-gray-400">{stats.summary.pendingReviews} reviews pending</p>
+                      <p className="text-xs text-gray-500">{stats.summary.pendingReviews} reviews pending</p>
                     </div>
                   </button>
                   <button
@@ -994,7 +994,7 @@ export default function AdminDashboard() {
                     <Pin aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Manage Products</p>
-                      <p className="text-xs text-gray-400">Feature or unfeature products on homepage</p>
+                      <p className="text-xs text-gray-500">Feature or unfeature products on homepage</p>
                     </div>
                   </button>
                 </div>

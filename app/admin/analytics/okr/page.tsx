@@ -73,7 +73,7 @@ function KeyResultRow({ kr }: { kr: KeyResult }) {
         <p className="text-sm text-gray-700 flex-1 pr-4">{kr.description}</p>
         <div className="text-right flex-shrink-0">
           <span className="text-xs font-medium text-gray-500">{kr.current}</span>
-          <span className="text-xs text-gray-400"> / {kr.target}</span>
+          <span className="text-xs text-gray-500"> / {kr.target}</span>
         </div>
       </div>
       <div className="flex items-center gap-2">
@@ -106,7 +106,7 @@ function OKRCard({ okr, isCompany = false }: { okr: OKR; isCompany?: boolean }) 
         </div>
       </div>
       <div className="border-t border-gray-100 px-5 py-2">
-        <p className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider mb-1">Key Results</p>
+        <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Key Results</p>
         {okr.keyResults.map((kr) => (
           <KeyResultRow key={kr.id} kr={kr} />
         ))}
@@ -125,7 +125,7 @@ function HealthCard({ metric }: { metric: HealthMetric }) {
         <span className={`ml-auto text-xs font-medium ${style.text}`}>{style.label}</span>
       </div>
       <p className="text-xs text-gray-600">{metric.detail}</p>
-      <p className="text-[10px] text-gray-400 mt-1">Updated {metric.lastUpdated}</p>
+      <p className="text-[10px] text-gray-500 mt-1">Updated {metric.lastUpdated}</p>
     </div>
   );
 }
@@ -145,7 +145,7 @@ export default function OKRDashboard() {
   if (loading) {
     return (
       <div role="status" aria-label="Loading OKR data" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div aria-hidden="true" className="animate-pulse text-gray-400">Loading OKR data...</div>
+        <div aria-hidden="true" className="animate-pulse text-gray-500">Loading OKR data...</div>
       </div>
     );
   }
@@ -171,9 +171,9 @@ export default function OKRDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <Link href="/admin/analytics" className="text-gray-400 hover:text-gray-600 text-sm">&larr; Analytics</Link>
+                <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm">&larr; Analytics</Link>
                 <span className="text-gray-300">|</span>
-                <Link href="/admin/analytics/aarrr" className="text-gray-400 hover:text-gray-600 text-sm">AARRR</Link>
+                <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm">AARRR</Link>
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mt-1">OKR Dashboard</h1>
               <p className="text-sm text-gray-500">{data.quarter} &middot; Last updated {data.lastUpdated}</p>
