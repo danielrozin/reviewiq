@@ -204,6 +204,34 @@ export function productListSchema(products: Product[], categoryName: string) {
   };
 }
 
+// The /compare hub is a client-side comparison builder, so it emitted no
+// structured data at all. This gives the hub a CollectionPage whose ItemList
+// enumerates every curated "X vs Y" money page — helping answer engines discover
+// and treat the comparison set as one curated collection (potential sitelinks /
+// list treatment) and reinforcing internal links to the highest-intent pages.
+export function comparisonHubSchema(
+  pairs: { slug: string; productA: Product; productB: Product }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Product Comparisons",
+    description:
+      "Head-to-head product comparisons scored on SmartScore, specs, and verified buyer reviews.",
+    url: `${SITE_URL}/compare`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: pairs.length,
+      itemListElement: pairs.map((pair, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${pair.productA.name} vs ${pair.productB.name}`,
+        url: `${SITE_URL}/compare/${pair.slug}`,
+      })),
+    },
+  };
+}
+
 export function videoObjectSchema(video: YouTubeVideo, productName: string) {
   return {
     "@context": "https://schema.org",

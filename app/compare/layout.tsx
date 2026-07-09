@@ -1,4 +1,6 @@
 import { buildMetadata } from "@/lib/seo/metadata";
+import { comparisonHubSchema } from "@/lib/schema/jsonld";
+import { getAllComparisonPairs } from "@/data/comparisons";
 
 // The /compare page is a client component (interactive multi-product builder),
 // so it cannot export metadata itself. This layout supplies a proper SEO
@@ -16,5 +18,14 @@ export default function CompareLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  const hubSchema = comparisonHubSchema(getAllComparisonPairs());
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hubSchema) }}
+      />
+      {children}
+    </>
+  );
 }
