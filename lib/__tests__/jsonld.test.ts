@@ -31,6 +31,15 @@ describe('organizationSchema', () => {
     expect(schema['@id']).toBeDefined()
     expect(String(schema['@id'])).toContain('#organization')
   })
+
+  it('exposes the verified contact email + ContactPoint for the knowledge panel', () => {
+    const schema = organizationSchema()
+    expect(schema.email).toBe('contact@revieweriq.com')
+    expect(Array.isArray(schema.contactPoint)).toBe(true)
+    expect(schema.contactPoint[0]['@type']).toBe('ContactPoint')
+    expect(schema.contactPoint[0].email).toBe('contact@revieweriq.com')
+    expect(schema.contactPoint[0].contactType).toBe('customer support')
+  })
 })
 
 describe('websiteSchema', () => {

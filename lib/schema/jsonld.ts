@@ -27,6 +27,20 @@ export function organizationSchema() {
     logo: BRAND_IMAGE,
     description:
       "AI-powered product review platform providing honest, structured insights from verified buyers.",
+    // Verified public contact (same address shown on /privacy, /terms,
+    // /cookie-policy, /acceptable-use). Google surfaces Organization
+    // email/contactPoint in the knowledge panel and answer engines use it to
+    // anchor the brand entity. sameAs stays empty until real, owned social
+    // profiles exist — inventing profile URLs would break the entity graph.
+    email: "contact@revieweriq.com",
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: "contact@revieweriq.com",
+        availableLanguage: "English",
+      },
+    ],
     sameAs: [],
   };
 }
