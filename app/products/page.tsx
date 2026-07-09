@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProductSearch } from "@/components/product/ProductSearch";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -44,6 +45,7 @@ export default function ProductsPage() {
       <Breadcrumbs
         items={[{ name: "Products", url: "/products" }]}
       />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Products", url: "/products" }])) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsPageSchema) }} />
 
       <div className="mt-8 mb-8">
