@@ -143,9 +143,11 @@ export function productSchema(product: Product, pageUrl?: string) {
     inLanguage: "en",
     ...(product.createdAt ? { datePublished: product.createdAt } : {}),
     ...(product.updatedAt || product.createdAt ? { dateModified: product.updatedAt || product.createdAt } : {}),
+    keywords: [product.name, product.brand, ...(product.categorySlug ? [product.categorySlug.replace(/-/g, " ")] : [])].filter(Boolean).join(", "),
     ...(canonicalUrl && {
       url: canonicalUrl,
       mainEntityOfPage: { "@type": "ItemPage", "@id": `${canonicalUrl}#page` },
+      subjectOf: { "@type": "ItemPage", "@id": `${canonicalUrl}#page`, url: canonicalUrl },
       isPartOf: { "@id": `${SITE_URL}/#website` },
       publisher: { "@id": `${SITE_URL}/#organization` },
     }),
@@ -163,6 +165,11 @@ export function productSchema(product: Product, pageUrl?: string) {
       reviewCount: ratingCount,
       bestRating: 5,
       worstRating: 1,
+    };
+    schema.interactionStatistic = {
+      "@type": "InteractionCounter",
+      interactionType: "https://schema.org/ReviewAction",
+      userInteractionCount: ratingCount,
     };
   }
 
@@ -1263,6 +1270,8 @@ function comparisonProductItem(product: Product) {
     description: product.description,
     ...(product.categorySlug && { category: product.categorySlug }),
     inLanguage: "en",
+    keywords: [product.name, product.brand, ...(product.categorySlug ? [product.categorySlug.replace(/-/g, " ")] : [])].filter(Boolean).join(", "),
+    subjectOf: { "@type": "ItemPage", "@id": `${productUrl}#page`, url: productUrl },
     ...(product.image && {
       image: {
         "@type": "ImageObject",
@@ -1293,6 +1302,11 @@ function comparisonProductItem(product: Product) {
       reviewCount: ratingCount,
       bestRating: 5,
       worstRating: 1,
+    };
+    item.interactionStatistic = {
+      "@type": "InteractionCounter",
+      interactionType: "https://schema.org/ReviewAction",
+      userInteractionCount: ratingCount,
     };
   }
 
