@@ -54,7 +54,7 @@ export function FAQSection({ items }: FAQSectionProps) {
                   aria-hidden="true"
                   className={cn(
                     "w-4 h-4 shrink-0 transition-all duration-200",
-                    isOpen ? "rotate-180 text-brand-600" : "text-gray-400"
+                    isOpen ? "rotate-180 text-brand-600" : "text-gray-500"
                   )}
                   fill="none"
                   viewBox="0 0 24 24"

@@ -38,7 +38,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
               <span className={`font-semibold text-sm sm:text-base ${isOpen ? "text-brand-700" : "text-gray-900"}`}>
                 {faq.q}
               </span>
-              <span aria-hidden="true" className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${isOpen ? "bg-brand-100 text-brand-600" : "bg-gray-100 text-gray-400"}`}>
+              <span aria-hidden="true" className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${isOpen ? "bg-brand-100 text-brand-600" : "bg-gray-100 text-gray-500"}`}>
                 <svg
                   aria-hidden="true"
                   className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}

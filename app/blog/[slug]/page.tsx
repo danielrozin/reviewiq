@@ -202,7 +202,7 @@ export default async function BlogPostPage({
                     <span>{item.question}</span>
                     <svg
                       aria-hidden="true"
-                      className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform shrink-0"
+                      className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={2}
