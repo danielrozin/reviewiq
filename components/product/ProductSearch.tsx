@@ -455,7 +455,7 @@ export function ProductSearch() {
               <a
                 key={cat.slug}
                 href={`/category/${cat.slug}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
@@ -475,7 +475,7 @@ export function ProductSearch() {
             disabled={safePage <= 1}
             onClick={() => setFilter("page", safePage - 1)}
             aria-label="Go to previous page"
-            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-400 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             Previous
           </button>
@@ -489,7 +489,7 @@ export function ProductSearch() {
               className={`w-11 h-11 text-sm font-medium rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                 p === safePage
                   ? "bg-brand-600 text-white"
-                  : "border border-gray-200 text-gray-700 hover:bg-gray-50"
+                  : "border border-gray-400 text-gray-700 hover:bg-gray-50"
               }`}
             >
               {p}
@@ -500,7 +500,7 @@ export function ProductSearch() {
             disabled={safePage >= totalPages}
             onClick={() => setFilter("page", safePage + 1)}
             aria-label="Go to next page"
-            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-400 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             Next
           </button>
