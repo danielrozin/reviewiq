@@ -10,6 +10,10 @@ import {
   getHost,
   getKeyLocation,
   getProductReviewUrls,
+  getBlogPostUrls,
+  getCategoryUrls,
+  getComparisonUrls,
+  getAllPublicUrls,
   submitToIndexNow,
 } from "../indexnow";
 
@@ -50,6 +54,51 @@ describe("getProductReviewUrls", () => {
     }
     // No duplicates.
     expect(new Set(urls).size).toBe(urls.length);
+  });
+});
+
+describe("getBlogPostUrls", () => {
+  it("returns absolute /blog/<slug> URLs", () => {
+    const urls = getBlogPostUrls(SITE);
+    expect(urls.length).toBeGreaterThan(0);
+    for (const url of urls) {
+      expect(url).toMatch(new RegExp(`^${SITE}/blog/[^/]+$`));
+    }
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+});
+
+describe("getCategoryUrls", () => {
+  it("returns absolute /category/<slug> URLs", () => {
+    const urls = getCategoryUrls(SITE);
+    expect(urls.length).toBeGreaterThan(0);
+    for (const url of urls) {
+      expect(url).toMatch(new RegExp(`^${SITE}/category/[^/]+$`));
+    }
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+});
+
+describe("getComparisonUrls", () => {
+  it("returns absolute /compare/<a-vs-b> URLs", () => {
+    const urls = getComparisonUrls(SITE);
+    expect(urls.length).toBeGreaterThan(0);
+    for (const url of urls) {
+      expect(url).toMatch(new RegExp(`^${SITE}/compare/.+-vs-.+$`));
+    }
+    expect(new Set(urls).size).toBe(urls.length);
+  });
+});
+
+describe("getAllPublicUrls", () => {
+  it("combines all URL sets and has no duplicates", () => {
+    const all = getAllPublicUrls(SITE);
+    const products = getProductReviewUrls(SITE);
+    const blogs = getBlogPostUrls(SITE);
+    const cats = getCategoryUrls(SITE);
+    const comps = getComparisonUrls(SITE);
+    expect(all.length).toBe(products.length + blogs.length + cats.length + comps.length);
+    expect(new Set(all).size).toBe(all.length);
   });
 });
 

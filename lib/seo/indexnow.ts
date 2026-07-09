@@ -12,9 +12,12 @@
  *   2. The key is served for verification at `/api/indexnow/key.txt`
  *      (see app/api/indexnow/key.txt/route.ts). This matches the `keyLocation`
  *      sent in every submission, so the receiving engine can confirm ownership.
- *   3. Submit URLs via `submitAllProductReviewUrls()` (see scripts/submit-indexnow.ts).
+ *   3. Submit URLs via `submitAllPublicUrls()` (see scripts/submit-indexnow.ts).
  */
 import { products } from "@/data/products";
+import { getAllBlogPosts } from "@/data/blog-posts";
+import { categories } from "@/data/categories";
+import { getAllComparisonPairs } from "@/data/comparisons";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
 
@@ -157,4 +160,42 @@ export function submitAllProductReviewUrls(
   opts: SubmitOptions = {}
 ): Promise<IndexNowResult> {
   return submitToIndexNow(getProductReviewUrls(opts.siteUrl), opts);
+}
+
+/** All published blog post URLs. */
+export function getBlogPostUrls(siteUrl: string = SITE_URL): string[] {
+  const base = trimTrailingSlash(siteUrl);
+  return getAllBlogPosts().map((p) => `${base}/blog/${p.slug}`);
+}
+
+/** All category listing page URLs. */
+export function getCategoryUrls(siteUrl: string = SITE_URL): string[] {
+  const base = trimTrailingSlash(siteUrl);
+  return categories.map((c) => `${base}/category/${c.slug}`);
+}
+
+/** All head-to-head comparison page URLs. */
+export function getComparisonUrls(siteUrl: string = SITE_URL): string[] {
+  const base = trimTrailingSlash(siteUrl);
+  return getAllComparisonPairs().map((p) => `${base}/compare/${p.slug}`);
+}
+
+/**
+ * Returns every public URL that carries structured data and benefits from
+ * fast re-indexing: product/review pages, blog posts, categories, comparisons.
+ */
+export function getAllPublicUrls(siteUrl: string = SITE_URL): string[] {
+  return [
+    ...getProductReviewUrls(siteUrl),
+    ...getBlogPostUrls(siteUrl),
+    ...getCategoryUrls(siteUrl),
+    ...getComparisonUrls(siteUrl),
+  ];
+}
+
+/** Convenience: submit every public structured-data URL. */
+export function submitAllPublicUrls(
+  opts: SubmitOptions = {}
+): Promise<IndexNowResult> {
+  return submitToIndexNow(getAllPublicUrls(opts.siteUrl), opts);
 }

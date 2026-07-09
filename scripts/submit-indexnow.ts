@@ -1,6 +1,6 @@
 /**
- * Submits all ReviewIQ product/review page URLs to IndexNow so search engines
- * re-crawl the pages carrying Review / AggregateRating structured data.
+ * Submits all public ReviewIQ URLs to IndexNow so search engines re-crawl
+ * pages carrying structured data (Review, AggregateRating, BlogPosting, etc.).
  *
  * Usage:
  *   INDEXNOW_KEY=<key> NEXT_PUBLIC_SITE_URL=https://revieweriq.com \
@@ -8,11 +8,29 @@
  *
  * Exits non-zero if the submission fails so it can gate CI / deploy hooks.
  */
-import { submitAllProductReviewUrls, getProductReviewUrls, getIndexNowKey } from "../lib/seo/indexnow";
+import {
+  submitAllPublicUrls,
+  getAllPublicUrls,
+  getProductReviewUrls,
+  getBlogPostUrls,
+  getCategoryUrls,
+  getComparisonUrls,
+  getIndexNowKey,
+} from "../lib/seo/indexnow";
 
 async function main() {
-  const urls = getProductReviewUrls();
-  console.log(`[indexnow] ${urls.length} product/review URLs to submit`);
+  const productUrls = getProductReviewUrls();
+  const blogUrls = getBlogPostUrls();
+  const categoryUrls = getCategoryUrls();
+  const comparisonUrls = getComparisonUrls();
+  const total = getAllPublicUrls().length;
+
+  console.log(`[indexnow] URLs to submit:`);
+  console.log(`  product/review : ${productUrls.length}`);
+  console.log(`  blog posts     : ${blogUrls.length}`);
+  console.log(`  categories     : ${categoryUrls.length}`);
+  console.log(`  comparisons    : ${comparisonUrls.length}`);
+  console.log(`  total          : ${total}`);
 
   if (!getIndexNowKey()) {
     console.error(
@@ -21,7 +39,7 @@ async function main() {
     process.exit(1);
   }
 
-  const result = await submitAllProductReviewUrls();
+  const result = await submitAllPublicUrls();
   console.log(`[indexnow] result:`, JSON.stringify(result));
 
   if (!result.ok) {
