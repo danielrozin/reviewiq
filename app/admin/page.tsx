@@ -537,7 +537,7 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="relative flex-1 max-w-md">
-                <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search aria-hidden="true" className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={productSearch}
@@ -591,14 +591,14 @@ export default function AdminDashboard() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View ${p.name} (opens in new tab)`}
-                            className="p-1.5 text-gray-400 hover:text-gray-600 rounded"
+                            className="p-1.5 text-gray-500 hover:text-gray-700 rounded"
                           >
                             <Eye aria-hidden="true" className="w-4 h-4" />
                           </a>
                           <button
                             type="button"
                             onClick={() => handleDeleteProduct(p.id)}
-                            className="p-1.5 text-gray-400 hover:text-red-600 rounded"
+                            className="p-1.5 text-gray-500 hover:text-red-600 rounded"
                             aria-label={`Delete product: ${p.name}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
@@ -650,7 +650,7 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-4">
               <div className="relative flex-1 max-w-md">
-                <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search aria-hidden="true" className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="text"
                   value={reviewSearch}
@@ -757,7 +757,7 @@ export default function AdminDashboard() {
                             <button
                               type="button"
                               onClick={() => handleQueueAction(r.id, "published")}
-                              className="p-1.5 text-gray-400 hover:text-emerald-600 rounded"
+                              className="p-1.5 text-gray-500 hover:text-emerald-600 rounded"
                               aria-label={`Approve review: ${r.headline}`}
                             >
                               <Check aria-hidden="true" className="w-4 h-4" />
@@ -767,7 +767,7 @@ export default function AdminDashboard() {
                             <button
                               type="button"
                               onClick={() => handleQueueAction(r.id, "rejected")}
-                              className="p-1.5 text-gray-400 hover:text-red-600 rounded"
+                              className="p-1.5 text-gray-500 hover:text-red-600 rounded"
                               aria-label={`Reject review: ${r.headline}`}
                             >
                               <X aria-hidden="true" className="w-4 h-4" />
@@ -776,7 +776,7 @@ export default function AdminDashboard() {
                           <button
                             type="button"
                             onClick={() => handleDeleteReview(r.id)}
-                            className="p-1.5 text-gray-400 hover:text-red-600 rounded"
+                            className="p-1.5 text-gray-500 hover:text-red-600 rounded"
                             aria-label={`Delete review: ${r.headline}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />

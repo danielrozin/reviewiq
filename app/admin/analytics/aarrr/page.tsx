@@ -123,7 +123,7 @@ function StatCard({
       <p className={`font-bold text-gray-900 mt-1 ${large ? "text-3xl" : "text-2xl"}`} style={color ? { color } : undefined}>
         {value}
       </p>
-      {subtitle && <p className="text-xs text-gray-400 mt-0.5">{subtitle}</p>}
+      {subtitle && <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>}
     </div>
   );
 }
@@ -182,7 +182,7 @@ function HealthGauge({ score }: { score: number }) {
 
 function CohortTable({ cohorts }: { cohorts: CohortRow[] }) {
   if (cohorts.length === 0) {
-    return <p className="text-gray-400 text-sm">No cohort data available yet.</p>;
+    return <p className="text-gray-500 text-sm">No cohort data available yet.</p>;
   }
 
   const maxWeeks = Math.max(...cohorts.map((c) => Object.keys(c.retained).length));
@@ -291,7 +291,7 @@ export default function AARRRDashboard() {
           </a>
         </div>
         <p className="text-gray-500">ReviewIQ (ReviewIQ) growth dashboard</p>
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="text-xs text-gray-500 mt-1">
           Generated: {new Date(data.generatedAt).toLocaleString()}
         </p>
       </div>
@@ -490,7 +490,7 @@ export default function AARRRDashboard() {
                   </AreaChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-400">No signup data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-500">No signup data yet.</div>
               )}
             </div>
 
@@ -518,7 +518,7 @@ export default function AARRRDashboard() {
                   </PieChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-400">No method data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-500">No method data yet.</div>
               )}
             </div>
           </div>
@@ -593,7 +593,7 @@ export default function AARRRDashboard() {
                         </div>
                       </div>
                       {i > 0 && (
-                        <div className="w-16 text-xs text-gray-400 text-right">
+                        <div className="w-16 text-xs text-gray-500 text-right">
                           {data.activation.activationFunnel[i - 1].count > 0
                             ? `${Math.round((step.count / data.activation.activationFunnel[i - 1].count) * 100)}%`
                             : "-"}
@@ -604,7 +604,7 @@ export default function AARRRDashboard() {
                 })}
               </div>
             ) : (
-              <div className="h-48 flex items-center justify-center text-gray-400">No activation data yet.</div>
+              <div className="h-48 flex items-center justify-center text-gray-500">No activation data yet.</div>
             )}
           </div>
 
@@ -782,7 +782,7 @@ export default function AARRRDashboard() {
                 </div>
               </div>
             ) : (
-              <div className="h-48 flex items-center justify-center text-gray-400">No trust level data yet.</div>
+              <div className="h-48 flex items-center justify-center text-gray-500">No trust level data yet.</div>
             )}
           </div>
         </div>

@@ -245,7 +245,7 @@ export default function ReviewIQAnalytics() {
                 </ResponsiveContainer>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-400">No review data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-500">No review data yet.</div>
               )}
             </div>
 
@@ -275,7 +275,7 @@ export default function ReviewIQAnalytics() {
                 </ResponsiveContainer>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-400">No category data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-500">No category data yet.</div>
               )}
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function ReviewIQAnalytics() {
                     <div className="h-2 bg-gray-100 rounded-full flex-1">
                       <div className="h-2 bg-emerald-400 rounded-full transition-all" style={{ width: `${Math.round(100 * Math.pow(0.75, i))}%` }} />
                     </div>
-                    <span className="text-xs text-gray-400 w-12 text-right">{Math.round(100 * Math.pow(0.75, i))}%</span>
+                    <span className="text-xs text-gray-500 w-12 text-right">{Math.round(100 * Math.pow(0.75, i))}%</span>
                   </div>
                 </div>
               </div>

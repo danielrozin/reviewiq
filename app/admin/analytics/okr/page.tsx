@@ -172,7 +172,7 @@ export default function OKRDashboard() {
             <div>
               <div className="flex items-center gap-3">
                 <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm">&larr; Analytics</Link>
-                <span className="text-gray-300">|</span>
+                <span aria-hidden="true" className="text-gray-300">|</span>
                 <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm">AARRR</Link>
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mt-1">OKR Dashboard</h1>
