@@ -68,7 +68,7 @@ function StatCard({ label, value, subtitle }: { label: string; value: string | n
     <div className="bg-white border border-gray-200 rounded-xl p-4">
       <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{label}</p>
       <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
-      {subtitle && <p className="text-xs text-gray-400 mt-0.5">{subtitle}</p>}
+      {subtitle && <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>}
     </div>
   );
 }
@@ -162,7 +162,7 @@ export default function ReviewIQAnalytics() {
         <p className="text-gray-500 mt-1">
           GA4: {config.ga4Property} | Clarity: {config.clarityProject}
         </p>
-        <p className="text-xs text-gray-400 mt-1">
+        <p className="text-xs text-gray-500 mt-1">
           Data period: {live.period.start} to {live.period.end}
         </p>
       </div>
@@ -311,12 +311,12 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Google Analytics — ${config.ga4Property} (opens in new tab)`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-blue-300 hover:shadow-sm transition-all"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-blue-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
               <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Google Analytics</p>
-                <p className="text-xs text-gray-400">{config.ga4Property}</p>
+                <p className="text-xs text-gray-500">{config.ga4Property}</p>
               </div>
             </a>
             <a
@@ -324,12 +324,12 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Microsoft Clarity — ${config.clarityProject} (opens in new tab)`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-purple-300 hover:shadow-sm transition-all"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-purple-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
               <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Microsoft Clarity</p>
-                <p className="text-xs text-gray-400">{config.clarityProject}</p>
+                <p className="text-xs text-gray-500">{config.clarityProject}</p>
               </div>
             </a>
             <a
@@ -337,12 +337,12 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Search Console — GSC data (opens in new tab)"
-              className="flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl hover:border-green-300 hover:shadow-sm transition-all"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-green-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
               <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Search Console</p>
-                <p className="text-xs text-gray-400">GSC data</p>
+                <p className="text-xs text-gray-500">GSC data</p>
               </div>
             </a>
           </div>
@@ -356,7 +356,7 @@ export default function ReviewIQAnalytics() {
             <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">North Star Metric</p>
             <h2 className="text-xl font-bold text-gray-900">{config.kpis.northStar.metric}</h2>
             <p className="text-sm text-gray-600 mt-1">{config.kpis.northStar.description}</p>
-            <p className="text-sm text-gray-400 mt-2">Target: {config.kpis.northStar.target}</p>
+            <p className="text-sm text-gray-500 mt-2">Target: {config.kpis.northStar.target}</p>
           </div>
 
           <h3 className="text-lg font-semibold text-gray-900">{config.funnel.name}</h3>
@@ -395,7 +395,7 @@ export default function ReviewIQAnalytics() {
             </div>
           </div>
 
-          <p className="text-xs text-gray-400">Funnel percentages are placeholders. Actual GA4 data will replace them after collection begins.</p>
+          <p className="text-xs text-gray-500">Funnel percentages are placeholders. Actual GA4 data will replace them after collection begins.</p>
         </div>
       )}
 
@@ -407,7 +407,7 @@ export default function ReviewIQAnalytics() {
             <p className="text-sm text-gray-600 mt-1">
               Conversion funnels for Email Capture, Account-Required Reviews, and Quick Answer features.
             </p>
-            <p className="text-xs text-gray-400 mt-2">Baseline collection starts once features are deployed. Targets shown below are initial benchmarks.</p>
+            <p className="text-xs text-gray-500 mt-2">Baseline collection starts once features are deployed. Targets shown below are initial benchmarks.</p>
           </div>
 
           {Object.entries(config.featureFunnels).map(([key, funnel]) => (
@@ -444,7 +444,7 @@ export default function ReviewIQAnalytics() {
                     <div key={kpi.metric} className="bg-gray-50 border border-gray-100 rounded-lg p-3">
                       <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{kpi.metric}</p>
                       <p className="text-lg font-bold text-gray-900 mt-0.5">{kpi.target}</p>
-                      <p className="text-[10px] text-gray-400 mt-0.5">{kpi.formula}</p>
+                      <p className="text-[10px] text-gray-500 mt-0.5">{kpi.formula}</p>
                       {kpi.warning && <p className="text-[10px] text-amber-600 mt-1">{kpi.warning}</p>}
                     </div>
                   ))}
@@ -583,7 +583,7 @@ export default function ReviewIQAnalytics() {
                     <tbody>
                       {report.topProducts.map((p, i) => (
                         <tr key={i} className="border-b border-gray-50 last:border-0">
-                          <td className="py-2 text-gray-400">{i + 1}</td>
+                          <td className="py-2 text-gray-500">{i + 1}</td>
                           <td className="py-2 text-gray-900">{p.name}</td>
                           <td className="py-2 text-gray-500 hidden sm:table-cell">{p.category}</td>
                           <td className="py-2 text-right font-medium text-emerald-600">{p.reviewCount}</td>
@@ -597,7 +597,7 @@ export default function ReviewIQAnalytics() {
             </>
           )}
           {!reportLoading && !report && (
-            <div className="text-center py-12 text-gray-400">Failed to load weekly report. Try refreshing.</div>
+            <div className="text-center py-12 text-gray-500">Failed to load weekly report. Try refreshing.</div>
           )}
         </div>
       )}
