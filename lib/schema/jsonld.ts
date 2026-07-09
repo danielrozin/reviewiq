@@ -810,6 +810,10 @@ export function speakableSchema(productName: string, productUrl: string, datePub
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     author: { "@id": `${SITE_URL}/about#ai-review-team` },
+    copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+    license: `${SITE_URL}/terms`,
+    accessMode: ["textual", "visual"],
+    accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -847,6 +851,11 @@ export function blogPostSpeakableSchema(title: string, url: string, datePublishe
     mainEntity: { "@id": `${pageUrl}#article` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    author: { "@id": `${SITE_URL}/about#ai-review-team` },
+    copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+    license: `${SITE_URL}/terms`,
+    accessMode: ["textual", "visual"],
+    accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -951,6 +960,10 @@ export function threadPageSpeakableSchema(title: string, url: string, datePublis
     mainEntity: { "@id": `${pageUrl}#discussion` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
+    copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+    license: `${SITE_URL}/terms`,
+    accessMode: ["textual"],
+    accessibilityFeature: ["readingOrder", "structuralNavigation"],
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -1032,12 +1045,14 @@ export function profilePageSchema(
     "@type": "ProfilePage",
     "@id": `${pageUrl}#page`,
     name: `${displayName} — ReviewIQ Community`,
+    description: `Community profile for ${displayName} on ReviewIQ — reviews, threads, and expertise.`,
     url: pageUrl,
     inLanguage: "en",
     isAccessibleForFree: true,
     copyrightHolder: { "@id": `${SITE_URL}/#organization` },
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
+    accessibilityFeature: ["readingOrder", "structuralNavigation"],
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     ...(joinedAt && { dateCreated: joinedAt }),
@@ -1213,6 +1228,8 @@ export function comparisonSchema(productA: Product, productB: Product) {
     author: { "@id": `${SITE_URL}/about#ai-review-team` },
     datePublished,
     dateModified,
+    keywords: [productA.name, productB.name, `${productA.name} vs ${productB.name}`, productA.categorySlug?.replace(/-/g, " "), productB.categorySlug?.replace(/-/g, " ")].filter(Boolean).join(", "),
+    abstract: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews, SmartScore ratings, and expert analysis.`,
     about: [
       { "@type": "Product", "@id": `${SITE_URL}/category/${productA.categorySlug}/${productA.slug}#product` },
       { "@type": "Product", "@id": `${SITE_URL}/category/${productB.categorySlug}/${productB.slug}#product` },
