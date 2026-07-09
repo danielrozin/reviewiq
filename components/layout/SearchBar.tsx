@@ -162,7 +162,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
       <div className="relative">
         <svg
           aria-hidden="true"
-          className={`absolute top-1/2 -translate-y-1/2 text-gray-400 ${size === "lg" ? "left-4 w-5 h-5" : "left-3 w-4 h-4"}`}
+          className={`absolute top-1/2 -translate-y-1/2 text-gray-500 ${size === "lg" ? "left-4 w-5 h-5" : "left-3 w-4 h-4"}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"

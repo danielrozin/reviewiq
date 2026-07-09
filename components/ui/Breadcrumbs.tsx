@@ -28,7 +28,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
           </li>
           {items.map((item, index) => (
             <li key={item.url} className="flex items-center gap-1.5">
-              <span aria-hidden="true" className="text-gray-400">/</span>
+              <span aria-hidden="true" className="text-gray-500">/</span>
               {index === items.length - 1 ? (
                 <span aria-current="page" className="text-gray-900 font-medium truncate max-w-[10rem] sm:max-w-xs">{item.name}</span>
               ) : (

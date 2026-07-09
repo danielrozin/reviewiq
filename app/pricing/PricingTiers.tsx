@@ -59,7 +59,7 @@ export function PricingTiers() {
             <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
               <svg
                 aria-hidden="true"
-                className="w-5 h-5 text-gray-400 shrink-0 mt-0.5"
+                className="w-5 h-5 text-gray-500 shrink-0 mt-0.5"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={2}

@@ -26,7 +26,7 @@ export function CategorySearch({ categories }: CategorySearchProps) {
         <label htmlFor="category-search" className="sr-only">Search categories</label>
         <svg
           aria-hidden="true"
-          className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none"
+          className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth={2}
