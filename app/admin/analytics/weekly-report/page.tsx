@@ -159,7 +159,7 @@ export default function WeeklyReportPage() {
                 type="button"
                 onClick={() => setShowMarkdown(!showMarkdown)}
                 aria-pressed={showMarkdown}
-                className="px-3 py-1.5 text-xs font-medium border border-gray-300 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="px-3 py-1.5 text-xs font-medium border border-gray-400 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 {showMarkdown ? "Dashboard" : "Markdown"}
               </button>

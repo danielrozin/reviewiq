@@ -712,7 +712,7 @@ export default function AdminDashboard() {
                           }
                         }}
                         checked={reviews.length > 0 && selectedReviews.size === reviews.length}
-                        className="rounded border-gray-300"
+                        className="rounded border-gray-400"
                       />
                     </th>
                     <th scope="col" className="px-4 py-3 font-semibold text-gray-600">Review</th>
@@ -737,7 +737,7 @@ export default function AdminDashboard() {
                             else next.delete(r.id);
                             setSelectedReviews(next);
                           }}
-                          className="rounded border-gray-300"
+                          className="rounded border-gray-400"
                         />
                       </td>
                       <td className="px-4 py-3">
