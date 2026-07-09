@@ -1358,3 +1358,35 @@ function comparisonProductItem(product: Product) {
 
   return item;
 }
+
+export function siteNavigationSchema() {
+  const navItems = [
+    { name: "Products", url: "/products", description: "Browse all products with verified buyer reviews and SmartScore rankings" },
+    { name: "Categories", url: "/categories", description: "Explore product categories — electronics, home, health, and more" },
+    { name: "Blog", url: "/blog", description: "Buying guides, comparison articles, and expert consumer insights" },
+    { name: "Compare", url: "/compare", description: "Side-by-side product comparison based on verified reviews" },
+    { name: "Community", url: "/community", description: "Q&A threads and discussions from real product owners" },
+    { name: "Pricing", url: "/pricing", description: "ReviewIQ Pro plans — advanced tools, price alerts, and ad-free experience" },
+    { name: "Write a Review", url: "/write-review", description: "Share your verified purchase experience to help other buyers" },
+    { name: "About", url: "/about", description: "Learn how ReviewIQ's AI-powered review platform works" },
+  ];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${SITE_URL}/#navigation`,
+    name: "ReviewIQ Site Navigation",
+    description: "Primary navigation for ReviewIQ — AI-powered product review platform",
+    url: SITE_URL,
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    numberOfItems: navItems.length,
+    itemListElement: navItems.map((item, index) => ({
+      "@type": "SiteNavigationElement",
+      position: index + 1,
+      name: item.name,
+      description: item.description,
+      url: `${SITE_URL}${item.url}`,
+      isPartOf: { "@id": `${SITE_URL}/#navigation` },
+    })),
+  };
+}
