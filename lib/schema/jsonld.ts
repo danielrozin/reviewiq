@@ -825,6 +825,7 @@ export function speakableSchema(productName: string, productUrl: string, datePub
         "[data-speakable='faq-answer']",
         "[data-speakable='specifications']",
         "[data-speakable='compare-with']",
+        "[data-speakable='comparison-links']",
         "[data-speakable='recurring-issues']",
         "[data-speakable='people-also-reviewed']",
         "[data-speakable='related-products']",
@@ -1256,6 +1257,8 @@ export function comparisonSchema(productA: Product, productB: Product) {
         "[data-speakable='score-comparison']",
         "[data-speakable='specs-comparison']",
         "[data-speakable='price-comparison']",
+        "[data-speakable='comparison-links']",
+        "[data-speakable='faq-answer']",
       ],
     },
     mainEntity: {

@@ -10,7 +10,7 @@ import { VerdictCard } from "@/components/comparison/VerdictCard";
 import { BestForComparison } from "@/components/comparison/BestForComparison";
 import { PriceComparison } from "@/components/comparison/PriceComparison";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { comparisonSchema } from "@/lib/schema/jsonld";
+import { comparisonSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { AnalysisDisclosure } from "@/components/product/AnalysisDisclosure";
 import { ShareButtons } from "@/components/ui/ShareButtons";
 
@@ -60,6 +60,7 @@ export default async function ComparisonPage({ params }: Props) {
       <div className="max-w-4xl mx-auto px-4 py-8">
         <Breadcrumbs items={breadcrumbItems} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)) }} />
 
         {/* Header */}
         <div className="text-center mb-8">
