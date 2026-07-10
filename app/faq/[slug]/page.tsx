@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { competitorFaqPageSchema } from "@/lib/schema/jsonld";
+import { competitorFaqPageSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { faqPages, getFAQPageBySlug, getAllFAQSlugs } from "@/data/faq-pages";
 
 interface Props {
@@ -61,6 +61,10 @@ export default async function FAQPage({ params }: Props) {
         ]}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([
+        { name: "FAQ", url: "/faq" },
+        { name: page.title, url: `/faq/${page.slug}` },
+      ])) }} />
 
       {/* Hero */}
       <header data-speakable="faq-hero" className="mt-8 mb-12 max-w-3xl">
