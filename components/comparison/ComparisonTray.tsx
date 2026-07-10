@@ -1,16 +1,32 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useCompare } from "@/lib/context/CompareContext";
 import { cn, getScoreBgColor } from "@/lib/utils";
 
 export function ComparisonTray() {
   const { items, remove, clear } = useCompare();
+  const prevItemsRef = useRef(items);
+  const [announcement, setAnnouncement] = useState("");
+
+  useEffect(() => {
+    const prev = prevItemsRef.current;
+    if (prev.length < items.length) {
+      const added = items.find((p) => !prev.some((q) => q.id === p.id));
+      if (added) setAnnouncement(`${added.name} added to comparison (${items.length} of 4)`);
+    } else if (prev.length > items.length) {
+      const removed = prev.find((p) => !items.some((q) => q.id === p.id));
+      if (removed) setAnnouncement(`${removed.name} removed from comparison (${items.length} of 4)`);
+    }
+    prevItemsRef.current = items;
+  }, [items]);
 
   const compareUrl = `/compare?ids=${items.map((p) => p.id).join(",")}`;
 
   return (
-    <div aria-live="polite" aria-atomic="false" className="fixed bottom-0 inset-x-0 z-50 pointer-events-none">
+    <div className="fixed bottom-0 inset-x-0 z-50 pointer-events-none">
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">{announcement}</span>
       {items.length > 0 && <div
       role="region"
       aria-label="Product comparison tray"

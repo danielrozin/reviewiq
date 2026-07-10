@@ -177,10 +177,11 @@ export default async function UserProfilePage({ params }: Props) {
               Recent Comments ({userComments.length})
             </h2>
             {userComments.length > 0 ? (
-              <div className="space-y-3">
+              <ul role="list" className="space-y-3">
                 {userComments.slice(0, 5).map((comment) => (
-                  <div
-                    key={comment.id}
+                  <li key={comment.id}>
+                  <article
+                    aria-label={`Comment from ${new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(comment.createdAt))}`}
                     className="border border-gray-100 rounded-xl p-4 hover:border-gray-200 transition-colors"
                   >
                     <div className="flex items-center gap-2 mb-2">
@@ -213,9 +214,10 @@ export default async function UserProfilePage({ params }: Props) {
                       </span>
                       <span>{comment.helpfulCount} helpful</span>
                     </div>
-                  </div>
+                  </article>
+                  </li>
                 ))}
-              </div>
+              </ul>
             ) : (
               <div className="text-center py-10 px-6 bg-white border border-gray-100 rounded-2xl">
                 <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-xl flex items-center justify-center mx-auto mb-3">
