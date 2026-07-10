@@ -17,7 +17,7 @@ import {
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { discussionForumPostingSchema, threadPageSpeakableSchema } from "@/lib/schema/jsonld";
+import { discussionForumPostingSchema, threadPageSpeakableSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
@@ -64,6 +64,10 @@ export default async function ThreadPage({ params }: Props) {
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(discussionForumPostingSchema(thread, author?.displayName ?? "Anonymous", author?.username)) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(threadPageSpeakableSchema(thread.title, `/community/thread/${threadId}`, thread.createdAt, thread.lastActivityAt)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([
+        { name: "Community", url: "/community" },
+        { name: thread.title, url: `/community/thread/${threadId}` },
+      ])) }} />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 mt-8">
         {/* Main content */}
