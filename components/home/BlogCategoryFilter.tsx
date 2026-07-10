@@ -107,6 +107,7 @@ export function BlogCategoryFilter({ posts }: Props) {
       <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
           <li key={post.id}>
+          <article aria-labelledby={`blog-post-${post.id}-title`}>
           <Link
             href={`/blog/${post.slug}`}
             aria-label={`Read: ${post.title} — ${post.readingTime} min read`}
@@ -136,7 +137,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               </div>
             </div>
             <div className="p-6 flex flex-col flex-1">
-              <h3 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
+              <h3 id={`blog-post-${post.id}-title`} className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
                 {post.title}
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1 mb-4">
@@ -148,7 +149,14 @@ export function BlogCategoryFilter({ posts }: Props) {
                     {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
                   </span>
                 </div>
-                <span className="text-xs text-gray-600 flex-1 truncate">{post.author.name}</span>
+                <span className="text-xs text-gray-600 truncate">{post.author.name}</span>
+                <span aria-hidden="true" className="text-gray-200 text-xs shrink-0">·</span>
+                <time
+                  dateTime={post.publishedAt}
+                  className="text-xs text-gray-600 shrink-0"
+                >
+                  {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(post.publishedAt))}
+                </time>
                 <span aria-hidden="true" className="text-gray-200 text-xs shrink-0">·</span>
                 <span className="inline-flex items-center gap-1 text-xs text-gray-600 shrink-0">
                   <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -159,6 +167,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               </div>
             </div>
           </Link>
+          </article>
           </li>
         ))}
       </ul>

@@ -438,10 +438,11 @@ export default function HomePage() {
               View all articles <span aria-hidden="true">&rarr;</span>
             </Link>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
             {getRecentBlogPosts(3).map((post) => (
+              <li key={post.id}>
+              <article aria-labelledby={`home-blog-${post.id}-title`}>
               <Link
-                key={post.id}
                 href={`/blog/${post.slug}`}
                 className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
@@ -450,7 +451,7 @@ export default function HomePage() {
                 <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full self-start">
                   {post.categoryName}
                 </span>
-                <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2 flex-1 leading-snug">
+                <h3 id={`home-blog-${post.id}-title`} className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2 flex-1 leading-snug">
                   {post.title}
                 </h3>
                 <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
@@ -464,12 +465,18 @@ export default function HomePage() {
                   </div>
                   <span className="text-xs text-gray-600 truncate">{post.author.name}</span>
                   <span aria-hidden="true" className="text-gray-200 text-xs">·</span>
+                  <time dateTime={post.publishedAt} className="text-xs text-gray-600 shrink-0">
+                    {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(post.publishedAt))}
+                  </time>
+                  <span aria-hidden="true" className="text-gray-200 text-xs">·</span>
                   <span className="text-xs text-gray-600 shrink-0">{post.readingTime} min</span>
                 </div>
                 </div>
               </Link>
+              </article>
+              </li>
             ))}
-          </div>
+          </ul>
           <div className="text-center mt-6 sm:hidden">
             <Link
               href="/blog"
