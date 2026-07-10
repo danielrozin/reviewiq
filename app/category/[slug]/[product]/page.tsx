@@ -17,7 +17,7 @@ import { FAQSection } from "@/components/product/FAQSection";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productSchema, speakableSchema, faqSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
+import { productSchema, speakableSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
 import { formatNumber, productAverageRating } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
@@ -118,14 +118,10 @@ export default async function ProductPage({ params }: Props) {
           __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`)),
         }}
       />
-      {product.faq.length > 0 && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema(product.faq)),
-          }}
-        />
-      )}
+      {/* FAQ JSON-LD is emitted by <FAQSection> (rendered below, co-located with
+          the visible FAQ) — the single FAQPage source, matching the compare page.
+          Do NOT re-emit it here: two identical FAQPage nodes on one page make
+          Google drop the FAQ rich result. */}
       {videoSchemas.length > 0 && (
         <script
           type="application/ld+json"
