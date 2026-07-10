@@ -134,6 +134,27 @@ describe('productSchema', () => {
     const schema = productSchema({ ...mockProduct, reviews: manyReviews }) as Record<string, any>
     expect(schema.review).toHaveLength(5)
   })
+
+  it('folds Best For / Not Ideal For into a single Product node as additionalProperty', () => {
+    const withSummary = {
+      ...mockProduct,
+      aiSummary: { bestFor: ['Large homes', 'Pet owners'], notFor: ['Tight budgets'] },
+    }
+    const schema = productSchema(withSummary) as Record<string, any>
+    expect(schema.additionalProperty).toHaveLength(3)
+    const bestFor = schema.additionalProperty.filter((p: any) => p.name === 'Best For')
+    const notFor = schema.additionalProperty.filter((p: any) => p.name === 'Not Ideal For')
+    expect(bestFor.map((p: any) => p.value)).toEqual(['Large homes', 'Pet owners'])
+    expect(notFor.map((p: any) => p.value)).toEqual(['Tight budgets'])
+    // Single canonical Product node — the buyer-fit signals hang off the same
+    // node that carries offers/aggregateRating/review, not a second entity.
+    expect(schema['@type']).toBe('Product')
+  })
+
+  it('omits additionalProperty when aiSummary is absent (no empty array)', () => {
+    const schema = productSchema(mockProduct) as Record<string, any>
+    expect(schema.additionalProperty).toBeUndefined()
+  })
 })
 
 describe('reviewSchema', () => {
