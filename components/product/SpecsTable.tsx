@@ -32,12 +32,12 @@ export function SpecsTable({ specs }: SpecsTableProps) {
       </div>
       <dl className="border border-gray-100 rounded-xl overflow-hidden">
         {groupEntries.map(([groupName, groupSpecs], gi) => (
-          <div key={groupName}>
+          <div key={groupName} role={groupEntries.length > 1 ? "group" : undefined} aria-label={groupEntries.length > 1 ? groupName : undefined}>
             {groupEntries.length > 1 && (
-              <dt className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between">
+              <div className="px-4 py-2 bg-gray-50 border-b border-gray-100 flex items-center justify-between" aria-hidden="true">
                 <span className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{groupName}</span>
-                <span aria-hidden="true" className="text-xs text-gray-600">{groupSpecs.length}</span>
-              </dt>
+                <span className="text-xs text-gray-600">{groupSpecs.length}</span>
+              </div>
             )}
             {groupSpecs.map((spec, si) => (
               <div
