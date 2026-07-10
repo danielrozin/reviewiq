@@ -191,11 +191,13 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
       )}
 
       {/* Reviews list */}
-      <div className="space-y-4">
+      <ul className="space-y-4" aria-label="Customer reviews">
         {sortedReviews.map((review) => (
-          <ReviewCardWithVoting key={review.id} review={review} />
+          <li key={review.id}>
+            <ReviewCardWithVoting review={review} />
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

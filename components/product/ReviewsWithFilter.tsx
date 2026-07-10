@@ -161,11 +161,13 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           </button>
         </div>
       ) : (
-        <div className="space-y-4" data-speakable="review-list">
+        <ul className="space-y-4" data-speakable="review-list" aria-label="Customer reviews">
           {shown.map((review) => (
-            <ReviewCard key={review.id} review={review} />
+            <li key={review.id}>
+              <ReviewCard review={review} />
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {/* Load more */}
