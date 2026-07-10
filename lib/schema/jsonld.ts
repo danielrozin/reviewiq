@@ -1,5 +1,6 @@
 import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
+import { productAverageRating } from "@/lib/utils";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
@@ -87,10 +88,10 @@ export function breadcrumbSchema(
 
 export function productSchema(product: Product) {
   const ratingCount = product.reviewCount || product.reviews.length;
-  const avgRating =
-    product.reviews.length > 0
-      ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
-      : 0;
+  // Average over the full review population (ratingDistribution), not the small
+  // sample in product.reviews — so ratingValue matches the reviewCount it is
+  // paired with and the on-page rating summary / OG card.
+  const avgRating = productAverageRating(product);
 
   const buildDate = new Date().toISOString().split("T")[0];
 
@@ -557,10 +558,9 @@ export function communityThreadSchema(
 
 function comparisonProductItem(product: Product) {
   const ratingCount = product.reviewCount || product.reviews.length;
-  const avgRating =
-    product.reviews.length > 0
-      ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
-      : 0;
+  // Full-population average (see productSchema) so the comparison Product node's
+  // ratingValue is consistent with its reviewCount.
+  const avgRating = productAverageRating(product);
 
   const item: Record<string, unknown> = {
     "@type": "Product",

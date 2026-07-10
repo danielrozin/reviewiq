@@ -5,6 +5,7 @@ import { ArrowUpDown, CheckCircle2, Lock } from "lucide-react";
 import type { Review, RatingDistribution as RatingDistType } from "@/types";
 import { RatingStars } from "@/components/ui/RatingStars";
 import { VerificationBadge } from "@/components/ui/VerificationBadge";
+import { averageRatingFromDistribution } from "@/lib/utils";
 import { ReviewVoting } from "./ReviewVoting";
 import { useSubscription } from "@/lib/context/SubscriptionContext";
 import { UpgradePrompt } from "@/components/premium/UpgradePrompt";
@@ -45,6 +46,8 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
     setSortBy(option);
   };
 
+  const averageRating = averageRatingFromDistribution(ratingDistribution, totalReviews);
+
   const sortedReviews = useMemo(() => {
     const sorted = [...reviews];
     switch (sortBy) {
@@ -75,26 +78,9 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
           {/* Average rating */}
           <div className="flex flex-col items-center justify-center sm:min-w-[140px]">
             <span className="text-4xl font-bold text-gray-900">
-              {totalReviews > 0
-                ? (
-                    Object.entries(ratingDistribution).reduce(
-                      (sum, [star, count]) => sum + Number(star) * count,
-                      0
-                    ) / totalReviews
-                  ).toFixed(1)
-                : "0.0"}
+              {totalReviews > 0 ? averageRating.toFixed(1) : "0.0"}
             </span>
-            <RatingStars
-              rating={
-                totalReviews > 0
-                  ? Object.entries(ratingDistribution).reduce(
-                      (sum, [star, count]) => sum + Number(star) * count,
-                      0
-                    ) / totalReviews
-                  : 0
-              }
-              size="sm"
-            />
+            <RatingStars rating={averageRating} size="sm" />
             <span className="text-xs text-gray-400 mt-1">
               {totalReviews} reviews
             </span>

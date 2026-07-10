@@ -18,7 +18,7 @@ import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { productSchema, speakableSchema, faqSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
-import { formatNumber } from "@/lib/utils";
+import { formatNumber, productAverageRating } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
 import { PeopleAlsoReviewed } from "@/components/product/PeopleAlsoReviewed";
 import {
@@ -67,11 +67,10 @@ export default async function ProductPage({ params }: Props) {
 
   const productDiscussions = getDiscussionsByProduct(product.slug);
 
-  const avgRating =
-    product.reviews.length > 0
-      ? product.reviews.reduce((sum, r) => sum + r.rating, 0) /
-        product.reviews.length
-      : 0;
+  // Full-population average (from ratingDistribution/reviewCount) so the hero star
+  // rating matches the review-section summary, OG card, and Product JSON-LD instead
+  // of averaging only the small sample in product.reviews.
+  const avgRating = productAverageRating(product);
 
   // Same-category related products (exclude current)
   const relatedSameCategory = getProductsByCategory(slug)
