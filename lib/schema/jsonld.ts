@@ -124,6 +124,26 @@ export function productSchema(product: Product) {
     schema.review = product.reviews.slice(0, 5).map((r) => reviewSchema(r));
   }
 
+  // Fold the "Best For / Not Ideal For" buyer-fit signals into this single
+  // canonical Product node. These previously rendered as a SEPARATE, second
+  // Product JSON-LD node (components/product/BestFor.tsx) whose url pointed at a
+  // non-www /category/{slug} path that 404s — a duplicate, unlinked entity with
+  // an invalid URL. Attaching them here keeps one Product entity per page and
+  // hangs the fit signals off the node that also carries offers/rating/reviews.
+  const additionalProperty = [
+    ...(product.aiSummary?.bestFor ?? []).map((value) => ({
+      "@type": "PropertyValue",
+      name: "Best For",
+      value,
+    })),
+    ...(product.aiSummary?.notFor ?? []).map((value) => ({
+      "@type": "PropertyValue",
+      name: "Not Ideal For",
+      value,
+    })),
+  ];
+  if (additionalProperty.length > 0) schema.additionalProperty = additionalProperty;
+
   // Google requires at least one of offers/aggregateRating/review for Product
   // rich results. Suppress the schema entirely rather than emit an invalid node.
   if (!schema.offers && !schema.aggregateRating && !schema.review) return null;

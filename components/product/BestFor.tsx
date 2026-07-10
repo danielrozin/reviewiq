@@ -2,37 +2,17 @@ import type { AISummary } from "@/types";
 
 interface BestForProps {
   summary: AISummary;
-  productName: string;
-  productSlug: string;
 }
 
-export function BestFor({ summary, productName, productSlug }: BestForProps) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: productName,
-    url: `https://revieweriq.com/category/${productSlug}`,
-    description: `Best for: ${summary.bestFor.join(", ")}. Not ideal for: ${summary.notFor.join(", ")}.`,
-    additionalProperty: [
-      ...summary.bestFor.map((item) => ({
-        "@type": "PropertyValue",
-        name: "Best For",
-        value: item,
-      })),
-      ...summary.notFor.map((item) => ({
-        "@type": "PropertyValue",
-        name: "Not Ideal For",
-        value: item,
-      })),
-    ],
-  };
-
+export function BestFor({ summary }: BestForProps) {
+  // Structured-data note: the "Best For / Not Ideal For" PropertyValue signals
+  // are emitted as additionalProperty on the single canonical Product node in
+  // productSchema() (lib/schema/jsonld.ts). This component used to render its own
+  // second Product JSON-LD node with a non-www /category/{slug} url that 404s —
+  // a duplicate, unlinked entity with an invalid URL — so it no longer emits any
+  // JSON-LD of its own. Keep it presentational only.
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <section
         data-speakable="best-for"
         className="grid grid-cols-1 sm:grid-cols-2 gap-4 rounded-2xl overflow-hidden border border-gray-100"
