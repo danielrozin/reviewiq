@@ -31,6 +31,12 @@ vi.mock("@/components/ui/RatingStars", () => ({
 
 vi.mock("@/lib/utils", () => ({
   formatNumber: (n: number) => n.toLocaleString(),
+  productAverageRating: (p: any) => {
+    const d = p.ratingDistribution;
+    const total = p.reviewCount || 0;
+    if (!d || total <= 0) return 0;
+    return (d[5] * 5 + d[4] * 4 + d[3] * 3 + d[2] * 2 + d[1] * 1) / total;
+  },
 }));
 
 const mockAdd = vi.fn();

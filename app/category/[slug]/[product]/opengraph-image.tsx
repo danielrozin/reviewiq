@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { getProductBySlug } from "@/data/products";
 import { getCategoryBySlug } from "@/data/categories";
 import { OGImageLayout, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og/shared";
+import { averageRatingFromDistribution } from "@/lib/utils";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
@@ -27,11 +28,9 @@ export default async function OGImage({
     );
   }
 
-  const rating = (
-    Object.entries(product.ratingDistribution).reduce(
-      (sum, [stars, count]) => sum + Number(stars) * count,
-      0
-    ) / product.reviewCount
+  const rating = averageRatingFromDistribution(
+    product.ratingDistribution,
+    product.reviewCount
   ).toFixed(1);
 
   const scoreColor =

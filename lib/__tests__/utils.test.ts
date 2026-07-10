@@ -1,5 +1,12 @@
 import { describe, it, expect } from 'vitest'
-import { formatNumber, getScoreColor, getScoreBgColor, getScoreLabel } from '../utils'
+import {
+  formatNumber,
+  getScoreColor,
+  getScoreBgColor,
+  getScoreLabel,
+  averageRatingFromDistribution,
+  productAverageRating,
+} from '../utils'
 
 describe('formatNumber', () => {
   it('returns plain number for values under 1000', () => {
@@ -84,5 +91,49 @@ describe('getScoreLabel', () => {
   it('returns Poor for scores < 50', () => {
     expect(getScoreLabel(49)).toBe('Poor')
     expect(getScoreLabel(0)).toBe('Poor')
+  })
+})
+
+describe('averageRatingFromDistribution', () => {
+  it('computes the weighted average over the full population', () => {
+    // 342 reviews: (5*185 + 4*98 + 3*32 + 2*18 + 1*9) / 342 = 1458 / 342 = 4.263...
+    const avg = averageRatingFromDistribution({ 5: 185, 4: 98, 3: 32, 2: 18, 1: 9 }, 342)
+    expect(avg).toBeCloseTo(4.263, 2)
+  })
+
+  it('returns 0 for a missing distribution or non-positive total', () => {
+    expect(averageRatingFromDistribution(undefined, 342)).toBe(0)
+    expect(averageRatingFromDistribution({ 5: 1, 4: 0, 3: 0, 2: 0, 1: 0 }, 0)).toBe(0)
+  })
+})
+
+describe('productAverageRating', () => {
+  it('prefers the distribution average over the small review sample', () => {
+    // Sample reviews average 5.0, but the full distribution averages ~4.26 —
+    // the distribution (tied to reviewCount) must win.
+    const product = {
+      reviewCount: 342,
+      ratingDistribution: { 5: 185, 4: 98, 3: 32, 2: 18, 1: 9 },
+      reviews: [{ rating: 5 }, { rating: 5 }],
+    } as any
+    expect(productAverageRating(product)).toBeCloseTo(4.263, 2)
+  })
+
+  it('falls back to the sample-review average when no distribution data exists', () => {
+    const product = {
+      reviewCount: 0,
+      ratingDistribution: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+      reviews: [{ rating: 5 }, { rating: 4 }],
+    } as any
+    expect(productAverageRating(product)).toBe(4.5)
+  })
+
+  it('returns 0 when there is neither distribution data nor reviews', () => {
+    const product = {
+      reviewCount: 0,
+      ratingDistribution: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+      reviews: [],
+    } as any
+    expect(productAverageRating(product)).toBe(0)
   })
 })

@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { Product } from "@/types";
 import { SmartScore } from "@/components/ui/SmartScore";
 import { RatingStars } from "@/components/ui/RatingStars";
-import { formatNumber } from "@/lib/utils";
+import { formatNumber, productAverageRating } from "@/lib/utils";
 import { useCompare } from "@/lib/context/CompareContext";
 import { useExperiment } from "@/lib/experiments";
 
@@ -17,10 +17,9 @@ export function ProductCard({ product }: ProductCardProps) {
   const isSelected = has(product.id);
   const { variant: badgeVariant } = useExperiment("social-proof-badges");
 
-  const avgRating =
-    product.reviews.length > 0
-      ? product.reviews.reduce((sum, r) => sum + r.rating, 0) / product.reviews.length
-      : 0;
+  // Full-population average so the card's stars match the "{reviewCount} reviews"
+  // label beside them (not the small product.reviews sample).
+  const avgRating = productAverageRating(product);
 
   function handleCompare(e: React.MouseEvent) {
     e.preventDefault();

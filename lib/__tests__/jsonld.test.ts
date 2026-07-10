@@ -97,10 +97,23 @@ describe('productSchema', () => {
     ],
   } as any
 
-  it('calculates average rating correctly', () => {
+  it('falls back to the sample-review average when no distribution exists', () => {
     const schema = productSchema(mockProduct) as Record<string, any>
     expect(schema.aggregateRating.ratingValue).toBe('4.5')
     expect(schema.aggregateRating.reviewCount).toBe(10)
+  })
+
+  it('derives ratingValue from the full ratingDistribution, not the sample reviews', () => {
+    // Sample reviews average 4.5, but the full 342-review distribution averages
+    // 4.26 — ratingValue must match the reviewCount it is paired with.
+    const withDistribution = {
+      ...mockProduct,
+      reviewCount: 342,
+      ratingDistribution: { 5: 185, 4: 98, 3: 32, 2: 18, 1: 9 },
+    }
+    const schema = productSchema(withDistribution) as Record<string, any>
+    expect(schema.aggregateRating.ratingValue).toBe('4.3')
+    expect(schema.aggregateRating.reviewCount).toBe(342)
   })
 
   it('omits aggregateRating and review when product has no reviews', () => {
