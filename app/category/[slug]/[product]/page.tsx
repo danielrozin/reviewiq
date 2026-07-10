@@ -329,39 +329,39 @@ export default async function ProductPage({ params }: Props) {
         <aside aria-label="Product sidebar" className="space-y-8">
           {/* Quick Stats */}
           <div className="bg-gray-50 rounded-2xl p-6 space-y-4 sticky top-24">
-            <h2 className="font-semibold text-gray-900">Quick Stats</h2>
-            <div className="space-y-3">
+            <h2 id="quick-stats-heading" className="font-semibold text-gray-900">Quick Stats</h2>
+            <dl className="space-y-3" aria-labelledby="quick-stats-heading">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">SmartScore</span>
-                <span className="font-semibold text-gray-900">
+                <dt className="text-gray-600">SmartScore</dt>
+                <dd className="font-semibold text-gray-900">
                   {product.smartScore}/100
-                </span>
+                </dd>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Avg Rating</span>
-                <span className="font-semibold text-gray-900">
+                <dt className="text-gray-600">Avg Rating</dt>
+                <dd className="font-semibold text-gray-900">
                   {avgRating.toFixed(1)}/5
-                </span>
+                </dd>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Total Reviews</span>
-                <span className="font-semibold text-gray-900">
+                <dt className="text-gray-600">Total Reviews</dt>
+                <dd className="font-semibold text-gray-900">
                   {formatNumber(product.reviewCount)}
-                </span>
+                </dd>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Verified Rate</span>
-                <span className="font-semibold text-emerald-600">
+                <dt className="text-gray-600">Verified Rate</dt>
+                <dd className="font-semibold text-emerald-600">
                   {product.verifiedPurchaseRate}%
-                </span>
+                </dd>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Price Range</span>
-                <span className="font-semibold text-gray-900">
+                <dt className="text-gray-600">Price Range</dt>
+                <dd className="font-semibold text-gray-900">
                   ${product.priceRange.min}–${product.priceRange.max}
-                </span>
+                </dd>
               </div>
-            </div>
+            </dl>
 
             {/* Top Complaints */}
             <div className="pt-4 border-t border-gray-200">

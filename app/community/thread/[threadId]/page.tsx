@@ -282,20 +282,24 @@ export default async function ThreadPage({ params }: Props) {
                 </div>
               ))}
             </div>
-            <div className="space-y-2 text-sm border-t border-gray-50 pt-4">
+            <dl className="space-y-2 text-sm border-t border-gray-50 pt-4">
               <div className="flex justify-between">
-                <span className="text-gray-600">Created</span>
-                <time dateTime={thread.createdAt} className="font-medium text-gray-700 text-xs">
-                  {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
-                </time>
+                <dt className="text-gray-600">Created</dt>
+                <dd>
+                  <time dateTime={thread.createdAt} className="font-medium text-gray-700 text-xs">
+                    {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.createdAt))}
+                  </time>
+                </dd>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600">Last activity</span>
-                <time dateTime={thread.lastActivityAt} className="font-medium text-gray-700 text-xs">
-                  {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.lastActivityAt))}
-                </time>
+                <dt className="text-gray-600">Last activity</dt>
+                <dd>
+                  <time dateTime={thread.lastActivityAt} className="font-medium text-gray-700 text-xs">
+                    {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.lastActivityAt))}
+                  </time>
+                </dd>
               </div>
-            </div>
+            </dl>
 
             {/* Author card */}
             {author && (
