@@ -15,6 +15,7 @@ import {
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { communityThreadSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
 interface Props {
@@ -46,13 +47,25 @@ export default async function ThreadPage({ params }: Props) {
   const author = getUserById(thread.authorId);
   const threadComments = getCommentsByThread(thread.id);
 
+  const jsonLd = communityThreadSchema(
+    thread,
+    threadComments,
+    (authorId) => getUserById(authorId)?.displayName || ""
+  );
+
   // Related threads from same category
   const related = getDiscussionsByCategory(thread.categorySlug || "")
     .filter((d) => d.id !== thread.id)
     .slice(0, 3);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs
         items={[
           { name: "Community", url: "/community" },
@@ -311,6 +324,7 @@ export default async function ThreadPage({ params }: Props) {
           )}
         </aside>
       </div>
-    </div>
+      </div>
+    </>
   );
 }
