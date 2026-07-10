@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { categories } from "@/data/categories";
 import { products } from "@/data/products";
 import { discussions } from "@/data/discussions";
+import { users } from "@/data/users";
 import { getAllBlogPosts, getBlogCategories } from "@/data/blog-posts";
 import { getAllComparisonPairs } from "@/data/comparisons";
 import { faqPages } from "@/data/faq-pages";
@@ -76,6 +77,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.6,
     })),
   ];
+
+  // Community author/user profile pages — statically generated for every user
+  // (generateStaticParams over static `users`), self-canonical, and indexable
+  // (buildMetadata defaults to index:true; no noIndex). They carry author-authority
+  // / E-E-A-T signals for the analyses and comments those users author, but were
+  // previously absent from the sitemap (discovery gap). Scoped to static `users`
+  // only: the route resolves via getUserByUsername (static data), so any DB-only
+  // username would 404 here and must be excluded — mirrors the whereToBuyPages scoping.
+  const communityUserPages: MetadataRoute.Sitemap = users.map((u) => ({
+    url: `${siteUrl}/community/user/${u.username}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
 
   // Dynamic DB products and discussions (if Prisma is available)
   let dbProductPages: MetadataRoute.Sitemap = [];
@@ -173,6 +188,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...whereToBuyPages,
     ...comparisonPages,
     ...communityPages,
+    ...communityUserPages,
     ...blogPages,
     ...faqLandingPages,
     ...dbProductPages,
