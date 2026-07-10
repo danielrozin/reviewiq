@@ -12,33 +12,66 @@ export const revalidate = 3600; // Revalidate every hour
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
-  const now = new Date();
+
+  // Truthful <lastmod> policy — do NOT stamp every URL with `new Date()`.
+  // This route is `force-dynamic` + `revalidate: 3600`, so a per-request `now`
+  // makes the sitemap claim ~90% of URLs changed *every hour*. Google explicitly
+  // discounts lastmod when it is not a trustworthy content-change signal, and that
+  // discount applies site-wide — including for the blog/product pages whose dates
+  // ARE accurate. So we derive lastmod from the underlying content instead:
+  //   • product / where-to-buy / category / comparison pages → the product's own
+  //     updatedAt||createdAt (auto-updates only when the catalog data changes);
+  //   • undated static pages (nav, faq, legal, author profiles) → a committed
+  //     constant that a developer bumps when that content is materially revised.
+  // A stable constant is honest ("last revised on this date") and, crucially, does
+  // not churn on every hourly revalidation the way `new Date()` did.
+  const SITE_CONTENT_REVISED = new Date("2026-07-10T00:00:00.000Z");
+
+  const productLastMod = (p: { updatedAt?: string; createdAt?: string }): Date => {
+    const d = p.updatedAt || p.createdAt;
+    return d ? new Date(d) : SITE_CONTENT_REVISED;
+  };
+  const maxDate = (dates: Date[], fallback: Date): Date => {
+    const latest = dates.reduce((max, d) => (d > max ? d : max), new Date(0));
+    return latest.getTime() > 0 ? latest : fallback;
+  };
+
+  // Freshest catalog date — a defensible lastmod for catalog-surfacing index pages
+  // (home, /categories, /products, /compare, /community, /blog roots), which change
+  // in substance whenever a new product/analysis lands.
+  const catalogLastMod = maxDate(products.map(productLastMod), SITE_CONTENT_REVISED);
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: siteUrl, lastModified: now, changeFrequency: "daily", priority: 1 },
-    { url: `${siteUrl}/categories`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${siteUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${siteUrl}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
-    { url: `${siteUrl}/how-we-work`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
-    { url: `${siteUrl}/write-review`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
+    { url: siteUrl, lastModified: catalogLastMod, changeFrequency: "daily", priority: 1 },
+    { url: `${siteUrl}/categories`, lastModified: catalogLastMod, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${siteUrl}/about`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${siteUrl}/how-it-works`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${siteUrl}/how-we-work`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "monthly", priority: 0.5 },
+    { url: `${siteUrl}/write-review`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "monthly", priority: 0.7 },
     // NOTE: /search intentionally omitted — there is no /search page route (only the
     // /api/search handler), so listing it submitted a 404 URL and eroded crawl trust.
-    { url: `${siteUrl}/site-map`, lastModified: now, changeFrequency: "daily", priority: 0.6 },
+    { url: `${siteUrl}/site-map`, lastModified: catalogLastMod, changeFrequency: "daily", priority: 0.6 },
     // High-value indexable pages previously absent from the sitemap (discovery gap).
-    { url: `${siteUrl}/products`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${siteUrl}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${siteUrl}/pricing`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${siteUrl}/who-is-this-for`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${siteUrl}/products`, lastModified: catalogLastMod, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteUrl}/compare`, lastModified: catalogLastMod, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${siteUrl}/pricing`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "monthly", priority: 0.7 },
+    { url: `${siteUrl}/who-is-this-for`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "monthly", priority: 0.6 },
     // Legal/policy pages — low priority but legitimate for completeness.
-    { url: `${siteUrl}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${siteUrl}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${siteUrl}/cookie-policy`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${siteUrl}/acceptable-use`, lastModified: now, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/privacy`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/terms`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/cookie-policy`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${siteUrl}/acceptable-use`, lastModified: SITE_CONTENT_REVISED, changeFrequency: "yearly", priority: 0.3 },
   ];
 
+  // A category page lists its products, so its truthful lastmod is the most recent
+  // product date within that category (fallback to the catalog baseline for empty
+  // categories).
   const categoryPages: MetadataRoute.Sitemap = categories.map((cat) => ({
     url: `${siteUrl}/category/${cat.slug}`,
-    lastModified: now,
+    lastModified: maxDate(
+      products.filter((p) => p.categorySlug === cat.slug).map(productLastMod),
+      catalogLastMod
+    ),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
@@ -46,7 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Static product pages
   const productPages: MetadataRoute.Sitemap = products.map((p) => ({
     url: `${siteUrl}/category/${p.categorySlug}/${p.slug}`,
-    lastModified: now,
+    lastModified: productLastMod(p),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));
@@ -57,7 +90,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // data), so DB-only products 404 here and must be excluded.
   const whereToBuyPages: MetadataRoute.Sitemap = products.map((p) => ({
     url: `${siteUrl}/category/${p.categorySlug}/${p.slug}/where-to-buy`,
-    lastModified: now,
+    lastModified: productLastMod(p),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }));
@@ -66,13 +99,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const communityPages: MetadataRoute.Sitemap = [
     {
       url: `${siteUrl}/community`,
-      lastModified: now,
+      lastModified: maxDate(
+        discussions
+          .map((t) => t.lastActivityAt && new Date(t.lastActivityAt))
+          .filter((d): d is Date => d instanceof Date),
+        SITE_CONTENT_REVISED
+      ),
       changeFrequency: "daily" as const,
       priority: 0.8,
     },
     ...discussions.map((thread) => ({
       url: `${siteUrl}/community/thread/${thread.id}`,
-      lastModified: thread.lastActivityAt ? new Date(thread.lastActivityAt) : now,
+      lastModified: thread.lastActivityAt ? new Date(thread.lastActivityAt) : SITE_CONTENT_REVISED,
       changeFrequency: "weekly" as const,
       priority: 0.6,
     })),
@@ -87,7 +125,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // username would 404 here and must be excluded — mirrors the whereToBuyPages scoping.
   const communityUserPages: MetadataRoute.Sitemap = users.map((u) => ({
     url: `${siteUrl}/community/user/${u.username}`,
-    lastModified: now,
+    lastModified: SITE_CONTENT_REVISED,
     changeFrequency: "weekly" as const,
     priority: 0.5,
   }));
@@ -133,10 +171,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }
 
   // Comparison pages
+  // A comparison page is derived from its two products, so its truthful lastmod is
+  // the more recent of the two product dates.
   const comparisonPairs = getAllComparisonPairs();
   const comparisonPages: MetadataRoute.Sitemap = comparisonPairs.map((pair) => ({
     url: `${siteUrl}/compare/${pair.slug}`,
-    lastModified: now,
+    lastModified: maxDate(
+      [productLastMod(pair.productA), productLastMod(pair.productB)],
+      catalogLastMod
+    ),
     changeFrequency: "weekly" as const,
     priority: 0.8,
   }));
@@ -144,16 +187,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Blog posts
   const blogPosts = getAllBlogPosts();
   const blogCategories = getBlogCategories();
+  // Blog index/category pages list posts, so their truthful lastmod is the newest
+  // post date.
+  const blogListLastMod = maxDate(
+    blogPosts.map((post) => new Date(post.updatedAt)),
+    SITE_CONTENT_REVISED
+  );
   const blogPages: MetadataRoute.Sitemap = [
     {
       url: `${siteUrl}/blog`,
-      lastModified: now,
+      lastModified: blogListLastMod,
       changeFrequency: "weekly" as const,
       priority: 0.8,
     },
     ...blogCategories.map((cat) => ({
       url: `${siteUrl}/blog/category/${cat.slug}`,
-      lastModified: now,
+      lastModified: blogListLastMod,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
@@ -169,13 +218,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const faqLandingPages: MetadataRoute.Sitemap = [
     {
       url: `${siteUrl}/faq`,
-      lastModified: now,
+      lastModified: SITE_CONTENT_REVISED,
       changeFrequency: "weekly" as const,
       priority: 0.7,
     },
     ...faqPages.map((page) => ({
       url: `${siteUrl}/faq/${page.slug}`,
-      lastModified: now,
+      lastModified: SITE_CONTENT_REVISED,
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
