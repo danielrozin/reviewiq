@@ -42,7 +42,6 @@ export function ComparisonModule({
           return (
             <li key={comp.productId}>
             <Link
-              key={comp.productId}
               href={`/compare/${compSlug}`}
               aria-label={`Compare ${currentProduct} vs ${comp.productName}`}
               className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:bg-brand-50/30 hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"

@@ -136,13 +136,13 @@ export default function PricingPage() {
         </div>
 
         {/* Testimonials row */}
-        <div className="grid sm:grid-cols-3 gap-4 mt-4">
+        <ul className="grid sm:grid-cols-3 gap-4 mt-4 list-none p-0 m-0">
           {[
             { quote: "Saved me from buying a $600 vacuum that reviewers called a fire hazard.", name: "Sarah K.", role: "Pro member" },
             { quote: "The AI summaries are scary good. I can read a product in 30 seconds.", name: "Marcus T.", role: "Pro member since 2024" },
             { quote: "Compared 4 coffee machines in 5 minutes. No other site comes close.", name: "Priya L.", role: "Verified buyer" },
           ].map((t) => (
-            <div key={t.name} className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+            <li key={t.name} className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="p-5">
               <p className="text-sm text-gray-600 leading-relaxed italic mb-3">&ldquo;{t.quote}&rdquo;</p>
@@ -151,9 +151,9 @@ export default function PricingPage() {
                 <p className="text-xs text-gray-600">{t.role}</p>
               </div>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       {/* Pricing cards */}
