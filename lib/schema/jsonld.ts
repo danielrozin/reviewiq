@@ -307,6 +307,33 @@ export function productsHubSchema(products: Product[]) {
   };
 }
 
+// The /community index is a forum listing. Each thread already emits its own
+// QAPage / DiscussionForumPosting node on /community/thread/[id] (see
+// communityThreadSchema); the hub itself was schema-less. A CollectionPage +
+// ItemList of every thread lets answer engines treat the index as the canonical
+// entry point to the discussion set and surface it in list-style rich results,
+// matching the pattern used for the /compare, /products, and /faq hubs.
+export function communityHubSchema(threads: DiscussionThread[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "ReviewIQ Community",
+    description:
+      "Real conversations about real products. Ask questions, share experiences, and help others make smarter buying decisions on ReviewIQ.",
+    url: `${SITE_URL}/community`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: threads.length,
+      itemListElement: threads.map((thread, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: thread.title,
+        url: `${SITE_URL}/community/thread/${thread.id}`,
+      })),
+    },
+  };
+}
+
 export function videoObjectSchema(video: YouTubeVideo, productName: string) {
   return {
     "@context": "https://schema.org",
