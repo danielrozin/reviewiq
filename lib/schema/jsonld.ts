@@ -279,6 +279,34 @@ export function faqHubSchema(pages: { slug: string; title: string }[]) {
   };
 }
 
+// The /products catalog hub is a server-rendered directory whose actual product
+// grid is filled by a client-side search/filter component, so the HTML shipped no
+// structured data — unlike the /compare and /category hubs which already emit
+// CollectionPage + ItemList. This enumerates every catalog product's canonical
+// page so answer engines can discover and treat the catalog as one curated
+// collection (potential list/sitelink treatment) and follow the internal links to
+// each money page. URLs mirror the sitemap exactly: /category/{categorySlug}/{slug}.
+export function productsHubSchema(products: Product[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Browse All Products",
+    description:
+      "Every product on ReviewIQ, scored on SmartScore, price, and verified buyer reviews across all categories.",
+    url: `${SITE_URL}/products`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: products.length,
+      itemListElement: products.map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: `${product.brand} ${product.name}`,
+        url: `${SITE_URL}/category/${product.categorySlug}/${product.slug}`,
+      })),
+    },
+  };
+}
+
 export function videoObjectSchema(video: YouTubeVideo, productName: string) {
   return {
     "@context": "https://schema.org",
