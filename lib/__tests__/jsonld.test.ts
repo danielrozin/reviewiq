@@ -17,6 +17,7 @@ import {
   comparisonSchema,
   blogPostSchema,
   communityThreadSchema,
+  faqHubSchema,
 } from '../schema/jsonld'
 import type { DiscussionThread, Comment } from '@/types'
 
@@ -209,6 +210,23 @@ describe('categoryListSchema', () => {
     expect(schema.itemListElement).toHaveLength(2)
     expect(schema.itemListElement[0].position).toBe(1)
     expect(schema.itemListElement[1].url).toContain('/category/audio')
+  })
+})
+
+describe('faqHubSchema', () => {
+  it('generates a CollectionPage with an ItemList of FAQ topic pages', () => {
+    const schema = faqHubSchema([
+      { slug: 'trustpilot', title: 'Trustpilot FAQ' },
+      { slug: 'yelp', title: 'Yelp FAQ' },
+    ] as any)
+    expect(schema['@type']).toBe('CollectionPage')
+    expect(schema.url).toContain('/faq')
+    expect(schema.mainEntity['@type']).toBe('ItemList')
+    expect(schema.mainEntity.numberOfItems).toBe(2)
+    expect(schema.mainEntity.itemListElement).toHaveLength(2)
+    expect(schema.mainEntity.itemListElement[0].position).toBe(1)
+    expect(schema.mainEntity.itemListElement[0].name).toBe('Trustpilot FAQ')
+    expect(schema.mainEntity.itemListElement[1].url).toContain('/faq/yelp')
   })
 })
 

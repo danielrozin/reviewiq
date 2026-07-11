@@ -253,6 +253,32 @@ export function comparisonHubSchema(
   };
 }
 
+// The /faq index is a hub linking to individual FAQ topic pages — it holds no
+// Q&A pairs itself, so FAQPage schema would be wrong here (Google requires the
+// Q&A to be visible on the page emitting FAQPage). CollectionPage + ItemList is
+// the correct, truthful type for a directory of topic pages — mirrors
+// comparisonHubSchema so Google can surface the hub and its sitelinks.
+export function faqHubSchema(pages: { slug: string; title: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "Frequently Asked Questions",
+    description:
+      "Honest answers about product review platforms, fake reviews, and how ReviewIQ provides verified, AI-powered product intelligence.",
+    url: `${SITE_URL}/faq`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: pages.length,
+      itemListElement: pages.map((page, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: page.title,
+        url: `${SITE_URL}/faq/${page.slug}`,
+      })),
+    },
+  };
+}
+
 export function videoObjectSchema(video: YouTubeVideo, productName: string) {
   return {
     "@context": "https://schema.org",
