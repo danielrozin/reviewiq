@@ -21,7 +21,7 @@ export function ScoreComparison({ productA, productB }: ScoreComparisonProps) {
           product={productA}
           isWinner={winner === "A"}
         />
-        <div className="flex flex-col items-center gap-1">
+        <div className="flex flex-col items-center gap-1" aria-hidden="true">
           <span className="text-2xl font-bold text-gray-300">VS</span>
           {diff !== 0 && (
             <span className="text-xs text-gray-400">
@@ -46,9 +46,14 @@ function ScoreBlock({
   isWinner: boolean;
 }) {
   return (
-    <div className="flex flex-col items-center gap-3 flex-1 max-w-[200px]">
+    <div
+      role="group"
+      aria-label={product.name}
+      className="flex flex-col items-center gap-3 flex-1 max-w-[200px]"
+    >
       <div className="relative">
         <div
+          aria-label={`SmartScore: ${product.smartScore}`}
           className={cn(
             "w-20 h-20 rounded-2xl font-bold text-white flex items-center justify-center text-2xl",
             getScoreBgColor(product.smartScore)
@@ -57,8 +62,11 @@ function ScoreBlock({
           {product.smartScore}
         </div>
         {isWinner && (
-          <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs">
-            &#9733;
+          <div
+            className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-xs"
+            aria-label="Winner"
+          >
+            <span aria-hidden="true">&#9733;</span>
           </div>
         )}
       </div>
