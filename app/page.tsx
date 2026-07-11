@@ -77,25 +77,26 @@ export default function HomePage() {
             </div>
 
             {/* ICP Persona Tiles — helps AI engines understand who this serves */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left animate-fade-up delay-300">
+            <ul className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left animate-fade-up delay-300 list-none p-0 m-0">
               {[
                 { icon: "🐾", label: "Pet owner?", desc: "Robot vacuums for pet hair", href: "/category/robot-vacuums" },
                 { icon: "🛍️", label: "First-time buyer?", desc: "Buying guides", href: "/categories" },
                 { icon: "💰", label: "Budget-conscious?", desc: "Best value picks", href: "/categories" },
                 { icon: "☕", label: "Coffee enthusiast?", desc: "Coffee machine reviews", href: "/category/coffee-machines" },
               ].map((tile) => (
+                <li key={tile.href + tile.label}>
                 <Link
-                  key={tile.href + tile.label}
                   href={tile.href}
                   aria-label={`${tile.label} ${tile.desc}`}
-                  className="group p-3 bg-white/80 hover:bg-white border border-gray-400/80 hover:border-brand-200 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                  className="group block p-3 bg-white/80 hover:bg-white border border-gray-400/80 hover:border-brand-200 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
                   <span aria-hidden="true" className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
                   <p className="text-gray-600 text-xs mt-0.5">{tile.desc}</p>
                 </Link>
+                </li>
               ))}
-            </div>
+            </ul>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up delay-400">
               <Link
@@ -240,12 +241,12 @@ export default function HomePage() {
             View all &rarr;
           </Link>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 list-none p-0 m-0">
           {categories.map((cat) => (
+            <li key={cat.id}>
             <Link
-              key={cat.id}
               href={`/category/${cat.slug}`}
-              className="group p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="group block p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               <span aria-hidden="true" className="text-3xl mb-3 block group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
@@ -255,8 +256,9 @@ export default function HomePage() {
                 {cat.productCount} products
               </p>
             </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* Top Rated Products */}
@@ -270,11 +272,12 @@ export default function HomePage() {
               Top SmartScores across all categories
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
             {topProducts.map((product, index) => (
+              <li key={product.id}>
               <Link
-                key={product.id}
                 href={`/category/${product.categorySlug}/${product.slug}`}
+                aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}`}
                 className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 {/* Brand accent hover strip */}
@@ -321,8 +324,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
@@ -349,14 +353,14 @@ export default function HomePage() {
             View all →
           </Link>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0">
           {trendingDiscussions.map((thread) => {
             const author = getUserById(thread.authorId);
             const netVotes = thread.upvotes - thread.downvotes;
 
             return (
+              <li key={thread.id}>
               <Link
-                key={thread.id}
                 href={`/community/thread/${thread.id}`}
                 className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
@@ -404,9 +408,10 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
         <div className="text-center mt-6 sm:hidden">
           <Link
             href="/community"
@@ -623,7 +628,7 @@ export default function HomePage() {
             We built a review platform you can actually trust.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 relative list-none p-0 m-0">
           {/* Connector lines on desktop */}
           <div className="hidden md:block absolute top-10 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-brand-100 via-brand-200 to-brand-100 pointer-events-none" aria-hidden="true" />
 
@@ -633,7 +638,7 @@ export default function HomePage() {
               iconBg: "bg-emerald-50",
               iconColor: "text-emerald-600",
               icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 01.04 11.07c-.01.206-.01.41 0 .617A12.003 12.003 0 006 21.43a12 12 0 009.96-9.743c.01-.206.01-.41 0-.617A11.95 11.95 0 0020.402 6a11.959 11.959 0 01-8.402-3.036z" />
                 </svg>
               ),
@@ -646,7 +651,7 @@ export default function HomePage() {
               iconBg: "bg-brand-50",
               iconColor: "text-brand-600",
               icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
                 </svg>
               ),
@@ -659,7 +664,7 @@ export default function HomePage() {
               iconBg: "bg-purple-50",
               iconColor: "text-purple-600",
               icon: (
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
                 </svg>
               ),
@@ -668,20 +673,20 @@ export default function HomePage() {
                 'No walls of text. Every product shows clear "Best For / Not For" signals, recurring issues, and comparison insights.',
             },
           ].map((item) => (
-            <div key={item.step} className="text-center relative">
+            <li key={item.step} className="text-center relative">
               <div aria-hidden="true" className={`w-20 h-20 ${item.iconBg} ${item.iconColor} rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm`}>
                 {item.icon}
               </div>
-              <span className="text-xs font-bold text-gray-600 tracking-widest uppercase mb-1 block">{item.step}</span>
+              <span className="text-xs font-bold text-gray-600 tracking-widest uppercase mb-1 block" aria-hidden="true">{item.step}</span>
               <h3 className="font-semibold text-gray-900 text-lg mb-2">
                 {item.title}
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed max-w-xs mx-auto">
                 {item.description}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* FAQ */}
