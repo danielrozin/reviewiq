@@ -100,11 +100,10 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
   return (
     <div className="space-y-4">
       {/* Stat cards */}
-      <div role="list" aria-label="Account statistics" className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <ul aria-label="Account statistics" className="grid grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
         {statItems.map((stat, i) => (
-          <div
+          <li
             key={stat.label}
-            role="listitem"
             aria-label={`${stat.label}: ${formatNumber(stat.value)}`}
             className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} hover:-translate-y-0.5 transition-all duration-200`}
           >
@@ -115,9 +114,9 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
               {formatNumber(stat.value)}
             </p>
             <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* Reputation progress bar */}
       <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-sm hover:border-gray-200 transition-all duration-200">

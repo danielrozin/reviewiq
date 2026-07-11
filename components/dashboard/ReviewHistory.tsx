@@ -37,10 +37,10 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
   }
 
   return (
-    <div className="space-y-3">
+    <ul className="space-y-3 list-none p-0 m-0">
       {reviews.map(({ review, productName, productSlug, categorySlug }) => (
+        <li key={review.id}>
         <article
-          key={review.id}
           aria-labelledby={`rh-headline-${review.id}`}
           className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
         >
@@ -115,7 +115,8 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
           </div>
           </div>
         </article>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

@@ -10,11 +10,12 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
   if (products.length === 0) return null;
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
       {products.map((product) => (
+        <li key={product.id}>
         <Link
-          key={product.id}
           href={`/category/${product.categorySlug}/${product.slug}`}
+          aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}`}
           className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
         >
           <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -47,7 +48,8 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
           </div>
           </div>
         </Link>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
