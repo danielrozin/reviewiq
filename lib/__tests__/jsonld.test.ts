@@ -13,6 +13,7 @@ import {
   videoObjectSchema,
   videoObjectListSchema,
   analysisAuthorSchema,
+  speakableSchema,
   comparisonSchema,
   blogPostSchema,
   communityThreadSchema,
@@ -293,6 +294,18 @@ describe('analysisAuthorSchema', () => {
     expect(schema['@type']).toBe('Person')
     expect(schema.name).toContain('ReviewIQ')
     expect(schema.worksFor['@type']).toBe('Organization')
+  })
+})
+
+describe('speakableSchema', () => {
+  it('returns a WebPage that names the analysis author for E-E-A-T', () => {
+    const schema = speakableSchema('Acme Widget', '/category/widgets/acme-widget') as Record<string, any>
+    expect(schema['@type']).toBe('WebPage')
+    expect(schema.author['@type']).toBe('Person')
+    expect(schema.author.name).toContain('ReviewIQ')
+    // nested author must not carry its own @context (only the root node does)
+    expect(schema.author['@context']).toBeUndefined()
+    expect(schema.speakable['@type']).toBe('SpeakableSpecification')
   })
 })
 

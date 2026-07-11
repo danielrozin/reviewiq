@@ -352,11 +352,18 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
 }
 
 export function speakableSchema(productName: string, productUrl: string) {
+  // The on-page AI analysis (AISummaryCard / key facts / smart score) is authored
+  // by ReviewIQ's analysis team. Expose that as the WebPage author so the editorial
+  // review content carries an identifiable author entity (schema.org WebPage.author)
+  // — an E-E-A-T signal answer engines look for on review pages. Drop the nested
+  // @context; only the root node needs it.
+  const { "@context": _ctx, ...author } = analysisAuthorSchema();
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
     name: `${productName} Review`,
     url: `${SITE_URL}${productUrl}`,
+    author,
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
