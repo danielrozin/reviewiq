@@ -2,6 +2,8 @@ import { Suspense } from "react";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { ProductSearch } from "@/components/product/ProductSearch";
+import { productsHubSchema } from "@/lib/schema/jsonld";
+import { products } from "@/data/products";
 
 export const metadata = buildMetadata({
   title: "Browse All Products — Reviews, SmartScores & Prices",
@@ -13,6 +15,12 @@ export const metadata = buildMetadata({
 export default function ProductsPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productsHubSchema(products)),
+        }}
+      />
       <Breadcrumbs
         items={[{ name: "Products", url: "/products" }]}
       />

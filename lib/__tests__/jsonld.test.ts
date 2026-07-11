@@ -19,6 +19,7 @@ import {
   communityThreadSchema,
   profilePageSchema,
   faqHubSchema,
+  productsHubSchema,
 } from '../schema/jsonld'
 import type { DiscussionThread, Comment } from '@/types'
 
@@ -228,6 +229,23 @@ describe('faqHubSchema', () => {
     expect(schema.mainEntity.itemListElement[0].position).toBe(1)
     expect(schema.mainEntity.itemListElement[0].name).toBe('Trustpilot FAQ')
     expect(schema.mainEntity.itemListElement[1].url).toContain('/faq/yelp')
+  })
+})
+
+describe('productsHubSchema', () => {
+  it('generates a CollectionPage with an ItemList of product money pages', () => {
+    const schema = productsHubSchema([
+      { name: 'S8 MaxV Ultra', slug: 'roborock-s8-maxv-ultra', brand: 'Roborock', categorySlug: 'robot-vacuums' },
+      { name: 'Bot L10', slug: 'eufy-l10', brand: 'Eufy', categorySlug: 'robot-vacuums' },
+    ] as any)
+    expect(schema['@type']).toBe('CollectionPage')
+    expect(schema.url).toContain('/products')
+    expect(schema.mainEntity['@type']).toBe('ItemList')
+    expect(schema.mainEntity.numberOfItems).toBe(2)
+    expect(schema.mainEntity.itemListElement).toHaveLength(2)
+    expect(schema.mainEntity.itemListElement[0].position).toBe(1)
+    expect(schema.mainEntity.itemListElement[0].name).toBe('Roborock S8 MaxV Ultra')
+    expect(schema.mainEntity.itemListElement[0].url).toContain('/category/robot-vacuums/roborock-s8-maxv-ultra')
   })
 })
 
