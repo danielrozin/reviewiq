@@ -108,11 +108,13 @@ export default function CommunityPage() {
               <h2 id="pinned-threads-heading" className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-3">
                 Pinned
               </h2>
-              <div className="space-y-3">
+              <ul className="space-y-3 list-none p-0 m-0">
                 {pinned.map((thread) => (
-                  <ThreadCard key={thread.id} thread={thread} />
+                  <li key={thread.id}>
+                    <ThreadCard thread={thread} />
+                  </li>
                 ))}
-              </div>
+              </ul>
             </section>
           )}
 

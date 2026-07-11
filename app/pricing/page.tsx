@@ -106,17 +106,17 @@ export default function PricingPage() {
 
       {/* Social proof bar */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
-        <div className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600">
-          <div className="flex items-center gap-3">
+        <ul className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600 list-none p-0 m-0 px-6 py-5">
+          <li className="flex items-center gap-3">
             <div className="flex -space-x-2" aria-hidden="true">
               {["A","B","C","D"].map((l) => (
                 <span key={l} className="w-8 h-8 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center text-xs border-2 border-white shadow-sm">{l}</span>
               ))}
             </div>
             <span><strong className="text-gray-900">3,200+</strong> Pro members</span>
-          </div>
-          <div className="hidden sm:block w-px h-5 bg-gray-200" />
-          <div className="flex items-center gap-2">
+          </li>
+          <li aria-hidden="true" className="hidden sm:block w-px h-5 bg-gray-200" />
+          <li className="flex items-center gap-2">
             <span aria-hidden="true" className="flex items-center gap-0.5">
               {[1,2,3,4,5].map((i) => (
                 <svg key={i} aria-hidden="true" className="w-4 h-4 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
@@ -125,15 +125,15 @@ export default function PricingPage() {
               ))}
             </span>
             <span><strong className="text-gray-900">4.9/5</strong> average rating</span>
-          </div>
-          <div className="hidden sm:block w-px h-5 bg-gray-200" />
-          <div className="flex items-center gap-2">
+          </li>
+          <li aria-hidden="true" className="hidden sm:block w-px h-5 bg-gray-200" />
+          <li className="flex items-center gap-2">
             <svg aria-hidden="true" className="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
             <span>Cancel anytime, no questions</span>
-          </div>
-        </div>
+          </li>
+        </ul>
 
         {/* Testimonials row */}
         <ul className="grid sm:grid-cols-3 gap-4 mt-4 list-none p-0 m-0">
