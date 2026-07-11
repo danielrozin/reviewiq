@@ -154,7 +154,7 @@ export default function HomePage() {
       {/* Trust Signals */}
       <section aria-label="Site statistics" className="border-y border-gray-100 bg-white" data-speakable="hero-stats">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <ul role="list" className="grid grid-cols-2 md:grid-cols-4 gap-6 list-none">
             {[
               {
                 value: "20K+",
@@ -205,7 +205,7 @@ export default function HomePage() {
                 ),
               },
             ].map((stat) => (
-              <div key={stat.label} className="flex flex-col sm:flex-row sm:items-center gap-3 group">
+              <li key={stat.label} className="flex flex-col sm:flex-row sm:items-center gap-3 group">
                 <div aria-hidden="true" className={`w-10 h-10 rounded-xl ${stat.iconBg} ${stat.iconColor} flex items-center justify-center shrink-0`}>
                   {stat.icon}
                 </div>
@@ -216,9 +216,9 @@ export default function HomePage() {
                   <p className="text-sm font-medium text-gray-700 mt-0.5">{stat.label}</p>
                   <p className="text-xs text-gray-600">{stat.sublabel}</p>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
