@@ -163,9 +163,9 @@ export function WelcomeModal() {
               Everything you need to find the perfect product.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 list-none p-0 m-0">
               {VALUE_PROPS.map((prop) => (
-                <div
+                <li
                   key={prop.title}
                   className="flex items-start gap-3 p-3 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors"
                 >
@@ -176,9 +176,9 @@ export function WelcomeModal() {
                     <h4 className="text-sm font-semibold text-gray-900">{prop.title}</h4>
                     <p className="text-xs text-gray-600 mt-0.5">{prop.description}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
             <button
               type="button"

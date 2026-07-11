@@ -71,10 +71,10 @@ export function CategorySearch({ categories }: CategorySearchProps) {
       </p>
 
       {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
         {filtered.map((cat) => (
+          <li key={cat.id}>
           <Link
-            key={cat.id}
             href={`/category/${cat.slug}`}
             aria-label={`${cat.name} — ${cat.productCount} products`}
             className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 rounded-2xl"
@@ -104,8 +104,9 @@ export function CategorySearch({ categories }: CategorySearchProps) {
             </div>
             </div>
           </Link>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {filtered.length === 0 && (
         <div className="text-center py-16 px-6 bg-white border border-gray-100 rounded-2xl">

@@ -34,24 +34,25 @@ export function QuickStartSuggestions() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 list-none p-0 m-0">
         {POPULAR_CATEGORIES.map((cat) => (
-          <Link
-            key={cat.slug}
-            href={`/category/${cat.slug}`}
-            className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
-          >
-            <div aria-hidden="true" className="w-6 h-6 bg-brand-50 rounded-md flex items-center justify-center shrink-0">
-              <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d={cat.icon} />
-              </svg>
-            </div>
-            <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
-              {cat.name}
-            </span>
-          </Link>
+          <li key={cat.slug}>
+            <Link
+              href={`/category/${cat.slug}`}
+              className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            >
+              <div aria-hidden="true" className="w-6 h-6 bg-brand-50 rounded-md flex items-center justify-center shrink-0">
+                <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={cat.icon} />
+                </svg>
+              </div>
+              <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
+                {cat.name}
+              </span>
+            </Link>
+          </li>
         ))}
-      </div>
+      </ul>
 
       <Link
         href="/products"
