@@ -119,10 +119,10 @@ export default async function BlogCategoryPage({
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0 m-0">
         {posts.map((post) => (
+          <li key={post.id}>
           <Link
-            key={post.id}
             href={`/blog/${post.slug}`}
             className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
@@ -163,8 +163,9 @@ export default async function BlogCategoryPage({
               </div>
             </div>
           </Link>
+          </li>
         ))}
-      </div>
+      </ul>
 
       {/* Link to product category */}
       <div className="mt-12 p-6 bg-gray-50 rounded-2xl text-center">

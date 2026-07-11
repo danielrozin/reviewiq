@@ -51,20 +51,21 @@ export default function NotFound() {
         <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider text-center mb-5">
           Popular categories
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 list-none p-0 m-0">
           {popularCategories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/category/${cat.slug}`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
-            >
-              <span className="text-2xl">{cat.icon}</span>
-              <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
-                {cat.name}
-              </span>
-            </Link>
+            <li key={cat.slug}>
+              <Link
+                href={`/category/${cat.slug}`}
+                className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              >
+                <span className="text-2xl">{cat.icon}</span>
+                <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
+                  {cat.name}
+                </span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );
