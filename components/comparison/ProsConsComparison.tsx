@@ -19,20 +19,21 @@ export function ProsConsComparison({
         </div>
         <h2 id="what-people-say" className="text-lg font-semibold text-gray-900">What People Say</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <ProductProsConsCard product={productA} />
-        <ProductProsConsCard product={productB} />
-      </div>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
+        <li><ProductProsConsCard product={productA} /></li>
+        <li><ProductProsConsCard product={productB} /></li>
+      </ul>
     </section>
   );
 }
 
 function ProductProsConsCard({ product }: { product: Product }) {
+  const headingId = `pros-cons-${product.id}`;
   return (
-    <div className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
+    <article aria-labelledby={headingId} className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
       <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="p-5">
-      <h3 className="text-sm font-semibold text-gray-900 mb-4">
+      <h3 id={headingId} className="text-sm font-semibold text-gray-900 mb-4">
         {product.name}
       </h3>
 
@@ -80,6 +81,6 @@ function ProductProsConsCard({ product }: { product: Product }) {
         </div>
       </div>
       </div>
-    </div>
+    </article>
   );
 }

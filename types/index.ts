@@ -223,7 +223,7 @@ export const TRUST_LEVEL_LABELS: Record<TrustLevel, string> = {
 };
 
 export const TRUST_LEVEL_COLORS: Record<TrustLevel, string> = {
-  newcomer: "text-gray-500 bg-gray-100",
+  newcomer: "text-gray-700 bg-gray-100",
   contributor: "text-blue-700 bg-blue-50",
   trusted: "text-emerald-700 bg-emerald-50",
   expert: "text-purple-700 bg-purple-50",

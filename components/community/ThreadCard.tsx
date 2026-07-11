@@ -34,7 +34,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
               {THREAD_TYPE_LABELS[thread.threadType]}
             </span>
             {thread.isResolved && (
-              <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full">
+              <span className="text-xs font-medium text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded-full">
                 Resolved
               </span>
             )}
