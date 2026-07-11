@@ -276,9 +276,10 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-for-heading" className="text-2xl font-bold text-gray-900 mb-8">
           This is for you if&hellip;
         </h2>
-        <div className="space-y-6 max-w-4xl">
+        <ul className="space-y-6 max-w-4xl list-none p-0">
           {personas.map((persona, pi) => (
-            <article key={persona.title} aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+            <li key={persona.title}>
+            <article aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-5 p-6 sm:p-8">
               <div aria-hidden="true" className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>
@@ -312,8 +313,9 @@ export default function WhoIsThisForPage() {
               </div>
               </div>
             </article>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* This is NOT for you if... */}
@@ -321,9 +323,9 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-not-heading" className="text-2xl font-bold text-gray-900 mb-8">
           This is NOT for you if&hellip;
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0">
           {notForYou.map((item) => (
-            <div key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
+            <li key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-2 flex items-start gap-2.5">
                 <span aria-hidden="true" className="w-5 h-5 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
                     <svg aria-hidden="true" className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -335,9 +337,9 @@ export default function WhoIsThisForPage() {
               <p className="text-sm text-gray-600 leading-relaxed ml-7">
                 {item.detail}
               </p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* Use-case scenarios */}
@@ -345,9 +347,9 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-usecases-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Real-world use cases
         </h2>
-        <div className="space-y-6">
+        <ol className="space-y-6 list-none p-0">
           {useCases.map((uc, i) => (
-            <div key={i} className="flex gap-5">
+            <li key={i} className="flex gap-5">
               <div className="shrink-0">
                 <div aria-hidden="true" className="w-10 h-10 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center font-bold text-sm">
                   {i + 1}
@@ -368,9 +370,9 @@ export default function WhoIsThisForPage() {
                   </svg>
                 </Link>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* How it works */}
@@ -378,11 +380,11 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-howitworks-heading" className="text-2xl font-bold text-gray-900 mb-8">
           How it works
         </h2>
-        <div className="space-y-8">
+        <ol className="space-y-8 list-none p-0">
           {steps.map((step) => (
-            <div key={step.number} className="flex gap-5">
+            <li key={step.number} className="flex gap-5">
               <div className="shrink-0">
-                <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center font-bold text-lg">
+                <div aria-hidden="true" className="w-12 h-12 bg-brand-50 text-brand-600 rounded-2xl flex items-center justify-center font-bold text-lg">
                   {step.number}
                 </div>
               </div>
@@ -394,9 +396,9 @@ export default function WhoIsThisForPage() {
                   {step.description}
                 </p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </section>
 
       {/* Proof with numbers */}
@@ -404,14 +406,14 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-proof-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Proof with numbers
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
           {stats.map((stat) => (
-            <div key={stat.value}>
+            <li key={stat.value}>
               <p className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</p>
               <p className="text-sm text-gray-600 leading-relaxed">{stat.label}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* FAQ */}
@@ -419,9 +421,10 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-faq-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Frequently asked questions
         </h2>
-        <div className="space-y-6">
+        <ul className="space-y-6 list-none p-0">
           {faqItems.map((item) => (
-            <details key={item.question} className="group border border-gray-100 rounded-xl">
+            <li key={item.question}>
+            <details className="group border border-gray-100 rounded-xl">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-gray-900 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
                 {item.question}
                 <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -432,8 +435,9 @@ export default function WhoIsThisForPage() {
                 {item.answer}
               </div>
             </details>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* CTA */}

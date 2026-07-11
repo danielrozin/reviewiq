@@ -85,10 +85,10 @@ export default function FAQIndexPage() {
         </p>
       </header>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl list-none p-0">
         {faqPages.map((page) => (
+          <li key={page.slug}>
           <Link
-            key={page.slug}
             href={`/faq/${page.slug}`}
             className="block bg-white border border-gray-400 rounded-xl overflow-hidden hover:border-brand-300 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
@@ -105,8 +105,9 @@ export default function FAQIndexPage() {
               </span>
             </div>
           </Link>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
