@@ -1,4 +1,4 @@
-import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment } from "@/types";
+import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment, UserProfile } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
 import { productAverageRating } from "@/lib/utils";
 
@@ -477,6 +477,54 @@ export function comparisonSchema(productA: Product, productB: Product) {
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: ["[data-speakable='ai-verdict']"],
+    },
+  };
+}
+
+// Community author profile pages (/community/user/[username]) are already in the
+// sitemap but carried only BreadcrumbList/Organization schema, so they were
+// ineligible for Google's Profile Page rich result (the card that surfaces a
+// creator's name, bio and post/vote counts). ProfilePage requires dateCreated,
+// dateModified and a mainEntity Person; per the spec, agentInteractionStatistic
+// counts content the person AUTHORED (reviews/comments/discussions) and
+// interactionStatistic counts interactions they RECEIVED (helpful votes).
+export function profilePageSchema(user: UserProfile) {
+  const profileUrl = `${SITE_URL}/community/user/${user.username}`;
+  const authored = user.reviewCount + user.commentCount + user.threadCount;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    url: profileUrl,
+    dateCreated: user.joinedAt,
+    dateModified: user.lastActiveAt,
+    mainEntity: {
+      "@type": "Person",
+      "@id": `${profileUrl}#person`,
+      name: user.displayName,
+      alternateName: `@${user.username}`,
+      identifier: user.username,
+      description: user.bio,
+      url: profileUrl,
+      ...(user.expertiseCategories.length > 0
+        ? { knowsAbout: user.expertiseCategories.map((c) => c.replace(/-/g, " ")) }
+        : {}),
+      // Content this member authored on ReviewIQ.
+      agentInteractionStatistic: [
+        {
+          "@type": "InteractionCounter",
+          interactionType: "https://schema.org/WriteAction",
+          userInteractionCount: authored,
+        },
+      ],
+      // Recognition this member received from the community.
+      interactionStatistic: [
+        {
+          "@type": "InteractionCounter",
+          interactionType: "https://schema.org/LikeAction",
+          userInteractionCount: user.helpfulVotesReceived,
+        },
+      ],
     },
   };
 }

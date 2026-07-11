@@ -17,6 +17,7 @@ import {
   comparisonSchema,
   blogPostSchema,
   communityThreadSchema,
+  profilePageSchema,
   faqHubSchema,
 } from '../schema/jsonld'
 import type { DiscussionThread, Comment } from '@/types'
@@ -227,6 +228,51 @@ describe('faqHubSchema', () => {
     expect(schema.mainEntity.itemListElement[0].position).toBe(1)
     expect(schema.mainEntity.itemListElement[0].name).toBe('Trustpilot FAQ')
     expect(schema.mainEntity.itemListElement[1].url).toContain('/faq/yelp')
+  })
+})
+
+describe('profilePageSchema', () => {
+  const user = {
+    id: 'u1',
+    username: 'janedoe',
+    displayName: 'Jane Doe',
+    bio: 'Verified reviewer of audio gear.',
+    trustLevel: 'trusted',
+    reputationScore: 1200,
+    badges: [],
+    expertiseCategories: ['headphones', 'wireless-earbuds'],
+    verifiedProductCount: 8,
+    reviewCount: 12,
+    commentCount: 30,
+    threadCount: 5,
+    helpfulVotesReceived: 89,
+    joinedAt: '2025-01-10',
+    lastActiveAt: '2026-07-01',
+  } as any
+
+  it('generates a ProfilePage with a Person mainEntity and required dates', () => {
+    const schema = profilePageSchema(user) as Record<string, any>
+    expect(schema['@type']).toBe('ProfilePage')
+    expect(schema.url).toContain('/community/user/janedoe')
+    expect(schema.dateCreated).toBe('2025-01-10')
+    expect(schema.dateModified).toBe('2026-07-01')
+    expect(schema.mainEntity['@type']).toBe('Person')
+    expect(schema.mainEntity.name).toBe('Jane Doe')
+    expect(schema.mainEntity.alternateName).toBe('@janedoe')
+  })
+
+  it('counts authored content in agentInteractionStatistic and votes in interactionStatistic', () => {
+    const schema = profilePageSchema(user) as Record<string, any>
+    // reviews + comments + threads = 12 + 30 + 5
+    expect(schema.mainEntity.agentInteractionStatistic[0].userInteractionCount).toBe(47)
+    expect(schema.mainEntity.agentInteractionStatistic[0].interactionType).toContain('WriteAction')
+    expect(schema.mainEntity.interactionStatistic[0].userInteractionCount).toBe(89)
+    expect(schema.mainEntity.interactionStatistic[0].interactionType).toContain('LikeAction')
+  })
+
+  it('maps expertise categories into knowsAbout with hyphens humanized', () => {
+    const schema = profilePageSchema(user) as Record<string, any>
+    expect(schema.mainEntity.knowsAbout).toContain('wireless earbuds')
   })
 })
 
