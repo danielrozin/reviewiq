@@ -4,6 +4,7 @@
 import { describe, it, expect } from 'vitest'
 import {
   organizationSchema,
+  aboutPageSchema,
   websiteSchema,
   breadcrumbSchema,
   productSchema,
@@ -45,6 +46,33 @@ describe('organizationSchema', () => {
     expect(schema.contactPoint[0]['@type']).toBe('ContactPoint')
     expect(schema.contactPoint[0].email).toBe('contact@revieweriq.com')
     expect(schema.contactPoint[0].contactType).toBe('customer support')
+  })
+})
+
+describe('aboutPageSchema', () => {
+  it('returns an AboutPage anchored to the /about URL', () => {
+    const schema = aboutPageSchema()
+    expect(schema['@type']).toBe('AboutPage')
+    expect(schema.url).toContain('/about')
+    expect(String(schema['@id'])).toContain('/about#webpage')
+  })
+
+  it('references the canonical Organization by @id instead of re-declaring it', () => {
+    const schema = aboutPageSchema()
+    // Both mainEntity and about must point at the site-wide #organization node
+    // so answer engines merge rather than spawn a duplicate entity.
+    expect(schema.mainEntity['@id']).toContain('#organization')
+    expect(schema.about['@id']).toContain('#organization')
+    expect(schema.isPartOf['@id']).toContain('#website')
+  })
+
+  it('emits a Home > About breadcrumb trail', () => {
+    const schema = aboutPageSchema()
+    expect(schema.breadcrumb['@type']).toBe('BreadcrumbList')
+    expect(schema.breadcrumb.itemListElement).toHaveLength(2)
+    expect(schema.breadcrumb.itemListElement[0].name).toBe('Home')
+    expect(schema.breadcrumb.itemListElement[1].name).toBe('About')
+    expect(schema.breadcrumb.itemListElement[1].item).toContain('/about')
   })
 })
 

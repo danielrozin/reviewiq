@@ -46,6 +46,35 @@ export function organizationSchema() {
   };
 }
 
+// The /about page carried only the site-wide Organization/WebSite nodes — the
+// page itself had no schema. Google treats the About page as a primary
+// E-E-A-T / entity-trust surface, so emit an AboutPage that is explicitly
+// "about" the canonical Organization. We reference ORG_ID / WEBSITE_ID (never
+// re-declare the Organization inline) so answer engines merge this into the
+// same ReviewIQ node instead of spawning a duplicate, unlinked entity.
+export function aboutPageSchema() {
+  const aboutUrl = `${SITE_URL}/about`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${aboutUrl}#webpage`,
+    url: aboutUrl,
+    name: "About ReviewIQ",
+    description:
+      "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. SmartScores run entirely on verified buyer data — affiliate commissions are never an input.",
+    isPartOf: { "@id": WEBSITE_ID },
+    mainEntity: { "@id": ORG_ID },
+    about: { "@id": ORG_ID },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "About", item: aboutUrl },
+      ],
+    },
+  };
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",
