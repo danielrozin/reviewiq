@@ -36,9 +36,9 @@ export function PricingTiers() {
   }
 
   return (
-    <div role="list" aria-label="Pricing plans" className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <ul aria-label="Pricing plans" className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {/* Free Plan */}
-      <article role="listitem" aria-labelledby="plan-free-name" className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-sm hover:border-gray-300 hover:-translate-y-0.5 transition-all duration-200 group">
+      <li><article aria-labelledby="plan-free-name" className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-sm hover:border-gray-300 hover:-translate-y-0.5 transition-all duration-200 group">
         <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-gray-200 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
         <div className="p-8 flex flex-col flex-1">
         <div className="mb-6">
@@ -82,10 +82,10 @@ export function PricingTiers() {
           Current Plan
         </button>
         </div>
-      </article>
+      </article></li>
 
       {/* Pro Plan */}
-      <article role="listitem" aria-labelledby="plan-pro-name" className="bg-white rounded-2xl border-2 border-brand-500 p-8 flex flex-col relative shadow-lg shadow-brand-100/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
+      <li><article aria-labelledby="plan-pro-name" className="bg-white rounded-2xl border-2 border-brand-500 p-8 flex flex-col relative shadow-lg shadow-brand-100/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-200">
         <div className="absolute -top-3 left-1/2 -translate-x-1/2" aria-hidden="true">
           <span className="bg-brand-600 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider">
             Most Popular
@@ -150,7 +150,7 @@ export function PricingTiers() {
             </>
           )}
         </button>
-      </article>
-    </div>
+      </article></li>
+    </ul>
   );
 }

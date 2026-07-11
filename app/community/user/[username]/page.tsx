@@ -86,7 +86,7 @@ export default async function UserProfilePage({ params }: Props) {
             </p>
 
             {/* Stats grid */}
-            <div role="list" aria-label="User statistics" className="grid grid-cols-2 gap-2 mb-6">
+            <ul aria-label="User statistics" className="grid grid-cols-2 gap-2 mb-6">
               {[
                 { value: user.reputationScore, label: "Reputation", color: "text-brand-600" },
                 { value: user.reviewCount, label: "Reviews", color: "text-emerald-600" },
@@ -95,16 +95,16 @@ export default async function UserProfilePage({ params }: Props) {
                 { value: user.verifiedProductCount, label: "Verified", color: "text-amber-600" },
                 { value: user.helpfulVotesReceived, label: "Helpful Votes", color: "text-gray-700" },
               ].map((stat) => (
-                <div role="listitem" key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl">
+                <li key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl">
                   <p className={`text-lg font-bold ${stat.color}`}>
                     {formatNumber(stat.value)}
                   </p>
                   <p className="text-xs text-gray-600 uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
             {/* Badges */}
             <div className="border-t border-gray-100 pt-4 mb-4">
