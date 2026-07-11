@@ -1,11 +1,16 @@
 import { buildMetadata } from "@/lib/seo/metadata";
-import { comparisonHubSchema } from "@/lib/schema/jsonld";
-import { getAllComparisonPairs } from "@/data/comparisons";
 
 // The /compare page is a client component (interactive multi-product builder),
 // so it cannot export metadata itself. This layout supplies a proper SEO
 // title, description, and canonical for the comparison hub — previously it
 // inherited the generic root title.
+//
+// NOTE: this layout also wraps every /compare/[slug] comparison detail page.
+// The hub CollectionPage + ItemList JSON-LD therefore must NOT live here — it
+// would leak the full list of all comparison pairs onto each detail money page,
+// diluting that page's primary-entity signal. The hub schema is emitted only by
+// the index route (app/compare/page.tsx). Detail pages override this metadata
+// via their own generateMetadata (canonical stays correct).
 export const metadata = buildMetadata({
   title: "Compare Products Side-by-Side — SmartScores, Specs & Real Reviews",
   description:
@@ -18,14 +23,5 @@ export default function CompareLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const hubSchema = comparisonHubSchema(getAllComparisonPairs());
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(hubSchema) }}
-      />
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

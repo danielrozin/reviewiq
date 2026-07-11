@@ -10,6 +10,8 @@ import { MultiSpecsTable } from "@/components/comparison/MultiSpecsTable";
 import { MultiProsConsComparison } from "@/components/comparison/MultiProsConsComparison";
 import { ExportButton } from "@/components/premium/ExportButton";
 import { AdPlacement } from "@/components/premium/AdPlacement";
+import { comparisonHubSchema } from "@/lib/schema/jsonld";
+import { getAllComparisonPairs } from "@/data/comparisons";
 
 function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (id: string) => void }) {
   const [query, setQuery] = useState("");
@@ -170,10 +172,21 @@ function CompareContent() {
 }
 
 export default function ComparePage() {
+  // Hub CollectionPage + ItemList schema. Emitted only on the /compare index
+  // route (NOT the shared layout), so it does not leak the full comparison list
+  // onto every /compare/[slug] detail money page. Rendered here in the client
+  // component so it still lands in the SSR HTML for crawlers.
+  const hubSchema = comparisonHubSchema(getAllComparisonPairs());
   return (
-    <Suspense fallback={<CompareLoadingSkeleton />}>
-      <CompareContent />
-    </Suspense>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hubSchema) }}
+      />
+      <Suspense fallback={<CompareLoadingSkeleton />}>
+        <CompareContent />
+      </Suspense>
+    </>
   );
 }
 
