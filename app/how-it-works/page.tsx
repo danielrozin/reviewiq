@@ -166,9 +166,10 @@ export default function HowItWorksPage() {
         {/* Vertical connector line */}
         <div className="absolute left-6 top-10 bottom-10 w-0.5 bg-gradient-to-b from-emerald-200 via-brand-200 to-amber-200 hidden sm:block" aria-hidden="true" />
 
-        <div className="space-y-12">
+        <ol className="list-none space-y-12">
           {steps.map((step, index) => (
-            <section key={step.number} aria-labelledby={`hiw-step-${step.number}-heading`} className="relative flex gap-6 sm:gap-8">
+            <li key={step.number}>
+            <section aria-labelledby={`hiw-step-${step.number}-heading`} className="relative flex gap-6 sm:gap-8">
               {/* Step number bubble */}
               <div className="shrink-0 relative z-10">
                 <div aria-hidden="true" className={`w-12 h-12 ${step.color} rounded-2xl flex items-center justify-center text-white text-xl shadow-md`}>
@@ -204,8 +205,9 @@ export default function HowItWorksPage() {
                 </ul>
               </div>
             </section>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
 
       {/* ReviewIQ vs Traditional Reviews comparison table */}
@@ -309,7 +311,7 @@ export default function HowItWorksPage() {
           Our Trust Principles
         </h2>
         <p className="text-gray-600 mb-8">The commitments that make ReviewIQ different from every other review site.</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none">
           {[
             {
               iconBg: "bg-red-50",
@@ -356,7 +358,7 @@ export default function HowItWorksPage() {
               text: "We believe negative reviews are often the most valuable. We never suppress critical feedback.",
             },
           ].map((principle) => (
-            <div key={principle.title} className="flex gap-4">
+            <li key={principle.title} className="flex gap-4">
               <div aria-hidden="true" className={`w-9 h-9 ${principle.iconBg} ${principle.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
                 {principle.icon}
               </div>
@@ -368,9 +370,9 @@ export default function HowItWorksPage() {
                   {principle.text}
                 </p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
     </div>
   );
