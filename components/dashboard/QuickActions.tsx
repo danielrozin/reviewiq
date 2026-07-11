@@ -51,7 +51,7 @@ export function QuickActions() {
             <Link
               href={action.href}
               aria-label={`${action.title} — ${action.description}`}
-              className={`group flex bg-white border border-gray-100 rounded-xl overflow-hidden hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${action.borderHover}`}
+              className={`group flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${action.borderHover}`}
             >
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex items-center gap-4 p-4 w-full">
