@@ -231,13 +231,13 @@ export default function SiteMapPage() {
           <h2 id="sitemap-categories-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
             Browse by Category
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
             {categories.map((cat) => {
               const catProducts = products.filter(
                 (p) => p.categorySlug === cat.slug
               );
               return (
-                <div key={cat.slug}>
+                <li key={cat.slug}>
                   <h3 className="font-semibold text-gray-900 mb-2">
                     <Link
                       href={`/category/${cat.slug}`}
@@ -246,7 +246,7 @@ export default function SiteMapPage() {
                       {cat.name}
                     </Link>
                   </h3>
-                  <ul className="space-y-1">
+                  <ul className="space-y-1 list-none p-0 m-0">
                     {catProducts.slice(0, 8).map((p) => (
                       <li key={p.slug}>
                         <Link
@@ -268,10 +268,10 @@ export default function SiteMapPage() {
                       </li>
                     )}
                   </ul>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </section>
 
         {/* Blog Categories */}
@@ -280,23 +280,26 @@ export default function SiteMapPage() {
             <h2 id="sitemap-blog-categories-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
               Blog Categories
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              <Link
-                href="/blog"
-                className="text-gray-600 hover:text-brand-600 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
-              >
-                All Articles
-              </Link>
-              {blogCategories.map((cat) => (
+            <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 list-none p-0 m-0">
+              <li>
                 <Link
-                  key={cat.slug}
-                  href={`/blog/category/${cat.slug}`}
-                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                  href="/blog"
+                  className="text-gray-600 hover:text-brand-600 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
                 >
-                  {cat.name}
+                  All Articles
                 </Link>
+              </li>
+              {blogCategories.map((cat) => (
+                <li key={cat.slug}>
+                  <Link
+                    href={`/blog/category/${cat.slug}`}
+                    className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                  >
+                    {cat.name}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         )}
 
@@ -326,7 +329,7 @@ export default function SiteMapPage() {
           <h2 id="sitemap-pages-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
             Pages
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 list-none p-0 m-0">
             {[
               { href: "/", label: "Home" },
               { href: "/categories", label: "All Categories" },
@@ -341,15 +344,16 @@ export default function SiteMapPage() {
               { href: "/privacy", label: "Privacy Policy" },
               { href: "/terms", label: "Terms of Service" },
             ].map((page) => (
-              <Link
-                key={page.href}
-                href={page.href}
-                className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
-              >
-                {page.label}
-              </Link>
+              <li key={page.href}>
+                <Link
+                  href={page.href}
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                >
+                  {page.label}
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </section>
       </div>
     </div>

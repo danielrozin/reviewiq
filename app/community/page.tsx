@@ -70,7 +70,7 @@ export default function CommunityPage() {
         </div>
 
         {/* Stats bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-3 list-none p-0 m-0">
           {[
             { value: stats.threads, label: "Discussions", iconBg: "bg-brand-50", iconColor: "text-brand-600", icon: (
               <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" /></svg>
@@ -85,7 +85,7 @@ export default function CommunityPage() {
               <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z" /></svg>
             )},
           ].map((stat) => (
-            <div key={stat.label} className="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3 hover:shadow-sm hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200">
+            <li key={stat.label} className="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3 hover:shadow-sm hover:border-gray-200 hover:-translate-y-0.5 transition-all duration-200">
               <div aria-hidden="true" className={`w-9 h-9 ${stat.iconBg} ${stat.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
                 {stat.icon}
               </div>
@@ -93,9 +93,9 @@ export default function CommunityPage() {
                 <p className="text-lg font-bold text-gray-900 leading-none">{stat.value.toLocaleString()}</p>
                 <p className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </header>
 
       {/* Main content grid */}
