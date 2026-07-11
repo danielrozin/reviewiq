@@ -62,9 +62,8 @@ export function RelatedProducts({
 
       <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none p-0 m-0">
         {products.map((product) => (
-          <li key={product.slug} className="contents">
+          <li key={product.slug}>
           <Link
-            key={product.slug}
             href={`/category/${categorySlug}/${product.slug}`}
             aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}/100, ${product.reviewCount.toLocaleString()} reviews, $${product.priceMin}–$${product.priceMax}`}
             title={`${product.name} review — SmartScore ${product.smartScore}/100`}
