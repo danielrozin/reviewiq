@@ -246,10 +246,10 @@ export default async function BlogPostPage({
               </div>
               <h2 id="blog-top-products-heading" className="text-2xl font-bold text-gray-900">Top {post.categoryName} on ReviewIQ</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
               {categoryProducts.map((product) => (
+                <li key={product.id}>
                 <Link
-                  key={product.id}
                   href={`/category/${product.categorySlug}/${product.slug}`}
                   aria-label={`${product.name} — SmartScore ${product.smartScore}`}
                   className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
@@ -277,8 +277,9 @@ export default async function BlogPostPage({
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                   </svg>
                 </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         )}
 
@@ -291,12 +292,12 @@ export default async function BlogPostPage({
             <p className="text-sm text-gray-600 mb-6">
               Top-rated products in related categories
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
               {crossCategoryProducts.map((product) => {
                 const cat = getCategoryBySlug(product.categorySlug);
                 return (
+                  <li key={product.id}>
                   <Link
-                    key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
                     aria-label={`${product.name} — ${cat?.name ?? product.categorySlug}, SmartScore ${product.smartScore}`}
                     className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
@@ -324,25 +325,27 @@ export default async function BlogPostPage({
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>
                   </Link>
+                  </li>
                 );
               })}
-            </div>
+            </ul>
             {affinitySlugs.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
+              <ul className="flex flex-wrap gap-2 mt-4 list-none p-0 m-0">
                 {affinitySlugs.slice(0, 3).map((s) => {
                   const cat = getCategoryBySlug(s);
                   if (!cat) return null;
                   return (
-                    <Link
-                      key={s}
-                      href={`/category/${s}`}
-                      className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
-                    >
-                      Explore {cat.name} <span aria-hidden="true">&rarr;</span>
-                    </Link>
+                    <li key={s}>
+                      <Link
+                        href={`/category/${s}`}
+                        className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                      >
+                        Explore {cat.name} <span aria-hidden="true">&rarr;</span>
+                      </Link>
+                    </li>
                   );
                 })}
-              </div>
+              </ul>
             )}
           </section>
         )}
@@ -353,10 +356,10 @@ export default async function BlogPostPage({
             <h2 id="blog-related-articles-heading" className="text-2xl font-bold text-gray-900 mb-6">
               Related Articles
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
               {relatedPosts.map((rp) => (
+                <li key={rp.id}>
                 <Link
-                  key={rp.id}
                   href={`/blog/${rp.slug}`}
                   className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                 >
@@ -376,8 +379,9 @@ export default async function BlogPostPage({
                     </svg>
                   </div>
                 </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
         )}
       </article>
