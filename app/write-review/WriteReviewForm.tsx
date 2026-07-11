@@ -40,12 +40,12 @@ type StepKey = (typeof STEPS)[number]["key"];
 
 function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typeof STEPS }) {
   return (
-    <div role="list" aria-label="Review steps" className="flex items-center gap-1 mb-8">
+    <ol aria-label="Review steps" className="flex items-center gap-1 mb-8">
       {steps.map((step, i) => {
         const isCompleted = i < currentStep;
         const isCurrent = i === currentStep;
         return (
-          <div key={step.key} role="listitem" className="flex items-center flex-1">
+          <li key={step.key} className="flex items-center flex-1">
             <div className="flex flex-col items-center flex-1">
               <div
                 aria-current={isCurrent ? "step" : undefined}
@@ -80,10 +80,10 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
                 }`}
               />
             )}
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ol>
   );
 }
 
