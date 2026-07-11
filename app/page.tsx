@@ -114,8 +114,8 @@ export default function HomePage() {
             </div>
 
             {/* Hero social proof — above fold trust nudge */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 animate-fade-up delay-500">
-              <div className="flex items-center gap-2">
+            <ul className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 animate-fade-up delay-500 list-none p-0 m-0">
+              <li className="flex items-center gap-2">
                 {/* Avatar stack */}
                 <div aria-hidden="true" className="flex -space-x-2">
                   {["bg-brand-400", "bg-emerald-400", "bg-amber-400", "bg-pink-400", "bg-purple-400"].map((color, i) => (
@@ -127,18 +127,18 @@ export default function HomePage() {
                 <span className="text-sm text-gray-600">
                   <span className="font-semibold text-gray-800">20,000+</span> verified reviews written
                 </span>
-              </div>
-              <span aria-hidden="true" className="hidden sm:block text-gray-200">|</span>
-              <div className="flex items-center gap-1.5 text-sm text-gray-600">
+              </li>
+              <li aria-hidden="true" className="hidden sm:block text-gray-200">|</li>
+              <li className="flex items-center gap-1.5 text-sm text-gray-600">
                 <svg aria-hidden="true" className="w-4 h-4 text-amber-400 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z"/></svg>
                 <span className="font-semibold text-gray-800">4.8/5</span> avg product rating
-              </div>
-              <span aria-hidden="true" className="hidden sm:block text-gray-200">|</span>
-              <div className="flex items-center gap-1.5 text-sm text-gray-600">
+              </li>
+              <li aria-hidden="true" className="hidden sm:block text-gray-200">|</li>
+              <li className="flex items-center gap-1.5 text-sm text-gray-600">
                 <svg aria-hidden="true" className="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 <span className="font-semibold text-gray-800">78%</span> verified buyers
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -526,11 +526,12 @@ export default function HomePage() {
           const [featured, ...rest] = picks;
           if (!featured) return null;
           return (
-            <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
+            <ol className="grid grid-cols-1 lg:grid-cols-5 gap-5 list-none p-0 m-0">
               {/* Featured pick — takes 3/5 columns */}
+              <li className="lg:col-span-3">
               <Link
                 href={`/category/${featured.categorySlug}/${featured.slug}`}
-                className="group lg:col-span-3 relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="group relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex flex-col h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 <div className="absolute top-4 left-4 z-10">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full shadow-sm">
@@ -569,14 +570,16 @@ export default function HomePage() {
                   </div>
                 </div>
               </Link>
+              </li>
 
               {/* Two smaller picks — take 2/5 columns */}
-              <div className="lg:col-span-2 flex flex-col gap-5">
+              <li className="lg:col-span-2">
+              <ul className="flex flex-col gap-5 h-full list-none p-0 m-0">
                 {rest.map((product, i) => (
+                  <li key={product.id} className="flex-1">
                   <Link
-                    key={product.id}
                     href={`/category/${product.categorySlug}/${product.slug}`}
-                    className="group flex-1 bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                    className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <div className="relative w-28 shrink-0 bg-gray-50 overflow-hidden">
                       {product.image ? (
@@ -611,9 +614,11 @@ export default function HomePage() {
                       </div>
                     </div>
                   </Link>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+              </li>
+            </ol>
           );
         })()}
       </section>

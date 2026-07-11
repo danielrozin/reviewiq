@@ -177,9 +177,9 @@ export default function NotificationsSettingsPage() {
       )}
 
       {prefs && (
-        <div className="space-y-4">
+        <ul className="space-y-4 list-none p-0 m-0">
           {GROUPS.map((group) => (
-            <div key={group.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
+            <li key={group.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
               {/* Group header */}
               <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
                 <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${group.iconBg} ${group.iconColor} flex items-center justify-center shrink-0`}>
@@ -192,8 +192,9 @@ export default function NotificationsSettingsPage() {
               </div>
 
               {/* Toggles */}
+              <ul className="list-none p-0 m-0 divide-y divide-gray-50">
               {group.toggles.map(({ key, label, description, badge }) => (
-                <div key={key} className="flex items-center justify-between px-5 py-4 gap-4 hover:bg-gray-50/60 transition-colors">
+                <li key={key} className="flex items-center justify-between px-5 py-4 gap-4 hover:bg-gray-50/60 transition-colors">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="font-medium text-gray-900 text-sm">{label}</h3>
@@ -228,11 +229,12 @@ export default function NotificationsSettingsPage() {
                       }`}
                     />
                   </button>
-                </div>
+                </li>
               ))}
-            </div>
+              </ul>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {/* Delivery channel note */}
