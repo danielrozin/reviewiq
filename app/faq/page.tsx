@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { faqPages } from "@/data/faq-pages";
+import { faqHubSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Frequently Asked Questions",
@@ -11,8 +12,13 @@ export const metadata = buildMetadata({
 });
 
 export default function FAQIndexPage() {
+  const hubSchema = faqHubSchema(faqPages);
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hubSchema) }}
+      />
       <Breadcrumbs items={[{ name: "FAQ", url: "/faq" }]} />
 
       <header className="mt-8 mb-12 max-w-3xl">
