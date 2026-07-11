@@ -562,9 +562,9 @@ export function WriteReviewForm() {
               <legend className="block text-sm font-semibold text-emerald-700 mb-2">
                 Pros (optional)
               </legend>
-              <div className="space-y-2">
+              <ul className="space-y-2 list-none p-0 m-0">
                 {pros.map((pro, i) => (
-                  <div key={i} className="flex items-center gap-2">
+                  <li key={i} className="flex items-center gap-2">
                     <span aria-hidden="true" className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
                       <svg aria-hidden="true" className="w-3 h-3 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -578,9 +578,9 @@ export function WriteReviewForm() {
                       placeholder={`Pro ${i + 1}`}
                       className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     />
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </fieldset>
 
             {/* Cons */}
@@ -588,9 +588,9 @@ export function WriteReviewForm() {
               <legend className="block text-sm font-semibold text-red-600 mb-2">
                 Cons (optional)
               </legend>
-              <div className="space-y-2">
+              <ul className="space-y-2 list-none p-0 m-0">
                 {cons.map((con, i) => (
-                  <div key={i} className="flex items-center gap-2">
+                  <li key={i} className="flex items-center gap-2">
                     <span aria-hidden="true" className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
                       <svg aria-hidden="true" className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12h-15" />
@@ -604,9 +604,9 @@ export function WriteReviewForm() {
                       placeholder={`Con ${i + 1}`}
                       className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
                     />
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </fieldset>
           </div>
         )}

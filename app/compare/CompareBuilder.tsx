@@ -175,26 +175,26 @@ function CompareContent() {
         </p>
 
         {/* Feature chips */}
-        <div className="grid grid-cols-3 gap-3 mb-8 mt-6">
+        <ul className="grid grid-cols-3 gap-3 mb-8 mt-6 list-none p-0 m-0">
           {[
             { icon: "📊", label: "SmartScore breakdown" },
             { icon: "🤖", label: "AI verdict" },
             { icon: "📋", label: "Spec-by-spec table" },
           ].map((f) => (
-            <div key={f.label} className="flex flex-col items-center gap-1.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 text-center">
+            <li key={f.label} className="flex flex-col items-center gap-1.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 text-center">
               <span aria-hidden="true" className="text-xl">{f.icon}</span>
               <span className="text-xs font-medium text-gray-600">{f.label}</span>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         {/* Suggested comparisons */}
         <section aria-label="Popular comparisons" className="border-t border-gray-100 pt-6">
           <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
-          <div className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 list-none p-0 m-0">
             {SUGGESTED_PAIRS.map((pair) => (
+              <li key={pair.ids}>
               <a
-                key={pair.ids}
                 href={`/compare?ids=${pair.ids}`}
                 className="flex items-center justify-between px-4 py-3 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
@@ -203,8 +203,9 @@ function CompareContent() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                 </svg>
               </a>
+              </li>
             ))}
-          </div>
+          </ul>
           <div className="text-center mt-4">
             <a href="/products" className="text-sm text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Browse all products <span aria-hidden="true">→</span>
