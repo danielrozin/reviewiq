@@ -69,16 +69,16 @@ function ProductSearchSkeleton() {
   return (
     <div role="status" aria-label="Loading products" className="motion-safe:animate-pulse space-y-6">
       <div className="h-12 bg-gray-100 rounded-xl" />
-      <div className="flex gap-3">
+      <ul aria-hidden="true" className="flex gap-3 list-none p-0 m-0">
         {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="h-10 w-28 bg-gray-100 rounded-lg" />
+          <li key={i} className="h-10 w-28 bg-gray-100 rounded-lg" />
         ))}
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      </ul>
+      <ul aria-hidden="true" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
         {Array.from({ length: 6 }).map((_, i) => (
-          <div key={i} className="h-64 bg-gray-100 rounded-2xl" />
+          <li key={i} className="h-64 bg-gray-100 rounded-2xl" />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }

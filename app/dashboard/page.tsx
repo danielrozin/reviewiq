@@ -176,11 +176,13 @@ export default async function DashboardPage() {
             <h2 id="dashboard-badges-heading" className="text-sm font-semibold text-gray-900 mb-3">
               Your Badges
             </h2>
-            <div className="flex flex-wrap gap-1.5">
+            <ul className="flex flex-wrap gap-1.5 list-none p-0 m-0">
               {user.badges.map((badge) => (
-                <TrustBadge key={badge} badge={badge as UserBadge} size="md" />
+                <li key={badge}>
+                  <TrustBadge badge={badge as UserBadge} size="md" />
+                </li>
               ))}
-            </div>
+            </ul>
           </section>
 
           {/* Recommendations */}
