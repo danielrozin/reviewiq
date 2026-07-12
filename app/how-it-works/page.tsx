@@ -146,7 +146,7 @@ export default function HowItWorksPage() {
       <Breadcrumbs items={[{ name: "How It Works", url: "/how-it-works" }]} />
 
       {/* Hero */}
-      <div className="mt-8 mb-16 max-w-3xl">
+      <header className="mt-8 mb-16 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-4 border border-brand-100">
           <span className="w-2 h-2 bg-brand-500 rounded-full" />
           The ReviewIQ system
@@ -159,7 +159,7 @@ export default function HowItWorksPage() {
           commissions. ReviewIQ is different. We built a system where trust,
           structure, and AI analysis replace star-rating noise.
         </p>
-      </div>
+      </header>
 
       {/* Timeline steps */}
       <div className="relative max-w-4xl" data-speakable="how-it-works-steps">

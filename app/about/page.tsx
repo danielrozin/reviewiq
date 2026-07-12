@@ -163,7 +163,7 @@ export default function AboutPage() {
       <Breadcrumbs items={[{ name: "About", url: "/about" }]} />
 
       {/* Hero */}
-      <div className="mt-8 mb-16 max-w-3xl" data-speakable="about-mission">
+      <header className="mt-8 mb-16 max-w-3xl" data-speakable="about-mission">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-4 border border-brand-100">
           <span className="w-2 h-2 bg-brand-500 rounded-full" />
           Our mission
@@ -175,7 +175,7 @@ export default function AboutPage() {
         <p className="text-xl text-gray-600 leading-relaxed max-w-2xl">
           The review ecosystem is broken. Most reviews online are manipulated, affiliate-driven, or shallow. We built ReviewIQ to fix that — combining structured buyer reviews with AI analysis, zero affiliate revenue, and transparent verification.
         </p>
-      </div>
+      </header>
 
       {/* Stats bar */}
       <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20 list-none p-0 m-0">
@@ -249,7 +249,7 @@ export default function AboutPage() {
             <li key={member.name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex flex-col items-center text-center p-6">
-                <div className={`w-16 h-16 rounded-2xl ${member.color} text-white flex items-center justify-center text-xl font-bold mb-4`}>
+                <div aria-hidden="true" className={`w-16 h-16 rounded-2xl ${member.color} text-white flex items-center justify-center text-xl font-bold mb-4`}>
                   {member.initials}
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-0.5">{member.name}</h3>

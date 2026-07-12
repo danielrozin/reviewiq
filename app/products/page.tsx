@@ -48,7 +48,7 @@ export default function ProductsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Products", url: "/products" }])) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productsPageSchema) }} />
 
-      <div className="mt-8 mb-8">
+      <header className="mt-8 mb-8">
         <h1 className="text-3xl font-bold text-gray-900">
           Browse Products
         </h1>
@@ -56,7 +56,7 @@ export default function ProductsPage() {
           Search and filter across all categories to find the right product for
           you. Every score is based on verified buyer reviews.
         </p>
-      </div>
+      </header>
 
       <Suspense fallback={<ProductSearchSkeleton />}>
         <ProductSearch />

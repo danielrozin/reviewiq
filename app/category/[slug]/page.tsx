@@ -77,11 +77,11 @@ export default async function CategoryPage({ params }: Props) {
       />
 
       {/* Category header */}
-      <div className="mt-8 mb-8">
+      <header className="mt-8 mb-8">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
             <div className="flex items-center gap-4 mb-2">
-              <div className="w-14 h-14 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm shrink-0">
+              <div aria-hidden="true" className="w-14 h-14 bg-white border border-gray-200 rounded-2xl flex items-center justify-center shadow-sm shrink-0">
                 <span aria-hidden="true" className="text-3xl">{category.icon}</span>
               </div>
               <h1 data-speakable="category-name" className="text-3xl font-bold text-gray-900">
@@ -92,10 +92,10 @@ export default async function CategoryPage({ params }: Props) {
               {category.description}
             </p>
           </div>
-          <div className="shrink-0 text-right">
-            <p className="text-2xl font-bold text-gray-900">{categoryProducts.length}</p>
-            <p className="text-sm text-gray-600">products reviewed</p>
-          </div>
+          <dl className="shrink-0 text-right">
+            <dd className="text-2xl font-bold text-gray-900">{categoryProducts.length}</dd>
+            <dt className="text-sm text-gray-600">products reviewed</dt>
+          </dl>
         </div>
 
         {/* Contextual trust signals */}
@@ -147,7 +147,7 @@ export default async function CategoryPage({ params }: Props) {
             </li>
           ))}
         </ul>
-      </div>
+      </header>
 
       {/* Product grid with client-side sort + persistence */}
       <CategorySortedGrid products={categoryProducts} categorySlug={slug} />
