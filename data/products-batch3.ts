@@ -166,8 +166,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "YkgkThdzX-8", title: "Sony WH-1000XM5 Review — Still the Best?" },
-      { id: "cFBGG3aaOhg", title: "Sony XM5 vs Bose QC Ultra — Which Should You Buy?" },
     ],
   },
 
@@ -333,9 +331,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "tS4s1zKsZMY", title: "AirPods Max 2024 Review — Worth It?" },
-      { id: "vl6fVBQw_Kc", title: "AirPods Max vs Sony XM5 — Full Comparison" },
-      { id: "4jA9G6-WVBU", title: "AirPods Max Long-Term Review After 1 Year" },
     ],
   },
 
@@ -501,8 +496,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "xLGRHI8WKKA", title: "Bose QuietComfort Ultra Review — Best ANC Headphones?" },
-      { id: "dxv3hjGFNJk", title: "Bose QC Ultra vs Sony XM5 — In-Depth Comparison" },
     ],
   },
 
@@ -668,8 +661,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "S-M6zHOApVs", title: "Sennheiser Momentum 4 Review — The Battery King" },
-      { id: "7yD1LKqkCEY", title: "Sennheiser Momentum 4 vs Sony XM5 — Which Wins?" },
     ],
   },
 
@@ -838,9 +829,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "ZYmSgbT-BqE", title: "iPad Pro M4 Review — The Best iPad Ever Made" },
-      { id: "klQRQO4ULl4", title: "iPad Pro M4 vs MacBook Air — Which Should You Buy?" },
-      { id: "WnYRJMVy7Nk", title: "iPad Pro M4 Long-Term Review After 6 Months" },
     ],
   },
 
@@ -1006,8 +994,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "LW3vd1rBcI4", title: "Samsung Galaxy Tab S9 Ultra Review — Monster Tablet" },
-      { id: "W3BQyQi0V-A", title: "Tab S9 Ultra vs iPad Pro M4 — Which Is Better?" },
     ],
   },
 
@@ -1173,8 +1159,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "yy9Y5WGbzXI", title: "Microsoft Surface Pro 10 Review — Is Windows on a Tablet Worth It?" },
-      { id: "rQD2OQYkCiA", title: "Surface Pro 10 vs iPad Pro M4 — Best Premium 2-in-1?" },
     ],
   },
 
@@ -1340,8 +1324,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "zJqh8HVFGHE", title: "iPad Air M3 Review — Best iPad for Most People" },
-      { id: "8kYtLW4NmV4", title: "iPad Air M3 vs iPad Pro M4 — Save $700 or Splurge?" },
     ],
   },
 
@@ -1510,8 +1492,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "rHjx7CWYDMM", title: "Amazon Echo 5th Gen Review — Worth the Upgrade?" },
-      { id: "3tQMlO3Wb9w", title: "Echo 5th Gen vs HomePod 2 vs Nest Hub — Smart Speaker Showdown" },
     ],
   },
 
@@ -1677,8 +1657,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "4CnvBEK3v0s", title: "Apple HomePod 2 Review — Worth It in 2025?" },
-      { id: "tpS1E5JTLOY", title: "HomePod 2 vs Sonos Era 300 — Which Smart Speaker Wins?" },
     ],
   },
 
@@ -1844,8 +1822,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "6hT2b0VJNFA", title: "Google Nest Hub Max Review — Best Smart Display?" },
-      { id: "X5q8NN1W3z8", title: "Nest Hub Max vs Echo Show 10 — Which Wins?" },
     ],
   },
 
@@ -2011,8 +1987,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Py4w-7XNXSY", title: "Sonos Era 300 Review — The Future of Smart Speakers?" },
-      { id: "lJVqcWR4p8s", title: "Sonos Era 300 as Rear Surrounds with Arc — Full Review" },
     ],
   },
 
@@ -2181,8 +2155,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "bhRx5y0MFFI", title: "Logitech G Pro X Superlight 2 Review — The Perfect Esports Mouse" },
-      { id: "3vGKN38AXEM", title: "Superlight 2 vs DeathAdder V3 Pro — Which Gaming Mouse Wins?" },
     ],
   },
 
@@ -2348,8 +2320,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "VBjbTH7dD-8", title: "Razer DeathAdder V3 Pro Review — Esports Mouse Champion" },
-      { id: "W83TJxFjPsE", title: "DeathAdder V3 Pro Long-Term Review After 6 Months" },
     ],
   },
 
@@ -2515,8 +2485,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "DfxkCJ2fVAs", title: "SteelSeries Aerox 5 Wireless Review — Best Value Gaming Mouse?" },
-      { id: "1MzjnkiM5Xw", title: "Aerox 5 vs Superlight 2 — Which Is Right for You?" },
     ],
   },
 
@@ -2682,8 +2650,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "k4ZiA4yP6Pg", title: "Zowie EC2-CW Review — Why Pros Choose Zowie" },
-      { id: "vM9yKEnXQog", title: "Zowie EC2-CW vs Superlight 2 — The CS2 Mouse Battle" },
     ],
   },
 
@@ -2852,8 +2818,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "HCl5VB6jAFo", title: "EcoFlow Delta 2 Max Review — Best Portable Power Station?" },
-      { id: "LTwV0JjgDdU", title: "EcoFlow Delta 2 Max vs Jackery 1000 Plus — In-Depth Comparison" },
     ],
   },
 
@@ -3019,8 +2983,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "9VvF8kL7PDA", title: "Jackery Explorer 1000 Plus Review — Best Solar Generator?" },
-      { id: "vJ8nKDxXoMw", title: "Jackery 1000 Plus vs EcoFlow Delta 2 Max — Which Should You Buy?" },
     ],
   },
 
@@ -3186,8 +3148,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "B3KXLHhJ2Pc", title: "Anker SOLIX F1500 Review — Best Value Power Station?" },
-      { id: "sHxQDmMjCus", title: "Anker SOLIX F1500 vs EcoFlow Delta 2 Max — Which Is Worth It?" },
     ],
   },
 
@@ -3353,8 +3313,6 @@ export const productsBatch3: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "4p81VN0gqDQ", title: "Bluetti AC200L Review — Best Power Station for RV and Off-Grid?" },
-      { id: "U1JBpXJuFwU", title: "Bluetti AC200L vs EcoFlow Delta 2 Max — 2048Wh Showdown" },
     ],
   },
 ];

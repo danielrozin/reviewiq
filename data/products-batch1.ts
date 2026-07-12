@@ -166,9 +166,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "4kW8jN3pQaE", title: "Roborock Q5 Pro+ Review: Best Budget Robot Vacuum?" },
-      { id: "hT2mLpXoRuQ", title: "Roborock Q5 Pro+ vs S8 MaxV Ultra — Is Cheaper Better?" },
-      { id: "vZqPdMn7TsY", title: "Roborock Q5 Pro+ 6-Month Long-Term Review" },
     ],
   },
   {
@@ -334,9 +331,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "kD9mF2xLoBw", title: "iRobot Roomba Combo j9+ Review: The Smartest Robot Vacuum?" },
-      { id: "nPqR7vJ4cXm", title: "Roomba Combo j9+ vs Roborock S8 MaxV — Which is Worth It?" },
-      { id: "yWsT5uN8eKp", title: "Roomba j9+ Long Term Review — 6 Months Later" },
     ],
   },
   {
@@ -501,9 +495,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "pX8mQjR2nWc", title: "Narwal Freo X Ultra Review: The BEST Mopping Robot?" },
-      { id: "bK4vN7sLqTa", title: "Narwal Freo X Ultra vs Roborock S8 MaxV Ultra — Full Comparison" },
-      { id: "dH6cM9wEyFg", title: "Narwal Freo X Ultra: 3-Month Real World Test" },
     ],
   },
   {
@@ -669,8 +660,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "wQ3nX8kMpVb", title: "Samsung Bespoke Jet Bot AI+ Review: Worth $900?" },
-      { id: "tG5rL2jKcNa", title: "Samsung Jet Bot AI+ vs Roborock S8 — The Real Winner" },
     ],
   },
 
@@ -839,9 +828,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "rN4xT7vLmWq", title: "Nespresso Vertuo Next Review — Is it Worth It in 2025?" },
-      { id: "sP6yU8bKoZj", title: "Vertuo Next vs Original Line — Which Nespresso Should You Buy?" },
-      { id: "uM2wV9cJnXk", title: "I Used Nespresso Vertuo for 1 Year — Honest Review" },
     ],
   },
   {
@@ -1006,8 +992,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "jG7pT4xNmWs", title: "Keurig K-Elite Review — Is It Worth the Extra Money?" },
-      { id: "kH8qU5yOlVr", title: "Keurig K-Elite vs Nespresso Vertuo — Which Single-Serve Wins?" },
     ],
   },
   {
@@ -1173,9 +1157,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "mL9nP3qRwXt", title: "Jura E8 Review: Is a $2400 Coffee Machine Worth It?" },
-      { id: "nM0oQ4rSxYu", title: "Jura E8 vs Breville Barista Express — Two Very Different Machines" },
-      { id: "oN1pR5sTyZv", title: "Jura E8 — 1 Year Owner Honest Review" },
     ],
   },
   {
@@ -1340,9 +1321,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "pQ2rS6tUwXv", title: "Gaggia Classic Pro Review — Best Starter Espresso Machine?" },
-      { id: "qR3sT7uVxYw", title: "Gaggia Classic Pro Setup Guide for Beginners" },
-      { id: "rS4tU8vWyZx", title: "Gaggia Classic Pro vs Breville Bambino Plus — Complete Comparison" },
     ],
   },
 
@@ -1511,9 +1489,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "sT5uV9wXzAb", title: "Breville Smart Oven Air Fryer Pro Review — Worth $400?" },
-      { id: "tU6vW0xYaBc", title: "Breville Smart Oven Pro — Testing All 13 Cooking Functions" },
-      { id: "uV7wX1yZbCd", title: "Breville Air Fryer Oven vs Ninja Foodi — Which is Better?" },
     ],
   },
   {
@@ -1678,8 +1653,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "vW8xY2zAbEf", title: "COSORI Dual Blaze Air Fryer Review — Is Dual Heat Better?" },
-      { id: "wX9yZ3aBcFg", title: "COSORI Dual Blaze vs Ninja Foodi — 2025 Comparison" },
     ],
   },
   {
@@ -1845,8 +1818,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "xY0zA4bCdGh", title: "Ninja Woodfire Outdoor Grill Review — Real Wood Smoke at Home?" },
-      { id: "yZ1aB5cDeHi", title: "Ninja Woodfire vs Traeger Pellet Grill — Electric vs Traditional" },
     ],
   },
   {
@@ -2011,8 +1982,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "zB2cD6eFiJk", title: "Chefman TurboFry XL Review — Best Budget Air Fryer?" },
-      { id: "aC3dE7fGjKl", title: "Chefman TurboFry vs COSORI — $65 vs $130 Air Fryer Comparison" },
     ],
   },
 
@@ -2182,9 +2151,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "bC4eF8gHkMn", title: "Bose QC Ultra Earbuds Review — The Best ANC Earbuds?" },
-      { id: "cD5fG9hIlNo", title: "Bose QC Ultra vs Sony XM5 — 2025 Head-to-Head" },
-      { id: "dE6gH0iJmOp", title: "Bose QuietComfort Ultra Earbuds — 3 Month Review" },
     ],
   },
   {
@@ -2350,8 +2316,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "eF7gH1iKnPq", title: "Google Pixel Buds Pro 2 Review — Better Than Expected" },
-      { id: "fG8hI2jLoQr", title: "Pixel Buds Pro 2 vs Sony XM5 — Which Should You Buy?" },
     ],
   },
   {
@@ -2517,8 +2481,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "gH9iJ3kMpRs", title: "Nothing Ear 2 Review — The Best Budget ANC Earbuds?" },
-      { id: "hI0jK4lNqSt", title: "Nothing Ear 2 vs Sony XM5 — Is the Price Gap Worth It?" },
     ],
   },
   {
@@ -2684,9 +2646,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "iJ1kL5mOsUv", title: "Sennheiser Momentum True Wireless 4 Review — Audiophile Grade?" },
-      { id: "jK2lM6nPtVw", title: "MTW4 vs Bose QC Ultra — Which Has Better Sound?" },
-      { id: "kL3mN7oPuWx", title: "Sennheiser MTW4 Sound Persona Deep Dive — Is It Worth It?" },
     ],
   },
 
@@ -2855,8 +2814,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "lM4nO8pQvXz", title: "Tempur-Pedic ProAdapt Review — Is it Worth $2500?" },
-      { id: "mN5oP9qRwYa", title: "Tempur-Pedic vs Purple vs Saatva — $2000+ Mattress Comparison" },
     ],
   },
   {
@@ -3021,8 +2978,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "nO6pQ0rSwYb", title: "Helix Midnight Luxe Review — Best Mattress for Side Sleepers?" },
-      { id: "oP7qR1sTxZc", title: "Helix Midnight Luxe vs Casper Wave — 2025 Hybrid Comparison" },
     ],
   },
   {
@@ -3187,8 +3142,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "pQ8rS2tUwYd", title: "Leesa Sapira Hybrid Review — Best Balanced Hybrid Mattress?" },
-      { id: "qR9sT3uVxZe", title: "Leesa Sapira vs Casper Nova — Full 2025 Comparison" },
     ],
   },
   {
@@ -3353,8 +3306,6 @@ export const productsBatch1: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "sT4uV8wXzBf", title: "Brooklyn Bedding Aurora Luxe Review — Best Cooling Mattress?" },
-      { id: "tU5vW9xYaCg", title: "Aurora Luxe vs Casper Original — Is Brooklyn Bedding Worth It?" },
     ],
   },
 ];

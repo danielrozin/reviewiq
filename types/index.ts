@@ -42,7 +42,12 @@ export interface Product {
 
 export interface YouTubeVideo {
   id: string; // YouTube video ID (e.g. "dQw4w9WgXcQ")
+  /** The title YouTube publishes for this video — never one we write ourselves. */
   title: string;
+  /** Channel that published it. We embed third-party videos, so attribution is theirs. */
+  channel?: string;
+  /** Real publication date (YYYY-MM-DD). Omitted when unknown; never the build date. */
+  uploadDate?: string;
   isActive?: boolean;
   status?: string;
 }

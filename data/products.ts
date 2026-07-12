@@ -164,9 +164,8 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "ivxls9FxtjQ", title: "Roborock S8 MaxV Ultra Review: Is it worth it?" },
-      { id: "zMg-QrJxLc0", title: "Roborock S8 MaxV Ultra Review — Android Authority" },
-      { id: "Js1gfJPrOjk", title: "Roborock S8 MaxV Ultra vs Dreame L20 Ultra Comparison" },
+      { id: "ivxls9FxtjQ", title: "Roborock S8 MaxV Ultra Review: Is it worth it?", channel: "Michael Leen", uploadDate: "2024-12-15" },
+      { id: "zMg-QrJxLc0", title: "Living with the BEST robot vacuum of 2024 (Roborock S8 MaxV Ultra LONG-TERM REVIEW)", channel: "Android Authority", uploadDate: "2024-08-20" },
     ],
   },
   {
@@ -235,9 +234,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "WCZ7PBphg7k", title: "Roomba j7+ — iRobot's Best Robot Vacuum Yet!!!" },
-      { id: "uTMxaKaiCCE", title: "Roomba Combo J7+ Robot Vacuum / Mop Review — Vacuum Wars" },
-      { id: "MNNukm_zrgk", title: "iRobot Roomba j7 and j7+ Review" },
+      { id: "WCZ7PBphg7k", title: "Roomba j7+ - iRobot's Best Robot Vacuum Yet!!!", channel: "Vacuum Wars", uploadDate: "2021-10-01" },
+      { id: "uTMxaKaiCCE", title: "Roomba Combo J7+ Robot Vacuum / Mop Review! - Vacuum Wars!", channel: "Vacuum Wars", uploadDate: "2022-10-21" },
+      { id: "MNNukm_zrgk", title: "iRobot Roomba j7 and j7+ Review", channel: "Consumer Analysis", uploadDate: "2022-01-12" },
     ],
   },
   {
@@ -294,9 +293,8 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "JdwczeQzJvM", title: "Ecovacs DEEBOT X2 OMNI Robot Vacuum & Mop Review" },
-      { id: "2GrsbsSbvUU", title: "ECOVACS Deebot X2 Omni — Cleaning a Difficult Spot" },
-      { id: "cnDemD9nP_Y", title: "ECOVACS Deebot X2 Omni — Carpet Cleaning Test" },
+      { id: "2GrsbsSbvUU", title: "ECOVACS Deebot X2 Omni - Cleaning a difficult spot on - single run.", channel: "Mark B", uploadDate: "2023-11-14" },
+      { id: "cnDemD9nP_Y", title: "ECOVACS Deebot X2 Omni Robot Vacuum Cleaner - Carpet Cleaning.", channel: "Mark B", uploadDate: "2023-11-14" },
     ],
   },
   {
@@ -352,9 +350,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Js1gfJPrOjk", title: "Dreame L20 Ultra Review — Why Did it Win This Year?" },
-      { id: "2HdSjC0HtyI", title: "Dreame L20 Ultra — The Most Advanced Robot Vacuum Tested!" },
-      { id: "v6beDWJm3EI", title: "DreameBot L20 Ultra Review — Easily One Of The Best" },
+      { id: "Js1gfJPrOjk", title: "Dreame L20 Ultra Review - Why Did it Win This Year?", channel: "Vacuum Wars", uploadDate: "2023-12-01" },
+      { id: "2HdSjC0HtyI", title: "Dreame L20 Ultra Review - The Most Advanced Robot Vacuum Tested!", channel: "TechTablets", uploadDate: "2023-09-18" },
+      { id: "v6beDWJm3EI", title: "DreameBot L20 Ultra Review - Easily One Of The Best Robot Vacuum & Mop", channel: "sakitech", uploadDate: "2023-09-13" },
     ],
   },
 
@@ -423,9 +421,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "G-GeZ9fbajw", title: "Delonghi Dedica Home Espresso Machine Review & Test" },
-      { id: "dLiIGjJjlh8", title: "BUY This Espresso Machine...You Can Thank Me Later — Delonghi Dedica" },
-      { id: "yy3NEdiJl1Y", title: "De'Longhi Dedica EC685 | Review, Upgrades & Tips" },
     ],
   },
   {
@@ -477,9 +472,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "NdkEGdMOobo", title: "Breville Bambino Plus Home Espresso Machine Review & Test" },
-      { id: "VsOEFcdrgC8", title: "Breville Bambino Plus: The Honest Truth About This Espresso Machine" },
-      { id: "U2TNEhrBU5Q", title: "BAMBINO PLUS REVIEW: How Good Is It, Really?" },
+      { id: "NdkEGdMOobo", title: "Sage (Breville) Bambino Plus Home Espresso Machine Review & Test", channel: "Tom's Coffee Corner", uploadDate: "2023-06-07" },
+      { id: "VsOEFcdrgC8", title: "Breville Bambino Plus: The Honest Truth About This Espresso Machine", channel: "Alternative Brewing", uploadDate: "2025-12-13" },
+      { id: "U2TNEhrBU5Q", title: "BAMBINO PLUS REVIEW: How Good Is It, Really?", channel: "Lance Hedrick", uploadDate: "2023-04-16" },
     ],
   },
   {
@@ -532,9 +527,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "v97d6kPPFio", title: "Ninja DualBrew Pro CFP301: Coffee Machine Review and Test" },
-      { id: "Ezo73JnkqE0", title: "Ninja DualBrew Pro Specialty Coffee System Review and Demo" },
-      { id: "AcqV2aXsUZY", title: "Ninja DualBrew Pro HONEST Review" },
+      { id: "v97d6kPPFio", title: "Ninja DualBrew Pro CFP301: Coffee Machine Review and Test", channel: "Tom's Coffee Corner", uploadDate: "2025-12-05" },
+      { id: "Ezo73JnkqE0", title: "Ninja DualBrew Pro Specialty Coffee System Review and Demo", channel: "bestkitchenreviews", uploadDate: "2023-10-22" },
+      { id: "AcqV2aXsUZY", title: "Ninja dual brew pro HONEST review", channel: "The Last Honest Influencer ", uploadDate: "2024-05-08" },
     ],
   },
   {
@@ -588,9 +583,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "4YIFKsbfbXM", title: "Should You Buy BREVILLE BARISTA EXPRESS? 4 Year Review" },
-      { id: "MywOPbq0NKw", title: "Breville Barista Express, Still Worth It in 2025?" },
-      { id: "_XgBasLKbCc", title: "Breville Barista Express Review: Amazon's Best Selling Espresso Machine" },
+      { id: "4YIFKsbfbXM", title: "Should You Buy BREVILLE BARISTA EXPRESS? 4 Year Review of Amazon’s Best Selling Espresso Machine", channel: "More George", uploadDate: "2023-12-07" },
+      { id: "MywOPbq0NKw", title: "Sage/Breville Barista Express, Still Worth It in 2025?", channel: "Coffee Kev", uploadDate: "2025-07-05" },
+      { id: "_XgBasLKbCc", title: "Breville Barista Express Review: Amazon's Best Selling Semi-Automatic Espresso Machine", channel: "Tom's Coffee Corner", uploadDate: "2023-01-11" },
     ],
   },
 
@@ -647,9 +642,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "1kMs0H6ROj4", title: "Ninja DZ201 Foodi Air Fryer | Review & Demo" },
-      { id: "TQw1qKN7Pcg", title: "Ninja DZ201 Foodi DualZone Air Fryer Review — Worth It?" },
-      { id: "3A2Q9PjLkRM", title: "Ninja Foodi 2 Basket Air Fryer | FULL Review!" },
+      { id: "1kMs0H6ROj4", title: "Ninja DZ201 Foodi Air Fryer｜Review & Demo", channel: "The Modern Kitchen", uploadDate: "2022-07-28" },
+      { id: "TQw1qKN7Pcg", title: "Ninja DZ201 Foodi DualZone Air Fryer Review – Worth It? Buy or Skip?", channel: "Katelyn", uploadDate: "2025-05-11" },
+      { id: "3A2Q9PjLkRM", title: "Ninja Foodi 2 Basket Air Fryer | FULL Review!", channel: "The Average Kitchen", uploadDate: "2021-11-07" },
     ],
   },
   {
@@ -701,9 +696,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "CL3hL6zIRfs", title: "Cosori Pro LE 9-in-1 Air Fryer Review — Is It Good Enough?" },
-      { id: "QPeCijqySNo", title: "COSORI Pro LE 5.0-Quart Air Fryer — Detailed & Honest Review" },
-      { id: "Q7zWG7Z-zd4", title: "COSORI Pro LE Airfryer Review — Redefining Air Frying?" },
+      { id: "CL3hL6zIRfs", title: "Cosori Pro LE 9-in-1 Air Fryer Review — Is It Good Enough?", channel: "Meem Reviews", uploadDate: "2026-01-22" },
+      { id: "QPeCijqySNo", title: "COSORI Pro LE 5.0-Quart Air Fryer - Detailed & Honest Review", channel: "Lucid Product Reviews", uploadDate: "2023-09-30" },
+      { id: "Q7zWG7Z-zd4", title: "COSORI Pro LE Airfryer Review ✅ Does It Redefine Air Frying Excellence? | In-Depth Look", channel: "ValueMatchers", uploadDate: "2023-10-09" },
     ],
   },
   {
@@ -755,9 +750,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "vjH6p5WryS8", title: "PHILIPS Premium Airfryer XXL Review: Fat Removal Technology!" },
-      { id: "nXjg_5hYN5c", title: "Philips Premium Airfryer XXL Review — Best Large Capacity Air Fryer" },
-      { id: "FWVMdFt4g4M", title: "Philips Premium Airfryer XXL, Fat Removal Technology REVIEW" },
+      { id: "vjH6p5WryS8", title: "PHILIPS Premium Airfryer XXL Review: Fat Removal Tecnology!", channel: "The Holistic Hazelnut Reviews", uploadDate: "2025-09-05" },
+      { id: "nXjg_5hYN5c", title: "Philips Premium Airfryer XXL Review - Best Large Capacity Air Fryers of 2024!", channel: "Gazebo Hub", uploadDate: "2024-11-06" },
+      { id: "FWVMdFt4g4M", title: "Philips Premium Airfryer XXL, Fat Removal Technology REVIEW", channel: "Patrick Recommends", uploadDate: "2025-01-21" },
     ],
   },
   {
@@ -810,9 +805,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "q1jYXL0M7Vw", title: "Instant Vortex Plus Air Fryer Review" },
-      { id: "3_yXc_v8ugs", title: "Instant Pot Vortex Plus 6-in-1 — Why This One Keeps Winning Tests" },
-      { id: "VaVZgwIOjVg", title: "Instant Vortex Plus (2024) | Review & Demo" },
+      { id: "q1jYXL0M7Vw", title: "Instant Vortex Plus Air Fryer Review", channel: "bestkitchenreviews", uploadDate: "2024-03-13" },
+      { id: "3_yXc_v8ugs", title: "Instant Pot Vortex Plus 6-in-1 Air Fryer — Why This One Keeps Winning Tests", channel: "Meem Reviews", uploadDate: "2026-01-29" },
+      { id: "VaVZgwIOjVg", title: "Instant Vortex Plus (2024)｜Review & Demo", channel: "The Modern Kitchen", uploadDate: "2022-08-02" },
     ],
   },
 
@@ -875,9 +870,7 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "rZpIn2y5dh4", title: "Apple AirPods Pro 2 Review — SoundGuys" },
-      { id: "mDYtE4G9iO0", title: "AirPods Pro 2 vs The Competition — Which Should You Buy?" },
-      { id: "y19wbYGf9Ug", title: "AirPods Pro 2 Long-Term Review — Still The Best?" },
+      { id: "rZpIn2y5dh4", title: "AirPods Pro 2 Review In 2024: Still worth buying 2 years later?", channel: "SoundGuys", uploadDate: "2024-11-02" },
     ],
   },
   {
@@ -933,9 +926,7 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "vPFM8x1LzwI", title: "Sony WF-1000XM5 Review — SoundGuys" },
-      { id: "-B6FSgSl1mo", title: "Sony WF-1000XM5 In-Depth Review & Comparison" },
-      { id: "ZqXh_BUWMAs", title: "Sony WF-1000XM5 — The King of ANC Earbuds?" },
+      { id: "vPFM8x1LzwI", title: "Sony WF-1000XM5 Review in FIVE Minutes!", channel: "SoundGuys", uploadDate: "2023-07-29" },
     ],
   },
   {
@@ -992,9 +983,7 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "ZqXh_BUWMAs", title: "Samsung Galaxy Buds3 Pro Review — SoundGuys" },
-      { id: "mDYtE4G9iO0", title: "Samsung Galaxy Buds3 Pro vs AirPods Pro 2" },
-      { id: "-B6FSgSl1mo", title: "Galaxy Buds3 Pro — Best Android Earbuds of 2025?" },
+      { id: "ZqXh_BUWMAs", title: "Samsung Galaxy Buds 3 Pro Review: Two Steps Backward?", channel: "SoundGuys", uploadDate: "2024-07-25" },
     ],
   },
   {
@@ -1047,9 +1036,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "mDYtE4G9iO0", title: "Jabra Elite 10 Review (RANKED Against The BEST)" },
-      { id: "-B6FSgSl1mo", title: "Jabra Elite 10 & Elite 8 Active Review: Designed To Be Different" },
-      { id: "y19wbYGf9Ug", title: "The Best ANC Earbuds We've Ever Tested | Jabra Elite 10 Gen 2" },
+      { id: "mDYtE4G9iO0", title: "Jabra Elite 10 Review (RANKED Against The BEST)", channel: "Picky Audio", uploadDate: "2024-01-16" },
+      { id: "-B6FSgSl1mo", title: "Jabra Elite 10 & Elite 8 Active Review: Designed To Be Different", channel: "CNET", uploadDate: "2023-08-31" },
+      { id: "y19wbYGf9Ug", title: "The Best ANC Earbuds We've Ever Tested | Jabra Elite 10 Gen 2 Review", channel: "SoundGuys", uploadDate: "2024-07-07" },
     ],
   },
 
@@ -1108,9 +1097,8 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "SFChpQ4BSk8", title: "Purple Hybrid Premier Mattress Video Review — GoodBed" },
-      { id: "IoWurP-lJWs", title: "Purple Hybrid Premier 4 Review — 33 Unique Data Points Analyzed" },
-      { id: "JeRtnXcPJtw", title: "Purple Mattress Review — Sleepopolis" },
+      { id: "SFChpQ4BSk8", title: "Purple Hybrid Premier 4 Mattress REVIEW by GoodBed.com", channel: "GoodBed", uploadDate: "2021-11-05" },
+      { id: "JeRtnXcPJtw", title: "Purple Mattress Review - Is It Worth The Hype??? (UPDATED!)", channel: "Sleepopolis", uploadDate: "2019-10-23" },
     ],
   },
   {
@@ -1164,9 +1152,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "iMplvwtixfU", title: "Casper Mattress Video Review — GoodBed" },
-      { id: "l7TSt8clwQo", title: "Casper Mattress Review — Sleepopolis" },
-      { id: "Gc_-ihbAvYE", title: "Casper Original Mattress — Is It Still Worth It?" },
+      { id: "iMplvwtixfU", title: "Casper Mattress (2018-2024) Review by GoodBed.com", channel: "GoodBed", uploadDate: "2019-04-16" },
+      { id: "l7TSt8clwQo", title: "Casper Mattress Review - Is It Better Than Before?", channel: "Sleepopolis", uploadDate: "2020-06-20" },
+      { id: "Gc_-ihbAvYE", title: "Casper Mattress Review - Is It The Best Bed In A Box Mattress For You?", channel: "Sleepopolis", uploadDate: "2021-06-23" },
     ],
   },
   {
@@ -1219,9 +1207,8 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "MdaK7idKypI", title: "Saatva Mattress Video Review — GoodBed" },
-      { id: "5FrWECUvmnw", title: "Saatva Mattress Review — Personally Tested — Sleepopolis" },
-      { id: "Z61ZNeODg5Y", title: "Saatva Classic — 9 Performance Tests" },
+      { id: "5FrWECUvmnw", title: "Saatva Classic Mattress Review - Plush Soft vs Luxury Firm vs Firm(2025 UPDATE!)", channel: "Sleepopolis", uploadDate: "2025-04-30" },
+      { id: "Z61ZNeODg5Y", title: "Saatva Mattress Review - Saatva Classic Tested vs. 9 Performance Tests", channel: "NapLab", uploadDate: "2021-12-16" },
     ],
   },
   {
@@ -1276,9 +1263,9 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "clXLqr3nOmg", title: "Nectar Premier Mattress Review — Memory Foam Comfort!" },
-      { id: "-TffXC0M8dE", title: "Nectar Premier Review — NEW Design & Materials Tested!" },
-      { id: "UzPvWI21rKM", title: "Nectar Lush/Premier Mattress Review — GoodBed" },
+      { id: "clXLqr3nOmg", title: "Nectar Premier Mattress Review - The BEST Mattress For Side Sleepers???", channel: "Sleepopolis" },
+      { id: "-TffXC0M8dE", title: "Nectar Premier Review - NEW Design & Materials Tested!", channel: "NapLab", uploadDate: "2025-02-20" },
+      { id: "UzPvWI21rKM", title: "Nectar Premier Mattress Review (2021-2024 version) by GoodBed", channel: "GoodBed", uploadDate: "2020-04-19" },
     ],
   },
 
@@ -1430,9 +1417,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Qk3VGmjWx4E", title: "Apple Watch Ultra 2 Review: Still the Best Smartwatch?" },
-      { id: "Th8nZ3gKLiM", title: "Apple Watch Ultra 2 — 6 Months Later Review" },
-      { id: "R9z4MfKnL2Q", title: "Apple Watch Ultra 2 vs Garmin Fenix 8 — Ultimate Comparison" },
     ],
   },
   {
@@ -1577,9 +1561,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "vK8hFxDAq9w", title: "Samsung Galaxy Watch 6 Classic Review — The Bezel Returns!" },
-      { id: "Bm3LJw7pQ2c", title: "Galaxy Watch 6 Classic vs Apple Watch Ultra 2 — Full Comparison" },
-      { id: "nY7pRkF3x1E", title: "Galaxy Watch 6 Classic — 6 Month Long Term Review" },
     ],
   },
   {
@@ -1726,8 +1707,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "kLpN8w7Fv3Q", title: "Garmin Venu 3 Review — The Best Fitness Smartwatch?" },
-      { id: "Qm4xTh2Rn8Y", title: "Garmin Venu 3 vs Apple Watch Ultra 2 — Which Should You Buy?" },
     ],
   },
   {
@@ -1877,9 +1856,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "xW8Rp4LmTnQ", title: "Google Pixel Watch 2 Review — Better But Still Frustrating" },
-      { id: "Fn2kQr8Jw5Y", title: "Pixel Watch 2 vs Galaxy Watch 6 — Android Watch Showdown" },
-      { id: "Lp9Yz3VkNcA", title: "Pixel Watch 2 Long-Term Review — 6 Months Later" },
     ],
   },
 
@@ -2031,9 +2007,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Qs8n2Gv7LpM", title: "Uplift V2 Standing Desk Review — Is It The Best?" },
-      { id: "Wk7Tm3RfJnY", title: "Uplift V2 vs FlexiSpot E7 — Standing Desk Showdown" },
-      { id: "Xp4Ln8KdQ2R", title: "Uplift V2 Standing Desk — 1 Year Long Term Review" },
     ],
   },
   {
@@ -2178,8 +2151,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Vk9Tn3Rw2pQ", title: "FlexiSpot E7 Pro Review — Best Budget Standing Desk?" },
-      { id: "Jm8Qr4NfLxY", title: "FlexiSpot E7 Pro vs Uplift V2 — Which Desk Wins?" },
     ],
   },
   {
@@ -2323,9 +2294,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Rk3Tn5Lw8pZ", title: "Autonomous SmartDesk Pro Review — Style vs Substance?" },
-      { id: "Fm7Qp2Nx4kW", title: "SmartDesk Pro vs Uplift V2 — Which Standing Desk Is Better?" },
-      { id: "Hn9Wr6Lk3mT", title: "Autonomous SmartDesk Pro — Honest 6-Month Review" },
     ],
   },
   {
@@ -2471,9 +2439,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Tk2Wp8Ln4rQ", title: "Fully Jarvis Bamboo Standing Desk — Complete Review" },
-      { id: "Bm5Xq9Rj7nK", title: "Jarvis Bamboo vs Uplift V2 — Best Standing Desk 2025?" },
-      { id: "Yp3Kn7Wf2mL", title: "Fully Jarvis Standing Desk — 1 Year Later Honest Review" },
     ],
   },
 
@@ -2624,9 +2589,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Qp7Wn4Lk8xR", title: "Vitamix A3500 Review — Is the Ascent Series Worth It?" },
-      { id: "Fm2Xr9Tj5nQ", title: "Vitamix A3500 vs Blendtec Designer 725 — Ultimate Showdown" },
-      { id: "Hk5Yn3Wp7mL", title: "Vitamix A3500 — Every Feature Tested and Reviewed" },
     ],
   },
   {
@@ -2771,9 +2733,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Xn4Qp8Lk2wR", title: "Ninja Professional Plus Review — Best Budget Blender?" },
-      { id: "Km7Tn3Wj9pY", title: "Ninja vs Vitamix — Can a $100 Blender Compete?" },
-      { id: "Rp5Yn2Lf8mQ", title: "Ninja Professional Plus BN701 — Full Test & Review" },
     ],
   },
   {
@@ -2919,8 +2878,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Wk8Ln3Qp5rT", title: "Blendtec Designer 725 Review — Worth the Price?" },
-      { id: "Jp4Xn7Rk2mY", title: "Blendtec vs Vitamix — The Ultimate Blender Battle" },
     ],
   },
   {
@@ -3070,9 +3027,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Lk9Qn2Wm5pR", title: "NutriBullet Pro 900 Review — Is It Still Worth It?" },
-      { id: "Tm3Xp7Rk8nY", title: "NutriBullet vs Ninja — Personal Blender Comparison" },
-      { id: "Vn5Kp4Lj2mW", title: "NutriBullet Pro 900 — Honest 1 Year Review" },
     ],
   },
 
@@ -3223,9 +3177,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Qm8Kp3Lw7nR", title: "MacBook Pro 16 M3 Max Review — The Ultimate Creative Machine" },
-      { id: "Fn5Xr9Tk2pY", title: "M3 Max MacBook Pro — 6 Months of Real Work Later" },
-      { id: "Hk7Yn4Wj8mQ", title: "MacBook Pro M3 Max vs Dell XPS 15 — Laptop Showdown" },
     ],
   },
   {
@@ -3370,9 +3321,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Km4Qp7Ln9wR", title: "Dell XPS 15 (2024) Review — Still the Windows King?" },
-      { id: "Rn8Xp3Wk5mY", title: "Dell XPS 15 vs MacBook Pro 16 — Which Should You Buy?" },
-      { id: "Tp2Yn6Lj4nQ", title: "Dell XPS 15 OLED — Long Term Review After 1 Year" },
     ],
   },
   {
@@ -3518,8 +3466,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Wn3Qp8Lk5rT", title: "ThinkPad X1 Carbon Gen 11 — The Best Business Laptop?" },
-      { id: "Xp6Yn4Wj7mQ", title: "ThinkPad X1 Carbon vs Dell XPS 15 — Business Laptop Comparison" },
     ],
   },
   {
@@ -3666,9 +3612,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Jn5Wp8Lk3rQ", title: "ASUS ROG Zephyrus G16 Review — Thin Gaming Perfection?" },
-      { id: "Km9Xp4Wn7mY", title: "Zephyrus G16 vs Razer Blade 16 — Ultimate Thin Gaming Laptops" },
-      { id: "Qp2Yn6Tj8nR", title: "ROG Zephyrus G16 — Gaming Laptop Buyer's Guide 2025" },
     ],
   },
 
@@ -3818,9 +3761,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Np4Qm8Lk2wR", title: "Oral-B iO Series 9 Review — Is AI Toothbrushing Worth It?" },
-      { id: "Wp7Xn3Rj5mY", title: "Oral-B iO Series 9 vs Sonicare DiamondClean — Ultimate Showdown" },
-      { id: "Kp2Yn6Wf8nQ", title: "Oral-B iO Series 9 — Dentist's Honest Review" },
     ],
   },
   {
@@ -3967,9 +3907,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Mn4Qp7Lk9wR", title: "Sonicare DiamondClean Smart 9700 — Full Review" },
-      { id: "Rp8Xn3Wj2mY", title: "Sonicare vs Oral-B iO — Which Premium Toothbrush Wins?" },
-      { id: "Vk5Yn6Lf4nQ", title: "Philips Sonicare DiamondClean Smart — Dentist's Review" },
     ],
   },
   {
@@ -4119,8 +4056,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Tn3Qp8Lk7wR", title: "Quip Smart Toothbrush Review — Style Over Substance?" },
-      { id: "Yp6Xn4Wj2mY", title: "Quip vs Oral-B vs Sonicare — Budget vs Premium Toothbrush Test" },
     ],
   },
   {
@@ -4272,9 +4207,6 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "Qk4Wp8Ln3rT", title: "Waterpik Sonic-Fusion 2.0 Review — Brush & Floss at Once?" },
-      { id: "Fm7Xp2Rj9mY", title: "Waterpik Sonic-Fusion vs Separate Toothbrush & Flosser" },
-      { id: "Hn5Yn4Wk6nQ", title: "Waterpik Sonic-Fusion 2.0 — Dentist's Honest Opinion" },
     ],
   },
 ];

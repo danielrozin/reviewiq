@@ -353,6 +353,24 @@ describe('videoObjectSchema', () => {
     expect(schema.embedUrl).toContain('youtube.com/embed/abc123')
     expect(schema.thumbnailUrl).toContain('abc123')
   })
+
+  it('publishes the real uploadDate and credits the channel that made the video', () => {
+    const schema = videoObjectSchema(
+      { id: 'abc123', title: 'Real Title', channel: 'SoundGuys', uploadDate: '2023-07-29' } as any,
+      'Sony WH-1000XM5'
+    )
+    expect(schema.uploadDate).toBe('2023-07-29')
+    expect(schema.creator).toEqual({ '@type': 'Person', name: 'SoundGuys' })
+  })
+
+  // uploadDate used to be `new Date()`, so every video claimed it was published on the
+  // day of the build and re-dated itself on each deploy. An absent date is honest; a
+  // fabricated one is not.
+  it('omits uploadDate entirely rather than stamping the build date', () => {
+    const schema = videoObjectSchema({ id: 'abc123', title: 'Real Title' } as any, 'Sony WH-1000XM5')
+    expect(schema).not.toHaveProperty('uploadDate')
+    expect(JSON.stringify(schema)).not.toContain(new Date().toISOString().slice(0, 10))
+  })
 })
 
 describe('videoObjectListSchema', () => {

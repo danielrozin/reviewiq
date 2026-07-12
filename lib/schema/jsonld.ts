@@ -409,17 +409,28 @@ export function communityHubSchema(threads: DiscussionThread[]) {
   };
 }
 
+// Every field here describes a third-party video we merely embed, so every field has to
+// come from YouTube rather than from us. The seeded data got this backwards: it carried
+// hand-written titles for IDs that mostly did not exist, and stamped uploadDate with the
+// build date — so the markup re-dated itself on every deploy and described videos that
+// were never checked. scripts/verify-youtube-videos.mts is what keeps the data honest;
+// this function must never invent a field the data does not have.
 export function videoObjectSchema(video: YouTubeVideo, productName: string) {
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     name: video.title,
     description: `${video.title} — video review for ${productName}`,
     thumbnailUrl: `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`,
-    uploadDate: new Date().toISOString().split("T")[0],
     contentUrl: `https://www.youtube.com/watch?v=${video.id}`,
     embedUrl: `https://www.youtube.com/embed/${video.id}`,
   };
+  // Required by Google for a video rich result, but an invented date is worse than an
+  // absent one: omit it when the real date is unknown.
+  if (video.uploadDate) schema.uploadDate = video.uploadDate;
+  // We are not the publisher — credit the channel that actually made the video.
+  if (video.channel) schema.creator = { "@type": "Person", name: video.channel };
+  return schema;
 }
 
 export function videoObjectListSchema(videos: YouTubeVideo[], productName: string) {
