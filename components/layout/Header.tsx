@@ -41,7 +41,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 ${
                   link.accent
                     ? "text-brand-600 hover:text-brand-700 hover:bg-brand-50"
                     : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
@@ -61,13 +61,13 @@ export function Header() {
           <div className="flex items-center gap-2 shrink-0 ml-auto lg:ml-0">
             <Link
               href="/dashboard"
-              className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors"
+              className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
               Dashboard
             </Link>
             <Link
               href="/write-review"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
+              className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
             >
               <span className="hidden sm:inline">Write a Review</span>
               <span className="sm:hidden">Review</span>
@@ -82,7 +82,7 @@ export function Header() {
                     aria-expanded={userMenuOpen}
                     aria-haspopup="menu"
                     aria-label={userMenuOpen ? "Close user menu" : "Open user menu"}
-                    className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+                    className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                   >
                     <div className="w-8 h-8 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs font-bold">
                       {(session.user?.name?.[0] || session.user?.email?.[0] || "U").toUpperCase()}
@@ -125,7 +125,7 @@ export function Header() {
               ) : (
                 <Link
                   href="/auth/signin"
-                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors shadow-sm"
+                  className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
                 >
                   Sign In
                 </Link>
@@ -135,7 +135,7 @@ export function Header() {
             {/* Mobile hamburger */}
             <button
               type="button"
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
               aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
