@@ -5,7 +5,7 @@ import { getProductsByCategory } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
+import { productListSchema, howToSchema, categoryPageSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
 import { getAllComparisonPairs } from "@/data/comparisons";
@@ -60,9 +60,25 @@ export default async function CategoryPage({ params }: Props) {
     .filter((cat): cat is NonNullable<typeof cat> => Boolean(cat))
     .slice(0, 6);
 
+  const today = new Date().toISOString().slice(0, 10);
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <TrackCategoryView slug={slug} productCount={categoryProducts.length} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            categoryPageSchema({
+              slug,
+              name: category.name,
+              description: category.description || `Best ${category.name} ranked by SmartScore.`,
+              productCount: categoryProducts.length,
+              today,
+            })
+          ),
+        }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

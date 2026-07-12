@@ -287,6 +287,50 @@ export function categoryListSchema(categories: Category[]) {
   };
 }
 
+// CollectionPage node for /category/[slug] — gives the category hub a typed
+// WebPage node with full GEO signals so AI crawlers can classify this page as a
+// curated product index (vs a bare ItemList with no page context).
+export function categoryPageSchema(opts: {
+  slug: string;
+  name: string;
+  description: string;
+  productCount: number;
+  today: string;
+}) {
+  const url = `${SITE_URL}/category/${opts.slug}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${url}#webpage`,
+    url,
+    name: `Best ${opts.name} — Reviews & Comparisons`,
+    alternativeHeadline: `Top-Rated ${opts.name} Ranked by Verified Buyers`,
+    description: opts.description,
+    abstract: `${opts.productCount} ${opts.name} ranked by SmartScore from verified buyer reviews. Honest, affiliate-free comparisons for 2026.`,
+    inLanguage: "en-US",
+    genre: "Product Review Index",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: opts.today,
+    contentReferenceTime: opts.today,
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    isPartOf: { "@id": WEBSITE_ID },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Categories", item: `${SITE_URL}/categories` },
+        { "@type": "ListItem", position: 3, name: opts.name, item: url },
+      ],
+    },
+  };
+}
+
 export function productListSchema(products: Product[], categoryName: string) {
   return {
     "@context": "https://schema.org",
