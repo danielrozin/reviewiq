@@ -507,18 +507,43 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
   };
 }
 
-export function speakableSchema(productName: string, productUrl: string) {
+export function speakableSchema(
+  productName: string,
+  productUrl: string,
+  opts?: {
+    description?: string;
+    datePublished?: string;
+    dateModified?: string;
+    categorySlug?: string;
+  }
+) {
   // The on-page AI analysis (AISummaryCard / key facts / smart score) is authored
   // by ReviewIQ's analysis team. Expose that as the WebPage author so the editorial
   // review content carries an identifiable author entity (schema.org WebPage.author)
   // — an E-E-A-T signal answer engines look for on review pages. Drop the nested
   // @context; only the root node needs it.
   const { "@context": _ctx, ...author } = analysisAuthorSchema();
+  const fullUrl = `${SITE_URL}${productUrl}`;
+  const today = new Date().toISOString().slice(0, 10);
+  const ogImage = `${SITE_URL}${productUrl}/opengraph-image`;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${fullUrl}#webpage`,
     name: `${productName} Review`,
-    url: `${SITE_URL}${productUrl}`,
+    url: fullUrl,
+    inLanguage: "en-US",
+    genre: "Product Review",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    contentReferenceTime: opts?.dateModified ?? today,
+    thumbnailUrl: ogImage,
+    image: { "@type": "ImageObject", url: ogImage, contentUrl: ogImage },
+    ...(opts?.description && { abstract: opts.description }),
+    ...(opts?.datePublished && { datePublished: opts.datePublished }),
+    ...(opts?.dateModified && { dateModified: opts.dateModified }),
+    publisher: { "@id": ORG_ID },
+    isPartOf: { "@id": WEBSITE_ID },
     author,
     speakable: {
       "@type": "SpeakableSpecification",
@@ -553,8 +578,15 @@ export function competitorFaqPageSchema(opts: {
     {
       "@context": "https://schema.org",
       "@type": "WebPage",
+      "@id": `${SITE_URL}${opts.pageUrl}#webpage`,
       name: opts.pageName,
       url: `${SITE_URL}${opts.pageUrl}`,
+      inLanguage: "en-US",
+      genre: "FAQ Page",
+      isAccessibleForFree: true,
+      contentReferenceTime: new Date().toISOString().slice(0, 10),
+      publisher: { "@id": ORG_ID },
+      isPartOf: { "@id": WEBSITE_ID },
       about: {
         "@type": opts.competitor.type,
         name: opts.competitor.name,
@@ -584,14 +616,28 @@ export function comparisonSchema(productA: Product, productB: Product) {
       ? [productA.updatedAt, productB.updatedAt].sort().reverse()[0]
       : productA.updatedAt || productB.updatedAt || buildDate;
 
+  const compUrl = `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`;
+  const compDesc = `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`;
+  const compOgImage = `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}/opengraph-image`;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${compUrl}#webpage`,
     name: `${productA.name} vs ${productB.name} — Comparison`,
-    description: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`,
-    url: `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`,
+    description: compDesc,
+    abstract: compDesc,
+    genre: "Product Comparison",
+    inLanguage: "en-US",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    contentReferenceTime: dateModified,
+    thumbnailUrl: compOgImage,
+    image: { "@type": "ImageObject", url: compOgImage, contentUrl: compOgImage },
+    url: compUrl,
     datePublished,
     dateModified,
+    publisher: { "@id": ORG_ID },
+    isPartOf: { "@id": WEBSITE_ID },
     mainEntity: {
       "@type": "ItemList",
       name: `${productA.name} vs ${productB.name}`,

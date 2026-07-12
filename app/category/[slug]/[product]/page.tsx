@@ -115,7 +115,12 @@ export default async function ProductPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`)),
+          __html: JSON.stringify(speakableSchema(product.name, `/category/${slug}/${productSlug}`, {
+            description: product.description ?? undefined,
+            datePublished: product.createdAt ?? undefined,
+            dateModified: product.updatedAt ?? undefined,
+            categorySlug: slug,
+          })),
         }}
       />
       {/* FAQ JSON-LD is emitted by <FAQSection> (rendered below, co-located with
