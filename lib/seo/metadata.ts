@@ -35,8 +35,10 @@ export function buildMetadata(overrides: {
       title,
       description,
     },
+    // noindex stays `follow`: a de-indexed page should still pass crawlers (and link
+    // equity) through to the pages it links to, not dead-end them.
     robots: overrides.noIndex
-      ? { index: false, follow: false }
+      ? { index: false, follow: true }
       : { index: true, follow: true },
   };
 }

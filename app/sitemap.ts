@@ -6,6 +6,7 @@ import { users } from "@/data/users";
 import { getAllBlogPosts, getBlogCategories } from "@/data/blog-posts";
 import { getAllComparisonPairs } from "@/data/comparisons";
 import { faqPages } from "@/data/faq-pages";
+import { getMerchantOffers } from "@/lib/affiliate/offers";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
@@ -84,16 +85,22 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  // "Where to buy X" sub-pages — indexable (self-canonical), commercial-intent, and
-  // statically generated for every product, but previously absent from the sitemap.
+  // "Where to buy X" sub-pages — commercial-intent, statically generated per product.
+  // Listed ONLY while they carry live merchant offers: with no offers the route sends
+  // noindex (see its generateMetadata), and a sitemap that advertises noindex URLs is a
+  // conflicting signal Search Console flags. Both sides read the same getMerchantOffers
+  // seam, so the pages re-enter the sitemap on their own once the affiliate feed lands.
   // Scoped to static `products` only: the route resolves via getProductBySlug (static
   // data), so DB-only products 404 here and must be excluded.
-  const whereToBuyPages: MetadataRoute.Sitemap = products.map((p) => ({
-    url: `${siteUrl}/category/${p.categorySlug}/${p.slug}/where-to-buy`,
-    lastModified: productLastMod(p),
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }));
+  const productOffers = await Promise.all(products.map((p) => getMerchantOffers(p)));
+  const whereToBuyPages: MetadataRoute.Sitemap = products
+    .filter((_, i) => productOffers[i].length > 0)
+    .map((p) => ({
+      url: `${siteUrl}/category/${p.categorySlug}/${p.slug}/where-to-buy`,
+      lastModified: productLastMod(p),
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }));
 
   // Static community discussion threads
   const communityPages: MetadataRoute.Sitemap = [

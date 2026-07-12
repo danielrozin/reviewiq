@@ -1,4 +1,4 @@
-import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment, UserProfile } from "@/types";
+import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment, UserProfile, MerchantOffer } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
 import { productAverageRating } from "@/lib/utils";
 
@@ -193,6 +193,53 @@ function aggregateOfferFromProduct(product: Product) {
     offerCount: 1,
     availability: "https://schema.org/InStock",
   };
+}
+
+/**
+ * Product node for a "Where to buy X" page, carrying one Offer per live merchant.
+ *
+ * Built ONLY from `offers` the page actually renders — never from product.priceRange —
+ * so every marked-up price is one a visitor can see. Returns null when there are no
+ * live offers (the panel's empty state), because a Product/Offer node on a page that
+ * shows no prices is markup that contradicts the page.
+ */
+export function whereToBuySchema(product: Product, offers: MerchantOffer[]) {
+  if (offers.length === 0) return null;
+
+  const url = `${SITE_URL}/category/${product.categorySlug}/${product.slug}/where-to-buy`;
+  const avgRating = productAverageRating(product);
+  const ratingCount = product.reviewCount || product.reviews.length;
+
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    brand: { "@type": "Brand", name: product.brand },
+    description: product.description,
+    image: `${SITE_URL}/category/${product.categorySlug}/${product.slug}/opengraph-image`,
+    url,
+    offers: offers.map((o) => ({
+      "@type": "Offer",
+      price: o.price,
+      priceCurrency: o.currency,
+      url: o.url,
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+      seller: { "@type": "Organization", name: o.merchantName },
+    })),
+  };
+
+  if (ratingCount > 0 && avgRating > 0) {
+    schema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: avgRating.toFixed(1),
+      reviewCount: ratingCount,
+      bestRating: 5,
+      worstRating: 1,
+    };
+  }
+
+  return schema;
 }
 
 export function reviewSchema(review: Review) {
