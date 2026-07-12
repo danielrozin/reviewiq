@@ -132,18 +132,9 @@ async function main() {
       });
     }
 
-    // YouTube videos
-    if (p.youtubeVideos) {
-      for (const vid of p.youtubeVideos) {
-        await prisma.youTubeVideo.create({
-          data: {
-            productId: p.id,
-            videoId: vid.id,
-            title: vid.title,
-          },
-        });
-      }
-    }
+    // Product pages render youtubeVideos straight from data/products*.ts, so the
+    // YouTubeVideo table was written but never read. Seeding it back would only
+    // recreate the write-only copy that DAN-2062 retired.
 
     // Reviews
     for (const r of p.reviews) {

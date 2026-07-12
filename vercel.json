@@ -17,10 +17,6 @@
       "schedule": "0 9 * * 1"
     },
     {
-      "path": "/api/cron/validate-videos",
-      "schedule": "0 4 * * *"
-    },
-    {
       "path": "/api/cron/consent-cleanup",
       "schedule": "0 3 * * 0"
     }

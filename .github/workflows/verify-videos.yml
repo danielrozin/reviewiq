@@ -1,0 +1,84 @@
+# Keeps the product pages' YouTube data honest (DAN-2062).
+#
+# It replaces the /api/cron/validate-videos cron, which validated `YouTubeVideo`
+# rows in Postgres — a table no page has ever read. Product pages render their
+# videos from data/products*.ts, so the cron could never take a bad video off a
+# live page, which is how 205 non-existent video IDs sat in production markup
+# indefinitely (DAN-2061).
+#
+# This runs against the file production actually renders from, and it checks the
+# two things that matter: does the video still EXIST, and is it still ABOUT this
+# product. Drift arrives as a pull request with the corrected data, so a human
+# approves the change to the catalogue instead of a cron mutating it unseen.
+#
+# The script refuses to write when YouTube rate-limits it (unresolved != dead), so
+# a throttled run fails this job loudly rather than deleting a real catalogue.
+name: Verify YouTube videos
+
+on:
+  schedule:
+    # Weekly, Monday 05:00 UTC. Videos get deleted or privatised over months, not
+    # hours — a daily run would spend rate limit to find nothing.
+    - cron: "0 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  verify:
+    name: Verify against YouTube
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+      - run: npm ci
+
+      - name: Verify and rewrite drifted entries
+        run: npm run verify:videos -- --write
+
+      - name: Open a PR if the catalogue drifted
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data; then
+            echo "No drift — every video still exists and still matches its product."
+            exit 0
+          fi
+
+          BRANCH="chore/verify-videos-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add data
+          git commit -m "chore(data): drop/refresh YouTube videos that no longer verify"
+          git push origin "$BRANCH"
+
+          {
+            printf 'Opened by `.github/workflows/verify-videos.yml`.\n\n'
+            printf '`npm run verify:videos -- --write` found entries in `data/products*.ts` that no\n'
+            printf 'longer hold up against YouTube: the video was deleted or made private, or its\n'
+            printf 'real title no longer refers to the product it is published under. Those entries\n'
+            printf 'are dropped here; survivors keep the title, channel and uploadDate YouTube\n'
+            printf 'reports.\n\n'
+            printf 'Every removal is a `VideoObject` we would otherwise keep publishing with a 404\n'
+            printf '`contentUrl`, plus a dead embed on the product page. Review the diff and merge;\n'
+            printf 're-run the workflow to confirm it comes back clean.\n\n'
+            printf 'Run: %s/%s/actions/runs/%s\n' "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID"
+          } > /tmp/pr-body.md
+
+          gh pr create \
+            --title "chore(data): YouTube video drift detected" \
+            --body-file /tmp/pr-body.md \
+            --base main \
+            --head "$BRANCH"
+
+      # A PR opened with GITHUB_TOKEN does not trigger CI on itself, so run the suite
+      # that covers this data here. Deliberately AFTER the PR is opened: a test failure
+      # should turn this run red without swallowing the drift the run just found.
+      - name: Test the rewritten data
+        run: npm test
