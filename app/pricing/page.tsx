@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { PricingTiers } from "./PricingTiers";
 import { faqSchema } from "@/lib/schema/jsonld";
+import { buildMetadata } from "@/lib/seo/metadata";
 
-export const metadata: Metadata = {
-  title: "Pricing — ReviewIQ Pro",
+export const metadata = buildMetadata({
+  title: "Pricing — Free vs Pro Plans",
   description:
-    "Unlock premium features with ReviewIQ Pro: ad-free experience, price tracking alerts, advanced comparison tools, and expert consultation.",
-};
+    "Unlock premium features with ReviewIQ Pro: ad-free browsing, price-drop alerts, advanced comparison tools, and expert consultation. See the plans.",
+  path: "/pricing",
+});
 
 export default function PricingPage() {
   return (
