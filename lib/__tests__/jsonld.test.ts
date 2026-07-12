@@ -21,6 +21,7 @@ import {
   profilePageSchema,
   faqHubSchema,
   productsHubSchema,
+  whereToBuySchema,
 } from '../schema/jsonld'
 import type { DiscussionThread, Comment } from '@/types'
 
@@ -550,5 +551,54 @@ describe('communityThreadSchema', () => {
       resolve
     ) as Record<string, any>
     expect(schema.author.name).toBe('Community Member')
+  })
+})
+
+describe('whereToBuySchema', () => {
+  const product = {
+    name: 'Sony WH-1000XM5',
+    slug: 'sony-wh-1000xm5',
+    categorySlug: 'wireless-earbuds',
+    brand: 'Sony',
+    description: 'Noise canceling headphones',
+    priceRange: { min: 300, max: 400, currency: 'USD' },
+    reviewCount: 10,
+    reviews: [
+      { rating: 5, headline: 'Great', body: 'Excellent', authorName: 'User1', createdAt: '2025-01-01' },
+      { rating: 4, headline: 'Good', body: 'Nice', authorName: 'User2', createdAt: '2025-01-02' },
+    ],
+  } as any
+
+  const offers = [
+    { merchantSlug: 'amazon', merchantName: 'Amazon', url: 'https://amazon.com/x', price: 329, currency: 'USD', isFirstParty: false },
+    { merchantSlug: 'sony', merchantName: 'Sony', url: 'https://sony.com/x', price: 399, currency: 'USD', isFirstParty: true },
+  ] as any
+
+  it('returns null with no live offers, so an empty page never claims prices', () => {
+    expect(whereToBuySchema(product, [])).toBeNull()
+  })
+
+  it('emits one Offer per live merchant, priced exactly as rendered', () => {
+    const schema = whereToBuySchema(product, offers) as Record<string, any>
+    expect(schema['@type']).toBe('Product')
+    expect(schema.offers).toHaveLength(2)
+    expect(schema.offers.map((o: any) => o.price)).toEqual([329, 399])
+    expect(schema.offers.map((o: any) => o.seller.name)).toEqual(['Amazon', 'Sony'])
+    expect(schema.offers[0]['@type']).toBe('Offer')
+    expect(schema.offers[0].priceCurrency).toBe('USD')
+    expect(schema.offers[0].url).toBe('https://amazon.com/x')
+  })
+
+  it('never derives marked-up prices from priceRange', () => {
+    const schema = whereToBuySchema(product, offers) as Record<string, any>
+    const prices = JSON.stringify(schema.offers)
+    expect(prices).not.toContain('300')
+    expect(prices).not.toContain('400')
+  })
+
+  it('points url at the where-to-buy page and carries the product rating', () => {
+    const schema = whereToBuySchema(product, offers) as Record<string, any>
+    expect(schema.url).toContain('/category/wireless-earbuds/sony-wh-1000xm5/where-to-buy')
+    expect(schema.aggregateRating.ratingValue).toBe('4.5')
   })
 })

@@ -6,6 +6,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { WhereToBuyPanel } from "@/components/affiliate/WhereToBuyPanel";
 import { getMerchantOffers, getManufacturerInfo } from "@/lib/affiliate/offers";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { whereToBuySchema } from "@/lib/schema/jsonld";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -27,10 +28,23 @@ export async function generateMetadata({ params }: Props) {
   const product = getProductBySlug(slug, productSlug);
   if (!product) return {};
 
+  // The page's entire reason to be indexed is the live merchant offers. Until the
+  // affiliate feed is wired (DAN-368) `getMerchantOffers` returns none, so every one
+  // of these ~100 pages renders the same ~40-word empty state — near-duplicate thin
+  // pages that promise prices they don't show. Index them only once they have offers;
+  // the noindex lifts automatically the moment the feed lands. `follow` is preserved,
+  // so crawlers still flow through to the product review page.
+  const hasOffers = (await getMerchantOffers(product)).length > 0;
+
   return buildMetadata({
-    title: `Where to Buy the ${product.name} — Compare Prices`,
-    description: `Compare current prices for the ${product.name} across trusted retailers. Find the lowest price and buy from your preferred merchant.`,
+    title: hasOffers
+      ? `Where to Buy the ${product.name} — Compare Prices`
+      : `Where to Buy the ${product.name}`,
+    description: hasOffers
+      ? `Compare current prices for the ${product.name} across trusted retailers. Find the lowest price and buy from your preferred merchant.`
+      : `Retailers carrying the ${product.name}, plus our full review and SmartScore.`,
     path: `/category/${slug}/${productSlug}/where-to-buy`,
+    noIndex: !hasOffers,
   });
 }
 
@@ -43,9 +57,16 @@ export default async function WhereToBuyPage({ params }: Props) {
 
   const offers = await getMerchantOffers(product);
   const manufacturer = getManufacturerInfo(product);
+  const schema = whereToBuySchema(product, offers);
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
       <Breadcrumbs
         items={[
           { name: "Categories", url: "/categories" },
@@ -66,8 +87,9 @@ export default async function WhereToBuyPage({ params }: Props) {
           Where to buy the {product.name}
         </h1>
         <p className="text-gray-500 leading-relaxed">
-          Live prices from our partner merchants. Pricing and availability are set
-          by each retailer and may change.{" "}
+          {offers.length > 0
+            ? "Live prices from our partner merchants. Pricing and availability are set by each retailer and may change."
+            : "We don't have live prices from our partner merchants for this one right now."}{" "}
           <Link
             href={`/category/${slug}/${productSlug}`}
             className="font-medium text-blue-600 underline underline-offset-2 hover:text-blue-700"
