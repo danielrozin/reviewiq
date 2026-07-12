@@ -121,7 +121,6 @@ model Product {
   aiSummary        AISummary?
   issues           RecurringIssue[]
   faqs             FAQ[]
-  videos           YouTubeVideo[]
   savedComparisons SavedComparison[]
   watchlistItems   WatchlistItem[]
 
@@ -177,30 +176,6 @@ model FAQ {
   product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
   @@index([productId])
-}
-
-// DEPRECATED (DAN-2062) — no code reads this table. Product pages render their
-// videos from data/products*.ts, so the rows here were seeded and validated but
-// never served. The validator and its cron are gone; freshness is now enforced by
-// `npm run verify:videos` against the static data (.github/workflows/verify-videos.yml).
-//
-// The model stays declared on purpose: `npm run build` runs `prisma db push`
-// WITHOUT `--accept-data-loss` (scripts/migrate-on-build.mjs), so deleting it here
-// turns every prod build into a destructive diff and aborts the deploy. Dropping the
-// table is a DevOps step; the model is removed in the same change that drops it.
-model YouTubeVideo {
-  id          String    @id @default(cuid())
-  productId   String
-  videoId     String
-  title       String
-  isActive    Boolean   @default(true)
-  status      String    @default("active") // "active" | "broken" | "removed"
-  lastChecked DateTime?
-
-  product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
-
-  @@index([productId])
-  @@index([status])
 }
 
 // ==========================================
