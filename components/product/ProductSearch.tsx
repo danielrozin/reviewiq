@@ -328,9 +328,10 @@ export function ProductSearch() {
       {/* Active filter chips */}
       {hasActiveFilters && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs text-gray-600 font-medium">Active filters:</span>
+          <span className="text-xs text-gray-600 font-medium" aria-hidden="true">Active filters:</span>
+          <ul role="list" aria-label="Active filters" className="flex flex-wrap items-center gap-2 list-none p-0 m-0">
           {query && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-50 text-brand-700 text-xs font-medium rounded-full border border-brand-100">
+            <li><span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-brand-50 text-brand-700 text-xs font-medium rounded-full border border-brand-100">
               <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
               </svg>
@@ -340,10 +341,10 @@ export function ProductSearch() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
               </button>
-            </span>
+            </span></li>
           )}
           {category && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full border border-purple-100">
+            <li><span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full border border-purple-100">
               {categories.find((c) => c.slug === category)?.icon}{" "}
               {categories.find((c) => c.slug === category)?.name}
               <button type="button" onClick={() => setFilter("category", "")} className="ml-0.5 -m-1 p-2 hover:text-purple-900 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded" aria-label="Remove category filter">
@@ -351,10 +352,10 @@ export function ProductSearch() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
               </button>
-            </span>
+            </span></li>
           )}
           {minRating > 0 && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full border border-amber-100">
+            <li><span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full border border-amber-100">
               <svg aria-hidden="true" className="w-3 h-3 fill-current text-amber-600 shrink-0" viewBox="0 0 20 20">
                 <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.958a1 1 0 00.95.69h4.161c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.957c.3.922-.755 1.688-1.54 1.118l-3.37-2.447a1 1 0 00-1.175 0l-3.37 2.447c-.784.57-1.838-.196-1.539-1.118l1.287-3.957a1 1 0 00-.364-1.118L2.064 9.385c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.285-3.958z" />
               </svg>
@@ -364,10 +365,10 @@ export function ProductSearch() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
               </button>
-            </span>
+            </span></li>
           )}
           {(priceMin > GLOBAL_MIN_PRICE || priceMax < GLOBAL_MAX_PRICE) && (
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-100">
+            <li><span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-emerald-50 text-emerald-700 text-xs font-medium rounded-full border border-emerald-100">
               ${priceMin}–${priceMax}
               <button
                 type="button"
@@ -379,8 +380,9 @@ export function ProductSearch() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                 </svg>
               </button>
-            </span>
+            </span></li>
           )}
+          </ul>
         </div>
       )}
 
@@ -416,11 +418,13 @@ export function ProductSearch() {
 
       {/* Product grid */}
       {paginated.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0 m-0">
           {paginated.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <li key={product.id}>
+              <ProductCard product={product} />
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
         <div className="text-center py-14 px-6 bg-white border border-gray-100 rounded-2xl">
           <div aria-hidden="true" className="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
@@ -444,7 +448,7 @@ export function ProductSearch() {
             </svg>
             Clear all filters
           </button>
-          <div className="flex flex-wrap items-center justify-center gap-2 max-w-lg mx-auto">
+          <ul role="list" aria-label="Browse popular categories" className="flex flex-wrap items-center justify-center gap-2 max-w-lg mx-auto list-none p-0 m-0">
             {[
               { label: "Robot Vacuums", slug: "robot-vacuums" },
               { label: "Coffee Machines", slug: "coffee-machines" },
@@ -452,18 +456,19 @@ export function ProductSearch() {
               { label: "Wireless Earbuds", slug: "wireless-earbuds" },
               { label: "Mattresses", slug: "mattresses" },
             ].map((cat) => (
-              <a
-                key={cat.slug}
-                href={`/category/${cat.slug}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
-              >
-                <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
-                </svg>
-                {cat.label}
-              </a>
+              <li key={cat.slug}>
+                <a
+                  href={`/category/${cat.slug}`}
+                  className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-400 rounded-full hover:border-brand-300 hover:text-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                >
+                  <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
+                  </svg>
+                  {cat.label}
+                </a>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       )}
 
@@ -479,22 +484,25 @@ export function ProductSearch() {
           >
             Previous
           </button>
+          <ul role="list" className="flex items-center gap-2 list-none p-0 m-0">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
-            <button
-              key={p}
-              type="button"
-              onClick={() => setFilter("page", p)}
-              aria-label={`Go to page ${p}`}
-              aria-current={p === safePage ? "page" : undefined}
-              className={`w-11 h-11 text-sm font-medium rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
-                p === safePage
-                  ? "bg-brand-600 text-white"
-                  : "border border-gray-400 text-gray-700 hover:bg-gray-50"
-              }`}
-            >
-              {p}
-            </button>
+            <li key={p}>
+              <button
+                type="button"
+                onClick={() => setFilter("page", p)}
+                aria-label={`Go to page ${p}`}
+                aria-current={p === safePage ? "page" : undefined}
+                className={`w-11 h-11 text-sm font-medium rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+                  p === safePage
+                    ? "bg-brand-600 text-white"
+                    : "border border-gray-400 text-gray-700 hover:bg-gray-50"
+                }`}
+              >
+                {p}
+              </button>
+            </li>
           ))}
+          </ul>
           <button
             type="button"
             disabled={safePage >= totalPages}

@@ -72,23 +72,26 @@ export function ProductJumpNav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <nav aria-label="Page sections" className="flex items-center gap-0.5 sm:gap-1 h-11 sm:h-10 overflow-x-auto scrollbar-none">
-          {SECTIONS.map(({ id, label }) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => scrollTo(id)}
-              aria-label={`Jump to ${label} section`}
-              aria-current={activeId === id ? "location" : undefined}
-              className={`shrink-0 px-2.5 sm:px-3 py-2 sm:py-1 min-h-[44px] rounded-full text-xs font-medium transition-colors whitespace-nowrap touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
-                activeId === id
-                  ? "bg-brand-600 text-white shadow-sm"
-                  : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-100"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
+        <nav aria-label="Page sections" className="overflow-x-auto scrollbar-none">
+          <ul role="list" className="flex items-center gap-0.5 sm:gap-1 h-11 sm:h-10 list-none p-0 m-0">
+            {SECTIONS.map(({ id, label }) => (
+              <li key={id} className="shrink-0">
+                <button
+                  type="button"
+                  onClick={() => scrollTo(id)}
+                  aria-label={`Jump to ${label} section`}
+                  aria-current={activeId === id ? "location" : undefined}
+                  className={`px-2.5 sm:px-3 py-2 sm:py-1 min-h-[44px] rounded-full text-xs font-medium transition-colors whitespace-nowrap touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+                    activeId === id
+                      ? "bg-brand-600 text-white shadow-sm"
+                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-100 active:bg-gray-100"
+                  }`}
+                >
+                  {label}
+                </button>
+              </li>
+            ))}
+          </ul>
         </nav>
       </div>
     </div>
