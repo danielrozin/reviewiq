@@ -43,6 +43,16 @@ export function productAverageRating(product: Product): number {
   return 0;
 }
 
+// Most catalog names already carry the brand ("Roborock S8 MaxV Ultra"), but a
+// handful do not ("MacBook Pro 16 M3 Max"). Blindly prefixing the brand stutters
+// on the former; blindly trusting the name drops the brand on the latter.
+export function productDisplayName(product: Pick<Product, "brand" | "name">): string {
+  const name = product.name.trim();
+  const brand = product.brand.trim();
+  if (name.toLowerCase().startsWith(brand.toLowerCase())) return name;
+  return `${brand} ${name}`;
+}
+
 export function formatNumber(num: number): string {
   if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`;
   if (num >= 1000) return `${(num / 1000).toFixed(1)}K`;
