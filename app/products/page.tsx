@@ -9,7 +9,7 @@ import { categories } from "@/data/categories";
 import { productDisplayName } from "@/lib/utils";
 
 export const metadata = buildMetadata({
-  title: "Browse All Products — Reviews, SmartScores & Prices",
+  title: "Browse All Products — Reviews & SmartScores",
   description:
     "Search and filter products across all categories. Sort by SmartScore, price, ratings, and more. Find the perfect product with ReviewIQ.",
   path: "/products",

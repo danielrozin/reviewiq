@@ -14,7 +14,7 @@ import {
 } from "@/data/discussions";
 import { getUserById } from "@/data/users";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, truncateAtWord, TITLE_BUDGET } from "@/lib/seo/metadata";
 import { communityThreadSchema } from "@/lib/schema/jsonld";
 import { formatNumber } from "@/lib/utils";
 
@@ -32,8 +32,13 @@ export async function generateMetadata({ params }: Props) {
   if (!thread) return {};
 
   return buildMetadata({
-    title: `${thread.title} — ReviewIQ Community`,
-    description: thread.body.slice(0, 160),
+    // The thread title is member-authored and can run long, so trim it on a word
+    // boundary. It carries no " — ReviewIQ Community" suffix any more: buildMetadata
+    // appends the brand itself, and the old suffix produced "… — ReviewIQ Community |
+    // ReviewIQ" — the brand twice, in a title Google already truncates.
+    title: truncateAtWord(thread.title, TITLE_BUDGET),
+    // slice(160) cut mid-word; truncateAtWord ends on a word and marks the elision.
+    description: truncateAtWord(thread.body),
     path: `/community/thread/${threadId}`,
   });
 }

@@ -7,7 +7,7 @@ import { categoryListSchema } from "@/lib/schema/jsonld";
 export const metadata = buildMetadata({
   title: "All Product Categories — Reviews & Comparisons",
   description:
-    "Browse all product categories on ReviewIQ. Find honest, AI-powered reviews across robot vacuums, coffee machines, air fryers, wireless earbuds, mattresses, smart watches, standing desks, blenders, laptops, and electric toothbrushes.",
+    "Browse every product category on ReviewIQ — robot vacuums, coffee machines, air fryers, earbuds, mattresses, smart watches and more. Honest AI-powered reviews.",
   path: "/categories",
 });
 

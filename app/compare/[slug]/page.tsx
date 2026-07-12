@@ -9,7 +9,7 @@ import { ProsConsComparison } from "@/components/comparison/ProsConsComparison";
 import { VerdictCard } from "@/components/comparison/VerdictCard";
 import { BestForComparison } from "@/components/comparison/BestForComparison";
 import { PriceComparison } from "@/components/comparison/PriceComparison";
-import { buildMetadata, ogImageForSegment } from "@/lib/seo/metadata";
+import { buildMetadata, fitTitle, ogImageForSegment } from "@/lib/seo/metadata";
 import { comparisonSchema } from "@/lib/schema/jsonld";
 import { AnalysisDisclosure } from "@/components/product/AnalysisDisclosure";
 import { FAQSection } from "@/components/product/FAQSection";
@@ -42,8 +42,18 @@ export async function generateMetadata({ params }: Props) {
   const description =
     full.length <= 160 ? full : mid.length <= 160 ? mid : short;
 
+  // Same length-aware degradation for the title. "A vs B" is the keyword the page
+  // ranks for, so it heads every candidate and is the floor we never trim past —
+  // the year and the "Which Is Better?" hook are what get dropped for long pairs.
+  const title = fitTitle([
+    `${names} (${year}) — Which Is Better?`,
+    `${names} — Which Is Better?`,
+    `${names} (${year})`,
+    names,
+  ]);
+
   return buildMetadata({
-    title: `${productA.name} vs ${productB.name} (${year}) — Which Is Better?`,
+    title,
     description,
     path: `/compare/${slug}`,
     image: ogImageForSegment(`/compare/${slug}`),

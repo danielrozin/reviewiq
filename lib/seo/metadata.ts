@@ -16,6 +16,58 @@ export function ogImageForSegment(path: string): string {
   return `${SITE_URL}${path}/opengraph-image`;
 }
 
+/**
+ * Google renders roughly 600px of the <title> in a SERP — about 60 characters at
+ * typical glyph widths — and about 160 characters of the description. Past that the
+ * tail is replaced with an ellipsis, so anything we put there never reaches the
+ * searcher: the CTA, the differentiator, and the brand all silently disappear.
+ */
+export const TITLE_MAX = 60;
+export const DESCRIPTION_MAX = 160;
+
+const BRAND_SUFFIX = ` | ${SITE_NAME}`;
+
+/** Characters a title may use and still leave room for the " | ReviewIQ" suffix. */
+export const TITLE_BUDGET = TITLE_MAX - BRAND_SUFFIX.length;
+
+const hasBrand = (title: string) =>
+  title.toLowerCase().includes(SITE_NAME.toLowerCase());
+
+/**
+ * Pick the richest title that still survives the SERP, given candidates ordered
+ * longest (most informative) to shortest: the first one inside Google's render
+ * budget wins, and buildMetadata appends the brand only if it still fits. A longer
+ * candidate is worth more than the brand suffix — a dropped "| ReviewIQ" costs
+ * nothing, a dropped "Which Is Better?" costs the click.
+ *
+ * When nothing fits, the last candidate is returned even though it overflows: on a
+ * comparison page that floor is the "A vs B" keyword itself, and a truncated keyword
+ * still ranks and reads, where a mid-word-chopped one does neither. So keep the
+ * keyword at the head of every candidate.
+ */
+export function fitTitle(candidates: string[]): string {
+  return (
+    candidates.find((c) => c.length <= TITLE_MAX) ?? candidates[candidates.length - 1]
+  );
+}
+
+/**
+ * Trim free text (a thread body, a user bio) to `max` characters on a word boundary,
+ * with an ellipsis standing in for what was cut. Used where the copy is authored by
+ * someone else and cannot be re-written into a shorter candidate.
+ */
+export function truncateAtWord(text: string, max: number = DESCRIPTION_MAX): string {
+  const clean = text.trim().replace(/\s+/g, " ");
+  if (clean.length <= max) return clean;
+  // Leave room for the ellipsis. If the character we stop before is a space the cut
+  // already landed on a word boundary; otherwise back up to the previous one so we
+  // never publish half a word.
+  const cut = clean.slice(0, max - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  const body = clean[max - 1] === " " || lastSpace <= 0 ? cut : cut.slice(0, lastSpace);
+  return `${body.replace(/[\s,;:.—-]+$/, "")}…`;
+}
+
 export function buildMetadata(overrides: {
   title?: string;
   description?: string;
@@ -23,9 +75,15 @@ export function buildMetadata(overrides: {
   image?: string;
   noIndex?: boolean;
 }): Metadata {
-  const title = overrides.title
-    ? `${overrides.title} | ${SITE_NAME}`
-    : `${SITE_NAME} — Real Reviews, Real Intelligence`;
+  // The brand suffix is the first thing to go when a title would otherwise truncate:
+  // a cut-off product name costs a click, a missing "| ReviewIQ" costs nothing.
+  // Titles that already carry the brand keep it and are never branded twice.
+  const base = overrides.title?.trim();
+  const title = !base
+    ? `${SITE_NAME} — Real Reviews, Real Intelligence`
+    : hasBrand(base) || base.length + BRAND_SUFFIX.length > TITLE_MAX
+      ? base
+      : `${base}${BRAND_SUFFIX}`;
   const description = overrides.description || SITE_DESCRIPTION;
   const url = overrides.path ? `${SITE_URL}${overrides.path}` : SITE_URL;
 

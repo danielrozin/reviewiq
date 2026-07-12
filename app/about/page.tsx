@@ -5,7 +5,7 @@ import { aboutPageSchema } from "@/lib/schema/jsonld";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers — affiliate commissions never influence our SmartScores.",
+    "ReviewIQ is an AI-powered review platform built to fix the broken review ecosystem: verified buyers, and SmartScores that affiliate commissions never influence.",
   path: "/about",
 });
 

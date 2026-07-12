@@ -6,7 +6,7 @@ import { ThreadCard } from "@/components/community/ThreadCard";
 import { users, getUserByUsername } from "@/data/users";
 import { getDiscussionsByUser, getCommentsByUser } from "@/data/discussions";
 import { TRUST_LEVEL_LABELS, TRUST_LEVEL_COLORS } from "@/types";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, truncateAtWord } from "@/lib/seo/metadata";
 import { formatNumber } from "@/lib/utils";
 import { UserProBadge } from "@/components/premium/UserProBadge";
 import { profilePageSchema } from "@/lib/schema/jsonld";
@@ -25,8 +25,9 @@ export async function generateMetadata({ params }: Props) {
   if (!user) return {};
 
   return buildMetadata({
-    title: `${user.displayName} — ReviewIQ Community`,
-    description: user.bio,
+    // "— ReviewIQ Community" + the suffix buildMetadata appends printed the brand twice.
+    title: `${user.displayName} — Community Profile`,
+    description: truncateAtWord(user.bio),
     path: `/community/user/${username}`,
   });
 }
