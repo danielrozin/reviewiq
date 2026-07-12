@@ -369,15 +369,43 @@ export function productListSchema(products: Product[], categoryName: string) {
 // and treat the comparison set as one curated collection (potential sitelinks /
 // list treatment) and reinforcing internal links to the highest-intent pages.
 export function comparisonHubSchema(
-  pairs: { slug: string; productA: Product; productB: Product }[]
+  pairs: { slug: string; productA: Product; productB: Product }[],
+  today?: string,
 ) {
+  const hubUrl = `${SITE_URL}/compare`;
+  const dateStr = today ?? new Date().toISOString().split("T")[0];
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${hubUrl}#webpage`,
     name: "Product Comparisons",
+    alternativeHeadline: "Head-to-Head Product Rankings by SmartScore",
     description:
       "Head-to-head product comparisons scored on SmartScore, specs, and verified buyer reviews.",
-    url: `${SITE_URL}/compare`,
+    url: hubUrl,
+    // GEO signals — content classification and freshness for AI/LLM crawlers
+    inLanguage: "en-US",
+    genre: "Product Comparison Index",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: dateStr,
+    contentReferenceTime: dateStr,
+    // Entity graph links — stable ORG_ID / WEBSITE_ID nodes
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    // speakable — expose hub title + description to voice/AI snippet engines
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Compare", item: hubUrl },
+      ],
+    },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: pairs.length,
@@ -396,14 +424,40 @@ export function comparisonHubSchema(
 // Q&A to be visible on the page emitting FAQPage). CollectionPage + ItemList is
 // the correct, truthful type for a directory of topic pages — mirrors
 // comparisonHubSchema so Google can surface the hub and its sitelinks.
-export function faqHubSchema(pages: { slug: string; title: string }[]) {
+export function faqHubSchema(pages: { slug: string; title: string }[], today?: string) {
+  const hubUrl = `${SITE_URL}/faq`;
+  const dateStr = today ?? new Date().toISOString().split("T")[0];
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${hubUrl}#webpage`,
     name: "Frequently Asked Questions",
+    alternativeHeadline: "Answers About Product Reviews, Fake Reviews & ReviewIQ",
     description:
       "Honest answers about product review platforms, fake reviews, and how ReviewIQ provides verified, AI-powered product intelligence.",
-    url: `${SITE_URL}/faq`,
+    url: hubUrl,
+    // GEO signals — content classification and freshness for AI/LLM crawlers
+    inLanguage: "en-US",
+    genre: "FAQ Index",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: dateStr,
+    contentReferenceTime: dateStr,
+    // Entity graph links
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "FAQ", item: hubUrl },
+      ],
+    },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: pages.length,
@@ -423,14 +477,38 @@ export function faqHubSchema(pages: { slug: string; title: string }[]) {
 // /category/{categorySlug}/{slug}. The page must also render a crawlable <a> to
 // each of these URLs — structured data has to match what the page actually shows,
 // and the list is only a discovery path if the links are in the HTML.
-export function productsHubSchema(products: Product[]) {
+export function productsHubSchema(products: Product[], today?: string) {
+  const hubUrl = `${SITE_URL}/products`;
+  const dateStr = today ?? new Date().toISOString().split("T")[0];
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${hubUrl}#webpage`,
     name: "Browse All Products",
+    alternativeHeadline: "Every Product Ranked by Verified Buyer SmartScore",
     description:
       "Every product on ReviewIQ, scored on SmartScore, price, and verified buyer reviews across all categories.",
-    url: `${SITE_URL}/products`,
+    url: hubUrl,
+    inLanguage: "en-US",
+    genre: "Product Catalog",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: dateStr,
+    contentReferenceTime: dateStr,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Products", item: hubUrl },
+      ],
+    },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: products.length,
@@ -450,14 +528,38 @@ export function productsHubSchema(products: Product[]) {
 // ItemList of every thread lets answer engines treat the index as the canonical
 // entry point to the discussion set and surface it in list-style rich results,
 // matching the pattern used for the /compare, /products, and /faq hubs.
-export function communityHubSchema(threads: DiscussionThread[]) {
+export function communityHubSchema(threads: DiscussionThread[], today?: string) {
+  const hubUrl = `${SITE_URL}/community`;
+  const dateStr = today ?? new Date().toISOString().split("T")[0];
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${hubUrl}#webpage`,
     name: "ReviewIQ Community",
+    alternativeHeadline: "Ask Questions, Share Reviews, Help Others Buy Smarter",
     description:
       "Real conversations about real products. Ask questions, share experiences, and help others make smarter buying decisions on ReviewIQ.",
-    url: `${SITE_URL}/community`,
+    url: hubUrl,
+    inLanguage: "en-US",
+    genre: "Community Forum",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: dateStr,
+    contentReferenceTime: dateStr,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Community", item: hubUrl },
+      ],
+    },
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: threads.length,
@@ -524,12 +626,24 @@ export function blogPostSchema(post: BlogPost) {
   // the Article rich result, so only trust coverImage when it is a real absolute URL;
   // otherwise fall back to the per-post generated OG route (absolute, verified 200).
   const coverIsAbsolute = !!post.coverImage && /^https?:\/\//i.test(post.coverImage);
+  const postUrl = `${SITE_URL}/blog/${post.slug}`;
+  const ogImageUrl = coverIsAbsolute ? post.coverImage : `${postUrl}/opengraph-image`;
   return {
     "@context": "https://schema.org",
     "@type": "Article",
+    "@id": `${postUrl}#article`,
     headline: post.title,
     description: post.seo.metaDescription,
-    image: coverIsAbsolute ? post.coverImage : `${SITE_URL}/blog/${post.slug}/opengraph-image`,
+    image: {
+      "@type": "ImageObject",
+      url: ogImageUrl,
+      contentUrl: ogImageUrl,
+      name: post.title,
+      description: post.seo.metaDescription,
+      creditText: "ReviewIQ",
+      creator: { "@type": "Organization", "@id": ORG_ID },
+    },
+    thumbnailUrl: ogImageUrl,
     author: {
       "@type": "Organization",
       name: post.author.name,
@@ -542,18 +656,53 @@ export function blogPostSchema(post: BlogPost) {
     },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
-    mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
+    // GEO signals — content classification and freshness for AI/LLM crawlers
+    inLanguage: "en-US",
+    genre: "Buying Guide",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    contentReferenceTime: post.updatedAt || post.publishedAt,
+    mainEntityOfPage: { "@type": "WebPage", "@id": postUrl },
+    isPartOf: { "@id": WEBSITE_ID },
     keywords: [post.seo.focusKeyword, ...post.seo.secondaryKeywords].join(", "),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2:first-of-type", "p:first-of-type"],
+    },
   };
 }
 
-export function blogListSchema(posts: BlogPost[]) {
+export function blogListSchema(posts: BlogPost[], today?: string) {
+  const hubUrl = `${SITE_URL}/blog`;
+  const dateStr = today ?? new Date().toISOString().split("T")[0];
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
+    "@id": `${hubUrl}#webpage`,
     name: "ReviewIQ Blog",
+    alternativeHeadline: "Buying Guides, Product Comparisons & Review Insights",
     description: "Expert buying guides, product comparisons, and review insights from ReviewIQ.",
-    url: `${SITE_URL}/blog`,
+    url: hubUrl,
+    inLanguage: "en-US",
+    genre: "Product Review Blog",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: dateStr,
+    contentReferenceTime: dateStr,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Blog", item: hubUrl },
+      ],
+    },
     hasPart: posts.map((post) => ({
       "@type": "Article",
       headline: post.title,
