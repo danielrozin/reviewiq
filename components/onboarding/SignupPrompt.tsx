@@ -108,16 +108,16 @@ export function SignupPrompt() {
           </p>
         </div>
 
-        <div className="space-y-2.5 mb-6">
+        <ul aria-label="Account benefits" className="space-y-2.5 mb-6 list-none p-0 m-0">
           {BENEFITS.map((benefit) => (
-            <div key={benefit.text} className="flex items-center gap-3 text-sm text-gray-700">
+            <li key={benefit.text} className="flex items-center gap-3 text-sm text-gray-700">
               <div aria-hidden="true" className="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 {benefit.icon}
               </div>
               {benefit.text}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <div className="flex flex-col gap-2.5">
           <Link

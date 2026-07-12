@@ -38,8 +38,8 @@ function ProductProsConsCard({ product }: { product: Product }) {
       </h3>
 
       <div className="space-y-4">
-        <div>
-          <h4 className="text-xs font-semibold text-emerald-700 uppercase tracking-wider mb-2">
+        <section aria-labelledby={`love-${product.id}`}>
+          <h4 id={`love-${product.id}`} className="text-xs font-semibold text-emerald-700 uppercase tracking-wider mb-2">
             What People Love
           </h4>
           <ul className="space-y-1.5">
@@ -57,10 +57,10 @@ function ProductProsConsCard({ product }: { product: Product }) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h4 className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
+        <section aria-labelledby={`hate-${product.id}`}>
+          <h4 id={`hate-${product.id}`} className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
             What People Hate
           </h4>
           <ul className="space-y-1.5">
@@ -78,7 +78,7 @@ function ProductProsConsCard({ product }: { product: Product }) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       </div>
       </div>
     </article>

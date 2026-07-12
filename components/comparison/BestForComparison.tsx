@@ -38,8 +38,8 @@ function BestForCard({ product }: { product: Product }) {
       </h3>
 
       <div className="space-y-4">
-        <div>
-          <h4 className="text-xs font-semibold text-brand-700 uppercase tracking-wider mb-2">
+        <section aria-labelledby={`bestfor-${product.id}`}>
+          <h4 id={`bestfor-${product.id}`} className="text-xs font-semibold text-brand-700 uppercase tracking-wider mb-2">
             Best For
           </h4>
           <ul className="space-y-1.5">
@@ -57,10 +57,10 @@ function BestForCard({ product }: { product: Product }) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h4 className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-2">
+        <section aria-labelledby={`notfor-${product.id}`}>
+          <h4 id={`notfor-${product.id}`} className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-2">
             Not For
           </h4>
           <ul className="space-y-1.5">
@@ -78,7 +78,7 @@ function BestForCard({ product }: { product: Product }) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       </div>
       </div>
     </article>
