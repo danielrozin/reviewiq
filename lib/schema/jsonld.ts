@@ -639,14 +639,53 @@ export function comparisonSchema(productA: Product, productB: Product) {
       ? [productA.updatedAt, productB.updatedAt].sort().reverse()[0]
       : productA.updatedAt || productB.updatedAt || buildDate;
 
+  const pageUrl = `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`;
+  const ogImageUrl = `${pageUrl}/opengraph-image`;
+
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
     name: `${productA.name} vs ${productB.name} — Comparison`,
     description: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`,
-    url: `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`,
+    url: pageUrl,
     datePublished,
     dateModified,
+    // GEO signals — content freshness + editorial category
+    inLanguage: "en-US",
+    contentReferenceTime: dateModified,
+    genre: "Product Comparison",
+    // Thumbnail/OG image signals for LLM / AI Overview crawlers
+    image: {
+      "@type": "ImageObject",
+      url: ogImageUrl,
+      contentUrl: ogImageUrl,
+      name: `${productA.name} vs ${productB.name} comparison`,
+      description: `Side-by-side comparison of ${productA.name} and ${productB.name}`,
+    },
+    thumbnailUrl: ogImageUrl,
+    // Entity graph — link back to site and publisher
+    isPartOf: { "@type": "WebSite", "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID },
+    // BreadcrumbList for rich-result eligibility
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Compare", item: `${SITE_URL}/compare` },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: `${productA.name} vs ${productB.name}`,
+          item: pageUrl,
+        },
+      ],
+    },
+    // about — links the page to the two Software/Product entities being compared
+    about: [
+      { "@type": "SoftwareApplication", name: productA.name, url: `${SITE_URL}/products/${productA.slug}` },
+      { "@type": "SoftwareApplication", name: productB.name, url: `${SITE_URL}/products/${productB.slug}` },
+    ],
     mainEntity: {
       "@type": "ItemList",
       name: `${productA.name} vs ${productB.name}`,
