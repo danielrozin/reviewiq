@@ -382,66 +382,66 @@ export default function AARRRDashboard() {
       {activeTab === "overview" && (
         <div id="aarrr-panel-overview" role="tabpanel" aria-labelledby="aarrr-tab-overview" className="space-y-8">
           {/* AARRR Summary Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-            <StatCard
+          <ul role="list" aria-label="AARRR summary metrics" className="grid grid-cols-1 md:grid-cols-5 gap-4 list-none p-0 m-0">
+            <li><StatCard
               label="Acquisition"
               value={data.acquisition.newUsers["30d"]}
               subtitle="New users (30d)"
               color={PIRATE_COLORS.acquisition}
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Activation"
               value={`${data.activation.activationRate}%`}
               subtitle="Activation rate (30d)"
               color={PIRATE_COLORS.activation}
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Retention"
               value={`${data.retention.retentionRate}%`}
               subtitle="Retention rate"
               color={PIRATE_COLORS.retention}
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Revenue Readiness"
               value={data.revenue.revenueReadinessScore}
               subtitle="Readiness score"
               color={PIRATE_COLORS.revenue}
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Referral"
               value={data.referral.contentPerActiveUser}
               subtitle="UGC per active user"
               color={PIRATE_COLORS.referral}
-            />
-          </div>
+            /></li>
+          </ul>
 
           {/* Health Score + Key Metrics */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Customer Health Score</h3>
               <HealthGauge score={data.customerHealth.averageHealthScore} />
-              <div className="grid grid-cols-3 gap-4 mt-6 w-full">
+              <ul role="list" aria-label="Customer health distribution" className="grid grid-cols-3 gap-4 mt-6 w-full list-none p-0 m-0">
                 {(["healthy", "atRisk", "churning"] as const).map((key) => (
-                  <div key={key} className="text-center">
+                  <li key={key} className="text-center">
                     <p className="text-lg font-bold" style={{ color: HEALTH_COLORS[key] }}>
                       {data.customerHealth.distribution[key]}
                     </p>
                     <p className="text-xs text-gray-500 capitalize">{key === "atRisk" ? "At Risk" : key}</p>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl p-6 lg:col-span-2">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4">Key Metrics Summary</h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                <StatCard label="Total Users" value={data.acquisition.totalUsers} />
-                <StatCard label="PQLs (30d)" value={data.activation.pqlCount} subtitle={`${data.activation.pqlRate}% of new users`} />
-                <StatCard label="Churn Rate" value={`${data.retention.churnRate}%`} subtitle={`${data.retention.churnedUsers} users churned`} />
-                <StatCard label="Stickiness" value={`${data.retention.stickiness}%`} subtitle="WAU/MAU ratio" />
-                <StatCard label="Power Users" value={data.revenue.powerUsersActive30d} subtitle="Active reviewers (30d)" />
-                <StatCard label="Advocates" value={data.referral.communityAdvocates} subtitle="Users with badges" />
-              </div>
+              <h3 id="key-metrics-heading" className="text-lg font-semibold text-gray-900 mb-4">Key Metrics Summary</h3>
+              <ul role="list" aria-labelledby="key-metrics-heading" className="grid grid-cols-2 md:grid-cols-3 gap-4 list-none p-0 m-0">
+                <li><StatCard label="Total Users" value={data.acquisition.totalUsers} /></li>
+                <li><StatCard label="PQLs (30d)" value={data.activation.pqlCount} subtitle={`${data.activation.pqlRate}% of new users`} /></li>
+                <li><StatCard label="Churn Rate" value={`${data.retention.churnRate}%`} subtitle={`${data.retention.churnedUsers} users churned`} /></li>
+                <li><StatCard label="Stickiness" value={`${data.retention.stickiness}%`} subtitle="WAU/MAU ratio" /></li>
+                <li><StatCard label="Power Users" value={data.revenue.powerUsersActive30d} subtitle="Active reviewers (30d)" /></li>
+                <li><StatCard label="Advocates" value={data.referral.communityAdvocates} subtitle="Users with badges" /></li>
+              </ul>
             </div>
           </div>
 
@@ -463,12 +463,12 @@ export default function AARRRDashboard() {
             description="How do users find ReviewIQ?"
           />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard label="Total Users" value={data.acquisition.totalUsers} />
-            <StatCard label="New (7d)" value={data.acquisition.newUsers["7d"]} color={PIRATE_COLORS.acquisition} />
-            <StatCard label="New (14d)" value={data.acquisition.newUsers["14d"]} />
-            <StatCard label="New (30d)" value={data.acquisition.newUsers["30d"]} subtitle={`${data.acquisition.dailyAvg30d}/day avg`} />
-          </div>
+          <ul role="list" aria-label="Acquisition metrics" className="grid grid-cols-2 md:grid-cols-4 gap-4 list-none p-0 m-0">
+            <li><StatCard label="Total Users" value={data.acquisition.totalUsers} /></li>
+            <li><StatCard label="New (7d)" value={data.acquisition.newUsers["7d"]} color={PIRATE_COLORS.acquisition} /></li>
+            <li><StatCard label="New (14d)" value={data.acquisition.newUsers["14d"]} /></li>
+            <li><StatCard label="New (30d)" value={data.acquisition.newUsers["30d"]} subtitle={`${data.acquisition.dailyAvg30d}/day avg`} /></li>
+          </ul>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6">
@@ -535,26 +535,26 @@ export default function AARRRDashboard() {
             description="Do users experience the core value?"
           />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard
+          <ul role="list" aria-label="Activation metrics" className="grid grid-cols-2 md:grid-cols-4 gap-4 list-none p-0 m-0">
+            <li><StatCard
               label="Activation Rate"
               value={`${data.activation.activationRate}%`}
               subtitle={`${data.activation.activatedUsers} of ${data.activation.totalNewUsers30d}`}
               color={PIRATE_COLORS.activation}
               large
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Product Adoption"
               value={`${data.activation.productAdoptionRate}%`}
               subtitle="New users who reviewed"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="PQLs"
               value={data.activation.pqlCount}
               subtitle={`${data.activation.pqlRate}% PQL rate`}
               color={PIRATE_COLORS.activation}
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Time to First Review"
               value={
                 data.activation.avgTimeToFirstReviewHours !== null
@@ -562,18 +562,18 @@ export default function AARRRDashboard() {
                   : "N/A"
               }
               subtitle="Average hours"
-            />
-          </div>
+            /></li>
+          </ul>
 
           <div className="bg-white border border-gray-200 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Activation Funnel (30d new users)</h3>
             {data.activation.activationFunnel.length > 0 ? (
-              <div className="space-y-3">
+              <ol aria-label="Activation funnel steps" className="space-y-3 list-none p-0 m-0">
                 {data.activation.activationFunnel.map((step, i) => {
                   const maxCount = data.activation.activationFunnel[0].count;
                   const pct = maxCount > 0 ? Math.round((step.count / maxCount) * 100) : 0;
                   return (
-                    <div key={step.step} className="flex items-center gap-4">
+                    <li key={step.step} className="flex items-center gap-4">
                       <div className="w-36 text-sm font-medium text-gray-700 text-right shrink-0">
                         {step.step}
                       </div>
@@ -599,10 +599,10 @@ export default function AARRRDashboard() {
                             : "-"}
                         </div>
                       )}
-                    </div>
+                    </li>
                   );
                 })}
-              </div>
+              </ol>
             ) : (
               <div className="h-48 flex items-center justify-center text-gray-500">No activation data yet.</div>
             )}
@@ -628,30 +628,30 @@ export default function AARRRDashboard() {
             description="Do users come back?"
           />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard
+          <ul role="list" aria-label="Retention metrics" className="grid grid-cols-2 md:grid-cols-4 gap-4 list-none p-0 m-0">
+            <li><StatCard
               label="Retention Rate"
               value={`${data.retention.retentionRate}%`}
               color={PIRATE_COLORS.retention}
               large
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Churn Rate"
               value={`${data.retention.churnRate}%`}
               subtitle={`${data.retention.churnedUsers} churned`}
               color="#ef4444"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Stickiness (WAU/MAU)"
               value={`${data.retention.stickiness}%`}
               subtitle="Weekly vs monthly active"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Returning Users"
               value={data.retention.returningUsers}
               subtitle="Active old users (30d)"
-            />
-          </div>
+            /></li>
+          </ul>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6">
@@ -725,30 +725,30 @@ export default function AARRRDashboard() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard
+          <ul role="list" aria-label="Revenue readiness metrics" className="grid grid-cols-2 md:grid-cols-4 gap-4 list-none p-0 m-0">
+            <li><StatCard
               label="Revenue Readiness"
               value={data.revenue.revenueReadinessScore}
               subtitle="Score /100"
               color={PIRATE_COLORS.revenue}
               large
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Trial-to-Paid Proxy"
               value={`${data.revenue.trialToPaidProxy}%`}
               subtitle="Newcomer -> Contributor+"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Power Users"
               value={data.revenue.powerUsersActive30d}
               subtitle="Active reviewers (30d)"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="High Engagement"
               value={data.revenue.highEngagementUsers}
               subtitle="Trusted/Expert users"
-            />
-          </div>
+            /></li>
+          </ul>
 
           <div className="bg-white border border-gray-200 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Trust Level Distribution</h3>
@@ -763,9 +763,9 @@ export default function AARRRDashboard() {
                     <Bar dataKey="count" fill={PIRATE_COLORS.revenue} radius={[4, 4, 0, 0]} name="Users" />
                   </BarChart>
                 </ResponsiveContainer>
-                <div className="space-y-3">
+                <ul role="list" aria-label="Trust level distribution" className="space-y-3 list-none p-0 m-0">
                   {data.revenue.trustLevelDistribution.map((t) => (
-                    <div key={t.level} className="flex items-center gap-3">
+                    <li key={t.level} className="flex items-center gap-3">
                       <span className="w-24 text-sm font-medium text-gray-700 capitalize">{t.level}</span>
                       <div className="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden">
                         <div
@@ -777,9 +777,9 @@ export default function AARRRDashboard() {
                         />
                       </div>
                       <span className="w-20 text-sm text-gray-600 text-right">{t.count} ({t.percent}%)</span>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             ) : (
               <div className="h-48 flex items-center justify-center text-gray-500">No trust level data yet.</div>
@@ -798,30 +798,30 @@ export default function AARRRDashboard() {
             description="Do users tell others about ReviewIQ?"
           />
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard
+          <ul role="list" aria-label="Referral metrics" className="grid grid-cols-2 md:grid-cols-4 gap-4 list-none p-0 m-0">
+            <li><StatCard
               label="UGC per Active User"
               value={data.referral.contentPerActiveUser}
               subtitle="Threads + comments"
               color={PIRATE_COLORS.referral}
               large
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Community Advocates"
               value={data.referral.communityAdvocates}
               subtitle="Badge holders"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="Total Reviews"
               value={data.referral.totalReviews}
               subtitle="User-generated content"
-            />
-            <StatCard
+            /></li>
+            <li><StatCard
               label="UGC Growth Rate"
               value={`${data.referral.ugcGrowthRate}%`}
               subtitle="Recent community / total reviews"
-            />
-          </div>
+            /></li>
+          </ul>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <div className="bg-white border border-gray-200 rounded-xl p-6">
@@ -846,29 +846,29 @@ export default function AARRRDashboard() {
 
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Referral Levers</h3>
-              <div className="space-y-4">
-                <div className="p-4 bg-gray-50 rounded-lg border border-gray-100">
+              <ul role="list" aria-label="Referral levers" className="space-y-4 list-none p-0 m-0">
+                <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <p className="text-sm font-semibold text-gray-900">Review Quality</p>
                   <p className="text-xs text-gray-500 mt-1">
                     {data.referral.totalReviews} reviews generate SEO traffic that brings new users organically.
                     Higher review count and quality improve search rankings.
                   </p>
-                </div>
-                <div className="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                </li>
+                <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <p className="text-sm font-semibold text-gray-900">Community Discussions</p>
                   <p className="text-xs text-gray-500 mt-1">
                     {data.referral.communityEngagement.totalThreads} discussion threads create shareable, indexable content.
                     Active discussions signal product authority.
                   </p>
-                </div>
-                <div className="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                </li>
+                <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <p className="text-sm font-semibold text-gray-900">Badge & Reputation System</p>
                   <p className="text-xs text-gray-500 mt-1">
                     {data.referral.communityAdvocates} users have earned badges. These power users are natural
                     advocates who share expertise and attract new community members.
                   </p>
-                </div>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
