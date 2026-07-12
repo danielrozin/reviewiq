@@ -166,9 +166,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "3H5tFNKPRxo", title: "Fitbit Sense 2 Full Review — Is It Worth It?" },
-      { id: "JxH7DkLQk6Q", title: "Fitbit Sense 2 vs Google Pixel Watch 2" },
-      { id: "y8VkI1DVMWA", title: "Fitbit Sense 2 One Year Later" },
     ],
   },
   {
@@ -322,9 +319,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "uWjJHB8PQVI", title: "Amazfit T-Rex Ultra Full Review — Rugged Beast" },
-      { id: "5Q2g7Xn9Mdc", title: "Amazfit T-Rex Ultra vs Garmin Fenix 7 — Which Should You Buy?" },
-      { id: "1T0kF7mLQsY", title: "Amazfit T-Rex Ultra GPS Accuracy Test" },
     ],
   },
   {
@@ -478,9 +472,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "xJqLX1RQPBI", title: "Withings ScanWatch 2 Review — Medical Grade Hybrid Watch" },
-      { id: "N7YdJEnFHGU", title: "Withings ScanWatch 2 vs Apple Watch Series 9" },
-      { id: "kTq4oDFlQaY", title: "Withings ScanWatch 2 — ECG and Sleep Apnea Test" },
     ],
   },
   {
@@ -634,9 +625,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "QnVpWkYk7Lc", title: "TicWatch Pro 5 Full Review — Best Wear OS Watch?" },
-      { id: "wBdVf8TqKqE", title: "TicWatch Pro 5 vs Samsung Galaxy Watch 6" },
-      { id: "FnR9jLQkPyM", title: "TicWatch Pro 5 Battery Test — How Long Does It Last?" },
     ],
   },
 
@@ -794,9 +782,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "4RlYqBqKkGk", title: "Branch Standing Desk Review — Worth It in 2025?" },
-      { id: "JmF7kq9nBnE", title: "Branch vs Uplift V2 — Which Standing Desk Should You Buy?" },
-      { id: "pQdL8oJX3aM", title: "Branch Standing Desk Assembly — Step by Step" },
     ],
   },
   {
@@ -950,9 +935,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "sYkqNBF7K8c", title: "Vari Electric Standing Desk Review — 2025 Update" },
-      { id: "n8JtdYhBqRo", title: "Vari vs Uplift vs FlexiSpot — Which Standing Desk Wins?" },
-      { id: "LpMx4cJqFuY", title: "Vari Electric Standing Desk 10-Minute Assembly" },
     ],
   },
   {
@@ -1106,9 +1088,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "mKqYgBnX7Po", title: "Secretlab Magnus Pro Review — Best Standing Desk?" },
-      { id: "hNvW3jLqKDc", title: "Magnus Pro Setup Guide — Full Battlestation Build" },
-      { id: "tRpA6xMnJqE", title: "Secretlab Magnus Pro vs Uplift V2 — Which Is Better?" },
     ],
   },
   {
@@ -1270,9 +1249,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "GkXqBvDwLpA", title: "IKEA BEKANT Standing Desk Review — Is It Worth It?" },
-      { id: "yRmNpTjBqKo", title: "IKEA BEKANT vs FlexiSpot E7 — Budget Desk Comparison" },
-      { id: "oDpQnLk8MzE", title: "IKEA BEKANT Assembly and Setup Guide" },
     ],
   },
 
@@ -1430,9 +1406,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "xQkBpLmYnGo", title: "Vitamix E310 Review — Is the Entry-Level Vitamix Worth It?" },
-      { id: "wDpNmVjBqAc", title: "Vitamix E310 vs Ninja Professional — Full Comparison" },
-      { id: "kLqXrGtJpMo", title: "Vitamix E310 Explorian — 10 Things You Can Make" },
     ],
   },
   {
@@ -1586,9 +1559,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "pLmBqXnJkAo", title: "KitchenAid K400 Blender Review — Worth the Price?" },
-      { id: "cQrDtYmPnBo", title: "KitchenAid K400 vs Vitamix E310 — Which Should You Buy?" },
-      { id: "vNpGkJqXmBc", title: "KitchenAid K400 — Best Smoothies You Can Make" },
     ],
   },
   {
@@ -1742,9 +1712,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "mBqXkLnJpDo", title: "Breville Super Q Review — Better Than Vitamix?" },
-      { id: "nDpYqLkBmXo", title: "Breville Super Q vs Vitamix A3500 — Side by Side Test" },
-      { id: "rKqJpLmXnBo", title: "Breville Super Q Vacuum Blending — Does It Work?" },
     ],
   },
   {
@@ -1898,9 +1865,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "qLmXpBnYkDo", title: "Hamilton Beach Professional Blender Review — Surprising!" },
-      { id: "sDqBmNkJpXo", title: "Best Budget Blenders — Hamilton Beach vs NutriBullet vs Ninja" },
-      { id: "jKpLmBqXnGo", title: "Hamilton Beach Professional — Full Smoothie & Ice Test" },
     ],
   },
 
@@ -2058,9 +2022,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "lBmXqNkJpDo", title: "HP Spectre x360 16 Review — The Windows MacBook?" },
-      { id: "kDqLnBpXmJo", title: "HP Spectre x360 16 OLED vs Dell XPS 15" },
-      { id: "pNqBmJkLxGo", title: "HP Spectre x360 16 — Full Creative Workload Test" },
     ],
   },
   {
@@ -2214,9 +2175,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "rBqXmLkNpJo", title: "Razer Blade 16 Review — Best Gaming Laptop 2025?" },
-      { id: "sDpBmNqJkXo", title: "Razer Blade 16 vs ASUS ROG Zephyrus G16 — Full Comparison" },
-      { id: "tNqBkLmJpXo", title: "Razer Blade 16 Thermal Test — How Hot Does It Get?" },
     ],
   },
   {
@@ -2370,9 +2328,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "bLqXmNkJpDo", title: "Framework Laptop 16 Review — The Future of Laptops?" },
-      { id: "cNpBmJkXqLo", title: "Framework 16 GPU Module — How Upgradeable Is It?" },
-      { id: "dKqLpBmXnJo", title: "Framework Laptop 16 vs Dell XPS 15 — Full Comparison" },
     ],
   },
   {
@@ -2526,9 +2481,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "eLqXmBkNpJo", title: "Surface Laptop 6 Review — Microsoft's Best Laptop Ever?" },
-      { id: "fNpBqLmJkXo", title: "Surface Laptop 6 vs MacBook Air M3 — Full Comparison" },
-      { id: "gKqLpBnXmJo", title: "Surface Laptop 6 Snapdragon vs Intel — Which Should You Buy?" },
     ],
   },
 
@@ -2686,9 +2638,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "hLqXmBkNpJo", title: "Colgate hum Smart Toothbrush Review — Worth It?" },
-      { id: "iNpBqLkXmJo", title: "Colgate hum vs Oral-B iO — Which Smart Toothbrush Should You Buy?" },
-      { id: "jKqLpBmXnJo", title: "Colgate hum App Deep Dive — How Does the Tracking Work?" },
     ],
   },
   {
@@ -2842,9 +2791,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "kLqXmBnJpDo", title: "AquaSonic Black Series Review — Better Than Sonicare?" },
-      { id: "lNpBqXmJkLo", title: "AquaSonic Black Series vs Oral-B iO — Full Comparison" },
-      { id: "mKqLpBmXnJo", title: "AquaSonic Black Series — 1 Year Review" },
     ],
   },
   {
@@ -2998,9 +2944,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "nLqXmBkJpDo", title: "Burst Sonic Toothbrush Review — Is the Hype Real?" },
-      { id: "oNpBqXmJkLo", title: "Burst vs Oral-B vs Sonicare — Which Electric Toothbrush Wins?" },
-      { id: "pKqLpBmXnJo", title: "Burst Toothbrush Charcoal Bristles — Do They Whiten?" },
     ],
   },
   {
@@ -3154,9 +3097,6 @@ export const productsBatch2: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "qLqXmBkNpJo", title: "Oclean X Pro Digital Review — Smart Toothbrush with Screen!" },
-      { id: "rNpBqXmJkLo", title: "Oclean X Pro Digital vs Oral-B iO Series 9" },
-      { id: "sKqLpBmXnJo", title: "Oclean X Pro Digital — All Features Explained" },
     ],
   },
 ];
