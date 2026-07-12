@@ -90,27 +90,33 @@ export default async function ThreadPage({ params }: Props) {
 
               <div className="flex-1 min-w-0">
                 {/* Type + status badges */}
-                <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
-                    {THREAD_TYPE_LABELS[thread.threadType]}
-                  </span>
-                  {thread.isPinned && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
-                      <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636M15.75 6A3.75 3.75 0 1 1 8.25 6a3.75 3.75 0 0 1 7.5 0Z" />
-                      </svg>
-                      Pinned
+                <ul role="list" aria-label="Thread labels" className="flex flex-wrap items-center gap-2 mb-3 list-none p-0 m-0">
+                  <li>
+                    <span className={`text-xs font-medium px-2.5 py-1 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+                      {THREAD_TYPE_LABELS[thread.threadType]}
                     </span>
+                  </li>
+                  {thread.isPinned && (
+                    <li>
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200">
+                        <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M18.364 18.364A9 9 0 0 0 5.636 5.636m12.728 12.728A9 9 0 0 1 5.636 5.636m12.728 12.728L5.636 5.636M15.75 6A3.75 3.75 0 1 1 8.25 6a3.75 3.75 0 0 1 7.5 0Z" />
+                        </svg>
+                        Pinned
+                      </span>
+                    </li>
                   )}
                   {thread.isResolved && (
-                    <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
-                      <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
-                      </svg>
-                      Resolved
-                    </span>
+                    <li>
+                      <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                        <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                        </svg>
+                        Resolved
+                      </span>
+                    </li>
                   )}
-                </div>
+                </ul>
 
                 {/* Title */}
                 <h1 id="thread-title" data-speakable="thread-title" className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-4">

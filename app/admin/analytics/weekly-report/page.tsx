@@ -195,36 +195,38 @@ export default function WeeklyReportPage() {
             {/* Summary Cards */}
             <section aria-labelledby="weekly-summary-heading">
               <h2 id="weekly-summary-heading" className="text-lg font-bold text-gray-900 mb-4">Week-over-Week Summary</h2>
-              <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+              <ul role="list" className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4 list-none p-0 m-0">
                 {Object.entries(data.summary).map(([key, metric]) => (
-                  <MetricCard key={key} label={summaryLabels[key] || key} {...metric} />
+                  <li key={key}>
+                    <MetricCard label={summaryLabels[key] || key} {...metric} />
+                  </li>
                 ))}
-              </div>
+              </ul>
             </section>
 
             {/* Daily + Funnel */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <section aria-labelledby="weekly-daily-activity-heading" className="bg-white border border-gray-200 rounded-xl p-5">
                 <h3 id="weekly-daily-activity-heading" className="text-sm font-bold text-gray-700 mb-3">Daily Activity (7d)</h3>
-                <div className="space-y-2">
+                <ul role="list" aria-label="Daily activity breakdown" className="space-y-2 list-none p-0 m-0">
                   {data.dailyBreakdown.map((d) => {
                     const max = Math.max(...data.dailyBreakdown.map((r) => r.signups + r.reviews), 1);
                     return (
-                      <div key={d.date} className="flex items-center gap-3 text-xs">
+                      <li key={d.date} className="flex items-center gap-3 text-xs">
                         <span className="w-8 text-gray-500 font-medium">{d.day}</span>
-                        <div className="flex-1 flex gap-1">
+                        <div aria-hidden="true" className="flex-1 flex gap-1">
                           <div className="bg-emerald-400 h-4 rounded" style={{ width: `${Math.max((d.signups / max) * 100, 2)}%` }} title={`${d.signups} signups`} />
                           <div className="bg-indigo-400 h-4 rounded" style={{ width: `${Math.max((d.reviews / max) * 100, 2)}%` }} title={`${d.reviews} reviews`} />
                         </div>
-                        <span className="w-12 text-right text-gray-500">{d.signups + d.reviews}</span>
-                      </div>
+                        <span className="w-12 text-right text-gray-500" aria-label={`${d.signups} signups, ${d.reviews} reviews`}>{d.signups + d.reviews}</span>
+                      </li>
                     );
                   })}
-                </div>
-                <div className="flex gap-4 mt-3 text-[10px] text-gray-500">
-                  <span className="flex items-center gap-1"><span className="w-2 h-2 bg-emerald-400 rounded" />Signups</span>
-                  <span className="flex items-center gap-1"><span className="w-2 h-2 bg-indigo-400 rounded" />Reviews</span>
-                </div>
+                </ul>
+                <ul role="list" className="flex gap-4 mt-3 text-[10px] text-gray-500 list-none p-0 m-0" aria-label="Chart legend">
+                  <li className="flex items-center gap-1"><span aria-hidden="true" className="w-2 h-2 bg-emerald-400 rounded" />Signups</li>
+                  <li className="flex items-center gap-1"><span aria-hidden="true" className="w-2 h-2 bg-indigo-400 rounded" />Reviews</li>
+                </ul>
               </section>
 
               <section aria-labelledby="weekly-funnel-heading" className="bg-white border border-gray-200 rounded-xl p-5">
@@ -240,38 +242,38 @@ export default function WeeklyReportPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <section aria-labelledby="weekly-top-products-heading" className="bg-white border border-gray-200 rounded-xl p-5">
                 <h3 id="weekly-top-products-heading" className="text-sm font-bold text-gray-700 mb-3">Top Products by Reviews</h3>
-                <div className="space-y-1.5">
-                  {data.topProducts.length === 0 ? (
-                    <p className="text-xs text-gray-500">No products yet</p>
-                  ) : (
-                    data.topProducts.map((p, i) => (
-                      <div key={p.slug} className="flex items-center gap-2 text-xs">
-                        <span className="w-5 text-gray-500 font-medium">{i + 1}.</span>
+                {data.topProducts.length === 0 ? (
+                  <p className="text-xs text-gray-500">No products yet</p>
+                ) : (
+                  <ol aria-labelledby="weekly-top-products-heading" className="space-y-1.5 list-none p-0 m-0">
+                    {data.topProducts.map((p, i) => (
+                      <li key={p.slug} className="flex items-center gap-2 text-xs">
+                        <span aria-hidden="true" className="w-5 text-gray-500 font-medium">{i + 1}.</span>
                         <span className="flex-1 text-gray-700 truncate">{p.name}</span>
-                        <span className="text-gray-500 font-medium">{p.reviews}</span>
-                      </div>
-                    ))
-                  )}
-                </div>
+                        <span className="text-gray-500 font-medium" aria-label={`${p.reviews} reviews`}>{p.reviews}</span>
+                      </li>
+                    ))}
+                  </ol>
+                )}
               </section>
 
               <section aria-labelledby="weekly-trust-heading" className="bg-white border border-gray-200 rounded-xl p-5">
                 <h3 id="weekly-trust-heading" className="text-sm font-bold text-gray-700 mb-3">Trust Level Distribution</h3>
-                <div className="space-y-1.5">
+                <ul aria-labelledby="weekly-trust-heading" className="space-y-1.5 list-none p-0 m-0">
                   {data.trustLevels.map((t) => (
-                    <div key={t.level} className="flex items-center gap-2 text-xs">
+                    <li key={t.level} className="flex items-center gap-2 text-xs">
                       <span className="flex-1 text-gray-700 capitalize">{t.level}</span>
-                      <span className="text-gray-500 font-medium">{t.count}</span>
-                    </div>
+                      <span className="text-gray-500 font-medium" aria-label={`${t.count} users`}>{t.count}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </section>
             </div>
 
             {/* Platform Inventory */}
             <section aria-labelledby="weekly-inventory-heading" className="bg-white border border-gray-200 rounded-xl p-5">
               <h3 id="weekly-inventory-heading" className="text-sm font-bold text-gray-700 mb-3">Platform Inventory</h3>
-              <div className="grid grid-cols-2 sm:grid-cols-6 gap-4">
+              <ul role="list" aria-labelledby="weekly-inventory-heading" className="grid grid-cols-2 sm:grid-cols-6 gap-4 list-none p-0 m-0">
                 {[
                   { label: "Users", value: data.platform.totalUsers },
                   { label: "Reviews", value: data.platform.totalReviews },
@@ -280,12 +282,12 @@ export default function WeeklyReportPage() {
                   { label: "Threads", value: data.platform.totalThreads },
                   { label: "Comments", value: data.platform.totalComments },
                 ].map((item) => (
-                  <div key={item.label} className="text-center">
-                    <p className="text-2xl font-bold text-gray-900">{item.value.toLocaleString()}</p>
-                    <p className="text-[10px] text-gray-500 uppercase tracking-wider">{item.label}</p>
-                  </div>
+                  <li key={item.label} className="text-center" aria-label={`${item.label}: ${item.value.toLocaleString()}`}>
+                    <p aria-hidden="true" className="text-2xl font-bold text-gray-900">{item.value.toLocaleString()}</p>
+                    <p aria-hidden="true" className="text-[10px] text-gray-500 uppercase tracking-wider">{item.label}</p>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </section>
           </div>
         )}

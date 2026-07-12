@@ -57,38 +57,43 @@ export function WelcomeBackBanner() {
           </p>
 
           {hasRecent && (
-            <div className="flex flex-wrap gap-2 mb-3">
+            <ul role="list" aria-label="Recently viewed products" className="flex flex-wrap gap-2 mb-3 list-none p-0 m-0">
               {state.recentlyViewed.slice(0, 3).map((slug) => (
-                <Link
-                  key={slug}
-                  href={`/products/${slug}`}
-                  className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
-                >
-                  {slug.replace(/-/g, " ")}
-                </Link>
+                <li key={slug}>
+                  <Link
+                    href={`/products/${slug}`}
+                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
+                  >
+                    {slug.replace(/-/g, " ")}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           )}
 
-          <div className="flex flex-wrap gap-2">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
-            >
-              Browse products
-              <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
-              </svg>
-            </Link>
-            {session && (
+          <ul role="list" className="flex flex-wrap gap-2 list-none p-0 m-0">
+            <li>
               <Link
-                href="/dashboard"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
+                href="/products"
+                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
-                My dashboard
+                Browse products
+                <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                </svg>
               </Link>
+            </li>
+            {session && (
+              <li>
+                <Link
+                  href="/dashboard"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
+                >
+                  My dashboard
+                </Link>
+              </li>
             )}
-          </div>
+          </ul>
         </div>
       </div>
     </div>

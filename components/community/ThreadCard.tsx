@@ -72,22 +72,28 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          {/* Thread type + tags */}
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
-              {THREAD_TYPE_LABELS[thread.threadType]}
-            </span>
-            {thread.isPinned && (
-              <span className="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
-                Pinned
+          {/* Thread type + status tags */}
+          <ul role="list" aria-label="Thread labels" className="flex flex-wrap items-center gap-2 mb-2 list-none p-0 m-0">
+            <li>
+              <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${THREAD_TYPE_COLORS[thread.threadType]}`}>
+                {THREAD_TYPE_LABELS[thread.threadType]}
               </span>
+            </li>
+            {thread.isPinned && (
+              <li>
+                <span className="text-xs font-medium text-amber-600 bg-amber-50 px-2 py-0.5 rounded-full border border-amber-200">
+                  Pinned
+                </span>
+              </li>
             )}
             {thread.isResolved && (
-              <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
-                Resolved
-              </span>
+              <li>
+                <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  Resolved
+                </span>
+              </li>
             )}
-          </div>
+          </ul>
 
           {/* Title */}
           <Link
