@@ -291,17 +291,48 @@ export function faqSchema(items: FAQItem[]) {
   };
 }
 
-export function categoryListSchema(categories: Category[]) {
+export function categoryListSchema(categories: Category[], today?: string) {
+  const hubUrl = `${SITE_URL}/categories`;
+  const dateStr = today ?? new Date().toISOString().split("T")[0];
   return {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Product Categories",
-    itemListElement: categories.map((cat, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: cat.name,
-      url: `${SITE_URL}/category/${cat.slug}`,
-    })),
+    "@type": "CollectionPage",
+    "@id": `${hubUrl}#webpage`,
+    name: "Product Review Categories",
+    alternativeHeadline: "Browse All Review Categories on ReviewIQ",
+    description: "All product categories on ReviewIQ, each ranked by SmartScore from verified buyer reviews.",
+    url: hubUrl,
+    inLanguage: "en-US",
+    genre: "Category Directory",
+    isAccessibleForFree: true,
+    creativeWorkStatus: "Published",
+    datePublished: "2024-01-01",
+    dateModified: dateStr,
+    contentReferenceTime: dateStr,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID, name: "ReviewIQ", url: SITE_URL },
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "p:first-of-type"],
+    },
+    breadcrumb: {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+        { "@type": "ListItem", position: 2, name: "Categories", item: hubUrl },
+      ],
+    },
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Product Categories",
+      numberOfItems: categories.length,
+      itemListElement: categories.map((cat, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: cat.name,
+        url: `${SITE_URL}/category/${cat.slug}`,
+      })),
+    },
   };
 }
 
