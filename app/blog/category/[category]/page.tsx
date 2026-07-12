@@ -6,6 +6,7 @@ import {
   getBlogCategories,
 } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { CategorySnapshot } from "@/components/blog/CategorySnapshot";
 import { blogListSchema } from "@/lib/schema/jsonld";
 import { buildMetadata, fitTitle } from "@/lib/seo/metadata";
 
@@ -111,6 +112,12 @@ export default async function BlogCategoryPage({
             </Link>
           ))}
         </div>
+
+        {/* The lede above is the same sentence on all 15 category pages, so the post
+            cards were the only thing distinguishing them. This snapshot is built from
+            each category's own products and review data — it makes the page unique,
+            and it is the only path from a blog hub into the product pages. */}
+        <CategorySnapshot categorySlug={category} categoryName={cat.name} />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
