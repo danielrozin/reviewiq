@@ -23,6 +23,7 @@ import {
   productsHubSchema,
   whereToBuySchema,
 } from '../schema/jsonld'
+import { products } from '@/data/products'
 import type { DiscussionThread, Comment } from '@/types'
 
 describe('organizationSchema', () => {
@@ -275,6 +276,24 @@ describe('productsHubSchema', () => {
     expect(schema.mainEntity.itemListElement[0].position).toBe(1)
     expect(schema.mainEntity.itemListElement[0].name).toBe('Roborock S8 MaxV Ultra')
     expect(schema.mainEntity.itemListElement[0].url).toContain('/category/robot-vacuums/roborock-s8-maxv-ultra')
+  })
+
+  // Most real catalog names already lead with the brand, so prefixing it
+  // unconditionally shipped "Roborock Roborock S8 MaxV Ultra" to answer engines.
+  it('does not repeat the brand when the product name already carries it', () => {
+    const schema = productsHubSchema([
+      { name: 'Roborock S8 MaxV Ultra', slug: 'roborock-s8-maxv-ultra', brand: 'Roborock', categorySlug: 'robot-vacuums' },
+      { name: 'MacBook Pro 16 M3 Max', slug: 'macbook-pro-16-m3-max', brand: 'Apple', categorySlug: 'laptops' },
+    ] as any)
+    expect(schema.mainEntity.itemListElement[0].name).toBe('Roborock S8 MaxV Ultra')
+    expect(schema.mainEntity.itemListElement[1].name).toBe('Apple MacBook Pro 16 M3 Max')
+  })
+
+  it('lists every real catalog product exactly once', () => {
+    const schema = productsHubSchema(products)
+    expect(schema.mainEntity.numberOfItems).toBe(products.length)
+    const urls = schema.mainEntity.itemListElement.map((item: any) => item.url)
+    expect(new Set(urls).size).toBe(products.length)
   })
 })
 

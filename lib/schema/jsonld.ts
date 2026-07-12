@@ -1,6 +1,6 @@
 import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment, UserProfile, MerchantOffer } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
-import { productAverageRating } from "@/lib/utils";
+import { productAverageRating, productDisplayName } from "@/lib/utils";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
@@ -355,13 +355,12 @@ export function faqHubSchema(pages: { slug: string; title: string }[]) {
   };
 }
 
-// The /products catalog hub is a server-rendered directory whose actual product
-// grid is filled by a client-side search/filter component, so the HTML shipped no
-// structured data — unlike the /compare and /category hubs which already emit
-// CollectionPage + ItemList. This enumerates every catalog product's canonical
-// page so answer engines can discover and treat the catalog as one curated
-// collection (potential list/sitelink treatment) and follow the internal links to
-// each money page. URLs mirror the sitemap exactly: /category/{categorySlug}/{slug}.
+// The /products catalog hub enumerates every catalog product's canonical page so
+// answer engines can treat the catalog as one curated collection (potential
+// list/sitelink treatment). URLs mirror the sitemap exactly:
+// /category/{categorySlug}/{slug}. The page must also render a crawlable <a> to
+// each of these URLs — structured data has to match what the page actually shows,
+// and the list is only a discovery path if the links are in the HTML.
 export function productsHubSchema(products: Product[]) {
   return {
     "@context": "https://schema.org",
@@ -376,7 +375,7 @@ export function productsHubSchema(products: Product[]) {
       itemListElement: products.map((product, index) => ({
         "@type": "ListItem",
         position: index + 1,
-        name: `${product.brand} ${product.name}`,
+        name: productDisplayName(product),
         url: `${SITE_URL}/category/${product.categorySlug}/${product.slug}`,
       })),
     },

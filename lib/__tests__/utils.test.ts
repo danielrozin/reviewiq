@@ -6,7 +6,28 @@ import {
   getScoreLabel,
   averageRatingFromDistribution,
   productAverageRating,
+  productDisplayName,
 } from '../utils'
+
+describe('productDisplayName', () => {
+  it('keeps the name as-is when it already leads with the brand', () => {
+    expect(productDisplayName({ brand: 'Roborock', name: 'Roborock S8 MaxV Ultra' })).toBe(
+      'Roborock S8 MaxV Ultra'
+    )
+  })
+
+  it('prefixes the brand when the name omits it', () => {
+    expect(productDisplayName({ brand: 'Apple', name: 'MacBook Pro 16 M3 Max' })).toBe(
+      'Apple MacBook Pro 16 M3 Max'
+    )
+  })
+
+  it('matches the brand case-insensitively', () => {
+    expect(productDisplayName({ brand: 'iRobot', name: 'iRobot Roomba j7+' })).toBe(
+      'iRobot Roomba j7+'
+    )
+  })
+})
 
 describe('formatNumber', () => {
   it('returns plain number for values under 1000', () => {
