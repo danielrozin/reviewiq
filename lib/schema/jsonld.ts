@@ -124,15 +124,33 @@ export function productSchema(product: Product) {
 
   const buildDate = new Date().toISOString().split("T")[0];
 
+  const productUrl = `${SITE_URL}/category/${product.categorySlug}/${product.slug}`;
+  const ogImageUrl = `${productUrl}/opengraph-image`;
+
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${productUrl}#product`,
     name: product.name,
     brand: { "@type": "Brand", name: product.brand },
     description: product.description,
+    // Canonical product page URL — required for Google Product Knowledge Graph matching.
+    url: productUrl,
     // product.image points at /images/products/*.jpg which 404 (no real photos yet);
     // use the per-product generated OG card so the Product rich result has a valid image.
-    image: `${SITE_URL}/category/${product.categorySlug}/${product.slug}/opengraph-image`,
+    // ImageObject gives Google Lens + AI crawlers creditText + contentUrl resolution.
+    image: {
+      "@type": "ImageObject",
+      url: ogImageUrl,
+      contentUrl: ogImageUrl,
+      name: `${product.name} review card`,
+      description: `SmartScore review card for ${product.name}`,
+      creditText: "ReviewIQ",
+      creator: { "@type": "Organization", "@id": ORG_ID },
+    },
+    thumbnailUrl: ogImageUrl,
+    // category — helps Google route the Product node to the correct product carousel vertical.
+    category: product.categorySlug.replace(/-/g, " "),
     datePublished: product.createdAt || buildDate,
     dateModified: product.updatedAt || product.createdAt || buildDate,
   };
@@ -569,12 +587,36 @@ export function speakableSchema(productName: string, productUrl: string) {
   // — an E-E-A-T signal answer engines look for on review pages. Drop the nested
   // @context; only the root node needs it.
   const { "@context": _ctx, ...author } = analysisAuthorSchema();
+  const absoluteUrl = `${SITE_URL}${productUrl}`;
+  const ogImageUrl = `${absoluteUrl}/opengraph-image`;
   return {
     "@context": "https://schema.org",
     "@type": "WebPage",
+    "@id": `${absoluteUrl}#webpage`,
     name: `${productName} Review`,
-    url: `${SITE_URL}${productUrl}`,
+    url: absoluteUrl,
     author,
+    // GEO signals — content classification and freshness for AI/LLM crawlers
+    inLanguage: "en-US",
+    genre: "Product Review",
+    // image + thumbnailUrl for AI visual crawlers and Google Discover
+    image: {
+      "@type": "ImageObject",
+      url: ogImageUrl,
+      contentUrl: ogImageUrl,
+      name: `${productName} review card`,
+      description: `ReviewIQ analysis card for ${productName}`,
+    },
+    thumbnailUrl: ogImageUrl,
+    // entity graph links — stable ORG_ID / WEBSITE_ID nodes
+    isPartOf: { "@type": "WebSite", "@id": WEBSITE_ID },
+    publisher: { "@type": "Organization", "@id": ORG_ID },
+    // potentialAction: ReviewAction exposes the write-a-review flow to AI / voice agents
+    potentialAction: {
+      "@type": "ReviewAction",
+      target: `${SITE_URL}/write-review?product=${encodeURIComponent(productName)}`,
+      name: `Write a review for ${productName}`,
+    },
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
