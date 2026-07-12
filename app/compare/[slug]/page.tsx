@@ -9,7 +9,7 @@ import { ProsConsComparison } from "@/components/comparison/ProsConsComparison";
 import { VerdictCard } from "@/components/comparison/VerdictCard";
 import { BestForComparison } from "@/components/comparison/BestForComparison";
 import { PriceComparison } from "@/components/comparison/PriceComparison";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, ogImageForSegment } from "@/lib/seo/metadata";
 import { comparisonSchema } from "@/lib/schema/jsonld";
 import { AnalysisDisclosure } from "@/components/product/AnalysisDisclosure";
 import { FAQSection } from "@/components/product/FAQSection";
@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: Props) {
     title: `${productA.name} vs ${productB.name} (${year}) — Which Is Better?`,
     description,
     path: `/compare/${slug}`,
+    image: ogImageForSegment(`/compare/${slug}`),
   });
 }
 

@@ -16,7 +16,7 @@ import { ExternalComparisonLinks } from "@/components/product/ExternalComparison
 import { FAQSection } from "@/components/product/FAQSection";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, ogImageForSegment } from "@/lib/seo/metadata";
 import { productSchema, speakableSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
 import { formatNumber, productAverageRating } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
@@ -55,6 +55,7 @@ export async function generateMetadata({ params }: Props) {
     title: `${product.name} Review (${year}) — SmartScore ${product.smartScore}/100`,
     description: `Honest ${product.name} review based on ${product.reviewCount} verified buyer experiences. See what people love, hate, and who this product is best for.`,
     path: `/category/${slug}/${productSlug}`,
+    image: ogImageForSegment(`/category/${slug}/${productSlug}`),
   });
 }
 

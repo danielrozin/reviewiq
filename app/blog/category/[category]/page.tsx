@@ -34,6 +34,9 @@ export async function generateMetadata({
       description: `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`,
       url: `${siteUrl}/blog/category/${cat.slug}`,
       type: "website",
+      // An explicit openGraph block replaces the parent's, so without this the root
+      // app/opengraph-image.tsx card is dropped and the page shares with no image.
+      images: [{ url: `${siteUrl}/opengraph-image` }],
     },
     twitter: {
       card: "summary_large_image",

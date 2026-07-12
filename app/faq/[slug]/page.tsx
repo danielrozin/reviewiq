@@ -29,6 +29,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${siteUrl}/faq/${page.slug}`,
       siteName: "ReviewIQ",
       type: "website",
+      // An explicit openGraph block replaces the parent's, so without this the root
+      // app/opengraph-image.tsx card is dropped and the page shares with no image.
+      images: [{ url: `${siteUrl}/opengraph-image` }],
     },
     twitter: {
       card: "summary_large_image",
