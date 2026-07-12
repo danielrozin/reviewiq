@@ -57,9 +57,9 @@ export function ComparisonTray() {
 
           <div className="flex items-center gap-3">
             {/* Product chips */}
-            <div className="flex-1 flex items-center gap-2 overflow-x-auto">
+            <ul className="flex-1 flex items-center gap-2 overflow-x-auto list-none p-0 m-0" aria-label="Products selected for comparison">
               {items.map((product) => (
-                <div
+                <li
                   key={product.id}
                   className="flex items-center gap-2 bg-gray-50 border border-gray-100 rounded-xl px-3 py-2 shrink-0"
                 >
@@ -86,20 +86,20 @@ export function ComparisonTray() {
                       <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                   </button>
-                </div>
+                </li>
               ))}
 
               {/* Empty slots */}
               {Array.from({ length: Math.max(0, 2 - items.length) }).map((_, i) => (
-                <div
+                <li
                   key={`empty-${i}`}
                   aria-hidden="true"
                   className="w-[140px] h-[42px] border-2 border-dashed border-gray-200 rounded-xl flex items-center justify-center shrink-0"
                 >
                   <span className="text-xs text-gray-500">+ Add product</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
 
             {/* Compare Now CTA */}
             <Link

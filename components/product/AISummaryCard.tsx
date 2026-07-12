@@ -47,8 +47,8 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div>
-          <h3 className="text-sm font-semibold text-emerald-700 uppercase tracking-wider mb-3">
+        <section aria-labelledby="ai-what-love">
+          <h3 id="ai-what-love" className="text-sm font-semibold text-emerald-700 uppercase tracking-wider mb-3">
             What People Love
           </h3>
           <ul className="space-y-2">
@@ -63,10 +63,10 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h3 className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3">
+        <section aria-labelledby="ai-complaints">
+          <h3 id="ai-complaints" className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3">
             Common Complaints
           </h3>
           <ul className="space-y-2">
@@ -81,10 +81,10 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h3 className="text-sm font-semibold text-brand-700 uppercase tracking-wider mb-3">
+        <section aria-labelledby="ai-best-for">
+          <h3 id="ai-best-for" className="text-sm font-semibold text-brand-700 uppercase tracking-wider mb-3">
             Best For
           </h3>
           <ul className="space-y-2">
@@ -99,10 +99,10 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h3 className="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-3">
+        <section aria-labelledby="ai-not-for">
+          <h3 id="ai-not-for" className="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-3">
             Not For
           </h3>
           <ul className="space-y-2">
@@ -117,7 +117,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       </div>
     </section>
   );

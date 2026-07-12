@@ -112,11 +112,12 @@ export function Header() {
 
             {/* Desktop navigation */}
             <nav className="hidden lg:flex items-center gap-1 flex-1" aria-label="Main navigation">
+              <ul className="flex items-center gap-1 list-none p-0 m-0">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
                 return (
+                  <li key={link.href}>
                   <Link
-                    key={link.href}
                     href={link.href}
                     aria-current={isActive ? "page" : undefined}
                     className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
@@ -129,8 +130,10 @@ export function Header() {
                   >
                     {link.label}
                   </Link>
+                  </li>
                 );
               })}
+              </ul>
             </nav>
 
             {/* Search bar — desktop only */}
@@ -338,12 +341,13 @@ export function Header() {
               }
             }}
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 space-y-0.5">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+              <ul className="space-y-0.5 list-none p-0 m-0">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
                 return (
+                  <li key={link.href}>
                   <Link
-                    key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     aria-current={isActive ? "page" : undefined}
@@ -358,10 +362,12 @@ export function Header() {
                     {link.icon}
                     {link.label}
                   </Link>
+                  </li>
                 );
               })}
 
               {items.length > 0 && (
+                <li>
                 <Link
                   href="/compare"
                   onClick={() => setMenuOpen(false)}
@@ -373,7 +379,9 @@ export function Header() {
                     {items.length}
                   </span>
                 </Link>
+                </li>
               )}
+              </ul>
 
               <div className="pt-2 mt-2 border-t border-gray-100">
                 <Link

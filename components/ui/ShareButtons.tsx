@@ -76,9 +76,10 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
         {copied ? "Link copied to clipboard" : ""}
       </span>
       <span className="text-sm text-gray-600 mr-1">Share:</span>
+      <ul className="flex items-center gap-2 list-none p-0 m-0" aria-label="Share on social media">
       {shareLinks.map((link) => (
+        <li key={link.name}>
         <a
-          key={link.name}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
@@ -88,7 +89,9 @@ export function ShareButtons({ url, title, description }: ShareButtonsProps) {
         >
           {link.icon}
         </a>
+        </li>
       ))}
+      </ul>
       <button
         type="button"
         onClick={handleCopyLink}
