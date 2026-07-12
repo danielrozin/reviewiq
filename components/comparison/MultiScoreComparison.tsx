@@ -30,11 +30,11 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
       {/* Horizontal scroll on mobile for 3+ products */}
       <div className="overflow-x-auto -mx-4 px-4 lg:overflow-visible lg:mx-0 lg:px-0">
         {/* Score cards */}
-        <div className={cn("grid gap-4 lg:gap-6", colClass)} style={{ minWidth }}>
+        <ul aria-label="SmartScore comparison" className={cn("grid gap-4 lg:gap-6 list-none p-0 m-0", colClass)} style={{ minWidth }}>
           {products.map((product) => {
             const isWinner = product.smartScore === maxScore;
             return (
-              <div key={product.id} className="flex flex-col items-center gap-3">
+              <li key={product.id} className="flex flex-col items-center gap-3">
                 <div className="relative">
                   <div
                     role="meter"
@@ -72,19 +72,19 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
                     {product.reviewCount} reviews
                   </p>
                 </div>
-              </div>
+              </li>
             );
           })}
-        </div>
+        </ul>
 
         {/* Price comparison row */}
         <div className="mt-6 pt-6 border-t border-brand-100/60">
-          <div className={cn("grid gap-4 lg:gap-6 text-center", colClass)} style={{ minWidth }}>
+          <ul aria-label="Price range comparison" className={cn("grid gap-4 lg:gap-6 text-center list-none p-0 m-0", colClass)} style={{ minWidth }}>
             {products.map((product) => {
               const lowestPrice = Math.min(...products.map((p) => p.priceRange.min));
               const isLowest = product.priceRange.min === lowestPrice;
               return (
-                <div key={product.id}>
+                <li key={product.id}>
                   <p className="text-xs text-gray-600 mb-1">Price Range</p>
                   <p className={cn("text-sm font-semibold", isLowest ? "text-emerald-600" : "text-gray-900")}>
                     ${product.priceRange.min}–${product.priceRange.max}
@@ -92,10 +92,10 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
                       <span className="ml-1 text-xs text-emerald-600 font-normal">Best</span>
                     )}
                   </p>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </div>
     </section>

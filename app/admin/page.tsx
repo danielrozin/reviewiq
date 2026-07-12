@@ -450,9 +450,9 @@ export default function AdminDashboard() {
               <div className="bg-white border border-gray-200 rounded-xl p-6">
                 <h3 className="text-sm font-semibold text-gray-900 mb-4">Recent Signups</h3>
                 {stats.recentSignups.length > 0 ? (
-                  <div className="space-y-2">
+                  <ul className="space-y-2 list-none p-0 m-0">
                     {stats.recentSignups.slice(0, 8).map((u) => (
-                      <div key={u.id} className="flex items-center justify-between text-sm">
+                      <li key={u.id} className="flex items-center justify-between text-sm">
                         <div>
                           <span className="font-medium text-gray-900">{u.name || "Anonymous"}</span>
                           <span className="text-gray-500 ml-2 text-xs">{u.email}</span>
@@ -460,9 +460,9 @@ export default function AdminDashboard() {
                         <span className="text-xs text-gray-500">
                           {new Date(u.createdAt).toLocaleDateString()}
                         </span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 ) : (
                   <p className="text-gray-500 text-sm">No recent signups</p>
                 )}
@@ -473,9 +473,9 @@ export default function AdminDashboard() {
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Recent Reviews</h3>
               {stats.recentReviews.length > 0 ? (
-                <div className="space-y-3">
+                <ul className="space-y-3 list-none p-0 m-0">
                   {stats.recentReviews.map((r) => (
-                    <div key={r.id} className="flex items-start gap-3 pb-3 border-b border-gray-50 last:border-0">
+                    <li key={r.id} className="flex items-start gap-3 pb-3 border-b border-gray-50 last:border-0">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-0.5">
                           <span className="font-medium text-sm text-gray-900 truncate">{r.headline}</span>
@@ -485,9 +485,9 @@ export default function AdminDashboard() {
                           {r.product.name} · {r.user.name || r.user.email} · {"★".repeat(r.rating)} · {new Date(r.createdAt).toLocaleDateString()}
                         </p>
                       </div>
-                    </div>
+                    </li>
                   ))}
-                </div>
+                </ul>
               ) : (
                 <p className="text-gray-500 text-sm">No reviews yet</p>
               )}

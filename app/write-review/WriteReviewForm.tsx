@@ -360,7 +360,7 @@ export function WriteReviewForm() {
             </p>
 
             {/* Stats earned */}
-            <div className="flex items-center justify-center gap-6 py-4 border-t border-emerald-100">
+            <ul aria-label="Rewards earned" className="flex items-center justify-center gap-6 py-4 border-t border-emerald-100 list-none m-0" style={{ paddingLeft: 0, paddingRight: 0 }}>
               {[
                 {
                   icon: <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" /></svg>,
@@ -375,12 +375,12 @@ export function WriteReviewForm() {
                   label: "Helped future buyers",
                 },
               ].map((item) => (
-                <div key={item.label} className="text-center">
+                <li key={item.label} className="text-center">
                   <span aria-hidden="true" className="w-8 h-8 bg-white rounded-xl flex items-center justify-center mx-auto mb-1.5 shadow-sm border border-emerald-100">{item.icon}</span>
                   <span className="text-xs font-medium text-emerald-700">{item.label}</span>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Actions */}
