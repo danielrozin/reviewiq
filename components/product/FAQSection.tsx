@@ -26,13 +26,13 @@ export function FAQSection({ items }: FAQSectionProps) {
         </h2>
         <span className="ml-auto text-xs text-gray-600 font-medium tabular-nums">{items.length} questions</span>
       </div>
-      <div className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100">
+      <ul className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100 list-none p-0 m-0">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
           const panelId = `faq-panel-${i}`;
           const btnId = `faq-btn-${i}`;
           return (
-            <div key={i} className={cn(isOpen && "bg-brand-50/40")}>
+            <li key={i} className={cn(isOpen && "bg-brand-50/40")}>
               <button
                 id={btnId}
                 type="button"
@@ -80,10 +80,10 @@ export function FAQSection({ items }: FAQSectionProps) {
                   </p>
                 </div>
               </div>
-            </div>
+            </li>
           );
         })}
-      </div>
+      </ul>
     </section>
   );
 }

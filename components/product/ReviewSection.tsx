@@ -109,13 +109,13 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
           </div>
 
           {/* Rating distribution bars */}
-          <div className="flex-1 space-y-1.5">
+          <ul className="flex-1 space-y-1.5 list-none p-0 m-0" aria-label="Rating distribution">
             {([5, 4, 3, 2, 1] as const).map((star) => {
               const count = ratingDistribution[star];
               const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;
 
               return (
-                <div key={star} className="flex items-center gap-2 text-sm">
+                <li key={star} className="flex items-center gap-2 text-sm">
                   <span aria-hidden="true" className="w-8 flex items-center justify-end gap-0.5 text-gray-600 text-xs font-medium shrink-0">
                     {star}
                     <svg aria-hidden="true" className="w-2.5 h-2.5 text-amber-400 shrink-0" viewBox="0 0 24 24" fill="currentColor">
@@ -137,10 +137,10 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
                   <span aria-hidden="true" className="w-10 text-right text-gray-600 text-xs">
                     {percentage.toFixed(0)}%
                   </span>
-                </div>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </div>
       </div>
 
@@ -280,17 +280,26 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>
 
       <div className="flex items-center justify-between pt-3 border-t border-gray-50">
-        <div className="flex gap-4 text-xs text-gray-600">
+        <dl className="flex gap-4 text-xs text-gray-600">
           {review.reliabilityRating != null && (
-            <span>Reliability: {review.reliabilityRating}/5</span>
+            <div className="inline-flex gap-0.5">
+              <dt>Reliability:</dt>
+              <dd>{review.reliabilityRating}/5</dd>
+            </div>
           )}
           {review.easeOfUseRating != null && (
-            <span>Ease of Use: {review.easeOfUseRating}/5</span>
+            <div className="inline-flex gap-0.5">
+              <dt>Ease of Use:</dt>
+              <dd>{review.easeOfUseRating}/5</dd>
+            </div>
           )}
           {review.valueRating != null && (
-            <span>Value: {review.valueRating}/5</span>
+            <div className="inline-flex gap-0.5">
+              <dt>Value:</dt>
+              <dd>{review.valueRating}/5</dd>
+            </div>
           )}
-        </div>
+        </dl>
         <ReviewVoting
           reviewId={review.id}
           initialHelpfulCount={review.helpfulCount}
