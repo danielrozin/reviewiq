@@ -16,7 +16,7 @@ import { ExternalComparisonLinks } from "@/components/product/ExternalComparison
 import { FAQSection } from "@/components/product/FAQSection";
 import { ProductDiscussions } from "@/components/community/ProductDiscussions";
 import { getDiscussionsByProduct } from "@/data/discussions";
-import { buildMetadata, ogImageForSegment } from "@/lib/seo/metadata";
+import { buildMetadata, fitTitle, ogImageForSegment } from "@/lib/seo/metadata";
 import { productSchema, speakableSchema, videoObjectListSchema } from "@/lib/schema/jsonld";
 import { formatNumber, productAverageRating } from "@/lib/utils";
 import { RelatedProducts } from "@/components/product/RelatedProducts";
@@ -51,8 +51,19 @@ export async function generateMetadata({ params }: Props) {
   if (!product) return {};
 
   const year = new Date().getFullYear();
+
+  // Long product names blow past Google's ~60-char SERP title budget, so degrade the
+  // tail rather than let it truncate: the name plus "Review" is the keyword and stays,
+  // the SmartScore and the year are the hooks we can afford to drop.
+  const title = fitTitle([
+    `${product.name} Review (${year}) — SmartScore ${product.smartScore}/100`,
+    `${product.name} Review — SmartScore ${product.smartScore}/100`,
+    `${product.name} Review (${year})`,
+    `${product.name} Review`,
+  ]);
+
   return buildMetadata({
-    title: `${product.name} Review (${year}) — SmartScore ${product.smartScore}/100`,
+    title,
     description: `Honest ${product.name} review based on ${product.reviewCount} verified buyer experiences. See what people love, hate, and who this product is best for.`,
     path: `/category/${slug}/${productSlug}`,
     image: ogImageForSegment(`/category/${slug}/${productSlug}`),

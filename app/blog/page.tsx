@@ -5,7 +5,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 import { blogListSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
-  title: "Blog — Buying Guides, Comparisons & Expert Reviews",
+  title: "Blog — Buying Guides & Expert Reviews",
   description:
     "Expert buying guides, in-depth product comparisons, and review insights backed by real owner data. Make smarter purchase decisions with ReviewIQ.",
   path: "/blog",

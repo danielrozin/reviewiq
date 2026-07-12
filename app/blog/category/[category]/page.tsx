@@ -7,6 +7,7 @@ import {
 } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { blogListSchema } from "@/lib/schema/jsonld";
+import { buildMetadata, fitTitle } from "@/lib/seo/metadata";
 
 export function generateStaticParams() {
   return getBlogCategories().map((cat) => ({ category: cat.slug }));
@@ -22,28 +23,18 @@ export async function generateMetadata({
   const cat = categories.find((c) => c.slug === category);
   if (!cat) return {};
 
-  const siteUrl =
-    (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
-
-  return {
-    title: `${cat.name} Buying Guides & Reviews | ReviewIQ Blog`,
+  // Hand-rolled before: it appended its own " | ReviewIQ Blog", which pushed the
+  // longest category names past Google's title budget. buildMetadata now owns the
+  // brand suffix (and the og:image fallback this block used to duplicate), adding it
+  // only when the title has room.
+  return buildMetadata({
+    title: fitTitle([
+      `${cat.name} Buying Guides & Reviews`,
+      `${cat.name} Buying Guides`,
+    ]),
     description: `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`,
-    alternates: { canonical: `${siteUrl}/blog/category/${cat.slug}` },
-    openGraph: {
-      title: `${cat.name} Buying Guides & Reviews | ReviewIQ Blog`,
-      description: `Expert buying guides, comparisons, and review insights for ${cat.name}. Data-backed recommendations from real owner reviews.`,
-      url: `${siteUrl}/blog/category/${cat.slug}`,
-      type: "website",
-      // An explicit openGraph block replaces the parent's, so without this the root
-      // app/opengraph-image.tsx card is dropped and the page shares with no image.
-      images: [{ url: `${siteUrl}/opengraph-image` }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${cat.name} Buying Guides & Reviews`,
-      description: `Expert buying guides, comparisons, and review insights for ${cat.name}.`,
-    },
-  };
+    path: `/blog/category/${cat.slug}`,
+  });
 }
 
 const categoryEmoji: Record<string, string> = {

@@ -4,7 +4,7 @@ import { getCategoryBySlug } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { buildMetadata, ogImageForSegment } from "@/lib/seo/metadata";
+import { buildMetadata, fitTitle, truncateAtWord, ogImageForSegment } from "@/lib/seo/metadata";
 import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
@@ -26,11 +26,20 @@ export async function generateMetadata({ params }: Props) {
   if (!category) return {};
 
   const year = new Date().getFullYear();
+  const title = fitTitle([
+    `Best ${category.name} (${year}) — Reviews & Comparisons`,
+    `Best ${category.name} (${year}) — Reviews`,
+    `Best ${category.name} (${year})`,
+  ]);
+
   return buildMetadata({
-    title: `Best ${category.name} (${year}) — Reviews & Comparisons`,
-    description:
+    title,
+    // Category blurbs are authored for the page, not for the SERP — several run past
+    // Google's 160-char snippet limit, so trim on a word boundary.
+    description: truncateAtWord(
       category.description ||
-      `See the best ${category.name} ranked by SmartScore from verified buyer reviews. Compare top picks, pros & cons, and prices to find the right one for you.`,
+        `See the best ${category.name} ranked by SmartScore from verified buyer reviews. Compare top picks, pros & cons, and prices to find the right one for you.`,
+    ),
     path: `/category/${slug}`,
     image: ogImageForSegment(`/category/${slug}`),
   });

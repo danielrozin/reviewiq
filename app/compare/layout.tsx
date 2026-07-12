@@ -12,7 +12,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 // the index route (app/compare/page.tsx). Detail pages override this metadata
 // via their own generateMetadata (canonical stays correct).
 export const metadata = buildMetadata({
-  title: "Compare Products Side-by-Side — SmartScores, Specs & Real Reviews",
+  title: "Compare Products Side-by-Side — Specs & Reviews",
   description:
     "Build your own head-to-head comparison. Stack any products side-by-side on SmartScore, specs, and verified buyer reviews to decide faster. Start comparing free.",
   path: "/compare",

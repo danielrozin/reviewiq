@@ -26,7 +26,7 @@ export const faqPages: CompetitorFAQPage[] = [
     title: "Trustpilot FAQ",
     metaTitle: "Is Trustpilot Reliable? FAQ — ReviewIQ",
     metaDescription:
-      "Can you trust Trustpilot reviews? Learn about fake review risks, pay-to-play concerns, and how ReviewIQ provides verified buyer reviews with AI-powered analysis.",
+      "Can you trust Trustpilot reviews? Learn the fake-review risks, the pay-to-play concerns, and how ReviewIQ verifies buyers with AI-powered analysis.",
     heroHeadline: "Is Trustpilot Reliable? What You Need to Know",
     heroSubtext:
       "Trustpilot is the largest open review platform — but its open model creates serious trust issues. Here's what real consumers are asking.",
@@ -151,7 +151,7 @@ export const faqPages: CompetitorFAQPage[] = [
     title: "Product Reviews FAQ",
     metaTitle: "Where to Find Honest Product Reviews? FAQ — ReviewIQ",
     metaDescription:
-      "Looking for honest product reviews? Learn how ReviewIQ provides verified buyer reviews with AI analysis, commission-proof SmartScores, and transparent methodology.",
+      "Looking for honest product reviews? See how ReviewIQ combines verified buyer reviews, AI analysis, and SmartScores that commissions never influence.",
     heroHeadline: "Where to Find Honest Product Reviews",
     heroSubtext:
       "Most review platforms are compromised by fake reviews, affiliate-driven rankings, or pay-to-play models. Here's what smart shoppers are asking.",
