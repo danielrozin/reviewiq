@@ -132,9 +132,9 @@ async function main() {
       });
     }
 
-    // Product pages render youtubeVideos straight from data/products*.ts, so the
-    // YouTubeVideo table was written but never read. Seeding it back would only
-    // recreate the write-only copy that DAN-2062 retired.
+    // Product pages render youtubeVideos straight from data/products*.ts. The
+    // write-only YouTubeVideo table that used to mirror them was dropped in
+    // DAN-2063; there is nothing to seed here.
 
     // Reviews
     for (const r of p.reviews) {
