@@ -4,7 +4,7 @@ import { getCategoryBySlug } from "@/data/categories";
 import { getProductsByCategory } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { buildMetadata, ogImageForSegment } from "@/lib/seo/metadata";
 import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
@@ -32,6 +32,7 @@ export async function generateMetadata({ params }: Props) {
       category.description ||
       `See the best ${category.name} ranked by SmartScore from verified buyer reviews. Compare top picks, pros & cons, and prices to find the right one for you.`,
     path: `/category/${slug}`,
+    image: ogImageForSegment(`/category/${slug}`),
   });
 }
 

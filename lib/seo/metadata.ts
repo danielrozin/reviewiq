@@ -5,6 +5,17 @@ const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").
 const SITE_DESCRIPTION =
   "Honest, AI-powered product reviews. See what real buyers love, hate, and wish they knew before purchasing.";
 
+/**
+ * Absolute URL of the `opengraph-image` route generated for a segment, e.g.
+ * ogImageForSegment("/compare/a-vs-b") -> ".../compare/a-vs-b/opengraph-image".
+ * Pass the result to `buildMetadata({ image })` from any segment that ships its own
+ * opengraph-image.tsx: the explicit openGraph block below would otherwise fall back
+ * to the generic site card and throw that segment's richer image away.
+ */
+export function ogImageForSegment(path: string): string {
+  return `${SITE_URL}${path}/opengraph-image`;
+}
+
 export function buildMetadata(overrides: {
   title?: string;
   description?: string;
@@ -28,7 +39,12 @@ export function buildMetadata(overrides: {
       url,
       siteName: SITE_NAME,
       type: "website",
-      ...(overrides.image && { images: [{ url: overrides.image }] }),
+      // Declaring `openGraph` here replaces whatever a parent segment resolved, so a
+      // page that passes no image ends up with NO og:image at all — the root
+      // `app/opengraph-image.tsx` is not inherited through an explicit openGraph block.
+      // Fall back to the site card so every page ships one. Segments with their own
+      // opengraph-image route pass that URL in `image` and keep their richer card.
+      images: [{ url: overrides.image || `${SITE_URL}/opengraph-image` }],
     },
     twitter: {
       card: "summary_large_image",
