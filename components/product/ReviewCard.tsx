@@ -80,26 +80,32 @@ export function ReviewCard({ review }: ReviewCardProps) {
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>
 
       <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-50">
-        <div className="flex flex-wrap gap-1.5">
-          <span role="meter" aria-valuenow={review.reliabilityRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Reliability: ${review.reliabilityRating} out of 5`} aria-label="Reliability" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 text-xs font-medium">
-            <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-            </svg>
-            <span aria-hidden="true">Reliability {review.reliabilityRating}/5</span>
-          </span>
-          <span role="meter" aria-valuenow={review.easeOfUseRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Ease of use: ${review.easeOfUseRating} out of 5`} aria-label="Ease of use" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
-            <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
-            </svg>
-            <span aria-hidden="true">Ease {review.easeOfUseRating}/5</span>
-          </span>
-          <span role="meter" aria-valuenow={review.valueRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Value: ${review.valueRating} out of 5`} aria-label="Value" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
-            <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-            </svg>
-            <span aria-hidden="true">Value {review.valueRating}/5</span>
-          </span>
-        </div>
+        <ul className="flex flex-wrap gap-1.5 list-none p-0 m-0" aria-label="Sub-ratings">
+          <li>
+            <span role="meter" aria-valuenow={review.reliabilityRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Reliability: ${review.reliabilityRating} out of 5`} aria-label="Reliability" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 text-xs font-medium">
+              <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+              </svg>
+              <span aria-hidden="true">Reliability {review.reliabilityRating}/5</span>
+            </span>
+          </li>
+          <li>
+            <span role="meter" aria-valuenow={review.easeOfUseRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Ease of use: ${review.easeOfUseRating} out of 5`} aria-label="Ease of use" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
+              <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+              </svg>
+              <span aria-hidden="true">Ease {review.easeOfUseRating}/5</span>
+            </span>
+          </li>
+          <li>
+            <span role="meter" aria-valuenow={review.valueRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Value: ${review.valueRating} out of 5`} aria-label="Value" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 text-xs font-medium">
+              <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              <span aria-hidden="true">Value {review.valueRating}/5</span>
+            </span>
+          </li>
+        </ul>
         {review.helpfulCount > 0 && (
           <span className="inline-flex items-center gap-1 text-xs text-gray-600">
             <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

@@ -15,13 +15,13 @@ export function PricingFAQAccordion({ faqs }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="space-y-3">
+    <ul className="space-y-3 list-none p-0 m-0">
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
         const btnId = `pricing-faq-btn-${i}`;
         const panelId = `pricing-faq-panel-${i}`;
         return (
-          <div
+          <li
             key={faq.q}
             className={`bg-white rounded-xl border transition-all ${
               isOpen ? "border-brand-200 shadow-sm" : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
@@ -60,9 +60,9 @@ export function PricingFAQAccordion({ faqs }: Props) {
             >
               <p data-speakable="faq-answer" className="text-sm text-gray-600 leading-relaxed">{faq.a}</p>
             </div>
-          </div>
+          </li>
         );
       })}
-    </div>
+    </ul>
   );
 }

@@ -97,8 +97,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="space-y-2">
-          <div className="flex items-start gap-2">
+        <ul className="space-y-2 list-none p-0 m-0" aria-label="Top review highlights">
+          <li className="flex items-start gap-2">
             <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
               <svg aria-hidden="true" className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
@@ -108,8 +108,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               <span className="sr-only">Pro: </span>
               {product.aiSummary.whatPeopleLove[0]}
             </p>
-          </div>
-          <div className="flex items-start gap-2">
+          </li>
+          <li className="flex items-start gap-2">
             <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
               <svg aria-hidden="true" className="w-2.5 h-2.5 text-red-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
@@ -119,8 +119,8 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               <span className="sr-only">Con: </span>
               {product.aiSummary.whatPeopleHate[0]}
             </p>
-          </div>
-        </div>
+          </li>
+        </ul>
         </div>{/* end p-5 */}
       </Link>
 
