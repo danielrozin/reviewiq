@@ -234,7 +234,14 @@ for (const file of DATA_FILES) {
       continue;
     }
     const esc = (s: string) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-    const date = win.uploadDate ? `, uploadDate: "${win.uploadDate}"` : "";
+    // The watch page throttles far harder than oembed, so an unresolved date means
+    // "YouTube did not answer", not "this video has no date" — and a video's upload
+    // date never changes once known. Keep the date an earlier run already confirmed
+    // instead of stripping it, or every throttled run (this is scheduled weekly now)
+    // would quietly delete real metadata and open a PR proposing exactly that.
+    const priorDate = line.match(/uploadDate:\s*"([^"]+)"/)?.[1];
+    const resolvedDate = win.uploadDate ?? priorDate;
+    const date = resolvedDate ? `, uploadDate: "${resolvedDate}"` : "";
     out.push(
       `${indent}{ id: "${id}", title: "${esc(win.realTitle!)}", channel: "${esc(win.channel!)}"${date} },`
     );

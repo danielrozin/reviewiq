@@ -1263,7 +1263,7 @@ const baseProducts: Product[] = [
       },
     ],
     youtubeVideos: [
-      { id: "clXLqr3nOmg", title: "Nectar Premier Mattress Review - The BEST Mattress For Side Sleepers???", channel: "Sleepopolis" },
+      { id: "clXLqr3nOmg", title: "Nectar Premier Mattress Review - The BEST Mattress For Side Sleepers???", channel: "Sleepopolis", uploadDate: "2021-05-04" },
       { id: "-TffXC0M8dE", title: "Nectar Premier Review - NEW Design & Materials Tested!", channel: "NapLab", uploadDate: "2025-02-20" },
       { id: "UzPvWI21rKM", title: "Nectar Premier Mattress Review (2021-2024 version) by GoodBed", channel: "GoodBed", uploadDate: "2020-04-19" },
     ],
