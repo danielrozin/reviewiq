@@ -23,6 +23,7 @@ import {
   productsHubSchema,
   whereToBuySchema,
 } from '../schema/jsonld'
+import { getAllProducts } from '@/data/products'
 import { products } from '@/data/products'
 import type { DiscussionThread, Comment } from '@/types'
 
@@ -637,5 +638,75 @@ describe('whereToBuySchema', () => {
     const schema = whereToBuySchema(product, offers) as Record<string, any>
     expect(schema.url).toContain('/category/wireless-earbuds/sony-wh-1000xm5/where-to-buy')
     expect(schema.aggregateRating.ratingValue).toBe('4.5')
+  })
+})
+
+// Regression: product/comparison schema must never stamp the BUILD date.
+//
+// No catalog product sets createdAt/updatedAt, so productSchema and comparisonSchema
+// both fell through to `new Date()`. That made 100 product pages and 119 comparison
+// pages claim they were first published AND last modified today — advancing on every
+// deploy, which is a self-contradictory freshness signal Google discounts site-wide.
+//
+// These run against the REAL catalog rather than a fixture on purpose: a fixture with
+// a hand-written createdAt would take the happy path and never exercise the fallback
+// that actually shipped. Every assertion here fails on the pre-fix code.
+describe('schema content dates (no build-date stamping)', () => {
+  const today = new Date().toISOString().split('T')[0]
+  const realProducts = getAllProducts()
+
+  it('has a catalog that still exercises the fallback (no product sets createdAt)', () => {
+    // Guards the test itself: if products ever gain real createdAt fields, the
+    // review-derived path stops being what ships and these assertions go vacuous.
+    expect(realProducts.length).toBeGreaterThan(0)
+    expect(realProducts.every((p) => !p.createdAt && !p.updatedAt)).toBe(true)
+  })
+
+  it('never dates a product page as published/modified today', () => {
+    const dated = realProducts.map((p) => productSchema(p) as Record<string, any>)
+    expect(dated.length).toBe(100)
+    for (const s of dated) {
+      expect(s.datePublished).not.toBe(today)
+      expect(s.dateModified).not.toBe(today)
+    }
+  })
+
+  it('dates each product from its own review history', () => {
+    for (const p of realProducts) {
+      const reviewDates = p.reviews.map((r) => r.createdAt).sort()
+      const s = productSchema(p) as Record<string, any>
+      expect(s.datePublished).toBe(reviewDates[0])
+      expect(s.dateModified).toBe(reviewDates[reviewDates.length - 1])
+      expect(s.dateModified >= s.datePublished).toBe(true)
+    }
+  })
+
+  it('gives products distinct dates instead of one shared stamp', () => {
+    const modified = new Set(
+      realProducts.map((p) => (productSchema(p) as Record<string, any>).dateModified)
+    )
+    expect(modified.size).toBeGreaterThan(1)
+    expect(modified.has(today)).toBe(false)
+  })
+
+  it('dates a comparison from both products, never today', () => {
+    const [a, b] = realProducts
+    const s = comparisonSchema(a, b) as Record<string, any>
+    const aDates = a.reviews.map((r) => r.createdAt).sort()
+    const bDates = b.reviews.map((r) => r.createdAt).sort()
+    // Published once BOTH sides exist; modified when EITHER side last changed.
+    expect(s.datePublished).toBe([aDates[0], bDates[0]].sort()[1])
+    expect(s.dateModified).toBe(
+      [aDates[aDates.length - 1], bDates[bDates.length - 1]].sort()[1]
+    )
+    expect(s.datePublished).not.toBe(today)
+    expect(s.dateModified).not.toBe(today)
+  })
+
+  it('omits dates rather than inventing them when a product has no reviews', () => {
+    const undated = { ...realProducts[0], reviews: [] }
+    const s = productSchema(undated) as Record<string, any>
+    expect('datePublished' in s).toBe(false)
+    expect('dateModified' in s).toBe(false)
   })
 })

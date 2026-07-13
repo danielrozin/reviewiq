@@ -7,6 +7,8 @@ import { getAllBlogPosts, getBlogCategories } from "@/data/blog-posts";
 import { getAllComparisonPairs } from "@/data/comparisons";
 import { faqPages } from "@/data/faq-pages";
 import { getMerchantOffers } from "@/lib/affiliate/offers";
+import { productContentDates } from "@/lib/utils";
+import type { Product } from "@/types";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 3600; // Revalidate every hour
@@ -28,9 +30,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // not churn on every hourly revalidation the way `new Date()` did.
   const SITE_CONTENT_REVISED = new Date("2026-07-10T00:00:00.000Z");
 
-  const productLastMod = (p: { updatedAt?: string; createdAt?: string }): Date => {
-    const d = p.updatedAt || p.createdAt;
-    return d ? new Date(d) : SITE_CONTENT_REVISED;
+  // No product actually sets updatedAt/createdAt, so reading only those fields quietly
+  // collapsed this to the SITE_CONTENT_REVISED constant for 264 of 323 URLs — honest,
+  // but with none of the per-product granularity this policy is supposed to give Google.
+  // productContentDates falls back to the product's own review dates, which is what its
+  // page content is actually built from (62 distinct dates across the 100 products).
+  const productLastMod = (p: Product): Date => {
+    const { dateModified } = productContentDates(p);
+    return dateModified ? new Date(dateModified) : SITE_CONTENT_REVISED;
   };
   const maxDate = (dates: Date[], fallback: Date): Date => {
     const latest = dates.reduce((max, d) => (d > max ? d : max), new Date(0));
