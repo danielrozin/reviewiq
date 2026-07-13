@@ -28,6 +28,39 @@ export function averageRatingFromDistribution(
   return weighted / totalReviews;
 }
 
+// Truthful content dates for a product-derived page.
+//
+// No product in the catalog sets createdAt/updatedAt, so every caller that reached
+// for them fell through to `new Date()` — the BUILD date. That made 100 product
+// pages and 119 comparison pages tell Google they were both first published AND
+// last modified today, moving forward on every deploy. A datePublished that keeps
+// advancing is self-contradictory, and Google discounts an untrustworthy freshness
+// signal site-wide (the same reasoning behind the sitemap's lastmod policy).
+//
+// A product page's visible content IS its reviews — the SmartScore, rating
+// distribution, and AI summary are all derived from them. So the page genuinely
+// first had content on its oldest review date and genuinely last changed on its
+// newest one. Those are real dates for content really on the page, and they update
+// on their own when a review lands. Where a date can't be derived we return
+// undefined so the caller OMITS the field: unknown is not the same as today.
+export interface ContentDates {
+  datePublished?: string;
+  dateModified?: string;
+}
+
+export function productContentDates(product: Product): ContentDates {
+  const reviewDates = (product.reviews || [])
+    .map((r) => r.createdAt)
+    .filter(Boolean)
+    .sort();
+
+  const datePublished = product.createdAt || reviewDates[0];
+  const dateModified =
+    product.updatedAt || reviewDates[reviewDates.length - 1] || datePublished;
+
+  return { datePublished, dateModified };
+}
+
 export function productAverageRating(product: Product): number {
   const fromDistribution = averageRatingFromDistribution(
     product.ratingDistribution,

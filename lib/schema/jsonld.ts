@@ -1,6 +1,6 @@
 import type { Product, Review, Category, FAQItem, BlogPost, YouTubeVideo, BuyingGuideStep, DiscussionThread, Comment, UserProfile, MerchantOffer } from "@/types";
 import type { FAQEntry } from "@/data/faq-pages";
-import { productAverageRating, productDisplayName } from "@/lib/utils";
+import { productAverageRating, productDisplayName, productContentDates } from "@/lib/utils";
 
 const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com").trim();
 
@@ -122,7 +122,10 @@ export function productSchema(product: Product) {
   // paired with and the on-page rating summary / OG card.
   const avgRating = productAverageRating(product);
 
-  const buildDate = new Date().toISOString().split("T")[0];
+  // Dates come from the product's own content (see productContentDates), never from
+  // `new Date()` — a build-date stamp made every product claim it was published and
+  // modified today, on every deploy. Omitted entirely when they can't be derived.
+  const { datePublished, dateModified } = productContentDates(product);
 
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
@@ -133,8 +136,8 @@ export function productSchema(product: Product) {
     // product.image points at /images/products/*.jpg which 404 (no real photos yet);
     // use the per-product generated OG card so the Product rich result has a valid image.
     image: `${SITE_URL}/category/${product.categorySlug}/${product.slug}/opengraph-image`,
-    datePublished: product.createdAt || buildDate,
-    dateModified: product.updatedAt || product.createdAt || buildDate,
+    ...(datePublished ? { datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
   };
 
   const offers = aggregateOfferFromProduct(product);
@@ -585,15 +588,18 @@ export function competitorFaqPageSchema(opts: {
 }
 
 export function comparisonSchema(productA: Product, productB: Product) {
-  const buildDate = new Date().toISOString().split("T")[0];
+  // A comparison page is derived from its two products, so it first had content once
+  // BOTH sides did (the later of the two publish dates) and last changed when either
+  // side last changed (the more recent modification). Previously this fell through to
+  // the build date, republishing all 119 comparisons as brand new on every deploy.
+  const a = productContentDates(productA);
+  const b = productContentDates(productB);
+  const published = [a.datePublished, b.datePublished].filter(Boolean).sort();
+  const modified = [a.dateModified, b.dateModified].filter(Boolean).sort();
+  // Both sides dated → the comparison exists only once the later one does.
   const datePublished =
-    productA.createdAt && productB.createdAt
-      ? [productA.createdAt, productB.createdAt].sort()[0]
-      : productA.createdAt || productB.createdAt || buildDate;
-  const dateModified =
-    productA.updatedAt && productB.updatedAt
-      ? [productA.updatedAt, productB.updatedAt].sort().reverse()[0]
-      : productA.updatedAt || productB.updatedAt || buildDate;
+    published.length === 2 ? published[1] : published[0];
+  const dateModified = modified[modified.length - 1] || datePublished;
 
   return {
     "@context": "https://schema.org",
@@ -601,8 +607,8 @@ export function comparisonSchema(productA: Product, productB: Product) {
     name: `${productA.name} vs ${productB.name} — Comparison`,
     description: `Side-by-side comparison of ${productA.name} and ${productB.name} based on verified buyer reviews.`,
     url: `${SITE_URL}/compare/${[productA.slug, productB.slug].sort().join("-vs-")}`,
-    datePublished,
-    dateModified,
+    ...(datePublished ? { datePublished } : {}),
+    ...(dateModified ? { dateModified } : {}),
     mainEntity: {
       "@type": "ItemList",
       name: `${productA.name} vs ${productB.name}`,
