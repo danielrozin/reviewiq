@@ -42,7 +42,7 @@ export default function CategoriesPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(categoryListSchema(categories)) }} />
 
       {/* Page header */}
-      <div className="mt-8 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <header className="mt-8 mb-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Product Categories
@@ -66,7 +66,7 @@ export default function CategoriesPage() {
             20K+ AI reviews
           </li>
         </ul>
-      </div>
+      </header>
 
       {/* Search + grid (client component) */}
       <CategorySearch categories={categories} />

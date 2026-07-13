@@ -134,7 +134,7 @@ export default function NotificationsSettingsPage() {
       </span>
 
       {/* Header */}
-      <div className="mt-6 mb-8">
+      <header className="mt-6 mb-8">
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-2xl font-bold text-gray-900">Notifications</h1>
@@ -157,7 +157,7 @@ export default function NotificationsSettingsPage() {
             </div>
           )}
         </div>
-      </div>
+      </header>
 
       {error && (
         <div role="alert" className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3 text-amber-800 text-sm mb-6">

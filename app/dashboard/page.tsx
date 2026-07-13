@@ -69,7 +69,7 @@ export default async function DashboardPage() {
       <Breadcrumbs items={[{ name: "Dashboard", url: "/dashboard" }]} />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 mb-8">
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 mb-8">
         <div className="flex items-center gap-4">
           <div aria-hidden="true" className="w-14 h-14 rounded-full bg-brand-100 text-brand-600 font-bold text-xl flex items-center justify-center">
             {initials}
@@ -102,22 +102,22 @@ export default async function DashboardPage() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </Link>
-      </div>
+      </header>
 
       {/* Onboarding Checklist */}
-      <div className="mb-8" aria-live="polite" aria-atomic="true">
+      <section aria-label="Getting started" aria-live="polite" aria-atomic="true" className="mb-8">
         <ProfileChecklist />
-      </div>
+      </section>
 
       {/* Quick Actions */}
-      <div className="mb-8">
+      <section aria-label="Quick actions" className="mb-8">
         <QuickActions />
-      </div>
+      </section>
 
       {/* Stats */}
-      <div className="mb-8">
+      <section aria-label="Account statistics" className="mb-8">
         <StatsOverview stats={stats} />
-      </div>
+      </section>
 
       {/* Main grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
