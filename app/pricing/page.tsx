@@ -82,12 +82,12 @@ export default function PricingPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Pricing", url: "/pricing" }])) }} />
       <GuaranteeBadge />
       {/* Hero */}
-      <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">
+      <section aria-labelledby="pricing-hero-heading" className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             Pricing
           </p>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+          <h1 id="pricing-hero-heading" className="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
             Smarter reviews.{" "}
             <span className="text-brand-600">Better decisions.</span>
           </h1>
@@ -102,10 +102,10 @@ export default function PricingPage() {
             30-day money-back guarantee — no risk
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Social proof bar */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
+      <section aria-label="Customer proof" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
         <ul className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600 list-none p-0 m-0 px-6 py-5">
           <li className="flex items-center gap-3">
             <div className="flex -space-x-2" aria-hidden="true">
@@ -144,22 +144,22 @@ export default function PricingPage() {
           ].map((t) => (
             <li key={t.name} className="bg-white border border-gray-100 rounded-xl overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-              <div className="p-5">
-              <p className="text-sm text-gray-600 leading-relaxed italic mb-3">&ldquo;{t.quote}&rdquo;</p>
-              <div>
-                <p className="text-sm font-semibold text-gray-900">{t.name}</p>
-                <p className="text-xs text-gray-600">{t.role}</p>
-              </div>
-              </div>
+              <figure className="p-5 m-0">
+                <blockquote className="text-sm text-gray-600 leading-relaxed italic mb-3 m-0 p-0">&ldquo;{t.quote}&rdquo;</blockquote>
+                <figcaption className="text-sm font-semibold text-gray-900">
+                  {t.name}
+                  <span className="block text-xs font-normal text-gray-600">{t.role}</span>
+                </figcaption>
+              </figure>
             </li>
           ))}
         </ul>
-      </div>
+      </section>
 
       {/* Pricing cards */}
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+      <section aria-label="Pricing plans" className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <PricingTiers />
-      </div>
+      </section>
 
       {/* FAQ */}
       <script
@@ -168,7 +168,7 @@ export default function PricingPage() {
           __html: JSON.stringify(faqSchema(faqs.map((f) => ({ question: f.q, answer: f.a })), '/pricing')),
         }}
       />
-      <div className="bg-gray-50 py-16">
+      <section aria-labelledby="pricing-faq-heading" className="bg-gray-50 py-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-center gap-2.5 mb-10">
             <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
@@ -176,11 +176,11 @@ export default function PricingPage() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
+            <h2 id="pricing-faq-heading" className="text-2xl font-bold text-gray-900">Frequently Asked Questions</h2>
           </div>
           <PricingFAQAccordion faqs={faqs} />
         </div>
-      </div>
+      </section>
     </div>
   );
 }

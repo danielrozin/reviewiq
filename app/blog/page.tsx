@@ -41,7 +41,7 @@ export default function BlogPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexWebPageJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema(posts)) }} />
 
-      <div className="mt-8 mb-10">
+      <header className="mt-8 mb-10">
         <h1 className="text-3xl font-bold text-gray-900">
           ReviewIQ Blog
         </h1>
@@ -49,7 +49,7 @@ export default function BlogPage() {
           Expert buying guides, product comparisons, and review insights —
           all backed by real owner data and AI-powered analysis.
         </p>
-      </div>
+      </header>
 
       <BlogCategoryFilter posts={posts} />
     </div>
