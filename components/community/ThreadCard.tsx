@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { DiscussionThread } from "@/types";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { getUserById } from "@/data/users";
+import { resolveProductRef } from "@/data/products";
 import { UserChip } from "./UserChip";
 import { formatNumber } from "@/lib/utils";
 
@@ -14,6 +15,9 @@ interface ThreadCardProps {
 export function ThreadCard({ thread, showProduct = true, compact = false }: ThreadCardProps) {
   const author = getUserById(thread.authorId);
   const netVotes = thread.upvotes - thread.downvotes;
+  // undefined when the thread names a product the catalog doesn't have — the chip
+  // is then dropped rather than linked to a page that doesn't exist.
+  const linkedProduct = resolveProductRef(thread);
 
   if (compact) {
     return (
@@ -110,12 +114,12 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
                 <span>👁</span> {formatNumber(thread.viewCount)} views
               </span>
             </div>
-            {showProduct && thread.productSlug && (
+            {showProduct && linkedProduct && (
               <Link
-                href={`/category/${thread.categorySlug}/${thread.productSlug}`}
+                href={`/category/${linkedProduct.categorySlug}/${linkedProduct.slug}`}
                 className="text-xs text-brand-600 hover:text-brand-700 font-medium"
               >
-                {thread.productSlug?.replace(/-/g, " ")}
+                {linkedProduct.name}
               </Link>
             )}
           </div>

@@ -55,11 +55,14 @@ export default function CommunityPage() {
               experience, and help others make smarter buying decisions.
             </p>
           </div>
+          {/* "Start Discussion" pointed at /community/new, which was never built —
+              a 404 for users and for Googlebot. /write-review is the real
+              contribution route until thread creation ships. */}
           <Link
-            href="/community/new"
+            href="/write-review"
             className="hidden sm:inline-flex items-center px-5 py-2.5 bg-brand-600 text-white text-sm font-semibold rounded-xl hover:bg-brand-700 transition-colors shrink-0"
           >
-            Start Discussion
+            Share Your Experience
           </Link>
         </div>
 
