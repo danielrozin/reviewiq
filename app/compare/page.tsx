@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Suspense } from "react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { comparisonHubSchema } from "@/lib/schema/jsonld";
 import { getAllComparisonPairs } from "@/data/comparisons";
 import CompareBuilder, { CompareBuilderSkeleton } from "./CompareBuilder";
@@ -25,6 +26,10 @@ export default function ComparePage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(comparisonHubSchema(pairs)) }}
       />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+        <Breadcrumbs items={[{ name: "Compare", url: "/compare" }]} />
+      </div>
 
       <div className="max-w-4xl mx-auto px-4 pt-12 pb-6 text-center">
         <h1 className="text-3xl md:text-4xl font-bold text-gray-900 tracking-tight mb-3">
