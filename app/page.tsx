@@ -496,7 +496,7 @@ export default function HomePage() {
 
       {/* Editor's Picks — featured spotlight with asymmetric layout */}
       <section aria-labelledby="editors-picks" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-end justify-between mb-8">
+        <header className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 text-amber-700 rounded-full text-sm font-medium mb-3 border border-amber-100">
               <svg aria-hidden="true" className="w-3.5 h-3.5 fill-current text-amber-600" viewBox="0 0 20 20">
@@ -518,7 +518,7 @@ export default function HomePage() {
           >
             Browse all &rarr;
           </Link>
-        </div>
+        </header>
 
         {/* Asymmetric grid: 1 large featured + 2 smaller */}
         {(() => {
@@ -625,14 +625,14 @@ export default function HomePage() {
 
       {/* How It Works */}
       <section aria-labelledby="how-reviewiq-works" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-12">
+        <header className="text-center mb-12">
           <h2 id="how-reviewiq-works" className="text-2xl font-bold text-gray-900">
             How ReviewIQ Works
           </h2>
           <p className="text-gray-600 mt-2 max-w-xl mx-auto">
             We built a review platform you can actually trust.
           </p>
-        </div>
+        </header>
         <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 relative list-none p-0 m-0">
           {/* Connector lines on desktop */}
           <div className="hidden md:block absolute top-10 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-brand-100 via-brand-200 to-brand-100 pointer-events-none" aria-hidden="true" />
@@ -699,14 +699,15 @@ export default function HomePage() {
         <h2 id="home-faq-heading" className="text-2xl font-bold text-gray-900 text-center mb-8">
           Frequently Asked Questions
         </h2>
-        <div className="space-y-4">
+        <ul className="space-y-4 list-none p-0 m-0">
           {[
             { q: "How does ReviewIQ verify buyer reviews?", a: "ReviewIQ uses receipt uploads and retailer order verification to confirm purchases before a review is published. Every review displays its verification tier so you always know how trustworthy it is." },
             { q: "Is ReviewIQ free to use?", a: "Yes. Browsing product reviews, SmartScores, buying guides, and side-by-side comparisons is completely free. A Pro plan unlocks advanced filters, price tracking alerts, and comparison tools." },
             { q: "What is a SmartScore?", a: "SmartScore is ReviewIQ's 0–100 rating that synthesizes verified-buyer reviews, reliability scores, ease-of-use ratings, and value feedback into a single comparable number — not just an average of stars." },
             { q: "Does ReviewIQ earn affiliate commissions?", a: "No. ReviewIQ has zero affiliate links and earns nothing from your purchases. Our only incentive is helping you make the right buying decision." },
           ].map((item) => (
-            <details key={item.q} className="group border border-gray-100 rounded-xl bg-white">
+            <li key={item.q}>
+            <details className="group border border-gray-100 rounded-xl bg-white">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
                 {item.q}
                 <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -715,8 +716,9 @@ export default function HomePage() {
               </summary>
               <div data-speakable="faq-answer" className="px-6 pb-4 text-sm text-gray-600 leading-relaxed">{item.a}</div>
             </details>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       {/* CTA */}

@@ -16,7 +16,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-50 border-t border-gray-100 mt-20">
       {/* Trust bar */}
-      <div className="border-b border-gray-100 bg-white">
+      <aside aria-label="Trust signals" className="border-b border-gray-100 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <ul className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 text-sm text-gray-600 list-none p-0 m-0">
             <li className="flex items-center gap-2">
@@ -47,10 +47,10 @@ export function Footer() {
             </li>
           </ul>
         </div>
-      </div>
+      </aside>
 
       {/* Newsletter signup */}
-      <div className="border-b border-gray-100 bg-gradient-to-r from-brand-600 to-brand-700">
+      <section aria-label="Newsletter signup" className="border-b border-gray-100 bg-gradient-to-r from-brand-600 to-brand-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
@@ -103,7 +103,7 @@ export function Footer() {
             )}
           </div>
         </div>
-      </div>
+      </section>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
