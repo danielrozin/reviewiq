@@ -63,7 +63,7 @@ export default async function ComparisonPage({ params }: Props) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(breadcrumbItems)) }} />
 
         {/* Header */}
-        <div className="text-center mb-8">
+        <header className="text-center mb-8">
           <h1 data-speakable="comparison-headline" className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
             {productA.name} vs {productB.name}
           </h1>
@@ -82,7 +82,7 @@ export default async function ComparisonPage({ params }: Props) {
               description={`Compare ${productA.name} vs ${productB.name} based on ${productA.reviewCount + productB.reviewCount} verified reviews.`}
             />
           </div>
-        </div>
+        </header>
 
         {/* Quick links to individual product pages */}
         <nav aria-label="Full product reviews" className="flex justify-center gap-4 mb-8">
@@ -100,7 +100,7 @@ export default async function ComparisonPage({ params }: Props) {
           </Link>
         </nav>
 
-        <div className="space-y-8">
+        <article aria-label={`${productA.name} vs ${productB.name} comparison`} className="space-y-8">
           <div data-speakable="score-comparison">
             <ScoreComparison productA={productA} productB={productB} />
           </div>
@@ -120,7 +120,7 @@ export default async function ComparisonPage({ params }: Props) {
             <BestForComparison productA={productA} productB={productB} />
           </div>
           <AnalysisDisclosure productName={`${productA.name} vs ${productB.name}`} />
-        </div>
+        </article>
 
         {/* Related comparisons in same category */}
         {category && <RelatedComparisons currentSlug={slug} categorySlug={category.slug} />}

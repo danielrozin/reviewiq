@@ -86,7 +86,7 @@ export default async function BlogCategoryPage({
         { name: cat.name, url: `/blog/category/${cat.slug}` },
       ])) }} />
 
-      <div className="mt-8 mb-10">
+      <header className="mt-8 mb-10">
         <h1 className="text-3xl font-bold text-gray-900">
           {emoji} {cat.name} — Guides & Reviews
         </h1>
@@ -96,7 +96,7 @@ export default async function BlogCategoryPage({
         </p>
 
         {/* Category navigation */}
-        <div className="flex flex-wrap gap-2 mt-6">
+        <nav aria-label="Blog categories" className="flex flex-wrap gap-2 mt-6">
           <Link
             href="/blog"
             className="text-xs font-medium px-3 py-1.5 rounded-full border border-gray-400 text-gray-600 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
@@ -116,8 +116,8 @@ export default async function BlogCategoryPage({
               {c.name}
             </Link>
           ))}
-        </div>
-      </div>
+        </nav>
+      </header>
 
       <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 list-none p-0 m-0">
         {posts.map((post) => (
@@ -168,7 +168,7 @@ export default async function BlogCategoryPage({
       </ul>
 
       {/* Link to product category */}
-      <div className="mt-12 p-6 bg-gray-50 rounded-2xl text-center">
+      <aside className="mt-12 p-6 bg-gray-50 rounded-2xl text-center" aria-label="Product reviews">
         <p className="text-gray-600 mb-3">
           Looking for specific product reviews?
         </p>
@@ -178,7 +178,7 @@ export default async function BlogCategoryPage({
         >
           Browse all {cat.name} reviews <span aria-hidden="true">&rarr;</span>
         </Link>
-      </div>
+      </aside>
     </div>
   );
 }

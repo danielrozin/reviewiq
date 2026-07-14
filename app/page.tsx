@@ -224,7 +224,7 @@ export default function HomePage() {
 
       {/* Categories */}
       <section aria-labelledby="browse-categories" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-end justify-between mb-8">
+        <header className="flex items-end justify-between mb-8">
           <div>
             <h2 id="browse-categories" className="text-2xl font-bold text-gray-900">
               Browse by Category
@@ -240,7 +240,7 @@ export default function HomePage() {
           >
             View all &rarr;
           </Link>
-        </div>
+        </header>
         <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 list-none p-0 m-0">
           {categories.map((cat) => (
             <li key={cat.id}>
@@ -264,14 +264,14 @@ export default function HomePage() {
       {/* Top Rated Products */}
       <section aria-labelledby="top-rated-products" className="bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="mb-8">
+          <header className="mb-8">
             <h2 id="top-rated-products" className="text-2xl font-bold text-gray-900">
               Highest Rated Products
             </h2>
             <p className="text-gray-600 mt-1">
               Top SmartScores across all categories
             </p>
-          </div>
+          </header>
           <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
             {topProducts.map((product, index) => (
               <li key={product.id}>
@@ -332,7 +332,7 @@ export default function HomePage() {
 
       {/* Community Discussions */}
       <section aria-labelledby="trending-discussions" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="flex items-end justify-between mb-8">
+        <header className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-3">
               <span aria-hidden="true" className="w-2 h-2 bg-trust-green rounded-full motion-safe:animate-pulse" />
@@ -352,7 +352,7 @@ export default function HomePage() {
           >
             View all →
           </Link>
-        </div>
+        </header>
         <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0">
           {trendingDiscussions.map((thread) => {
             const author = getUserById(thread.authorId);
@@ -426,7 +426,7 @@ export default function HomePage() {
       {/* Latest from the Blog */}
       <section aria-labelledby="buying-guides" className="bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex items-end justify-between mb-8">
+          <header className="flex items-end justify-between mb-8">
             <div>
               <h2 id="buying-guides" data-speakable="featured-guides" className="text-2xl font-bold text-gray-900">
                 Buying Guides & Comparisons
@@ -442,7 +442,7 @@ export default function HomePage() {
             >
               View all articles <span aria-hidden="true">&rarr;</span>
             </Link>
-          </div>
+          </header>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
             {getRecentBlogPosts(3).map((post) => (
               <li key={post.id}>
