@@ -1,6 +1,6 @@
 import { products, getAllProducts } from "@/data/products";
 import { formatPrice } from "@/lib/affiliate/merchants";
-import type { Product, FAQItem } from "@/types";
+import type { ComparisonRef, Product, FAQItem } from "@/types";
 
 export interface ComparisonPair {
   slug: string; // e.g. "roborock-s8-maxv-ultra-vs-irobot-roomba-j7-plus"
@@ -9,8 +9,31 @@ export interface ComparisonPair {
   searchVolume: number;
 }
 
+/** A comparison link that is guaranteed to resolve to a real /compare/[slug] page. */
+export interface ComparisonLink {
+  slug: string;
+  partner: Product;
+  searchVolume: number;
+}
+
 function makeComparisonSlug(slugA: string, slugB: string): string {
   return [slugA, slugB].sort().join("-vs-");
+}
+
+/**
+ * `ComparisonRef.productSlug` and `.productName` are denormalized copies of the
+ * partner's catalog fields, and 15 of them have drifted out of sync (the ref for
+ * product `sw-pixel-watch-2` says `pixel-watch-2`; its catalog slug is
+ * `google-pixel-watch-2`). `productId` is the actual foreign key, so it — not the
+ * copied slug — decides which product a ref points at. Resolve through here and
+ * take the name/slug off the returned Product; a ref that resolves to nothing has
+ * no page and must never be rendered as a link.
+ */
+function resolvePartner(ref: ComparisonRef): Product | undefined {
+  return (
+    products.find((p) => p.id === ref.productId) ??
+    products.find((p) => p.slug === ref.productSlug)
+  );
 }
 
 export function getAllComparisonPairs(): ComparisonPair[] {
@@ -19,12 +42,12 @@ export function getAllComparisonPairs(): ComparisonPair[] {
 
   for (const product of products) {
     for (const comp of product.comparisons) {
-      const slug = makeComparisonSlug(product.slug, comp.productSlug);
+      const other = resolvePartner(comp);
+      if (!other || other.slug === product.slug) continue;
+
+      const slug = makeComparisonSlug(product.slug, other.slug);
       if (seen.has(slug)) continue;
       seen.add(slug);
-
-      const other = products.find((p) => p.slug === comp.productSlug);
-      if (!other) continue;
 
       // Ensure consistent A/B ordering (alphabetical by slug)
       const [productA, productB] =
@@ -40,6 +63,31 @@ export function getAllComparisonPairs(): ComparisonPair[] {
   }
 
   return pairs.sort((a, b) => b.searchVolume - a.searchVolume);
+}
+
+/**
+ * The comparison links to render on a product page. Every entry is backed by a
+ * pair that `getAllComparisonPairs()` actually generates a page for, so this can
+ * never emit a 404. Anything rendering a `/compare/` href must go through here
+ * rather than reading `product.comparisons` directly.
+ */
+export function getComparisonLinksForProduct(product: Product): ComparisonLink[] {
+  const generated = new Set(getAllComparisonPairs().map((pair) => pair.slug));
+  const links: ComparisonLink[] = [];
+  const seen = new Set<string>();
+
+  for (const comp of product.comparisons) {
+    const partner = resolvePartner(comp);
+    if (!partner || partner.slug === product.slug) continue;
+
+    const slug = makeComparisonSlug(product.slug, partner.slug);
+    if (!generated.has(slug) || seen.has(slug)) continue;
+    seen.add(slug);
+
+    links.push({ slug, partner, searchVolume: comp.searchVolume ?? 0 });
+  }
+
+  return links;
 }
 
 export function getComparisonBySlug(slug: string): ComparisonPair | undefined {

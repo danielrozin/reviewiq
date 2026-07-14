@@ -60,6 +60,10 @@ export function Footer() {
               {[
                 { name: "How It Works", href: "/how-it-works" },
                 { name: "Who Is This For", href: "/who-is-this-for" },
+                // The hub for every /compare/[slug] page. Without this it was
+                // reachable only from /site-map — one inbound link for the
+                // entry point to 144 comparison pages.
+                { name: "Compare Products", href: "/compare" },
                 { name: "Blog", href: "/blog" },
                 { name: "About", href: "/about" },
                 { name: "Community", href: "/community" },

@@ -307,8 +307,11 @@ export default function SiteMapPage() {
               { href: "/community", label: "Community" },
               { href: "/compare", label: "Compare Products" },
               { href: "/write-review", label: "Write a Review" },
-              { href: "/search", label: "Search" },
+              // No "/search" entry: search is an API route only (app/api/search),
+              // there is no /search page — the link 404'd.
               { href: "/how-it-works", label: "How It Works" },
+              { href: "/products", label: "All Products" },
+              { href: "/faq", label: "FAQ" },
               { href: "/how-we-work", label: "How We Work (Disclosures)" },
               { href: "/about", label: "About" },
               { href: "/pricing", label: "Pricing" },

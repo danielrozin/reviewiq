@@ -13,6 +13,7 @@ import {
   getDiscussionsByCategory,
 } from "@/data/discussions";
 import { getUserById } from "@/data/users";
+import { resolveProductRef } from "@/data/products";
 import { THREAD_TYPE_LABELS, THREAD_TYPE_COLORS } from "@/types";
 import { buildMetadata, truncateAtWord, TITLE_BUDGET } from "@/lib/seo/metadata";
 import { communityThreadSchema } from "@/lib/schema/jsonld";
@@ -51,6 +52,7 @@ export default async function ThreadPage({ params }: Props) {
 
   const author = getUserById(thread.authorId);
   const threadComments = getCommentsByThread(thread.id);
+  const linkedProduct = resolveProductRef(thread);
 
   const jsonLd = communityThreadSchema(
     thread,
@@ -187,17 +189,18 @@ export default async function ThreadPage({ params }: Props) {
                   ))}
                 </div>
 
-                {/* Product link */}
-                {thread.productSlug && thread.categorySlug && (
+                {/* Product link — omitted when the thread's product reference
+                    doesn't resolve to a catalog page (see resolveProductRef). */}
+                {linkedProduct && (
                   <div className="bg-gray-50 rounded-xl p-4 mb-6">
                     <p className="text-xs text-gray-500 uppercase tracking-wider mb-1 font-medium">
                       Related Product
                     </p>
                     <Link
-                      href={`/category/${thread.categorySlug}/${thread.productSlug}`}
+                      href={`/category/${linkedProduct.categorySlug}/${linkedProduct.slug}`}
                       className="text-sm font-semibold text-brand-600 hover:text-brand-700 transition-colors"
                     >
-                      View {thread.productSlug.replace(/-/g, " ")} →
+                      View {linkedProduct.name} →
                     </Link>
                   </div>
                 )}

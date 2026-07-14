@@ -358,12 +358,7 @@ export default async function ProductPage({ params }: Props) {
           <SpecsTable specs={product.specs} />
 
           {/* Comparisons */}
-          <ComparisonModule
-            currentProduct={product.name}
-            currentProductSlug={product.slug}
-            comparisons={product.comparisons}
-            categorySlug={slug}
-          />
+          <ComparisonModule product={product} />
 
           {/* Curated head-to-head comparisons on aversusb.net. Restores
               editorial cross-referral links (dropped in the f000c51 product-page

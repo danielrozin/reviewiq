@@ -4231,6 +4231,25 @@ export function getAllProducts(): Product[] {
 }
 
 /**
+ * Resolve a loose product reference (community threads carry their own
+ * `productId`/`productSlug` strings) against the catalog, preferring the id.
+ *
+ * Four threads name products that exist under neither key — there is no catalog
+ * row to point at, so callers must render those as plain text. Building a href
+ * from an unresolved reference is what shipped `/category/air-fryers/cosori-pro`
+ * and three other 404s into the internal link graph.
+ */
+export function resolveProductRef(ref: {
+  productId?: string;
+  productSlug?: string;
+}): Product | undefined {
+  return (
+    (ref.productId ? products.find((p) => p.id === ref.productId) : undefined) ??
+    (ref.productSlug ? products.find((p) => p.slug === ref.productSlug) : undefined)
+  );
+}
+
+/**
  * Get top-rated products from affinity (related) categories.
  * Excludes the current product's own category. Returns up to `limit` products,
  * picking from highest-affinity categories first, sorted by smartScore.
