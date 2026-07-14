@@ -148,7 +148,7 @@ export default function HowItWorksPage() {
       {/* Hero */}
       <header className="mt-8 mb-16 max-w-3xl">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-4 border border-brand-100">
-          <span className="w-2 h-2 bg-brand-500 rounded-full" />
+          <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full" />
           The ReviewIQ system
         </div>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -162,7 +162,7 @@ export default function HowItWorksPage() {
       </header>
 
       {/* Timeline steps */}
-      <div className="relative max-w-4xl" data-speakable="how-it-works-steps">
+      <section aria-label="How ReviewIQ works — step by step" className="relative max-w-4xl" data-speakable="how-it-works-steps">
         {/* Vertical connector line */}
         <div className="absolute left-6 top-10 bottom-10 w-0.5 bg-gradient-to-b from-emerald-200 via-brand-200 to-amber-200 hidden sm:block" aria-hidden="true" />
 
@@ -208,7 +208,7 @@ export default function HowItWorksPage() {
             </li>
           ))}
         </ol>
-      </div>
+      </section>
 
       {/* ReviewIQ vs Traditional Reviews comparison table */}
       <section aria-labelledby="hiw-vs-heading" className="mt-16 max-w-4xl">

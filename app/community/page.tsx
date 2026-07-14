@@ -101,7 +101,7 @@ export default function CommunityPage() {
       {/* Main content grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* Left column — threads */}
-        <div className="lg:col-span-2 space-y-6" data-speakable="community-discussions">
+        <section aria-label="Community discussions" className="lg:col-span-2 space-y-6" data-speakable="community-discussions">
           {/* Pinned threads */}
           {pinned.length > 0 && (
             <section aria-labelledby="pinned-threads-heading">
@@ -120,7 +120,7 @@ export default function CommunityPage() {
 
           {/* All discussions */}
           <SortableDiscussions trending={trending} recent={recent} top={top} />
-        </div>
+        </section>
 
         {/* Right sidebar */}
         <aside className="space-y-8">
