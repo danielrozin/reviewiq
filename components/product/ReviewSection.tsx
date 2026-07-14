@@ -78,7 +78,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
   return (
     <section aria-labelledby="review-section-heading" data-speakable="reviews">
       {/* Rating Summary Stats */}
-      <div className="bg-gray-50 rounded-xl p-6 mb-6">
+      <section aria-label="Rating distribution summary" className="bg-gray-50 rounded-xl p-6 mb-6">
         <div className="flex flex-col sm:flex-row gap-6">
           {/* Average rating */}
           <div className="flex flex-col items-center justify-center sm:min-w-[140px]">
@@ -142,7 +142,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
             })}
           </ul>
         </div>
-      </div>
+      </section>
 
       {/* Header with sort controls */}
       <div className="flex items-center justify-between mb-6">
@@ -235,9 +235,9 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
       </div>
 
       {(review.pros.length > 0 || review.cons.length > 0) && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+        <section aria-label="Pros and cons" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           {review.pros.length > 0 && (
-            <div>
+            <section aria-label="Pros">
               <p className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
                 Pros
               </p>
@@ -253,10 +253,10 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           )}
           {review.cons.length > 0 && (
-            <div>
+            <section aria-label="Cons">
               <p className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
                 Cons
               </p>
@@ -272,9 +272,9 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           )}
-        </div>
+        </section>
       )}
 
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>

@@ -22,7 +22,7 @@ export function CategorySearch({ categories }: CategorySearchProps) {
   return (
     <div>
       {/* Search input */}
-      <div className="relative mb-8 max-w-md">
+      <div role="search" className="relative mb-8 max-w-md">
         <label htmlFor="category-search" className="sr-only">Search categories</label>
         <svg
           aria-hidden="true"

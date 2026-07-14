@@ -139,8 +139,8 @@ function ContentSection({
       </h2>
 
       {blogs.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">Articles</h3>
+        <section aria-labelledby={`${headingId}-articles`} className="mb-6">
+          <h3 id={`${headingId}-articles`} className="text-lg font-semibold text-gray-900 mb-3">Articles</h3>
           <ul className="space-y-1.5">
             {blogs.map((item) => (
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
@@ -153,12 +153,12 @@ function ContentSection({
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
 
       {threadItems.length > 0 && (
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-3">
+        <section aria-labelledby={`${headingId}-discussions`} className="mb-6">
+          <h3 id={`${headingId}-discussions`} className="text-lg font-semibold text-gray-900 mb-3">
             Community Discussions
           </h3>
           <ul className="space-y-1.5">
@@ -173,7 +173,7 @@ function ContentSection({
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
     </section>
   );
