@@ -25,8 +25,9 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
         "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
       )}>
         {products.map((product) => (
-          <div
+          <article
             key={product.id}
+            aria-labelledby={`pros-cons-${product.id}`}
             className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
           >
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -44,6 +45,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                 <span aria-hidden="true">{product.smartScore}</span>
               </div>
               <Link
+                id={`pros-cons-${product.id}`}
                 href={`/category/${product.categorySlug}/${product.slug}`}
                 className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
               >
@@ -105,7 +107,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                 ))}
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

@@ -426,13 +426,13 @@ export function ProductSearch() {
           ))}
         </ul>
       ) : (
-        <div className="text-center py-14 px-6 bg-white border border-gray-100 rounded-2xl">
+        <section aria-labelledby="no-products-heading" className="text-center py-14 px-6 bg-white border border-gray-100 rounded-2xl">
           <div aria-hidden="true" className="w-14 h-14 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto mb-4">
             <svg aria-hidden="true" className="w-7 h-7 text-brand-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
             </svg>
           </div>
-          <h2 className="text-lg font-semibold text-gray-900 mb-1">
+          <h2 id="no-products-heading" className="text-lg font-semibold text-gray-900 mb-1">
             No products found
           </h2>
           <p className="text-sm text-gray-600 mb-6">
@@ -469,7 +469,7 @@ export function ProductSearch() {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
       )}
 
       {/* Pagination */}
