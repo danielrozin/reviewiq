@@ -47,8 +47,8 @@ export default function NotFound() {
       </div>
 
       {/* Popular categories */}
-      <div>
-        <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider text-center mb-5">
+      <section aria-labelledby="not-found-popular-cats-heading">
+        <h2 id="not-found-popular-cats-heading" className="text-sm font-semibold text-gray-600 uppercase tracking-wider text-center mb-5">
           Popular categories
         </h2>
         <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 list-none p-0 m-0">
@@ -66,7 +66,7 @@ export default function NotFound() {
             </li>
           ))}
         </ul>
-      </div>
+      </section>
     </div>
   );
 }

@@ -145,7 +145,7 @@ function CompareContent() {
     return (
       <div className="max-w-3xl mx-auto px-4 py-12">
         {/* Hero section */}
-        <div className="text-center mb-10">
+        <header className="text-center mb-10">
           <div aria-hidden="true" className="inline-flex items-center justify-center w-16 h-16 bg-brand-50 border border-brand-100 rounded-2xl mb-5 mx-auto">
             <svg aria-hidden="true" className="w-8 h-8 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
@@ -155,7 +155,7 @@ function CompareContent() {
           <p data-speakable="compare-intro" className="text-gray-600 max-w-md mx-auto">
             Search and add 2–4 products to see SmartScores, specs, pros & cons, and an AI verdict — all in one view.
           </p>
-        </div>
+        </header>
 
         {/* Search */}
         <div className="flex justify-center mb-4">
@@ -229,7 +229,7 @@ function CompareContent() {
       />
 
       {/* Header */}
-      <div className="text-center mb-8 mt-6">
+      <header className="text-center mb-8 mt-6">
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
           {title}
         </h1>
@@ -261,9 +261,9 @@ function CompareContent() {
             }
           }} />
         </div>
-      </div>
+      </header>
 
-      <div className="space-y-8">
+      <section aria-label="Comparison results" className="space-y-8">
         <MultiScoreComparison products={compareProducts} />
         <AdPlacement slot="compare-mid" className="my-6">
           <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 text-center text-xs text-gray-600">
@@ -272,7 +272,7 @@ function CompareContent() {
         </AdPlacement>
         <MultiSpecsTable products={compareProducts} />
         <MultiProsConsComparison products={compareProducts} />
-      </div>
+      </section>
     </div>
   );
 }
