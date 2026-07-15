@@ -10,6 +10,7 @@ import { formatNumber } from "@/lib/utils";
 import { HomeOnboardingSection } from "@/components/onboarding/HomeOnboardingSection";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { HeroSearch } from "@/components/home/HeroSearch";
+import { homePageSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "AI-Powered Product Reviews & Comparisons",
@@ -27,6 +28,12 @@ export default function HomePage() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(homePageSchema(topProducts)),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative bg-gradient-to-b from-slate-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
