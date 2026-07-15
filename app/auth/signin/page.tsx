@@ -55,7 +55,7 @@ export default function SignInPage() {
       </span>
       <div className="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         {/* Left — value proposition */}
-        <div className="hidden lg:block">
+        <aside aria-label="Why join ReviewIQ" className="hidden lg:block">
           <Link href="/" className="inline-flex items-center gap-2.5 mb-8 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
             <div className="w-9 h-9 bg-brand-600 rounded-lg flex items-center justify-center group-hover:bg-brand-700 transition-colors">
               <span className="text-white font-bold text-xs">RIQ</span>
@@ -118,7 +118,7 @@ export default function SignInPage() {
             </div>
             <p className="text-xs text-gray-600"><span className="font-semibold text-gray-800">20,000+</span> verified reviews written</p>
           </div>
-        </div>
+        </aside>
 
         {/* Right — sign in form */}
         <div className="w-full max-w-sm mx-auto lg:mx-0">
@@ -129,12 +129,12 @@ export default function SignInPage() {
               </div>
             </Link>
           </div>
-          <div className="text-center lg:text-left mb-6">
+          <header className="text-center lg:text-left mb-6">
             <h1 className="text-2xl font-bold text-gray-900">Sign in to ReviewIQ</h1>
             <p className="mt-2 text-sm text-gray-600">
               Write reviews, save comparisons, and get personalized recommendations.
             </p>
-          </div>
+          </header>
 
           <div className="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm space-y-4">
             <Suspense fallback={null}>

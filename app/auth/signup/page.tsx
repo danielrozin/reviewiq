@@ -54,7 +54,7 @@ export default function SignUpPage() {
         {loading ? "Redirecting to Google sign-in, please wait…" : ""}
       </span>
       <div className="w-full max-w-md">
-        <div className="text-center mb-8">
+        <header className="text-center mb-8">
           <Link href="/" aria-label="ReviewIQ home" className="inline-flex items-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg">
             <div aria-hidden="true" className="w-10 h-10 bg-brand-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">RIQ</span>
@@ -66,7 +66,7 @@ export default function SignUpPage() {
           <p className="mt-2 text-sm text-gray-600">
             Join ReviewIQ to write reviews, save comparisons, and get personalized recommendations.
           </p>
-        </div>
+        </header>
 
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm space-y-4">
           <Suspense fallback={null}>
