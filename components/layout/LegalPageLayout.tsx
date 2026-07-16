@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 
 interface Section {
   id: string;
@@ -10,6 +10,7 @@ interface Section {
 
 interface LegalPageLayoutProps {
   title: string;
+  path: string;
   lastUpdated: string;
   lastUpdatedISO: string;
   sections: Section[];
@@ -18,6 +19,7 @@ interface LegalPageLayoutProps {
 
 export function LegalPageLayout({
   title,
+  path,
   lastUpdated,
   lastUpdatedISO,
   sections,
@@ -47,18 +49,9 @@ export function LegalPageLayout({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Breadcrumb */}
-      <nav className="mb-8 print:hidden">
-        <ol className="flex items-center gap-2 text-sm text-gray-500">
-          <li>
-            <Link href="/" className="hover:text-brand-600 transition-colors">
-              Home
-            </Link>
-          </li>
-          <li>/</li>
-          <li className="text-gray-900 font-medium">{title}</li>
-        </ol>
-      </nav>
+      <div className="mb-8 print:hidden">
+        <Breadcrumbs items={[{ name: title, url: path }]} />
+      </div>
 
       <div className="lg:grid lg:grid-cols-[240px_1fr] lg:gap-12">
         {/* Sidebar TOC */}

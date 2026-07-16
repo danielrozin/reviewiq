@@ -20,6 +20,7 @@ export function TermsContent() {
   return (
     <LegalPageLayout
       title="Terms of Service"
+      path="/terms"
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}

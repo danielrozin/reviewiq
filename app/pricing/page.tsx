@@ -1,4 +1,5 @@
 import { PricingTiers } from "./PricingTiers";
+import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { faqSchema } from "@/lib/schema/jsonld";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -13,8 +14,11 @@ export default function PricingPage() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 py-16 sm:py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div className="bg-gradient-to-br from-brand-50 via-white to-brand-50 pt-8 pb-16 sm:pb-24">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Breadcrumbs items={[{ name: "Pricing", url: "/pricing" }]} />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
           <p className="text-sm font-semibold text-brand-600 uppercase tracking-wider mb-3">
             Pricing
           </p>
