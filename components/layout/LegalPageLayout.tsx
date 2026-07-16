@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
+import { legalPageSchema } from "@/lib/schema/jsonld";
 
 interface Section {
   id: string;
@@ -11,6 +12,13 @@ interface Section {
 interface LegalPageLayoutProps {
   title: string;
   path: string;
+  /**
+   * Page-level schema description. Required (not optional, not derived) so tsc
+   * proves every legal page supplies one — an optional prop would silently
+   * regress a page back to an untyped node. Keep it in sync with the route's
+   * buildMetadata() description.
+   */
+  description: string;
   lastUpdated: string;
   lastUpdatedISO: string;
   sections: Section[];
@@ -20,6 +28,7 @@ interface LegalPageLayoutProps {
 export function LegalPageLayout({
   title,
   path,
+  description,
   lastUpdated,
   lastUpdatedISO,
   sections,
@@ -49,6 +58,19 @@ export function LegalPageLayout({
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(
+            legalPageSchema({
+              name: title,
+              path,
+              description,
+              dateModified: lastUpdatedISO,
+            })
+          ),
+        }}
+      />
       <div className="mb-8 print:hidden">
         <Breadcrumbs items={[{ name: title, url: path }]} />
       </div>

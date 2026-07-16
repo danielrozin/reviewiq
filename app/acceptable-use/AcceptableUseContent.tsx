@@ -18,6 +18,7 @@ export function AcceptableUseContent() {
     <LegalPageLayout
       title="Acceptable Use Policy"
       path="/acceptable-use"
+      description="Read the ReviewIQ Acceptable Use Policy. Understand the rules for using our platform responsibly."
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}

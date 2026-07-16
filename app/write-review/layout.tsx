@@ -1,4 +1,5 @@
 import { buildMetadata } from "@/lib/seo/metadata";
+import { writeReviewPageSchema } from "@/lib/schema/jsonld";
 
 // The /write-review page is a client component (interactive multi-step review
 // form), so it cannot export metadata itself. This layout supplies a proper SEO
@@ -17,5 +18,21 @@ export default function WriteReviewLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  // Emitted from the layout for the same reason the metadata is: page.tsx is a
+  // client component. /write-review is a leaf route — this layout wraps exactly
+  // one page, so the node cannot leak onto a sibling. If a child segment is ever
+  // added under /write-review, move this into an index-route-scoped component
+  // first (see the /compare hub leak: hub schema in a shared segment layout
+  // lands on every detail page).
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(writeReviewPageSchema()),
+        }}
+      />
+      {children}
+    </>
+  );
 }

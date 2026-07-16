@@ -6,6 +6,7 @@ import { getAllBlogPosts, getBlogCategories } from "@/data/blog-posts";
 import { discussions } from "@/data/discussions";
 import { products } from "@/data/products";
 import { getAllComparisonPairs } from "@/data/comparisons";
+import { siteMapPageSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "Site Map",
@@ -161,14 +162,20 @@ export default function SiteMapPage() {
   const blogCategories = getBlogCategories();
   const comparisonPairs = getAllComparisonPairs();
 
-  const hasRecentContent =
-    today.length > 0 ||
-    yesterday.length > 0 ||
-    thisWeek.length > 0 ||
-    lastWeek.length > 0;
+  // Built from the same four buckets the <ContentSection>s below render, in the
+  // same order, so the ItemList is exactly the visible list — never a superset.
+  const recentItems = [...today, ...yesterday, ...thisWeek, ...lastWeek];
+
+  const hasRecentContent = recentItems.length > 0;
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(siteMapPageSchema(recentItems)),
+        }}
+      />
       <Breadcrumbs items={[{ name: "Site Map", url: "/site-map" }]} />
 
       <div className="mt-8 max-w-4xl">

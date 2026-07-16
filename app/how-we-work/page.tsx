@@ -1,5 +1,6 @@
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { howWeWorkPageSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "How We Work — Affiliate & AI Disclosure",
@@ -38,6 +39,12 @@ const affiliateQA = [
 export default function HowWeWorkPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(howWeWorkPageSchema()),
+        }}
+      />
       <Breadcrumbs items={[{ name: "How We Work", url: "/how-we-work" }]} />
 
       <div className="mt-8 mb-16 max-w-3xl">
