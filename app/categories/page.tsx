@@ -2,7 +2,7 @@ import Link from "next/link";
 import { categories } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { categoryListSchema } from "@/lib/schema/jsonld";
+import { categoriesHubSchema } from "@/lib/schema/jsonld";
 
 export const metadata = buildMetadata({
   title: "All Product Categories — Reviews & Comparisons",
@@ -17,7 +17,7 @@ export default function CategoriesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(categoryListSchema(categories)),
+          __html: JSON.stringify(categoriesHubSchema(categories)),
         }}
       />
       <Breadcrumbs items={[{ name: "Categories", url: "/categories" }]} />
