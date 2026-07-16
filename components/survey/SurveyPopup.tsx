@@ -265,7 +265,7 @@ export function SurveyPopup() {
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q1Intent === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
-                      : "border-gray-400 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
+                      : "border-gray-500 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
                   }`}
                 >
                   {opt.label}
@@ -290,7 +290,7 @@ export function SurveyPopup() {
                   setAnswers((a) => ({ ...a, q2Found: true }));
                   setStep("q3");
                 }}
-                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-400 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-500 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 Yes
               </button>
@@ -304,7 +304,7 @@ export function SurveyPopup() {
                 className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                   answers.q2Found === false
                     ? "border-amber-400 bg-amber-50 text-amber-700"
-                    : "border-gray-400 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
+                    : "border-gray-500 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
                 }`}
               >
                 Not quite
@@ -317,7 +317,7 @@ export function SurveyPopup() {
                   onChange={(e) => setAnswers((a) => ({ ...a, q2Missing: e.target.value }))}
                   placeholder="What were you looking for?"
                   aria-label="What were you looking for?"
-                  className="w-full px-3 py-2 text-sm border border-gray-400 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 focus:border-brand-600 resize-none"
+                  className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 focus:border-brand-600 resize-none"
                   rows={2}
                 />
                 <button
@@ -376,7 +376,7 @@ export function SurveyPopup() {
               onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
               placeholder="Anything at all — we read every response."
               aria-label="What could we improve?"
-              className="w-full px-3 py-2 text-sm border border-gray-400 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 focus:border-brand-600 resize-none"
+              className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 focus:border-brand-600 resize-none"
               rows={3}
             />
             <div className="flex gap-3 mt-3">
@@ -415,7 +415,7 @@ export function SurveyPopup() {
                   className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                     answers.q5Discovery === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
-                      : "border-gray-400 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
+                      : "border-gray-500 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
                   }`}
                 >
                   {opt.label}

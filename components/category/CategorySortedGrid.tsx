@@ -94,7 +94,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
             className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               sortKey === opt.key
                 ? "bg-brand-600 text-white shadow-sm ring-1 ring-brand-600/30"
-                : "bg-white border border-gray-400 text-gray-600 hover:border-brand-200 hover:text-brand-600"
+                : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-600"
             }`}
           >
             {opt.label}

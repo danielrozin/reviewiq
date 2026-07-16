@@ -394,13 +394,13 @@ export function WriteReviewForm() {
             </a>
             <a
               href="/community"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-500 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Join the Community
             </a>
             <a
               href="/products"
-              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-400 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-6 py-3 border border-gray-500 text-gray-700 font-semibold rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
             >
               Explore Products
             </a>
@@ -447,7 +447,7 @@ export function WriteReviewForm() {
                 aria-describedby="error-product"
                 aria-required="true"
                 aria-invalid={touched.product === true && !selectedProduct ? true : undefined}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+                className="w-full border border-gray-500 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
               >
                 <option value="">Select a product...</option>
                 {products.map((p) => (
@@ -479,7 +479,7 @@ export function WriteReviewForm() {
                 aria-describedby="error-headline"
                 aria-required="true"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+                className="w-full border border-gray-500 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
               />
               <div className="flex justify-between mt-1">
                 <FieldError
@@ -551,7 +551,7 @@ export function WriteReviewForm() {
                 aria-required="true"
                 aria-invalid={touched.body === true && body.length < 50 ? true : undefined}
                 aria-describedby="body-char-count"
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent resize-none"
+                className="w-full border border-gray-500 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent resize-none"
               />
               <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-600"}`}>
                 {body.length}/50 minimum characters
@@ -579,7 +579,7 @@ export function WriteReviewForm() {
                       aria-label={`Pro ${i + 1}`}
                       placeholder={`Pro ${i + 1}`}
                       autoComplete="off"
-                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+                      className="w-full border border-gray-500 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                     />
                   </li>
                 ))}
@@ -606,7 +606,7 @@ export function WriteReviewForm() {
                       aria-label={`Con ${i + 1}`}
                       placeholder={`Con ${i + 1}`}
                       autoComplete="off"
-                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+                      className="w-full border border-gray-500 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                     />
                   </li>
                 ))}
@@ -631,7 +631,7 @@ export function WriteReviewForm() {
                   aria-describedby="error-experienceLevel"
                   aria-required="true"
                   aria-invalid={touched.experienceLevel === true && !experienceLevel ? true : undefined}
-                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+                  className="w-full border border-gray-500 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                 >
                   <option value="">Select...</option>
                   {experienceLevels.map((level) => (
@@ -658,7 +658,7 @@ export function WriteReviewForm() {
                   aria-describedby="error-timeOwned"
                   aria-required="true"
                   aria-invalid={touched.timeOwned === true && !timeOwned ? true : undefined}
-                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+                  className="w-full border border-gray-500 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                 >
                   <option value="">Select...</option>
                   {timeOwnedOptions.map((opt) => (
@@ -685,8 +685,8 @@ export function WriteReviewForm() {
                     key={opt.value}
                     className={`flex items-center gap-3 p-3 border rounded-xl cursor-pointer transition-colors ${
                       verification === opt.value
-                        ? "border-brand-300 bg-brand-50"
-                        : "border-gray-400 hover:border-gray-500"
+                        ? "border-brand-500 bg-brand-50"
+                        : "border-gray-500 hover:border-gray-600"
                     }`}
                   >
                     <input

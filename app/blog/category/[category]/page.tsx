@@ -99,7 +99,7 @@ export default async function BlogCategoryPage({
         <nav aria-label="Blog categories" className="flex flex-wrap gap-2 mt-6">
           <Link
             href="/blog"
-            className="text-xs font-medium px-3 py-1.5 rounded-full border border-gray-400 text-gray-600 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="text-xs font-medium px-3 py-1.5 rounded-full border border-gray-500 text-gray-600 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
           >
             All
           </Link>
@@ -110,7 +110,7 @@ export default async function BlogCategoryPage({
               className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${
                 c.slug === category
                   ? "bg-brand-600 text-white focus-visible:ring-white"
-                  : "border border-gray-400 text-gray-600 hover:bg-gray-50 focus-visible:ring-brand-400"
+                  : "border border-gray-500 text-gray-600 hover:bg-gray-50 focus-visible:ring-brand-400"
               }`}
             >
               {c.name}

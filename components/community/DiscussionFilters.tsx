@@ -137,7 +137,7 @@ export function DiscussionFilters({
           className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
             typeFilter === null
               ? "bg-brand-600 text-white border-brand-600"
-              : "text-gray-600 border-gray-400 hover:border-gray-300"
+              : "text-gray-600 border-gray-500 hover:border-gray-600"
           }`}
         >
           All
@@ -154,7 +154,7 @@ export function DiscussionFilters({
             className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
               typeFilter === type
                 ? THREAD_TYPE_COLORS[type]
-                : "text-gray-600 border-gray-400 hover:border-gray-300"
+                : "text-gray-600 border-gray-500 hover:border-gray-600"
             }`}
           >
             {THREAD_TYPE_LABELS[type]}
