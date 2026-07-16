@@ -21,6 +21,7 @@ export function PrivacyContent() {
     <LegalPageLayout
       title="Privacy Policy"
       path="/privacy"
+      description="Read the ReviewIQ Privacy Policy to understand how we collect, use, and protect your personal information."
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}

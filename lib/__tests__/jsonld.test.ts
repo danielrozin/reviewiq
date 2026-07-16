@@ -5,6 +5,11 @@ import { describe, it, expect } from 'vitest'
 import {
   organizationSchema,
   aboutPageSchema,
+  legalPageSchema,
+  howItWorksPageSchema,
+  howWeWorkPageSchema,
+  writeReviewPageSchema,
+  siteMapPageSchema,
   homePageSchema,
   websiteSchema,
   breadcrumbSchema,
@@ -753,5 +758,104 @@ describe('schema content dates (no build-date stamping)', () => {
     const s = productSchema(undated) as Record<string, any>
     expect('datePublished' in s).toBe(false)
     expect('dateModified' in s).toBe(false)
+  })
+})
+
+// DAN-2227: eight indexable, sitemapped pages emitted only Organization +
+// WebSite + BreadcrumbList — a breadcrumb trail pointing at a page that itself
+// declared no type. These cover the page-level nodes that closed that gap.
+describe('legalPageSchema', () => {
+  const opts = {
+    name: 'Privacy Policy',
+    path: '/privacy',
+    description: 'How we collect, use, and protect your personal information.',
+    dateModified: '2026-03',
+  }
+
+  it('emits a WebPage carrying the caller-supplied name/description/date', () => {
+    const s = legalPageSchema(opts) as Record<string, any>
+    expect(s['@type']).toBe('WebPage')
+    expect(s.name).toBe('Privacy Policy')
+    expect(s.description).toBe(opts.description)
+    // Must be the page's own visible date, never a build-time stamp — a
+    // dateModified that re-dates itself on every deploy is a lie.
+    expect(s.dateModified).toBe('2026-03')
+  })
+
+  it('derives a stable, path-scoped url and @id', () => {
+    const s = legalPageSchema(opts) as Record<string, any>
+    expect(s.url).toMatch(/\/privacy$/)
+    expect(s['@id']).toMatch(/\/privacy#webpage$/)
+    // Distinct pages must not collide on one @id.
+    const other = legalPageSchema({ ...opts, path: '/terms' }) as Record<string, any>
+    expect(other['@id']).not.toBe(s['@id'])
+  })
+
+  it('references the shared Organization/WebSite by @id instead of re-declaring them', () => {
+    const s = legalPageSchema(opts) as Record<string, any>
+    expect(s.isPartOf['@id']).toBe(websiteSchema()['@id'])
+    expect(s.about['@id']).toBe(organizationSchema()['@id'])
+    expect(s.publisher['@id']).toBe(organizationSchema()['@id'])
+  })
+
+  it('does not embed a breadcrumb — <Breadcrumbs> already emits one', () => {
+    expect('breadcrumb' in legalPageSchema(opts)).toBe(false)
+  })
+})
+
+describe('info page schemas', () => {
+  it('gives /how-it-works and /how-we-work distinct WebPage nodes', () => {
+    const a = howItWorksPageSchema() as Record<string, any>
+    const b = howWeWorkPageSchema() as Record<string, any>
+    for (const s of [a, b]) {
+      expect(s['@type']).toBe('WebPage')
+      expect(s.about['@id']).toBe(organizationSchema()['@id'])
+      expect(s.description.length).toBeGreaterThan(0)
+    }
+    expect(a.url).toMatch(/\/how-it-works$/)
+    expect(b.url).toMatch(/\/how-we-work$/)
+    expect(a['@id']).not.toBe(b['@id'])
+  })
+
+  it('types /write-review as a WebPage whose action points at itself', () => {
+    const s = writeReviewPageSchema() as Record<string, any>
+    expect(s['@type']).toBe('WebPage')
+    expect(s.url).toMatch(/\/write-review$/)
+    expect(s.potentialAction['@type']).toBe('CreateAction')
+    expect(s.potentialAction.target.urlTemplate).toBe(s.url)
+  })
+})
+
+describe('siteMapPageSchema', () => {
+  const items = [
+    { title: 'Best Robot Vacuums 2026', href: '/blog/best-robot-vacuums-2026' },
+    { title: 'Is the Dyson worth it?', href: '/community/thread/abc123' },
+  ]
+
+  it('mirrors exactly the items the page renders, in order', () => {
+    const s = siteMapPageSchema(items) as Record<string, any>
+    expect(s['@type']).toBe('CollectionPage')
+    expect(s.mainEntity.numberOfItems).toBe(2)
+    expect(s.mainEntity.itemListElement).toHaveLength(2)
+    expect(s.mainEntity.itemListElement[0]).toMatchObject({
+      position: 1,
+      name: 'Best Robot Vacuums 2026',
+    })
+    expect(s.mainEntity.itemListElement[0].url).toMatch(
+      /\/blog\/best-robot-vacuums-2026$/
+    )
+    expect(s.mainEntity.itemListElement[1].position).toBe(2)
+  })
+
+  // This is the branch that actually ships today: prod currently renders "No
+  // recently published content", so the list is empty. An empty ItemList would
+  // claim a collection with nothing in it — omit mainEntity instead. The page
+  // still gets its CollectionPage type either way, which is the DAN-2227 fix.
+  it('omits mainEntity entirely when there is no recent content', () => {
+    const s = siteMapPageSchema([]) as Record<string, any>
+    expect(s['@type']).toBe('CollectionPage')
+    expect('mainEntity' in s).toBe(false)
+    expect(s.url).toMatch(/\/site-map$/)
+    expect(s.isPartOf['@id']).toBe(websiteSchema()['@id'])
   })
 })

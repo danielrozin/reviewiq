@@ -18,6 +18,7 @@ export function CookiePolicyContent() {
     <LegalPageLayout
       title="Cookie Policy"
       path="/cookie-policy"
+      description="Learn how ReviewIQ uses cookies and similar tracking technologies, and how to control them."
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}

@@ -75,6 +75,141 @@ export function aboutPageSchema() {
   };
 }
 
+// The four legal pages (/privacy, /terms, /cookie-policy, /acceptable-use) are
+// indexable and sitemapped but carried only the site-wide Organization/WebSite
+// nodes plus a BreadcrumbList — no node describing the page itself, so Google
+// saw four untyped URLs. LegalPageLayout is the single seam all four render
+// through. `description` and `datePublished`-style fields are NOT derived here:
+// each caller passes its own so the markup matches that page's real meta
+// description and its visible "Last updated" date rather than a generated
+// guess. No `breadcrumb` — <Breadcrumbs> already emits a standalone
+// BreadcrumbList on these pages and embedding a second trail would duplicate it.
+export function legalPageSchema(opts: {
+  name: string;
+  path: string;
+  description: string;
+  dateModified: string;
+}) {
+  const pageUrl = `${SITE_URL}${opts.path}`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: opts.name,
+    description: opts.description,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+    // Mirrors the <time dateTime> the layout renders — legal pages are judged on
+    // recency, and a dateModified that disagrees with the visible date is worse
+    // than none. The value is whatever the page shows (may be year-month).
+    dateModified: opts.dateModified,
+  };
+}
+
+// /how-it-works explains the SmartScore methodology in four steps. HowTo would
+// be the tempting type, but Google retired HowTo rich results in 2023 and the
+// steps here describe what WE do, not instructions the reader follows — a
+// WebPage `about` the Organization is the truthful type.
+export function howItWorksPageSchema() {
+  const pageUrl = `${SITE_URL}/how-it-works`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: "How ReviewIQ Works",
+    description:
+      "Learn how ReviewIQ uses AI-powered analysis and verified buyer data to deliver honest, structured product reviews you can trust.",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
+// /how-we-work is the affiliate + AI disclosure page — the canonical target of
+// the site-wide disclosure footnote. It is the page that establishes editorial
+// independence, so it is worth a typed node Google can attach to the brand.
+export function howWeWorkPageSchema() {
+  const pageUrl = `${SITE_URL}/how-we-work`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: "How We Work — Affiliate & AI Disclosure",
+    description:
+      "How ReviewIQ earns money, why affiliate commissions never influence our SmartScores, which merchants are partners, and how we generate AI summaries.",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    publisher: { "@id": ORG_ID },
+  };
+}
+
+// /write-review is a 4-step submission form. It is the thinnest indexable page
+// on the site by word count and that is inherent to a form — do not pad it. It
+// still needs a page-level node, and the honest one carries the action the page
+// exists for: a CreateAction target Google can read as "this URL is where you
+// write a review".
+export function writeReviewPageSchema() {
+  const pageUrl = `${SITE_URL}/write-review`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: "Write a Product Review — Share Your Experience",
+    description:
+      "Share your honest product experience to help others buy smarter. Rate reliability, ease of use, and value in minutes. Write your review free.",
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@id": ORG_ID },
+    potentialAction: {
+      "@type": "CreateAction",
+      name: "Write a review",
+      target: { "@type": "EntryPoint", urlTemplate: pageUrl },
+    },
+  };
+}
+
+// /site-map is the human-readable directory of recently published content
+// (distinct from /sitemap.xml). CollectionPage matches every other directory
+// surface on the site. The ItemList mirrors exactly the recent items the page
+// renders — it is passed in from the page component rather than re-derived, so
+// the markup can never claim content the crawler cannot see. When there is no
+// recent content the page says so and mainEntity is omitted rather than
+// emitting an empty list.
+export function siteMapPageSchema(recentItems: { title: string; href: string }[]) {
+  const pageUrl = `${SITE_URL}/site-map`;
+  const schema: Record<string, unknown> = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${pageUrl}#webpage`,
+    url: pageUrl,
+    name: "Site Map",
+    description:
+      "Browse all content on ReviewIQ — product reviews, blog articles, comparisons, and community discussions organized by date and category.",
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@id": ORG_ID },
+  };
+
+  if (recentItems.length > 0) {
+    schema.mainEntity = {
+      "@type": "ItemList",
+      name: "Recently Published Content",
+      numberOfItems: recentItems.length,
+      itemListElement: recentItems.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.title,
+        url: `${SITE_URL}${item.href}`,
+      })),
+    };
+  }
+
+  return schema;
+}
+
 // The homepage was the last content surface with no page-level node — the root
 // layout emits only the site-wide Organization/WebSite entities, so Google saw
 // the single most important URL as an untyped page. Emit a WebPage (the site's

@@ -21,6 +21,7 @@ export function TermsContent() {
     <LegalPageLayout
       title="Terms of Service"
       path="/terms"
+      description="Read the ReviewIQ Terms of Service. Understand your rights and responsibilities as a user."
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}
