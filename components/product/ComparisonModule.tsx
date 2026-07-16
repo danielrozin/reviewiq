@@ -33,7 +33,7 @@ export function ComparisonModule({
         </div>
         <h2 id="compare-with-heading" className="text-lg font-semibold text-gray-900">Compare With</h2>
       </div>
-      <ul className="space-y-2.5 list-none p-0 m-0">
+      <ul role="list" className="space-y-2.5 list-none p-0 m-0">
         {comparisons.map((comp) => {
           const compSlug = getComparisonSlugForProducts(
             currentProductSlug,

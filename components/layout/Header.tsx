@@ -112,7 +112,7 @@ export function Header() {
 
             {/* Desktop navigation */}
             <nav className="hidden lg:flex items-center gap-1 flex-1" aria-label="Main navigation">
-              <ul className="flex items-center gap-1 list-none p-0 m-0">
+              <ul role="list" className="flex items-center gap-1 list-none p-0 m-0">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
                 return (
@@ -342,7 +342,7 @@ export function Header() {
             }}
           >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-              <ul className="space-y-0.5 list-none p-0 m-0">
+              <ul role="list" className="space-y-0.5 list-none p-0 m-0">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href || pathname.startsWith(link.href + "/");
                 return (

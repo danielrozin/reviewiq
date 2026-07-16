@@ -26,7 +26,7 @@ export function FAQSection({ items }: FAQSectionProps) {
         </h2>
         <span className="ml-auto text-xs text-gray-600 font-medium tabular-nums">{items.length} questions</span>
       </div>
-      <ul className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100 list-none p-0 m-0">
+      <ul role="list" className="border border-gray-100 rounded-xl overflow-hidden divide-y divide-gray-100 list-none p-0 m-0">
         {items.map((item, i) => {
           const isOpen = openIndex === i;
           const panelId = `faq-panel-${i}`;

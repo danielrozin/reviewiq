@@ -27,7 +27,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
         </div>
         <h2 id="auto-comparison-links-heading" className="text-lg font-semibold text-gray-900">Compare on A vs B</h2>
       </div>
-      <ul className="space-y-3 list-none p-0 m-0">
+      <ul role="list" className="space-y-3 list-none p-0 m-0">
         <li>
           <a
             href={entityUrl}

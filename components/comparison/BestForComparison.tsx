@@ -19,7 +19,7 @@ export function BestForComparison({
         </div>
         <h2 id="who-should-buy-heading" className="text-lg font-semibold text-gray-900">Who Should Buy What?</h2>
       </div>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
+      <ul role="list" className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
         <li><BestForCard product={productA} /></li>
         <li><BestForCard product={productB} /></li>
       </ul>

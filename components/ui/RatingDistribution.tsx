@@ -7,7 +7,7 @@ interface RatingDistributionProps {
 
 export function RatingDistribution({ distribution, totalReviews }: RatingDistributionProps) {
   return (
-    <ul className="space-y-2 list-none p-0 m-0">
+    <ul role="list" className="space-y-2 list-none p-0 m-0">
       {([5, 4, 3, 2, 1] as const).map((star) => {
         const count = distribution[star];
         const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;

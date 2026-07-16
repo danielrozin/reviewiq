@@ -108,7 +108,7 @@ export function SignupPrompt() {
           </p>
         </div>
 
-        <ul aria-label="Account benefits" className="space-y-2.5 mb-6 list-none p-0 m-0">
+        <ul role="list" aria-label="Account benefits" className="space-y-2.5 mb-6 list-none p-0 m-0">
           {BENEFITS.map((benefit) => (
             <li key={benefit.text} className="flex items-center gap-3 text-sm text-gray-700">
               <div aria-hidden="true" className="w-8 h-8 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">

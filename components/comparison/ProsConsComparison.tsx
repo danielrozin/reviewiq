@@ -19,7 +19,7 @@ export function ProsConsComparison({
         </div>
         <h2 id="what-people-say" className="text-lg font-semibold text-gray-900">What People Say</h2>
       </div>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
+      <ul role="list" className="grid grid-cols-1 md:grid-cols-2 gap-6 list-none p-0 m-0">
         <li><ProductProsConsCard product={productA} /></li>
         <li><ProductProsConsCard product={productB} /></li>
       </ul>

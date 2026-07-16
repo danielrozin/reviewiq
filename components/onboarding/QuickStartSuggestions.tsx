@@ -34,7 +34,7 @@ export function QuickStartSuggestions() {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 sm:grid-cols-3 gap-2 list-none p-0 m-0">
+      <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 gap-2 list-none p-0 m-0">
         {POPULAR_CATEGORIES.map((cat) => (
           <li key={cat.slug}>
             <Link

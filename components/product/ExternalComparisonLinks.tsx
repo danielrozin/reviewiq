@@ -25,7 +25,7 @@ export function ExternalComparisonLinks({
         </div>
         <h2 id="external-comparisons-heading" className="text-lg font-semibold text-gray-900">Head-to-Head Comparisons</h2>
       </div>
-      <ul className="space-y-3 list-none p-0 m-0">
+      <ul role="list" className="space-y-3 list-none p-0 m-0">
         {comparisons.map((comp, i) => (
           <li key={i}>
             <a

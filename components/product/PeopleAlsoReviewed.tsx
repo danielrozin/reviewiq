@@ -47,7 +47,7 @@ export function PeopleAlsoReviewed({ products }: PeopleAlsoReviewedProps) {
         }}
       />
 
-      <ul className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+      <ul role="list" className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 list-none p-0 m-0">
         {products.map((product) => {
           const category = getCategoryBySlug(product.categorySlug);
           return (
@@ -92,7 +92,7 @@ export function PeopleAlsoReviewed({ products }: PeopleAlsoReviewedProps) {
       </ul>
 
       {/* Cross-category links */}
-      <ul className="flex flex-wrap gap-2 mt-5 list-none p-0 m-0">
+      <ul role="list" className="flex flex-wrap gap-2 mt-5 list-none p-0 m-0">
         {[...new Set(products.map((p) => p.categorySlug))].map((slug) => {
           const cat = getCategoryBySlug(slug);
           if (!cat) return null;

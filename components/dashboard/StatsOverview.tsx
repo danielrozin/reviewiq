@@ -100,7 +100,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
   return (
     <div className="space-y-4">
       {/* Stat cards */}
-      <ul aria-label="Account statistics" className="grid grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
+      <ul role="list" aria-label="Account statistics" className="grid grid-cols-2 lg:grid-cols-4 gap-4 list-none p-0 m-0">
         {statItems.map((stat, i) => (
           <li
             key={stat.label}

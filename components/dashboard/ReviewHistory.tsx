@@ -37,7 +37,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
   }
 
   return (
-    <ul className="space-y-3 list-none p-0 m-0">
+    <ul role="list" className="space-y-3 list-none p-0 m-0">
       {reviews.map(({ review, productName, productSlug, categorySlug }) => (
         <li key={review.id}>
         <article

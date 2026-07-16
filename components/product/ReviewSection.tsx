@@ -109,7 +109,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
           </div>
 
           {/* Rating distribution bars */}
-          <ul className="flex-1 space-y-1.5 list-none p-0 m-0" aria-label="Rating distribution">
+          <ul role="list" className="flex-1 space-y-1.5 list-none p-0 m-0" aria-label="Rating distribution">
             {([5, 4, 3, 2, 1] as const).map((star) => {
               const count = ratingDistribution[star];
               const percentage = totalReviews > 0 ? (count / totalReviews) * 100 : 0;

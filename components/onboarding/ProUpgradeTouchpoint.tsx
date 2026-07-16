@@ -65,7 +65,7 @@ export function ProUpgradeTouchpoint() {
           </div>
         </div>
 
-        <ul aria-label="Pro plan benefits" className="space-y-2 mb-4 list-none p-0 m-0">
+        <ul role="list" aria-label="Pro plan benefits" className="space-y-2 mb-4 list-none p-0 m-0">
           {PRO_BENEFITS.map((b) => (
             <li key={b.text} className="flex items-center gap-2 text-xs text-gray-700">
               {b.icon}

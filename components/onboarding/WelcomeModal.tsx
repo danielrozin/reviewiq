@@ -163,7 +163,7 @@ export function WelcomeModal() {
               Everything you need to find the perfect product.
             </p>
 
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 list-none p-0 m-0">
+            <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 list-none p-0 m-0">
               {VALUE_PROPS.map((prop) => (
                 <li
                   key={prop.title}

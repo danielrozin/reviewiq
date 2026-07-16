@@ -34,7 +34,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
   }
 
   return (
-    <ul className="space-y-3 list-none p-0 m-0">
+    <ul role="list" className="space-y-3 list-none p-0 m-0">
       {items.map((item) => {
         const scoreDiff = item.currentScore - item.lastKnownScore;
         return (

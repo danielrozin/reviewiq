@@ -10,7 +10,7 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
   if (products.length === 0) return null;
 
   return (
-    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
+    <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
       {products.map((product) => (
         <li key={product.id}>
         <Link

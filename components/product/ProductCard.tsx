@@ -97,7 +97,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           </div>
         </div>
 
-        <ul className="space-y-2 list-none p-0 m-0" aria-label="Top review highlights">
+        <ul role="list" className="space-y-2 list-none p-0 m-0" aria-label="Top review highlights">
           <li className="flex items-start gap-2">
             <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
               <svg aria-hidden="true" className="w-2.5 h-2.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">

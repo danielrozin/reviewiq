@@ -43,7 +43,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
   const atLimit = !isPro && items.length >= FREE_LIMIT;
 
   return (
-    <ul className="space-y-3 list-none p-0 m-0">
+    <ul role="list" className="space-y-3 list-none p-0 m-0">
       {items.map((item) => (
         <li key={item.id}>
         <Link
