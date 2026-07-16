@@ -123,7 +123,7 @@ export default function CommunityPage() {
         </section>
 
         {/* Right sidebar */}
-        <aside className="space-y-8">
+        <aside aria-label="Community sidebar" className="space-y-8">
           {/* Category discussions */}
           <section aria-labelledby="sidebar-categories-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-4">

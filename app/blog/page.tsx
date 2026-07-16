@@ -1,7 +1,7 @@
 import { getAllBlogPosts } from "@/data/blog-posts";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
-import { blogListSchema } from "@/lib/schema/jsonld";
+import { blogListSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
 import { BlogCategoryFilter } from "@/components/home/BlogCategoryFilter";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revieweriq.com";
@@ -40,6 +40,7 @@ export default function BlogPage() {
       <Breadcrumbs items={[{ name: "Blog", url: "/blog" }]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogIndexWebPageJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogListSchema(posts)) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Blog", url: "/blog" }])) }} />
 
       <header className="mt-8 mb-10">
         <h1 className="text-3xl font-bold text-gray-900">

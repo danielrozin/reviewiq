@@ -21,6 +21,7 @@ import { getAllProducts } from "@/data/products";
 import { TRUST_LEVEL_LABELS, TRUST_LEVEL_COLORS } from "@/types";
 import type { UserBadge } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
+import { breadcrumbSchema } from "@/lib/schema/jsonld";
 import { UserProBadge } from "@/components/premium/UserProBadge";
 import { ProfileChecklist } from "@/components/onboarding/ProfileChecklist";
 
@@ -67,6 +68,7 @@ export default async function DashboardPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <Breadcrumbs items={[{ name: "Dashboard", url: "/dashboard" }]} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema([{ name: "Dashboard", url: "/dashboard" }])) }} />
 
       {/* Header */}
       <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-6 mb-8">
