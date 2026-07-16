@@ -25,7 +25,7 @@ export function CookiePolicyContent() {
         <p data-speakable="cookie-policy-intro">
           This Cookie Policy explains how ReviewIQ uses cookies and similar technologies.
           Please read it alongside our{" "}
-          <Link href="/privacy" className="text-brand-600 hover:underline">Privacy Policy</Link>.
+          <Link href="/privacy" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
         </p>
       </section>
 
@@ -50,22 +50,22 @@ export function CookiePolicyContent() {
             </thead>
             <tbody className="divide-y divide-gray-200">
               <tr>
-                <td className="px-4 py-3 font-medium text-gray-900">Essential</td>
+                <th scope="row" className="px-4 py-3 font-medium text-gray-900 text-left">Essential</th>
                 <td className="px-4 py-3">Site functionality, security, authentication</td>
                 <td className="px-4 py-3">Yes</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-medium text-gray-900">Analytics</td>
+                <th scope="row" className="px-4 py-3 font-medium text-gray-900 text-left">Analytics</th>
                 <td className="px-4 py-3">Aggregated usage statistics</td>
                 <td className="px-4 py-3">No</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-medium text-gray-900">Preferences</td>
+                <th scope="row" className="px-4 py-3 font-medium text-gray-900 text-left">Preferences</th>
                 <td className="px-4 py-3">Remember your display and language settings</td>
                 <td className="px-4 py-3">No</td>
               </tr>
               <tr>
-                <td className="px-4 py-3 font-medium text-gray-900">Marketing</td>
+                <th scope="row" className="px-4 py-3 font-medium text-gray-900 text-left">Marketing</th>
                 <td className="px-4 py-3">Serve relevant advertisements (with consent)</td>
                 <td className="px-4 py-3">No</td>
               </tr>

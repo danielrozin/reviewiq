@@ -249,7 +249,7 @@ export default function HowItWorksPage() {
                 { feature: "Anonymous star ratings", us: "partial", them: true },
               ].map((row, i) => (
                 <tr key={row.feature} className={`border-b border-gray-100 ${i % 2 === 0 ? "bg-white" : "bg-gray-50/40"}`}>
-                  <td className="px-5 py-3.5 font-medium text-gray-700">{row.feature}</td>
+                  <th scope="row" className="px-5 py-3.5 font-medium text-gray-700 text-left">{row.feature}</th>
                   <td className="px-4 py-3.5 text-center">
                     {row.us === true ? (
                       <>

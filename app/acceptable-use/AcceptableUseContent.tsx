@@ -25,7 +25,7 @@ export function AcceptableUseContent() {
         <p data-speakable="acceptable-use-intro">
           This Acceptable Use Policy sets out the rules for using ReviewIQ. By accessing our
           platform, you agree to comply with this policy alongside our{" "}
-          <Link href="/terms" className="text-brand-600 hover:underline">Terms of Service</Link>.
+          <Link href="/terms" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Terms of Service</Link>.
         </p>
       </section>
 
