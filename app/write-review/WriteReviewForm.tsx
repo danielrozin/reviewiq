@@ -475,6 +475,7 @@ export function WriteReviewForm() {
                 onBlur={() => markTouched("headline")}
                 placeholder="Summarize your experience in one sentence"
                 maxLength={120}
+                autoComplete="off"
                 aria-describedby="error-headline"
                 aria-required="true"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
@@ -546,6 +547,7 @@ export function WriteReviewForm() {
                 onBlur={() => markTouched("body")}
                 placeholder="Share your honest experience. What surprised you? What disappointed you? Would you buy it again?"
                 rows={6}
+                autoComplete="off"
                 aria-required="true"
                 aria-invalid={touched.body === true && body.length < 50 ? true : undefined}
                 aria-describedby="body-char-count"
@@ -576,6 +578,7 @@ export function WriteReviewForm() {
                       onChange={(e) => updatePro(i, e.target.value)}
                       aria-label={`Pro ${i + 1}`}
                       placeholder={`Pro ${i + 1}`}
+                      autoComplete="off"
                       className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                     />
                   </li>
@@ -602,6 +605,7 @@ export function WriteReviewForm() {
                       onChange={(e) => updateCon(i, e.target.value)}
                       aria-label={`Con ${i + 1}`}
                       placeholder={`Con ${i + 1}`}
+                      autoComplete="off"
                       className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                     />
                   </li>
