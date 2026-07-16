@@ -11,7 +11,7 @@ import {
   productSchema,
   reviewSchema,
   faqSchema,
-  categoryListSchema,
+  categoriesHubSchema,
   videoObjectSchema,
   videoObjectListSchema,
   analysisAuthorSchema,
@@ -234,16 +234,34 @@ describe('faqSchema', () => {
   })
 })
 
-describe('categoryListSchema', () => {
-  it('generates ItemList with positions', () => {
-    const schema = categoryListSchema([
-      { name: 'Electronics', slug: 'electronics' },
-      { name: 'Audio', slug: 'audio' },
-    ] as any)
-    expect(schema['@type']).toBe('ItemList')
-    expect(schema.itemListElement).toHaveLength(2)
-    expect(schema.itemListElement[0].position).toBe(1)
-    expect(schema.itemListElement[1].url).toContain('/category/audio')
+describe('categoriesHubSchema', () => {
+  const categories = [
+    { name: 'Electronics', slug: 'electronics' },
+    { name: 'Audio', slug: 'audio' },
+  ] as any
+
+  it('wraps the category ItemList in a CollectionPage for the /categories hub', () => {
+    const schema = categoriesHubSchema(categories)
+    expect(schema['@type']).toBe('CollectionPage')
+    // The url is what ties the node to the document; a bare ItemList had none.
+    expect(schema.url).toContain('/categories')
+    expect(schema.mainEntity['@type']).toBe('ItemList')
+    expect(schema.mainEntity.numberOfItems).toBe(2)
+  })
+
+  it('lists every category in order, linking to its hub', () => {
+    const schema = categoriesHubSchema(categories)
+    expect(schema.mainEntity.itemListElement).toHaveLength(2)
+    expect(schema.mainEntity.itemListElement[0].position).toBe(1)
+    expect(schema.mainEntity.itemListElement[0].name).toBe('Electronics')
+    expect(schema.mainEntity.itemListElement[1].url).toContain('/category/audio')
+  })
+
+  it('points the hub url at /categories, never at an individual category page', () => {
+    // Guards the leak this schema class invites: a CollectionPage emitted from a shared
+    // segment layout would claim each /category/[slug] page is the whole collection.
+    const schema = categoriesHubSchema(categories)
+    expect(new URL(schema.url).pathname).toBe('/categories')
   })
 })
 

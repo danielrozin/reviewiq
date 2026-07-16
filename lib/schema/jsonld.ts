@@ -310,17 +310,32 @@ export function faqSchema(items: FAQItem[]) {
   };
 }
 
-export function categoryListSchema(categories: Category[]) {
+// The /categories index is the entry point to every category hub. It emitted a bare
+// ItemList: a list of links belonging to no page, with no url tying it to the document
+// it describes. The list still has to be wrapped in the page node so the /compare,
+// /products, /community, and /faq hubs all describe themselves the same way.
+//
+// Scoped to the index route only — categoryListSchema had exactly one caller and this
+// keeps it that way. A hub's CollectionPage must never be emitted from a shared segment
+// layout, which would claim every /category/[slug] page is the collection itself.
+export function categoriesHubSchema(categories: Category[]) {
   return {
     "@context": "https://schema.org",
-    "@type": "ItemList",
+    "@type": "CollectionPage",
     name: "Product Categories",
-    itemListElement: categories.map((cat, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: cat.name,
-      url: `${SITE_URL}/category/${cat.slug}`,
-    })),
+    description:
+      "Every product category on ReviewIQ — each one scored on SmartScore, price, and verified buyer reviews.",
+    url: `${SITE_URL}/categories`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: categories.length,
+      itemListElement: categories.map((cat, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: cat.name,
+        url: `${SITE_URL}/category/${cat.slug}`,
+      })),
+    },
   };
 }
 
