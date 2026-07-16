@@ -189,7 +189,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
           autoComplete="off"
           aria-label="Search products, discussions, and categories"
           placeholder={placeholder || "Search products, discussions, categories..."}
-          className={`w-full border border-gray-400 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent focus:bg-white transition-colors ${
+          className={`w-full border border-gray-400 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent focus:bg-white transition-colors ${
             size === "lg"
               ? "pl-12 pr-5 py-3.5 text-base rounded-2xl shadow-sm"
               : "pl-10 pr-20 py-2 text-sm rounded-xl"

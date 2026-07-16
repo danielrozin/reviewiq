@@ -181,7 +181,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           aria-invalid={!!error}
           aria-describedby={error ? "admin-pwd-error" : undefined}
           autoComplete="current-password"
-          className="w-full px-4 py-2.5 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent"
+          className="w-full px-4 py-2.5 border border-gray-400 rounded-lg text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900 focus-visible:border-transparent"
           autoFocus
         />
         {error && <p id="admin-pwd-error" role="alert" className="text-red-500 text-xs mt-2">{error}</p>}
@@ -544,7 +544,7 @@ export default function AdminDashboard() {
                   onChange={(e) => { setProductSearch(e.target.value); setProductPage(1); }}
                   placeholder="Search products..."
                   aria-label="Search products"
-                  className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+                  className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
                 />
               </div>
               <span className="text-sm text-gray-500">{productTotal} products</span>
@@ -657,14 +657,14 @@ export default function AdminDashboard() {
                   onChange={(e) => { setReviewSearch(e.target.value); setReviewPage(1); }}
                   placeholder="Search reviews..."
                   aria-label="Search reviews"
-                  className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-gray-900"
+                  className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
                 />
               </div>
               <select
                 value={reviewFilter}
                 onChange={(e) => { setReviewFilter(e.target.value); setReviewPage(1); }}
                 aria-label="Filter reviews by status"
-                className="px-3 py-2 border border-gray-400 rounded-lg text-sm text-gray-600 focus:outline-none focus:ring-2 focus:ring-brand-400"
+                className="px-3 py-2 border border-gray-400 rounded-lg text-sm text-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
               >
                 <option value="">All statuses</option>
                 <option value="published">Published</option>

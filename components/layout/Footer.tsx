@@ -91,7 +91,7 @@ export function Footer() {
                   placeholder="you@example.com"
                   required
                   autoComplete="email"
-                  className="flex-1 sm:w-64 px-4 py-3 text-sm border-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-white/50 bg-white/15 text-white placeholder:text-brand-200 backdrop-blur-sm"
+                  className="flex-1 sm:w-64 px-4 py-3 text-sm border-0 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-white/50 bg-white/15 text-white placeholder:text-brand-200 backdrop-blur-sm"
                 />
                 <button
                   type="submit"

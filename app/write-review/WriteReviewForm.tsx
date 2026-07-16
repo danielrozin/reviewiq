@@ -434,7 +434,7 @@ export function WriteReviewForm() {
 
         {/* Step 1: Product & Headline */}
         {step === 0 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 1 of 4: Select product and write a headline" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:rounded-xl">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 1 of 4: Select product and write a headline" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus:rounded-xl">
             <div>
               <label htmlFor="select-product" className="block text-sm font-semibold text-gray-900 mb-2">
                 Product *
@@ -447,7 +447,7 @@ export function WriteReviewForm() {
                 aria-describedby="error-product"
                 aria-required="true"
                 aria-invalid={touched.product === true && !selectedProduct ? true : undefined}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
               >
                 <option value="">Select a product...</option>
                 {products.map((p) => (
@@ -478,7 +478,7 @@ export function WriteReviewForm() {
                 aria-describedby="error-headline"
                 aria-required="true"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
               />
               <div className="flex justify-between mt-1">
                 <FieldError
@@ -494,7 +494,7 @@ export function WriteReviewForm() {
 
         {/* Step 2: Ratings */}
         {step === 1 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 2 of 4: Rate the product" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:rounded-xl">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 2 of 4: Rate the product" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus:rounded-xl">
             <fieldset aria-describedby="error-ratings" className="border-0 p-0 m-0">
               <legend className="block text-sm font-semibold text-gray-900 mb-3">
                 Overall Rating *
@@ -534,7 +534,7 @@ export function WriteReviewForm() {
 
         {/* Step 3: Review Content */}
         {step === 2 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 3 of 4: Write your review" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:rounded-xl">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 3 of 4: Write your review" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus:rounded-xl">
             <div>
               <label htmlFor="textarea-body" className="block text-sm font-semibold text-gray-900 mb-2">
                 Your Review *
@@ -549,7 +549,7 @@ export function WriteReviewForm() {
                 aria-required="true"
                 aria-invalid={touched.body === true && body.length < 50 ? true : undefined}
                 aria-describedby="body-char-count"
-                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent resize-none"
+                className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent resize-none"
               />
               <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-600"}`}>
                 {body.length}/50 minimum characters
@@ -576,7 +576,7 @@ export function WriteReviewForm() {
                       onChange={(e) => updatePro(i, e.target.value)}
                       aria-label={`Pro ${i + 1}`}
                       placeholder={`Pro ${i + 1}`}
-                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                     />
                   </li>
                 ))}
@@ -602,7 +602,7 @@ export function WriteReviewForm() {
                       onChange={(e) => updateCon(i, e.target.value)}
                       aria-label={`Con ${i + 1}`}
                       placeholder={`Con ${i + 1}`}
-                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                      className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                     />
                   </li>
                 ))}
@@ -613,7 +613,7 @@ export function WriteReviewForm() {
 
         {/* Step 4: Details & Verification */}
         {step === 3 && (
-          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 4 of 4: Add details and verify your purchase" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 focus:rounded-xl">
+          <div ref={stepContainerRef} tabIndex={-1} aria-label="Step 4 of 4: Add details and verify your purchase" className="space-y-6 motion-safe:animate-in fade-in duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 focus:rounded-xl">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label htmlFor="select-experience" className="block text-sm font-semibold text-gray-900 mb-2">
@@ -627,7 +627,7 @@ export function WriteReviewForm() {
                   aria-describedby="error-experienceLevel"
                   aria-required="true"
                   aria-invalid={touched.experienceLevel === true && !experienceLevel ? true : undefined}
-                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                 >
                   <option value="">Select...</option>
                   {experienceLevels.map((level) => (
@@ -654,7 +654,7 @@ export function WriteReviewForm() {
                   aria-describedby="error-timeOwned"
                   aria-required="true"
                   aria-invalid={touched.timeOwned === true && !timeOwned ? true : undefined}
-                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"
+                  className="w-full border border-gray-400 rounded-xl px-4 py-3 text-sm text-gray-900 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
                 >
                   <option value="">Select...</option>
                   {timeOwnedOptions.map((opt) => (

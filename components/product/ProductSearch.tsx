@@ -224,7 +224,7 @@ export function ProductSearch() {
           autoComplete="off"
           aria-label="Search by product name, brand, or keyword"
           placeholder="Search by product name, brand, or keyword..."
-          className="w-full pl-12 pr-4 py-3 text-base border border-gray-400 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-colors"
+          className="w-full pl-12 pr-4 py-3 text-base border border-gray-400 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent transition-colors"
         />
         {query && (
           <button
@@ -247,7 +247,7 @@ export function ProductSearch() {
           value={category}
           onChange={(e) => setFilter("category", e.target.value)}
           aria-label="Filter by category"
-          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
@@ -262,7 +262,7 @@ export function ProductSearch() {
           value={sort}
           onChange={(e) => setFilter("sort", e.target.value)}
           aria-label="Sort products"
-          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
         >
           {SORT_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -276,7 +276,7 @@ export function ProductSearch() {
           value={minRating}
           onChange={(e) => setFilter("rating", Number(e.target.value))}
           aria-label="Filter by minimum rating"
-          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
         >
           <option value={0}>Any Rating</option>
           {RATING_OPTIONS.map((opt) => (
@@ -295,7 +295,7 @@ export function ProductSearch() {
             min={GLOBAL_MIN_PRICE}
             max={priceMax}
             onChange={(e) => setFilter("priceMin", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm"
+            className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 text-sm"
             aria-label="Minimum price"
             placeholder="Min"
           />
@@ -306,7 +306,7 @@ export function ProductSearch() {
             min={priceMin}
             max={GLOBAL_MAX_PRICE}
             onChange={(e) => setFilter("priceMax", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-600 text-sm"
+            className="w-20 px-2 py-2 border border-gray-400 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 text-sm"
             aria-label="Maximum price"
             placeholder="Max"
           />
