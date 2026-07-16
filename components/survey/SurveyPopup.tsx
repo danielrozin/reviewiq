@@ -317,7 +317,7 @@ export function SurveyPopup() {
                   onChange={(e) => setAnswers((a) => ({ ...a, q2Missing: e.target.value }))}
                   placeholder="What were you looking for?"
                   aria-label="What were you looking for?"
-                  className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 focus:border-brand-600 resize-none"
+                  className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 resize-none"
                   rows={2}
                 />
                 <button
@@ -376,7 +376,7 @@ export function SurveyPopup() {
               onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
               placeholder="Anything at all — we read every response."
               aria-label="What could we improve?"
-              className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600/20 focus:border-brand-600 resize-none"
+              className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 resize-none"
               rows={3}
             />
             <div className="flex gap-3 mt-3">
