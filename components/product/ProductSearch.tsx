@@ -204,6 +204,7 @@ export function ProductSearch() {
       {/* Search input */}
       <div className="relative">
         <svg
+          aria-hidden="true"
           className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
           fill="none"
           stroke="currentColor"
@@ -227,9 +228,10 @@ export function ProductSearch() {
           <button
             type="button"
             onClick={() => setFilter("q", "")}
+            aria-label="Clear search"
             className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>

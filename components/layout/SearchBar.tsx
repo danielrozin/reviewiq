@@ -143,6 +143,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
     <div ref={wrapperRef} className={`relative w-full ${className || (size === "lg" ? "max-w-xl" : "max-w-md")}`}>
       <div className="relative">
         <svg
+          aria-hidden="true"
           className={`absolute top-1/2 -translate-y-1/2 text-gray-400 ${size === "lg" ? "left-4 w-5 h-5" : "left-3 w-4 h-4"}`}
           fill="none"
           stroke="currentColor"

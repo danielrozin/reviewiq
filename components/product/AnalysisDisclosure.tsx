@@ -4,6 +4,7 @@ export function AnalysisDisclosure({ productName }: { productName: string }) {
       <div className="flex items-start gap-3">
         <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
           <svg
+            aria-hidden="true"
             className="w-5 h-5 text-blue-600"
             fill="none"
             viewBox="0 0 24 24"
@@ -31,19 +32,19 @@ export function AnalysisDisclosure({ productName }: { productName: string }) {
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-100 text-xs font-medium text-blue-700">
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               Verified Data Sources
             </span>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-100 text-xs font-medium text-blue-700">
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3v11.25A2.25 2.25 0 0 0 6 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0 1 18 16.5h-2.25m-7.5 0h7.5m-7.5 0-1 3m8.5-3 1 3m0 0 .5 1.5m-.5-1.5h-9.5m0 0-.5 1.5" />
               </svg>
               Multi-Source Analysis
             </span>
             <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-blue-100 text-xs font-medium text-blue-700">
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
               </svg>
               Regularly Updated
