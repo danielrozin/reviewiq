@@ -42,7 +42,7 @@ function BestForCard({ product }: { product: Product }) {
           <h4 id={`bestfor-${product.id}`} className="text-xs font-semibold text-brand-700 uppercase tracking-wider mb-2">
             Best For
           </h4>
-          <ul className="space-y-1.5">
+          <ul role="list" className="space-y-1.5">
             {product.aiSummary.bestFor.map((item, i) => (
               <li
                 key={i}
@@ -63,7 +63,7 @@ function BestForCard({ product }: { product: Product }) {
           <h4 id={`notfor-${product.id}`} className="text-xs font-semibold text-amber-700 uppercase tracking-wider mb-2">
             Not For
           </h4>
-          <ul className="space-y-1.5">
+          <ul role="list" className="space-y-1.5">
             {product.aiSummary.notFor.map((item, i) => (
               <li
                 key={i}

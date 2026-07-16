@@ -91,7 +91,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
 
       {/* Nested replies */}
       {comment.replies && comment.replies.length > 0 && depth < maxDepth && (
-        <ul aria-label="Replies">
+        <ul role="list" aria-label="Replies">
           {comment.replies.map((reply) => (
             <SingleComment key={reply.id} comment={reply} depth={depth + 1} />
           ))}
@@ -110,7 +110,7 @@ export function CommentThread({ comments }: CommentThreadProps) {
   });
 
   return (
-    <ul aria-label="Comments" className="divide-y divide-gray-50">
+    <ul role="list" aria-label="Comments" className="divide-y divide-gray-50">
       {sorted.map((comment) => (
         <SingleComment key={comment.id} comment={comment} depth={0} />
       ))}

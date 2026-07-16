@@ -20,7 +20,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
         }}
       />
       <nav aria-label="Breadcrumb" className="text-sm text-gray-600">
-        <ol className="flex items-center gap-1.5">
+        <ol role="list" className="flex items-center gap-1.5">
           <li>
             <Link href="/" className="hover:text-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Home

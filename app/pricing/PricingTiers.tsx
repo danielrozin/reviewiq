@@ -36,7 +36,7 @@ export function PricingTiers() {
   }
 
   return (
-    <ul aria-label="Pricing plans" className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+    <ul role="list" aria-label="Pricing plans" className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {/* Free Plan */}
       <li><article aria-labelledby="plan-free-name" className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-sm hover:border-gray-300 hover:-translate-y-0.5 transition-all duration-200 group">
         <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-gray-200 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -54,7 +54,7 @@ export function PricingTiers() {
           </p>
         </div>
 
-        <ul aria-label={`${PLANS.free.name} plan features`} className="space-y-3 flex-1">
+        <ul role="list" aria-label={`${PLANS.free.name} plan features`} className="space-y-3 flex-1">
           {PLANS.free.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
               <svg
@@ -108,7 +108,7 @@ export function PricingTiers() {
           </p>
         </div>
 
-        <ul aria-label={`${PLANS.pro.name} plan features`} className="space-y-3 flex-1">
+        <ul role="list" aria-label={`${PLANS.pro.name} plan features`} className="space-y-3 flex-1">
           {PLANS.pro.features.map((feature) => (
             <li key={feature} className="flex items-start gap-3 text-sm text-gray-700">
               <svg

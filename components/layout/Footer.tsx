@@ -135,7 +135,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Categories
             </h3>
-            <ul className="space-y-2">
+            <ul role="list" className="space-y-2">
               {[
                 { name: "Robot Vacuums", slug: "robot-vacuums" },
                 { name: "Coffee Machines", slug: "coffee-machines" },
@@ -164,7 +164,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Platform
             </h3>
-            <ul className="space-y-2">
+            <ul role="list" className="space-y-2">
               {[
                 { name: "How It Works", href: "/how-it-works" },
                 { name: "Who Is This For", href: "/who-is-this-for" },
@@ -190,7 +190,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Contribute
             </h3>
-            <ul className="space-y-2">
+            <ul role="list" className="space-y-2">
               {[
                 { name: "Write a Review", href: "/write-review" },
                 { name: "Start a Discussion", href: "/community" },
@@ -213,7 +213,7 @@ export function Footer() {
             <h3 className="text-sm font-semibold text-gray-900 mb-3">
               Legal
             </h3>
-            <ul className="space-y-2">
+            <ul role="list" className="space-y-2">
               <li>
                 <Link href="/privacy" className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
                   Privacy Policy

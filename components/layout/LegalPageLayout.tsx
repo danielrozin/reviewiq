@@ -49,7 +49,7 @@ export function LegalPageLayout({
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Breadcrumb */}
       <nav aria-label="Breadcrumb" className="mb-8 print:hidden">
-        <ol className="flex items-center gap-2 text-sm text-gray-600">
+        <ol role="list" className="flex items-center gap-2 text-sm text-gray-600">
           <li>
             <Link href="/" className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
               Home
@@ -68,7 +68,7 @@ export function LegalPageLayout({
               On this page
             </h2>
             <nav aria-label="Page sections">
-              <ul className="space-y-1 border-l border-gray-200">
+              <ul role="list" className="space-y-1 border-l border-gray-200">
                 {sections.map((section) => (
                   <li key={section.id}>
                     <a
@@ -106,7 +106,7 @@ export function LegalPageLayout({
               Table of Contents
             </summary>
             <nav aria-label="Table of contents" className="mt-3">
-              <ol className="space-y-1.5">
+              <ol role="list" className="space-y-1.5">
                 {sections.map((section, i) => (
                   <li key={section.id}>
                     <a

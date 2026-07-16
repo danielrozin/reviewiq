@@ -210,7 +210,7 @@ export default function CommunityPage() {
               </div>
               <h2 id="sidebar-guidelines-heading" className="font-semibold text-gray-900">Community Guidelines</h2>
             </div>
-            <ul className="space-y-2 text-sm text-gray-600">
+            <ul role="list" className="space-y-2 text-sm text-gray-600">
               {[
                 "Share genuine experiences based on products you own",
                 "Be specific and helpful — vague opinions don't help buyers",

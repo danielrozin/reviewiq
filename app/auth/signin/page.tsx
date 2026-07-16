@@ -68,7 +68,7 @@ export default function SignInPage() {
           <p className="text-gray-600 mb-8 leading-relaxed">
             AI-powered review intelligence trusted by 20,000+ verified buyers. No affiliate bias. No fake reviews.
           </p>
-          <ul className="space-y-4">
+          <ul role="list" className="space-y-4">
             {[
               {
                 bg: "bg-brand-50", fg: "text-brand-600",
@@ -162,7 +162,7 @@ export default function SignInPage() {
               <div className="flex-1 h-px bg-gray-100" />
             </div>
 
-            <ul className="space-y-2">
+            <ul role="list" className="space-y-2">
               {["No affiliate bias", "78% verified buyer rate", "Cancel or leave anytime"].map((item) => (
                 <li key={item} className="flex items-center gap-2 text-xs text-gray-600">
                   <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">

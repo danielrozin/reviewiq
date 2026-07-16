@@ -51,7 +51,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <h3 id="ai-what-love" className="text-sm font-semibold text-emerald-700 uppercase tracking-wider mb-3">
             What People Love
           </h3>
-          <ul className="space-y-2">
+          <ul role="list" className="space-y-2">
             {summary.whatPeopleLove.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-50 flex items-center justify-center">
@@ -69,7 +69,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <h3 id="ai-complaints" className="text-sm font-semibold text-red-600 uppercase tracking-wider mb-3">
             Common Complaints
           </h3>
-          <ul className="space-y-2">
+          <ul role="list" className="space-y-2">
             {summary.whatPeopleHate.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-50 flex items-center justify-center">
@@ -87,7 +87,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <h3 id="ai-best-for" className="text-sm font-semibold text-brand-700 uppercase tracking-wider mb-3">
             Best For
           </h3>
-          <ul className="space-y-2">
+          <ul role="list" className="space-y-2">
             {summary.bestFor.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-brand-50 flex items-center justify-center">
@@ -105,7 +105,7 @@ export function AISummaryCard({ summary, score }: AISummaryCardProps) {
           <h3 id="ai-not-for" className="text-sm font-semibold text-amber-700 uppercase tracking-wider mb-3">
             Not For
           </h3>
-          <ul className="space-y-2">
+          <ul role="list" className="space-y-2">
             {summary.notFor.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-amber-50 flex items-center justify-center">

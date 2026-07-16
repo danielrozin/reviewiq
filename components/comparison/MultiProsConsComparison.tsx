@@ -58,7 +58,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
               <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-2">
                 What People Love
               </p>
-              <ul className="space-y-2">
+              <ul role="list" className="space-y-2">
                 {product.aiSummary.whatPeopleLove.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
                     <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
@@ -77,7 +77,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
               <p className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
                 What People Hate
               </p>
-              <ul className="space-y-2">
+              <ul role="list" className="space-y-2">
                 {product.aiSummary.whatPeopleHate.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
                     <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">

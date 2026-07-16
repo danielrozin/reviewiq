@@ -86,7 +86,7 @@ export default async function UserProfilePage({ params }: Props) {
             </p>
 
             {/* Stats grid */}
-            <ul aria-label="User statistics" className="grid grid-cols-2 gap-2 mb-6">
+            <ul role="list" aria-label="User statistics" className="grid grid-cols-2 gap-2 mb-6">
               {[
                 { value: user.reputationScore, label: "Reputation", color: "text-brand-600" },
                 { value: user.reviewCount, label: "Reviews", color: "text-emerald-600" },

@@ -233,7 +233,7 @@ export default function OKRDashboard() {
             </div>
             <div>
               <p><strong>Health Metrics</strong> are reviewed during Monday check-ins:</p>
-              <ul className="mt-1 space-y-0.5">
+              <ul role="list" className="mt-1 space-y-0.5">
                 <li><span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1" />Green = on track, no action needed</li>
                 <li><span className="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1" />Yellow = needs attention this week</li>
                 <li><span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-1" />Red = at risk, requires immediate action</li>

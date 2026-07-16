@@ -191,7 +191,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
       )}
 
       {/* Reviews list */}
-      <ul className="space-y-4" aria-label="Customer reviews">
+      <ul role="list" className="space-y-4" aria-label="Customer reviews">
         {sortedReviews.map((review) => (
           <li key={review.id}>
             <ReviewCardWithVoting review={review} />
@@ -241,7 +241,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
               <p className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
                 Pros
               </p>
-              <ul className="space-y-1">
+              <ul role="list" className="space-y-1">
                 {review.pros.map((pro, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
                     <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-emerald-100 flex items-center justify-center">
@@ -260,7 +260,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
               <p className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
                 Cons
               </p>
-              <ul className="space-y-1">
+              <ul role="list" className="space-y-1">
                 {review.cons.map((con, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
                     <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">

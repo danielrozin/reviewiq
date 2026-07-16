@@ -368,7 +368,7 @@ export default async function ProductPage({ params }: Props) {
               <h3 className="text-sm font-semibold text-red-600 mb-2">
                 Top Complaints
               </h3>
-              <ul className="space-y-1.5">
+              <ul role="list" className="space-y-1.5">
                 {product.aiSummary.topComplaints.map((c, i) => (
                   <li
                     key={i}

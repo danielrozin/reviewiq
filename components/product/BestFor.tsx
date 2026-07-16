@@ -48,7 +48,7 @@ export function BestFor({ summary, productName, productSlug }: BestForProps) {
             </span>
             Best For
           </h3>
-          <ul className="space-y-2">
+          <ul role="list" className="space-y-2">
             {summary.bestFor.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-brand-900">
                 <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-brand-100 flex items-center justify-center">
@@ -72,7 +72,7 @@ export function BestFor({ summary, productName, productSlug }: BestForProps) {
             </span>
             Not Ideal For
           </h3>
-          <ul className="space-y-2">
+          <ul role="list" className="space-y-2">
             {summary.notFor.map((item, i) => (
               <li key={i} className="flex items-start gap-2 text-sm text-amber-900">
                 <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-amber-100 flex items-center justify-center">

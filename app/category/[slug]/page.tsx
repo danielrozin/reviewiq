@@ -166,7 +166,7 @@ export default async function CategoryPage({ params }: Props) {
         </div>
 
         {buyingGuide ? (
-          <ol className="max-w-3xl">
+          <ol role="list" className="max-w-3xl">
             {buyingGuide.steps.map((step, index) => (
               <li key={index} className="flex gap-5 group pb-6 last:pb-0">
                 {/* Step number + connecting line */}

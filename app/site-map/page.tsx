@@ -141,7 +141,7 @@ function ContentSection({
       {blogs.length > 0 && (
         <section aria-labelledby={`${headingId}-articles`} className="mb-6">
           <h3 id={`${headingId}-articles`} className="text-lg font-semibold text-gray-900 mb-3">Articles</h3>
-          <ul className="space-y-1.5">
+          <ul role="list" className="space-y-1.5">
             {blogs.map((item) => (
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
                 <Link
@@ -161,7 +161,7 @@ function ContentSection({
           <h3 id={`${headingId}-discussions`} className="text-lg font-semibold text-gray-900 mb-3">
             Community Discussions
           </h3>
-          <ul className="space-y-1.5">
+          <ul role="list" className="space-y-1.5">
             {threadItems.map((item) => (
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
                 <Link
@@ -309,7 +309,7 @@ export default function SiteMapPage() {
             <h2 id="sitemap-comparisons-heading" className="text-2xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-200">
               Comparisons
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
+            <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
               {comparisonPairs.map((pair) => (
                 <li key={pair.slug}>
                   <Link

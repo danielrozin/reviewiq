@@ -455,7 +455,7 @@ export default function ReviewIQAnalytics() {
 
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
             <h4 className="text-sm font-semibold text-blue-900 mb-2">GA4 Setup Instructions</h4>
-            <ul className="text-xs text-blue-800 space-y-1">
+            <ul role="list" className="text-xs text-blue-800 space-y-1">
               <li>1. Events fire automatically once feature components are deployed with tracking hooks</li>
               <li>2. Mark <code className="bg-blue-100 px-1 rounded">email_capture_submit</code> and <code className="bg-blue-100 px-1 rounded">review_auth_signup</code> as conversions in GA4 Admin &gt; Events</li>
               <li>3. Create custom dimensions for <code className="bg-blue-100 px-1 rounded">source</code>, <code className="bg-blue-100 px-1 rounded">trigger_action</code>, and <code className="bg-blue-100 px-1 rounded">method</code> parameters</li>
@@ -556,7 +556,7 @@ export default function ReviewIQAnalytics() {
               {report.callouts.length > 0 && (
                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-amber-900 mb-3">Callouts</h3>
-                  <ul className="space-y-2">
+                  <ul role="list" className="space-y-2">
                     {report.callouts.map((callout, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-amber-800">
                         <span className="text-amber-500 shrink-0 mt-0.5">*</span>

@@ -42,7 +42,7 @@ function ProductProsConsCard({ product }: { product: Product }) {
           <h4 id={`love-${product.id}`} className="text-xs font-semibold text-emerald-700 uppercase tracking-wider mb-2">
             What People Love
           </h4>
-          <ul className="space-y-1.5">
+          <ul role="list" className="space-y-1.5">
             {product.aiSummary.whatPeopleLove.slice(0, 4).map((item, i) => (
               <li
                 key={i}
@@ -63,7 +63,7 @@ function ProductProsConsCard({ product }: { product: Product }) {
           <h4 id={`hate-${product.id}`} className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
             What People Hate
           </h4>
-          <ul className="space-y-1.5">
+          <ul role="list" className="space-y-1.5">
             {product.aiSummary.whatPeopleHate.slice(0, 3).map((item, i) => (
               <li
                 key={i}
