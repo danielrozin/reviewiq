@@ -20,6 +20,7 @@ export function PrivacyContent() {
   return (
     <LegalPageLayout
       title="Privacy Policy"
+      path="/privacy"
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}

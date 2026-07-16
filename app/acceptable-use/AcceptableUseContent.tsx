@@ -17,6 +17,7 @@ export function AcceptableUseContent() {
   return (
     <LegalPageLayout
       title="Acceptable Use Policy"
+      path="/acceptable-use"
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}

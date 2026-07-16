@@ -17,6 +17,7 @@ export function CookiePolicyContent() {
   return (
     <LegalPageLayout
       title="Cookie Policy"
+      path="/cookie-policy"
       lastUpdated="March 2026"
       lastUpdatedISO="2026-03"
       sections={SECTIONS}
