@@ -591,14 +591,14 @@ export default function AdminDashboard() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View ${p.name} (opens in new tab)`}
-                            className="p-1.5 text-gray-500 hover:text-gray-700 rounded"
+                            className="p-1.5 text-gray-500 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                           >
                             <Eye aria-hidden="true" className="w-4 h-4" />
                           </a>
                           <button
                             type="button"
                             onClick={() => handleDeleteProduct(p.id)}
-                            className="p-1.5 text-gray-500 hover:text-red-600 rounded"
+                            className="p-1.5 text-gray-500 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                             aria-label={`Delete product: ${p.name}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
@@ -626,7 +626,7 @@ export default function AdminDashboard() {
                     aria-label="Go to previous page"
                     onClick={() => setProductPage((p) => Math.max(1, p - 1))}
                     disabled={productPage === 1}
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -635,7 +635,7 @@ export default function AdminDashboard() {
                     aria-label="Go to next page"
                     onClick={() => setProductPage((p) => p + 1)}
                     disabled={productPage >= Math.ceil(productTotal / 15)}
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <ChevronRight className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -679,7 +679,7 @@ export default function AdminDashboard() {
                     type="button"
                     onClick={() => handleBulkAction("published")}
                     disabled={loading}
-                    className="px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700"
+                    className="px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
                   >
                     Approve
                   </button>
@@ -687,7 +687,7 @@ export default function AdminDashboard() {
                     type="button"
                     onClick={() => handleBulkAction("rejected")}
                     disabled={loading}
-                    className="px-3 py-1.5 bg-red-600 text-white text-xs rounded-lg hover:bg-red-700"
+                    className="px-3 py-1.5 bg-red-600 text-white text-xs rounded-lg hover:bg-red-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-600"
                   >
                     Reject
                   </button>
@@ -757,7 +757,7 @@ export default function AdminDashboard() {
                             <button
                               type="button"
                               onClick={() => handleQueueAction(r.id, "published")}
-                              className="p-1.5 text-gray-500 hover:text-emerald-600 rounded"
+                              className="p-1.5 text-gray-500 hover:text-emerald-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                               aria-label={`Approve review: ${r.headline}`}
                             >
                               <Check aria-hidden="true" className="w-4 h-4" />
@@ -767,7 +767,7 @@ export default function AdminDashboard() {
                             <button
                               type="button"
                               onClick={() => handleQueueAction(r.id, "rejected")}
-                              className="p-1.5 text-gray-500 hover:text-red-600 rounded"
+                              className="p-1.5 text-gray-500 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                               aria-label={`Reject review: ${r.headline}`}
                             >
                               <X aria-hidden="true" className="w-4 h-4" />
@@ -776,7 +776,7 @@ export default function AdminDashboard() {
                           <button
                             type="button"
                             onClick={() => handleDeleteReview(r.id)}
-                            className="p-1.5 text-gray-500 hover:text-red-600 rounded"
+                            className="p-1.5 text-gray-500 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                             aria-label={`Delete review: ${r.headline}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
@@ -803,7 +803,7 @@ export default function AdminDashboard() {
                     onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
                     disabled={reviewPage === 1}
                     aria-label="Go to previous page"
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <ChevronLeft aria-hidden="true" className="w-4 h-4" />
                   </button>
@@ -812,7 +812,7 @@ export default function AdminDashboard() {
                     onClick={() => setReviewPage((p) => p + 1)}
                     disabled={reviewPage >= Math.ceil(reviewTotal / 15)}
                     aria-label="Go to next page"
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <ChevronRight aria-hidden="true" className="w-4 h-4" />
                   </button>
@@ -832,7 +832,7 @@ export default function AdminDashboard() {
               <button
                 type="button"
                 onClick={loadPendingReviews}
-                className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-400 rounded-lg"
+                className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-400 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
               >
                 <RefreshCw className="w-3.5 h-3.5" /> Refresh
               </button>
@@ -873,7 +873,7 @@ export default function AdminDashboard() {
                           type="button"
                           onClick={() => handleQueueAction(r.id, "published")}
                           aria-label={`Approve review: ${r.headline}`}
-                          className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700"
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 text-white text-xs rounded-lg hover:bg-emerald-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-600"
                         >
                           <Check aria-hidden="true" className="w-3.5 h-3.5" /> Approve
                         </button>
@@ -881,7 +881,7 @@ export default function AdminDashboard() {
                           type="button"
                           onClick={() => handleQueueAction(r.id, "flagged")}
                           aria-label={`Flag review: ${r.headline}`}
-                          className="flex items-center gap-1.5 px-3 py-1.5 border border-yellow-300 text-yellow-700 text-xs rounded-lg hover:bg-yellow-50"
+                          className="flex items-center gap-1.5 px-3 py-1.5 border border-yellow-300 text-yellow-700 text-xs rounded-lg hover:bg-yellow-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                         >
                           <AlertTriangle aria-hidden="true" className="w-3.5 h-3.5" /> Flag
                         </button>
@@ -889,7 +889,7 @@ export default function AdminDashboard() {
                           type="button"
                           onClick={() => handleQueueAction(r.id, "rejected")}
                           aria-label={`Reject review: ${r.headline}`}
-                          className="flex items-center gap-1.5 px-3 py-1.5 border border-red-300 text-red-700 text-xs rounded-lg hover:bg-red-50"
+                          className="flex items-center gap-1.5 px-3 py-1.5 border border-red-300 text-red-700 text-xs rounded-lg hover:bg-red-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                         >
                           <X aria-hidden="true" className="w-3.5 h-3.5" /> Reject
                         </button>
@@ -967,7 +967,7 @@ export default function AdminDashboard() {
                 <div className="space-y-2">
                   <a
                     href="/admin/analytics"
-                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
@@ -978,7 +978,7 @@ export default function AdminDashboard() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("queue")}
-                    className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
+                    className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
@@ -989,7 +989,7 @@ export default function AdminDashboard() {
                   <button
                     type="button"
                     onClick={() => setActiveTab("products")}
-                    className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left"
+                    className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
                   >
                     <Pin aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
