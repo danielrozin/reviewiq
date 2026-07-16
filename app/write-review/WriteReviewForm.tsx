@@ -562,7 +562,7 @@ export function WriteReviewForm() {
               <legend className="block text-sm font-semibold text-emerald-700 mb-2">
                 Pros (optional)
               </legend>
-              <ul className="space-y-2 list-none p-0 m-0">
+              <ul role="list" className="space-y-2 list-none p-0 m-0">
                 {pros.map((pro, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span aria-hidden="true" className="w-5 h-5 bg-emerald-100 rounded-full flex items-center justify-center shrink-0">
@@ -588,7 +588,7 @@ export function WriteReviewForm() {
               <legend className="block text-sm font-semibold text-red-600 mb-2">
                 Cons (optional)
               </legend>
-              <ul className="space-y-2 list-none p-0 m-0">
+              <ul role="list" className="space-y-2 list-none p-0 m-0">
                 {cons.map((con, i) => (
                   <li key={i} className="flex items-center gap-2">
                     <span aria-hidden="true" className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">

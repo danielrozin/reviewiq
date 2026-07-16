@@ -177,7 +177,7 @@ export default function NotificationsSettingsPage() {
       )}
 
       {prefs && (
-        <ul className="space-y-4 list-none p-0 m-0">
+        <ul role="list" className="space-y-4 list-none p-0 m-0">
           {GROUPS.map((group) => (
             <li key={group.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
               {/* Group header */}
@@ -192,7 +192,7 @@ export default function NotificationsSettingsPage() {
               </div>
 
               {/* Toggles */}
-              <ul className="list-none p-0 m-0 divide-y divide-gray-50">
+              <ul role="list" className="list-none p-0 m-0 divide-y divide-gray-50">
               {group.toggles.map(({ key, label, description, badge }) => (
                 <li key={key} className="flex items-center justify-between px-5 py-4 gap-4 hover:bg-gray-50/60 transition-colors">
                   <div className="min-w-0">

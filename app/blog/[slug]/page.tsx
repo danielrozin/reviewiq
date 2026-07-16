@@ -292,7 +292,7 @@ export default async function BlogPostPage({
             <p className="text-sm text-gray-600 mb-6">
               Top-rated products in related categories
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
+            <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
               {crossCategoryProducts.map((product) => {
                 const cat = getCategoryBySlug(product.categorySlug);
                 return (
@@ -330,7 +330,7 @@ export default async function BlogPostPage({
               })}
             </ul>
             {affinitySlugs.length > 0 && (
-              <ul className="flex flex-wrap gap-2 mt-4 list-none p-0 m-0">
+              <ul role="list" className="flex flex-wrap gap-2 mt-4 list-none p-0 m-0">
                 {affinitySlugs.slice(0, 3).map((s) => {
                   const cat = getCategoryBySlug(s);
                   if (!cat) return null;
@@ -356,7 +356,7 @@ export default async function BlogPostPage({
             <h2 id="blog-related-articles-heading" className="text-2xl font-bold text-gray-900 mb-6">
               Related Articles
             </h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
+            <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
               {relatedPosts.map((rp) => (
                 <li key={rp.id}>
                 <Link
