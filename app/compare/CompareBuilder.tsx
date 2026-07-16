@@ -80,7 +80,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
     <div ref={ref} className="relative w-full max-w-md" onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setOpen(false); }}>
       <input
         ref={inputRef}
-        type="text"
+        type="search"
         role="combobox"
         aria-expanded={open && query.length > 0}
         aria-controls={open && query.length > 0 ? "compare-product-listbox" : undefined}
@@ -90,6 +90,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
         onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
         onKeyDown={handleInputKeyDown}
+        autoComplete="off"
         aria-label="Search products to compare"
         placeholder="Search products to compare..."
         className="w-full border border-gray-400 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent"

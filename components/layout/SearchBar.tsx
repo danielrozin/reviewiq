@@ -176,7 +176,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
         </svg>
         <input
           ref={inputRef}
-          type="text"
+          type="search"
           role="combobox"
           aria-expanded={open}
           aria-autocomplete="list"
@@ -186,6 +186,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
           onChange={(e) => search(e.target.value)}
           onFocus={() => query.length >= 2 && results.length > 0 && setOpen(true)}
           onKeyDown={handleKeyDown}
+          autoComplete="off"
           aria-label="Search products, discussions, and categories"
           placeholder={placeholder || "Search products, discussions, categories..."}
           className={`w-full border border-gray-400 bg-gray-50 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent focus:bg-white transition-colors ${

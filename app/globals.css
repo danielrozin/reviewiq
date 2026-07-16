@@ -110,6 +110,12 @@
   to { opacity: 1; transform: scale(1); }
 }
 
+/* Suppress native clear button on search inputs — we use custom ones */
+[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 /* Respect user's motion preferences (WCAG 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
   html {

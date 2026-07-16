@@ -218,9 +218,10 @@ export function ProductSearch() {
           />
         </svg>
         <input
-          type="text"
+          type="search"
           value={query}
           onChange={(e) => setFilter("q", e.target.value)}
+          autoComplete="off"
           aria-label="Search by product name, brand, or keyword"
           placeholder="Search by product name, brand, or keyword..."
           className="w-full pl-12 pr-4 py-3 text-base border border-gray-400 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-brand-600 focus:border-transparent transition-colors"

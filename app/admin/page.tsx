@@ -539,7 +539,7 @@ export default function AdminDashboard() {
               <div className="relative flex-1 max-w-md">
                 <Search aria-hidden="true" className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
-                  type="text"
+                  type="search"
                   value={productSearch}
                   onChange={(e) => { setProductSearch(e.target.value); setProductPage(1); }}
                   placeholder="Search products..."
@@ -652,7 +652,7 @@ export default function AdminDashboard() {
               <div className="relative flex-1 max-w-md">
                 <Search aria-hidden="true" className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
-                  type="text"
+                  type="search"
                   value={reviewSearch}
                   onChange={(e) => { setReviewSearch(e.target.value); setReviewPage(1); }}
                   placeholder="Search reviews..."
