@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { AffiliateDisclosure } from "@/components/affiliate/AffiliateDisclosure";
 
 export function Footer() {
   return (
@@ -109,6 +110,16 @@ export function Footer() {
               Legal
             </h3>
             <ul className="space-y-2">
+              {/* The canonical affiliate + AI disclosure page. Its only other
+                  in-app link lives in the WhereToBuyPanel footnote, which renders
+                  only for products with live offers — so without this the page
+                  was reachable from /site-map alone. Labelled by its subject, not
+                  its title, to keep it distinct from Platform's "How It Works". */}
+              <li>
+                <Link href="/how-we-work" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
+                  Affiliate &amp; AI Disclosure
+                </Link>
+              </li>
               <li>
                 <Link href="/privacy" className="text-sm text-gray-500 hover:text-gray-900 transition-colors">
                   Privacy Policy
@@ -146,29 +157,36 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 mt-10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved.
-          </p>
-          <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-            >
-              Privacy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-            >
-              Terms
-            </Link>
-            <Link
-              href="/cookie-policy"
-              className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
-            >
-              Cookies
-            </Link>
+        <div className="border-t border-gray-200 mt-10 pt-8">
+          {/* FTC 16 CFR Part 255 wants the disclosure clear and conspicuous
+              wherever affiliate links appear. Rendering it in the footer makes it
+              site-wide and keeps it truthful even on pages with no live offers. */}
+          <AffiliateDisclosure source="how-we-work-link" className="mb-6 max-w-3xl" />
+
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-sm text-gray-500">
+              &copy; {new Date().getFullYear()} ReviewIQ. All rights reserved.
+            </p>
+            <div className="flex gap-6">
+              <Link
+                href="/privacy"
+                className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                Privacy
+              </Link>
+              <Link
+                href="/terms"
+                className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                Terms
+              </Link>
+              <Link
+                href="/cookie-policy"
+                className="text-sm text-gray-500 hover:text-gray-900 transition-colors"
+              >
+                Cookies
+              </Link>
+            </div>
           </div>
         </div>
       </div>
