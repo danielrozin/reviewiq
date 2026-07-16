@@ -236,7 +236,7 @@ export default function HomePage() {
           <Link
             href="/categories"
             aria-label="View all categories"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:inline-flex items-center py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all &rarr;
           </Link>
@@ -348,7 +348,7 @@ export default function HomePage() {
           <Link
             href="/community"
             aria-label="View all community discussions"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:inline-flex items-center py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all →
           </Link>
@@ -416,7 +416,7 @@ export default function HomePage() {
           <Link
             href="/community"
             aria-label="View all community discussions"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 inline-flex items-center py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             View all discussions →
           </Link>
@@ -438,7 +438,7 @@ export default function HomePage() {
             <Link
               href="/blog"
               aria-label="View all blog articles"
-              className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:inline-flex items-center py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
             >
               View all articles <span aria-hidden="true">&rarr;</span>
             </Link>
@@ -486,7 +486,7 @@ export default function HomePage() {
             <Link
               href="/blog"
               aria-label="View all blog articles"
-              className="text-sm font-medium text-brand-600 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+              className="text-sm font-medium text-brand-600 hover:text-brand-700 inline-flex items-center py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
             >
               View all articles &rarr;
             </Link>
@@ -514,7 +514,7 @@ export default function HomePage() {
           <Link
             href="/categories"
             aria-label="Browse all product categories"
-            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm font-medium text-brand-600 hover:text-brand-700 hidden sm:inline-flex items-center py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Browse all &rarr;
           </Link>

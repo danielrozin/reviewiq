@@ -51,7 +51,7 @@ export function RecentlyViewedStrip() {
             setItems([]);
           }}
           aria-label="Clear recently viewed products"
-          className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+          className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 transition-colors min-h-[44px] px-2 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
         >
           <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
