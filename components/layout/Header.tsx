@@ -59,12 +59,14 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2 shrink-0 ml-auto lg:ml-0">
-            <Link
-              href="/dashboard"
-              className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              Dashboard
-            </Link>
+            {session && (
+              <Link
+                href="/dashboard"
+                className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-500 hover:text-gray-900 rounded-lg hover:bg-gray-50 transition-colors"
+              >
+                Dashboard
+              </Link>
+            )}
             <Link
               href="/write-review"
               className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors"
