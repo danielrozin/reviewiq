@@ -285,7 +285,7 @@ export default function AARRRDashboard() {
           <h1 className="text-2xl font-bold text-gray-900">AARRR Pirate Metrics</h1>
           <a
             href="/admin/analytics"
-            className="text-sm text-blue-600 hover:text-blue-800 underline"
+            className="text-sm text-blue-600 hover:text-blue-800 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             General Analytics
           </a>

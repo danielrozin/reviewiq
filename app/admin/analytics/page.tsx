@@ -142,19 +142,19 @@ export default function ReviewIQAnalytics() {
           <h1 className="text-2xl font-bold text-gray-900">ReviewIQ Analytics</h1>
           <a
             href="/admin/analytics/aarrr"
-            className="text-sm text-emerald-600 hover:text-emerald-800 font-medium underline"
+            className="text-sm text-emerald-600 hover:text-emerald-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             AARRR Pirate Metrics
           </a>
           <a
             href="/admin/analytics/okr"
-            className="text-sm text-violet-600 hover:text-violet-800 font-medium underline"
+            className="text-sm text-violet-600 hover:text-violet-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             OKR Dashboard
           </a>
           <a
             href="/admin/analytics/weekly-report"
-            className="text-sm text-indigo-600 hover:text-indigo-800 font-medium underline"
+            className="text-sm text-indigo-600 hover:text-indigo-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
           >
             Weekly Report
           </a>
