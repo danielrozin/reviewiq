@@ -5,7 +5,7 @@ import { getProductsByCategory } from "@/data/products";
 import { ProductCard } from "@/components/product/ProductCard";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { buildMetadata, fitTitle, truncateAtWord, ogImageForSegment } from "@/lib/seo/metadata";
-import { productListSchema, howToSchema } from "@/lib/schema/jsonld";
+import { categoryHubSchema, howToSchema } from "@/lib/schema/jsonld";
 import { categories } from "@/data/categories";
 import { getBuyingGuide } from "@/data/buying-guides";
 import { getAllComparisonPairs } from "@/data/comparisons";
@@ -50,7 +50,12 @@ export default async function CategoryPage({ params }: Props) {
   const category = getCategoryBySlug(slug);
   if (!category) notFound();
 
-  const categoryProducts = getProductsByCategory(slug);
+  // Sort once, up front: the ItemList positions must match the order the user
+  // actually sees, and sorting inside the JSX below left the schema listing the
+  // unsorted order.
+  const categoryProducts = [...getProductsByCategory(slug)].sort(
+    (a, b) => b.smartScore - a.smartScore
+  );
   const buyingGuide = getBuyingGuide(slug);
 
   // Internal linking: top comparison pages within this category (funnels
@@ -76,9 +81,7 @@ export default async function CategoryPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(
-            productListSchema(categoryProducts, category.name)
-          ),
+          __html: JSON.stringify(categoryHubSchema(categoryProducts, category)),
         }}
       />
       {buyingGuide && (
@@ -111,11 +114,9 @@ export default async function CategoryPage({ params }: Props) {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {categoryProducts
-          .sort((a, b) => b.smartScore - a.smartScore)
-          .map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        {categoryProducts.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
 
       {/* Buying Guide */}

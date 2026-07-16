@@ -12,6 +12,7 @@ import {
   reviewSchema,
   faqSchema,
   categoriesHubSchema,
+  categoryHubSchema,
   videoObjectSchema,
   videoObjectListSchema,
   analysisAuthorSchema,
@@ -262,6 +263,59 @@ describe('categoriesHubSchema', () => {
     // segment layout would claim each /category/[slug] page is the whole collection.
     const schema = categoriesHubSchema(categories)
     expect(new URL(schema.url).pathname).toBe('/categories')
+  })
+})
+
+describe('categoryHubSchema', () => {
+  const category = {
+    name: 'Robot Vacuums',
+    slug: 'robot-vacuums',
+    description: 'The best robot vacuums, ranked.',
+  } as any
+  const categoryProducts = [
+    { name: 'Roomba j7', slug: 'roomba-j7', categorySlug: 'robot-vacuums' },
+    { name: 'Roborock S8', slug: 'roborock-s8', categorySlug: 'robot-vacuums' },
+  ] as any
+
+  it('wraps the product ItemList in a CollectionPage for the category hub', () => {
+    const schema = categoryHubSchema(categoryProducts, category)
+    expect(schema['@type']).toBe('CollectionPage')
+    // The url is what ties the node to the document; a bare ItemList had none.
+    expect(schema.url).toContain('/category/robot-vacuums')
+    expect(schema.mainEntity['@type']).toBe('ItemList')
+    expect(schema.mainEntity.numberOfItems).toBe(2)
+  })
+
+  it('lists every product in order, linking to its product page', () => {
+    const schema = categoryHubSchema(categoryProducts, category)
+    expect(schema.mainEntity.itemListElement).toHaveLength(2)
+    expect(schema.mainEntity.itemListElement[0].position).toBe(1)
+    expect(schema.mainEntity.itemListElement[0].name).toBe('Roomba j7')
+    expect(schema.mainEntity.itemListElement[1].url).toContain(
+      '/category/robot-vacuums/roborock-s8'
+    )
+  })
+
+  it('references Organization and WebSite by @id instead of re-declaring them', () => {
+    const schema = categoryHubSchema(categoryProducts, category)
+    expect(schema.isPartOf['@id']).toContain('#website')
+    expect(schema.publisher['@id']).toContain('#organization')
+  })
+
+  it('scopes the hub url to the category it was given, never a product page', () => {
+    // Guards the leak this schema class invites (PR #57 / DAN-1852): emitted from a
+    // shared segment layout, a CollectionPage would claim each /category/[slug]/[product]
+    // detail page is the whole collection.
+    const schema = categoryHubSchema(categoryProducts, category)
+    expect(new URL(schema.url).pathname).toBe('/category/robot-vacuums')
+  })
+
+  it('falls back to a generated description when the category has none', () => {
+    const schema = categoryHubSchema(categoryProducts, {
+      ...category,
+      description: '',
+    } as any)
+    expect(schema.description).toContain('Robot Vacuums')
   })
 })
 
