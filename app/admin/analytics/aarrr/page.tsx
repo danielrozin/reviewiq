@@ -568,7 +568,7 @@ export default function AARRRDashboard() {
           <div className="bg-white border border-gray-200 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Activation Funnel (30d new users)</h3>
             {data.activation.activationFunnel.length > 0 ? (
-              <ol aria-label="Activation funnel steps" className="space-y-3 list-none p-0 m-0">
+              <ol role="list" aria-label="Activation funnel steps" className="space-y-3 list-none p-0 m-0">
                 {data.activation.activationFunnel.map((step, i) => {
                   const maxCount = data.activation.activationFunnel[0].count;
                   const pct = maxCount > 0 ? Math.round((step.count / maxCount) * 100) : 0;

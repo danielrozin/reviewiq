@@ -245,7 +245,7 @@ export default function WeeklyReportPage() {
                 {data.topProducts.length === 0 ? (
                   <p className="text-xs text-gray-500">No products yet</p>
                 ) : (
-                  <ol aria-labelledby="weekly-top-products-heading" className="space-y-1.5 list-none p-0 m-0">
+                  <ol role="list" aria-labelledby="weekly-top-products-heading" className="space-y-1.5 list-none p-0 m-0">
                     {data.topProducts.map((p, i) => (
                       <li key={p.slug} className="flex items-center gap-2 text-xs">
                         <span aria-hidden="true" className="w-5 text-gray-500 font-medium">{i + 1}.</span>
@@ -259,7 +259,7 @@ export default function WeeklyReportPage() {
 
               <section aria-labelledby="weekly-trust-heading" className="bg-white border border-gray-200 rounded-xl p-5">
                 <h3 id="weekly-trust-heading" className="text-sm font-bold text-gray-700 mb-3">Trust Level Distribution</h3>
-                <ul aria-labelledby="weekly-trust-heading" className="space-y-1.5 list-none p-0 m-0">
+                <ul role="list" aria-labelledby="weekly-trust-heading" className="space-y-1.5 list-none p-0 m-0">
                   {data.trustLevels.map((t) => (
                     <li key={t.level} className="flex items-center gap-2 text-xs">
                       <span className="flex-1 text-gray-700 capitalize">{t.level}</span>

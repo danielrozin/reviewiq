@@ -450,7 +450,7 @@ export default function AdminDashboard() {
               <div className="bg-white border border-gray-200 rounded-xl p-6">
                 <h3 className="text-sm font-semibold text-gray-900 mb-4">Recent Signups</h3>
                 {stats.recentSignups.length > 0 ? (
-                  <ul className="space-y-2 list-none p-0 m-0">
+                  <ul role="list" className="space-y-2 list-none p-0 m-0">
                     {stats.recentSignups.slice(0, 8).map((u) => (
                       <li key={u.id} className="flex items-center justify-between text-sm">
                         <div>
@@ -473,7 +473,7 @@ export default function AdminDashboard() {
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Recent Reviews</h3>
               {stats.recentReviews.length > 0 ? (
-                <ul className="space-y-3 list-none p-0 m-0">
+                <ul role="list" className="space-y-3 list-none p-0 m-0">
                   {stats.recentReviews.map((r) => (
                     <li key={r.id} className="flex items-start gap-3 pb-3 border-b border-gray-50 last:border-0">
                       <div className="flex-1 min-w-0">
