@@ -258,14 +258,14 @@ export function WriteReviewForm() {
 
       trackReviewSubmitted(selectedProduct, rating);
       setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     } catch {
       // Offline fallback
       const existing = JSON.parse(localStorage.getItem("pending_reviews") || "[]");
       existing.push(reviewData);
       localStorage.setItem("pending_reviews", JSON.stringify(existing));
       setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     } finally {
       setIsSubmitting(false);
     }
