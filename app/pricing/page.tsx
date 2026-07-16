@@ -106,7 +106,7 @@ export default function PricingPage() {
 
       {/* Social proof bar */}
       <section aria-label="Customer proof" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
-        <ul className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600 list-none p-0 m-0 px-6 py-5">
+        <ul role="list" className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600 list-none p-0 m-0 px-6 py-5">
           <li className="flex items-center gap-3">
             <div className="flex -space-x-2" aria-hidden="true">
               {["A","B","C","D"].map((l) => (
@@ -136,7 +136,7 @@ export default function PricingPage() {
         </ul>
 
         {/* Testimonials row */}
-        <ul className="grid sm:grid-cols-3 gap-4 mt-4 list-none p-0 m-0">
+        <ul role="list" className="grid sm:grid-cols-3 gap-4 mt-4 list-none p-0 m-0">
           {[
             { quote: "Saved me from buying a $600 vacuum that reviewers called a fire hazard.", name: "Sarah K.", role: "Pro member" },
             { quote: "The AI summaries are scary good. I can read a product in 30 seconds.", name: "Marcus T.", role: "Pro member since 2024" },

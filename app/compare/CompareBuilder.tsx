@@ -175,7 +175,7 @@ function CompareContent() {
         </p>
 
         {/* Feature chips */}
-        <ul className="grid grid-cols-3 gap-3 mb-8 mt-6 list-none p-0 m-0">
+        <ul role="list" className="grid grid-cols-3 gap-3 mb-8 mt-6 list-none p-0 m-0">
           {[
             { icon: "📊", label: "SmartScore breakdown" },
             { icon: "🤖", label: "AI verdict" },
@@ -191,7 +191,7 @@ function CompareContent() {
         {/* Suggested comparisons */}
         <section aria-label="Popular comparisons" className="border-t border-gray-100 pt-6">
           <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
-          <ul className="flex flex-col gap-2 list-none p-0 m-0">
+          <ul role="list" className="flex flex-col gap-2 list-none p-0 m-0">
             {SUGGESTED_PAIRS.map((pair) => (
               <li key={pair.ids}>
               <a

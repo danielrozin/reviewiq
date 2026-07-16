@@ -15,7 +15,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <ul className="space-y-3 list-none p-0 m-0">
+    <ul role="list" className="space-y-3 list-none p-0 m-0">
       {faqs.map((faq, i) => {
         const isOpen = openIndex === i;
         const btnId = `pricing-faq-btn-${i}`;
