@@ -115,7 +115,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
           ))}
         </ul>
       ) : (
-        <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 grid-stagger list-none" aria-label={`${sorted.length} product${sorted.length !== 1 ? "s" : ""}, sorted by ${SORT_OPTIONS.find(o => o.key === sortKey)?.label ?? sortKey}`}>
+        <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 grid-stagger list-none" aria-label={`${sorted.length} product${sorted.length !== 1 ? "s" : ""}, sorted by ${SORT_OPTIONS.find(o => o.key === sortKey)?.label ?? sortKey}`}>
           {sorted.map((product, index) => (
             <li key={product.id} className="relative">
               {/* Top-3 rank badge — only meaningful when sorted by SmartScore */}
