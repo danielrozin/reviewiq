@@ -52,6 +52,45 @@ export function fitTitle(candidates: string[]): string {
 }
 
 /**
+ * Drop a trailing category descriptor from a product name: "Colgate hum Smart Electric
+ * Toothbrush" in Electric Toothbrushes becomes "Colgate hum Smart". Only safe where the
+ * category is already established by the surrounding page — on a comparison of two
+ * toothbrushes the word "Toothbrush" in each name buys nothing but eats SERP budget.
+ *
+ * The suffix is matched against the category name itself rather than a hand-written stop
+ * list, so it can only ever remove a word the page already states. Names that don't end in
+ * their category ("Philips Sonicare DiamondClean Smart 9700") come back untouched.
+ *
+ * Only the LONGEST matching phrase is ever removed, and a rejected match ends the search
+ * instead of falling through to a shorter one: dropping "Fryer" but not "Air" off "Ninja
+ * Air Fryer" would invent "Ninja Air", a product that does not exist. A name we cannot
+ * shorten honestly is returned whole.
+ */
+export function dropCategorySuffix(name: string, categoryName?: string): string {
+  if (!categoryName) return name;
+  // "Batteries" -> "Battery", "Toothbrushes" -> "Toothbrush" (a bare `s$` rule would
+  // leave "Toothbrushe" and silently match nothing), "Laptops" -> "Laptop".
+  const singular = categoryName
+    .replace(/ies$/, "y")
+    .replace(/(ch|sh|[sxz])es$/, "$1")
+    .replace(/([^s])s$/, "$1");
+  const words = singular.split(" ");
+  for (let i = 0; i < words.length; i++) {
+    const phrase = words.slice(i).join(" ");
+    const escaped = phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    // A name may carry either the singular ("…Electric Toothbrush") or the plural
+    // ("…Wireless Headphones") form of its category.
+    const trailing = new RegExp(`\\s+${escaped}(?:e?s)?$`, "i");
+    if (!trailing.test(name)) continue;
+    const stripped = name.replace(trailing, "").trim();
+    // Never strip down to a bare brand — "Ninja" alone is not a product. Stop here rather
+    // than trying a shorter phrase, which would mangle the name instead of shortening it.
+    return stripped.includes(" ") ? stripped : name;
+  }
+  return name;
+}
+
+/**
  * Trim free text (a thread body, a user bio) to `max` characters on a word boundary,
  * with an ellipsis standing in for what was cut. Used where the copy is authored by
  * someone else and cannot be re-written into a shorter candidate.

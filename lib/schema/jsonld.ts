@@ -75,6 +75,40 @@ export function aboutPageSchema() {
   };
 }
 
+// The homepage was the last content surface with no page-level node — the root
+// layout emits only the site-wide Organization/WebSite entities, so Google saw
+// the single most important URL as an untyped page. Emit a WebPage (the site's
+// primary page) that is `about` the canonical Organization and carries an
+// ItemList of the "Highest Rated Products" block the page visibly renders. The
+// ItemList mirrors the exact top-N products and their on-page links (top by
+// SmartScore) so the markup never claims content the crawler cannot see —
+// matching the hub pattern used for /products, /compare, /community, and /faq.
+export function homePageSchema(topProducts: Product[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}/#webpage`,
+    url: SITE_URL,
+    name: "ReviewIQ — AI-Powered Product Reviews & Comparisons",
+    description:
+      "AI SmartScores from thousands of verified buyer reviews — honest summaries and side-by-side comparisons across electronics, appliances & more.",
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": ORG_ID },
+    primaryImageOfPage: BRAND_IMAGE,
+    mainEntity: {
+      "@type": "ItemList",
+      name: "Highest Rated Products",
+      numberOfItems: topProducts.length,
+      itemListElement: topProducts.map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: productDisplayName(product),
+        url: `${SITE_URL}/category/${product.categorySlug}/${product.slug}`,
+      })),
+    },
+  };
+}
+
 export function websiteSchema() {
   return {
     "@context": "https://schema.org",

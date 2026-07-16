@@ -5,6 +5,7 @@ import { describe, it, expect } from 'vitest'
 import {
   organizationSchema,
   aboutPageSchema,
+  homePageSchema,
   websiteSchema,
   breadcrumbSchema,
   productSchema,
@@ -260,6 +261,32 @@ describe('faqHubSchema', () => {
     expect(schema.mainEntity.itemListElement[0].position).toBe(1)
     expect(schema.mainEntity.itemListElement[0].name).toBe('Trustpilot FAQ')
     expect(schema.mainEntity.itemListElement[1].url).toContain('/faq/yelp')
+  })
+})
+
+describe('homePageSchema', () => {
+  const top = [
+    { name: 'S8 MaxV Ultra', slug: 'roborock-s8-maxv-ultra', brand: 'Roborock', categorySlug: 'robot-vacuums' },
+    { name: 'MacBook Pro 16 M3 Max', slug: 'macbook-pro-16-m3-max', brand: 'Apple', categorySlug: 'laptops' },
+  ] as any
+
+  it('is a WebPage about the canonical Organization, part of the WebSite', () => {
+    const schema = homePageSchema(top)
+    expect(schema['@type']).toBe('WebPage')
+    expect(schema['@id']).toMatch(/#webpage$/)
+    expect(schema.about['@id']).toMatch(/#organization$/)
+    expect(schema.isPartOf['@id']).toMatch(/#website$/)
+  })
+
+  it('carries an ItemList that mirrors the visible top-rated products and their money-page links', () => {
+    const schema = homePageSchema(top)
+    expect(schema.mainEntity['@type']).toBe('ItemList')
+    expect(schema.mainEntity.numberOfItems).toBe(2)
+    expect(schema.mainEntity.itemListElement[0].position).toBe(1)
+    expect(schema.mainEntity.itemListElement[0].name).toBe('Roborock S8 MaxV Ultra')
+    expect(schema.mainEntity.itemListElement[0].url).toContain('/category/robot-vacuums/roborock-s8-maxv-ultra')
+    // brand is not double-prefixed when the name already leads with it
+    expect(schema.mainEntity.itemListElement[1].name).toBe('Apple MacBook Pro 16 M3 Max')
   })
 })
 

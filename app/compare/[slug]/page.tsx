@@ -10,6 +10,7 @@ import { VerdictCard } from "@/components/comparison/VerdictCard";
 import { BestForComparison } from "@/components/comparison/BestForComparison";
 import { PriceComparison } from "@/components/comparison/PriceComparison";
 import { buildMetadata, fitTitle, ogImageForSegment } from "@/lib/seo/metadata";
+import { shortProductName } from "@/lib/seo/short-product-name";
 import { comparisonSchema } from "@/lib/schema/jsonld";
 import { AnalysisDisclosure } from "@/components/product/AnalysisDisclosure";
 import { FAQSection } from "@/components/product/FAQSection";
@@ -45,11 +46,15 @@ export async function generateMetadata({ params }: Props) {
   // Same length-aware degradation for the title. "A vs B" is the keyword the page
   // ranks for, so it heads every candidate and is the floor we never trim past —
   // the year and the "Which Is Better?" hook are what get dropped for long pairs.
+  // Once even bare "A vs B" overflows, the last thing left to drop is the category
+  // word each name repeats, which this page's own breadcrumb already says.
+  const shortNames = `${shortProductName(productA)} vs ${shortProductName(productB)}`;
   const title = fitTitle([
     `${names} (${year}) — Which Is Better?`,
     `${names} — Which Is Better?`,
     `${names} (${year})`,
     names,
+    shortNames,
   ]);
 
   return buildMetadata({
