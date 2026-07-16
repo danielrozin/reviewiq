@@ -77,7 +77,7 @@ export default function HomePage() {
             </div>
 
             {/* ICP Persona Tiles — helps AI engines understand who this serves */}
-            <ul className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left animate-fade-up delay-300 list-none p-0 m-0">
+            <ul role="list" className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left animate-fade-up delay-300 list-none p-0 m-0">
               {[
                 { icon: "🐾", label: "Pet owner?", desc: "Robot vacuums for pet hair", href: "/category/robot-vacuums" },
                 { icon: "🛍️", label: "First-time buyer?", desc: "Buying guides", href: "/categories" },
@@ -114,7 +114,7 @@ export default function HomePage() {
             </div>
 
             {/* Hero social proof — above fold trust nudge */}
-            <ul className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 animate-fade-up delay-500 list-none p-0 m-0">
+            <ul role="list" className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 animate-fade-up delay-500 list-none p-0 m-0">
               <li className="flex items-center gap-2">
                 {/* Avatar stack */}
                 <div aria-hidden="true" className="flex -space-x-2">
@@ -241,7 +241,7 @@ export default function HomePage() {
             View all &rarr;
           </Link>
         </header>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 list-none p-0 m-0">
+        <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 list-none p-0 m-0">
           {categories.map((cat) => (
             <li key={cat.id}>
             <Link
@@ -272,7 +272,7 @@ export default function HomePage() {
               Top SmartScores across all categories
             </p>
           </header>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
+          <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 list-none p-0 m-0">
             {topProducts.map((product, index) => (
               <li key={product.id}>
               <Link
@@ -353,7 +353,7 @@ export default function HomePage() {
             View all →
           </Link>
         </header>
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0">
+        <ul role="list" className="grid grid-cols-1 md:grid-cols-2 gap-4 list-none p-0 m-0">
           {trendingDiscussions.map((thread) => {
             const author = getUserById(thread.authorId);
             const netVotes = thread.upvotes - thread.downvotes;
@@ -443,7 +443,7 @@ export default function HomePage() {
               View all articles <span aria-hidden="true">&rarr;</span>
             </Link>
           </header>
-          <ul className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
+          <ul role="list" className="grid grid-cols-1 md:grid-cols-3 gap-6 list-none p-0 m-0">
             {getRecentBlogPosts(3).map((post) => (
               <li key={post.id}>
               <article aria-labelledby={`home-blog-${post.id}-title`}>
@@ -526,7 +526,7 @@ export default function HomePage() {
           const [featured, ...rest] = picks;
           if (!featured) return null;
           return (
-            <ol className="grid grid-cols-1 lg:grid-cols-5 gap-5 list-none p-0 m-0">
+            <ol role="list" className="grid grid-cols-1 lg:grid-cols-5 gap-5 list-none p-0 m-0">
               {/* Featured pick — takes 3/5 columns */}
               <li className="lg:col-span-3">
               <Link
@@ -574,7 +574,7 @@ export default function HomePage() {
 
               {/* Two smaller picks — take 2/5 columns */}
               <li className="lg:col-span-2">
-              <ul className="flex flex-col gap-5 h-full list-none p-0 m-0">
+              <ul role="list" className="flex flex-col gap-5 h-full list-none p-0 m-0">
                 {rest.map((product, i) => (
                   <li key={product.id} className="flex-1">
                   <Link
@@ -633,7 +633,7 @@ export default function HomePage() {
             We built a review platform you can actually trust.
           </p>
         </header>
-        <ol className="grid grid-cols-1 md:grid-cols-3 gap-8 relative list-none p-0 m-0">
+        <ol role="list" className="grid grid-cols-1 md:grid-cols-3 gap-8 relative list-none p-0 m-0">
           {/* Connector lines on desktop */}
           <div className="hidden md:block absolute top-10 left-1/3 right-1/3 h-0.5 bg-gradient-to-r from-brand-100 via-brand-200 to-brand-100 pointer-events-none" aria-hidden="true" />
 
@@ -699,7 +699,7 @@ export default function HomePage() {
         <h2 id="home-faq-heading" className="text-2xl font-bold text-gray-900 text-center mb-8">
           Frequently Asked Questions
         </h2>
-        <ul className="space-y-4 list-none p-0 m-0">
+        <ul role="list" className="space-y-4 list-none p-0 m-0">
           {[
             { q: "How does ReviewIQ verify buyer reviews?", a: "ReviewIQ uses receipt uploads and retailer order verification to confirm purchases before a review is published. Every review displays its verification tier so you always know how trustworthy it is." },
             { q: "Is ReviewIQ free to use?", a: "Yes. Browsing product reviews, SmartScores, buying guides, and side-by-side comparisons is completely free. A Pro plan unlocks advanced filters, price tracking alerts, and comparison tools." },

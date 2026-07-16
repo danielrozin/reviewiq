@@ -178,7 +178,7 @@ export default function AboutPage() {
       </header>
 
       {/* Stats bar */}
-      <ul className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20 list-none p-0 m-0">
+      <ul role="list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20 list-none p-0 m-0">
         {STATS.map((s) => (
           <li key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -199,7 +199,7 @@ export default function AboutPage() {
         <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We were tired of reading hundreds of reviews and still not knowing if a product was right for us. A 4.2-star rating tells you almost nothing. What we really wanted to know:
         </p>
-        <ol className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0 m-0">
+        <ol role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0 m-0">
           {[
             "What are the recurring problems after 6+ months of use?",
             "Who is this product really best for — and who should avoid it?",
@@ -220,7 +220,7 @@ export default function AboutPage() {
       <section aria-labelledby="about-principles-heading" className="mb-20" data-speakable="about-principles">
         <h2 id="about-principles-heading" className="text-2xl font-bold text-gray-900 mb-2">Our principles</h2>
         <p className="text-gray-600 mb-8 max-w-2xl">Four rules we never break.</p>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-5 list-none p-0 m-0">
+        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-5 list-none p-0 m-0">
           {PRINCIPLES.map((p) => (
             <li key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -244,7 +244,7 @@ export default function AboutPage() {
         <p className="text-gray-600 mb-8 max-w-2xl leading-relaxed">
           We&apos;re a small, opinionated team with strong feelings about how product information should work.
         </p>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 list-none p-0 m-0">
+        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 list-none p-0 m-0">
           {TEAM.map((member) => (
             <li key={member.name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />

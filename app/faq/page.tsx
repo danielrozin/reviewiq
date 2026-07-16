@@ -85,7 +85,7 @@ export default function FAQIndexPage() {
         </p>
       </header>
 
-      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl list-none p-0">
+      <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl list-none p-0">
         {faqPages.map((page) => (
           <li key={page.slug}>
           <Link

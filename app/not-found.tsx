@@ -51,7 +51,7 @@ export default function NotFound() {
         <h2 id="not-found-popular-cats-heading" className="text-sm font-semibold text-gray-600 uppercase tracking-wider text-center mb-5">
           Popular categories
         </h2>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 list-none p-0 m-0">
+        <ul role="list" className="grid grid-cols-2 sm:grid-cols-3 gap-3 list-none p-0 m-0">
           {popularCategories.map((cat) => (
             <li key={cat.slug}>
               <Link

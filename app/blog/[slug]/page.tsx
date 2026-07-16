@@ -246,7 +246,7 @@ export default async function BlogPostPage({
               </div>
               <h2 id="blog-top-products-heading" className="text-2xl font-bold text-gray-900">Top {post.categoryName} on ReviewIQ</h2>
             </div>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
+            <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
               {categoryProducts.map((product) => (
                 <li key={product.id}>
                 <Link
