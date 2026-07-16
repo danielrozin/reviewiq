@@ -116,7 +116,7 @@ export default async function FAQPage({ params }: Props) {
         <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">
           Related Guides
         </h2>
-        <ul className="flex flex-wrap gap-3">
+        <ul role="list" className="flex flex-wrap gap-3 list-none p-0 m-0">
           {page.relatedLinks.map((link) => (
             <li key={link.href}>
               <Link
@@ -136,7 +136,7 @@ export default async function FAQPage({ params }: Props) {
           <h2 className="text-sm font-semibold text-gray-600 uppercase tracking-wider mb-4">
             More FAQ Topics
           </h2>
-          <ul className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <ul role="list" className="grid grid-cols-1 sm:grid-cols-3 gap-4 list-none p-0 m-0">
             {faqPages
               .filter((p) => p.slug !== page.slug)
               .map((p) => (

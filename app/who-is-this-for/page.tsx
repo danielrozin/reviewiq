@@ -276,7 +276,7 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-for-heading" className="text-2xl font-bold text-gray-900 mb-8">
           This is for you if&hellip;
         </h2>
-        <ul className="space-y-6 max-w-4xl list-none p-0">
+        <ul role="list" className="space-y-6 max-w-4xl list-none p-0">
           {personas.map((persona, pi) => (
             <li key={persona.title}>
             <article aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
@@ -294,7 +294,7 @@ export default function WhoIsThisForPage() {
                 </p>
                 <div className="mb-4">
                   <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Search queries you&rsquo;d use:</p>
-                  <ul className="flex flex-wrap gap-2">
+                  <ul role="list" className="flex flex-wrap gap-2">
                     {persona.queries.map((query) => (
                       <li key={query} className="text-xs bg-gray-50 text-gray-600 border border-gray-200 px-3 py-1 rounded-full font-mono">
                         &ldquo;{query}&rdquo;
@@ -323,7 +323,7 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-not-heading" className="text-2xl font-bold text-gray-900 mb-8">
           This is NOT for you if&hellip;
         </h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0">
+        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-4 list-none p-0">
           {notForYou.map((item) => (
             <li key={item.title} className="bg-white border border-gray-100 rounded-xl p-5 hover:border-red-100 hover:bg-red-50/30 transition-colors">
               <h3 className="font-semibold text-gray-900 mb-2 flex items-start gap-2.5">
@@ -347,7 +347,7 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-usecases-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Real-world use cases
         </h2>
-        <ol className="space-y-6 list-none p-0">
+        <ol role="list" className="space-y-6 list-none p-0">
           {useCases.map((uc, i) => (
             <li key={i} className="flex gap-5">
               <div className="shrink-0">
@@ -380,7 +380,7 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-howitworks-heading" className="text-2xl font-bold text-gray-900 mb-8">
           How it works
         </h2>
-        <ol className="space-y-8 list-none p-0">
+        <ol role="list" className="space-y-8 list-none p-0">
           {steps.map((step) => (
             <li key={step.number} className="flex gap-5">
               <div className="shrink-0">
@@ -406,7 +406,7 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-proof-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Proof with numbers
         </h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
+        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
           {stats.map((stat) => (
             <li key={stat.value}>
               <p className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</p>
@@ -421,7 +421,7 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-faq-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Frequently asked questions
         </h2>
-        <ul className="space-y-6 list-none p-0">
+        <ul role="list" className="space-y-6 list-none p-0">
           {faqItems.map((item) => (
             <li key={item.question}>
             <details className="group border border-gray-100 rounded-xl">

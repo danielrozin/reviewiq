@@ -176,7 +176,7 @@ export default async function DashboardPage() {
             <h2 id="dashboard-badges-heading" className="text-sm font-semibold text-gray-900 mb-3">
               Your Badges
             </h2>
-            <ul className="flex flex-wrap gap-1.5 list-none p-0 m-0">
+            <ul role="list" className="flex flex-wrap gap-1.5 list-none p-0 m-0">
               {user.badges.map((badge) => (
                 <li key={badge}>
                   <TrustBadge badge={badge as UserBadge} size="md" />

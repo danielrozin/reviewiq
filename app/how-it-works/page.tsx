@@ -190,7 +190,7 @@ export default function HowItWorksPage() {
                 <p className="text-gray-600 leading-relaxed mb-4">
                   {step.description}
                 </p>
-                <ul className="grid sm:grid-cols-2 gap-2">
+                <ul role="list" className="grid sm:grid-cols-2 gap-2 list-none p-0 m-0">
                   {step.details.map((detail, i) => (
                     <li
                       key={i}
