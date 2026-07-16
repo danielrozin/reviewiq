@@ -474,17 +474,34 @@ export function categoriesHubSchema(categories: Category[]) {
   };
 }
 
-export function productListSchema(products: Product[], categoryName: string) {
+// The /category/[slug] hubs are the money pages — the entry point to every
+// product page — yet they emitted a bare ItemList belonging to no page and
+// carrying no url, so nothing tied the list to the document it described. Same
+// class categoriesHubSchema fixes for /categories: wrap the ItemList in a
+// CollectionPage that names its own url and references the canonical
+// Organization / WebSite by @id rather than re-declaring them.
+export function categoryHubSchema(products: Product[], category: Category) {
   return {
     "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: `Best ${categoryName}`,
-    itemListElement: products.map((p, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: p.name,
-      url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
-    })),
+    "@type": "CollectionPage",
+    name: `Best ${category.name}`,
+    description:
+      category.description ||
+      `The best ${category.name} ranked by SmartScore from verified buyer reviews.`,
+    url: `${SITE_URL}/category/${category.slug}`,
+    isPartOf: { "@id": WEBSITE_ID },
+    publisher: { "@id": ORG_ID },
+    mainEntity: {
+      "@type": "ItemList",
+      name: `Best ${category.name}`,
+      numberOfItems: products.length,
+      itemListElement: products.map((p, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: p.name,
+        url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
+      })),
+    },
   };
 }
 
