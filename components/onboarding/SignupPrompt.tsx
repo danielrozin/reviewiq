@@ -86,7 +86,7 @@ export function SignupPrompt() {
           ref={closeRef}
           type="button"
           onClick={dismissSignup}
-          className="absolute top-3 right-3 p-1.5 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+          className="absolute top-3 right-3 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           aria-label="Close sign-up prompt"
         >
           <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -130,7 +130,7 @@ export function SignupPrompt() {
           <button
             type="button"
             onClick={dismissSignup}
-            className="w-full px-5 py-2.5 text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-xl"
+            className="w-full px-5 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-gray-600 hover:text-gray-800 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-xl"
           >
             Maybe later
           </button>
