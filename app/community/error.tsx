@@ -22,7 +22,7 @@ export default function CommunityError({
         <button
           type="button"
           onClick={reset}
-          className="inline-flex px-6 py-3 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+          className="inline-flex items-center px-6 py-3 min-h-[44px] bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         >
           Try again
         </button>

@@ -715,7 +715,7 @@ export function WriteReviewForm() {
             <button
               type="button"
               onClick={goBack}
-              className="px-5 py-3 min-h-[44px] text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-lg"
+              className="px-5 py-3 min-h-[44px] touch-manipulation text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-lg"
             >
               Back
             </button>
@@ -728,7 +728,7 @@ export function WriteReviewForm() {
               type="button"
               onClick={goNext}
               disabled={!canProceed}
-              className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
+              className={`inline-flex items-center gap-2 px-6 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
                 canProceed
                   ? "bg-brand-600 text-white hover:bg-brand-700"
                   : "bg-gray-100 text-gray-400 cursor-not-allowed"
@@ -750,7 +750,7 @@ export function WriteReviewForm() {
                 disabled={!canProceed || isSubmitting}
                 aria-busy={isSubmitting}
                 aria-label={isSubmitting ? "Submitting your review, please wait" : "Submit Review"}
-                className={`inline-flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
+                className={`inline-flex items-center gap-2 px-6 py-2.5 min-h-[44px] rounded-xl text-sm font-semibold transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600 ${
                   canProceed && !isSubmitting
                     ? "bg-brand-600 text-white hover:bg-brand-700"
                     : "bg-gray-100 text-gray-400 cursor-not-allowed"

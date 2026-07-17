@@ -77,7 +77,7 @@ export function PricingTiers() {
           disabled
           aria-disabled="true"
           aria-label="Free — Current Plan"
-          className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-gray-100 text-gray-600 cursor-default"
+          className="mt-8 w-full py-3 px-6 min-h-[44px] rounded-xl text-sm font-semibold bg-gray-100 text-gray-600 cursor-default focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           Current Plan
         </button>
@@ -131,7 +131,7 @@ export function PricingTiers() {
           onClick={handleSubscribe}
           disabled={loading}
           aria-busy={loading}
-          className="mt-8 w-full py-3 px-6 rounded-xl text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 transition-colors disabled:opacity-50 disabled:cursor-wait inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+          className="mt-8 w-full py-3 px-6 min-h-[44px] rounded-xl text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 transition-colors touch-manipulation disabled:opacity-50 disabled:cursor-wait inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         >
           {loading ? (
             <>
