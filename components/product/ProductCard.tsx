@@ -92,8 +92,11 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
             </span>
             <span className="text-xs text-gray-600">verified buyers</span>
           </div>
-          <div className="text-sm font-medium text-gray-600">
-            ${product.priceRange.min}–${product.priceRange.max}
+          <div
+            className="text-sm font-medium text-gray-600"
+            aria-label={`Price range: $${product.priceRange.min} to $${product.priceRange.max}`}
+          >
+            <span aria-hidden="true">${product.priceRange.min}–${product.priceRange.max}</span>
           </div>
         </div>
 

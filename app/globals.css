@@ -7,11 +7,17 @@
 @layer base {
   html {
     @apply antialiased;
-    scroll-behavior: smooth;
     scroll-padding-top: 4rem; /* matches sticky h-16 header — prevents focus obscured by header (WCAG 2.4.11) */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Only enable smooth scrolling when the user hasn't requested reduced motion (WCAG 2.3.3) */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
   }
   body {
     @apply bg-white text-gray-900 font-sans;
@@ -116,11 +122,8 @@
   appearance: none;
 }
 
-/* Respect user's motion preferences (WCAG 2.3.3) */
+/* Suppress all animations/transitions when the user requests reduced motion (WCAG 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

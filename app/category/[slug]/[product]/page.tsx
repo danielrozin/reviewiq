@@ -210,8 +210,11 @@ export default async function ProductPage({ params }: Props) {
               <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />
 
               <div>
-                <p className="text-lg font-semibold text-gray-900">
-                  ${product.priceRange.min} — ${product.priceRange.max}
+                <p
+                  className="text-lg font-semibold text-gray-900"
+                  aria-label={`Price range: $${product.priceRange.min} to $${product.priceRange.max}`}
+                >
+                  <span aria-hidden="true">${product.priceRange.min} — ${product.priceRange.max}</span>
                 </p>
                 <p className="text-sm text-gray-600">Price range</p>
               </div>
@@ -358,8 +361,11 @@ export default async function ProductPage({ params }: Props) {
               </div>
               <div className="flex justify-between text-sm">
                 <dt className="text-gray-600">Price Range</dt>
-                <dd className="font-semibold text-gray-900">
-                  ${product.priceRange.min}–${product.priceRange.max}
+                <dd
+                  className="font-semibold text-gray-900"
+                  aria-label={`$${product.priceRange.min} to $${product.priceRange.max}`}
+                >
+                  <span aria-hidden="true">${product.priceRange.min}–${product.priceRange.max}</span>
                 </dd>
               </div>
             </dl>
