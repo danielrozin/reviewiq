@@ -17,7 +17,10 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
 
   return (
     <li className={`${isNested ? "ml-6 pl-4 border-l-2 border-gray-100" : ""}`}>
-      <article className={`group py-4 px-1 rounded-xl transition-colors hover:bg-gray-50/60 ${depth === 0 ? "border-b border-gray-50" : ""}`}>
+      <article
+        aria-label={`Comment by ${author?.displayName ?? author?.username ?? "Anonymous"} on ${new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(comment.createdAt))}`}
+        className={`group py-4 px-1 rounded-xl transition-colors hover:bg-gray-50/60 ${depth === 0 ? "border-b border-gray-50" : ""}`}
+      >
         {/* Comment header */}
         <div className="flex items-center gap-2 mb-2">
           {author && <UserChip user={author} showTrustLevel size="sm" />}
