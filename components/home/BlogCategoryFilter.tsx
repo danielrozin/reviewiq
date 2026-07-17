@@ -63,7 +63,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           aria-controls="blog-post-list"
           tabIndex={activeCategory === "all" ? 0 : -1}
           onClick={() => setActiveCategory("all")}
-          className={`px-4 py-3 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+          className={`px-4 py-3 min-h-[44px] rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
             activeCategory === "all"
               ? "bg-brand-600 text-white shadow-sm"
               : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-700"
@@ -83,7 +83,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               aria-controls="blog-post-list"
               tabIndex={activeCategory === cat.slug ? 0 : -1}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-4 py-3 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+              className={`px-4 py-3 min-h-[44px] rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                 activeCategory === cat.slug
                   ? "bg-brand-600 text-white shadow-sm"
                   : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-700"
