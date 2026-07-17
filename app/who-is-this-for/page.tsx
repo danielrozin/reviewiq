@@ -279,7 +279,7 @@ export default function WhoIsThisForPage() {
         <ul role="list" className="space-y-6 max-w-4xl list-none p-0">
           {personas.map((persona, pi) => (
             <li key={persona.title}>
-            <article aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 transition-all duration-200 group">
+            <article aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-5 p-6 sm:p-8">
               <div aria-hidden="true" className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>
@@ -365,7 +365,7 @@ export default function WhoIsThisForPage() {
                   className="inline-flex items-center gap-1 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                 >
                   {uc.cta.label}
-                  <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                   </svg>
                 </Link>
@@ -427,7 +427,7 @@ export default function WhoIsThisForPage() {
             <details className="group border border-gray-100 rounded-xl">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 text-gray-900 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset">
                 {item.question}
-                <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </summary>

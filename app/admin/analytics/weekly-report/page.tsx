@@ -82,7 +82,7 @@ function FunnelBar({ step, maxValue }: { step: FunnelStep; maxValue: number }) {
       <div className="w-36 text-sm text-gray-700 font-medium">{step.stage}</div>
       <div className="flex-1 bg-gray-100 rounded-full h-6 relative">
         <div
-          className="bg-emerald-500 rounded-full h-6 transition-all duration-500 flex items-center justify-end pr-2"
+          className="bg-emerald-500 rounded-full h-6 motion-safe:transition-all duration-500 flex items-center justify-end pr-2"
           style={{ width: `${pct}%`, minWidth: "40px" }}
         >
           <span className="text-[10px] font-bold text-white">{step.value}</span>

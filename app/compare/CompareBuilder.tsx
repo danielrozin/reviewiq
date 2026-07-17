@@ -182,7 +182,7 @@ function CompareContent() {
             { icon: "🤖", label: "AI verdict" },
             { icon: "📋", label: "Spec-by-spec table" },
           ].map((f) => (
-            <li key={f.label} className="flex flex-col items-center gap-1.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 text-center">
+            <li key={f.label} className="flex flex-col items-center gap-1.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 text-center">
               <span aria-hidden="true" className="text-xl">{f.icon}</span>
               <span className="text-xs font-medium text-gray-600">{f.label}</span>
             </li>
@@ -197,7 +197,7 @@ function CompareContent() {
               <li key={pair.ids}>
               <a
                 href={`/compare?ids=${pair.ids}`}
-                className="flex items-center justify-between px-4 py-3 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 group text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="flex items-center justify-between px-4 py-3 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 <span className="text-gray-700 group-hover:text-brand-600 transition-colors font-medium">{pair.label}</span>
                 <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

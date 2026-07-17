@@ -98,7 +98,7 @@ export function ComparisonPoll({
                 {hasVoted && (
                   <span
                     aria-hidden="true"
-                    className={`absolute inset-y-0 left-0 transition-all duration-500 rounded-xl ${
+                    className={`absolute inset-y-0 left-0 motion-safe:transition-all duration-500 rounded-xl ${
                       voted === option.id ? "bg-brand-100" : "bg-gray-100"
                     }`}
                     style={{ width: `${pct}%` }}

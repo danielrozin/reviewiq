@@ -184,7 +184,7 @@ export default function HowItWorksPage() {
               </div>
 
               {/* Content card */}
-              <div className={`flex-1 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md motion-safe:hover:-translate-y-0.5 transition-all duration-200`}>
+              <div className={`flex-1 bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200`}>
                 <div className="flex items-center gap-3 mb-3">
                   <span className={`text-xs font-bold ${step.textColor} ${step.lightBg} px-2.5 py-1 rounded-full`}>
                     Step {step.number}

@@ -72,7 +72,7 @@ export function ProfileChecklist() {
             className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden"
           >
             <div
-              className="h-full bg-brand-500 rounded-full transition-all duration-500"
+              className="h-full bg-brand-500 rounded-full motion-safe:transition-all duration-500"
               style={{ width: `${progressPercent}%` }}
             />
           </div>

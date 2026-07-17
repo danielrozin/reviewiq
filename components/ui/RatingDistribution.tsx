@@ -27,7 +27,7 @@ export function RatingDistribution({ distribution, totalReviews }: RatingDistrib
               aria-label={`${star} star ratings`}
             >
               <div
-                className="bg-amber-400 h-full rounded-full transition-all duration-500"
+                className="bg-amber-400 h-full rounded-full motion-safe:transition-all duration-500"
                 style={{ width: `${percentage}%` }}
               />
             </div>

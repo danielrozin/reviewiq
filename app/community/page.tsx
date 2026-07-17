@@ -85,7 +85,7 @@ export default function CommunityPage() {
               <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0z" /></svg>
             )},
           ].map((stat) => (
-            <li key={stat.label} className="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3 hover:shadow-sm hover:border-gray-200 motion-safe:hover:-translate-y-0.5 transition-all duration-200">
+            <li key={stat.label} className="bg-white border border-gray-100 rounded-xl p-4 flex items-center gap-3 hover:shadow-sm hover:border-gray-200 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200">
               <div aria-hidden="true" className={`w-9 h-9 ${stat.iconBg} ${stat.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
                 {stat.icon}
               </div>
@@ -125,7 +125,7 @@ export default function CommunityPage() {
         {/* Right sidebar */}
         <aside aria-label="Community sidebar" className="space-y-8">
           {/* Category discussions */}
-          <section aria-labelledby="sidebar-categories-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+          <section aria-labelledby="sidebar-categories-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 motion-safe:transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-4">
               <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -165,7 +165,7 @@ export default function CommunityPage() {
           </section>
 
           {/* Top contributors */}
-          <section aria-labelledby="sidebar-contributors-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+          <section aria-labelledby="sidebar-contributors-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 motion-safe:transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-4">
               <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-purple-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -201,7 +201,7 @@ export default function CommunityPage() {
           </section>
 
           {/* Community guidelines */}
-          <section aria-labelledby="sidebar-guidelines-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+          <section aria-labelledby="sidebar-guidelines-heading" className="bg-white border border-gray-100 rounded-2xl p-6 hover:shadow-sm hover:border-gray-200 motion-safe:transition-all duration-200">
             <div className="flex items-center gap-2.5 mb-3">
               <div aria-hidden="true" className="w-7 h-7 bg-emerald-50 rounded-lg flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

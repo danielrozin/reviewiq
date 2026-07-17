@@ -39,7 +39,7 @@ export function QuickStartSuggestions() {
           <li key={cat.slug}>
             <Link
               href={`/category/${cat.slug}`}
-              className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+              className="flex items-center gap-2.5 p-3 bg-white rounded-xl border border-gray-100 hover:border-brand-200 hover:shadow-sm motion-safe:transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-6 h-6 bg-brand-50 rounded-md flex items-center justify-center shrink-0">
                 <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

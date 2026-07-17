@@ -55,7 +55,7 @@ function ProgressRing({ progress, size = 80, strokeWidth = 6 }: { progress: numb
           cx={size / 2} cy={size / 2} r={radius}
           stroke={color} strokeWidth={strokeWidth} fill="none"
           strokeDasharray={circumference} strokeDashoffset={offset}
-          strokeLinecap="round" className="transition-all duration-700"
+          strokeLinecap="round" className="motion-safe:transition-all duration-700"
         />
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
@@ -78,7 +78,7 @@ function KeyResultRow({ kr }: { kr: KeyResult }) {
       </div>
       <div className="flex items-center gap-2">
         <div className="flex-1 bg-gray-100 rounded-full h-2">
-          <div className={`${barColor} rounded-full h-2 transition-all duration-500`} style={{ width: `${Math.min(kr.progress, 100)}%` }} />
+          <div className={`${barColor} rounded-full h-2 motion-safe:transition-all duration-500`} style={{ width: `${Math.min(kr.progress, 100)}%` }} />
         </div>
         <span className="text-xs font-semibold text-gray-600 w-8 text-right">{kr.progress}%</span>
       </div>

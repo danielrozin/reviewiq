@@ -53,7 +53,7 @@ export function FAQSection({ items }: FAQSectionProps) {
                 <svg
                   aria-hidden="true"
                   className={cn(
-                    "w-4 h-4 shrink-0 transition-all duration-200",
+                    "w-4 h-4 shrink-0 motion-safe:transition-all duration-200",
                     isOpen ? "rotate-180 text-brand-600" : "text-gray-500"
                   )}
                   fill="none"
@@ -70,7 +70,7 @@ export function FAQSection({ items }: FAQSectionProps) {
                 aria-labelledby={btnId}
                 aria-hidden={isOpen ? undefined : true}
                 className={cn(
-                  "overflow-hidden transition-all duration-200",
+                  "overflow-hidden motion-safe:transition-all duration-200",
                   isOpen ? "max-h-[32rem]" : "max-h-0"
                 )}
               >

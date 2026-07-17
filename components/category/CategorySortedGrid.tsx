@@ -91,7 +91,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
             tabIndex={sortKey === opt.key ? 0 : -1}
             onClick={() => handleSort(opt.key)}
             onKeyDown={(e) => handleSortKeyDown(e, index)}
-            className={`px-3 py-1.5 min-h-[44px] touch-manipulation rounded-xl text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+            className={`px-3 py-1.5 min-h-[44px] touch-manipulation rounded-xl text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               sortKey === opt.key
                 ? "bg-brand-600 text-white shadow-sm ring-1 ring-brand-600/30"
                 : "bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-600"

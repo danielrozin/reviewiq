@@ -108,7 +108,7 @@ export function ComparisonTray() {
               aria-label={items.length >= 2 ? `Compare Now: ${items.map(p => p.name).join(" and ")}` : "Compare Now — add at least 2 products first"}
               onClick={(e) => { if (items.length < 2) e.preventDefault(); }}
               className={cn(
-                "shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold transition-all",
+                "shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl text-sm font-semibold motion-safe:transition-all",
                 items.length >= 2
                   ? "bg-brand-600 text-white hover:bg-brand-700 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                   : "bg-gray-100 text-gray-400 pointer-events-none"

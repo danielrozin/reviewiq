@@ -195,7 +195,7 @@ export default async function ThreadPage({ params }: Props) {
                 {thread.productSlug && thread.categorySlug && (
                   <Link
                     href={`/category/${thread.categorySlug}/${thread.productSlug}`}
-                    className="group flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-4 mb-6 hover:border-brand-200 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="group flex items-center gap-3 bg-white border border-gray-100 rounded-xl p-4 mb-6 hover:border-brand-200 hover:shadow-sm motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <div aria-hidden="true" className="w-9 h-9 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                       <svg aria-hidden="true" className="w-4 h-4 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

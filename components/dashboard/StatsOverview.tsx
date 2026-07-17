@@ -105,7 +105,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
           <li
             key={stat.label}
             aria-label={`${stat.label}: ${formatNumber(stat.value)}`}
-            className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} motion-safe:hover:-translate-y-0.5 transition-all duration-200`}
+            className={`bg-white border border-gray-100 rounded-2xl p-5 ${STAT_COLORS[i].border} motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200`}
           >
             <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${STAT_COLORS[i].icon} flex items-center justify-center mb-3`}>
               {STAT_ICONS[i]}
@@ -119,7 +119,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
       </ul>
 
       {/* Reputation progress bar */}
-      <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-sm hover:border-gray-200 transition-all duration-200">
+      <div className="bg-white border border-gray-100 rounded-2xl p-5 hover:shadow-sm hover:border-gray-200 motion-safe:transition-all duration-200">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-2">
             <span aria-hidden="true" className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
@@ -156,7 +156,7 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
         >
           <div
             aria-hidden="true"
-            className="h-full bg-gradient-to-r from-brand-500 to-brand-400 rounded-full transition-all duration-700"
+            className="h-full bg-gradient-to-r from-brand-500 to-brand-400 rounded-full motion-safe:transition-all duration-700"
             style={{ width: `${progressPct}%` }}
           />
         </div>

@@ -135,7 +135,7 @@ function StarRating({
           tabIndex={star === value || (value === 0 && star === 1) ? 0 : -1}
           onMouseEnter={() => setHovered(star)}
           onClick={() => onChange(star)}
-          className={`min-w-[44px] min-h-[44px] flex items-center justify-center transition-all touch-manipulation active:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-1 rounded ${
+          className={`min-w-[44px] min-h-[44px] flex items-center justify-center motion-safe:transition-all touch-manipulation active:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 focus-visible:ring-offset-1 rounded ${
             star <= (hovered || value) ? "text-amber-600 scale-105" : "text-gray-500"
           } hover:text-amber-500`}
           aria-label={`${star} out of 5 stars`}

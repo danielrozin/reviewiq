@@ -311,7 +311,7 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Google Analytics — ${config.ga4Property} (opens in new tab)`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-blue-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-blue-400 hover:shadow-sm motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
               <div aria-hidden="true">
@@ -324,7 +324,7 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Microsoft Clarity — ${config.clarityProject} (opens in new tab)`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-purple-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-purple-400 hover:shadow-sm motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
               <div aria-hidden="true">
@@ -337,7 +337,7 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Search Console — GSC data (opens in new tab)"
-              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-green-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-green-400 hover:shadow-sm motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
               <div aria-hidden="true">
@@ -377,7 +377,7 @@ export default function ReviewIQAnalytics() {
                   <p className="text-sm text-gray-500">{step.description}</p>
                   <div className="mt-2 flex items-center gap-2">
                     <div className="h-2 bg-gray-100 rounded-full flex-1">
-                      <div className="h-2 bg-emerald-400 rounded-full transition-all" style={{ width: `${Math.round(100 * Math.pow(0.75, i))}%` }} />
+                      <div className="h-2 bg-emerald-400 rounded-full motion-safe:transition-all" style={{ width: `${Math.round(100 * Math.pow(0.75, i))}%` }} />
                     </div>
                     <span className="text-xs text-gray-500 w-12 text-right">{Math.round(100 * Math.pow(0.75, i))}%</span>
                   </div>

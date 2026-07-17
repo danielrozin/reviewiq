@@ -580,7 +580,7 @@ export default function AARRRDashboard() {
                       <div className="flex-1">
                         <div className="h-8 bg-gray-100 rounded-lg overflow-hidden">
                           <div
-                            className="h-full rounded-lg flex items-center px-3 transition-all"
+                            className="h-full rounded-lg flex items-center px-3 motion-safe:transition-all"
                             style={{
                               width: `${Math.max(pct, 2)}%`,
                               backgroundColor: `${PIRATE_COLORS.activation}${i === 0 ? "" : "cc"}`,

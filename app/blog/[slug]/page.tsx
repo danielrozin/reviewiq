@@ -220,7 +220,7 @@ export default async function BlogPostPage({
                     <span>{item.question}</span>
                     <svg
                       aria-hidden="true"
-                      className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform shrink-0"
+                      className="w-5 h-5 text-gray-500 group-open:rotate-180 motion-safe:transition-transform shrink-0"
                       fill="none"
                       viewBox="0 0 24 24"
                       strokeWidth={2}
@@ -261,7 +261,7 @@ export default async function BlogPostPage({
                 <Link
                   href={`/category/${product.categorySlug}/${product.slug}`}
                   aria-label={`${product.name} — SmartScore ${product.smartScore}`}
-                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <div
                     aria-label={`SmartScore ${product.smartScore}`}
@@ -309,7 +309,7 @@ export default async function BlogPostPage({
                   <Link
                     href={`/category/${product.categorySlug}/${product.slug}`}
                     aria-label={`${product.name} — ${cat?.name ?? product.categorySlug}, SmartScore ${product.smartScore}`}
-                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <div
                       aria-label={`SmartScore ${product.smartScore}`}
@@ -370,7 +370,7 @@ export default async function BlogPostPage({
                 <li key={rp.id}>
                 <Link
                   href={`/blog/${rp.slug}`}
-                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
                     {rp.categoryName}

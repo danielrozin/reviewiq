@@ -350,7 +350,7 @@ export function SurveyPopup() {
                     setAnswers((a) => ({ ...a, q3Rating: n }));
                     setStep("q4");
                   }}
-                  className={`w-12 h-12 rounded-xl text-lg font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+                  className={`w-12 h-12 rounded-xl text-lg font-bold motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                     answers.q3Rating === n
                       ? "bg-brand-600 text-white scale-110"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"

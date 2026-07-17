@@ -23,7 +23,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
         return (
           <li
             key={faq.q}
-            className={`bg-white rounded-xl border transition-all ${
+            className={`bg-white rounded-xl border motion-safe:transition-all ${
               isOpen ? "border-brand-200 shadow-sm" : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
             }`}
           >
@@ -41,7 +41,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
               <span aria-hidden="true" className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center transition-colors ${isOpen ? "bg-brand-100 text-brand-600" : "bg-gray-100 text-gray-500"}`}>
                 <svg
                   aria-hidden="true"
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+                  className={`w-3.5 h-3.5 motion-safe:transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={2.5}

@@ -143,7 +143,7 @@ export default async function FAQPage({ params }: Props) {
                 <li key={p.slug}>
                   <Link
                     href={`/faq/${p.slug}`}
-                    className="block p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="block p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <span className="font-medium text-gray-900 text-sm">
                       {p.title}

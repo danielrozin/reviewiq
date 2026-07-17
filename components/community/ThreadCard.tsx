@@ -20,7 +20,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
       <Link
         href={`/community/thread/${thread.id}`}
         aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""} — ${formatNumber(netVotes)} ${netVotes === 1 ? "vote" : "votes"}, ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
-        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
       >
         <div className="flex flex-col items-center min-w-[40px]" aria-hidden="true">
           <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-600"}`}>
@@ -51,7 +51,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
   }
 
   return (
-    <article aria-labelledby={`thread-${thread.id}-title`} className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 overflow-hidden group">
+    <article aria-labelledby={`thread-${thread.id}-title`} className="border border-gray-100 rounded-xl hover:border-gray-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 overflow-hidden group">
       <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="flex gap-4 p-5">
         {/* Vote column */}

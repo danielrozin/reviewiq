@@ -68,7 +68,7 @@ export function ProductJumpNav() {
   return (
     <div
       ref={navRef}
-      className={`block sticky top-14 sm:top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all duration-300 ${
+      className={`block sticky top-14 sm:top-16 z-30 bg-white/95 backdrop-blur-sm border-b border-gray-100 motion-safe:transition-all duration-300 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
       }`}
     >

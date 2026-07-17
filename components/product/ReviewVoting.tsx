@@ -89,7 +89,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
 
   return (
     <div role="group" aria-label="Review helpfulness" className="flex items-center gap-3">
-      <span role="status" aria-live="polite" aria-atomic="true" className="text-xs text-gray-600 transition-all duration-200">
+      <span role="status" aria-live="polite" aria-atomic="true" className="text-xs text-gray-600 motion-safe:transition-all duration-200">
         {voted !== null
           ? "Thanks for your feedback!"
           : helpfulCount > 0

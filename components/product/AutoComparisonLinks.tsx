@@ -34,7 +34,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`All ${productName} comparisons on aversusb.net (opens in new tab)`}
-            className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-1"
+            className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 motion-safe:transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-1"
           >
             <div className="flex items-center gap-3">
               <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">
@@ -64,7 +64,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Alternatives to ${productName} on aversusb.net (opens in new tab)`}
-            className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-1"
+            className="flex items-center justify-between p-4 border border-purple-100 rounded-xl hover:border-purple-300 hover:bg-purple-50/30 motion-safe:transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:ring-offset-1"
           >
             <div className="flex items-center gap-3">
               <div aria-hidden="true" className="w-7 h-7 bg-purple-50 rounded-lg flex items-center justify-center shrink-0">

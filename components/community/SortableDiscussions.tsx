@@ -99,7 +99,7 @@ export function SortableDiscussions({
               tabIndex={activeTab === key ? 0 : -1}
               aria-controls="sortable-discussion-list"
               onClick={() => { setActiveTab(key); setSortAnnouncement(`Showing ${key} discussions`); }}
-              className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-3 min-h-[44px] rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+              className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-3 min-h-[44px] rounded-xl motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                 activeTab === key
                   ? "bg-white text-brand-600 shadow-sm border border-gray-100"
                   : "text-gray-600 hover:text-gray-700"

@@ -100,7 +100,7 @@ export default async function DashboardPage() {
           className="inline-flex items-center gap-1 text-sm text-brand-600 hover:text-brand-700 font-medium group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
         >
           View public profile
-          <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
           </svg>
         </Link>
@@ -149,7 +149,7 @@ export default async function DashboardPage() {
                 className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 font-medium group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
               >
                 Write a review
-                <svg aria-hidden="true" className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <svg aria-hidden="true" className="w-3 h-3 group-hover:translate-x-0.5 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                 </svg>
               </Link>

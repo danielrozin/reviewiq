@@ -88,7 +88,7 @@ export default function HomePage() {
                 <Link
                   href={tile.href}
                   aria-label={`${tile.label} ${tile.desc}`}
-                  className="group block p-3 bg-white/80 hover:bg-white border border-gray-200 hover:border-brand-400 hover:shadow-sm rounded-xl transition-all text-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="group block p-3 bg-white/80 hover:bg-white border border-gray-200 hover:border-brand-400 hover:shadow-sm rounded-xl motion-safe:transition-all text-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <span aria-hidden="true" className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
@@ -101,13 +101,13 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 motion-safe:animate-fade-up delay-400">
               <Link
                 href="/categories"
-                className="w-full sm:w-auto px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 active:scale-[0.98] transition-all shadow-sm hover:shadow-md text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                className="w-full sm:w-auto px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 active:scale-[0.98] motion-safe:transition-all shadow-sm hover:shadow-md text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
               >
                 Browse Categories
               </Link>
               <Link
                 href="/how-it-works"
-                className="w-full sm:w-auto px-8 py-3.5 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 active:scale-[0.98] transition-all text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="w-full sm:w-auto px-8 py-3.5 bg-white text-gray-700 font-semibold rounded-xl border border-gray-200 hover:border-gray-300 hover:bg-gray-50 active:scale-[0.98] motion-safe:transition-all text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 How It Works
               </Link>
@@ -246,9 +246,9 @@ export default function HomePage() {
             <li key={cat.id}>
             <Link
               href={`/category/${cat.slug}`}
-              className="group block p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 motion-safe:hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+              className="group block p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
-              <span aria-hidden="true" className="text-3xl mb-3 block motion-safe:group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
+              <span aria-hidden="true" className="text-3xl mb-3 block motion-safe:group-hover:scale-110 motion-safe:transition-transform duration-200 inline-block">{cat.icon}</span>
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
                 {cat.name}
               </h3>
@@ -278,7 +278,7 @@ export default function HomePage() {
               <Link
                 href={`/category/${product.categorySlug}/${product.slug}`}
                 aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}`}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 motion-safe:hover:-translate-y-0.5 transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 {/* Brand accent hover strip */}
                 <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -290,7 +290,7 @@ export default function HomePage() {
                       alt={product.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain p-4 motion-safe:group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain p-4 motion-safe:group-hover:scale-105 motion-safe:transition-transform duration-300"
                       priority={index < 3}
                     />
                   ) : (
@@ -362,7 +362,7 @@ export default function HomePage() {
               <li key={thread.id}>
               <Link
                 href={`/community/thread/${thread.id}`}
-                className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="group flex gap-4 bg-white border border-gray-100 rounded-xl p-5 hover:shadow-md hover:border-gray-200 motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 <div className="flex flex-col items-center shrink-0 min-w-9">
                   <svg aria-hidden="true" className={`w-4 h-4 mb-0.5 ${netVotes > 0 ? "text-brand-400" : "text-gray-300"}`} fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -449,7 +449,7 @@ export default function HomePage() {
               <article aria-labelledby={`home-blog-${post.id}-title`}>
               <Link
                 href={`/blog/${post.slug}`}
-                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 motion-safe:hover:-translate-y-0.5 transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                 <div className="p-6 flex flex-col flex-1">
@@ -531,7 +531,7 @@ export default function HomePage() {
               <li className="lg:col-span-3">
               <Link
                 href={`/category/${featured.categorySlug}/${featured.slug}`}
-                className="group relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 transition-all duration-300 flex flex-col h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="group relative bg-gradient-to-br from-brand-50 via-white to-blue-50 border border-brand-100 rounded-3xl overflow-hidden hover:shadow-xl hover:border-brand-200 motion-safe:transition-all duration-300 flex flex-col h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 <div className="absolute top-4 left-4 z-10">
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-brand-600 text-white text-xs font-bold rounded-full shadow-sm">
@@ -548,7 +548,7 @@ export default function HomePage() {
                       alt={featured.name}
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
-                      className="object-contain p-8 motion-safe:group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain p-8 motion-safe:group-hover:scale-105 motion-safe:transition-transform duration-500"
                     />
                   ) : (
                     <span aria-hidden="true" className="text-8xl font-black text-gray-200">{featured.brand[0]}</span>
@@ -579,7 +579,7 @@ export default function HomePage() {
                   <li key={product.id} className="flex-1">
                   <Link
                     href={`/category/${product.categorySlug}/${product.slug}`}
-                    className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-200 flex h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-gray-200 motion-safe:transition-all duration-200 flex h-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <div className="relative w-28 shrink-0 bg-gray-50 overflow-hidden">
                       {product.image ? (
@@ -588,7 +588,7 @@ export default function HomePage() {
                           alt={product.name}
                           fill
                           sizes="112px"
-                          className="object-contain p-3 motion-safe:group-hover:scale-105 transition-transform duration-300"
+                          className="object-contain p-3 motion-safe:group-hover:scale-105 motion-safe:transition-transform duration-300"
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">
@@ -710,7 +710,7 @@ export default function HomePage() {
             <details className="group border border-gray-100 rounded-xl bg-white">
               <summary className="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset">
                 {item.q}
-                <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
                 </svg>
               </summary>
