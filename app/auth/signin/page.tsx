@@ -156,10 +156,10 @@ export default function SignInPage() {
               {loading ? "Redirecting…" : "Continue with Google"}
             </button>
 
-            <div className="flex items-center gap-3 text-xs text-gray-500" aria-hidden="true">
-              <div className="flex-1 h-px bg-gray-100" />
+            <div className="flex items-center gap-3 text-xs text-gray-500">
+              <div aria-hidden="true" className="flex-1 h-px bg-gray-100" />
               <span>Free forever · No credit card</span>
-              <div className="flex-1 h-px bg-gray-100" />
+              <div aria-hidden="true" className="flex-1 h-px bg-gray-100" />
             </div>
 
             <ul role="list" className="space-y-2">
