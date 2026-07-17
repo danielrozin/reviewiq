@@ -521,7 +521,7 @@ export default function ReviewIQAnalytics() {
             <>
               <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-6">
                 <h2 className="text-xl font-bold text-gray-900">{report.title}</h2>
-                <p className="text-sm text-gray-500 mt-1">Generated: {new Date(report.generatedAt).toLocaleString()}</p>
+                <p className="text-sm text-gray-500 mt-1">Generated: <time dateTime={report.generatedAt}>{new Date(report.generatedAt).toLocaleString()}</time></p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

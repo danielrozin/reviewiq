@@ -457,9 +457,9 @@ export default function AdminDashboard() {
                           <span className="font-medium text-gray-900">{u.name || "Anonymous"}</span>
                           <span className="text-gray-500 ml-2 text-xs">{u.email}</span>
                         </div>
-                        <span className="text-xs text-gray-500">
+                        <time dateTime={u.createdAt} className="text-xs text-gray-500">
                           {new Date(u.createdAt).toLocaleDateString()}
-                        </span>
+                        </time>
                       </li>
                     ))}
                   </ul>
@@ -482,7 +482,7 @@ export default function AdminDashboard() {
                           <StatusBadge status={r.status} />
                         </div>
                         <p className="text-xs text-gray-500">
-                          {r.product.name} · {r.user.name || r.user.email} · <span aria-hidden="true">{"★".repeat(r.rating)}</span><span className="sr-only">{r.rating} stars</span> · {new Date(r.createdAt).toLocaleDateString()}
+                          {r.product.name} · {r.user.name || r.user.email} · <span aria-hidden="true">{"★".repeat(r.rating)}</span><span className="sr-only">{r.rating} stars</span> · <time dateTime={r.createdAt}>{new Date(r.createdAt).toLocaleDateString()}</time>
                         </p>
                       </div>
                     </li>
@@ -865,7 +865,7 @@ export default function AdminDashboard() {
                           {" · "}
                           {r.user.name || r.user.email}
                           {" · "}
-                          {new Date(r.createdAt).toLocaleDateString()}
+                          <time dateTime={r.createdAt}>{new Date(r.createdAt).toLocaleDateString()}</time>
                         </p>
                         <p className="text-sm text-gray-600 line-clamp-3">{r.body}</p>
                       </div>

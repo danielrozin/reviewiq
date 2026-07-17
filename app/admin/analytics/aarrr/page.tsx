@@ -292,7 +292,7 @@ export default function AARRRDashboard() {
         </div>
         <p className="text-gray-500">ReviewIQ (ReviewIQ) growth dashboard</p>
         <p className="text-xs text-gray-500 mt-1">
-          Generated: {new Date(data.generatedAt).toLocaleString()}
+          Generated: <time dateTime={data.generatedAt}>{new Date(data.generatedAt).toLocaleString()}</time>
         </p>
       </div>
 
