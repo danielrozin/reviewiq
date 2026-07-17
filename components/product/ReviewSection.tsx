@@ -204,7 +204,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
 
 function ReviewCardWithVoting({ review }: { review: Review }) {
   return (
-    <article aria-labelledby={`rs-${review.id}-headline`} className="border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group">
+    <article aria-labelledby={`rs-${review.id}-headline`} className="border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 group">
       <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
       <div className="p-6">
       <div className="flex items-start justify-between mb-3">

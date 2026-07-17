@@ -279,7 +279,7 @@ export default function WhoIsThisForPage() {
         <ul role="list" className="space-y-6 max-w-4xl list-none p-0">
           {personas.map((persona, pi) => (
             <li key={persona.title}>
-            <article aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 group">
+            <article aria-labelledby={`persona-heading-${pi}`} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 transition-all duration-200 group">
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="flex gap-5 p-6 sm:p-8">
               <div aria-hidden="true" className={`w-10 h-10 rounded-lg ${persona.color} flex items-center justify-center shrink-0`}>

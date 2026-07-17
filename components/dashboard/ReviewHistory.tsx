@@ -42,7 +42,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
         <li key={review.id}>
         <article
           aria-labelledby={`rh-headline-${review.id}`}
-          className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group"
+          className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 transition-all duration-200 group"
         >
           <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
           <div className="p-4">

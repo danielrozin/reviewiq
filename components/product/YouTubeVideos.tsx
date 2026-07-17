@@ -41,7 +41,7 @@ export function YouTubeVideos({ videos, productName }: Props) {
       </p>
       <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 list-none p-0 m-0">
         {visibleVideos.map((video) => (
-          <li key={video.id} className="space-y-2 group/card hover:-translate-y-0.5 transition-transform duration-200">
+          <li key={video.id} className="space-y-2 group/card motion-safe:hover:-translate-y-0.5 transition-transform duration-200">
             <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 group-hover/card:shadow-md transition-shadow duration-200">
               {playing === video.id ? (
                 <iframe
