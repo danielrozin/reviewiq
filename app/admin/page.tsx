@@ -834,7 +834,7 @@ export default function AdminDashboard() {
                 onClick={loadPendingReviews}
                 className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-400 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
-                <RefreshCw className="w-3.5 h-3.5" /> Refresh
+                <RefreshCw aria-hidden="true" className="w-3.5 h-3.5" /> Refresh
               </button>
             </div>
 
