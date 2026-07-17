@@ -11,7 +11,7 @@ const siteMapWebPageJsonLd = {
   "@id": `${SITE_URL}/site-map#page`,
   name: "Site Map — ReviewIQ",
   url: `${SITE_URL}/site-map`,
-  inLanguage: "en",
+  inLanguage: "en-US",
   isAccessibleForFree: true,
   description: "Browse all content on ReviewIQ — product reviews, blog articles, comparisons, and community discussions organized by date and category.",
   datePublished: "2024-01-01",

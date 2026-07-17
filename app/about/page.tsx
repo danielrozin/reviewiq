@@ -18,14 +18,14 @@ const aboutPageJsonLd = {
   "@id": `${SITE_URL}/about#page`,
   name: "About ReviewIQ — AI-Powered Honest Product Reviews",
   url: `${SITE_URL}/about`,
-  inLanguage: "en",
+  inLanguage: "en-US",
   isAccessibleForFree: true,
   description:
     "ReviewIQ is an AI-powered product review platform built to fix the broken review ecosystem. Honest intelligence, verified buyers, zero affiliate links.",
   mainEntity: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   datePublished: "2024-01-01",
-  dateModified: "2026-07-05",
+  dateModified: "2026-07-17",
   publisher: { "@id": `${SITE_URL}/#organization` },
   author: { "@id": `${SITE_URL}/about#ai-review-team` },
   speakable: {

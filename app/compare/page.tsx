@@ -12,10 +12,10 @@ const compareHubJsonLd = {
   description:
     "Search and add 2–4 products to compare SmartScores, specs, pros & cons, and get an AI verdict in one view. Free, no sign-in needed.",
   url: `${SITE_URL}/compare`,
-  inLanguage: "en",
+  inLanguage: "en-US",
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
-  dateModified: "2026-07-05",
+  dateModified: "2026-07-17",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

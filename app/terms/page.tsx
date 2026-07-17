@@ -10,10 +10,10 @@ const termsWebPageJsonLd = {
   "@id": `${SITE_URL}/terms#page`,
   name: "Terms of Service — ReviewIQ",
   url: `${SITE_URL}/terms`,
-  inLanguage: "en",
+  inLanguage: "en-US",
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
-  dateModified: "2026-07-05",
+  dateModified: "2026-07-17",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

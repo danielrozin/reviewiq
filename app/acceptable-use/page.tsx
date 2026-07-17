@@ -16,10 +16,10 @@ const acceptableUseSchema = {
   "@id": `${SITE_URL}/acceptable-use#page`,
   name: "Acceptable Use Policy — ReviewIQ",
   url: `${SITE_URL}/acceptable-use`,
-  inLanguage: "en",
+  inLanguage: "en-US",
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
-  dateModified: "2026-07-05",
+  dateModified: "2026-07-17",
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
