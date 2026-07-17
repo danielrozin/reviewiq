@@ -108,7 +108,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
                 tabIndex={-1}
                 onClick={() => selectOption(p.id)}
                 onKeyDown={(e) => handleOptionKeyDown(e, p.id)}
-                className="px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+                className="px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
               >
                 <span className="font-medium text-gray-900">{p.brand}</span>
                 <span className="text-gray-600">{p.name}</span>

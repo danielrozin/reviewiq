@@ -253,7 +253,7 @@ export function Header() {
                           tabIndex={-1}
                           href="/dashboard"
                           onClick={() => setUserMenuOpen(false)}
-                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                         >
                           Dashboard
                         </Link>
@@ -262,7 +262,7 @@ export function Header() {
                           tabIndex={-1}
                           href="/settings"
                           onClick={() => setUserMenuOpen(false)}
-                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                         >
                           Settings
                         </Link>
@@ -272,7 +272,7 @@ export function Header() {
                             tabIndex={-1}
                             type="button"
                             onClick={() => { setUserMenuOpen(false); signOut(); }}
-                            className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+                            className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                           >
                             Sign out
                           </button>

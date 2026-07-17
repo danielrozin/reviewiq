@@ -33,7 +33,7 @@ export function PricingFAQAccordion({ faqs }: Props) {
               onClick={() => setOpenIndex(isOpen ? null : i)}
               aria-expanded={isOpen}
               aria-controls={panelId}
-              className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 hover:bg-gray-50/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+              className="w-full flex items-center justify-between px-6 py-5 text-left gap-4 hover:bg-gray-50/50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
             >
               <span className={`font-semibold text-sm sm:text-base ${isOpen ? "text-brand-700" : "text-gray-900"}`}>
                 {faq.q}

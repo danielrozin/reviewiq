@@ -73,7 +73,7 @@ export function LegalPageLayout({
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className={`block pl-4 py-1.5 text-sm transition-colors border-l-2 -ml-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset ${
+                      className={`block pl-4 py-1.5 text-sm transition-colors border-l-2 -ml-px focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset ${
                         activeSection === section.id
                           ? "border-brand-600 text-brand-600 font-medium"
                           : "border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300"

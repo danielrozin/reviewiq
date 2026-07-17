@@ -207,7 +207,7 @@ export default async function BlogPostPage({
                   key={i}
                   className="group bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 transition-colors"
                 >
-                  <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
+                  <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between gap-4 px-5 py-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset">
                     <span>{item.question}</span>
                     <svg
                       aria-hidden="true"

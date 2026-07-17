@@ -708,7 +708,7 @@ export default function HomePage() {
           ].map((item) => (
             <li key={item.q}>
             <details className="group border border-gray-100 rounded-xl bg-white">
-              <summary className="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset">
+              <summary className="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset">
                 {item.q}
                 <svg aria-hidden="true" className="ml-4 w-4 h-4 shrink-0 text-gray-500 group-open:rotate-180 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />

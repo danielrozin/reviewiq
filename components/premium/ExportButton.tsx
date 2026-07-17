@@ -88,7 +88,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
             type="button"
             role="menuitem"
             onClick={() => { onExport("csv"); setShowMenu(false); triggerRef.current?.focus(); }}
-            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
           >
             Export as CSV
           </button>
@@ -96,7 +96,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
             type="button"
             role="menuitem"
             onClick={() => { onExport("pdf"); setShowMenu(false); triggerRef.current?.focus(); }}
-            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-inset"
+            className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
           >
             Export as PDF
           </button>
