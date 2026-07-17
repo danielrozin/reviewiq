@@ -7,11 +7,13 @@ interface BestForProps {
 }
 
 export function BestFor({ summary, productName, productSlug }: BestForProps) {
+  const productUrl = `https://revieweriq.com/category/${productSlug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
+    "@id": `${productUrl}#product`,
     name: productName,
-    url: `https://revieweriq.com/category/${productSlug}`,
+    url: productUrl,
     description: `Best for: ${summary.bestFor.join(", ")}. Not ideal for: ${summary.notFor.join(", ")}.`,
     additionalProperty: [
       ...summary.bestFor.map((item) => ({

@@ -160,7 +160,7 @@ export function productSchema(product: Product, pageUrl?: string) {
     schema.aggregateRating = {
       "@type": "AggregateRating",
       ...(canonicalUrl && { "@id": `${canonicalUrl}#aggregate-rating` }),
-      ratingValue: avgRating.toFixed(1),
+      ratingValue: parseFloat(avgRating.toFixed(1)),
       ratingCount: ratingCount,
       reviewCount: ratingCount,
       bestRating: 5,
@@ -384,7 +384,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
     ...(avgCategoryRating > 0 && {
       aggregateRating: {
         "@type": "AggregateRating",
-        ratingValue: avgCategoryRating.toFixed(1),
+        ratingValue: parseFloat(avgCategoryRating.toFixed(1)),
         bestRating: 5,
         worstRating: 1,
         ratingCount: products.reduce((sum, p) => sum + p.reviewCount, 0),
@@ -410,7 +410,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
           ...(avgRating > 0 && {
             aggregateRating: {
               "@type": "AggregateRating",
-              ratingValue: avgRating.toFixed(1),
+              ratingValue: parseFloat(avgRating.toFixed(1)),
               bestRating: 5,
               worstRating: 1,
               ratingCount: p.reviewCount,
@@ -1317,7 +1317,7 @@ function comparisonProductItem(product: Product) {
   if (ratingCount > 0 && avgRating > 0) {
     item.aggregateRating = {
       "@type": "AggregateRating",
-      ratingValue: avgRating.toFixed(1),
+      ratingValue: parseFloat(avgRating.toFixed(1)),
       ratingCount: ratingCount,
       reviewCount: ratingCount,
       bestRating: 5,
