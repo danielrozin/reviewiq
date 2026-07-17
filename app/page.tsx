@@ -248,7 +248,7 @@ export default function HomePage() {
               href={`/category/${cat.slug}`}
               className="group block p-5 bg-white border border-gray-100 rounded-2xl hover:shadow-md hover:border-brand-100 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
-              <span aria-hidden="true" className="text-3xl mb-3 block group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
+              <span aria-hidden="true" className="text-3xl mb-3 block motion-safe:group-hover:scale-110 transition-transform duration-200 inline-block">{cat.icon}</span>
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
                 {cat.name}
               </h3>
@@ -290,7 +290,7 @@ export default function HomePage() {
                       alt={product.name}
                       fill
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain p-4 motion-safe:group-hover:scale-105 transition-transform duration-300"
                       priority={index < 3}
                     />
                   ) : (
@@ -548,7 +548,7 @@ export default function HomePage() {
                       alt={featured.name}
                       fill
                       sizes="(max-width: 1024px) 100vw, 60vw"
-                      className="object-contain p-8 group-hover:scale-105 transition-transform duration-500"
+                      className="object-contain p-8 motion-safe:group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
                     <span aria-hidden="true" className="text-8xl font-black text-gray-200">{featured.brand[0]}</span>
@@ -588,7 +588,7 @@ export default function HomePage() {
                           alt={product.name}
                           fill
                           sizes="112px"
-                          className="object-contain p-3 group-hover:scale-105 transition-transform duration-300"
+                          className="object-contain p-3 motion-safe:group-hover:scale-105 transition-transform duration-300"
                         />
                       ) : (
                         <div className="absolute inset-0 flex items-center justify-center">

@@ -747,7 +747,7 @@ export default function AdminDashboard() {
                       <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{r.product.name}</td>
                       <td className="px-4 py-3 text-gray-500 hidden lg:table-cell">{r.user.name || r.user.email}</td>
                       <td className="px-4 py-3">
-                        <span aria-hidden="true"><span className="text-yellow-500">{"★".repeat(r.rating)}</span><span className="text-gray-200">{"★".repeat(5 - r.rating)}</span></span>
+                        <span aria-hidden="true"><span className="text-yellow-500">{"★".repeat(r.rating)}</span><span className="text-gray-300">{"★".repeat(5 - r.rating)}</span></span>
                         <span className="sr-only">{r.rating} out of 5 stars</span>
                       </td>
                       <td className="px-4 py-3"><StatusBadge status={r.status} /></td>

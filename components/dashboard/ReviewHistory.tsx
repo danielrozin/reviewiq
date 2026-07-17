@@ -69,7 +69,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
                   <svg
                     key={star}
                     aria-hidden="true"
-                    className={`w-3 h-3 ${star <= review.rating ? "text-yellow-400" : "text-gray-200"}`}
+                    className={`w-3 h-3 ${star <= review.rating ? "text-yellow-400" : "text-gray-300"}`}
                     viewBox="0 0 24 24"
                     fill="currentColor"
                   >

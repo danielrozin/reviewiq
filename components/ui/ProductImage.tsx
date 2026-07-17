@@ -59,7 +59,7 @@ export function ProductImage({
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgZmlsbD0iI2YzZjRmNiIvPjwvc3ZnPg=="
             className={cn(
               "object-contain p-3 transition-all duration-300",
-              "group-hover:scale-105",
+              "motion-safe:group-hover:scale-105",
               imgLoaded ? "opacity-100" : "opacity-0"
             )}
             onLoad={() => setImgLoaded(true)}
