@@ -443,7 +443,7 @@ export function productListSchema(products: Product[], categoryName: string, cat
           name: p.name,
           url: `${SITE_URL}/category/${p.categorySlug}/${p.slug}`,
           brand: { "@type": "Brand", "@id": `${SITE_URL}/brand/${toBrandSlug(p.brand)}#brand`, name: p.brand },
-          ...(p.image && { image: { "@type": "ImageObject", url: p.image, contentUrl: p.image, name: p.name, isAccessibleForFree: true } }),
+          ...(p.image && { image: { "@type": "ImageObject", url: p.image, contentUrl: p.image, name: p.name, creditText: "ReviewIQ", creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, copyrightHolder: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, license: `${SITE_URL}/terms`, acquireLicensePage: `${SITE_URL}/about`, isAccessibleForFree: true } }),
           ...(avgRating > 0 && {
             aggregateRating: {
               "@type": "AggregateRating",
@@ -653,7 +653,7 @@ export function blogListSchema(posts: BlogPost[]) {
             dateModified: post.updatedAt || post.publishedAt,
             ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
             ...(post.coverImage && {
-              image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, ...(post.seo?.metaDescription && { caption: post.seo.metaDescription }), isAccessibleForFree: true },
+              image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, ...(post.seo?.metaDescription && { caption: post.seo.metaDescription }), creditText: "ReviewIQ", creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, copyrightHolder: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, license: `${SITE_URL}/terms`, acquireLicensePage: `${SITE_URL}/about`, isAccessibleForFree: true },
             }),
             author: {
               "@type": "Person",
@@ -676,7 +676,7 @@ export function blogListSchema(posts: BlogPost[]) {
       datePublished: post.publishedAt,
       ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
       ...(post.coverImage && {
-        image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, ...(post.seo?.metaDescription && { caption: post.seo.metaDescription }), isAccessibleForFree: true },
+        image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, ...(post.seo?.metaDescription && { caption: post.seo.metaDescription }), creditText: "ReviewIQ", creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, copyrightHolder: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, license: `${SITE_URL}/terms`, acquireLicensePage: `${SITE_URL}/about`, isAccessibleForFree: true },
       }),
       author: {
         "@type": "Person",
@@ -712,7 +712,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
       name: step.name,
       text: step.text,
       url: `${schemaUrl}#step-${index + 1}`,
-      ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}`, contentUrl: `${SITE_URL}${step.image}`, name: step.name, isAccessibleForFree: true } } : {}),
+      ...(step.image ? { image: { "@type": "ImageObject", url: `${SITE_URL}${step.image}`, contentUrl: `${SITE_URL}${step.image}`, name: step.name, creditText: "ReviewIQ", creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, copyrightHolder: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, license: `${SITE_URL}/terms`, acquireLicensePage: `${SITE_URL}/about`, isAccessibleForFree: true } } : {}),
     })),
     url: schemaUrl,
     author: { "@id": `${SITE_URL}/about#ai-review-team` },
@@ -1198,7 +1198,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
             dateModified: post.updatedAt || post.publishedAt,
             ...(post.seo?.metaDescription && { description: post.seo.metaDescription }),
             ...(post.coverImage && {
-              image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, isAccessibleForFree: true },
+              image: { "@type": "ImageObject", url: post.coverImage, contentUrl: post.coverImage, width: 1200, height: 630, name: post.title, creditText: "ReviewIQ", creator: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, copyrightHolder: { "@type": "Organization", "@id": `${SITE_URL}/#organization`, name: "ReviewIQ", url: SITE_URL }, license: `${SITE_URL}/terms`, acquireLicensePage: `${SITE_URL}/about`, isAccessibleForFree: true },
             }),
             author: {
               "@type": "Person",
