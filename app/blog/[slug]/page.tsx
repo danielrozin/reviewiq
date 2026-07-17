@@ -169,6 +169,7 @@ export default async function BlogPostPage({
                   <summary className="font-medium text-gray-900 cursor-pointer list-none flex items-center justify-between">
                     {item.question}
                     <svg
+                      aria-hidden="true"
                       className="w-5 h-5 text-gray-400 group-open:rotate-180 transition-transform"
                       fill="none"
                       viewBox="0 0 24 24"

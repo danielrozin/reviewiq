@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useId, useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { products } from "@/data/products";
 import { categories } from "@/data/categories";
@@ -22,6 +22,8 @@ interface SearchBarProps {
 }
 
 export function SearchBar({ size = "default", placeholder, className }: SearchBarProps = {}) {
+  const uid = useId();
+  const listboxId = `${uid}-listbox`;
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [results, setResults] = useState<SearchResult[]>([]);
@@ -29,6 +31,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
   const inputRef = useRef<HTMLInputElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const [announceText, setAnnounceText] = useState("");
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -105,6 +108,11 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
     setOpen(sliced.length > 0);
     if (q.trim().length >= 2) {
       trackSearch(q.trim(), sliced.length);
+      setAnnounceText(
+        sliced.length > 0
+          ? `${sliced.length} result${sliced.length === 1 ? "" : "s"} available`
+          : "No results found"
+      );
     }
   }
 
@@ -141,6 +149,16 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
 
   return (
     <div ref={wrapperRef} className={`relative w-full ${className || (size === "lg" ? "max-w-xl" : "max-w-md")}`}>
+      {/* sr-only live region announces result count to screen readers (WCAG 4.1.3) */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {announceText}
+      </div>
+
       <div className="relative">
         <svg
           aria-hidden="true"
@@ -158,6 +176,11 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
         </svg>
         <input
           ref={inputRef}
+          role="combobox"
+          aria-expanded={open}
+          aria-controls={listboxId}
+          aria-autocomplete="list"
+          aria-activedescendant={selectedIndex >= 0 ? `${listboxId}-option-${selectedIndex}` : undefined}
           type="text"
           value={query}
           onChange={(e) => search(e.target.value)}
@@ -173,21 +196,30 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
       </div>
 
       {open && results.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50">
+        <ul
+          id={listboxId}
+          role="listbox"
+          aria-label="Search suggestions"
+          className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg overflow-hidden z-50 list-none p-0 m-0"
+        >
           {results.map((result, i) => (
-            <button
+            <li
               key={result.href}
+              id={`${listboxId}-option-${i}`}
+              role="option"
+              aria-selected={i === selectedIndex}
               onClick={() => {
                 trackSearchResultClicked(query, result.type, result.name, i);
                 navigate(result.href);
               }}
-              className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-colors ${
+              className={`w-full flex items-center gap-3 px-4 py-3 text-left cursor-pointer transition-colors ${
                 i === selectedIndex
                   ? "bg-brand-50"
                   : "hover:bg-gray-50"
               } ${i > 0 ? "border-t border-gray-50" : ""}`}
             >
               <span
+                aria-hidden="true"
                 className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold ${
                   result.type === "category"
                     ? "bg-gray-100 text-gray-500"
@@ -206,13 +238,18 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                   {result.subtitle}
                 </p>
               </div>
-            </button>
+            </li>
           ))}
-        </div>
+        </ul>
       )}
 
       {open && query.length >= 2 && results.length === 0 && (
-        <div className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg p-4 z-50">
+        <div
+          id={listboxId}
+          role="listbox"
+          aria-label="Search suggestions"
+          className="absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-xl shadow-lg p-4 z-50"
+        >
           <p className="text-sm text-gray-500 text-center">
             No products found for &ldquo;{query}&rdquo;
           </p>

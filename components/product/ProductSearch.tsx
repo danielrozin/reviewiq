@@ -356,6 +356,7 @@ export function ProductSearch() {
       ) : (
         <div className="text-center py-16">
           <svg
+            aria-hidden="true"
             className="mx-auto w-12 h-12 text-gray-300 mb-4"
             fill="none"
             viewBox="0 0 24 24"
