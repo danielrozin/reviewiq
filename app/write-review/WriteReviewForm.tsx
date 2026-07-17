@@ -201,8 +201,10 @@ export function WriteReviewForm() {
   };
 
   const canProceed = stepValid[STEPS[step].key];
+  const [stepAnnouncement, setStepAnnouncement] = useState("");
 
   useEffect(() => {
+    setStepAnnouncement(`Step ${step + 1} of ${STEPS.length}: ${STEPS[step].label}`);
     stepContainerRef.current?.focus();
   }, [step]);
 
@@ -431,6 +433,7 @@ export function WriteReviewForm() {
         </p>
 
         <StepIndicator currentStep={step} steps={STEPS} />
+        <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">{stepAnnouncement}</div>
 
         {/* Step 1: Product & Headline */}
         {step === 0 && (

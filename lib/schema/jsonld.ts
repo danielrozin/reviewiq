@@ -1216,6 +1216,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
       }),
     },
     isPartOf: { "@id": `${SITE_URL}/#website` },
+    author: { "@id": `${SITE_URL}/about#ai-review-team` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     speakable: {
       "@type": "SpeakableSpecification",
