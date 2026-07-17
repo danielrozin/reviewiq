@@ -44,7 +44,7 @@ export function ReplySortButtons() {
           aria-checked={active === tab}
           tabIndex={active === tab ? 0 : -1}
           onClick={() => setActive(tab)}
-          className={`text-xs font-medium px-3 py-1.5 rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset ${
+          className={`text-xs font-medium px-3 py-1.5 min-h-[44px] rounded-lg transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset ${
             active === tab
               ? "bg-brand-50 text-brand-600"
               : "text-gray-600 hover:bg-gray-50"
