@@ -228,6 +228,14 @@ function aggregateOfferFromProduct(product: Product) {
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
     seller: { "@type": "Organization", name: "ReviewIQ", "@id": `${SITE_URL}/#organization` },
+    hasMerchantReturnPolicy: {
+      "@type": "MerchantReturnPolicy",
+      applicableCountry: "US",
+      returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+      merchantReturnDays: 30,
+      returnMethod: "https://schema.org/ReturnByMail",
+      returnFees: "https://schema.org/FreeReturn",
+    },
   };
 }
 
@@ -261,6 +269,7 @@ export function reviewSchema(review: Review, productRef?: { name: string; url: s
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder"],
+    accessibilityHazard: "none",
     reviewBody: review.body,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -307,6 +316,7 @@ export function faqSchema(items: FAQItem[], pageUrl?: string) {
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     ...(fullUrl && {
       "@id": `${fullUrl}#faq`,
       url: fullUrl,
@@ -535,6 +545,7 @@ export function blogPostSchema(post: BlogPost) {
     acquireLicensePage: `${SITE_URL}/about`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `${postUrl}#page`,
@@ -580,6 +591,7 @@ export function blogListSchema(posts: BlogPost[]) {
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
     isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -656,6 +668,7 @@ export function howToSchema(title: string, steps: BuyingGuideStep[], categorySlu
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     totalTime: `PT${Math.max(1, steps.reduce((sum, s) => sum + Math.ceil(s.text.split(/\s+/).filter(Boolean).length / 100), 0))}M`,
     step: steps.map((step, index) => ({
       "@type": "HowToStep",
@@ -696,6 +709,7 @@ export function communityPageSchema(threads?: DiscussionThread[], datePublished?
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder"],
+    accessibilityHazard: "none",
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
     isPartOf: { "@id": `${SITE_URL}/#website` },
@@ -759,6 +773,7 @@ export function homePageSchema(featuredPosts?: BlogPost[]) {
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     about: { "@id": `${SITE_URL}/#organization` },
@@ -814,6 +829,7 @@ export function speakableSchema(productName: string, productUrl: string, datePub
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -857,6 +873,7 @@ export function blogPostSpeakableSchema(title: string, url: string, datePublishe
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -889,6 +906,7 @@ export function discussionForumPostingSchema(
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     inLanguage: "en-US",
     isAccessibleForFree: true,
     author: (() => {
@@ -965,6 +983,7 @@ export function threadPageSpeakableSchema(title: string, url: string, datePublis
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: [
@@ -1054,6 +1073,7 @@ export function profilePageSchema(
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
     accessibilityFeature: ["readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
     ...(joinedAt && { dateCreated: joinedAt }),
@@ -1118,6 +1138,7 @@ export function blogCategoryPageSchema(categoryName: string, description: string
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
     about: { "@type": "Thing", "@id": `${SITE_URL}/category/${categorySlug}#page`, name: categoryName, url: `${SITE_URL}/category/${categorySlug}` },
@@ -1178,6 +1199,7 @@ export function categoryPageSchema(categoryName: string, description: string, ca
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     ...(datePublished && { datePublished }),
     ...(dateModified && { dateModified }),
     about: {
@@ -1223,6 +1245,7 @@ export function comparisonSchema(productA: Product, productB: Product) {
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
     accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     breadcrumb: { "@id": `${pageUrl}#breadcrumb` },
     isPartOf: { "@id": `${SITE_URL}/#website` },
     publisher: { "@id": `${SITE_URL}/#organization` },
