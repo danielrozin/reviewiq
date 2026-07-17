@@ -145,7 +145,7 @@ export default function OKRDashboard() {
   if (loading) {
     return (
       <div role="status" aria-label="Loading OKR data" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div aria-hidden="true" className="animate-pulse text-gray-500">Loading OKR data...</div>
+        <div aria-hidden="true" className="motion-safe:animate-pulse text-gray-500">Loading OKR data...</div>
       </div>
     );
   }

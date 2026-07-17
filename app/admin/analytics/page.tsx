@@ -110,7 +110,7 @@ export default function ReviewIQAnalytics() {
   if (loading) {
     return (
       <div role="status" aria-label="Loading analytics" className="max-w-7xl mx-auto px-4 py-8">
-        <div aria-hidden="true" className="animate-pulse space-y-4">
+        <div aria-hidden="true" className="motion-safe:animate-pulse space-y-4">
           <div className="h-8 bg-gray-200 rounded w-1/3" />
           <div className="h-64 bg-gray-200 rounded" />
         </div>
@@ -511,7 +511,7 @@ export default function ReviewIQAnalytics() {
         <div id="panel-report" role="tabpanel" aria-labelledby="tab-report" className="space-y-6">
           {reportLoading && (
             <div role="status" aria-label="Loading report">
-              <div aria-hidden="true" className="animate-pulse space-y-4">
+              <div aria-hidden="true" className="motion-safe:animate-pulse space-y-4">
                 <div className="h-8 bg-gray-200 rounded w-1/2" />
                 <div className="h-48 bg-gray-200 rounded" />
               </div>

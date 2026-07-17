@@ -110,7 +110,7 @@ export default function WeeklyReportPage() {
   if (loading) {
     return (
       <div role="status" aria-label="Generating weekly report" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div aria-hidden="true" className="animate-pulse text-gray-500">Generating weekly report...</div>
+        <div aria-hidden="true" className="motion-safe:animate-pulse text-gray-500">Generating weekly report...</div>
       </div>
     );
   }

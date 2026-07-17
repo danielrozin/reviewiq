@@ -61,23 +61,23 @@ export default function HomePage() {
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6 animate-fade-in border border-brand-100">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6 motion-safe:animate-fade-in border border-brand-100">
               <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full motion-safe:animate-pulse" />
               AI-Powered Review Intelligence
             </div>
-            <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 animate-fade-up">
+            <h1 id="hero-heading" className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6 motion-safe:animate-fade-up">
               Reviews you can{" "}
               <span className="text-brand-600">actually trust</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto animate-fade-up delay-100" data-speakable="hero-tagline">
+            <p className="text-lg sm:text-xl text-gray-600 leading-relaxed mb-8 max-w-2xl mx-auto motion-safe:animate-fade-up delay-100" data-speakable="hero-tagline">
               AI-powered product reviews for smart buyers. Honest data. Verified buyers. No affiliate bias.
             </p>
-            <div className="flex justify-center mb-8 animate-fade-up delay-200">
+            <div className="flex justify-center mb-8 motion-safe:animate-fade-up delay-200">
               <HeroSearch />
             </div>
 
             {/* ICP Persona Tiles — helps AI engines understand who this serves */}
-            <ul role="list" className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left animate-fade-up delay-300 list-none p-0 m-0">
+            <ul role="list" className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-8 max-w-2xl mx-auto text-left motion-safe:animate-fade-up delay-300 list-none p-0 m-0">
               {[
                 { icon: "🐾", label: "Pet owner?", desc: "Robot vacuums for pet hair", href: "/category/robot-vacuums" },
                 { icon: "🛍️", label: "First-time buyer?", desc: "Buying guides", href: "/categories" },
@@ -98,7 +98,7 @@ export default function HomePage() {
               ))}
             </ul>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 animate-fade-up delay-400">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 motion-safe:animate-fade-up delay-400">
               <Link
                 href="/categories"
                 className="w-full sm:w-auto px-8 py-3.5 bg-brand-600 text-white font-semibold rounded-xl hover:bg-brand-700 active:scale-[0.98] transition-all shadow-sm hover:shadow-md text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
@@ -114,7 +114,7 @@ export default function HomePage() {
             </div>
 
             {/* Hero social proof — above fold trust nudge */}
-            <ul role="list" className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 animate-fade-up delay-500 list-none p-0 m-0">
+            <ul role="list" className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-6 motion-safe:animate-fade-up delay-500 list-none p-0 m-0">
               <li className="flex items-center gap-2">
                 {/* Avatar stack */}
                 <div aria-hidden="true" className="flex -space-x-2">
