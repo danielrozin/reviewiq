@@ -105,6 +105,7 @@ export function EmailCaptureCTA({
           id="email-capture-input"
           type="email"
           required
+          aria-required="true"
           aria-invalid={status === "error" || undefined}
           aria-describedby="email-capture-error"
           placeholder="you@example.com"
