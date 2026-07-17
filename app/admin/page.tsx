@@ -103,7 +103,7 @@ function RatingBar({ rating, count, max }: { rating: number; count: number; max:
   };
   return (
     <div className="flex items-center gap-2 text-sm">
-      <span className="w-6 text-right text-gray-500 font-medium">{rating}★</span>
+      <span className="w-6 text-right text-gray-500 font-medium" aria-hidden="true">{rating}★</span>
       <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
         <div
           role="progressbar"
@@ -356,8 +356,8 @@ export default function AdminDashboard() {
             </div>
             <h1 className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
           </div>
-          <button type="button" onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700">
-            <LogOut className="w-4 h-4" /> Sign Out
+          <button type="button" onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <LogOut aria-hidden="true" className="w-4 h-4" /> Sign Out
           </button>
         </div>
       </div>
@@ -396,7 +396,7 @@ export default function AdminDashboard() {
                 aria-controls={`admin-panel-${tab.key}`}
                 tabIndex={activeTab === tab.key ? 0 : -1}
                 onClick={() => setActiveTab(tab.key)}
-                className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors ${
+                className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                   activeTab === tab.key
                     ? "bg-gray-900 text-white"
                     : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
@@ -482,7 +482,7 @@ export default function AdminDashboard() {
                           <StatusBadge status={r.status} />
                         </div>
                         <p className="text-xs text-gray-500">
-                          {r.product.name} · {r.user.name || r.user.email} · {"★".repeat(r.rating)} · {new Date(r.createdAt).toLocaleDateString()}
+                          {r.product.name} · {r.user.name || r.user.email} · <span aria-hidden="true">{"★".repeat(r.rating)}</span><span className="sr-only">{r.rating} stars</span> · {new Date(r.createdAt).toLocaleDateString()}
                         </p>
                       </div>
                     </li>
@@ -852,7 +852,8 @@ export default function AdminDashboard() {
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-semibold text-gray-900">{r.headline}</h3>
-                          <span className="text-yellow-500 text-sm">{"★".repeat(r.rating)}</span>
+                          <span className="text-yellow-500 text-sm" aria-hidden="true">{"★".repeat(r.rating)}</span>
+                          <span className="sr-only">{r.rating} out of 5 stars</span>
                           {r.verifiedPurchase && (
                             <span className="text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded">
                               Verified
