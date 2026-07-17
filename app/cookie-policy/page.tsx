@@ -20,6 +20,12 @@ const cookiePolicySchema = {
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-17",
+  abstract: "ReviewIQ's Cookie Policy describes the cookies and tracking technologies used on the platform, why we use them, and how you can manage your preferences.",
+  accessMode: ["textual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

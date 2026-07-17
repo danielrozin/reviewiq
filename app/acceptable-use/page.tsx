@@ -20,6 +20,12 @@ const acceptableUseSchema = {
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-17",
+  abstract: "ReviewIQ's Acceptable Use Policy defines prohibited conduct on the platform, including fake reviews, harassment, and misuse of community features.",
+  accessMode: ["textual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {

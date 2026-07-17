@@ -14,6 +14,12 @@ const privacyWebPageJsonLd = {
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
   dateModified: "2026-07-17",
+  abstract: "ReviewIQ's Privacy Policy explains what personal data we collect, how we use it, and the controls you have over your information.",
+  accessMode: ["textual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
