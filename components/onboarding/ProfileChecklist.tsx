@@ -120,10 +120,8 @@ export function ProfileChecklist() {
           );
           return done ? (
             <li key={item.key}>
-              <div
-                aria-label={`${item.label} — completed`}
-                className="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50"
-              >
+              <div className="flex items-center gap-3 p-3 rounded-xl bg-emerald-50/50">
+                <span className="sr-only">{item.label} — completed</span>
                 {inner}
               </div>
             </li>
