@@ -25,7 +25,7 @@ export function ReviewHistory({ reviews }: ReviewHistoryProps) {
         </p>
         <Link
           href="/write-review"
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-amber-700 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+          className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-xs font-medium text-amber-700 bg-amber-50 rounded-xl hover:bg-amber-100 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           Write your first review
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
