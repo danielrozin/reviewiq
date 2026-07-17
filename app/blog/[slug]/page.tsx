@@ -8,6 +8,8 @@ import { getAffinityCategorySlugs } from "@/data/category-affinity";
 import { getCategoryBySlug } from "@/data/categories";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { blogPostSchema, faqSchema, blogPostSpeakableSchema, productListSchema, breadcrumbSchema } from "@/lib/schema/jsonld";
+import { BlogTableOfContents, type TocHeading } from "@/components/home/BlogTableOfContents";
+import { FeedbackWidget } from "@/components/ui/FeedbackWidget";
 
 export function generateStaticParams() {
   return getAllBlogPosts().map((post) => ({ slug: post.slug }));
@@ -60,6 +62,7 @@ export default async function BlogPostPage({
   const relatedPosts = getBlogPostsByCategory(post.categorySlug).filter(
     (p) => p.slug !== post.slug
   );
+  const tocHeadings = extractHeadings(post.content);
   const categoryProducts = getProductsByCategory(post.categorySlug).slice(0, 4);
   const crossCategoryProducts = getAffinityProducts(post.categorySlug, undefined, 4);
   const affinitySlugs = getAffinityCategorySlugs(post.categorySlug);
@@ -102,7 +105,13 @@ export default async function BlogPostPage({
         }}
       />
 
-      <article className="mt-8 max-w-4xl mx-auto" aria-labelledby="blog-post-title">
+      <div className="mt-8 max-w-6xl mx-auto lg:flex lg:gap-10 lg:items-start">
+        {tocHeadings.length >= 2 && (
+          <aside className="hidden lg:block lg:w-56 xl:w-64 shrink-0 sticky top-24 self-start">
+            <BlogTableOfContents headings={tocHeadings} />
+          </aside>
+        )}
+      <article className="flex-1 min-w-0 max-w-4xl" aria-labelledby="blog-post-title">
         {/* Cover image */}
         {post.coverImage && (
           <div className="relative aspect-[2/1] rounded-2xl overflow-hidden mb-8 bg-gray-100">
@@ -384,9 +393,29 @@ export default async function BlogPostPage({
             </ul>
           </section>
         )}
+        {/* Feedback */}
+        <div className="mt-10 pt-6 border-t border-gray-100">
+          <FeedbackWidget context={`blog:${post.slug}`} />
+        </div>
       </article>
+      </div>
     </div>
   );
+}
+
+function slugify(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+}
+
+function extractHeadings(md: string): TocHeading[] {
+  const headings: TocHeading[] = [];
+  for (const line of md.split("\n")) {
+    const h2 = line.match(/^## (.+)$/);
+    const h3 = line.match(/^### (.+)$/);
+    if (h2) headings.push({ id: slugify(h2[1]), text: h2[1], level: 2 });
+    else if (h3) headings.push({ id: slugify(h3[1]), text: h3[1], level: 3 });
+  }
+  return headings;
 }
 
 function markdownToHtml(md: string): string {
@@ -404,9 +433,9 @@ function markdownToHtml(md: string): string {
     return `<div class="overflow-x-auto my-6"><table class="w-full border border-gray-200 rounded-lg overflow-hidden"><caption class="sr-only">${captionText}</caption><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table></div>`;
   });
 
-  // Headers
-  html = html.replace(/^### (.+)$/gm, '<h3 class="text-xl font-semibold text-gray-900 mt-8 mb-3">$1</h3>');
-  html = html.replace(/^## (.+)$/gm, '<h2 class="text-2xl font-bold text-gray-900 mt-10 mb-4">$1</h2>');
+  // Headers — add tabIndex=-1 + id for TOC anchor targeting (WCAG 2.4.1)
+  html = html.replace(/^### (.+)$/gm, (_m, t) => `<h3 id="${slugify(t)}" tabindex="-1" class="text-xl font-semibold text-gray-900 mt-8 mb-3 focus:outline-none">${t}</h3>`);
+  html = html.replace(/^## (.+)$/gm, (_m, t) => `<h2 id="${slugify(t)}" tabindex="-1" class="text-2xl font-bold text-gray-900 mt-10 mb-4 focus:outline-none">${t}</h2>`);
 
   // Bold and italic
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");

@@ -1,0 +1,139 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
+interface PollOption {
+  id: string;
+  label: string;
+  votes?: number;
+}
+
+interface ComparisonPollProps {
+  question?: string;
+  options: PollOption[];
+  pollKey: string;
+  className?: string;
+}
+
+const STORAGE_KEY_PREFIX = "sr_poll_";
+
+export function ComparisonPoll({
+  question = "Which product do you prefer?",
+  options,
+  pollKey,
+  className = "",
+}: ComparisonPollProps) {
+  const [voted, setVoted] = useState<string | null>(null);
+  const [votes, setVotes] = useState<Record<string, number>>(() =>
+    Object.fromEntries(options.map((o) => [o.id, o.votes ?? 0]))
+  );
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const stored = localStorage.getItem(`${STORAGE_KEY_PREFIX}${pollKey}`);
+    if (stored) setVoted(stored);
+  }, [pollKey]);
+
+  function totalVotes() {
+    return Object.values(votes).reduce((s, v) => s + v, 0);
+  }
+
+  function handleVote(optionId: string) {
+    if (voted) return;
+    setVoted(optionId);
+    setVotes((prev) => ({ ...prev, [optionId]: (prev[optionId] ?? 0) + 1 }));
+    localStorage.setItem(`${STORAGE_KEY_PREFIX}${pollKey}`, optionId);
+    fetch("/api/polls", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ pollKey, optionId }),
+    }).catch(() => {});
+  }
+
+  const total = totalVotes();
+  const hasVoted = mounted && voted !== null;
+
+  return (
+    <section
+      aria-labelledby={`poll-heading-${pollKey}`}
+      className={`bg-white border border-gray-100 rounded-2xl p-5 ${className}`}
+    >
+      <div className="flex items-center gap-2 mb-4">
+        <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
+          <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+          </svg>
+        </div>
+        <h3 id={`poll-heading-${pollKey}`} className="text-sm font-semibold text-gray-900">
+          {question}
+        </h3>
+      </div>
+
+      <div
+        role="group"
+        aria-label={question}
+        className="space-y-2.5"
+      >
+        {options.map((option) => {
+          const pct = total > 0 ? Math.round(((votes[option.id] ?? 0) / total) * 100) : 0;
+          const isWinner = hasVoted && pct === Math.max(...options.map((o) => total > 0 ? Math.round(((votes[o.id] ?? 0) / total) * 100) : 0));
+
+          return (
+            <div key={option.id} className="relative">
+              <button
+                type="button"
+                onClick={() => handleVote(option.id)}
+                disabled={hasVoted}
+                aria-pressed={voted === option.id}
+                aria-label={hasVoted ? `${option.label}: ${pct}% of votes` : `Vote for ${option.label}`}
+                className={`relative w-full text-left px-4 min-h-[44px] touch-manipulation text-sm font-medium rounded-xl border overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+                  hasVoted
+                    ? voted === option.id
+                      ? "border-brand-400 bg-brand-50 text-brand-700"
+                      : "border-gray-100 bg-gray-50 text-gray-500 cursor-default"
+                    : "border-gray-200 bg-white text-gray-700 hover:border-brand-300 hover:bg-brand-50/50 hover:text-brand-700"
+                }`}
+              >
+                {hasVoted && (
+                  <span
+                    aria-hidden="true"
+                    className={`absolute inset-y-0 left-0 transition-all duration-500 rounded-xl ${
+                      voted === option.id ? "bg-brand-100" : "bg-gray-100"
+                    }`}
+                    style={{ width: `${pct}%` }}
+                  />
+                )}
+                <span className="relative flex items-center justify-between gap-2 py-2.5">
+                  <span className="flex items-center gap-2">
+                    {voted === option.id && (
+                      <svg aria-hidden="true" className="w-4 h-4 text-brand-600 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                      </svg>
+                    )}
+                    {option.label}
+                  </span>
+                  {hasVoted && (
+                    <span className={`text-xs font-semibold shrink-0 ${isWinner ? "text-brand-600" : "text-gray-500"}`}>
+                      {pct}%
+                    </span>
+                  )}
+                </span>
+              </button>
+            </div>
+          );
+        })}
+      </div>
+
+      {hasVoted && (
+        <p className="mt-3 text-xs text-gray-500 text-right" aria-live="polite">
+          {total.toLocaleString()} {total === 1 ? "vote" : "votes"} cast
+        </p>
+      )}
+
+      {!hasVoted && !mounted && (
+        <p className="sr-only">Loading poll…</p>
+      )}
+    </section>
+  );
+}

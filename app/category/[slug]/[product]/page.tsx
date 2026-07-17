@@ -28,6 +28,7 @@ import { BestFor } from "@/components/product/BestFor";
 import { StickyMobileCTA } from "@/components/product/StickyMobileCTA";
 import { ProductJumpNav } from "@/components/product/ProductJumpNav";
 import { ShareButtons } from "@/components/ui/ShareButtons";
+import { ComparisonPoll } from "@/components/comparison/ComparisonPoll";
 
 interface Props {
   params: Promise<{ slug: string; product: string }>;
@@ -403,6 +404,20 @@ export default async function ProductPage({ params }: Props) {
           </div>
         </aside>
       </div>
+
+      {/* Community Poll */}
+      {relatedSameCategory.length > 0 && (
+        <div className="mt-8">
+          <ComparisonPoll
+            question={`${product.name} vs ${relatedSameCategory[0].name} — which do you prefer?`}
+            pollKey={`${product.slug}-vs-${relatedSameCategory[0].slug}`}
+            options={[
+              { id: product.slug, label: product.name },
+              { id: relatedSameCategory[0].slug, label: relatedSameCategory[0].name },
+            ]}
+          />
+        </div>
+      )}
 
       {/* Related Products — Same Category */}
       <div data-speakable="related-products">

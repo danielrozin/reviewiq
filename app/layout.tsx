@@ -14,6 +14,7 @@ import { MetaPixel } from "@/components/tracking/MetaPixel";
 import { CompareProvider } from "@/lib/context/CompareContext";
 import { ComparisonTray } from "@/components/comparison/ComparisonTray";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 
 export const metadata: Metadata = {
   title: "ReviewIQ — Real Reviews, Real Intelligence",
@@ -83,10 +84,11 @@ export default function RootLayout({
                   <ExperimentProvider>
                     <Header />
                     <OnboardingOrchestrator />
-                    <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">{children}</main>
+                    <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none pb-14 lg:pb-0">{children}</main>
                     <Footer />
                     <ComparisonTray />
                     <ScrollToTop />
+                    <MobileBottomNav />
                   </ExperimentProvider>
                 </OnboardingProvider>
               </CompareProvider>
