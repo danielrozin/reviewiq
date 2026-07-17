@@ -104,7 +104,9 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
                   )}
                   <span>{thread.commentCount} replies</span>
                   <span>{formatNumber(thread.viewCount)} views</span>
-                  <span>{thread.lastActivityAt}</span>
+                  <time dateTime={thread.lastActivityAt}>
+                    {new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(thread.lastActivityAt))}
+                  </time>
                 </div>
               </div>
             </Link>
