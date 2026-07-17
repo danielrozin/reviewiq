@@ -153,7 +153,7 @@ export default function CommunityPage() {
                     </div>
                     <div className="flex items-center gap-1.5">
                       <span className="text-xs text-gray-600">{count}</span>
-                      <svg aria-hidden="true" className="w-3 h-3 text-gray-300 group-hover:text-brand-400 transition-colors" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                      <svg aria-hidden="true" className="w-3 h-3 text-gray-400 group-hover:text-brand-400 transition-colors" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                       </svg>
                     </div>

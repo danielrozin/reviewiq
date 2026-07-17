@@ -56,7 +56,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
       <div className="flex gap-4 p-5">
         {/* Vote column */}
         <div className="flex flex-col items-center gap-1 shrink-0 pt-0.5">
-          <svg aria-hidden="true" className="w-4 h-4 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg aria-hidden="true" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
           </svg>
           <span
@@ -65,7 +65,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           >
             {formatNumber(netVotes)}
           </span>
-          <svg aria-hidden="true" className="w-4 h-4 text-gray-200" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+          <svg aria-hidden="true" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
           </svg>
         </div>

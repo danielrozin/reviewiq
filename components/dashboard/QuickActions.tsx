@@ -62,7 +62,7 @@ export function QuickActions() {
                 <p aria-hidden="true" className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{action.title}</p>
                 <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate">{action.description}</p>
               </div>
-              <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
               </svg>
               </div>
