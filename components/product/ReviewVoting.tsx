@@ -99,6 +99,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
       <div
         role="radiogroup"
         aria-label="Vote on helpfulness"
+        aria-busy={loading}
         ref={groupRef}
         className="flex items-center gap-1"
         onKeyDown={handleVoteKeyDown}
