@@ -209,7 +209,7 @@ export function SurveyPopup() {
           ref={closeRef}
           type="button"
           onClick={dismiss}
-          className="absolute top-3 right-3 p-1.5 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+          className="absolute top-3 right-3 p-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           aria-label="Close survey"
         >
           <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -230,14 +230,14 @@ export function SurveyPopup() {
               <button
                 type="button"
                 onClick={dismiss}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="flex-1 px-4 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 No thanks
               </button>
               <button
                 type="button"
                 onClick={() => setStep("q1")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                className="flex-1 px-4 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
               >
                 Sure, I'll help
               </button>
@@ -323,7 +323,7 @@ export function SurveyPopup() {
                 <button
                   type="button"
                   onClick={() => setStep("q3")}
-                  className="mt-3 w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                  className="mt-3 w-full px-4 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                 >
                   Next
                 </button>
@@ -336,7 +336,7 @@ export function SurveyPopup() {
           <div>
             <p className="text-xs text-brand-600 font-medium mb-2">3 of 5</p>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How would you rate your experience?</h3>
-            <div ref={q3GroupRef} role="radiogroup" aria-label="How would you rate your experience?" className="flex justify-center gap-2 mb-4" onKeyDown={handleQ3KeyDown}>
+            <div ref={q3GroupRef} role="radiogroup" aria-label="How would you rate your experience? (1 = Poor, 5 = Excellent)" className="flex justify-center gap-2 mb-4" onKeyDown={handleQ3KeyDown}>
               {[1, 2, 3, 4, 5].map((n) => (
                 <button
                   key={n}
@@ -360,7 +360,7 @@ export function SurveyPopup() {
                 </button>
               ))}
             </div>
-            <div className="flex justify-between text-xs text-gray-600 px-1">
+            <div aria-hidden="true" className="flex justify-between text-xs text-gray-600 px-1">
               <span>Poor</span>
               <span>Excellent</span>
             </div>
@@ -383,14 +383,14 @@ export function SurveyPopup() {
               <button
                 type="button"
                 onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="flex-1 px-4 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 Skip
               </button>
               <button
                 type="button"
                 onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                className="flex-1 px-4 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
               >
                 Next
               </button>
@@ -428,7 +428,7 @@ export function SurveyPopup() {
               disabled={submitting}
               aria-busy={submitting}
               aria-label={submitting ? "Submitting feedback, please wait" : "Submit feedback"}
-              className="w-full px-4 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+              className="w-full px-4 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               {submitting ? "Submitting..." : "Submit feedback"}
             </button>
@@ -447,7 +447,7 @@ export function SurveyPopup() {
             <button
               type="button"
               onClick={() => setVisible(false)}
-              className="px-6 py-2.5 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+              className="px-6 py-2.5 min-h-[44px] touch-manipulation text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
             >
               Done
             </button>
