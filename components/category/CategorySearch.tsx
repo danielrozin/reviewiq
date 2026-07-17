@@ -99,7 +99,7 @@ export function CategorySearch({ categories }: CategorySearchProps) {
             </p>
             <div className="flex items-center gap-1.5 text-sm font-medium text-brand-600">
               <span>Explore reviews</span>
-              <svg aria-hidden="true" className="w-4 h-4 group-hover:translate-x-1 motion-safe:transition-transform duration-200" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+              <svg aria-hidden="true" className="w-4 h-4 motion-safe:group-hover:translate-x-1 motion-safe:transition-transform duration-200" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
               </svg>
             </div>

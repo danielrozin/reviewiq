@@ -68,7 +68,7 @@ export function ComparisonModule({
               </div>
               <span className="inline-flex items-center gap-1 text-brand-600 text-xs font-medium shrink-0 ml-3">
                 Compare
-                <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                <svg aria-hidden="true" className="w-3.5 h-3.5 motion-safe:group-hover:translate-x-0.5 motion-safe:transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                 </svg>
               </span>
