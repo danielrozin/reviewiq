@@ -29,7 +29,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
         </p>
         <Link
           href="/categories"
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-purple-700 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+          className="inline-flex items-center gap-1.5 px-4 min-h-[44px] touch-manipulation text-xs font-medium text-purple-700 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           Browse products
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

@@ -120,7 +120,7 @@ export function Header() {
                   <Link
                     href={link.href}
                     aria-current={isActive ? "page" : undefined}
-                    className={`px-3 py-2 rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+                    className={`inline-flex items-center px-3 min-h-[44px] touch-manipulation rounded-xl text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                       isActive
                         ? "bg-brand-50 text-brand-700 font-semibold"
                         : link.accent
@@ -148,7 +148,7 @@ export function Header() {
                 <Link
                   href="/compare"
                   aria-label={`Compare — ${items.length} ${items.length === 1 ? "product" : "products"} selected`}
-                  className="hidden md:inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium text-brand-700 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="hidden md:inline-flex items-center gap-1.5 px-3 min-h-[44px] touch-manipulation text-sm font-medium text-brand-700 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5 7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
@@ -162,13 +162,13 @@ export function Header() {
 
               <Link
                 href="/dashboard"
-                className="hidden md:inline-flex items-center px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="hidden md:inline-flex items-center px-3 min-h-[44px] touch-manipulation text-sm font-medium text-gray-600 hover:text-gray-900 rounded-xl hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 Dashboard
               </Link>
               <Link
                 href="/write-review"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="inline-flex items-center px-4 min-h-[44px] touch-manipulation text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 <span className="hidden sm:inline">Write a Review</span>
                 <span className="sm:hidden">Review</span>
@@ -184,7 +184,7 @@ export function Header() {
                       aria-expanded={userMenuOpen}
                       aria-haspopup="menu"
                       aria-label="Account menu"
-                      className="flex items-center gap-2 px-2 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                      className="flex items-center gap-2 px-2 min-h-[44px] touch-manipulation rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                     >
                       <div className="w-8 h-8 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center text-xs font-bold ring-2 ring-white">
                         {(session.user?.name?.[0] || session.user?.email?.[0] || "U").toUpperCase()}
