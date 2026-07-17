@@ -557,6 +557,10 @@ export function WriteReviewForm() {
                 {body.length}/50 minimum characters
                 {body.length >= 50 && " ✓"}
               </p>
+              {/* WCAG 4.1.3: announce threshold crossing once without keystroke spam */}
+              <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+                {body.length >= 50 ? "Minimum character count reached." : ""}
+              </span>
             </div>
 
             {/* Pros */}
