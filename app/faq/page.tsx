@@ -40,6 +40,12 @@ const faqIndexWebPageJsonLd = {
   dateModified: "2026-07-17",
   mainEntity: { "@id": `${SITE_URL}/faq#faq-topics` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  abstract: "Answers to common questions about ReviewIQ — how we verify buyer reviews, what SmartScore means, our affiliate-free business model, and how to use the platform.",
+  accessMode: ["textual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation", "tableOfContents"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",

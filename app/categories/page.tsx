@@ -25,6 +25,12 @@ const categoriesWebPageJsonLd = {
   dateModified: "2026-07-17",
   mainEntity: { "@id": `${SITE_URL}/categories#category-list` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  abstract: "Browse all product categories reviewed by ReviewIQ — from robot vacuums and coffee machines to laptops and wireless earbuds. Each category features AI-powered SmartScores and verified buyer analysis.",
+  accessMode: ["textual", "visual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation", "tableOfContents"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",

@@ -127,6 +127,12 @@ const howItWorksWebPageJsonLd = {
   dateModified: "2026-07-17",
   mainEntity: { "@id": `${SITE_URL}/how-it-works#howto` },
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  abstract: "ReviewIQ's four-step process: verified buyers submit structured reviews, AI analyzes thousands of experiences, SmartScore synthesizes the data, and you make a confident buying decision.",
+  accessMode: ["textual", "visual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",

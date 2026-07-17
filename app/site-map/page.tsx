@@ -16,6 +16,12 @@ const siteMapWebPageJsonLd = {
   description: "Browse all content on ReviewIQ — product reviews, blog articles, comparisons, and community discussions organized by date and category.",
   datePublished: "2024-01-01",
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  abstract: "Complete directory of ReviewIQ content — product reviews, blog articles, comparison guides, and community discussions organized by category and date.",
+  accessMode: ["textual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation", "tableOfContents"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   dateModified: new Date().toISOString().split("T")[0],
   speakable: {

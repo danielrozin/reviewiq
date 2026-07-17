@@ -17,6 +17,12 @@ const compareHubJsonLd = {
   datePublished: "2024-01-01",
   dateModified: "2026-07-17",
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  abstract: "Compare any 2–4 products side-by-side on ReviewIQ. See SmartScores, specs, pros and cons, and an AI-generated verdict to make a confident buying decision.",
+  accessMode: ["textual", "visual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation", "tableOfContents"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",

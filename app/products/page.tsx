@@ -20,6 +20,12 @@ const productsPageSchema = {
   datePublished: "2024-01-01",
   dateModified: "2026-07-17",
   isPartOf: { "@id": `${SITE_URL}/#website` },
+  abstract: "Search and filter hundreds of products across all categories on ReviewIQ. Every SmartScore is derived from verified buyer reviews — no affiliate bias.",
+  accessMode: ["textual", "visual"],
+  accessibilityFeature: ["readingOrder", "structuralNavigation", "searchable"],
+  accessibilityHazard: "none",
+  copyrightHolder: { "@id": `${SITE_URL}/#organization` },
+  author: { "@id": `${SITE_URL}/#organization` },
   publisher: { "@id": `${SITE_URL}/#organization` },
   speakable: {
     "@type": "SpeakableSpecification",
