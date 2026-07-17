@@ -77,10 +77,10 @@ export function MobileBottomNav() {
                 className={`flex flex-col items-center justify-center min-h-[56px] w-full touch-manipulation gap-0.5 px-1 py-2 text-[10px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset rounded-none ${
                   active
                     ? "text-brand-600"
-                    : "text-gray-500 hover:text-gray-800"
+                    : "text-gray-600 hover:text-gray-800"
                 }`}
               >
-                <span className={active ? "text-brand-600" : "text-gray-400"}>
+                <span className={active ? "text-brand-600" : "text-gray-600"}>
                   {item.icon}
                 </span>
                 {item.label}

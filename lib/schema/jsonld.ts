@@ -377,6 +377,8 @@ export function categoryListSchema(categories: Category[]) {
     copyrightHolder: { "@id": `${SITE_URL}/#organization` },
     license: `${SITE_URL}/terms`,
     accessMode: ["textual"],
+    accessibilityFeature: ["readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     itemListElement: categories.map((cat, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -418,6 +420,8 @@ export function productListSchema(products: Product[], categoryName: string, cat
     copyrightHolder: { "@id": `${SITE_URL}/#organization` },
     license: `${SITE_URL}/terms`,
     accessMode: ["textual", "visual"],
+    accessibilityFeature: ["alternativeText", "readingOrder", "structuralNavigation"],
+    accessibilityHazard: "none",
     ...(avgCategoryRating > 0 && {
       aggregateRating: {
         "@type": "AggregateRating",

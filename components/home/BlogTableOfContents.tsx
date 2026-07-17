@@ -47,7 +47,7 @@ export function BlogTableOfContents({ headings, className = "" }: BlogTableOfCon
       aria-label="Table of contents"
       className={`${className}`}
     >
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3">
+      <p className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-3">
         On this page
       </p>
       <ol role="list" className="space-y-0.5">
