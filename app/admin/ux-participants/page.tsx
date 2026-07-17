@@ -262,23 +262,23 @@ export default function UxParticipantsPage() {
             <div className="p-12 text-center text-gray-400 text-sm">Loading…</div>
           ) : participants.length === 0 ? (
             <div className="p-12 text-center">
-              <Users className="w-10 h-10 text-gray-300 mx-auto mb-3" />
+              <Users aria-hidden="true" className="w-10 h-10 text-gray-300 mx-auto mb-3" />
               <p className="text-gray-500 text-sm">No participants yet</p>
               <p className="text-gray-400 text-xs mt-1">
                 Share <code className="bg-gray-100 px-1 rounded">/ux-study</code> to collect signups
               </p>
             </div>
           ) : (
-            <table className="w-full text-sm">
+            <table className="w-full text-sm" aria-label="UX study participants">
               <thead>
                 <tr className="border-b bg-gray-50">
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Participant</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Available</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Device</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Status</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Signed up</th>
-                  <th className="text-left px-4 py-3 font-medium text-gray-600">Notes</th>
-                  <th className="px-4 py-3"></th>
+                  <th scope="col" className="text-left px-4 py-3 font-medium text-gray-600">Participant</th>
+                  <th scope="col" className="text-left px-4 py-3 font-medium text-gray-600">Available</th>
+                  <th scope="col" className="text-left px-4 py-3 font-medium text-gray-600">Device</th>
+                  <th scope="col" className="text-left px-4 py-3 font-medium text-gray-600">Status</th>
+                  <th scope="col" className="text-left px-4 py-3 font-medium text-gray-600">Signed up</th>
+                  <th scope="col" className="text-left px-4 py-3 font-medium text-gray-600">Notes</th>
+                  <th scope="col" className="px-4 py-3"><span className="sr-only">Actions</span></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
