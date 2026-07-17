@@ -120,7 +120,7 @@ function HealthCard({ metric }: { metric: HealthMetric }) {
   return (
     <div className={`${style.bg} ${style.border} border rounded-xl p-4`}>
       <div className="flex items-center gap-2 mb-2">
-        <div className={`w-3 h-3 rounded-full ${style.dot}`} />
+        <div aria-hidden="true" className={`w-3 h-3 rounded-full ${style.dot}`} />
         <h4 className="font-semibold text-gray-900 text-sm">{metric.name}</h4>
         <span className={`ml-auto text-xs font-medium ${style.text}`}>{style.label}</span>
       </div>
@@ -188,9 +188,9 @@ export default function OKRDashboard() {
                 <p className="text-[10px] text-gray-500 uppercase tracking-wider">Avg Team</p>
               </div>
               <div className="flex gap-1.5 items-center">
-                {healthCounts.green > 0 && <span className="flex items-center gap-1 text-xs"><span className="w-2 h-2 rounded-full bg-emerald-500" />{healthCounts.green}</span>}
-                {healthCounts.yellow > 0 && <span className="flex items-center gap-1 text-xs"><span className="w-2 h-2 rounded-full bg-amber-500" />{healthCounts.yellow}</span>}
-                {healthCounts.red > 0 && <span className="flex items-center gap-1 text-xs"><span className="w-2 h-2 rounded-full bg-red-500" />{healthCounts.red}</span>}
+                {healthCounts.green > 0 && <span className="flex items-center gap-1 text-xs"><span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-500" />{healthCounts.green}</span>}
+                {healthCounts.yellow > 0 && <span className="flex items-center gap-1 text-xs"><span aria-hidden="true" className="w-2 h-2 rounded-full bg-amber-500" />{healthCounts.yellow}</span>}
+                {healthCounts.red > 0 && <span className="flex items-center gap-1 text-xs"><span aria-hidden="true" className="w-2 h-2 rounded-full bg-red-500" />{healthCounts.red}</span>}
               </div>
             </div>
           </div>
@@ -234,9 +234,9 @@ export default function OKRDashboard() {
             <div>
               <p><strong>Health Metrics</strong> are reviewed during Monday check-ins:</p>
               <ul role="list" className="mt-1 space-y-0.5">
-                <li><span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1" />Green = on track, no action needed</li>
-                <li><span className="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1" />Yellow = needs attention this week</li>
-                <li><span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-1" />Red = at risk, requires immediate action</li>
+                <li><span aria-hidden="true" className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-1" />Green = on track, no action needed</li>
+                <li><span aria-hidden="true" className="inline-block w-2 h-2 rounded-full bg-amber-500 mr-1" />Yellow = needs attention this week</li>
+                <li><span aria-hidden="true" className="inline-block w-2 h-2 rounded-full bg-red-500 mr-1" />Red = at risk, requires immediate action</li>
               </ul>
             </div>
           </div>

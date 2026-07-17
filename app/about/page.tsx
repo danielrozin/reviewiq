@@ -165,7 +165,7 @@ export default function AboutPage() {
       {/* Hero */}
       <header className="mt-8 mb-16 max-w-3xl" data-speakable="about-mission">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-4 border border-brand-100">
-          <span className="w-2 h-2 bg-brand-500 rounded-full" />
+          <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full" />
           Our mission
         </div>
         <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 leading-[1.1] mb-6">
