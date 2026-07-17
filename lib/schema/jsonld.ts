@@ -584,6 +584,15 @@ export function blogPostSchema(post: BlogPost) {
     ...(post.readingTime > 0 && {
       timeRequired: `PT${post.readingTime}M`,
     }),
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: [
+        "[data-speakable='blog-headline']",
+        "[data-speakable='blog-intro']",
+        "[data-speakable='blog-body']",
+        "[data-speakable='faq-answer']",
+      ],
+    },
     ...(post.relatedProductSlugs.length > 0 && {
       mentions: post.relatedProductSlugs.map((slug) => ({
         "@type": "Product",
