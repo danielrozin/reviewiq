@@ -272,7 +272,7 @@ export function Header() {
                             tabIndex={-1}
                             type="button"
                             onClick={() => { setUserMenuOpen(false); signOut(); }}
-                            className="w-full text-left px-4 py-2.5 min-h-[44px] flex items-center text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
+                            className="w-full text-left px-4 py-2.5 min-h-[44px] flex items-center text-sm text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                           >
                             Sign out
                           </button>
@@ -283,7 +283,7 @@ export function Header() {
                 ) : (
                   <Link
                     href="/auth/signin"
-                    className="inline-flex items-center px-4 py-2 min-h-[44px] text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                    className="inline-flex items-center px-4 py-2 min-h-[44px] text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                   >
                     Sign In
                   </Link>
@@ -405,7 +405,7 @@ export function Header() {
                     <button
                       type="button"
                       onClick={() => { setMenuOpen(false); signOut(); }}
-                      className="flex items-center w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                      className="flex items-center w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                     >
                       Sign out
                     </button>
@@ -414,7 +414,7 @@ export function Header() {
                   <Link
                     href="/auth/signin"
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center justify-center px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-white bg-brand-600 hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                    className="flex items-center justify-center px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-white bg-brand-600 hover:bg-brand-700 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                   >
                     Sign In
                   </Link>

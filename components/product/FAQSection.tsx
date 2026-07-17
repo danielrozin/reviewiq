@@ -40,7 +40,7 @@ export function FAQSection({ items }: FAQSectionProps) {
                 aria-expanded={isOpen}
                 aria-controls={panelId}
                 className={cn(
-                  "w-full flex items-center justify-between px-5 py-4 text-left transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-600",
+                  "w-full flex items-center justify-between px-5 py-4 min-h-[44px] text-left transition-colors touch-manipulation group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand-600",
                   isOpen ? "hover:bg-brand-50/60" : "hover:bg-gray-50"
                 )}
               >
