@@ -53,7 +53,7 @@ export function QuickActions() {
               aria-label={`${action.title} — ${action.description}`}
               className={`group flex flex-col bg-white border border-gray-100 rounded-xl overflow-hidden motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${action.borderHover}`}
             >
-              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
               <div className="flex items-center gap-4 p-4 w-full">
               <div aria-hidden="true" className={`w-10 h-10 rounded-xl ${action.iconBg} ${action.iconColor} flex items-center justify-center shrink-0`}>
                 {action.icon}

@@ -30,7 +30,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
             aria-labelledby={`pros-cons-${product.id}`}
             className="bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-gray-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group"
           >
-            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
             {/* Product header */}
             <div className="bg-white border-b border-gray-100 px-4 py-3 flex items-center gap-3">
               <div

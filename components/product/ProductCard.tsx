@@ -37,7 +37,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <article aria-labelledby={`product-${product.id}`} className="group relative bg-white border border-gray-100 rounded-2xl hover:shadow-lg hover:border-brand-200 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 overflow-hidden">
       {/* Product color accent strip at top */}
-      <div aria-hidden="true" className="h-1 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+      <div aria-hidden="true" className="h-1 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
 
       <Link
         href={`/category/${product.categorySlug}/${product.slug}`}

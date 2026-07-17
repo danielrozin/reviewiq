@@ -39,7 +39,7 @@ export function PricingTiers() {
     <ul role="list" aria-label="Pricing plans" className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
       {/* Free Plan */}
       <li><article aria-labelledby="plan-free-name" className="bg-white rounded-2xl border border-gray-200 overflow-hidden flex flex-col hover:shadow-sm hover:border-gray-300 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
-        <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-gray-200 to-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+        <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-gray-200 to-gray-300 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
         <div className="p-8 flex flex-col flex-1">
         <div className="mb-6">
           <h2 id="plan-free-name" className="text-lg font-semibold text-gray-900">

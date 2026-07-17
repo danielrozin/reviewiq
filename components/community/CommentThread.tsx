@@ -75,7 +75,7 @@ function SingleComment({ comment, depth = 0 }: { comment: Comment; depth?: numbe
             size="sm"
             ariaContext={`comment by ${author?.displayName ?? author?.username ?? "user"}`}
           />
-          <div className="flex items-center gap-1 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-within:opacity-100 transition-opacity">
+          <div className="flex items-center gap-1 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-within:opacity-100 motion-safe:transition-opacity">
             <button type="button" aria-label={`Reply to comment by ${author?.displayName ?? author?.username ?? "user"}`} className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-brand-600 transition-colors font-medium min-h-[44px] px-3 py-2 rounded-lg hover:bg-brand-50 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1">
               <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />

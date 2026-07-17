@@ -181,7 +181,7 @@ export default function AboutPage() {
       <ul role="list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20 list-none p-0 m-0">
         {STATS.map((s) => (
           <li key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
-            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
             <div className="p-5 text-center">
               <div aria-hidden="true" className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 {s.icon}
@@ -223,7 +223,7 @@ export default function AboutPage() {
         <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-5 list-none p-0 m-0">
           {PRINCIPLES.map((p) => (
             <li key={p.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
-              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
               <div className="flex gap-4 p-6">
                 <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${p.color} flex items-center justify-center shrink-0`}>
                   {p.icon}
@@ -247,7 +247,7 @@ export default function AboutPage() {
         <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 list-none p-0 m-0">
           {TEAM.map((member) => (
             <li key={member.name} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
-              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
               <div className="flex flex-col items-center text-center p-6">
                 <div aria-hidden="true" className={`w-16 h-16 rounded-2xl ${member.color} text-white flex items-center justify-center text-xl font-bold mb-4`}>
                   {member.initials}

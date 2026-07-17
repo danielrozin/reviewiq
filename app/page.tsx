@@ -281,7 +281,7 @@ export default function HomePage() {
                 className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-100 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 {/* Brand accent hover strip */}
-                <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
                 {/* Product image */}
                 <div className="relative h-44 bg-gray-50 overflow-hidden">
                   {product.image ? (
@@ -451,7 +451,7 @@ export default function HomePage() {
                 href={`/blog/${post.slug}`}
                 className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md hover:border-brand-100 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
-                <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
                 <div className="p-6 flex flex-col flex-1">
                 <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full self-start">
                   {post.categoryName}

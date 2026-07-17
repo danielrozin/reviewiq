@@ -381,7 +381,7 @@ export default async function BlogPostPage({
                   <p className="text-sm text-gray-600 mt-2 line-clamp-2 leading-relaxed">
                     {rp.excerpt}
                   </p>
-                  <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 motion-safe:transition-opacity">
                     Read article
                     <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

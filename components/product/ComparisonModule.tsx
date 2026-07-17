@@ -46,7 +46,7 @@ export function ComparisonModule({
               aria-label={`Compare ${currentProduct} vs ${comp.productName}`}
               className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:bg-brand-50/30 motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
-              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
               <div className="flex items-center justify-between p-4">
               <div className="flex items-center gap-3 min-w-0">
                 <div aria-hidden="true" className="w-9 h-9 bg-brand-50 border border-brand-100 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-brand-100 transition-colors">
