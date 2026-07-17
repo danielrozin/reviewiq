@@ -238,7 +238,7 @@ export function Header() {
                             tabIndex={-1}
                             href="/pricing"
                             onClick={() => setUserMenuOpen(false)}
-                            className="block px-4 py-2.5 text-sm text-amber-700 hover:bg-amber-50 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-inset"
+                            className="block px-4 py-2.5 min-h-[44px] flex items-center text-sm text-amber-700 hover:bg-amber-50 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 focus-visible:ring-inset"
                           >
                             <span className="inline-flex items-center gap-1.5">
                             <svg aria-hidden="true" className="w-3.5 h-3.5 text-amber-600" fill="currentColor" viewBox="0 0 20 20">
@@ -253,7 +253,7 @@ export function Header() {
                           tabIndex={-1}
                           href="/dashboard"
                           onClick={() => setUserMenuOpen(false)}
-                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
+                          className="flex items-center px-4 py-2.5 min-h-[44px] text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                         >
                           Dashboard
                         </Link>
@@ -262,7 +262,7 @@ export function Header() {
                           tabIndex={-1}
                           href="/settings"
                           onClick={() => setUserMenuOpen(false)}
-                          className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
+                          className="flex items-center px-4 py-2.5 min-h-[44px] text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                         >
                           Settings
                         </Link>
@@ -272,7 +272,7 @@ export function Header() {
                             tabIndex={-1}
                             type="button"
                             onClick={() => { setUserMenuOpen(false); signOut(); }}
-                            className="w-full text-left px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
+                            className="w-full text-left px-4 py-2.5 min-h-[44px] flex items-center text-sm text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-inset"
                           >
                             Sign out
                           </button>
@@ -283,7 +283,7 @@ export function Header() {
                 ) : (
                   <Link
                     href="/auth/signin"
-                    className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                    className="inline-flex items-center px-4 py-2 min-h-[44px] text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                   >
                     Sign In
                   </Link>
@@ -351,7 +351,7 @@ export function Header() {
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
                     aria-current={isActive ? "page" : undefined}
-                    className={`flex items-center gap-3 px-4 py-2.5 rounded-xl text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+                    className={`flex items-center gap-3 px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                       isActive
                         ? "bg-brand-50 text-brand-700 font-semibold"
                         : link.accent
@@ -372,7 +372,7 @@ export function Header() {
                   href="/compare"
                   onClick={() => setMenuOpen(false)}
                   aria-label={`Compare — ${items.length} ${items.length === 1 ? "product" : "products"} selected`}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-base font-medium text-brand-700 hover:bg-brand-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="flex items-center gap-2 px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-brand-700 hover:bg-brand-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <span aria-hidden="true">Compare</span>
                   <span aria-hidden="true" className="w-5 h-5 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">
@@ -387,7 +387,7 @@ export function Header() {
                 <Link
                   href="/write-review"
                   onClick={() => setMenuOpen(false)}
-                  className="block px-4 py-2.5 rounded-xl text-base font-medium text-brand-600 bg-brand-50 hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="flex items-center px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-brand-600 bg-brand-50 hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   Write a Review
                 </Link>
@@ -398,14 +398,14 @@ export function Header() {
                     <Link
                       href="/dashboard"
                       onClick={() => setMenuOpen(false)}
-                      className="block px-4 py-2.5 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                      className="flex items-center px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                     >
                       Dashboard
                     </Link>
                     <button
                       type="button"
                       onClick={() => { setMenuOpen(false); signOut(); }}
-                      className="block w-full text-left px-4 py-2.5 rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                      className="flex items-center w-full text-left px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-gray-700 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                     >
                       Sign out
                     </button>
@@ -414,7 +414,7 @@ export function Header() {
                   <Link
                     href="/auth/signin"
                     onClick={() => setMenuOpen(false)}
-                    className="block px-4 py-2.5 rounded-xl text-base font-medium text-white bg-brand-600 hover:bg-brand-700 transition-colors text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+                    className="flex items-center justify-center px-4 py-2.5 min-h-[44px] rounded-xl text-base font-medium text-white bg-brand-600 hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
                   >
                     Sign In
                   </Link>

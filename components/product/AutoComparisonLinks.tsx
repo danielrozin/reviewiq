@@ -94,7 +94,7 @@ export function AutoComparisonLinks({ productName, productSlug }: AutoComparison
             target="_blank"
             rel="noopener noreferrer"
             aria-label={`Search all ${productName} comparisons on A vs B (opens in new tab)`}
-            className="inline-flex items-center gap-1.5 px-4 py-2 text-xs text-purple-600 hover:text-purple-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:rounded focus-visible:ring-offset-1"
+            className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-xs text-purple-600 hover:text-purple-700 hover:underline touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-400 focus-visible:rounded focus-visible:ring-offset-1"
           >
             <span aria-hidden="true">Search all {productName} comparisons on A vs B</span>
             <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

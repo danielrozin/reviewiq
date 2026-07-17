@@ -23,7 +23,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
           </p>
           <Link
             href="/community"
-            className="inline-flex items-center px-4 py-2 bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+            className="inline-flex items-center px-4 py-2 min-h-[44px] bg-brand-600 text-white text-sm font-medium rounded-xl hover:bg-brand-700 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
           >
             Start a Discussion
           </Link>

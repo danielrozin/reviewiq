@@ -62,7 +62,7 @@ export function WelcomeBackBanner() {
                 <li key={slug}>
                   <Link
                     href={`/products/${slug}`}
-                    className="inline-flex items-center gap-1 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-xs font-medium rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 min-h-[44px] bg-white/10 hover:bg-white/20 text-xs font-medium rounded-lg transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
                   >
                     {slug.replace(/-/g, " ")}
                   </Link>
@@ -75,7 +75,7 @@ export function WelcomeBackBanner() {
             <li>
               <Link
                 href="/products"
-                className="inline-flex items-center gap-1.5 px-4 py-2 bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] bg-white text-brand-700 text-sm font-medium rounded-xl hover:bg-white/90 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 Browse products
                 <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -87,7 +87,7 @@ export function WelcomeBackBanner() {
               <li>
                 <Link
                   href="/dashboard"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] bg-white/10 text-white text-sm font-medium rounded-xl hover:bg-white/20 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-1 focus-visible:ring-offset-brand-600"
                 >
                   My dashboard
                 </Link>
