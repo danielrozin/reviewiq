@@ -114,7 +114,7 @@ export function ComparisonPoll({
                     {option.label}
                   </span>
                   {hasVoted && (
-                    <span className={`text-xs font-semibold shrink-0 ${isWinner ? "text-brand-600" : "text-gray-500"}`}>
+                    <span className={`text-xs font-semibold shrink-0 ${isWinner ? "text-brand-600" : "text-gray-600"}`}>
                       {pct}%
                     </span>
                   )}
@@ -126,7 +126,7 @@ export function ComparisonPoll({
       </div>
 
       {hasVoted && (
-        <p className="mt-3 text-xs text-gray-500 text-right" aria-live="polite">
+        <p className="mt-3 text-xs text-gray-600 text-right" aria-live="polite">
           {total.toLocaleString()} {total === 1 ? "vote" : "votes"} cast
         </p>
       )}
