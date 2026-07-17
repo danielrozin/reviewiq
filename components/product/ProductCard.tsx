@@ -138,7 +138,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
               ? "bg-brand-600 text-white shadow-sm"
               : isFull
                 ? "bg-gray-100 text-gray-400 cursor-not-allowed"
-                : "bg-gray-50 text-gray-600 border border-gray-500 hover:border-brand-500 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
+                : "bg-gray-50 text-gray-600 border border-gray-200 hover:border-brand-500 hover:text-brand-600 hover:bg-brand-50 sm:opacity-0 sm:group-hover:opacity-100 sm:focus-visible:opacity-100"
           }`}
           aria-label={isSelected ? `Remove ${product.name} from comparison` : isFull ? "Comparison list full — max 4 products" : `Add ${product.name} to compare`}
           aria-pressed={isSelected}

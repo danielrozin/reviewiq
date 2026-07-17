@@ -112,7 +112,7 @@ export function EmailCaptureCTA({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           autoComplete="email"
-          className="flex-1 px-4 py-3 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
+          className="flex-1 px-4 py-3 text-sm border border-gray-300 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
           disabled={status === "loading"}
         />
         <button

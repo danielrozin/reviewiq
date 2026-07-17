@@ -62,7 +62,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
         onClick={handleClick}
         aria-haspopup={isPro ? "menu" : undefined}
         aria-expanded={isPro ? showMenu : undefined}
-        className="inline-flex items-center gap-1.5 min-h-[44px] px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-500 rounded-xl hover:bg-gray-50 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+        className="inline-flex items-center gap-1.5 min-h-[44px] px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
       >
         {isPro ? (
           <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

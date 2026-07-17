@@ -167,7 +167,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
               aria-label="Sort reviews"
               value={sortBy}
               onChange={(e) => handleSortChange(e.target.value)}
-              className="text-sm text-gray-600 bg-transparent border border-gray-500 rounded-xl px-3 py-2.5 pr-8 min-h-[44px] appearance-none cursor-pointer hover:border-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+              className="text-sm text-gray-600 bg-transparent border border-gray-300 rounded-xl px-3 py-2.5 pr-8 min-h-[44px] appearance-none cursor-pointer hover:border-gray-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               {FREE_SORT_OPTIONS.map((value) => (
                 <option key={value} value={value}>

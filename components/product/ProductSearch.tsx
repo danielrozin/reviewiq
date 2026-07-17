@@ -224,7 +224,7 @@ export function ProductSearch() {
           autoComplete="off"
           aria-label="Search by product name, brand, or keyword"
           placeholder="Search by product name, brand, or keyword..."
-          className="w-full pl-12 pr-4 py-3 text-base border border-gray-500 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent transition-colors"
+          className="w-full pl-12 pr-4 py-3 text-base border border-gray-300 rounded-xl bg-white text-gray-900 placeholder-gray-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent transition-colors"
         />
         {query && (
           <button
@@ -247,7 +247,7 @@ export function ProductSearch() {
           value={category}
           onChange={(e) => setFilter("category", e.target.value)}
           aria-label="Filter by category"
-          className="px-3 py-2 text-sm border border-gray-500 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
         >
           <option value="">All Categories</option>
           {categories.map((cat) => (
@@ -262,7 +262,7 @@ export function ProductSearch() {
           value={sort}
           onChange={(e) => setFilter("sort", e.target.value)}
           aria-label="Sort products"
-          className="px-3 py-2 text-sm border border-gray-500 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
         >
           {SORT_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -276,7 +276,7 @@ export function ProductSearch() {
           value={minRating}
           onChange={(e) => setFilter("rating", Number(e.target.value))}
           aria-label="Filter by minimum rating"
-          className="px-3 py-2 text-sm border border-gray-500 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
+          className="px-3 py-2 text-sm border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600"
         >
           <option value={0}>Any Rating</option>
           {RATING_OPTIONS.map((opt) => (
@@ -295,7 +295,7 @@ export function ProductSearch() {
             min={GLOBAL_MIN_PRICE}
             max={priceMax}
             onChange={(e) => setFilter("priceMin", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-500 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 text-sm"
+            className="w-20 px-2 py-2 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 text-sm"
             aria-label="Minimum price"
             placeholder="Min"
           />
@@ -306,7 +306,7 @@ export function ProductSearch() {
             min={priceMin}
             max={GLOBAL_MAX_PRICE}
             onChange={(e) => setFilter("priceMax", Number(e.target.value))}
-            className="w-20 px-2 py-2 border border-gray-500 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 text-sm"
+            className="w-20 px-2 py-2 border border-gray-300 rounded-xl bg-white text-gray-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 text-sm"
             aria-label="Maximum price"
             placeholder="Max"
           />
@@ -460,7 +460,7 @@ export function ProductSearch() {
               <li key={cat.slug}>
                 <a
                   href={`/category/${cat.slug}`}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-sm font-medium text-gray-700 bg-white border border-gray-500 rounded-full hover:border-brand-500 hover:text-brand-700 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  className="inline-flex items-center gap-1.5 px-4 py-2 min-h-[44px] text-sm font-medium text-gray-700 bg-white border border-gray-200 rounded-full hover:border-brand-500 hover:text-brand-700 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <svg aria-hidden="true" className="w-3.5 h-3.5 text-gray-400" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5" />
@@ -481,7 +481,7 @@ export function ProductSearch() {
             disabled={safePage <= 1}
             onClick={() => setFilter("page", safePage - 1)}
             aria-label="Go to previous page"
-            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-500 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             Previous
           </button>
@@ -496,7 +496,7 @@ export function ProductSearch() {
                 className={`w-11 h-11 text-sm font-medium rounded-xl transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                   p === safePage
                     ? "bg-brand-600 text-white"
-                    : "border border-gray-500 text-gray-700 hover:bg-gray-50"
+                    : "border border-gray-200 text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 {p}
@@ -509,7 +509,7 @@ export function ProductSearch() {
             disabled={safePage >= totalPages}
             onClick={() => setFilter("page", safePage + 1)}
             aria-label="Go to next page"
-            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-500 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+            className="px-3 py-2 min-h-[44px] text-sm font-medium rounded-xl border border-gray-200 text-gray-700 hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             Next
           </button>

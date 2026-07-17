@@ -77,7 +77,7 @@ export default function SignUpPage() {
             type="button"
             onClick={handleGoogle}
             disabled={loading}
-            className="w-full flex items-center justify-center gap-3 px-4 py-3.5 min-h-[44px] border border-gray-500 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+            className="w-full flex items-center justify-center gap-3 px-4 py-3.5 min-h-[44px] border border-gray-200 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors touch-manipulation disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <svg aria-hidden="true" className="w-5 h-5" viewBox="0 0 24 24">
               <path

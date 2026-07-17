@@ -66,7 +66,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           className={`px-4 py-3 min-h-[44px] rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
             activeCategory === "all"
               ? "bg-brand-600 text-white shadow-sm"
-              : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-700"
+              : "bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-700"
           }`}
         >
           All ({posts.length})
@@ -86,7 +86,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               className={`px-4 py-3 min-h-[44px] rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                 activeCategory === cat.slug
                   ? "bg-brand-600 text-white shadow-sm"
-                  : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-700"
+                  : "bg-white border border-gray-200 text-gray-600 hover:border-brand-500 hover:text-brand-700"
               }`}
             >
               {cat.name} ({count})

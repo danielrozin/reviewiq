@@ -5,7 +5,7 @@ export function ReplyComposer() {
     <form
       aria-label="Write a reply"
       onSubmit={(e) => e.preventDefault()}
-      className="border border-gray-500 rounded-xl p-4 mb-6"
+      className="border border-gray-200 rounded-xl p-4 mb-6"
     >
       <label htmlFor="thread-reply-textarea" className="block text-xs font-medium text-gray-600 mb-2">
         Write a reply
