@@ -127,7 +127,7 @@ export default function UxStudyPage() {
                       : "border-gray-200 text-gray-600 hover:border-gray-300"
                   }`}
                 >
-                  <Clock className={`w-4 h-4 ${form.available === opt ? "text-indigo-600" : "text-gray-400"}`} />
+                  <Clock aria-hidden="true" className={`w-4 h-4 ${form.available === opt ? "text-indigo-600" : "text-gray-400"}`} />
                   <span className="capitalize">{opt}</span>
                 </button>
               ))}
@@ -154,7 +154,7 @@ export default function UxStudyPage() {
                       : "border-gray-200 text-gray-600 hover:border-gray-300"
                   }`}
                 >
-                  <Icon className={`w-4 h-4 ${form.device === val ? "text-indigo-600" : "text-gray-400"}`} />
+                  <Icon aria-hidden="true" className={`w-4 h-4 ${form.device === val ? "text-indigo-600" : "text-gray-400"}`} />
                   {label}
                 </button>
               ))}

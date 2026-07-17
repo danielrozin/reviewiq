@@ -145,9 +145,10 @@ export default function UxParticipantsPage() {
         <div className="flex items-center gap-4 mb-6">
           <button
             onClick={() => router.push("/admin")}
+            aria-label="Back to admin dashboard"
             className="p-2 rounded-lg hover:bg-gray-200 motion-safe:transition-colors"
           >
-            <ArrowLeft className="w-5 h-5 text-gray-600" />
+            <ArrowLeft aria-hidden="true" className="w-5 h-5 text-gray-600" />
           </button>
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-gray-900">UX Study Participants</h1>
@@ -160,21 +161,21 @@ export default function UxParticipantsPage() {
               onClick={load}
               className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border rounded-lg hover:bg-gray-100 motion-safe:transition-colors"
             >
-              <RefreshCw className="w-4 h-4" />
+              <RefreshCw aria-hidden="true" className="w-4 h-4" />
               Refresh
             </button>
             <button
               onClick={exportCsv}
               className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border rounded-lg hover:bg-gray-100 motion-safe:transition-colors"
             >
-              <Download className="w-4 h-4" />
+              <Download aria-hidden="true" className="w-4 h-4" />
               Export CSV
             </button>
             <button
               onClick={() => setAddOpen(true)}
               className="flex items-center gap-1.5 px-3 py-2 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 motion-safe:transition-colors"
             >
-              <Plus className="w-4 h-4" />
+              <Plus aria-hidden="true" className="w-4 h-4" />
               Add manually
             </button>
           </div>
@@ -333,11 +334,11 @@ export default function UxParticipantsPage() {
                             onChange={e => setNotesDraft(e.target.value)}
                             onKeyDown={e => { if (e.key === "Enter") saveNotes(p.id); if (e.key === "Escape") setEditingNotes(null); }}
                           />
-                          <button onClick={() => saveNotes(p.id)} className="text-green-600 hover:text-green-700">
-                            <CheckCircle className="w-4 h-4" />
+                          <button onClick={() => saveNotes(p.id)} aria-label="Save note" className="text-green-600 hover:text-green-700">
+                            <CheckCircle aria-hidden="true" className="w-4 h-4" />
                           </button>
-                          <button onClick={() => setEditingNotes(null)} className="text-gray-400 hover:text-gray-600">
-                            <X className="w-4 h-4" />
+                          <button onClick={() => setEditingNotes(null)} aria-label="Cancel editing" className="text-gray-400 hover:text-gray-600">
+                            <X aria-hidden="true" className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
@@ -354,17 +355,17 @@ export default function UxParticipantsPage() {
                         <a
                           href={`mailto:${p.email}?subject=ReviewIQ%20UX%20Study%20Session&body=Hi%20${encodeURIComponent(p.name.split(" ")[0])}%2C%0A%0AThank%20you%20for%20signing%20up%20to%20test%20ReviewIQ!%20I%27d%20love%20to%20schedule%20a%2030-minute%20usability%20session%20with%20you.%0A%0AWhen%20works%20best%20for%20you%3F%0A%0ABest%2C%0ADaniel`}
                           onClick={() => p.status === "new" && updateStatus(p.id, "contacted")}
+                          aria-label={`Send scheduling email to ${p.name}`}
                           className="p-1.5 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 motion-safe:transition-colors"
-                          title="Send scheduling email"
                         >
-                          <Calendar className="w-4 h-4" />
+                          <Calendar aria-hidden="true" className="w-4 h-4" />
                         </a>
                         <button
                           onClick={() => deleteParticipant(p.id)}
+                          aria-label={`Remove ${p.name}`}
                           className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 motion-safe:transition-colors"
-                          title="Remove"
                         >
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 aria-hidden="true" className="w-4 h-4" />
                         </button>
                       </div>
                     </td>
