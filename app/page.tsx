@@ -39,7 +39,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
           <div className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-6">
-              <span className="w-2 h-2 bg-brand-500 rounded-full" />
+              <span aria-hidden="true" className="w-2 h-2 bg-brand-500 rounded-full" />
               AI-Powered Review Intelligence
             </div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.1] mb-6">
@@ -66,7 +66,7 @@ export default function HomePage() {
                   href={tile.href}
                   className="group p-3 bg-white/70 hover:bg-white border border-gray-200 hover:border-brand-200 rounded-xl transition-all text-sm"
                 >
-                  <span className="text-xl block mb-1">{tile.icon}</span>
+                  <span aria-hidden="true" className="text-xl block mb-1">{tile.icon}</span>
                   <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
                   <p className="text-gray-500 text-xs mt-0.5">{tile.desc}</p>
                 </Link>
@@ -199,7 +199,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between mb-8">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-brand-50 text-brand-700 rounded-full text-sm font-medium mb-3">
-              <span className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
+              <span aria-hidden="true" className="w-2 h-2 bg-trust-green rounded-full animate-pulse" />
               Live Community
             </div>
             <h2 className="text-2xl font-bold text-gray-900">
@@ -253,8 +253,8 @@ export default function HomePage() {
                         {author.displayName}
                       </span>
                     )}
-                    <span>💬 {thread.commentCount}</span>
-                    <span>👁 {formatNumber(thread.viewCount)}</span>
+                    <span><span aria-hidden="true">💬</span><span className="sr-only">Comments:</span> {thread.commentCount}</span>
+                    <span><span aria-hidden="true">👁</span><span className="sr-only">Views:</span> {formatNumber(thread.viewCount)}</span>
                   </div>
                 </div>
               </Link>
@@ -355,7 +355,7 @@ export default function HomePage() {
             },
           ].map((item) => (
             <div key={item.step} className="text-center">
-              <div className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center font-bold text-lg mx-auto mb-4">
+              <div aria-hidden="true" className="w-12 h-12 bg-brand-50 text-brand-600 rounded-xl flex items-center justify-center font-bold text-lg mx-auto mb-4">
                 {item.step}
               </div>
               <h3 className="font-semibold text-gray-900 text-lg mb-2">

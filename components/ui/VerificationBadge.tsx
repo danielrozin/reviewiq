@@ -27,7 +27,7 @@ export function VerificationBadge({ tier, compact = false }: VerificationBadgePr
   if (compact) {
     return (
       <span className={cn("inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium border", colorClass)}>
-        <span className={cn("w-1.5 h-1.5 rounded-full", dotColor)} />
+        <span aria-hidden="true" className={cn("w-1.5 h-1.5 rounded-full", dotColor)} />
         {confidence >= 85 ? "Verified" : confidence >= 40 ? "Declared" : "Unverified"}
       </span>
     );
@@ -35,7 +35,7 @@ export function VerificationBadge({ tier, compact = false }: VerificationBadgePr
 
   return (
     <span className={cn("inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border", colorClass)}>
-      <span className={cn("w-2 h-2 rounded-full", dotColor)} />
+      <span aria-hidden="true" className={cn("w-2 h-2 rounded-full", dotColor)} />
       {label}
     </span>
   );

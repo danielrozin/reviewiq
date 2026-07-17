@@ -37,7 +37,7 @@ export function RecurringIssues({ issues }: RecurringIssuesProps) {
           >
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span className={cn("w-2 h-2 rounded-full", severityDot[issue.severity])} />
+                <span aria-hidden="true" className={cn("w-2 h-2 rounded-full", severityDot[issue.severity])} />
                 <h3 className="font-medium text-sm">{issue.title}</h3>
               </div>
               <span className="text-xs font-medium">
