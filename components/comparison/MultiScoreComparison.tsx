@@ -28,7 +28,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
       </div>
 
       {/* Horizontal scroll on mobile for 3+ products */}
-      <div className="overflow-x-auto -mx-4 px-4 lg:overflow-visible lg:mx-0 lg:px-0">
+      <div className="overflow-x-auto overscroll-x-contain scrollbar-thin -mx-4 px-4 lg:overflow-visible lg:mx-0 lg:px-0">
         {/* Score cards */}
         <ul role="list" aria-label="SmartScore comparison" className={cn("grid gap-4 lg:gap-6 list-none p-0 m-0", colClass)} style={{ minWidth }}>
           {products.map((product) => {

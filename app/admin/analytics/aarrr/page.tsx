@@ -330,7 +330,7 @@ export default function AARRRDashboard() {
         ref={tablistRef}
         role="tablist"
         aria-label="AARRR metric views"
-        className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 overflow-x-auto"
+        className="flex gap-1 bg-gray-100 rounded-lg p-1 mb-8 overflow-x-auto overscroll-x-contain scrollbar-thin"
         onKeyDown={(e) => {
           const tabKeys = tabs.map((t) => t.key);
           const idx = tabKeys.indexOf(activeTab);

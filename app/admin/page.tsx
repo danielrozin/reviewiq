@@ -369,7 +369,7 @@ export default function AdminDashboard() {
             ref={tablistRef}
             role="tablist"
             aria-label="Admin sections"
-            className="flex gap-1 overflow-x-auto py-2"
+            className="flex gap-1 overflow-x-auto overscroll-x-contain py-2 scrollbar-thin"
             onKeyDown={(e) => {
               const tabKeys = tabs.map(t => t.key);
               const idx = tabKeys.indexOf(activeTab);

@@ -57,7 +57,7 @@ export function ComparisonTray() {
 
           <div className="flex items-center gap-3">
             {/* Product chips */}
-            <ul role="list" className="flex-1 flex items-center gap-2 overflow-x-auto list-none p-0 m-0" aria-label="Products selected for comparison">
+            <ul role="list" className="flex-1 flex items-center gap-2 overflow-x-auto overscroll-x-contain scrollbar-thin list-none p-0 m-0" aria-label="Products selected for comparison">
               {items.map((product) => (
                 <li
                   key={product.id}

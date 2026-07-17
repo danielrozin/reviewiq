@@ -104,7 +104,7 @@ export function DiscussionFilters({
   return (
     <div className="space-y-3">
       {/* Sort buttons — mutually exclusive, so radiogroup pattern */}
-      <div ref={sortGroupRef} role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto pb-1" onKeyDown={handleSortKeyDown}>
+      <div ref={sortGroupRef} role="radiogroup" aria-label="Sort discussions by" className="flex items-center gap-1 overflow-x-auto overscroll-x-contain scrollbar-thin pb-1" onKeyDown={handleSortKeyDown}>
         {SORT_OPTIONS.map((option) => (
           <button
             key={option.value}
@@ -126,7 +126,7 @@ export function DiscussionFilters({
       </div>
 
       {/* Type filter pills — single-select, so radiogroup pattern */}
-      <div ref={typeGroupRef} role="radiogroup" aria-label="Filter by thread type" className="flex items-center gap-1.5 overflow-x-auto pb-1" onKeyDown={handleTypeKeyDown}>
+      <div ref={typeGroupRef} role="radiogroup" aria-label="Filter by thread type" className="flex items-center gap-1.5 overflow-x-auto overscroll-x-contain scrollbar-thin pb-1" onKeyDown={handleTypeKeyDown}>
         <button
           type="button"
           role="radio"
