@@ -141,11 +141,11 @@ export default function WeeklyReportPage() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">&larr; Analytics</Link>
+                <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">&larr; Analytics</Link>
                 <span aria-hidden="true" className="text-gray-300">|</span>
-                <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">AARRR</Link>
+                <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">AARRR</Link>
                 <span aria-hidden="true" className="text-gray-300">|</span>
-                <Link href="/admin/analytics/okr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">OKR</Link>
+                <Link href="/admin/analytics/okr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">OKR</Link>
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mt-1">
                 Weekly Report W{data.weekNumber}
@@ -159,7 +159,7 @@ export default function WeeklyReportPage() {
                 type="button"
                 onClick={() => setShowMarkdown(!showMarkdown)}
                 aria-pressed={showMarkdown}
-                className="px-3 py-1.5 text-xs font-medium border border-gray-400 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="px-3 py-1.5 text-xs font-medium border border-gray-400 rounded-lg hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 {showMarkdown ? "Dashboard" : "Markdown"}
               </button>

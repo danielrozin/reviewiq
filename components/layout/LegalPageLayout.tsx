@@ -51,7 +51,7 @@ export function LegalPageLayout({
       <nav aria-label="Breadcrumb" className="mb-8 print:hidden">
         <ol role="list" className="flex items-center gap-2 text-sm text-gray-600">
           <li>
-            <Link href="/" className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <Link href="/" className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">
               Home
             </Link>
           </li>
@@ -102,7 +102,7 @@ export function LegalPageLayout({
 
           {/* Mobile TOC */}
           <details className="lg:hidden mb-8 bg-gray-50 border border-gray-200 rounded-xl p-4 print:hidden">
-            <summary className="text-sm font-semibold text-gray-900 cursor-pointer select-none rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1">
+            <summary className="text-sm font-semibold text-gray-900 cursor-pointer select-none rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1">
               Table of Contents
             </summary>
             <nav aria-label="Table of contents" className="mt-3">
@@ -111,7 +111,7 @@ export function LegalPageLayout({
                   <li key={section.id}>
                     <a
                       href={`#${section.id}`}
-                      className="text-sm text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                      className="text-sm text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                     >
                       {i + 1}. {section.title}
                     </a>

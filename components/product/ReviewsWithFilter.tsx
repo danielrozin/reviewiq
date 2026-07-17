@@ -94,7 +94,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             aria-checked={filterRating === null}
             tabIndex={filterRating === null ? 0 : -1}
             onClick={() => { setFilterRating(null); setVisible(INITIAL_VISIBLE); }}
-            className={`px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+            className={`px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               filterRating === null
                 ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
                 : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -111,7 +111,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
               aria-checked={filterRating === star}
               tabIndex={filterRating === star ? 0 : -1}
               onClick={() => { setFilterRating(star); setVisible(INITIAL_VISIBLE); }}
-              className={`flex items-center gap-0.5 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+              className={`flex items-center gap-0.5 px-3 py-2.5 rounded-lg text-xs font-medium transition-colors touch-manipulation min-h-[44px] min-w-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                 filterRating === star
                   ? "bg-amber-100 text-amber-800 ring-1 ring-amber-300"
                   : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -152,7 +152,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <button
             type="button"
             onClick={() => setFilterRating(null)}
-            className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1.5 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="inline-flex items-center gap-1.5 text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1.5 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -177,7 +177,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <button
             type="button"
             onClick={() => setVisible((v) => v + 5)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full hover:bg-brand-100 transition-colors shrink-0 touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-brand-700 bg-brand-50 border border-brand-100 rounded-full hover:bg-brand-100 transition-colors shrink-0 touch-manipulation min-h-[44px] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <svg aria-hidden="true" className="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />

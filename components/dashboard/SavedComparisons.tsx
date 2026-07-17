@@ -29,7 +29,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
         </p>
         <Link
           href="/categories"
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-purple-700 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-purple-700 bg-purple-50 rounded-xl hover:bg-purple-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           Browse products
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -49,7 +49,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
         <Link
           href={`/category/${item.categorySlug}/${item.productSlug}`}
           aria-label={`${item.productName} — SmartScore ${item.productScore}, ${getScoreLabel(item.productScore)}${item.note ? `, note: ${item.note}` : ""}`}
-          className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+          className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           <div aria-hidden="true" className="w-14 h-14 bg-gray-100 rounded-xl shrink-0 flex items-center justify-center overflow-hidden">
             <div className="w-full h-full bg-gradient-to-br from-brand-50 to-brand-100 flex items-center justify-center">

@@ -114,7 +114,7 @@ export function DiscussionFilters({
             aria-checked={sort === option.value}
             tabIndex={sort === option.value ? 0 : -1}
             onClick={() => handleSort(option.value)}
-            className={`text-xs font-medium px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+            className={`text-xs font-medium px-3 py-1.5 rounded-xl whitespace-nowrap transition-colors border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               sort === option.value
                 ? "bg-brand-50 text-brand-600 border-brand-100"
                 : "text-gray-600 hover:bg-gray-50 hover:text-gray-700 border-transparent"
@@ -134,7 +134,7 @@ export function DiscussionFilters({
           aria-checked={typeFilter === null}
           tabIndex={typeFilter === null ? 0 : -1}
           onClick={() => handleTypeFilter(null)}
-          className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+          className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
             typeFilter === null
               ? "bg-brand-600 text-white border-brand-600"
               : "text-gray-600 border-gray-500 hover:border-gray-600"
@@ -151,7 +151,7 @@ export function DiscussionFilters({
             aria-checked={typeFilter === type}
             tabIndex={typeFilter === type ? 0 : -1}
             onClick={() => handleTypeFilter(type)}
-            className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+            className={`text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               typeFilter === type
                 ? THREAD_TYPE_COLORS[type]
                 : "text-gray-600 border-gray-500 hover:border-gray-600"

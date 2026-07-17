@@ -146,7 +146,7 @@ function ContentSection({
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
                 <Link
                   href={item.href}
-                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                 >
                   {item.title}
                 </Link>
@@ -166,7 +166,7 @@ function ContentSection({
               <li key={item.slug} className="border-b border-gray-100 pb-1.5">
                 <Link
                   href={item.href}
-                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                 >
                   {item.title}
                 </Link>
@@ -207,7 +207,7 @@ export default function SiteMapPage() {
           For the XML sitemap, see{" "}
           <a
             href="/sitemap.xml"
-            className="text-brand-600 hover:text-brand-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-brand-600 hover:text-brand-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
           >
             sitemap.xml
           </a>
@@ -241,7 +241,7 @@ export default function SiteMapPage() {
                   <h3 className="font-semibold text-gray-900 mb-2">
                     <Link
                       href={`/category/${cat.slug}`}
-                      className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                      className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                     >
                       {cat.name}
                     </Link>
@@ -251,7 +251,7 @@ export default function SiteMapPage() {
                       <li key={p.slug}>
                         <Link
                           href={`/category/${cat.slug}/${p.slug}`}
-                          className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                          className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                         >
                           {p.name}
                         </Link>
@@ -261,7 +261,7 @@ export default function SiteMapPage() {
                       <li>
                         <Link
                           href={`/category/${cat.slug}`}
-                          className="text-sm text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                          className="text-sm text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                         >
                           View all {catProducts.length} products <span aria-hidden="true">→</span>
                         </Link>
@@ -284,7 +284,7 @@ export default function SiteMapPage() {
               <li>
                 <Link
                   href="/blog"
-                  className="text-gray-600 hover:text-brand-600 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                  className="text-gray-600 hover:text-brand-600 transition-colors font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                 >
                   All Articles
                 </Link>
@@ -293,7 +293,7 @@ export default function SiteMapPage() {
                 <li key={cat.slug}>
                   <Link
                     href={`/blog/category/${cat.slug}`}
-                    className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                    className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                   >
                     {cat.name}
                   </Link>
@@ -314,7 +314,7 @@ export default function SiteMapPage() {
                 <li key={pair.slug}>
                   <Link
                     href={`/compare/${pair.slug}`}
-                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                    className="text-sm text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                   >
                     {pair.productA.name} vs {pair.productB.name}
                   </Link>
@@ -347,7 +347,7 @@ export default function SiteMapPage() {
               <li key={page.href}>
                 <Link
                   href={page.href}
-                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                  className="text-gray-600 hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                 >
                   {page.label}
                 </Link>

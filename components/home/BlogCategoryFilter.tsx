@@ -63,7 +63,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           aria-controls="blog-post-list"
           tabIndex={activeCategory === "all" ? 0 : -1}
           onClick={() => setActiveCategory("all")}
-          className={`px-4 py-3 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+          className={`px-4 py-3 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
             activeCategory === "all"
               ? "bg-brand-600 text-white shadow-sm"
               : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-700"
@@ -83,7 +83,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               aria-controls="blog-post-list"
               tabIndex={activeCategory === cat.slug ? 0 : -1}
               onClick={() => setActiveCategory(cat.slug)}
-              className={`px-4 py-3 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+              className={`px-4 py-3 rounded-full text-sm font-medium transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                 activeCategory === cat.slug
                   ? "bg-brand-600 text-white shadow-sm"
                   : "bg-white border border-gray-500 text-gray-600 hover:border-brand-500 hover:text-brand-700"
@@ -102,7 +102,7 @@ export function BlogCategoryFilter({ posts }: Props) {
         tabIndex={0}
         aria-labelledby={`blog-tab-${activeCategory}`}
         aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`}
-        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-2 rounded-lg"
+        className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded-lg"
       >
       <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {filtered.map((post) => (
@@ -111,7 +111,7 @@ export function BlogCategoryFilter({ posts }: Props) {
           <Link
             href={`/blog/${post.slug}`}
             aria-label={`Read: ${post.title} — ${post.readingTime} min read`}
-            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="aspect-video bg-gray-100 relative overflow-hidden">

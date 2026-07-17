@@ -131,7 +131,7 @@ export default async function UserProfilePage({ params }: Props) {
                     <li key={cat}>
                       <Link
                         href={`/category/${cat}`}
-                        className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                        className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                       >
                         {cat.replace(/-/g, " ")}
                       </Link>
@@ -191,7 +191,7 @@ export default async function UserProfilePage({ params }: Props) {
                     <div className="flex items-center gap-2 mb-2">
                       <Link
                         href={`/community/thread/${comment.threadId}`}
-                        className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                        className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                       >
                         View thread
                         <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

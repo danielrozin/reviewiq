@@ -46,7 +46,7 @@ export default async function UnsubscribePage({ params }: Props) {
           </p>
           <p className="text-gray-600 text-sm mt-4">
             You can re-enable notifications anytime from your{" "}
-            <a href="/settings/notifications" className="text-brand-600 hover:text-brand-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+            <a href="/settings/notifications" className="text-brand-600 hover:text-brand-700 underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">
               notification settings
             </a>.
           </p>

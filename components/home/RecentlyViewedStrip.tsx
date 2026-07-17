@@ -51,7 +51,7 @@ export function RecentlyViewedStrip() {
             setItems([]);
           }}
           aria-label="Clear recently viewed products"
-          className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 transition-colors min-h-[44px] px-2 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
+          className="inline-flex items-center gap-1 text-xs text-gray-600 hover:text-gray-800 transition-colors min-h-[44px] px-2 touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-lg"
         >
           <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -68,7 +68,7 @@ export function RecentlyViewedStrip() {
             <Link
               href={`/category/${item.categorySlug}/${item.slug}`}
               aria-label={`${item.name} by ${item.brand} — SmartScore ${item.smartScore}`}
-              className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
               <div className="p-3.5">

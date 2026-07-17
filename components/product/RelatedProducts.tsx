@@ -67,7 +67,7 @@ export function RelatedProducts({
             href={`/category/${categorySlug}/${product.slug}`}
             aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}/100, ${product.reviewCount.toLocaleString()} reviews, $${product.priceMin}–$${product.priceMax}`}
             title={`${product.name} review — SmartScore ${product.smartScore}/100`}
-            className="group flex flex-col border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="group flex flex-col border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             {/* Hover accent strip */}
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -107,7 +107,7 @@ export function RelatedProducts({
 
       <Link
         href={`/category/${categorySlug}`}
-        className="inline-flex items-center gap-1.5 mt-5 text-sm text-brand-600 hover:text-brand-700 font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+        className="inline-flex items-center gap-1.5 mt-5 text-sm text-brand-600 hover:text-brand-700 font-medium transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
       >
         View all {categoryName} products
         <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

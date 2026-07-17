@@ -20,7 +20,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
       <Link
         href={`/community/thread/${thread.id}`}
         aria-label={`${thread.title}${thread.isResolved ? " (Resolved)" : ""} — ${formatNumber(netVotes)} ${netVotes === 1 ? "vote" : "votes"}, ${thread.commentCount} ${thread.commentCount === 1 ? "reply" : "replies"}`}
-        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+        className="flex items-center gap-3 py-3 px-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
       >
         <div className="flex flex-col items-center min-w-[40px]" aria-hidden="true">
           <span className={`text-sm font-semibold ${netVotes > 0 ? "text-brand-600" : "text-gray-600"}`}>
@@ -99,7 +99,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           <Link
             href={`/community/thread/${thread.id}`}
             aria-label={`Read thread: ${thread.title}`}
-            className="block mb-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded-lg"
+            className="block mb-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-lg"
           >
             <h3 id={`thread-${thread.id}-title`} className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug">
               {thread.title}
@@ -136,7 +136,7 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
             {showProduct && thread.productSlug && (
               <Link
                 href={`/category/${thread.categorySlug}/${thread.productSlug}`}
-                className="text-xs text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                className="text-xs text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
               >
                 {thread.productSlug?.replace(/-/g, " ")}
               </Link>

@@ -99,7 +99,7 @@ export default async function BlogCategoryPage({
         <nav aria-label="Blog categories" className="flex flex-wrap gap-2 mt-6">
           <Link
             href="/blog"
-            className="text-xs font-medium px-3 py-1.5 rounded-full border border-gray-500 text-gray-600 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="text-xs font-medium px-3 py-1.5 rounded-full border border-gray-500 text-gray-600 hover:bg-gray-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             All
           </Link>
@@ -110,7 +110,7 @@ export default async function BlogCategoryPage({
               className={`text-xs font-medium px-3 py-1.5 rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 ${
                 c.slug === category
                   ? "bg-brand-600 text-white focus-visible:ring-white"
-                  : "border border-gray-500 text-gray-600 hover:bg-gray-50 focus-visible:ring-brand-400"
+                  : "border border-gray-500 text-gray-600 hover:bg-gray-50 focus-visible:ring-brand-600"
               }`}
             >
               {c.name}
@@ -124,7 +124,7 @@ export default async function BlogCategoryPage({
           <li key={post.id}>
           <Link
             href={`/blog/${post.slug}`}
-            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="group bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg hover:border-brand-200 hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             {post.coverImage && (
@@ -174,7 +174,7 @@ export default async function BlogCategoryPage({
         </p>
         <Link
           href={`/category/${category}`}
-          className="inline-flex items-center gap-2 text-brand-600 font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+          className="inline-flex items-center gap-2 text-brand-600 font-medium hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
         >
           Browse all {cat.name} reviews <span aria-hidden="true">&rarr;</span>
         </Link>

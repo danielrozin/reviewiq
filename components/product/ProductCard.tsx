@@ -130,7 +130,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           type="button"
           onClick={handleCompare}
           disabled={!isSelected && isFull}
-          className={`w-full flex items-center justify-center gap-1.5 px-3 py-2 min-h-[44px] text-xs font-medium rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+          className={`w-full flex items-center justify-center gap-1.5 px-3 py-2 min-h-[44px] text-xs font-medium rounded-xl transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
             isSelected
               ? "bg-brand-600 text-white shadow-sm"
               : isFull

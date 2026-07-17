@@ -209,7 +209,7 @@ export function SurveyPopup() {
           ref={closeRef}
           type="button"
           onClick={dismiss}
-          className="absolute top-3 right-3 p-1.5 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+          className="absolute top-3 right-3 p-1.5 text-gray-500 hover:text-gray-700 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           aria-label="Close survey"
         >
           <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
@@ -230,7 +230,7 @@ export function SurveyPopup() {
               <button
                 type="button"
                 onClick={dismiss}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 No thanks
               </button>
@@ -262,7 +262,7 @@ export function SurveyPopup() {
                     setAnswers((a) => ({ ...a, q1Intent: opt.value }));
                     setStep("q2");
                   }}
-                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                     answers.q1Intent === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
                       : "border-gray-500 hover:border-gray-500 hover:bg-gray-50 text-gray-700"
@@ -290,7 +290,7 @@ export function SurveyPopup() {
                   setAnswers((a) => ({ ...a, q2Found: true }));
                   setStep("q3");
                 }}
-                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-500 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="flex-1 px-4 py-3 text-sm font-medium rounded-xl border border-gray-500 hover:border-emerald-400 hover:bg-emerald-50 text-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 Yes
               </button>
@@ -301,7 +301,7 @@ export function SurveyPopup() {
                 aria-checked={answers.q2Found === false}
                 tabIndex={answers.q2Found === false ? 0 : -1}
                 onClick={() => setAnswers((a) => ({ ...a, q2Found: false }))}
-                className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+                className={`flex-1 px-4 py-3 text-sm font-medium rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                   answers.q2Found === false
                     ? "border-amber-400 bg-amber-50 text-amber-700"
                     : "border-gray-500 hover:border-amber-400 hover:bg-amber-50 text-gray-700"
@@ -317,7 +317,7 @@ export function SurveyPopup() {
                   onChange={(e) => setAnswers((a) => ({ ...a, q2Missing: e.target.value }))}
                   placeholder="What were you looking for?"
                   aria-label="What were you looking for?"
-                  className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 resize-none"
+                  className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 resize-none"
                   rows={2}
                 />
                 <button
@@ -350,7 +350,7 @@ export function SurveyPopup() {
                     setAnswers((a) => ({ ...a, q3Rating: n }));
                     setStep("q4");
                   }}
-                  className={`w-12 h-12 rounded-xl text-lg font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+                  className={`w-12 h-12 rounded-xl text-lg font-bold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                     answers.q3Rating === n
                       ? "bg-brand-600 text-white scale-110"
                       : "bg-gray-100 text-gray-600 hover:bg-gray-200"
@@ -376,14 +376,14 @@ export function SurveyPopup() {
               onChange={(e) => setAnswers((a) => ({ ...a, q4Improvement: e.target.value }))}
               placeholder="Anything at all — we read every response."
               aria-label="What could we improve?"
-              className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 resize-none"
+              className="w-full px-3 py-2 text-sm border border-gray-500 rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 resize-none"
               rows={3}
             />
             <div className="flex gap-3 mt-3">
               <button
                 type="button"
                 onClick={() => setStep("q5")}
-                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                className="flex-1 px-4 py-2.5 text-sm font-medium text-gray-600 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 Skip
               </button>
@@ -412,7 +412,7 @@ export function SurveyPopup() {
                   aria-checked={answers.q5Discovery === opt.value}
                   tabIndex={answers.q5Discovery === opt.value || (answers.q5Discovery === "" && idx === 0) ? 0 : -1}
                   onClick={() => setAnswers((a) => ({ ...a, q5Discovery: opt.value }))}
-                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+                  className={`w-full text-left px-4 py-3 text-sm rounded-xl border transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                     answers.q5Discovery === opt.value
                       ? "border-brand-600 bg-brand-50 text-brand-700"
                       : "border-gray-500 hover:border-gray-500 hover:bg-gray-50 text-gray-700"

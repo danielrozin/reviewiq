@@ -142,19 +142,19 @@ export default function ReviewIQAnalytics() {
           <h1 className="text-2xl font-bold text-gray-900">ReviewIQ Analytics</h1>
           <a
             href="/admin/analytics/aarrr"
-            className="text-sm text-emerald-600 hover:text-emerald-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm text-emerald-600 hover:text-emerald-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
           >
             AARRR Pirate Metrics
           </a>
           <a
             href="/admin/analytics/okr"
-            className="text-sm text-violet-600 hover:text-violet-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm text-violet-600 hover:text-violet-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
           >
             OKR Dashboard
           </a>
           <a
             href="/admin/analytics/weekly-report"
-            className="text-sm text-indigo-600 hover:text-indigo-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm text-indigo-600 hover:text-indigo-800 font-medium underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
           >
             Weekly Report
           </a>
@@ -202,7 +202,7 @@ export default function ReviewIQAnalytics() {
               setActiveTab(tab.key);
               if (tab.key === "report") loadReport();
             }}
-            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
+            className={`px-4 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               activeTab === tab.key
                 ? "bg-white text-gray-900 shadow-sm"
                 : "text-gray-500 hover:text-gray-700"
@@ -311,7 +311,7 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Google Analytics — ${config.ga4Property} (opens in new tab)`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-blue-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-blue-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
               <div aria-hidden="true">
@@ -324,7 +324,7 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Microsoft Clarity — ${config.clarityProject} (opens in new tab)`}
-              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-purple-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-purple-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
               <div aria-hidden="true">
@@ -337,7 +337,7 @@ export default function ReviewIQAnalytics() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Search Console — GSC data (opens in new tab)"
-              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-green-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 bg-white border border-gray-400 rounded-xl hover:border-green-400 hover:shadow-sm transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
               <div aria-hidden="true">

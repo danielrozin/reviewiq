@@ -55,7 +55,7 @@ export function PeopleAlsoReviewed({ products }: PeopleAlsoReviewedProps) {
             <Link
               href={`/category/${product.categorySlug}/${product.slug}`}
               aria-label={`${product.name} by ${product.brand} — SmartScore ${product.smartScore}/100, ${product.reviewCount.toLocaleString()} reviews`}
-              className="group flex flex-col border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="group flex flex-col border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               {/* Hover accent strip */}
               <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
@@ -100,7 +100,7 @@ export function PeopleAlsoReviewed({ products }: PeopleAlsoReviewedProps) {
             <li key={slug}>
             <Link
               href={`/category/${slug}`}
-              className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 min-h-[44px] py-2.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 min-h-[44px] py-2.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               Browse all {cat.name}
               <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

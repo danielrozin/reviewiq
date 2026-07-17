@@ -88,13 +88,13 @@ export default async function ComparisonPage({ params }: Props) {
         <nav aria-label="Full product reviews" className="flex justify-center gap-4 mb-8">
           <Link
             href={`/category/${productA.categorySlug}/${productA.slug}`}
-            className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
           >
             Full {productA.name} review <span aria-hidden="true">&rarr;</span>
           </Link>
           <Link
             href={`/category/${productB.categorySlug}/${productB.slug}`}
-            className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+            className="text-sm text-brand-600 hover:text-brand-700 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
           >
             Full {productB.name} review <span aria-hidden="true">&rarr;</span>
           </Link>
@@ -158,7 +158,7 @@ function RelatedComparisons({
           <li key={pair.slug}>
             <Link
               href={`/compare/${pair.slug}`}
-              className="flex items-center gap-3 p-4 border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="flex items-center gap-3 p-4 border border-gray-100 rounded-xl hover:border-brand-200 hover:bg-brand-50/30 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               <div aria-hidden="true" className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center text-gray-400 text-xs font-bold shrink-0">
                 VS

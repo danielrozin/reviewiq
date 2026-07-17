@@ -47,7 +47,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
               <Link
                 id={`pros-cons-${product.id}`}
                 href={`/category/${product.categorySlug}/${product.slug}`}
-                className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors truncate focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
               >
                 {product.name}
               </Link>

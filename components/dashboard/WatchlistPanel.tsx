@@ -22,7 +22,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
         </p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+          className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           Browse Products
           <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -42,7 +42,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
           <Link
             href={`/category/${item.categorySlug}/${item.productSlug}`}
             aria-label={`${item.productName} — SmartScore ${item.currentScore}${scoreDiff > 0 ? `, up ${scoreDiff} points` : scoreDiff < 0 ? `, down ${Math.abs(scoreDiff)} points` : ", no change"}`}
-            className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+            className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
             <div className="flex items-center gap-4 p-4">

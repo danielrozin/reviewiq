@@ -89,7 +89,7 @@ export function VoteControls({
     else if (e.key === "End") { e.preventDefault(); select(VOTE_KEYS.length - 1); }
   }
 
-  const buttonSize = size === "sm" ? "w-11 h-11 text-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1" : "w-11 h-11 text-base touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1";
+  const buttonSize = size === "sm" ? "w-11 h-11 text-sm touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1" : "w-11 h-11 text-base touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1";
   const scoreSize = size === "sm" ? "text-sm" : "text-base";
 
   const UpIcon = () => (

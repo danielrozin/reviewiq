@@ -122,7 +122,7 @@ export default async function BlogPostPage({
           <div className="flex items-center gap-3 mb-4">
             <Link
               href={`/category/${post.categorySlug}`}
-              className="text-sm font-medium text-brand-600 bg-brand-50 px-3 py-1 rounded-full hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+              className="text-sm font-medium text-brand-600 bg-brand-50 px-3 py-1 rounded-full hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
             >
               {post.categoryName}
             </Link>
@@ -252,7 +252,7 @@ export default async function BlogPostPage({
                 <Link
                   href={`/category/${product.categorySlug}/${product.slug}`}
                   aria-label={`${product.name} — SmartScore ${product.smartScore}`}
-                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                  className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <div
                     aria-label={`SmartScore ${product.smartScore}`}
@@ -300,7 +300,7 @@ export default async function BlogPostPage({
                   <Link
                     href={`/category/${product.categorySlug}/${product.slug}`}
                     aria-label={`${product.name} — ${cat?.name ?? product.categorySlug}, SmartScore ${product.smartScore}`}
-                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                    className="group flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <div
                       aria-label={`SmartScore ${product.smartScore}`}
@@ -338,7 +338,7 @@ export default async function BlogPostPage({
                     <li key={s}>
                       <Link
                         href={`/category/${s}`}
-                        className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                        className="text-xs text-brand-600 hover:text-brand-700 bg-brand-50 hover:bg-brand-100 px-3 py-1.5 rounded-full font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                       >
                         Explore {cat.name} <span aria-hidden="true">&rarr;</span>
                       </Link>
@@ -361,7 +361,7 @@ export default async function BlogPostPage({
                 <li key={rp.id}>
                 <Link
                   href={`/blog/${rp.slug}`}
-                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1"
+                  className="group p-5 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm hover:-translate-y-0.5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
                     {rp.categoryName}
@@ -415,12 +415,12 @@ function markdownToHtml(md: string): string {
   // External links (http/https) — open in new tab with security attributes
   html = html.replace(
     /\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,
-    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">$1<span class="sr-only"> (opens in new tab)</span></a>'
+    '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">$1<span class="sr-only"> (opens in new tab)</span></a>'
   );
   // Internal links — same-tab navigation, no rel override
   html = html.replace(
     /\[([^\]]+)\]\((?!https?:\/\/)([^)]+)\)/g,
-    '<a href="$2" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">$1</a>'
+    '<a href="$2" class="text-brand-600 hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">$1</a>'
   );
 
   // Unordered lists

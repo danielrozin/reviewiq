@@ -25,7 +25,7 @@ export function CookiePolicyContent() {
         <p data-speakable="cookie-policy-intro">
           This Cookie Policy explains how ReviewIQ uses cookies and similar technologies.
           Please read it alongside our{" "}
-          <Link href="/privacy" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
+          <Link href="/privacy" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">Privacy Policy</Link>.
         </p>
       </section>
 
@@ -113,7 +113,7 @@ export function CookiePolicyContent() {
         <p className="mb-4">Questions about cookies? Contact us:</p>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
           <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>
-          <p>Email: <a href="mailto:contact@revieweriq.com" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">contact@revieweriq.com</a></p>
+          <p>Email: <a href="mailto:contact@revieweriq.com" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">contact@revieweriq.com</a></p>
         </div>
       </section>
     </LegalPageLayout>

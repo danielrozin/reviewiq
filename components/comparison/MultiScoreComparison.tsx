@@ -61,7 +61,7 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
                 <div className="text-center">
                   <Link
                     href={`/category/${product.categorySlug}/${product.slug}`}
-                    className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors line-clamp-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded"
+                    className="text-sm font-semibold text-gray-900 hover:text-brand-600 transition-colors line-clamp-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                   >
                     {product.name}
                   </Link>
