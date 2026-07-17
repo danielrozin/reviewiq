@@ -181,7 +181,7 @@ export default function NotificationsSettingsPage() {
           {GROUPS.map((group) => (
             <li key={group.title} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
               {/* Group header */}
-              <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-50">
+              <div className="flex items-center gap-3 px-5 pt-5 pb-4 border-b border-gray-100">
                 <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${group.iconBg} ${group.iconColor} flex items-center justify-center shrink-0`}>
                   {group.icon}
                 </div>

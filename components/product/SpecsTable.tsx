@@ -46,7 +46,7 @@ export function SpecsTable({ specs }: SpecsTableProps) {
                   "flex items-center justify-between px-4 py-3 text-sm",
                   si % 2 === 1 ? "bg-gray-50/50" : "bg-white",
                   si < groupSpecs.length - 1 || gi < groupEntries.length - 1
-                    ? "border-b border-gray-50"
+                    ? "border-b border-gray-100"
                     : ""
                 )}
               >

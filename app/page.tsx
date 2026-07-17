@@ -462,7 +462,7 @@ export default function HomePage() {
                 <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
                   {post.excerpt}
                 </p>
-                <div className="flex items-center gap-2.5 pt-3 border-t border-gray-50">
+                <div className="flex items-center gap-2.5 pt-3 border-t border-gray-100">
                   <div aria-hidden="true" className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0">
                     <span className="text-[9px] font-bold text-brand-600">
                       {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}

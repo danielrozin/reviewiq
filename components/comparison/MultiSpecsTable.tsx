@@ -95,7 +95,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                       role="row"
                       className={cn(
                         "grid text-sm",
-                        !isLast && "border-b border-gray-50",
+                        !isLast && "border-b border-gray-100",
                         isDifferent && "bg-amber-50/40"
                       )}
                       style={{ gridTemplateColumns: colTemplate }}

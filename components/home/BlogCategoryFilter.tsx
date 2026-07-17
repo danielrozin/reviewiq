@@ -143,7 +143,7 @@ export function BlogCategoryFilter({ posts }: Props) {
               <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1 mb-4">
                 {post.excerpt}
               </p>
-              <div className="flex items-center gap-2.5 pt-3 border-t border-gray-50">
+              <div className="flex items-center gap-2.5 pt-3 border-t border-gray-100">
                 <div className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0">
                   <span className="text-xs font-bold text-brand-600">
                     {post.author.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}

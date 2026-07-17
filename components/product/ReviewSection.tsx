@@ -279,7 +279,7 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
 
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>
 
-      <div className="flex items-center justify-between pt-3 border-t border-gray-50">
+      <div className="flex items-center justify-between pt-3 border-t border-gray-100">
         <dl className="flex gap-4 text-xs text-gray-600">
           {review.reliabilityRating != null && (
             <div className="inline-flex gap-0.5">

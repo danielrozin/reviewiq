@@ -229,7 +229,7 @@ export default async function BlogPostPage({
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
                     </svg>
                   </summary>
-                  <div className="px-5 pb-5 border-t border-gray-50">
+                  <div className="px-5 pb-5 border-t border-gray-100">
                     <p data-speakable="faq-answer" className="mt-3 text-gray-600 leading-relaxed text-sm">
                       {item.answer}
                     </p>

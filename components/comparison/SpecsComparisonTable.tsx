@@ -81,7 +81,7 @@ export function SpecsComparisonTable({
                     key={spec.label}
                     className={cn(
                       "text-sm",
-                      !isLast && "border-b border-gray-50",
+                      !isLast && "border-b border-gray-100",
                       differs && "bg-amber-50/40"
                     )}
                   >

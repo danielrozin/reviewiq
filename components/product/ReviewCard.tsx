@@ -79,7 +79,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
 
       <p className="text-sm text-gray-700 leading-relaxed mb-4">{review.body}</p>
 
-      <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-50">
+      <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-gray-100">
         <ul role="list" className="flex flex-wrap gap-1.5 list-none p-0 m-0" aria-label="Sub-ratings">
           <li>
             <span role="meter" aria-valuenow={review.reliabilityRating} aria-valuemin={1} aria-valuemax={5} aria-valuetext={`Reliability: ${review.reliabilityRating} out of 5`} aria-label="Reliability" className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-brand-50 text-brand-700 text-xs font-medium">

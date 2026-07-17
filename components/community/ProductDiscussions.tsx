@@ -116,7 +116,7 @@ export function ProductDiscussions({ threads, productName }: ProductDiscussionsP
       </ul>
 
       {/* Start discussion CTA */}
-      <div className="mt-4 pt-4 border-t border-gray-50 text-center">
+      <div className="mt-4 pt-4 border-t border-gray-100 text-center">
         <Link
           href="/community"
           className="inline-flex items-center px-5 py-2 text-sm font-medium text-brand-600 bg-brand-50 rounded-xl hover:bg-brand-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"

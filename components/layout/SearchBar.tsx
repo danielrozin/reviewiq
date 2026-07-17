@@ -218,7 +218,7 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                 i === selectedIndex
                   ? "bg-brand-50"
                   : "hover:bg-gray-50"
-              } ${i > 0 ? "border-t border-gray-50" : ""}`}
+              } ${i > 0 ? "border-t border-gray-100" : ""}`}
             >
               <span
                 className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center ${

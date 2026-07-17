@@ -106,7 +106,7 @@ export default function PricingPage() {
 
       {/* Social proof bar */}
       <section aria-label="Customer proof" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 mb-8">
-        <ul role="list" className="bg-white border border-gray-100 rounded-2xl shadow-sm px-6 py-5 flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600 list-none p-0 m-0 px-6 py-5">
+        <ul role="list" className="bg-white border border-gray-100 rounded-2xl shadow-sm flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 text-sm text-gray-600 list-none px-6 py-5 m-0">
           <li className="flex items-center gap-3">
             <div className="flex -space-x-2" aria-hidden="true">
               {["A","B","C","D"].map((l) => (

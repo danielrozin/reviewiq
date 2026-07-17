@@ -288,7 +288,7 @@ export default async function ThreadPage({ params }: Props) {
                 </div>
               ))}
             </div>
-            <dl className="space-y-2 text-sm border-t border-gray-50 pt-4">
+            <dl className="space-y-2 text-sm border-t border-gray-100 pt-4">
               <div className="flex justify-between">
                 <dt className="text-gray-600">Created</dt>
                 <dd>
