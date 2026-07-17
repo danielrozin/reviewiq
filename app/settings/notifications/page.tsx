@@ -192,7 +192,7 @@ export default function NotificationsSettingsPage() {
               </div>
 
               {/* Toggles */}
-              <ul role="list" className="list-none p-0 m-0 divide-y divide-gray-50">
+              <ul role="list" className="list-none p-0 m-0 divide-y divide-gray-100">
               {group.toggles.map(({ key, label, description, badge }) => (
                 <li key={key} className="flex items-center justify-between px-5 py-4 gap-4 hover:bg-gray-50/60 transition-colors">
                   <div className="min-w-0">

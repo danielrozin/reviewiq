@@ -475,7 +475,7 @@ export default function AdminDashboard() {
               {stats.recentReviews.length > 0 ? (
                 <ul role="list" className="space-y-3 list-none p-0 m-0">
                   {stats.recentReviews.map((r) => (
-                    <li key={r.id} className="flex items-start gap-3 pb-3 border-b border-gray-50 last:border-0">
+                    <li key={r.id} className="flex items-start gap-3 pb-3 border-b border-gray-100 last:border-0">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-0.5">
                           <span className="font-medium text-sm text-gray-900 truncate">{r.headline}</span>
@@ -509,7 +509,7 @@ export default function AdminDashboard() {
                   </thead>
                   <tbody>
                     {stats.topProducts.slice(0, 10).map((p, i) => (
-                      <tr key={p.id} className="border-b border-gray-50 last:border-0">
+                      <tr key={p.id} className="border-b border-gray-100 last:border-0">
                         <td className="py-2 text-gray-500">{i + 1}</td>
                         <td className="py-2 text-gray-900 font-medium">{p.name}</td>
                         <td className="py-2 text-gray-500 hidden sm:table-cell">{p.category.name}</td>

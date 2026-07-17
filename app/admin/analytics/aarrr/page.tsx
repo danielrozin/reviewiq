@@ -202,7 +202,7 @@ function CohortTable({ cohorts }: { cohorts: CohortRow[] }) {
         </thead>
         <tbody>
           {cohorts.map((row) => (
-            <tr key={row.cohort} className="border-b border-gray-50">
+            <tr key={row.cohort} className="border-b border-gray-100">
               <td className="py-2 px-3 text-gray-700 font-medium">{row.cohort}</td>
               <td className="py-2 px-3 text-right font-medium text-gray-900">{row.total}</td>
               {weekHeaders.map((_, i) => {

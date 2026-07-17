@@ -582,7 +582,7 @@ export default function ReviewIQAnalytics() {
                     </thead>
                     <tbody>
                       {report.topProducts.map((p, i) => (
-                        <tr key={i} className="border-b border-gray-50 last:border-0">
+                        <tr key={i} className="border-b border-gray-100 last:border-0">
                           <td className="py-2 text-gray-500">{i + 1}</td>
                           <td className="py-2 text-gray-900">{p.name}</td>
                           <td className="py-2 text-gray-500 hidden sm:table-cell">{p.category}</td>
