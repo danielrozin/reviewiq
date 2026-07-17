@@ -478,6 +478,27 @@ model OutreachReply {
 }
 
 // ==========================================
+// UX Study Participants
+// ==========================================
+
+model UxParticipant {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  available   String   // "mornings" | "evenings" | "weekends"
+  device      String   // "mobile" | "desktop" | "both"
+  status      String   @default("new") // new | contacted | scheduled | completed | declined
+  notes       String?  @db.Text
+  contactedAt DateTime?
+  scheduledAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+// ==========================================
 // GDPR Consent Management
 // ==========================================
 

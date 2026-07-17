@@ -998,6 +998,16 @@ export default function AdminDashboard() {
                       <p className="text-xs text-gray-500">Feature or unfeature products on homepage</p>
                     </div>
                   </button>
+                  <a
+                    href="/admin/ux-participants"
+                    className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                  >
+                    <Users aria-hidden="true" className="w-5 h-5 text-gray-500" />
+                    <div>
+                      <p className="text-sm font-medium text-gray-900">UX Study Participants</p>
+                      <p className="text-xs text-gray-500">Track and schedule usability testers</p>
+                    </div>
+                  </a>
                 </div>
               </div>
             </div>
