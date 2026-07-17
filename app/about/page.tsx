@@ -124,7 +124,7 @@ export default function AboutPage() {
               ReviewIQ is in early development. We&apos;re looking for
               feedback, early reviewers, and people who share our mission of
               fixing product reviews. Reach out at{" "}
-              <span className="font-medium">hello@smartreview.com</span>
+              <span className="font-medium">hello@revieweriq.com</span>
             </p>
           </div>
         </div>
