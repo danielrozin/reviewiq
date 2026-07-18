@@ -35,7 +35,7 @@ export function UxStudyForm() {
     return (
       <main className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center px-4">
         <div className="max-w-md w-full text-center py-16">
-          <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+          <CheckCircle aria-hidden="true" className="w-16 h-16 text-green-500 mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-gray-900 mb-2">You&apos;re in!</h1>
           <p className="text-gray-600">
             Thanks for signing up, {form.name.split(" ")[0]}! We&apos;ll reach out to{" "}
@@ -111,15 +111,16 @@ export function UxStudyForm() {
             />
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <fieldset className="border-0 p-0 m-0">
+            <legend className="block text-sm font-medium text-gray-700 mb-2">
               When are you typically free?
-            </label>
+            </legend>
             <div className="grid grid-cols-3 gap-2">
               {(["mornings", "evenings", "weekends"] as const).map((opt) => (
                 <button
                   key={opt}
                   type="button"
+                  aria-pressed={form.available === opt}
                   onClick={() => setForm(f => ({ ...f, available: opt }))}
                   className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                     form.available === opt
@@ -132,12 +133,12 @@ export function UxStudyForm() {
                 </button>
               ))}
             </div>
-          </div>
+          </fieldset>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+          <fieldset className="border-0 p-0 m-0">
+            <legend className="block text-sm font-medium text-gray-700 mb-2">
               Which device do you primarily use?
-            </label>
+            </legend>
             <div className="grid grid-cols-3 gap-2">
               {([
                 { val: "mobile", label: "Mobile", Icon: Smartphone },
@@ -147,6 +148,7 @@ export function UxStudyForm() {
                 <button
                   key={val}
                   type="button"
+                  aria-pressed={form.device === val}
                   onClick={() => setForm(f => ({ ...f, device: val }))}
                   className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                     form.device === val
@@ -159,7 +161,7 @@ export function UxStudyForm() {
                 </button>
               ))}
             </div>
-          </div>
+          </fieldset>
 
           {status === "error" && (
             <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-3">{errorMsg}</p>
