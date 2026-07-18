@@ -32,10 +32,10 @@ const STATUS_CONFIG: Record<Status, { label: string; color: string }> = {
 };
 
 function DeviceIcon({ device }: { device: string }) {
-  if (device === "mobile") return <Smartphone className="w-4 h-4 text-indigo-500" />;
-  if (device === "desktop") return <Monitor className="w-4 h-4 text-slate-500" />;
+  if (device === "mobile") return <Smartphone aria-hidden="true" className="w-4 h-4 text-indigo-500" />;
+  if (device === "desktop") return <Monitor aria-hidden="true" className="w-4 h-4 text-slate-500" />;
   return (
-    <span className="flex gap-0.5">
+    <span aria-hidden="true" className="flex gap-0.5">
       <Smartphone className="w-3 h-3 text-indigo-500" />
       <Monitor className="w-3 h-3 text-slate-500" />
     </span>
@@ -163,22 +163,26 @@ export default function UxParticipantsPage() {
           </div>
           <div className="flex gap-2">
             <button
+              type="button"
               onClick={load}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border rounded-lg hover:bg-gray-100 motion-safe:transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border rounded-lg hover:bg-gray-100 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1"
             >
               <RefreshCw aria-hidden="true" className="w-4 h-4" />
               Refresh
             </button>
             <button
+              type="button"
               onClick={exportCsv}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border rounded-lg hover:bg-gray-100 motion-safe:transition-colors"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm text-gray-600 border rounded-lg hover:bg-gray-100 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1"
             >
               <Download aria-hidden="true" className="w-4 h-4" />
               Export CSV
             </button>
             <button
+              type="button"
               onClick={() => setAddOpen(true)}
-              className="flex items-center gap-1.5 px-3 py-2 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 motion-safe:transition-colors"
+              aria-haspopup="dialog"
+              className="flex items-center gap-1.5 px-3 py-2 text-sm bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-600"
             >
               <Plus aria-hidden="true" className="w-4 h-4" />
               Add manually
@@ -187,69 +191,103 @@ export default function UxParticipantsPage() {
         </div>
 
         {/* Stats row */}
-        <div className="grid grid-cols-5 gap-3 mb-6">
+        <div role="group" aria-label="Filter participants by status" className="grid grid-cols-5 gap-3 mb-6">
           {(["all", "new", "contacted", "scheduled", "completed"] as const).map((s) => (
             <button
               key={s}
+              type="button"
               onClick={() => setFilter(s)}
-              className={`rounded-xl p-4 text-left border motion-safe:transition-all ${
+              aria-pressed={filter === s}
+              className={`rounded-xl p-4 text-left border motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                 filter === s ? "border-indigo-400 bg-indigo-50" : "border-gray-200 bg-white hover:border-gray-300"
               }`}
             >
-              <div className="text-2xl font-bold text-gray-900">
+              <div className="text-2xl font-bold text-gray-900" aria-hidden="true">
                 {s === "all" ? participants.length : (counts[s] ?? 0)}
               </div>
-              <div className="text-xs text-gray-500 mt-0.5 capitalize">{s === "all" ? "Total" : s}</div>
+              <div className="text-xs text-gray-500 mt-0.5 capitalize">
+                <span className="sr-only">{s === "all" ? participants.length : (counts[s] ?? 0)} </span>
+                {s === "all" ? "Total" : s}
+              </div>
             </button>
           ))}
         </div>
 
         {/* Add modal */}
         {addOpen && (
-          <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
-              <h2 className="text-lg font-semibold mb-4">Add participant manually</h2>
+          <div
+            className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4"
+            onClick={(e) => { if (e.target === e.currentTarget) setAddOpen(false); }}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="add-modal-title"
+              className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6"
+            >
+              <h2 id="add-modal-title" className="text-lg font-semibold mb-4">Add participant manually</h2>
               <div className="space-y-3">
-                <input
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
-                  placeholder="Full name"
-                  value={addForm.name}
-                  onChange={e => setAddForm(f => ({ ...f, name: e.target.value }))}
-                />
-                <input
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
-                  placeholder="Email address"
-                  type="email"
-                  value={addForm.email}
-                  onChange={e => setAddForm(f => ({ ...f, email: e.target.value }))}
-                />
-                <select
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
-                  value={addForm.available}
-                  onChange={e => setAddForm(f => ({ ...f, available: e.target.value }))}
-                >
-                  <option value="mornings">Mornings</option>
-                  <option value="evenings">Evenings</option>
-                  <option value="weekends">Weekends</option>
-                </select>
-                <select
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
-                  value={addForm.device}
-                  onChange={e => setAddForm(f => ({ ...f, device: e.target.value }))}
-                >
-                  <option value="mobile">Mobile</option>
-                  <option value="desktop">Desktop</option>
-                  <option value="both">Both</option>
-                </select>
+                <div>
+                  <label htmlFor="add-name" className="block text-xs font-medium text-gray-700 mb-1">Full name</label>
+                  <input
+                    id="add-name"
+                    autoComplete="name"
+                    autoFocus
+                    className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    placeholder="Jane Smith"
+                    value={addForm.name}
+                    onChange={e => setAddForm(f => ({ ...f, name: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="add-email" className="block text-xs font-medium text-gray-700 mb-1">Email address</label>
+                  <input
+                    id="add-email"
+                    type="email"
+                    autoComplete="email"
+                    className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    placeholder="jane@example.com"
+                    value={addForm.email}
+                    onChange={e => setAddForm(f => ({ ...f, email: e.target.value }))}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="add-available" className="block text-xs font-medium text-gray-700 mb-1">Availability</label>
+                  <select
+                    id="add-available"
+                    className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    value={addForm.available}
+                    onChange={e => setAddForm(f => ({ ...f, available: e.target.value }))}
+                  >
+                    <option value="mornings">Mornings</option>
+                    <option value="evenings">Evenings</option>
+                    <option value="weekends">Weekends</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="add-device" className="block text-xs font-medium text-gray-700 mb-1">Device</label>
+                  <select
+                    id="add-device"
+                    className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
+                    value={addForm.device}
+                    onChange={e => setAddForm(f => ({ ...f, device: e.target.value }))}
+                  >
+                    <option value="mobile">Mobile</option>
+                    <option value="desktop">Desktop</option>
+                    <option value="both">Both</option>
+                  </select>
+                </div>
               </div>
               <div className="flex gap-2 mt-5">
                 <button
+                  type="button"
                   onClick={() => setAddOpen(false)}
                   className="flex-1 py-2 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1"
                 >
                   Cancel
                 </button>
                 <button
+                  type="button"
                   onClick={addParticipant}
                   disabled={saving === "add"}
                   className="flex-1 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 motion-safe:transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-600"
@@ -293,15 +331,15 @@ export default function UxParticipantsPage() {
                       <div className="font-medium text-gray-900">{p.name}</div>
                       <a
                         href={`mailto:${p.email}`}
-                        className="text-xs text-indigo-600 hover:underline flex items-center gap-1 mt-0.5"
+                        className="text-xs text-indigo-600 hover:underline flex items-center gap-1 mt-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 rounded"
                       >
-                        <Mail className="w-3 h-3" />
+                        <Mail aria-hidden="true" className="w-3 h-3" />
                         {p.email}
                       </a>
                     </td>
                     <td className="px-4 py-3">
                       <span className="flex items-center gap-1 text-gray-600">
-                        <Clock className="w-3.5 h-3.5" />
+                        <Clock aria-hidden="true" className="w-3.5 h-3.5" />
                         <span className="capitalize">{p.available}</span>
                       </span>
                     </td>
@@ -336,24 +374,27 @@ export default function UxParticipantsPage() {
                         <div className="flex gap-1">
                           <input
                             autoFocus
+                            aria-label={`Note for ${p.name}`}
                             className="flex-1 border rounded px-2 py-1 text-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-400"
                             value={notesDraft}
                             onChange={e => setNotesDraft(e.target.value)}
                             onKeyDown={e => { if (e.key === "Enter") saveNotes(p.id); if (e.key === "Escape") setEditingNotes(null); }}
                           />
-                          <button onClick={() => saveNotes(p.id)} aria-label="Save note" className="text-green-600 hover:text-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-1 rounded">
+                          <button type="button" onClick={() => saveNotes(p.id)} aria-label="Save note" className="text-green-600 hover:text-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-1 rounded">
                             <CheckCircle aria-hidden="true" className="w-4 h-4" />
                           </button>
-                          <button onClick={() => setEditingNotes(null)} aria-label="Cancel editing" className="text-gray-400 hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-1 rounded">
+                          <button type="button" onClick={() => setEditingNotes(null)} aria-label="Cancel editing" className="text-gray-400 hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-1 rounded">
                             <X aria-hidden="true" className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
                         <button
+                          type="button"
+                          aria-label={p.notes ? `Edit note for ${p.name}: ${p.notes}` : `Add note for ${p.name}`}
                           onClick={() => { setEditingNotes(p.id); setNotesDraft(p.notes ?? ""); }}
                           className="text-xs text-gray-500 hover:text-gray-900 truncate max-w-[160px] block text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 rounded"
                         >
-                          {p.notes || <span className="text-gray-300 italic">Add note…</span>}
+                          <span aria-hidden="true">{p.notes || <span className="text-gray-300 italic">Add note…</span>}</span>
                         </button>
                       )}
                     </td>
