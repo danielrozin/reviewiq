@@ -307,16 +307,36 @@ export default function AdminDashboard() {
     setTimeout(() => setActionMsg(""), 3000);
   };
 
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+  const [pendingDeleteType, setPendingDeleteType] = useState<"product" | "review" | null>(null);
+
   const handleDeleteProduct = async (id: string) => {
-    if (!confirm("Delete this product and all its reviews?")) return;
-    await fetch(`/api/admin/products?id=${id}`, { method: "DELETE" });
-    loadProducts();
+    if (pendingDeleteId === id && pendingDeleteType === "product") {
+      setPendingDeleteId(null);
+      setPendingDeleteType(null);
+      await fetch(`/api/admin/products?id=${id}`, { method: "DELETE" });
+      loadProducts();
+    } else {
+      setPendingDeleteId(id);
+      setPendingDeleteType("product");
+    }
   };
 
   const handleDeleteReview = async (id: string) => {
-    if (!confirm("Delete this review?")) return;
-    await fetch(`/api/admin/reviews?id=${id}`, { method: "DELETE" });
-    loadReviews();
+    if (pendingDeleteId === id && pendingDeleteType === "review") {
+      setPendingDeleteId(null);
+      setPendingDeleteType(null);
+      await fetch(`/api/admin/reviews?id=${id}`, { method: "DELETE" });
+      loadReviews();
+    } else {
+      setPendingDeleteId(id);
+      setPendingDeleteType("review");
+    }
+  };
+
+  const cancelPendingDelete = () => {
+    setPendingDeleteId(null);
+    setPendingDeleteType(null);
   };
 
   const handleLogout = async () => {
@@ -595,6 +615,26 @@ export default function AdminDashboard() {
                           >
                             <Eye aria-hidden="true" className="w-4 h-4" />
                           </a>
+                          {pendingDeleteId === p.id && pendingDeleteType === "product" ? (
+                            <span className="inline-flex items-center gap-1" role="group" aria-label={`Confirm delete ${p.name}`}>
+                              <button
+                                type="button"
+                                onClick={() => handleDeleteProduct(p.id)}
+                                className="px-2 py-1 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-1"
+                                aria-label={`Confirm delete product: ${p.name}`}
+                              >
+                                Delete
+                              </button>
+                              <button
+                                type="button"
+                                onClick={cancelPendingDelete}
+                                className="p-1 text-gray-500 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                                aria-label="Cancel delete"
+                              >
+                                <X aria-hidden="true" className="w-3.5 h-3.5" />
+                              </button>
+                            </span>
+                          ) : (
                           <button
                             type="button"
                             onClick={() => handleDeleteProduct(p.id)}
@@ -603,6 +643,7 @@ export default function AdminDashboard() {
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
                           </button>
+                          )}
                         </div>
                       </td>
                     </tr>
@@ -773,6 +814,26 @@ export default function AdminDashboard() {
                               <X aria-hidden="true" className="w-4 h-4" />
                             </button>
                           )}
+                          {pendingDeleteId === r.id && pendingDeleteType === "review" ? (
+                            <span className="inline-flex items-center gap-1" role="group" aria-label={`Confirm delete review: ${r.headline}`}>
+                              <button
+                                type="button"
+                                onClick={() => handleDeleteReview(r.id)}
+                                className="px-2 py-1 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-1"
+                                aria-label={`Confirm delete review: ${r.headline}`}
+                              >
+                                Delete
+                              </button>
+                              <button
+                                type="button"
+                                onClick={cancelPendingDelete}
+                                className="p-1 text-gray-500 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                                aria-label="Cancel delete"
+                              >
+                                <X aria-hidden="true" className="w-3.5 h-3.5" />
+                              </button>
+                            </span>
+                          ) : (
                           <button
                             type="button"
                             onClick={() => handleDeleteReview(r.id)}
@@ -781,6 +842,7 @@ export default function AdminDashboard() {
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
                           </button>
+                          )}
                         </div>
                       </td>
                     </tr>

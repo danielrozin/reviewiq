@@ -52,6 +52,7 @@ export default function UxParticipantsPage() {
   const [addOpen, setAddOpen] = useState(false);
   const [addForm, setAddForm] = useState({ name: "", email: "", available: "evenings", device: "mobile" });
   const [saving, setSaving] = useState<string | null>(null);
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -91,9 +92,13 @@ export default function UxParticipantsPage() {
   }
 
   async function deleteParticipant(id: string) {
-    if (!confirm("Remove this participant?")) return;
-    await fetch(`/api/admin/ux-participants/${id}`, { method: "DELETE" });
-    load();
+    if (pendingDeleteId === id) {
+      setPendingDeleteId(null);
+      await fetch(`/api/admin/ux-participants/${id}`, { method: "DELETE" });
+      load();
+    } else {
+      setPendingDeleteId(id);
+    }
   }
 
   async function addParticipant() {
@@ -362,13 +367,35 @@ export default function UxParticipantsPage() {
                         >
                           <Calendar aria-hidden="true" className="w-4 h-4" />
                         </a>
+                        {pendingDeleteId === p.id ? (
+                          <span className="inline-flex items-center gap-1" role="group" aria-label={`Confirm remove ${p.name}`}>
+                            <button
+                              type="button"
+                              onClick={() => deleteParticipant(p.id)}
+                              className="px-2 py-1 text-xs font-medium text-white bg-red-600 hover:bg-red-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-1"
+                              aria-label={`Confirm remove ${p.name}`}
+                            >
+                              Remove
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => setPendingDeleteId(null)}
+                              className="p-1 text-gray-400 hover:text-gray-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                              aria-label="Cancel"
+                            >
+                              <X aria-hidden="true" className="w-3.5 h-3.5" />
+                            </button>
+                          </span>
+                        ) : (
                         <button
+                          type="button"
                           onClick={() => deleteParticipant(p.id)}
                           aria-label={`Remove ${p.name}`}
                           className="p-1.5 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 motion-safe:transition-colors"
                         >
                           <Trash2 aria-hidden="true" className="w-4 h-4" />
                         </button>
+                        )}
                       </div>
                     </td>
                   </tr>
