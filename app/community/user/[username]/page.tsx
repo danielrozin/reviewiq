@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { TrustBadge } from "@/components/community/TrustBadge";
 import { ThreadCard } from "@/components/community/ThreadCard";
 import { users, getUserByUsername } from "@/data/users";
-import { getDiscussionsByUser, getCommentsByUser } from "@/data/discussions";
+import { getDiscussionsByUser, getCommentsByUser, getDiscussionById } from "@/data/discussions";
 import { TRUST_LEVEL_LABELS, TRUST_LEVEL_COLORS } from "@/types";
 import { buildMetadata } from "@/lib/seo/metadata";
 import { formatNumber } from "@/lib/utils";
@@ -39,6 +39,9 @@ export default async function UserProfilePage({ params }: Props) {
 
   const userThreads = getDiscussionsByUser(user.id);
   const userComments = getCommentsByUser(user.id);
+  const commentThreadTitles = Object.fromEntries(
+    userComments.map((c) => [c.threadId, getDiscussionById(c.threadId)?.title ?? ""])
+  );
 
   const initials = user.displayName
     .split(" ")
@@ -191,6 +194,7 @@ export default async function UserProfilePage({ params }: Props) {
                     <div className="flex items-center gap-2 mb-2">
                       <Link
                         href={`/community/thread/${comment.threadId}`}
+                        aria-label={commentThreadTitles[comment.threadId] ? `View thread: ${commentThreadTitles[comment.threadId]}` : "View thread"}
                         className="inline-flex items-center gap-1 text-xs text-brand-600 hover:text-brand-700 font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded"
                       >
                         View thread
