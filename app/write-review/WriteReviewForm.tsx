@@ -157,7 +157,6 @@ function FieldError({ id, show, message }: { id: string; show: boolean; message:
     <p
       id={id}
       role="alert"
-      aria-live="polite"
       className={`text-xs mt-1 ${show ? "text-red-600" : "sr-only"}`}
     >
       {show ? message : ""}
@@ -553,8 +552,13 @@ export function WriteReviewForm() {
                 autoComplete="off"
                 aria-required="true"
                 aria-invalid={touched.body === true && body.length < 50 ? true : undefined}
-                aria-describedby="body-char-count"
+                aria-describedby="error-body body-char-count"
                 className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent resize-none"
+              />
+              <FieldError
+                id="error-body"
+                show={touched.body === true && body.length < 50}
+                message="Minimum 50 characters required"
               />
               <p id="body-char-count" className={`text-xs mt-1 ${body.length >= 50 ? "text-emerald-600" : "text-gray-600"}`}>
                 {body.length}/50 minimum characters
@@ -686,7 +690,15 @@ export function WriteReviewForm() {
               <p id="verification-group-label" className="block text-sm font-semibold text-gray-900 mb-2">
                 Purchase Verification *
               </p>
-              <div role="radiogroup" aria-labelledby="verification-group-label" aria-required="true" className="space-y-2">
+              <div
+                role="radiogroup"
+                aria-labelledby="verification-group-label"
+                aria-required="true"
+                aria-describedby="error-verification"
+                aria-invalid={touched.verification === true && !verification ? true : undefined}
+                onBlur={() => markTouched("verification")}
+                className="space-y-2"
+              >
                 {verificationOptions.map((opt) => (
                   <label
                     key={opt.value}
@@ -708,6 +720,11 @@ export function WriteReviewForm() {
                   </label>
                 ))}
               </div>
+              <FieldError
+                id="error-verification"
+                show={touched.verification === true && !verification}
+                message="Please select a purchase verification method"
+              />
             </div>
           </div>
         )}
