@@ -58,7 +58,7 @@ export default function NotFound() {
                 href={`/category/${cat.slug}`}
                 className="flex items-center gap-3 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
-                <span className="text-2xl">{cat.icon}</span>
+                <span aria-hidden="true" className="text-2xl">{cat.icon}</span>
                 <span className="text-sm font-medium text-gray-700 group-hover:text-brand-600 transition-colors">
                   {cat.name}
                 </span>
