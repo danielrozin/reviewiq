@@ -92,18 +92,20 @@ function StarRating({
   const [hovered, setHovered] = useState(0);
   const sizeClass = size === "lg" ? "text-3xl" : "text-xl";
   return (
-    <div className="flex gap-1" onMouseLeave={() => setHovered(0)}>
+    <div role="group" aria-label="Star rating" className="flex gap-1" onMouseLeave={() => setHovered(0)}>
       {[1, 2, 3, 4, 5].map((star) => (
         <button
           key={star}
           type="button"
+          aria-label={`${star} ${star === 1 ? "star" : "stars"}`}
+          aria-pressed={star <= value}
           onMouseEnter={() => setHovered(star)}
           onClick={() => onChange(star)}
           className={`${sizeClass} transition-colors touch-manipulation ${
             star <= (hovered || value) ? "text-amber-400" : "text-gray-200"
           } hover:text-amber-300 active:scale-110`}
         >
-          &#9733;
+          <span aria-hidden="true">&#9733;</span>
         </button>
       ))}
       {value > 0 && (
@@ -410,10 +412,11 @@ export default function WriteReviewPage() {
         {step === 0 && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <label htmlFor="wr-product" className="block text-sm font-semibold text-gray-900 mb-2">
                 Product *
               </label>
               <select
+                id="wr-product"
                 value={selectedProduct}
                 onChange={(e) => setSelectedProduct(e.target.value)}
                 onBlur={() => markTouched("product")}
@@ -433,10 +436,11 @@ export default function WriteReviewPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <label htmlFor="wr-headline" className="block text-sm font-semibold text-gray-900 mb-2">
                 Review Headline *
               </label>
               <input
+                id="wr-headline"
                 type="text"
                 value={headline}
                 onChange={(e) => setHeadline(e.target.value)}
@@ -492,10 +496,11 @@ export default function WriteReviewPage() {
         {step === 2 && (
           <div className="space-y-6 animate-in fade-in duration-200">
             <div>
-              <label className="block text-sm font-semibold text-gray-900 mb-2">
+              <label htmlFor="wr-body" className="block text-sm font-semibold text-gray-900 mb-2">
                 Your Review *
               </label>
               <textarea
+                id="wr-body"
                 value={body}
                 onChange={(e) => setBody(e.target.value)}
                 onBlur={() => markTouched("body")}
@@ -517,9 +522,10 @@ export default function WriteReviewPage() {
               <div className="space-y-2">
                 {pros.map((pro, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="text-emerald-500 shrink-0 text-lg">+</span>
+                    <span aria-hidden="true" className="text-emerald-500 shrink-0 text-lg">+</span>
                     <input
                       type="text"
+                      aria-label={`Pro ${i + 1}`}
                       value={pro}
                       onChange={(e) => updatePro(i, e.target.value)}
                       placeholder={`Pro ${i + 1}`}
@@ -538,9 +544,10 @@ export default function WriteReviewPage() {
               <div className="space-y-2">
                 {cons.map((con, i) => (
                   <div key={i} className="flex items-center gap-2">
-                    <span className="text-red-400 shrink-0 text-lg">-</span>
+                    <span aria-hidden="true" className="text-red-400 shrink-0 text-lg">-</span>
                     <input
                       type="text"
+                      aria-label={`Con ${i + 1}`}
                       value={con}
                       onChange={(e) => updateCon(i, e.target.value)}
                       placeholder={`Con ${i + 1}`}
@@ -558,10 +565,11 @@ export default function WriteReviewPage() {
           <div className="space-y-6 animate-in fade-in duration-200">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label htmlFor="wr-experience-level" className="block text-sm font-semibold text-gray-900 mb-2">
                   Experience Level *
                 </label>
                 <select
+                  id="wr-experience-level"
                   value={experienceLevel}
                   onChange={(e) => setExperienceLevel(e.target.value)}
                   onBlur={() => markTouched("experienceLevel")}
@@ -580,10 +588,11 @@ export default function WriteReviewPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-semibold text-gray-900 mb-2">
+                <label htmlFor="wr-time-owned" className="block text-sm font-semibold text-gray-900 mb-2">
                   Time Owned *
                 </label>
                 <select
+                  id="wr-time-owned"
                   value={timeOwned}
                   onChange={(e) => setTimeOwned(e.target.value)}
                   onBlur={() => markTouched("timeOwned")}
