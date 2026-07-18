@@ -322,7 +322,9 @@ export default function UxParticipantsPage() {
                       </div>
                     </td>
                     <td className="px-4 py-3 text-gray-500 text-xs">
-                      {new Date(p.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                      <time dateTime={p.createdAt}>
+                        {new Date(p.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                      </time>
                     </td>
                     <td className="px-4 py-3 max-w-xs">
                       {editingNotes === p.id ? (
