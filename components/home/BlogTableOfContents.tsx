@@ -57,7 +57,7 @@ export function BlogTableOfContents({ headings, className = "" }: BlogTableOfCon
             <li key={heading.id}>
               <a
                 href={`#${heading.id}`}
-                aria-current={active ? "true" : undefined}
+                aria-current={active ? "location" : undefined}
                 className={`block min-h-[44px] touch-manipulation flex items-center px-2.5 py-1.5 text-sm rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                   heading.level === 3 ? "pl-5 text-[13px]" : ""
                 } ${
@@ -69,7 +69,8 @@ export function BlogTableOfContents({ headings, className = "" }: BlogTableOfCon
                   e.preventDefault();
                   const el = document.getElementById(heading.id);
                   if (el) {
-                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                    el.scrollIntoView({ behavior: reduced ? "instant" : "smooth", block: "start" });
                     el.focus({ preventScroll: true });
                   }
                 }}
