@@ -223,24 +223,26 @@ export default function NotificationsSettingsPage() {
                     </div>
                     <p id={`desc-${key}`} className="text-xs text-gray-600 mt-0.5 leading-relaxed">{description}</p>
                   </div>
-                  <button
-                    type="button"
-                    onClick={() => toggle(key)}
-                    disabled={saving === key}
-                    className={`relative inline-flex h-6 w-11 min-h-[44px] shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 ${group.toggleRing} focus-visible:ring-offset-2 ${
-                      prefs[key] ? group.toggleColor : "bg-gray-200"
-                    } ${saving === key ? "opacity-50 cursor-not-allowed" : ""}`}
-                    role="switch"
-                    aria-checked={prefs[key]}
-                    aria-label={label}
-                    aria-describedby={`desc-${key}`}
-                  >
-                    <span
-                      className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 motion-safe:transition motion-safe:duration-200 ease-in-out ${
-                        prefs[key] ? "translate-x-5" : "translate-x-0"
-                      }`}
-                    />
-                  </button>
+                  <span className="inline-flex shrink-0 items-center justify-center min-h-[44px] min-w-[44px]">
+                    <button
+                      type="button"
+                      onClick={() => toggle(key)}
+                      disabled={saving === key}
+                      className={`relative inline-flex h-6 w-11 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus-visible:outline-none focus-visible:ring-2 ${group.toggleRing} focus-visible:ring-offset-2 ${
+                        prefs[key] ? group.toggleColor : "bg-gray-200"
+                      } ${saving === key ? "opacity-50 cursor-not-allowed" : ""}`}
+                      role="switch"
+                      aria-checked={prefs[key]}
+                      aria-label={label}
+                      aria-describedby={`desc-${key}`}
+                    >
+                      <span
+                        className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 motion-safe:transition motion-safe:duration-200 ease-in-out ${
+                          prefs[key] ? "translate-x-5" : "translate-x-0"
+                        }`}
+                      />
+                    </button>
+                  </span>
                 </li>
               ))}
               </ul>

@@ -83,8 +83,8 @@ export function ExportButton({ onExport }: ExportButtonProps) {
         ref={triggerRef}
         type="button"
         onClick={handleClick}
-        aria-haspopup={isPro ? "menu" : undefined}
-        aria-expanded={isPro ? showMenu : undefined}
+        aria-haspopup={isPro ? "menu" : "dialog"}
+        aria-expanded={isPro ? showMenu : showGate}
         className="inline-flex items-center gap-1.5 min-h-[44px] px-3 py-1.5 text-sm font-medium text-gray-600 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
       >
         {isPro ? (
