@@ -128,9 +128,12 @@ export default function NotificationsSettingsPage() {
         ]}
       />
 
-      {/* Screen-reader live region for toggle save feedback (WCAG 4.1.3) */}
+      {/* WCAG 4.1.3 — polite for saving/saved, assertive alert for errors */}
       <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
-        {saving ? "Saving preference…" : saved ? "Preference saved" : saveError ?? ""}
+        {saving ? "Saving preference…" : saved ? "Preference saved" : ""}
+      </span>
+      <span role="alert" aria-live="assertive" aria-atomic="true" className="sr-only">
+        {saveError ?? ""}
       </span>
 
       {/* Header */}
@@ -209,8 +212,16 @@ export default function NotificationsSettingsPage() {
                           Saved
                         </span>
                       )}
+                      {saveError && saving !== key && (
+                        <span className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 bg-red-50 text-red-600 rounded-full">
+                          <svg aria-hidden="true" className="w-2.5 h-2.5 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
+                          </svg>
+                          Save failed
+                        </span>
+                      )}
                     </div>
-                    <p className="text-xs text-gray-600 mt-0.5 leading-relaxed">{description}</p>
+                    <p id={`desc-${key}`} className="text-xs text-gray-600 mt-0.5 leading-relaxed">{description}</p>
                   </div>
                   <button
                     type="button"
@@ -222,6 +233,7 @@ export default function NotificationsSettingsPage() {
                     role="switch"
                     aria-checked={prefs[key]}
                     aria-label={label}
+                    aria-describedby={`desc-${key}`}
                   >
                     <span
                       className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 motion-safe:transition motion-safe:duration-200 ease-in-out ${
