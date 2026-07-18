@@ -117,7 +117,7 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
 
       {/* Product grid — show skeleton bars until hydrated */}
       {!mounted ? (
-        <ul role="status" aria-label="Loading products" aria-busy="true" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
+        <ul role="list" aria-label="Loading products" aria-busy="true" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none">
           {products.slice(0, 6).map((_, i) => (
             <li key={i} aria-hidden="true" className="rounded-2xl bg-gray-100 motion-safe:animate-pulse h-80" />
           ))}
