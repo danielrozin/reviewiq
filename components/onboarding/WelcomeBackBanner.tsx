@@ -32,7 +32,7 @@ export function WelcomeBackBanner() {
           }
           setDismissed(true);
         }}
-        className="absolute top-3 right-3 p-1 text-white/60 hover:text-white rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
+        className="absolute top-1.5 right-1.5 min-h-[44px] min-w-[44px] flex items-center justify-center touch-manipulation text-white/60 hover:text-white rounded-lg hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         aria-label="Close welcome back banner"
       >
         <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
