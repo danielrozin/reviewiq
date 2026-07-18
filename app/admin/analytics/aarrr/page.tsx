@@ -134,6 +134,7 @@ function SectionHeader({ title, emoji, color, description }: {
   return (
     <div className="flex items-center gap-3 mb-6">
       <div
+        aria-hidden="true"
         className="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
         style={{ backgroundColor: `${color}15`, color }}
       >
@@ -317,6 +318,7 @@ export default function AARRRDashboard() {
                     ? "text-red-600"
                     : "text-gray-500"
                 }`}
+                aria-label={`${data.northStar.trend === "up" ? "up" : data.northStar.trend === "down" ? "down" : "flat"} ${Math.abs(data.northStar.changePercent)}%`}
               >
                 ({data.northStar.changePercent > 0 ? "+" : ""}{data.northStar.changePercent}%)
               </span>
@@ -580,13 +582,19 @@ export default function AARRRDashboard() {
                       <div className="flex-1">
                         <div className="h-8 bg-gray-100 rounded-lg overflow-hidden">
                           <div
+                            role="progressbar"
+                            aria-valuenow={pct}
+                            aria-valuemin={0}
+                            aria-valuemax={100}
+                            aria-valuetext={`${step.count} users (${pct}% of top step)`}
+                            aria-label={step.step}
                             className="h-full rounded-lg flex items-center px-3 motion-safe:transition-all"
                             style={{
                               width: `${Math.max(pct, 2)}%`,
                               backgroundColor: `${PIRATE_COLORS.activation}${i === 0 ? "" : "cc"}`,
                             }}
                           >
-                            <span className="text-xs font-semibold text-white whitespace-nowrap">
+                            <span aria-hidden="true" className="text-xs font-semibold text-white whitespace-nowrap">
                               {step.count} ({pct}%)
                             </span>
                           </div>
@@ -769,6 +777,12 @@ export default function AARRRDashboard() {
                       <span className="w-24 text-sm font-medium text-gray-700 capitalize">{t.level}</span>
                       <div className="flex-1 h-6 bg-gray-100 rounded-full overflow-hidden">
                         <div
+                          role="progressbar"
+                          aria-valuenow={t.percent}
+                          aria-valuemin={0}
+                          aria-valuemax={100}
+                          aria-valuetext={`${t.count} users (${t.percent}%)`}
+                          aria-label={`${t.level} trust level`}
                           className="h-full rounded-full"
                           style={{
                             width: `${Math.max(t.percent, 2)}%`,

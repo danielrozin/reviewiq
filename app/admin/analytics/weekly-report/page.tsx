@@ -55,9 +55,12 @@ interface ReportData {
 function TrendBadge({ change, trend }: { change: string; trend: "up" | "down" | "flat" }) {
   const color = trend === "up" ? "text-emerald-600 bg-emerald-50" : trend === "down" ? "text-red-600 bg-red-50" : "text-gray-500 bg-gray-100";
   const arrow = trend === "up" ? "\u2191" : trend === "down" ? "\u2193" : "\u2192";
+  const trendLabel = trend === "up" ? "up" : trend === "down" ? "down" : "flat";
   return (
     <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-xs font-medium ${color}`}>
-      {arrow} {change}
+      <span aria-hidden="true">{arrow}</span>
+      <span className="sr-only">{trendLabel}</span>
+      {" "}{change}
     </span>
   );
 }
@@ -82,10 +85,16 @@ function FunnelBar({ step, maxValue }: { step: FunnelStep; maxValue: number }) {
       <div className="w-36 text-sm text-gray-700 font-medium">{step.stage}</div>
       <div className="flex-1 bg-gray-100 rounded-full h-6 relative">
         <div
+          role="progressbar"
+          aria-valuenow={Math.round((step.value / maxValue) * 100)}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuetext={`${step.value} users (${step.rate}%)`}
+          aria-label={step.stage}
           className="bg-emerald-500 rounded-full h-6 motion-safe:transition-all duration-500 flex items-center justify-end pr-2"
           style={{ width: `${pct}%`, minWidth: "40px" }}
         >
-          <span className="text-[10px] font-bold text-white">{step.value}</span>
+          <span aria-hidden="true" className="text-[10px] font-bold text-white">{step.value}</span>
         </div>
       </div>
       <div className="w-16 text-right text-xs text-gray-500">{step.rate}%</div>
