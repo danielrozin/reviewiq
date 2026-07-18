@@ -80,7 +80,7 @@ export function UxStudyForm() {
             Thanks for signing up, {form.name.split(" ")[0]}! We&apos;ll reach out to{" "}
             <strong>{form.email}</strong> to schedule your 30-minute session.
           </p>
-          <p className="text-sm text-gray-500 mt-6">
+          <p className="text-sm text-gray-600 mt-6">
             Sessions run via video call — no install required.
           </p>
         </div>

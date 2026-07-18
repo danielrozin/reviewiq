@@ -159,7 +159,7 @@ export default function ReviewIQAnalytics() {
             Weekly Report
           </a>
         </div>
-        <p className="text-gray-500 mt-1">
+        <p className="text-gray-600 mt-1">
           GA4: {config.ga4Property} | Clarity: {config.clarityProject}
         </p>
         <p className="text-xs text-gray-600 mt-1">
@@ -205,7 +205,7 @@ export default function ReviewIQAnalytics() {
             className={`px-4 py-2 text-sm font-medium rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               activeTab === tab.key
                 ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                : "text-gray-600 hover:text-gray-700"
             }`}
           >
             {tab.label}
@@ -245,7 +245,7 @@ export default function ReviewIQAnalytics() {
                 </ResponsiveContainer>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-500">No review data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-600">No review data yet.</div>
               )}
             </div>
 
@@ -275,7 +275,7 @@ export default function ReviewIQAnalytics() {
                 </ResponsiveContainer>
                 </div>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-500">No category data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-600">No category data yet.</div>
               )}
             </div>
           </div>
@@ -356,7 +356,7 @@ export default function ReviewIQAnalytics() {
             <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">North Star Metric</p>
             <h2 className="text-xl font-bold text-gray-900">{config.kpis.northStar.metric}</h2>
             <p className="text-sm text-gray-600 mt-1">{config.kpis.northStar.description}</p>
-            <p className="text-sm text-gray-500 mt-2">Target: {config.kpis.northStar.target}</p>
+            <p className="text-sm text-gray-600 mt-2">Target: {config.kpis.northStar.target}</p>
           </div>
 
           <h3 className="text-lg font-semibold text-gray-900">{config.funnel.name}</h3>
@@ -374,7 +374,7 @@ export default function ReviewIQAnalytics() {
                     <h4 className="font-semibold text-gray-900">{step.name}</h4>
                     <code className="text-xs bg-gray-50 text-gray-600 px-2 py-0.5 rounded-md border border-gray-200">{step.event}</code>
                   </div>
-                  <p className="text-sm text-gray-500">{step.description}</p>
+                  <p className="text-sm text-gray-600">{step.description}</p>
                   <div className="mt-2 flex items-center gap-2">
                     <div className="h-2 bg-gray-100 rounded-full flex-1">
                       <div className="h-2 bg-emerald-400 rounded-full motion-safe:transition-all" style={{ width: `${Math.round(100 * Math.pow(0.75, i))}%` }} />
@@ -414,7 +414,7 @@ export default function ReviewIQAnalytics() {
             <div key={key} className="bg-white border border-gray-200 rounded-xl p-6 space-y-5">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">{funnel.name}</h3>
-                <p className="text-sm text-gray-500 mt-1">{funnel.description}</p>
+                <p className="text-sm text-gray-600 mt-1">{funnel.description}</p>
               </div>
 
               <div className="space-y-3">
@@ -429,7 +429,7 @@ export default function ReviewIQAnalytics() {
                     <div className="bg-gray-50 border border-gray-100 rounded-lg p-3 flex-1 mb-1">
                       <div className="flex items-center gap-2 mb-1">
                         <h4 className="font-medium text-gray-900 text-sm">{step.name}</h4>
-                        <code className="text-[10px] bg-white text-gray-500 px-1.5 py-0.5 rounded border border-gray-200">{step.event}</code>
+                        <code className="text-[10px] bg-white text-gray-600 px-1.5 py-0.5 rounded border border-gray-200">{step.event}</code>
                       </div>
                       <p className="text-xs text-gray-600">{step.description}</p>
                     </div>
@@ -442,9 +442,9 @@ export default function ReviewIQAnalytics() {
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {funnel.kpis.map((kpi) => (
                     <div key={kpi.metric} className="bg-gray-50 border border-gray-100 rounded-lg p-3">
-                      <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider">{kpi.metric}</p>
+                      <p className="text-[10px] font-semibold text-gray-600 uppercase tracking-wider">{kpi.metric}</p>
                       <p className="text-lg font-bold text-gray-900 mt-0.5">{kpi.target}</p>
-                      <p className="text-[10px] text-gray-500 mt-0.5">{kpi.formula}</p>
+                      <p className="text-[10px] text-gray-600 mt-0.5">{kpi.formula}</p>
                       {kpi.warning && <p className="text-[10px] text-amber-600 mt-1">{kpi.warning}</p>}
                     </div>
                   ))}
@@ -490,11 +490,11 @@ export default function ReviewIQAnalytics() {
                         {event.category}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{event.description}</td>
+                    <td className="px-4 py-3 text-gray-600 hidden md:table-cell">{event.description}</td>
                     <td className="px-4 py-3 hidden lg:table-cell">
                       <div className="flex flex-wrap gap-1">
                         {event.params.map((p) => (
-                          <code key={p} className="text-[10px] bg-gray-50 text-gray-500 px-1.5 py-0.5 rounded border border-gray-100">{p}</code>
+                          <code key={p} className="text-[10px] bg-gray-50 text-gray-600 px-1.5 py-0.5 rounded border border-gray-100">{p}</code>
                         ))}
                       </div>
                     </td>
@@ -521,7 +521,7 @@ export default function ReviewIQAnalytics() {
             <>
               <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-6">
                 <h2 className="text-xl font-bold text-gray-900">{report.title}</h2>
-                <p className="text-sm text-gray-500 mt-1">Generated: <time dateTime={report.generatedAt}>{new Date(report.generatedAt).toLocaleString()}</time></p>
+                <p className="text-sm text-gray-600 mt-1">Generated: <time dateTime={report.generatedAt}>{new Date(report.generatedAt).toLocaleString()}</time></p>
               </div>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -573,19 +573,19 @@ export default function ReviewIQAnalytics() {
                   <table className="w-full text-sm" aria-label="Top products">
                     <thead>
                       <tr className="border-b border-gray-200">
-                        <th scope="col" className="text-left py-2 text-gray-500 font-medium">#</th>
-                        <th scope="col" className="text-left py-2 text-gray-500 font-medium">Product</th>
-                        <th scope="col" className="text-left py-2 text-gray-500 font-medium hidden sm:table-cell">Category</th>
-                        <th scope="col" className="text-right py-2 text-gray-500 font-medium">Reviews</th>
-                        <th scope="col" className="text-right py-2 text-gray-500 font-medium">Score</th>
+                        <th scope="col" className="text-left py-2 text-gray-600 font-medium">#</th>
+                        <th scope="col" className="text-left py-2 text-gray-600 font-medium">Product</th>
+                        <th scope="col" className="text-left py-2 text-gray-600 font-medium hidden sm:table-cell">Category</th>
+                        <th scope="col" className="text-right py-2 text-gray-600 font-medium">Reviews</th>
+                        <th scope="col" className="text-right py-2 text-gray-600 font-medium">Score</th>
                       </tr>
                     </thead>
                     <tbody>
                       {report.topProducts.map((p, i) => (
                         <tr key={i} className="border-b border-gray-100 last:border-0">
-                          <td className="py-2 text-gray-500">{i + 1}</td>
+                          <td className="py-2 text-gray-600">{i + 1}</td>
                           <td className="py-2 text-gray-900">{p.name}</td>
-                          <td className="py-2 text-gray-500 hidden sm:table-cell">{p.category}</td>
+                          <td className="py-2 text-gray-600 hidden sm:table-cell">{p.category}</td>
                           <td className="py-2 text-right font-medium text-emerald-600">{p.reviewCount}</td>
                           <td className="py-2 text-right font-medium text-gray-600">{p.smartScore}</td>
                         </tr>
@@ -597,7 +597,7 @@ export default function ReviewIQAnalytics() {
             </>
           )}
           {!reportLoading && !report && (
-            <div className="text-center py-12 text-gray-500">Failed to load weekly report. Try refreshing.</div>
+            <div className="text-center py-12 text-gray-600">Failed to load weekly report. Try refreshing.</div>
           )}
         </div>
       )}

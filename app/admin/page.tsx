@@ -103,7 +103,7 @@ function RatingBar({ rating, count, max }: { rating: number; count: number; max:
   };
   return (
     <div className="flex items-center gap-2 text-sm">
-      <span className="w-6 text-right text-gray-500 font-medium" aria-hidden="true">{rating}★</span>
+      <span className="w-6 text-right text-gray-600 font-medium" aria-hidden="true">{rating}★</span>
       <div className="flex-1 h-3 bg-gray-100 rounded-full overflow-hidden">
         <div
           role="progressbar"
@@ -125,7 +125,7 @@ function StatusBadge({ status }: { status: string }) {
     published: "bg-emerald-50 text-emerald-700 border-emerald-200",
     pending: "bg-yellow-50 text-yellow-700 border-yellow-200",
     flagged: "bg-red-50 text-red-700 border-red-200",
-    rejected: "bg-gray-100 text-gray-500 border-gray-200",
+    rejected: "bg-gray-100 text-gray-600 border-gray-200",
   };
   return (
     <span className={`text-xs font-medium px-2 py-0.5 rounded-full border ${styles[status] || styles.pending}`}>
@@ -376,7 +376,7 @@ export default function AdminDashboard() {
             </div>
             <h1 className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
           </div>
-          <button type="button" onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
+          <button type="button" onClick={handleLogout} className="flex items-center gap-2 text-sm text-gray-600 hover:text-gray-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 rounded">
             <LogOut aria-hidden="true" className="w-4 h-4" /> Sign Out
           </button>
         </div>
@@ -419,7 +419,7 @@ export default function AdminDashboard() {
                 className={`flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg whitespace-nowrap transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 focus-visible:ring-offset-1 ${
                   activeTab === tab.key
                     ? "bg-gray-900 text-white"
-                    : "text-gray-500 hover:text-gray-700 hover:bg-gray-100"
+                    : "text-gray-600 hover:text-gray-700 hover:bg-gray-100"
                 }`}
               >
                 <tab.icon className="w-4 h-4" aria-hidden="true" />
@@ -509,7 +509,7 @@ export default function AdminDashboard() {
                   ))}
                 </ul>
               ) : (
-                <p className="text-gray-500 text-sm">No reviews yet</p>
+                <p className="text-gray-600 text-sm">No reviews yet</p>
               )}
             </div>
 
@@ -519,7 +519,7 @@ export default function AdminDashboard() {
               {stats.topProducts.length > 0 ? (
                 <table className="w-full text-sm" aria-label="Top products by reviews">
                   <thead>
-                    <tr className="text-left text-gray-500 border-b border-gray-100">
+                    <tr className="text-left text-gray-600 border-b border-gray-100">
                       <th scope="col" className="pb-2 font-medium">#</th>
                       <th scope="col" className="pb-2 font-medium">Product</th>
                       <th scope="col" className="pb-2 font-medium hidden sm:table-cell">Category</th>
@@ -530,9 +530,9 @@ export default function AdminDashboard() {
                   <tbody>
                     {stats.topProducts.slice(0, 10).map((p, i) => (
                       <tr key={p.id} className="border-b border-gray-100 last:border-0">
-                        <td className="py-2 text-gray-500">{i + 1}</td>
+                        <td className="py-2 text-gray-600">{i + 1}</td>
                         <td className="py-2 text-gray-900 font-medium">{p.name}</td>
-                        <td className="py-2 text-gray-500 hidden sm:table-cell">{p.category.name}</td>
+                        <td className="py-2 text-gray-600 hidden sm:table-cell">{p.category.name}</td>
                         <td className="py-2 text-right text-emerald-600 font-medium">{p.reviewCount}</td>
                         <td className="py-2 text-right text-gray-600">{p.smartScore}</td>
                       </tr>
@@ -540,7 +540,7 @@ export default function AdminDashboard() {
                   </tbody>
                 </table>
               ) : (
-                <p className="text-gray-500 text-sm">No products yet</p>
+                <p className="text-gray-600 text-sm">No products yet</p>
               )}
             </div>
           </div>
@@ -557,7 +557,7 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div className="flex items-center gap-4">
               <div className="relative flex-1 max-w-md">
-                <Search aria-hidden="true" className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search aria-hidden="true" className="w-4 h-4 text-gray-600 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="search"
                   value={productSearch}
@@ -567,7 +567,7 @@ export default function AdminDashboard() {
                   className="w-full pl-9 pr-4 py-2 border border-gray-400 rounded-lg text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-gray-900"
                 />
               </div>
-              <span className="text-sm text-gray-500">{productTotal} products</span>
+              <span className="text-sm text-gray-600">{productTotal} products</span>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -611,7 +611,7 @@ export default function AdminDashboard() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label={`View ${p.name} (opens in new tab)`}
-                            className="p-1.5 text-gray-500 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                            className="p-1.5 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                           >
                             <Eye aria-hidden="true" className="w-4 h-4" />
                           </a>
@@ -628,7 +628,7 @@ export default function AdminDashboard() {
                               <button
                                 type="button"
                                 onClick={cancelPendingDelete}
-                                className="p-1 text-gray-500 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                                className="p-1 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                                 aria-label="Cancel delete"
                               >
                                 <X aria-hidden="true" className="w-3.5 h-3.5" />
@@ -638,7 +638,7 @@ export default function AdminDashboard() {
                           <button
                             type="button"
                             onClick={() => handleDeleteProduct(p.id)}
-                            className="p-1.5 text-gray-500 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                            className="p-1.5 text-gray-600 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                             aria-label={`Delete product: ${p.name}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
@@ -651,14 +651,14 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
               {products.length === 0 && (
-                <div className="text-center py-12 text-gray-500 text-sm">No products found</div>
+                <div className="text-center py-12 text-gray-600 text-sm">No products found</div>
               )}
             </div>
 
             {/* Pagination */}
             {productTotal > 15 && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-600">
                   Page {productPage} of {Math.ceil(productTotal / 15)}
                 </span>
                 <div className="flex gap-2">
@@ -667,7 +667,7 @@ export default function AdminDashboard() {
                     aria-label="Go to previous page"
                     onClick={() => setProductPage((p) => Math.max(1, p - 1))}
                     disabled={productPage === 1}
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -676,7 +676,7 @@ export default function AdminDashboard() {
                     aria-label="Go to next page"
                     onClick={() => setProductPage((p) => p + 1)}
                     disabled={productPage >= Math.ceil(productTotal / 15)}
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <ChevronRight className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -691,7 +691,7 @@ export default function AdminDashboard() {
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-4">
               <div className="relative flex-1 max-w-md">
-                <Search aria-hidden="true" className="w-4 h-4 text-gray-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                <Search aria-hidden="true" className="w-4 h-4 text-gray-600 absolute left-3 top-1/2 -translate-y-1/2" />
                 <input
                   type="search"
                   value={reviewSearch}
@@ -734,7 +734,7 @@ export default function AdminDashboard() {
                   </button>
                 </div>
               )}
-              <span className="text-sm text-gray-500 ml-auto">{reviewTotal} reviews</span>
+              <span className="text-sm text-gray-600 ml-auto">{reviewTotal} reviews</span>
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
@@ -798,7 +798,7 @@ export default function AdminDashboard() {
                             <button
                               type="button"
                               onClick={() => handleQueueAction(r.id, "published")}
-                              className="p-1.5 text-gray-500 hover:text-emerald-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                              className="p-1.5 text-gray-600 hover:text-emerald-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                               aria-label={`Approve review: ${r.headline}`}
                             >
                               <Check aria-hidden="true" className="w-4 h-4" />
@@ -808,7 +808,7 @@ export default function AdminDashboard() {
                             <button
                               type="button"
                               onClick={() => handleQueueAction(r.id, "rejected")}
-                              className="p-1.5 text-gray-500 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                              className="p-1.5 text-gray-600 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                               aria-label={`Reject review: ${r.headline}`}
                             >
                               <X aria-hidden="true" className="w-4 h-4" />
@@ -827,7 +827,7 @@ export default function AdminDashboard() {
                               <button
                                 type="button"
                                 onClick={cancelPendingDelete}
-                                className="p-1 text-gray-500 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                                className="p-1 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                                 aria-label="Cancel delete"
                               >
                                 <X aria-hidden="true" className="w-3.5 h-3.5" />
@@ -837,7 +837,7 @@ export default function AdminDashboard() {
                           <button
                             type="button"
                             onClick={() => handleDeleteReview(r.id)}
-                            className="p-1.5 text-gray-500 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                            className="p-1.5 text-gray-600 hover:text-red-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                             aria-label={`Delete review: ${r.headline}`}
                           >
                             <Trash2 aria-hidden="true" className="w-4 h-4" />
@@ -850,13 +850,13 @@ export default function AdminDashboard() {
                 </tbody>
               </table>
               {reviews.length === 0 && (
-                <div className="text-center py-12 text-gray-500 text-sm">No reviews found</div>
+                <div className="text-center py-12 text-gray-600 text-sm">No reviews found</div>
               )}
             </div>
 
             {reviewTotal > 15 && (
               <div className="flex items-center justify-between">
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-600">
                   Page {reviewPage} of {Math.ceil(reviewTotal / 15)}
                 </span>
                 <div className="flex gap-2">
@@ -865,7 +865,7 @@ export default function AdminDashboard() {
                     onClick={() => setReviewPage((p) => Math.max(1, p - 1))}
                     disabled={reviewPage === 1}
                     aria-label="Go to previous page"
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <ChevronLeft aria-hidden="true" className="w-4 h-4" />
                   </button>
@@ -874,7 +874,7 @@ export default function AdminDashboard() {
                     onClick={() => setReviewPage((p) => p + 1)}
                     disabled={reviewPage >= Math.ceil(reviewTotal / 15)}
                     aria-label="Go to next page"
-                    className="p-2 border border-gray-400 rounded-lg text-gray-500 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                    className="p-2 border border-gray-400 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
                     <ChevronRight aria-hidden="true" className="w-4 h-4" />
                   </button>
@@ -894,7 +894,7 @@ export default function AdminDashboard() {
               <button
                 type="button"
                 onClick={loadPendingReviews}
-                className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-500 hover:text-gray-700 border border-gray-400 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                className="flex items-center gap-2 px-3 py-1.5 text-sm text-gray-600 hover:text-gray-700 border border-gray-400 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
               >
                 <RefreshCw aria-hidden="true" className="w-3.5 h-3.5" /> Refresh
               </button>
@@ -903,8 +903,8 @@ export default function AdminDashboard() {
             {pendingReviews.length === 0 ? (
               <div className="bg-white border border-gray-200 rounded-xl p-12 text-center">
                 <Check aria-hidden="true" className="w-12 h-12 text-emerald-300 mx-auto mb-3" />
-                <p className="text-gray-500 font-medium">All caught up!</p>
-                <p className="text-gray-500 text-sm mt-1">No pending reviews to moderate.</p>
+                <p className="text-gray-600 font-medium">All caught up!</p>
+                <p className="text-gray-600 text-sm mt-1">No pending reviews to moderate.</p>
               </div>
             ) : (
               <div className="space-y-3">
@@ -922,7 +922,7 @@ export default function AdminDashboard() {
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-gray-500 mb-2">
+                        <p className="text-sm text-gray-600 mb-2">
                           <span className="font-medium">{r.product.name}</span>
                           {" · "}
                           {r.user.name || r.user.email}
@@ -987,7 +987,7 @@ export default function AdminDashboard() {
                 <h3 className="text-sm font-semibold text-gray-900 mb-4">Content Health</h3>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">Review to Product Ratio</span>
+                    <span className="text-gray-600">Review to Product Ratio</span>
                     <span className="font-bold text-gray-900">
                       {stats.summary.totalProducts > 0
                         ? (stats.summary.totalReviews / stats.summary.totalProducts).toFixed(1)
@@ -996,7 +996,7 @@ export default function AdminDashboard() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">Avg. Rating</span>
+                    <span className="text-gray-600">Avg. Rating</span>
                     <span className="font-bold text-gray-900">
                       {stats.summary.totalReviews > 0
                         ? (
@@ -1008,7 +1008,7 @@ export default function AdminDashboard() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">Votes per Review</span>
+                    <span className="text-gray-600">Votes per Review</span>
                     <span className="font-bold text-gray-900">
                       {stats.summary.totalReviews > 0
                         ? (stats.summary.totalVotes / stats.summary.totalReviews).toFixed(1)
@@ -1017,7 +1017,7 @@ export default function AdminDashboard() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">Moderation Queue</span>
+                    <span className="text-gray-600">Moderation Queue</span>
                     <span className={`font-bold ${stats.summary.pendingReviews > 5 ? "text-red-600" : "text-emerald-600"}`}>
                       {stats.summary.pendingReviews} pending
                     </span>
@@ -1032,7 +1032,7 @@ export default function AdminDashboard() {
                     href="/admin/analytics"
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
-                    <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-500" />
+                    <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">GA4 Analytics</p>
                       <p className="text-xs text-gray-600">View detailed funnel and event analytics</p>
@@ -1043,7 +1043,7 @@ export default function AdminDashboard() {
                     onClick={() => setActiveTab("queue")}
                     className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
-                    <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-500" />
+                    <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Moderate Reviews</p>
                       <p className="text-xs text-gray-600">{stats.summary.pendingReviews} reviews pending</p>
@@ -1054,7 +1054,7 @@ export default function AdminDashboard() {
                     onClick={() => setActiveTab("products")}
                     className="w-full flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
-                    <Pin aria-hidden="true" className="w-5 h-5 text-gray-500" />
+                    <Pin aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Manage Products</p>
                       <p className="text-xs text-gray-600">Feature or unfeature products on homepage</p>
@@ -1064,7 +1064,7 @@ export default function AdminDashboard() {
                     href="/admin/ux-participants"
                     className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                   >
-                    <Users aria-hidden="true" className="w-5 h-5 text-gray-500" />
+                    <Users aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">UX Study Participants</p>
                       <p className="text-xs text-gray-600">Track and schedule usability testers</p>

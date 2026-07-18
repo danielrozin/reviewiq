@@ -72,8 +72,8 @@ function KeyResultRow({ kr }: { kr: KeyResult }) {
       <div className="flex justify-between items-start mb-1.5">
         <p className="text-sm text-gray-700 flex-1 pr-4">{kr.description}</p>
         <div className="text-right flex-shrink-0">
-          <span className="text-xs font-medium text-gray-500">{kr.current}</span>
-          <span className="text-xs text-gray-500"> / {kr.target}</span>
+          <span className="text-xs font-medium text-gray-600">{kr.current}</span>
+          <span className="text-xs text-gray-600"> / {kr.target}</span>
         </div>
       </div>
       <div className="flex items-center gap-2">
@@ -109,12 +109,12 @@ function OKRCard({ okr, isCompany = false }: { okr: OKR; isCompany?: boolean }) 
             <h3 className={`font-bold text-gray-900 ${isCompany ? "text-lg" : "text-base"}`}>
               {okr.objective}
             </h3>
-            <p className="text-xs text-gray-500 mt-0.5">Owner: {okr.owner}</p>
+            <p className="text-xs text-gray-600 mt-0.5">Owner: {okr.owner}</p>
           </div>
         </div>
       </div>
       <div className="border-t border-gray-100 px-5 py-2">
-        <p className="text-[10px] font-semibold text-gray-500 uppercase tracking-wider mb-1">Key Results</p>
+        <p className="text-[10px] font-semibold text-gray-600 uppercase tracking-wider mb-1">Key Results</p>
         {okr.keyResults.map((kr) => (
           <KeyResultRow key={kr.id} kr={kr} />
         ))}
@@ -133,7 +133,7 @@ function HealthCard({ metric }: { metric: HealthMetric }) {
         <span className={`ml-auto text-xs font-medium ${style.text}`}>{style.label}</span>
       </div>
       <p className="text-xs text-gray-600">{metric.detail}</p>
-      <p className="text-[10px] text-gray-500 mt-1">Updated {metric.lastUpdated}</p>
+      <p className="text-[10px] text-gray-600 mt-1">Updated {metric.lastUpdated}</p>
     </div>
   );
 }
@@ -153,7 +153,7 @@ export default function OKRDashboard() {
   if (loading) {
     return (
       <div role="status" aria-label="Loading OKR data" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div aria-hidden="true" className="motion-safe:animate-pulse text-gray-500">Loading OKR data...</div>
+        <div aria-hidden="true" className="motion-safe:animate-pulse text-gray-600">Loading OKR data...</div>
       </div>
     );
   }
@@ -179,21 +179,21 @@ export default function OKRDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">&larr; Analytics</Link>
+                <Link href="/admin/analytics" className="text-gray-600 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">&larr; Analytics</Link>
                 <span aria-hidden="true" className="text-gray-300">|</span>
-                <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">AARRR</Link>
+                <Link href="/admin/analytics/aarrr" className="text-gray-600 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">AARRR</Link>
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mt-1">OKR Dashboard</h1>
-              <p className="text-sm text-gray-500">{data.quarter} &middot; Last updated {data.lastUpdated}</p>
+              <p className="text-sm text-gray-600">{data.quarter} &middot; Last updated {data.lastUpdated}</p>
             </div>
             <div className="flex items-center gap-6">
               <div className="text-center">
                 <p className="text-2xl font-bold text-indigo-600">{avgCompanyProgress}%</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider">Company</p>
+                <p className="text-[10px] text-gray-600 uppercase tracking-wider">Company</p>
               </div>
               <div className="text-center">
                 <p className="text-2xl font-bold text-violet-600">{avgTeamProgress}%</p>
-                <p className="text-[10px] text-gray-500 uppercase tracking-wider">Avg Team</p>
+                <p className="text-[10px] text-gray-600 uppercase tracking-wider">Avg Team</p>
               </div>
               <div className="flex gap-1.5 items-center" aria-label="Health metric summary">
                 {healthCounts.green > 0 && (

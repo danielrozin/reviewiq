@@ -53,7 +53,7 @@ interface ReportData {
 }
 
 function TrendBadge({ change, trend }: { change: string; trend: "up" | "down" | "flat" }) {
-  const color = trend === "up" ? "text-emerald-600 bg-emerald-50" : trend === "down" ? "text-red-600 bg-red-50" : "text-gray-500 bg-gray-100";
+  const color = trend === "up" ? "text-emerald-600 bg-emerald-50" : trend === "down" ? "text-red-600 bg-red-50" : "text-gray-600 bg-gray-100";
   const arrow = trend === "up" ? "\u2191" : trend === "down" ? "\u2193" : "\u2192";
   const trendLabel = trend === "up" ? "up" : trend === "down" ? "down" : "flat";
   return (
@@ -68,12 +68,12 @@ function TrendBadge({ change, trend }: { change: string; trend: "up" | "down" | 
 function MetricCard({ label, current, previous, change, trend }: { label: string } & MetricPair) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{label}</p>
+      <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
       <div className="flex items-end gap-2 mt-1">
         <p className="text-2xl font-bold text-gray-900">{current.toLocaleString()}</p>
         <TrendBadge change={change} trend={trend} />
       </div>
-      <p className="text-xs text-gray-500 mt-0.5">prev: {previous.toLocaleString()}</p>
+      <p className="text-xs text-gray-600 mt-0.5">prev: {previous.toLocaleString()}</p>
     </div>
   );
 }
@@ -97,7 +97,7 @@ function FunnelBar({ step, maxValue }: { step: FunnelStep; maxValue: number }) {
           <span aria-hidden="true" className="text-[10px] font-bold text-white">{step.value}</span>
         </div>
       </div>
-      <div className="w-16 text-right text-xs text-gray-500">{step.rate}%</div>
+      <div className="w-16 text-right text-xs text-gray-600">{step.rate}%</div>
     </div>
   );
 }
@@ -119,7 +119,7 @@ export default function WeeklyReportPage() {
   if (loading) {
     return (
       <div role="status" aria-label="Generating weekly report" className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div aria-hidden="true" className="motion-safe:animate-pulse text-gray-500">Generating weekly report...</div>
+        <div aria-hidden="true" className="motion-safe:animate-pulse text-gray-600">Generating weekly report...</div>
       </div>
     );
   }
@@ -150,16 +150,16 @@ export default function WeeklyReportPage() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center gap-3">
-                <Link href="/admin/analytics" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">&larr; Analytics</Link>
+                <Link href="/admin/analytics" className="text-gray-600 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">&larr; Analytics</Link>
                 <span aria-hidden="true" className="text-gray-300">|</span>
-                <Link href="/admin/analytics/aarrr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">AARRR</Link>
+                <Link href="/admin/analytics/aarrr" className="text-gray-600 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">AARRR</Link>
                 <span aria-hidden="true" className="text-gray-300">|</span>
-                <Link href="/admin/analytics/okr" className="text-gray-500 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">OKR</Link>
+                <Link href="/admin/analytics/okr" className="text-gray-600 hover:text-gray-700 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">OKR</Link>
               </div>
               <h1 className="text-2xl font-bold text-gray-900 mt-1">
                 Weekly Report W{data.weekNumber}
               </h1>
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-gray-600">
                 {data.period.start} to {data.period.end}
               </p>
             </div>
@@ -222,17 +222,17 @@ export default function WeeklyReportPage() {
                     const max = Math.max(...data.dailyBreakdown.map((r) => r.signups + r.reviews), 1);
                     return (
                       <li key={d.date} className="flex items-center gap-3 text-xs">
-                        <span className="w-8 text-gray-500 font-medium">{d.day}</span>
+                        <span className="w-8 text-gray-600 font-medium">{d.day}</span>
                         <div aria-hidden="true" className="flex-1 flex gap-1">
                           <div className="bg-emerald-400 h-4 rounded" style={{ width: `${Math.max((d.signups / max) * 100, 2)}%` }} title={`${d.signups} signups`} />
                           <div className="bg-indigo-400 h-4 rounded" style={{ width: `${Math.max((d.reviews / max) * 100, 2)}%` }} title={`${d.reviews} reviews`} />
                         </div>
-                        <span className="w-12 text-right text-gray-500" aria-label={`${d.signups} signups, ${d.reviews} reviews`}>{d.signups + d.reviews}</span>
+                        <span className="w-12 text-right text-gray-600" aria-label={`${d.signups} signups, ${d.reviews} reviews`}>{d.signups + d.reviews}</span>
                       </li>
                     );
                   })}
                 </ul>
-                <ul role="list" className="flex gap-4 mt-3 text-[10px] text-gray-500 list-none p-0 m-0" aria-label="Chart legend">
+                <ul role="list" className="flex gap-4 mt-3 text-[10px] text-gray-600 list-none p-0 m-0" aria-label="Chart legend">
                   <li className="flex items-center gap-1"><span aria-hidden="true" className="w-2 h-2 bg-emerald-400 rounded" />Signups</li>
                   <li className="flex items-center gap-1"><span aria-hidden="true" className="w-2 h-2 bg-indigo-400 rounded" />Reviews</li>
                 </ul>
@@ -243,7 +243,7 @@ export default function WeeklyReportPage() {
                 {data.funnel.map((step) => (
                   <FunnelBar key={step.stage} step={step} maxValue={maxFunnel} />
                 ))}
-                <p className="text-xs text-gray-500 mt-2">Activation rate: {data.activationRate}%</p>
+                <p className="text-xs text-gray-600 mt-2">Activation rate: {data.activationRate}%</p>
               </section>
             </div>
 
@@ -252,14 +252,14 @@ export default function WeeklyReportPage() {
               <section aria-labelledby="weekly-top-products-heading" className="bg-white border border-gray-200 rounded-xl p-5">
                 <h3 id="weekly-top-products-heading" className="text-sm font-bold text-gray-700 mb-3">Top Products by Reviews</h3>
                 {data.topProducts.length === 0 ? (
-                  <p className="text-xs text-gray-500">No products yet</p>
+                  <p className="text-xs text-gray-600">No products yet</p>
                 ) : (
                   <ol role="list" aria-labelledby="weekly-top-products-heading" className="space-y-1.5 list-none p-0 m-0">
                     {data.topProducts.map((p, i) => (
                       <li key={p.slug} className="flex items-center gap-2 text-xs">
-                        <span aria-hidden="true" className="w-5 text-gray-500 font-medium">{i + 1}.</span>
+                        <span aria-hidden="true" className="w-5 text-gray-600 font-medium">{i + 1}.</span>
                         <span className="flex-1 text-gray-700 truncate">{p.name}</span>
-                        <span className="text-gray-500 font-medium" aria-label={`${p.reviews} reviews`}>{p.reviews}</span>
+                        <span className="text-gray-600 font-medium" aria-label={`${p.reviews} reviews`}>{p.reviews}</span>
                       </li>
                     ))}
                   </ol>
@@ -272,7 +272,7 @@ export default function WeeklyReportPage() {
                   {data.trustLevels.map((t) => (
                     <li key={t.level} className="flex items-center gap-2 text-xs">
                       <span className="flex-1 text-gray-700 capitalize">{t.level}</span>
-                      <span className="text-gray-500 font-medium" aria-label={`${t.count} users`}>{t.count}</span>
+                      <span className="text-gray-600 font-medium" aria-label={`${t.count} users`}>{t.count}</span>
                     </li>
                   ))}
                 </ul>
@@ -293,7 +293,7 @@ export default function WeeklyReportPage() {
                 ].map((item) => (
                   <li key={item.label} className="text-center" aria-label={`${item.label}: ${item.value.toLocaleString()}`}>
                     <p aria-hidden="true" className="text-2xl font-bold text-gray-900">{item.value.toLocaleString()}</p>
-                    <p aria-hidden="true" className="text-[10px] text-gray-500 uppercase tracking-wider">{item.label}</p>
+                    <p aria-hidden="true" className="text-[10px] text-gray-600 uppercase tracking-wider">{item.label}</p>
                   </li>
                 ))}
               </ul>

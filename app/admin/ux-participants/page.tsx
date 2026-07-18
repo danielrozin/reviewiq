@@ -157,7 +157,7 @@ export default function UxParticipantsPage() {
           </button>
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-gray-900">UX Study Participants</h1>
-            <p className="text-sm text-gray-500 mt-0.5">
+            <p className="text-sm text-gray-600 mt-0.5">
               Manage testers who signed up for usability sessions
             </p>
           </div>
@@ -302,11 +302,11 @@ export default function UxParticipantsPage() {
         {/* Table */}
         <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
           {loading ? (
-            <div className="p-12 text-center text-gray-500 text-sm">Loading…</div>
+            <div className="p-12 text-center text-gray-600 text-sm">Loading…</div>
           ) : participants.length === 0 ? (
             <div className="p-12 text-center">
               <Users aria-hidden="true" className="w-10 h-10 text-gray-300 mx-auto mb-3" />
-              <p className="text-gray-500 text-sm">No participants yet</p>
+              <p className="text-gray-600 text-sm">No participants yet</p>
               <p className="text-gray-600 text-xs mt-1">
                 Share <code className="bg-gray-100 px-1 rounded">/ux-study</code> to collect signups
               </p>

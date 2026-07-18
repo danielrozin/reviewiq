@@ -67,7 +67,7 @@ function StepIndicator({ currentStep, steps }: { currentStep: number; steps: typ
               <span
                 aria-hidden="true"
                 className={`text-xs mt-1 font-medium ${
-                  isCurrent ? "text-brand-600" : isCompleted ? "text-emerald-600" : "text-gray-500"
+                  isCurrent ? "text-brand-600" : isCompleted ? "text-emerald-600" : "text-gray-600"
                 }`}
               >
                 {step.label}

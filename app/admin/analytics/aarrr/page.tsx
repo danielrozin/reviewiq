@@ -119,11 +119,11 @@ function StatCard({
 }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{label}</p>
+      <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
       <p className={`font-bold text-gray-900 mt-1 ${large ? "text-3xl" : "text-2xl"}`} style={color ? { color } : undefined}>
         {value}
       </p>
-      {subtitle && <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>}
+      {subtitle && <p className="text-xs text-gray-600 mt-0.5">{subtitle}</p>}
     </div>
   );
 }
@@ -142,7 +142,7 @@ function SectionHeader({ title, emoji, color, description }: {
       </div>
       <div>
         <h2 className="text-lg font-bold text-gray-900">{title}</h2>
-        <p className="text-sm text-gray-500">{description}</p>
+        <p className="text-sm text-gray-600">{description}</p>
       </div>
     </div>
   );
@@ -173,7 +173,7 @@ function HealthGauge({ score }: { score: number }) {
         </svg>
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span className="text-3xl font-bold" style={{ color }}>{score}</span>
-          <span className="text-xs text-gray-500">/100</span>
+          <span className="text-xs text-gray-600">/100</span>
         </div>
       </div>
       <span className="text-sm font-semibold" style={{ color }}>{label}</span>
@@ -183,7 +183,7 @@ function HealthGauge({ score }: { score: number }) {
 
 function CohortTable({ cohorts }: { cohorts: CohortRow[] }) {
   if (cohorts.length === 0) {
-    return <p className="text-gray-500 text-sm">No cohort data available yet.</p>;
+    return <p className="text-gray-600 text-sm">No cohort data available yet.</p>;
   }
 
   const maxWeeks = Math.max(...cohorts.map((c) => Object.keys(c.retained).length));
@@ -291,8 +291,8 @@ export default function AARRRDashboard() {
             General Analytics
           </a>
         </div>
-        <p className="text-gray-500">ReviewIQ (ReviewIQ) growth dashboard</p>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-gray-600">ReviewIQ (ReviewIQ) growth dashboard</p>
+        <p className="text-xs text-gray-600 mt-1">
           Generated: <time dateTime={data.generatedAt}>{new Date(data.generatedAt).toLocaleString()}</time>
         </p>
       </div>
@@ -316,7 +316,7 @@ export default function AARRRDashboard() {
                     ? "text-emerald-600"
                     : data.northStar.trend === "down"
                     ? "text-red-600"
-                    : "text-gray-500"
+                    : "text-gray-600"
                 }`}
                 aria-label={`${data.northStar.trend === "up" ? "up" : data.northStar.trend === "down" ? "down" : "flat"} ${Math.abs(data.northStar.changePercent)}%`}
               >
@@ -372,7 +372,7 @@ export default function AARRRDashboard() {
             className={`px-4 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
               activeTab === tab.key
                 ? "bg-white text-gray-900 shadow-sm"
-                : "text-gray-500 hover:text-gray-700"
+                : "text-gray-600 hover:text-gray-700"
             }`}
           >
             {tab.label}
@@ -428,7 +428,7 @@ export default function AARRRDashboard() {
                     <p className="text-lg font-bold" style={{ color: HEALTH_COLORS[key] }}>
                       {data.customerHealth.distribution[key]}
                     </p>
-                    <p className="text-xs text-gray-500 capitalize">{key === "atRisk" ? "At Risk" : key}</p>
+                    <p className="text-xs text-gray-600 capitalize">{key === "atRisk" ? "At Risk" : key}</p>
                   </li>
                 ))}
               </ul>
@@ -492,7 +492,7 @@ export default function AARRRDashboard() {
                   </AreaChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-500">No signup data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-600">No signup data yet.</div>
               )}
             </div>
 
@@ -520,7 +520,7 @@ export default function AARRRDashboard() {
                   </PieChart>
                 </ResponsiveContainer>
               ) : (
-                <div className="h-48 flex items-center justify-center text-gray-500">No method data yet.</div>
+                <div className="h-48 flex items-center justify-center text-gray-600">No method data yet.</div>
               )}
             </div>
           </div>
@@ -601,7 +601,7 @@ export default function AARRRDashboard() {
                         </div>
                       </div>
                       {i > 0 && (
-                        <div className="w-16 text-xs text-gray-500 text-right">
+                        <div className="w-16 text-xs text-gray-600 text-right">
                           {data.activation.activationFunnel[i - 1].count > 0
                             ? `${Math.round((step.count / data.activation.activationFunnel[i - 1].count) * 100)}%`
                             : "-"}
@@ -612,7 +612,7 @@ export default function AARRRDashboard() {
                 })}
               </ol>
             ) : (
-              <div className="h-48 flex items-center justify-center text-gray-500">No activation data yet.</div>
+              <div className="h-48 flex items-center justify-center text-gray-600">No activation data yet.</div>
             )}
           </div>
 
@@ -796,7 +796,7 @@ export default function AARRRDashboard() {
                 </ul>
               </div>
             ) : (
-              <div className="h-48 flex items-center justify-center text-gray-500">No trust level data yet.</div>
+              <div className="h-48 flex items-center justify-center text-gray-600">No trust level data yet.</div>
             )}
           </div>
         </div>
@@ -863,21 +863,21 @@ export default function AARRRDashboard() {
               <ul role="list" aria-label="Referral levers" className="space-y-4 list-none p-0 m-0">
                 <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <p className="text-sm font-semibold text-gray-900">Review Quality</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     {data.referral.totalReviews} reviews generate SEO traffic that brings new users organically.
                     Higher review count and quality improve search rankings.
                   </p>
                 </li>
                 <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <p className="text-sm font-semibold text-gray-900">Community Discussions</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     {data.referral.communityEngagement.totalThreads} discussion threads create shareable, indexable content.
                     Active discussions signal product authority.
                   </p>
                 </li>
                 <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
                   <p className="text-sm font-semibold text-gray-900">Badge & Reputation System</p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-gray-600 mt-1">
                     {data.referral.communityAdvocates} users have earned badges. These power users are natural
                     advocates who share expertise and attract new community members.
                   </p>
