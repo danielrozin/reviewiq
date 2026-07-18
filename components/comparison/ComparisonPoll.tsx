@@ -130,11 +130,10 @@ export function ComparisonPoll({
         })}
       </div>
 
-      {hasVoted && (
-        <p className="mt-3 text-xs text-gray-600 text-right" aria-live="polite">
-          {total.toLocaleString()} {total === 1 ? "vote" : "votes"} cast
-        </p>
-      )}
+      {/* Live region always in DOM so AT registers it before the first vote is cast (WCAG 4.1.3) */}
+      <p className="mt-3 text-xs text-gray-600 text-right" aria-live="polite" aria-atomic="true">
+        {hasVoted ? `${total.toLocaleString()} ${total === 1 ? "vote" : "votes"} cast` : ""}
+      </p>
 
       {!hasVoted && !mounted && (
         <p className="sr-only">Loading poll…</p>
