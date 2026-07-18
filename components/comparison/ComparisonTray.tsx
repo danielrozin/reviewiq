@@ -105,6 +105,7 @@ export function ComparisonTray() {
             <Link
               href={compareUrl}
               aria-disabled={items.length < 2}
+              tabIndex={items.length < 2 ? -1 : undefined}
               aria-label={items.length >= 2 ? `Compare Now: ${items.map(p => p.name).join(" and ")}` : "Compare Now — add at least 2 products first"}
               onClick={(e) => { if (items.length < 2) e.preventDefault(); }}
               className={cn(

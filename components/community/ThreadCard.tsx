@@ -96,15 +96,14 @@ export function ThreadCard({ thread, showProduct = true, compact = false }: Thre
           </ul>
 
           {/* Title */}
-          <Link
-            href={`/community/thread/${thread.id}`}
-            aria-label={`Read thread: ${thread.title}`}
-            className="block mb-2 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-lg"
-          >
-            <h3 id={`thread-${thread.id}-title`} className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug">
+          <h3 id={`thread-${thread.id}-title`} className="text-base font-semibold text-gray-900 leading-snug mb-2">
+            <Link
+              href={`/community/thread/${thread.id}`}
+              className="hover:text-brand-600 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded-lg"
+            >
               {thread.title}
-            </h3>
-          </Link>
+            </Link>
+          </h3>
 
           {/* Preview */}
           <p className="text-sm text-gray-600 line-clamp-2 mb-3 leading-relaxed">

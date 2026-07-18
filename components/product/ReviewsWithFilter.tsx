@@ -80,7 +80,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
           <h2 id="verified-reviews-heading" className="text-lg font-semibold text-gray-900 shrink-0">
             Verified Reviews
           </h2>
-          <span aria-live="polite" aria-atomic="true" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
+          <span role="status" aria-live="polite" aria-atomic="true" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
             {filterRating
               ? `Showing ${Math.min(visible, filtered.length)} of ${filtered.length} filtered reviews`
               : shown.length < totalCount
