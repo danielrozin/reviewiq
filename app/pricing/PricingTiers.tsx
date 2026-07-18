@@ -9,6 +9,7 @@ export function PricingTiers() {
   const { data: session } = useSession();
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState("");
 
   async function handleSubscribe() {
     if (!session) {
@@ -17,11 +18,12 @@ export function PricingTiers() {
     }
 
     setLoading(true);
+    setCheckoutError("");
     try {
       const res = await fetch("/api/stripe/checkout", { method: "POST" });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        alert(data.error || "Something went wrong. Please try again.");
+        setCheckoutError(data.error || "Something went wrong. Please try again.");
         return;
       }
       const data = await res.json();
@@ -29,7 +31,7 @@ export function PricingTiers() {
         window.location.href = data.url;
       }
     } catch {
-      alert("Network error. Please check your connection and try again.");
+      setCheckoutError("Network error. Please check your connection and try again.");
     } finally {
       setLoading(false);
     }
@@ -126,11 +128,18 @@ export function PricingTiers() {
           ))}
         </ul>
 
+        {checkoutError && (
+          <p role="alert" aria-live="assertive" className="mt-4 p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-xl">
+            {checkoutError}
+          </p>
+        )}
+
         <button
           type="button"
           onClick={handleSubscribe}
           disabled={loading}
           aria-busy={loading}
+          aria-describedby={checkoutError ? "checkout-error" : undefined}
           className="mt-8 w-full py-3 px-6 min-h-[44px] rounded-xl text-sm font-semibold bg-brand-600 text-white hover:bg-brand-700 transition-colors touch-manipulation disabled:opacity-50 disabled:cursor-wait inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-brand-600"
         >
           {loading ? (
