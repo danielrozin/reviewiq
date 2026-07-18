@@ -41,16 +41,19 @@ interface ReviewSectionProps {
 export function ReviewSection({ reviews, ratingDistribution, totalReviews }: ReviewSectionProps) {
   const [sortBy, setSortBy] = useState<SortOption>("most_helpful");
   const [showFilterGate, setShowFilterGate] = useState(false);
+  const [sortAnnouncement, setSortAnnouncement] = useState("");
   const { isPro } = useSubscription();
 
   const handleSortChange = (value: string) => {
     const option = value as SortOption;
     if (PRO_SORT_OPTIONS.includes(option) && !isPro) {
       setShowFilterGate(true);
+      setSortAnnouncement("Pro feature required. Upgrade to sort by this option.");
       return;
     }
     setShowFilterGate(false);
     setSortBy(option);
+    setSortAnnouncement(`Reviews sorted by ${SORT_LABELS[option]}`);
   };
 
   const sortedReviews = useMemo(() => {
@@ -77,6 +80,7 @@ export function ReviewSection({ reviews, ratingDistribution, totalReviews }: Rev
 
   return (
     <section aria-labelledby="review-section-heading" data-speakable="reviews">
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">{sortAnnouncement}</span>
       {/* Rating Summary Stats */}
       <section aria-label="Rating distribution summary" className="bg-gray-50 rounded-xl p-6 mb-6">
         <div className="flex flex-col sm:flex-row gap-6">
