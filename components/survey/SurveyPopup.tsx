@@ -47,7 +47,7 @@ const INTENT_OPTIONS = [
 ];
 
 // DAN-1508: Q1-only bottom bar — once answered the bar closes.
-// Q2-Q5 are dropped from the bottom bar; the bar is done after Q1.
+// DAN-2392: Q2-Q5 dropped entirely; all intents complete in one tap.
 type Step = "q1" | "thanks";
 
 interface Answers {
@@ -207,10 +207,11 @@ export function SurveyPopup() {
             {step === "q1" && (
               <div className="flex flex-col sm:flex-row sm:items-center gap-3">
                 <div className="flex-shrink-0 min-w-0">
+                  {/* DAN-2392: "Help us in 20 seconds" micro-incentive copy */}
                   <p className="text-sm font-semibold text-gray-900 leading-tight">
-                    Quick question — what brought you here today?
+                    Help us in 20 seconds — what brought you here today?
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5">Helps us show you better results</p>
+                  <p className="text-xs text-gray-500 mt-0.5">One tap is all it takes</p>
                 </div>
                 <div className="flex flex-wrap gap-2 sm:flex-nowrap sm:ml-auto">
                   {INTENT_OPTIONS.map((opt) => (
