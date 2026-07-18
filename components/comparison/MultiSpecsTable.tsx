@@ -54,6 +54,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
         <div role="region" aria-label="Specs comparison — scrollable table" tabIndex={0} className="overflow-x-auto -webkit-overflow-scrolling-touch">
           <div style={{ minWidth: `${160 + products.length * 140}px` }} role="table" aria-label="Specs comparison">
             {/* Sticky header */}
+            <div role="rowgroup">
             <div
               role="row"
               className="grid bg-gray-50 border-b border-gray-100 sticky top-0 z-10"
@@ -75,6 +76,7 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                   <span className="block text-xs font-normal text-gray-600 truncate">{product.name}</span>
                 </div>
               ))}
+            </div>
             </div>
 
             {Array.from(groups.entries()).map(([groupName, specs], gi) => (
