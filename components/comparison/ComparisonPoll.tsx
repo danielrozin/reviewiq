@@ -86,7 +86,7 @@ export function ComparisonPoll({
                 onClick={() => handleVote(option.id)}
                 disabled={hasVoted}
                 aria-pressed={voted === option.id}
-                aria-label={hasVoted ? `${option.label}: ${pct}% of votes` : `Vote for ${option.label}`}
+                aria-label={hasVoted ? `${option.label}: ${pct}% of votes${isWinner ? " — leading" : ""}` : `Vote for ${option.label}`}
                 className={`relative w-full text-left px-4 min-h-[44px] touch-manipulation text-sm font-medium rounded-xl border overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                   hasVoted
                     ? voted === option.id
@@ -114,8 +114,13 @@ export function ComparisonPoll({
                     {option.label}
                   </span>
                   {hasVoted && (
-                    <span className={`text-xs font-semibold shrink-0 ${isWinner ? "text-brand-600" : "text-gray-600"}`}>
-                      {pct}%
+                    <span className={`inline-flex items-center gap-0.5 shrink-0 ${isWinner ? "text-brand-600 font-bold" : "text-gray-600 font-semibold"}`}>
+                      {isWinner && (
+                        <svg aria-hidden="true" className="w-3 h-3 shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
+                        </svg>
+                      )}
+                      <span className="text-xs">{pct}%</span>
                     </span>
                   )}
                 </span>

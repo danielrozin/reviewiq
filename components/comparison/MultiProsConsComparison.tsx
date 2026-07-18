@@ -54,10 +54,10 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
             </div>
 
             {/* Pros */}
-            <div className="p-4">
-              <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-2">
+            <section aria-labelledby={`love-multi-${product.id}`} className="p-4">
+              <h4 id={`love-multi-${product.id}`} className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-2">
                 What People Love
-              </p>
+              </h4>
               <ul role="list" className="space-y-2">
                 {product.aiSummary.whatPeopleLove.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
@@ -70,13 +70,13 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
 
             {/* Cons */}
-            <div className="p-4 pt-0">
-              <p className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
+            <section aria-labelledby={`hate-multi-${product.id}`} className="p-4 pt-0">
+              <h4 id={`hate-multi-${product.id}`} className="text-xs font-semibold text-red-600 uppercase tracking-wider mb-2">
                 What People Hate
-              </p>
+              </h4>
               <ul role="list" className="space-y-2">
                 {product.aiSummary.whatPeopleHate.slice(0, 3).map((item, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-gray-600">
@@ -89,13 +89,13 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
 
             {/* Best For */}
-            <div className="px-4 pb-4">
-              <p className="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">
+            <section aria-labelledby={`bestfor-multi-${product.id}`} className="px-4 pb-4">
+              <h4 id={`bestfor-multi-${product.id}`} className="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-2">
                 Best For
-              </p>
+              </h4>
               <div className="flex flex-wrap gap-1">
                 {product.aiSummary.bestFor.slice(0, 3).map((item, i) => (
                   <span
@@ -106,7 +106,7 @@ export function MultiProsConsComparison({ products }: MultiProsConsComparisonPro
                   </span>
                 ))}
               </div>
-            </div>
+            </section>
           </article>
         ))}
       </div>
