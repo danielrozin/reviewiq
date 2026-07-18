@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 type State = "idle" | "submitted" | "expanding";
 
@@ -13,6 +13,15 @@ export function FeedbackWidget({ context = "page", className = "" }: FeedbackWid
   const [state, setState] = useState<State>("idle");
   const [vote, setVote] = useState<"yes" | "no" | null>(null);
   const [comment, setComment] = useState("");
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // WCAG 2.4.3 — move focus to textarea when the "No" form expands so keyboard
+  // and screen-reader users discover the newly-appeared interactive content.
+  useEffect(() => {
+    if (state === "expanding") {
+      textareaRef.current?.focus();
+    }
+  }, [state]);
 
   function handleVote(v: "yes" | "no") {
     setVote(v);
@@ -92,6 +101,7 @@ export function FeedbackWidget({ context = "page", className = "" }: FeedbackWid
             What could be improved?
           </label>
           <textarea
+            ref={textareaRef}
             id="feedback-comment"
             value={comment}
             onChange={(e) => setComment(e.target.value)}
