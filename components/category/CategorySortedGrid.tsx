@@ -35,6 +35,7 @@ function saveSort(slug: string, key: SortKey) {
 export function CategorySortedGrid({ products, categorySlug }: Props) {
   const [sortKey, setSortKey] = useState<SortKey>("smartScore");
   const [mounted, setMounted] = useState(false);
+  const [sortAnnouncement, setSortAnnouncement] = useState("");
 
   useEffect(() => {
     setSortKey(readSort(categorySlug));
@@ -44,6 +45,8 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
   function handleSort(key: SortKey) {
     setSortKey(key);
     saveSort(categorySlug, key);
+    const label = SORT_OPTIONS.find((o) => o.key === key)?.label ?? key;
+    setSortAnnouncement(`Products sorted by ${label}`);
   }
 
   function handleSortKeyDown(e: React.KeyboardEvent, index: number) {
@@ -74,6 +77,11 @@ export function CategorySortedGrid({ products, categorySlug }: Props) {
 
   return (
     <>
+      {/* WCAG 4.1.3 — announce sort changes to screen readers */}
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {sortAnnouncement}
+      </span>
+
       {/* Sort bar */}
       <div role="radiogroup" aria-label="Sort products by" className="flex items-center gap-2 mb-6 flex-wrap">
         <span aria-hidden="true" className="inline-flex items-center gap-1.5 text-sm text-gray-600 font-medium mr-1 shrink-0">
