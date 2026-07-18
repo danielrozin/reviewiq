@@ -77,10 +77,18 @@ function KeyResultRow({ kr }: { kr: KeyResult }) {
         </div>
       </div>
       <div className="flex items-center gap-2">
-        <div className="flex-1 bg-gray-100 rounded-full h-2">
+        <div
+          role="progressbar"
+          aria-valuenow={kr.progress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuetext={`${kr.progress}% — ${kr.current} of ${kr.target}`}
+          aria-label={kr.description}
+          className="flex-1 bg-gray-100 rounded-full h-2 overflow-hidden"
+        >
           <div className={`${barColor} rounded-full h-2 motion-safe:transition-all duration-500`} style={{ width: `${Math.min(kr.progress, 100)}%` }} />
         </div>
-        <span className="text-xs font-semibold text-gray-600 w-8 text-right">{kr.progress}%</span>
+        <span aria-hidden="true" className="text-xs font-semibold text-gray-600 w-8 text-right">{kr.progress}%</span>
       </div>
     </div>
   );
@@ -187,10 +195,28 @@ export default function OKRDashboard() {
                 <p className="text-2xl font-bold text-violet-600">{avgTeamProgress}%</p>
                 <p className="text-[10px] text-gray-500 uppercase tracking-wider">Avg Team</p>
               </div>
-              <div className="flex gap-1.5 items-center">
-                {healthCounts.green > 0 && <span className="flex items-center gap-1 text-xs"><span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-500" />{healthCounts.green}</span>}
-                {healthCounts.yellow > 0 && <span className="flex items-center gap-1 text-xs"><span aria-hidden="true" className="w-2 h-2 rounded-full bg-amber-500" />{healthCounts.yellow}</span>}
-                {healthCounts.red > 0 && <span className="flex items-center gap-1 text-xs"><span aria-hidden="true" className="w-2 h-2 rounded-full bg-red-500" />{healthCounts.red}</span>}
+              <div className="flex gap-1.5 items-center" aria-label="Health metric summary">
+                {healthCounts.green > 0 && (
+                  <span className="flex items-center gap-1 text-xs">
+                    <span aria-hidden="true" className="w-2 h-2 rounded-full bg-emerald-500" />
+                    <span className="sr-only">On Track: </span>
+                    {healthCounts.green}
+                  </span>
+                )}
+                {healthCounts.yellow > 0 && (
+                  <span className="flex items-center gap-1 text-xs">
+                    <span aria-hidden="true" className="w-2 h-2 rounded-full bg-amber-500" />
+                    <span className="sr-only">Needs Attention: </span>
+                    {healthCounts.yellow}
+                  </span>
+                )}
+                {healthCounts.red > 0 && (
+                  <span className="flex items-center gap-1 text-xs">
+                    <span aria-hidden="true" className="w-2 h-2 rounded-full bg-red-500" />
+                    <span className="sr-only">At Risk: </span>
+                    {healthCounts.red}
+                  </span>
+                )}
               </div>
             </div>
           </div>
