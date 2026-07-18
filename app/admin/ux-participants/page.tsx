@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   Users, Mail, Smartphone, Monitor, Clock, Download,
@@ -53,6 +53,14 @@ export default function UxParticipantsPage() {
   const [addForm, setAddForm] = useState({ name: "", email: "", available: "evenings", device: "mobile" });
   const [saving, setSaving] = useState<string | null>(null);
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+
+  const addBtnRef = useRef<HTMLButtonElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  function closeDialog() {
+    setAddOpen(false);
+    addBtnRef.current?.focus();
+  }
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -111,7 +119,7 @@ export default function UxParticipantsPage() {
     });
     setSaving(null);
     if (res.ok) {
-      setAddOpen(false);
+      closeDialog();
       setAddForm({ name: "", email: "", available: "evenings", device: "mobile" });
       load();
     }
@@ -179,6 +187,7 @@ export default function UxParticipantsPage() {
               Export CSV
             </button>
             <button
+              ref={addBtnRef}
               type="button"
               onClick={() => setAddOpen(true)}
               aria-haspopup="dialog"
@@ -217,13 +226,28 @@ export default function UxParticipantsPage() {
         {addOpen && (
           <div
             className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4"
-            onClick={(e) => { if (e.target === e.currentTarget) setAddOpen(false); }}
+            onClick={(e) => { if (e.target === e.currentTarget) closeDialog(); }}
           >
             <div
+              ref={dialogRef}
               role="dialog"
               aria-modal="true"
               aria-labelledby="add-modal-title"
               className="bg-white rounded-2xl shadow-xl w-full max-w-md p-6"
+              onKeyDown={(e) => {
+                if (e.key === "Escape") { e.stopPropagation(); closeDialog(); return; }
+                if (e.key !== "Tab") return;
+                const focusable = Array.from(e.currentTarget.querySelectorAll<HTMLElement>(
+                  'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])'
+                ));
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (!first) return;
+                if (e.shiftKey ? document.activeElement === first : document.activeElement === last) {
+                  e.preventDefault();
+                  (e.shiftKey ? last : first).focus();
+                }
+              }}
             >
               <h2 id="add-modal-title" className="text-lg font-semibold mb-4">Add participant manually</h2>
               <div className="space-y-3">
@@ -281,7 +305,7 @@ export default function UxParticipantsPage() {
               <div className="flex gap-2 mt-5">
                 <button
                   type="button"
-                  onClick={() => setAddOpen(false)}
+                  onClick={closeDialog}
                   className="flex-1 py-2 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1"
                 >
                   Cancel
