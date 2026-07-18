@@ -51,8 +51,16 @@ export function BlogCategoryFilter({ posts }: Props) {
     }
   }
 
+  const activeCategoryName = activeCategory === "all" ? null : (categories.find(c => c.slug === activeCategory)?.name ?? activeCategory);
+
   return (
     <>
+      {/* Announce result count when filter changes (aria-label on tabpanel is overridden by aria-labelledby, so we need a separate live region) */}
+      <span role="status" aria-live="polite" aria-atomic="true" className="sr-only">
+        {filtered.length} blog post{filtered.length !== 1 ? "s" : ""}
+        {activeCategoryName ? ` in ${activeCategoryName}` : ""}
+      </span>
+
       {/* Category filter tabs */}
       <div ref={tablistRef} role="tablist" aria-label="Filter posts by category" className="flex flex-wrap gap-2 mb-8" onKeyDown={handleTabKeyDown}>
         <button
@@ -101,7 +109,6 @@ export function BlogCategoryFilter({ posts }: Props) {
         role="tabpanel"
         tabIndex={0}
         aria-labelledby={`blog-tab-${activeCategory}`}
-        aria-label={`Blog posts${activeCategory !== "all" ? ` in ${categories.find(c => c.slug === activeCategory)?.name ?? activeCategory}` : ""}: ${filtered.length} result${filtered.length !== 1 ? "s" : ""}`}
         className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-2 rounded-lg"
       >
       <ul role="list" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

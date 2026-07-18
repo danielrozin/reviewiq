@@ -479,7 +479,7 @@ export function WriteReviewForm() {
                 placeholder="Summarize your experience in one sentence"
                 maxLength={120}
                 autoComplete="off"
-                aria-describedby="error-headline"
+                aria-describedby="error-headline headline-char-count"
                 aria-required="true"
                 aria-invalid={touched.headline === true && !headline ? true : undefined}
                 className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:border-transparent"
@@ -490,7 +490,7 @@ export function WriteReviewForm() {
                   show={touched.headline === true && !headline}
                   message="Headline is required"
                 />
-                <p className="text-xs text-gray-600">{headline.length}/120</p>
+                <p id="headline-char-count" className="text-xs text-gray-600">{headline.length}/120</p>
               </div>
             </div>
           </div>

@@ -68,6 +68,7 @@ export function ProfileChecklist() {
             aria-valuenow={progressPercent}
             aria-valuemin={0}
             aria-valuemax={100}
+            aria-valuetext={`${completedCount} of ${totalCount} tasks completed`}
             aria-label="Profile completion"
             className="w-20 h-2 bg-gray-100 rounded-full overflow-hidden"
           >
