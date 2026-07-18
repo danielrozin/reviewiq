@@ -302,12 +302,12 @@ export default function UxParticipantsPage() {
         {/* Table */}
         <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
           {loading ? (
-            <div className="p-12 text-center text-gray-400 text-sm">Loading…</div>
+            <div className="p-12 text-center text-gray-500 text-sm">Loading…</div>
           ) : participants.length === 0 ? (
             <div className="p-12 text-center">
               <Users aria-hidden="true" className="w-10 h-10 text-gray-300 mx-auto mb-3" />
               <p className="text-gray-500 text-sm">No participants yet</p>
-              <p className="text-gray-400 text-xs mt-1">
+              <p className="text-gray-500 text-xs mt-1">
                 Share <code className="bg-gray-100 px-1 rounded">/ux-study</code> to collect signups
               </p>
             </div>
@@ -446,7 +446,7 @@ export default function UxParticipantsPage() {
           )}
         </div>
 
-        <p className="mt-4 text-xs text-gray-400 text-center">
+        <p className="mt-4 text-xs text-gray-500 text-center">
           Public signup form: <a href="/ux-study" className="underline hover:text-gray-600">/ux-study</a>
         </p>
       </div>

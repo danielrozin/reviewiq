@@ -80,7 +80,7 @@ export function UxStudyForm() {
             Thanks for signing up, {form.name.split(" ")[0]}! We&apos;ll reach out to{" "}
             <strong>{form.email}</strong> to schedule your 30-minute session.
           </p>
-          <p className="text-sm text-gray-400 mt-6">
+          <p className="text-sm text-gray-500 mt-6">
             Sessions run via video call — no install required.
           </p>
         </div>
@@ -219,7 +219,7 @@ export function UxStudyForm() {
             {status === "submitting" ? "Submitting…" : "Sign me up →"}
           </button>
 
-          <p className="text-center text-xs text-gray-400">
+          <p className="text-center text-xs text-gray-500">
             We&apos;ll only contact you about this study. No spam, ever.
           </p>
         </form>
