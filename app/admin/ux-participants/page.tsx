@@ -205,7 +205,7 @@ export default function UxParticipantsPage() {
               <div className="text-2xl font-bold text-gray-900" aria-hidden="true">
                 {s === "all" ? participants.length : (counts[s] ?? 0)}
               </div>
-              <div className="text-xs text-gray-500 mt-0.5 capitalize">
+              <div className="text-xs text-gray-600 mt-0.5 capitalize">
                 <span className="sr-only">{s === "all" ? participants.length : (counts[s] ?? 0)} </span>
                 {s === "all" ? "Total" : s}
               </div>
@@ -307,7 +307,7 @@ export default function UxParticipantsPage() {
             <div className="p-12 text-center">
               <Users aria-hidden="true" className="w-10 h-10 text-gray-300 mx-auto mb-3" />
               <p className="text-gray-500 text-sm">No participants yet</p>
-              <p className="text-gray-500 text-xs mt-1">
+              <p className="text-gray-600 text-xs mt-1">
                 Share <code className="bg-gray-100 px-1 rounded">/ux-study</code> to collect signups
               </p>
             </div>
@@ -364,7 +364,7 @@ export default function UxParticipantsPage() {
                         <ChevronDown className="absolute right-1.5 top-1/2 -translate-y-1/2 w-3 h-3 pointer-events-none text-current opacity-60" />
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">
+                    <td className="px-4 py-3 text-gray-600 text-xs">
                       <time dateTime={p.createdAt}>
                         {new Date(p.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
                       </time>
@@ -392,7 +392,7 @@ export default function UxParticipantsPage() {
                           type="button"
                           aria-label={p.notes ? `Edit note for ${p.name}: ${p.notes}` : `Add note for ${p.name}`}
                           onClick={() => { setEditingNotes(p.id); setNotesDraft(p.notes ?? ""); }}
-                          className="text-xs text-gray-500 hover:text-gray-900 truncate max-w-[160px] block text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 rounded"
+                          className="text-xs text-gray-600 hover:text-gray-900 truncate max-w-[160px] block text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 rounded"
                         >
                           <span aria-hidden="true">{p.notes || <span className="text-gray-300 italic">Add note…</span>}</span>
                         </button>
@@ -446,7 +446,7 @@ export default function UxParticipantsPage() {
           )}
         </div>
 
-        <p className="mt-4 text-xs text-gray-500 text-center">
+        <p className="mt-4 text-xs text-gray-600 text-center">
           Public signup form: <a href="/ux-study" className="underline hover:text-gray-600">/ux-study</a>
         </p>
       </div>

@@ -66,9 +66,9 @@ const RATING_COLORS: Record<number, string> = { 5: "#10b981", 4: "#34d399", 3: "
 function StatCard({ label, value, subtitle }: { label: string; value: string | number; subtitle?: string }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{label}</p>
+      <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
       <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
-      {subtitle && <p className="text-xs text-gray-500 mt-0.5">{subtitle}</p>}
+      {subtitle && <p className="text-xs text-gray-600 mt-0.5">{subtitle}</p>}
     </div>
   );
 }
@@ -162,7 +162,7 @@ export default function ReviewIQAnalytics() {
         <p className="text-gray-500 mt-1">
           GA4: {config.ga4Property} | Clarity: {config.clarityProject}
         </p>
-        <p className="text-xs text-gray-500 mt-1">
+        <p className="text-xs text-gray-600 mt-1">
           Data period: {live.period.start} to {live.period.end}
         </p>
       </div>
@@ -316,7 +316,7 @@ export default function ReviewIQAnalytics() {
               <div aria-hidden="true" className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
               <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Google Analytics</p>
-                <p className="text-xs text-gray-500">{config.ga4Property}</p>
+                <p className="text-xs text-gray-600">{config.ga4Property}</p>
               </div>
             </a>
             <a
@@ -329,7 +329,7 @@ export default function ReviewIQAnalytics() {
               <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
               <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Microsoft Clarity</p>
-                <p className="text-xs text-gray-500">{config.clarityProject}</p>
+                <p className="text-xs text-gray-600">{config.clarityProject}</p>
               </div>
             </a>
             <a
@@ -342,7 +342,7 @@ export default function ReviewIQAnalytics() {
               <div aria-hidden="true" className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
               <div aria-hidden="true">
                 <p className="font-medium text-gray-900">Search Console</p>
-                <p className="text-xs text-gray-500">GSC data</p>
+                <p className="text-xs text-gray-600">GSC data</p>
               </div>
             </a>
           </div>
@@ -379,7 +379,7 @@ export default function ReviewIQAnalytics() {
                     <div className="h-2 bg-gray-100 rounded-full flex-1">
                       <div className="h-2 bg-emerald-400 rounded-full motion-safe:transition-all" style={{ width: `${Math.round(100 * Math.pow(0.75, i))}%` }} />
                     </div>
-                    <span className="text-xs text-gray-500 w-12 text-right">{Math.round(100 * Math.pow(0.75, i))}%</span>
+                    <span className="text-xs text-gray-600 w-12 text-right">{Math.round(100 * Math.pow(0.75, i))}%</span>
                   </div>
                 </div>
               </div>
@@ -395,7 +395,7 @@ export default function ReviewIQAnalytics() {
             </div>
           </div>
 
-          <p className="text-xs text-gray-500">Funnel percentages are placeholders. Actual GA4 data will replace them after collection begins.</p>
+          <p className="text-xs text-gray-600">Funnel percentages are placeholders. Actual GA4 data will replace them after collection begins.</p>
         </div>
       )}
 
@@ -407,7 +407,7 @@ export default function ReviewIQAnalytics() {
             <p className="text-sm text-gray-600 mt-1">
               Conversion funnels for Email Capture, Account-Required Reviews, and Quick Answer features.
             </p>
-            <p className="text-xs text-gray-500 mt-2">Baseline collection starts once features are deployed. Targets shown below are initial benchmarks.</p>
+            <p className="text-xs text-gray-600 mt-2">Baseline collection starts once features are deployed. Targets shown below are initial benchmarks.</p>
           </div>
 
           {Object.entries(config.featureFunnels).map(([key, funnel]) => (
@@ -431,7 +431,7 @@ export default function ReviewIQAnalytics() {
                         <h4 className="font-medium text-gray-900 text-sm">{step.name}</h4>
                         <code className="text-[10px] bg-white text-gray-500 px-1.5 py-0.5 rounded border border-gray-200">{step.event}</code>
                       </div>
-                      <p className="text-xs text-gray-500">{step.description}</p>
+                      <p className="text-xs text-gray-600">{step.description}</p>
                     </div>
                   </div>
                 ))}

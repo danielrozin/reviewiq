@@ -90,7 +90,7 @@ function StatCard({ label, value, icon: Icon, color }: {
         <Icon className="w-5 h-5" />
       </div>
       <div>
-        <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">{label}</p>
+        <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
         <p className="text-2xl font-bold text-gray-900 mt-0.5">{value}</p>
       </div>
     </div>
@@ -115,7 +115,7 @@ function RatingBar({ rating, count, max }: { rating: number; count: number; max:
           style={{ width: max > 0 ? `${(count / max) * 100}%` : "0%" }}
         />
       </div>
-      <span className="w-8 text-right text-gray-500 text-xs">{count}</span>
+      <span className="w-8 text-right text-gray-600 text-xs">{count}</span>
     </div>
   );
 }
@@ -169,7 +169,7 @@ function LoginForm({ onLogin }: { onLogin: () => void }) {
           </div>
           <div>
             <h1 id="admin-login-heading" className="text-lg font-bold text-gray-900">ReviewIQ Admin</h1>
-            <p className="text-xs text-gray-500">Enter password to continue</p>
+            <p className="text-xs text-gray-600">Enter password to continue</p>
           </div>
         </div>
         <input
@@ -501,7 +501,7 @@ export default function AdminDashboard() {
                           <span className="font-medium text-sm text-gray-900 truncate">{r.headline}</span>
                           <StatusBadge status={r.status} />
                         </div>
-                        <p className="text-xs text-gray-500">
+                        <p className="text-xs text-gray-600">
                           {r.product.name} · {r.user.name || r.user.email} · <span aria-hidden="true">{"★".repeat(r.rating)}</span><span className="sr-only">{r.rating} stars</span> · <time dateTime={r.createdAt}>{new Date(r.createdAt).toLocaleDateString()}</time>
                         </p>
                       </div>
@@ -715,7 +715,7 @@ export default function AdminDashboard() {
               </select>
               {selectedReviews.size > 0 && (
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-gray-500">{selectedReviews.size} selected</span>
+                  <span className="text-xs text-gray-600">{selectedReviews.size} selected</span>
                   <button
                     type="button"
                     onClick={() => handleBulkAction("published")}
@@ -1035,7 +1035,7 @@ export default function AdminDashboard() {
                     <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">GA4 Analytics</p>
-                      <p className="text-xs text-gray-500">View detailed funnel and event analytics</p>
+                      <p className="text-xs text-gray-600">View detailed funnel and event analytics</p>
                     </div>
                   </a>
                   <button
@@ -1046,7 +1046,7 @@ export default function AdminDashboard() {
                     <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Moderate Reviews</p>
-                      <p className="text-xs text-gray-500">{stats.summary.pendingReviews} reviews pending</p>
+                      <p className="text-xs text-gray-600">{stats.summary.pendingReviews} reviews pending</p>
                     </div>
                   </button>
                   <button
@@ -1057,7 +1057,7 @@ export default function AdminDashboard() {
                     <Pin aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">Manage Products</p>
-                      <p className="text-xs text-gray-500">Feature or unfeature products on homepage</p>
+                      <p className="text-xs text-gray-600">Feature or unfeature products on homepage</p>
                     </div>
                   </button>
                   <a
@@ -1067,7 +1067,7 @@ export default function AdminDashboard() {
                     <Users aria-hidden="true" className="w-5 h-5 text-gray-500" />
                     <div>
                       <p className="text-sm font-medium text-gray-900">UX Study Participants</p>
-                      <p className="text-xs text-gray-500">Track and schedule usability testers</p>
+                      <p className="text-xs text-gray-600">Track and schedule usability testers</p>
                     </div>
                   </a>
                 </div>

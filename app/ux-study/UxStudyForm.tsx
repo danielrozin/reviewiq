@@ -115,7 +115,7 @@ export function UxStudyForm() {
             <div key={item.title} className="bg-white rounded-xl border border-gray-100 p-4 text-center shadow-sm">
               <div aria-hidden="true" className="text-2xl mb-1">{item.emoji}</div>
               <div className="font-semibold text-gray-900 text-sm">{item.title}</div>
-              <div className="text-xs text-gray-500">{item.desc}</div>
+              <div className="text-xs text-gray-600">{item.desc}</div>
             </div>
           ))}
         </div>
@@ -221,7 +221,7 @@ export function UxStudyForm() {
             {status === "submitting" ? "Submitting…" : "Sign me up →"}
           </button>
 
-          <p className="text-center text-xs text-gray-500">
+          <p className="text-center text-xs text-gray-600">
             We&apos;ll only contact you about this study. No spam, ever.
           </p>
         </form>
