@@ -434,8 +434,8 @@ function markdownToHtml(md: string): string {
   });
 
   // Headers — add tabIndex=-1 + id for TOC anchor targeting (WCAG 2.4.1)
-  html = html.replace(/^### (.+)$/gm, (_m, t) => `<h3 id="${slugify(t)}" tabindex="-1" class="text-xl font-semibold text-gray-900 mt-8 mb-3 focus:outline-none">${t}</h3>`);
-  html = html.replace(/^## (.+)$/gm, (_m, t) => `<h2 id="${slugify(t)}" tabindex="-1" class="text-2xl font-bold text-gray-900 mt-10 mb-4 focus:outline-none">${t}</h2>`);
+  html = html.replace(/^### (.+)$/gm, (_m, t) => `<h3 id="${slugify(t)}" tabindex="-1" class="text-xl font-semibold text-gray-900 mt-8 mb-3 focus-visible:outline-none">${t}</h3>`);
+  html = html.replace(/^## (.+)$/gm, (_m, t) => `<h2 id="${slugify(t)}" tabindex="-1" class="text-2xl font-bold text-gray-900 mt-10 mb-4 focus-visible:outline-none">${t}</h2>`);
 
   // Bold and italic
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");

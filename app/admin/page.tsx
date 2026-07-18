@@ -475,16 +475,16 @@ export default function AdminDashboard() {
                       <li key={u.id} className="flex items-center justify-between text-sm">
                         <div>
                           <span className="font-medium text-gray-900">{u.name || "Anonymous"}</span>
-                          <span className="text-gray-500 ml-2 text-xs">{u.email}</span>
+                          <span className="text-gray-600 ml-2 text-xs">{u.email}</span>
                         </div>
-                        <time dateTime={u.createdAt} className="text-xs text-gray-500">
+                        <time dateTime={u.createdAt} className="text-xs text-gray-600">
                           {new Date(u.createdAt).toLocaleDateString()}
                         </time>
                       </li>
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-gray-500 text-sm">No recent signups</p>
+                  <p className="text-gray-600 text-sm">No recent signups</p>
                 )}
               </div>
             </div>
@@ -590,10 +590,10 @@ export default function AdminDashboard() {
                         <div className="flex items-center gap-2">
                           <span className="font-medium text-gray-900">{p.name}</span>
                         </div>
-                        <span className="text-xs text-gray-500">/{p.slug}</span>
+                        <span className="text-xs text-gray-600">/{p.slug}</span>
                       </td>
-                      <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{p.brand}</td>
-                      <td className="px-4 py-3 text-gray-500 hidden lg:table-cell">{p.category.name}</td>
+                      <td className="px-4 py-3 text-gray-600 hidden md:table-cell">{p.brand}</td>
+                      <td className="px-4 py-3 text-gray-600 hidden lg:table-cell">{p.category.name}</td>
                       <td className="px-4 py-3 text-right">
                         <span className={`font-bold ${p.smartScore >= 80 ? "text-emerald-600" : p.smartScore >= 60 ? "text-yellow-600" : "text-red-500"}`}>
                           {p.smartScore}
@@ -783,10 +783,10 @@ export default function AdminDashboard() {
                       </td>
                       <td className="px-4 py-3">
                         <span className="font-medium text-gray-900">{r.headline}</span>
-                        <p className="text-xs text-gray-500 mt-0.5 line-clamp-1">{r.body}</p>
+                        <p className="text-xs text-gray-600 mt-0.5 line-clamp-1">{r.body}</p>
                       </td>
-                      <td className="px-4 py-3 text-gray-500 hidden md:table-cell">{r.product.name}</td>
-                      <td className="px-4 py-3 text-gray-500 hidden lg:table-cell">{r.user.name || r.user.email}</td>
+                      <td className="px-4 py-3 text-gray-600 hidden md:table-cell">{r.product.name}</td>
+                      <td className="px-4 py-3 text-gray-600 hidden lg:table-cell">{r.user.name || r.user.email}</td>
                       <td className="px-4 py-3">
                         <span aria-hidden="true"><span className="text-yellow-500">{"★".repeat(r.rating)}</span><span className="text-gray-300">{"★".repeat(5 - r.rating)}</span></span>
                         <span className="sr-only">{r.rating} out of 5 stars</span>
