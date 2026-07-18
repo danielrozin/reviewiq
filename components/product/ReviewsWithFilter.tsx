@@ -81,7 +81,11 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
             Verified Reviews
           </h2>
           <span aria-live="polite" aria-atomic="true" className="ml-auto text-xs text-gray-600 font-medium tabular-nums shrink-0">
-            {filterRating ? `${filtered.length} of ${totalCount.toLocaleString()} reviews` : `${totalCount.toLocaleString()} total`}
+            {filterRating
+              ? `Showing ${Math.min(visible, filtered.length)} of ${filtered.length} filtered reviews`
+              : shown.length < totalCount
+              ? `Showing ${shown.length} of ${totalCount.toLocaleString()} reviews`
+              : `${totalCount.toLocaleString()} reviews`}
           </span>
         </div>
 
