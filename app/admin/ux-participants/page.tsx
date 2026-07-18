@@ -206,20 +206,20 @@ export default function UxParticipantsPage() {
               <h2 className="text-lg font-semibold mb-4">Add participant manually</h2>
               <div className="space-y-3">
                 <input
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   placeholder="Full name"
                   value={addForm.name}
                   onChange={e => setAddForm(f => ({ ...f, name: e.target.value }))}
                 />
                 <input
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   placeholder="Email address"
                   type="email"
                   value={addForm.email}
                   onChange={e => setAddForm(f => ({ ...f, email: e.target.value }))}
                 />
                 <select
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   value={addForm.available}
                   onChange={e => setAddForm(f => ({ ...f, available: e.target.value }))}
                 >
@@ -228,7 +228,7 @@ export default function UxParticipantsPage() {
                   <option value="weekends">Weekends</option>
                 </select>
                 <select
-                  className="w-full border rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                  className="w-full border rounded-lg px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
                   value={addForm.device}
                   onChange={e => setAddForm(f => ({ ...f, device: e.target.value }))}
                 >
@@ -240,14 +240,14 @@ export default function UxParticipantsPage() {
               <div className="flex gap-2 mt-5">
                 <button
                   onClick={() => setAddOpen(false)}
-                  className="flex-1 py-2 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 motion-safe:transition-colors"
+                  className="flex-1 py-2 border rounded-lg text-sm text-gray-600 hover:bg-gray-50 motion-safe:transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={addParticipant}
                   disabled={saving === "add"}
-                  className="flex-1 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 motion-safe:transition-colors disabled:opacity-50"
+                  className="flex-1 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700 motion-safe:transition-colors disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-600"
                 >
                   {saving === "add" ? "Saving…" : "Add"}
                 </button>
@@ -312,7 +312,7 @@ export default function UxParticipantsPage() {
                           value={p.status}
                           disabled={saving === p.id}
                           onChange={e => updateStatus(p.id, e.target.value as Status)}
-                          className={`appearance-none pl-2 pr-6 py-1 rounded-full text-xs font-medium border-0 cursor-pointer ${STATUS_CONFIG[p.status].color} focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-400`}
+                          className={`appearance-none pl-2 pr-6 py-1 rounded-full text-xs font-medium border-0 cursor-pointer ${STATUS_CONFIG[p.status].color} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-indigo-400`}
                         >
                           {(Object.keys(STATUS_CONFIG) as Status[]).map(s => (
                             <option key={s} value={s}>{STATUS_CONFIG[s].label}</option>
@@ -329,22 +329,22 @@ export default function UxParticipantsPage() {
                         <div className="flex gap-1">
                           <input
                             autoFocus
-                            className="flex-1 border rounded px-2 py-1 text-xs focus:outline-none focus:ring-1 focus:ring-indigo-400"
+                            className="flex-1 border rounded px-2 py-1 text-xs focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-indigo-400"
                             value={notesDraft}
                             onChange={e => setNotesDraft(e.target.value)}
                             onKeyDown={e => { if (e.key === "Enter") saveNotes(p.id); if (e.key === "Escape") setEditingNotes(null); }}
                           />
-                          <button onClick={() => saveNotes(p.id)} aria-label="Save note" className="text-green-600 hover:text-green-700">
+                          <button onClick={() => saveNotes(p.id)} aria-label="Save note" className="text-green-600 hover:text-green-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 focus-visible:ring-offset-1 rounded">
                             <CheckCircle aria-hidden="true" className="w-4 h-4" />
                           </button>
-                          <button onClick={() => setEditingNotes(null)} aria-label="Cancel editing" className="text-gray-400 hover:text-gray-600">
+                          <button onClick={() => setEditingNotes(null)} aria-label="Cancel editing" className="text-gray-400 hover:text-gray-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-1 rounded">
                             <X aria-hidden="true" className="w-4 h-4" />
                           </button>
                         </div>
                       ) : (
                         <button
                           onClick={() => { setEditingNotes(p.id); setNotesDraft(p.notes ?? ""); }}
-                          className="text-xs text-gray-500 hover:text-gray-900 truncate max-w-[160px] block text-left"
+                          className="text-xs text-gray-500 hover:text-gray-900 truncate max-w-[160px] block text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 rounded"
                         >
                           {p.notes || <span className="text-gray-300 italic">Add note…</span>}
                         </button>

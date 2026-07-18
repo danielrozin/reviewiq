@@ -93,7 +93,7 @@ export function UxStudyForm() {
               placeholder="Jane Smith"
               value={form.name}
               onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 motion-safe:transition-shadow"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 motion-safe:transition-shadow"
             />
           </div>
 
@@ -107,7 +107,7 @@ export function UxStudyForm() {
               placeholder="jane@example.com"
               value={form.email}
               onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-400 motion-safe:transition-shadow"
+              className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 motion-safe:transition-shadow"
             />
           </div>
 
@@ -121,7 +121,7 @@ export function UxStudyForm() {
                   key={opt}
                   type="button"
                   onClick={() => setForm(f => ({ ...f, available: opt }))}
-                  className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all ${
+                  className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                     form.available === opt
                       ? "border-indigo-500 bg-indigo-50 text-indigo-700"
                       : "border-gray-200 text-gray-600 hover:border-gray-300"
@@ -148,7 +148,7 @@ export function UxStudyForm() {
                   key={val}
                   type="button"
                   onClick={() => setForm(f => ({ ...f, device: val }))}
-                  className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all ${
+                  className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                     form.device === val
                       ? "border-indigo-500 bg-indigo-50 text-indigo-700"
                       : "border-gray-200 text-gray-600 hover:border-gray-300"
@@ -168,7 +168,7 @@ export function UxStudyForm() {
           <button
             type="submit"
             disabled={status === "submitting" || !form.name || !form.email || !form.available || !form.device}
-            className="w-full bg-indigo-600 text-white font-semibold py-3.5 rounded-xl hover:bg-indigo-700 motion-safe:transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full bg-indigo-600 text-white font-semibold py-3.5 rounded-xl hover:bg-indigo-700 motion-safe:transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-600"
           >
             {status === "submitting" ? "Submitting…" : "Sign me up →"}
           </button>
