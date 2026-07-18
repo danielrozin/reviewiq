@@ -517,6 +517,7 @@ export default function AdminDashboard() {
             <div className="bg-white border border-gray-200 rounded-xl p-6">
               <h3 className="text-sm font-semibold text-gray-900 mb-4">Top Products by Reviews</h3>
               {stats.topProducts.length > 0 ? (
+                <div className="overflow-x-auto">
                 <table className="w-full text-sm" aria-label="Top products by reviews">
                   <thead>
                     <tr className="text-left text-gray-600 border-b border-gray-100">
@@ -539,6 +540,7 @@ export default function AdminDashboard() {
                     ))}
                   </tbody>
                 </table>
+                </div>
               ) : (
                 <p className="text-gray-600 text-sm">No products yet</p>
               )}
@@ -571,6 +573,7 @@ export default function AdminDashboard() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+              <div className="overflow-x-auto">
               <table className="w-full text-sm" aria-label="Products list">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200 text-left">
@@ -650,6 +653,7 @@ export default function AdminDashboard() {
                   ))}
                 </tbody>
               </table>
+              </div>
               {products.length === 0 && (
                 <div className="text-center py-12 text-gray-600 text-sm">No products found</div>
               )}
@@ -738,6 +742,7 @@ export default function AdminDashboard() {
             </div>
 
             <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+              <div className="overflow-x-auto">
               <table className="w-full text-sm" aria-label="Reviews list">
                 <thead>
                   <tr className="bg-gray-50 border-b border-gray-200 text-left">
@@ -849,6 +854,7 @@ export default function AdminDashboard() {
                   ))}
                 </tbody>
               </table>
+              </div>
               {reviews.length === 0 && (
                 <div className="text-center py-12 text-gray-600 text-sm">No reviews found</div>
               )}

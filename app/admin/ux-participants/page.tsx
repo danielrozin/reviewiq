@@ -302,7 +302,7 @@ export default function UxParticipantsPage() {
         {/* Table */}
         <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden">
           {loading ? (
-            <div className="p-12 text-center text-gray-600 text-sm">Loading…</div>
+            <div role="status" aria-label="Loading participants" className="p-12 text-center text-gray-600 text-sm">Loading…</div>
           ) : participants.length === 0 ? (
             <div className="p-12 text-center">
               <Users aria-hidden="true" className="w-10 h-10 text-gray-300 mx-auto mb-3" />
@@ -312,6 +312,7 @@ export default function UxParticipantsPage() {
               </p>
             </div>
           ) : (
+            <div className="overflow-x-auto">
             <table className="w-full text-sm" aria-label="UX study participants">
               <thead>
                 <tr className="border-b bg-gray-50">
@@ -443,6 +444,7 @@ export default function UxParticipantsPage() {
                 ))}
               </tbody>
             </table>
+            </div>
           )}
         </div>
 

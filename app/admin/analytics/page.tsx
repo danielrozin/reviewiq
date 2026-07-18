@@ -470,6 +470,7 @@ export default function ReviewIQAnalytics() {
         <div id="panel-events" role="tabpanel" aria-labelledby="tab-events" className="space-y-4">
           <h2 className="text-lg font-semibold text-gray-900">Custom Events ({config.events.length})</h2>
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+            <div className="overflow-x-auto">
             <table className="w-full text-sm" aria-label="Custom events">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200">
@@ -502,6 +503,7 @@ export default function ReviewIQAnalytics() {
                 ))}
               </tbody>
             </table>
+            </div>
           </div>
         </div>
       )}
@@ -570,6 +572,7 @@ export default function ReviewIQAnalytics() {
               {report.topProducts.length > 0 && (
                 <div className="bg-white border border-gray-200 rounded-xl p-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-3">Top Products</h3>
+                  <div className="overflow-x-auto">
                   <table className="w-full text-sm" aria-label="Top products">
                     <thead>
                       <tr className="border-b border-gray-200">
@@ -592,6 +595,7 @@ export default function ReviewIQAnalytics() {
                       ))}
                     </tbody>
                   </table>
+                  </div>
                 </div>
               )}
             </>
