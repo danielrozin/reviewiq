@@ -83,6 +83,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
         <button
           onClick={() => handleVote("helpful")}
           disabled={loading}
+          aria-pressed={voted === "helpful"}
           className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs transition-colors ${
             voted === "helpful"
               ? "bg-emerald-50 text-emerald-600 border border-emerald-200"
@@ -90,12 +91,13 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           } disabled:opacity-50`}
           aria-label="Mark as helpful"
         >
-          <ThumbsUp className="w-3.5 h-3.5" />
+          <ThumbsUp className="w-3.5 h-3.5" aria-hidden="true" />
           Yes
         </button>
         <button
           onClick={() => handleVote("not_helpful")}
           disabled={loading}
+          aria-pressed={voted === "not_helpful"}
           className={`inline-flex items-center gap-1 px-2 py-1 rounded-md text-xs transition-colors ${
             voted === "not_helpful"
               ? "bg-red-50 text-red-500 border border-red-200"
@@ -103,7 +105,7 @@ export function ReviewVoting({ reviewId, initialHelpfulCount }: ReviewVotingProp
           } disabled:opacity-50`}
           aria-label="Mark as not helpful"
         >
-          <ThumbsDown className="w-3.5 h-3.5" />
+          <ThumbsDown className="w-3.5 h-3.5" aria-hidden="true" />
           No
         </button>
       </div>

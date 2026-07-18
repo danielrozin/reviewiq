@@ -38,26 +38,37 @@ export function WelcomeModal() {
 
   if (!isNewVisitor) return null;
 
+  const headingId = "welcome-modal-heading";
+
   return (
     <div className="fixed inset-0 z-[100] flex items-end sm:items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/30 backdrop-blur-sm" onClick={dismissWelcome} />
+      <div
+        className="absolute inset-0 bg-black/30 backdrop-blur-sm"
+        onClick={dismissWelcome}
+        aria-hidden="true"
+      />
 
-      <div className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={headingId}
+        className="relative w-full max-w-lg bg-white rounded-2xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-300"
+      >
         <button
           onClick={dismissWelcome}
           className="absolute top-3 right-3 p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100 transition-colors z-10"
-          aria-label="Close"
+          aria-label="Close welcome dialog"
         >
-          <X className="w-5 h-5" />
+          <X className="w-5 h-5" aria-hidden="true" />
         </button>
 
         {step === "welcome" && (
           <div className="p-6 sm:p-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-br from-brand-500 to-brand-700 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-brand-500/20">
+              <div aria-hidden="true" className="w-16 h-16 bg-gradient-to-br from-brand-500 to-brand-700 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-lg shadow-brand-500/20">
                 <Star className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              <h2 id={headingId} className="text-2xl font-bold text-gray-900 mb-2">
                 Welcome to ReviewIQ
               </h2>
               <p className="text-sm text-gray-500 max-w-sm mx-auto mb-8">
@@ -73,7 +84,7 @@ export function WelcomeModal() {
                   className="inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-white bg-brand-600 rounded-xl hover:bg-brand-700 transition-colors shadow-sm"
                 >
                   See what we offer
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </button>
                 <button
                   onClick={dismissWelcome}
@@ -101,7 +112,7 @@ export function WelcomeModal() {
                   key={prop.title}
                   className="flex items-start gap-3 p-3 rounded-xl border border-gray-100 hover:border-gray-200 transition-colors"
                 >
-                  <div className={`shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${prop.color}`}>
+                  <div aria-hidden="true" className={`shrink-0 w-9 h-9 rounded-lg flex items-center justify-center ${prop.color}`}>
                     <prop.icon className="w-4 h-4" />
                   </div>
                   <div>
