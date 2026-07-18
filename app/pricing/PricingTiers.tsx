@@ -129,7 +129,7 @@ export function PricingTiers() {
         </ul>
 
         {checkoutError && (
-          <p role="alert" aria-live="assertive" className="mt-4 p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-xl">
+          <p id="checkout-error" role="alert" aria-live="assertive" className="mt-4 p-3 text-sm text-red-700 bg-red-50 border border-red-100 rounded-xl">
             {checkoutError}
           </p>
         )}
