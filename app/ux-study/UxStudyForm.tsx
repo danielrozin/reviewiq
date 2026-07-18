@@ -74,7 +74,7 @@ export function UxStudyForm() {
             { emoji: "💡", title: "Impact", desc: "Shape the product" },
           ].map((item) => (
             <div key={item.title} className="bg-white rounded-xl border border-gray-100 p-4 text-center shadow-sm">
-              <div className="text-2xl mb-1">{item.emoji}</div>
+              <div aria-hidden="true" className="text-2xl mb-1">{item.emoji}</div>
               <div className="font-semibold text-gray-900 text-sm">{item.title}</div>
               <div className="text-xs text-gray-500">{item.desc}</div>
             </div>
@@ -84,10 +84,11 @@ export function UxStudyForm() {
         {/* Form */}
         <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-5">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label htmlFor="ux-name" className="block text-sm font-medium text-gray-700 mb-1.5">
               Full name
             </label>
             <input
+              id="ux-name"
               type="text"
               required
               placeholder="Jane Smith"
@@ -98,10 +99,11 @@ export function UxStudyForm() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1.5">
+            <label htmlFor="ux-email" className="block text-sm font-medium text-gray-700 mb-1.5">
               Email address
             </label>
             <input
+              id="ux-email"
               type="email"
               required
               placeholder="jane@example.com"
@@ -164,7 +166,7 @@ export function UxStudyForm() {
           </fieldset>
 
           {status === "error" && (
-            <p className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-3">{errorMsg}</p>
+            <p role="alert" className="text-red-600 text-sm bg-red-50 rounded-xl px-4 py-3">{errorMsg}</p>
           )}
 
           <button
