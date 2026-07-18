@@ -16,6 +16,7 @@ export function ExportButton({ onExport }: ExportButtonProps) {
   const triggerRef = useRef<HTMLButtonElement>(null);
   const csvRef = useRef<HTMLButtonElement>(null);
   const gateRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (showMenu) csvRef.current?.focus();
@@ -24,6 +25,19 @@ export function ExportButton({ onExport }: ExportButtonProps) {
   useEffect(() => {
     if (showGate) gateRef.current?.focus();
   }, [showGate]);
+
+  // WCAG 2.1.1 — close popup when pointer or keyboard focus moves outside the widget.
+  useEffect(() => {
+    if (!showMenu && !showGate) return;
+    function handlePointerDown(e: MouseEvent) {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setShowMenu(false);
+        setShowGate(false);
+      }
+    }
+    document.addEventListener("mousedown", handlePointerDown);
+    return () => document.removeEventListener("mousedown", handlePointerDown);
+  }, [showMenu, showGate]);
 
   const handleClick = () => {
     if (!isPro) {
@@ -55,7 +69,16 @@ export function ExportButton({ onExport }: ExportButtonProps) {
   }
 
   return (
-    <div className="relative">
+    <div
+      ref={containerRef}
+      className="relative"
+      onBlur={(e) => {
+        if (!containerRef.current?.contains(e.relatedTarget as Node)) {
+          setShowMenu(false);
+          setShowGate(false);
+        }
+      }}
+    >
       <button
         ref={triggerRef}
         type="button"
