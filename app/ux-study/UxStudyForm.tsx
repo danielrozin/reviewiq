@@ -130,6 +130,7 @@ export function UxStudyForm() {
               id="ux-name"
               type="text"
               required
+              autoComplete="name"
               placeholder="Jane Smith"
               value={form.name}
               onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
@@ -145,6 +146,7 @@ export function UxStudyForm() {
               id="ux-email"
               type="email"
               required
+              autoComplete="email"
               placeholder="jane@example.com"
               value={form.email}
               onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
