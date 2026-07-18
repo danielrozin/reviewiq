@@ -15,6 +15,7 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const listboxId = "product-search-listbox";
 
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
@@ -31,24 +32,39 @@ function ProductSearch({ selectedIds, onAdd }: { selectedIds: string[]; onAdd: (
         p.brand.toLowerCase().includes(query.toLowerCase()))
   );
 
+  const isOpen = open && query.length > 0;
+
   return (
     <div ref={ref} className="relative w-full max-w-md">
       <input
         type="text"
+        role="combobox"
+        aria-label="Search products to compare"
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        aria-controls={listboxId}
         value={query}
         onChange={(e) => { setQuery(e.target.value); setOpen(true); }}
         onFocus={() => setOpen(true)}
         placeholder="Search products to compare..."
         className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent"
       />
-      {open && query.length > 0 && (
-        <div className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20">
+      {isOpen && (
+        <div
+          id={listboxId}
+          role="listbox"
+          aria-label="Product suggestions"
+          className="absolute top-full mt-1 left-0 right-0 bg-white border border-gray-200 rounded-xl shadow-lg max-h-60 overflow-y-auto z-20"
+        >
           {filtered.length === 0 ? (
-            <p className="px-4 py-3 text-sm text-gray-400">No products found</p>
+            <p role="status" className="px-4 py-3 text-sm text-gray-400">No products found</p>
           ) : (
             filtered.slice(0, 8).map((p) => (
               <button
                 key={p.id}
+                role="option"
+                aria-selected={false}
                 onClick={() => { onAdd(p.id); setQuery(""); setOpen(false); }}
                 className="w-full text-left px-4 py-2.5 text-sm hover:bg-gray-50 transition-colors flex items-center gap-2"
               >
