@@ -1,12 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Smartphone, Monitor, Clock, CheckCircle } from "lucide-react";
 
+const AVAIL_OPTIONS = ["mornings", "evenings", "weekends"] as const;
+type AvailOption = typeof AVAIL_OPTIONS[number];
+
+const DEVICE_OPTIONS = [
+  { val: "mobile", label: "Mobile", Icon: Smartphone },
+  { val: "desktop", label: "Desktop", Icon: Monitor },
+  { val: "both", label: "Both", Icon: Smartphone },
+] as const;
+type DeviceOption = typeof DEVICE_OPTIONS[number]["val"];
+
 export function UxStudyForm() {
-  const [form, setForm] = useState({ name: "", email: "", available: "", device: "" });
+  const [form, setForm] = useState({ name: "", email: "", available: "" as AvailOption | "", device: "" as DeviceOption | "" });
   const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  const availGroupRef = useRef<HTMLDivElement>(null);
+  const deviceGroupRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (status === "done") successHeadingRef.current?.focus();
+  }, [status]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -31,12 +48,34 @@ export function UxStudyForm() {
     }
   }
 
+  function handleAvailKeyDown(e: React.KeyboardEvent, idx: number) {
+    const count = AVAIL_OPTIONS.length;
+    let next = -1;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); next = (idx + 1) % count; }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); next = (idx - 1 + count) % count; }
+    if (next >= 0) {
+      setForm(f => ({ ...f, available: AVAIL_OPTIONS[next] }));
+      availGroupRef.current?.querySelectorAll<HTMLButtonElement>('[role="radio"]')[next]?.focus();
+    }
+  }
+
+  function handleDeviceKeyDown(e: React.KeyboardEvent, idx: number) {
+    const count = DEVICE_OPTIONS.length;
+    let next = -1;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") { e.preventDefault(); next = (idx + 1) % count; }
+    else if (e.key === "ArrowLeft" || e.key === "ArrowUp") { e.preventDefault(); next = (idx - 1 + count) % count; }
+    if (next >= 0) {
+      setForm(f => ({ ...f, device: DEVICE_OPTIONS[next].val }));
+      deviceGroupRef.current?.querySelectorAll<HTMLButtonElement>('[role="radio"]')[next]?.focus();
+    }
+  }
+
   if (status === "done") {
     return (
       <main className="min-h-screen bg-gradient-to-b from-indigo-50 to-white flex items-center justify-center px-4">
-        <div className="max-w-md w-full text-center py-16">
+        <div role="alert" className="max-w-md w-full text-center py-16">
           <CheckCircle aria-hidden="true" className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">You&apos;re in!</h1>
+          <h1 ref={successHeadingRef} tabIndex={-1} className="text-2xl font-bold text-gray-900 mb-2 focus-visible:outline-none">You&apos;re in!</h1>
           <p className="text-gray-600">
             Thanks for signing up, {form.name.split(" ")[0]}! We&apos;ll reach out to{" "}
             <strong>{form.email}</strong> to schedule your 30-minute session.
@@ -114,16 +153,19 @@ export function UxStudyForm() {
           </div>
 
           <fieldset className="border-0 p-0 m-0">
-            <legend className="block text-sm font-medium text-gray-700 mb-2">
+            <legend id="avail-legend" className="block text-sm font-medium text-gray-700 mb-2">
               When are you typically free?
             </legend>
-            <div className="grid grid-cols-3 gap-2">
-              {(["mornings", "evenings", "weekends"] as const).map((opt) => (
+            <div ref={availGroupRef} role="radiogroup" aria-labelledby="avail-legend" className="grid grid-cols-3 gap-2">
+              {AVAIL_OPTIONS.map((opt, idx) => (
                 <button
                   key={opt}
                   type="button"
-                  aria-pressed={form.available === opt}
+                  role="radio"
+                  aria-checked={form.available === opt}
+                  tabIndex={form.available === opt || (form.available === "" && idx === 0) ? 0 : -1}
                   onClick={() => setForm(f => ({ ...f, available: opt }))}
+                  onKeyDown={(e) => handleAvailKeyDown(e, idx)}
                   className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                     form.available === opt
                       ? "border-indigo-500 bg-indigo-50 text-indigo-700"
@@ -138,20 +180,19 @@ export function UxStudyForm() {
           </fieldset>
 
           <fieldset className="border-0 p-0 m-0">
-            <legend className="block text-sm font-medium text-gray-700 mb-2">
+            <legend id="device-legend" className="block text-sm font-medium text-gray-700 mb-2">
               Which device do you primarily use?
             </legend>
-            <div className="grid grid-cols-3 gap-2">
-              {([
-                { val: "mobile", label: "Mobile", Icon: Smartphone },
-                { val: "desktop", label: "Desktop", Icon: Monitor },
-                { val: "both", label: "Both", Icon: Smartphone },
-              ] as const).map(({ val, label, Icon }) => (
+            <div ref={deviceGroupRef} role="radiogroup" aria-labelledby="device-legend" className="grid grid-cols-3 gap-2">
+              {DEVICE_OPTIONS.map(({ val, label, Icon }, idx) => (
                 <button
                   key={val}
                   type="button"
-                  aria-pressed={form.device === val}
+                  role="radio"
+                  aria-checked={form.device === val}
+                  tabIndex={form.device === val || (form.device === "" && idx === 0) ? 0 : -1}
                   onClick={() => setForm(f => ({ ...f, device: val }))}
+                  onKeyDown={(e) => handleDeviceKeyDown(e, idx)}
                   className={`flex flex-col items-center gap-1 py-3 px-2 rounded-xl border text-sm font-medium motion-safe:transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-1 ${
                     form.device === val
                       ? "border-indigo-500 bg-indigo-50 text-indigo-700"
@@ -172,6 +213,7 @@ export function UxStudyForm() {
           <button
             type="submit"
             disabled={status === "submitting" || !form.name || !form.email || !form.available || !form.device}
+            aria-busy={status === "submitting"}
             className="w-full bg-indigo-600 text-white font-semibold py-3.5 rounded-xl hover:bg-indigo-700 motion-safe:transition-colors disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-indigo-600"
           >
             {status === "submitting" ? "Submitting…" : "Sign me up →"}
