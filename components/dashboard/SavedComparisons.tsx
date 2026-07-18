@@ -48,7 +48,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
         <li key={item.id}>
         <Link
           href={`/category/${item.categorySlug}/${item.productSlug}`}
-          aria-label={`${item.productName} — SmartScore ${item.productScore}, ${getScoreLabel(item.productScore)}${item.note ? `, note: ${item.note}` : ""}`}
+          aria-label={`${item.productName} — SmartScore ${item.productScore}, ${getScoreLabel(item.productScore)} — saved ${item.savedAt}${item.note ? `, note: ${item.note}` : ""}`}
           className="flex items-center gap-4 p-4 bg-white border border-gray-100 rounded-xl hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           <div aria-hidden="true" className="w-14 h-14 bg-gray-100 rounded-xl shrink-0 flex items-center justify-center overflow-hidden">
@@ -66,7 +66,7 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
             {item.note && (
               <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate">{item.note}</p>
             )}
-            <p className="text-xs text-gray-600 mt-1">
+            <p aria-hidden="true" className="text-xs text-gray-600 mt-1">
               Saved {item.savedAt}
             </p>
           </div>

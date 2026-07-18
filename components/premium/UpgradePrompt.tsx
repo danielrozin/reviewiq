@@ -69,12 +69,13 @@ export function UpgradePrompt({ gate, compact = false }: UpgradePromptProps) {
         </div>
         <Link
           href="/pricing"
+          aria-label={`Upgrade to Pro — ${title}`}
           className="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 min-h-[44px] bg-amber-600 text-white text-xs font-medium rounded-xl hover:bg-amber-700 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-amber-600"
         >
           <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
           </svg>
-          Upgrade
+          <span aria-hidden="true">Upgrade</span>
         </Link>
       </div>
     );

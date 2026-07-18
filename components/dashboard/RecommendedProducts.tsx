@@ -15,12 +15,12 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
         <li key={product.id}>
         <Link
           href={`/category/${product.categorySlug}/${product.slug}`}
-          aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}`}
+          aria-label={`${product.brand} ${product.name} — SmartScore ${product.smartScore}, ${getScoreLabel(product.smartScore)}, ${product.reviewCount} reviews`}
           className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
         >
           <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
           <div className="flex items-center gap-3 p-4">
-          <div className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
+          <div aria-hidden="true" className={`w-12 h-12 rounded-xl flex items-center justify-center shrink-0 font-bold text-base ${
             product.smartScore >= 85 ? "bg-emerald-50 text-emerald-700" :
             product.smartScore >= 70 ? "bg-brand-50 text-brand-700" :
             product.smartScore >= 55 ? "bg-amber-50 text-amber-700" :
@@ -29,16 +29,16 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
             {product.smartScore}
           </div>
 
-          <div className="flex-1 min-w-0">
-            <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
+          <div aria-hidden="true" className="flex-1 min-w-0">
+            <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
               {product.name}
-            </h3>
+            </p>
             <p className="text-xs text-gray-600 mt-0.5">
               {product.brand} · {product.reviewCount} reviews
             </p>
           </div>
 
-          <div className="shrink-0">
+          <div aria-hidden="true" className="shrink-0">
             <p className="text-xs text-gray-600 text-right">
               {getScoreLabel(product.smartScore)}
             </p>
