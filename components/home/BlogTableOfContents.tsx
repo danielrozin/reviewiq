@@ -58,7 +58,7 @@ export function BlogTableOfContents({ headings, className = "" }: BlogTableOfCon
               <a
                 href={`#${heading.id}`}
                 aria-current={active ? "location" : undefined}
-                className={`block min-h-[44px] touch-manipulation flex items-center px-2.5 py-1.5 text-sm rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
+                className={`flex min-h-[44px] touch-manipulation items-center px-2.5 py-1.5 text-sm rounded-lg transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                   heading.level === 3 ? "pl-5 text-[13px]" : ""
                 } ${
                   active
@@ -71,7 +71,12 @@ export function BlogTableOfContents({ headings, className = "" }: BlogTableOfCon
                   if (el) {
                     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
                     el.scrollIntoView({ behavior: reduced ? "instant" : "smooth", block: "start" });
+                    // Headings are not natively focusable; temporarily add tabindex="-1" so
+                    // programmatic focus moves AT reading position to the target section
+                    // rather than leaving focus on the now-scrolled-away TOC link (WCAG 2.4.3).
+                    el.setAttribute("tabindex", "-1");
                     el.focus({ preventScroll: true });
+                    el.addEventListener("blur", () => el.removeAttribute("tabindex"), { once: true });
                   }
                 }}
               >

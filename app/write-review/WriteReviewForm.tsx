@@ -527,7 +527,6 @@ export function WriteReviewForm() {
             <p
               id="error-ratings"
               role="alert"
-              aria-live="polite"
               className={`text-xs ${touched.rating && !stepValid.rating ? "text-red-600" : "sr-only"}`}
             >
               {touched.rating && !stepValid.rating ? "Please rate all categories before continuing" : ""}
