@@ -29,7 +29,7 @@ export function RatingStars({ rating, maxRating = 5, size = "md", showValue = fa
         ))}
       </div>
       {showValue && (
-        <span className="text-sm font-medium text-gray-600 ml-1">
+        <span aria-hidden="true" className="text-sm font-medium text-gray-600 ml-1">
           {rating.toFixed(1)}
         </span>
       )}

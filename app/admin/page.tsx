@@ -631,7 +631,7 @@ export default function AdminDashboard() {
                               <button
                                 type="button"
                                 onClick={cancelPendingDelete}
-                                className="p-1 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                                className="p-1.5 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                                 aria-label="Cancel delete"
                               >
                                 <X aria-hidden="true" className="w-3.5 h-3.5" />
@@ -832,7 +832,7 @@ export default function AdminDashboard() {
                               <button
                                 type="button"
                                 onClick={cancelPendingDelete}
-                                className="p-1 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                                className="p-1.5 text-gray-600 hover:text-gray-700 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                                 aria-label="Cancel delete"
                               >
                                 <X aria-hidden="true" className="w-3.5 h-3.5" />

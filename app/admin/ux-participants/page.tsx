@@ -422,7 +422,7 @@ export default function UxParticipantsPage() {
                             <button
                               type="button"
                               onClick={() => setPendingDeleteId(null)}
-                              className="p-1 text-gray-400 hover:text-gray-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
+                              className="p-1.5 text-gray-400 hover:text-gray-600 rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                               aria-label="Cancel"
                             >
                               <X aria-hidden="true" className="w-3.5 h-3.5" />
