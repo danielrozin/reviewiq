@@ -191,7 +191,7 @@ function CompareContent() {
 
         {/* Suggested comparisons */}
         <section aria-label="Popular comparisons" className="border-t border-gray-100 pt-6">
-          <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3 text-center">Popular comparisons</p>
+          <h2 className="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3 text-center">Popular comparisons</h2>
           <ul role="list" className="flex flex-col gap-2 list-none p-0 m-0">
             {SUGGESTED_PAIRS.map((pair) => (
               <li key={pair.ids}>

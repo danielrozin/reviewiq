@@ -443,12 +443,12 @@ export default function ReviewIQAnalytics() {
                 <h4 className="text-sm font-semibold text-gray-700 mb-3">Target KPIs</h4>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   {funnel.kpis.map((kpi) => (
-                    <div key={kpi.metric} className="bg-gray-50 border border-gray-100 rounded-lg p-3">
-                      <p className="text-[10px] font-semibold text-gray-600 uppercase tracking-wider">{kpi.metric}</p>
-                      <p className="text-lg font-bold text-gray-900 mt-0.5">{kpi.target}</p>
-                      <p className="text-[10px] text-gray-600 mt-0.5">{kpi.formula}</p>
-                      {kpi.warning && <p className="text-[10px] text-amber-600 mt-1">{kpi.warning}</p>}
-                    </div>
+                    <dl key={kpi.metric} className="bg-gray-50 border border-gray-100 rounded-lg p-3">
+                      <dt className="text-[10px] font-semibold text-gray-600 uppercase tracking-wider">{kpi.metric}</dt>
+                      <dd className="text-lg font-bold text-gray-900 mt-0.5">{kpi.target}</dd>
+                      <dd className="text-[10px] text-gray-600 mt-0.5">{kpi.formula}</dd>
+                      {kpi.warning && <dd className="text-[10px] text-amber-600 mt-1">{kpi.warning}</dd>}
+                    </dl>
                   ))}
                 </div>
               </div>

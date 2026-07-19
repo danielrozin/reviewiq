@@ -54,7 +54,7 @@ export function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
-              <p className="text-lg font-bold text-white">Get smarter about buying</p>
+              <h2 className="text-lg font-bold text-white">Get smarter about buying</h2>
               <p className="text-sm text-brand-100 mt-1">Weekly buying guides + AI insights. No spam, unsubscribe anytime.</p>
               <ul role="list" className="flex items-center gap-2 mt-3 list-none p-0 m-0">
                 {[
