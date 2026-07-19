@@ -103,9 +103,9 @@ export default function FAQIndexPage() {
               <h2 className="text-lg font-semibold text-gray-900 mb-2">
                 {page.title}
               </h2>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <span className="block text-sm text-gray-600 leading-relaxed">
                 {page.heroSubtext}
-              </p>
+              </span>
               <span className="inline-block mt-3 text-sm text-brand-600 font-medium">
                 {page.faqs.length} questions <span aria-hidden="true">&rarr;</span>
               </span>

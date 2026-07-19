@@ -164,13 +164,13 @@ function RelatedComparisons({
                 VS
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors">
+                <span className="block text-sm font-medium text-gray-900 group-hover:text-brand-600 transition-colors">
                   {pair.productA.name} vs {pair.productB.name}
-                </p>
+                </span>
                 {pair.searchVolume > 0 && (
-                  <p className="text-xs text-gray-600">
+                  <span className="block text-xs text-gray-600">
                     {pair.searchVolume.toLocaleString()} monthly searches
-                  </p>
+                  </span>
                 )}
               </div>
             </Link>

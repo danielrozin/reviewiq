@@ -1040,8 +1040,8 @@ export default function AdminDashboard() {
                   >
                     <TrendingUp aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
-                      <p className="text-sm font-medium text-gray-900">GA4 Analytics</p>
-                      <p className="text-xs text-gray-600">View detailed funnel and event analytics</p>
+                      <span className="block text-sm font-medium text-gray-900">GA4 Analytics</span>
+                      <span className="block text-xs text-gray-600">View detailed funnel and event analytics</span>
                     </div>
                   </a>
                   <button
@@ -1051,8 +1051,8 @@ export default function AdminDashboard() {
                   >
                     <AlertTriangle aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
-                      <p className="text-sm font-medium text-gray-900">Moderate Reviews</p>
-                      <p className="text-xs text-gray-600">{stats.summary.pendingReviews} reviews pending</p>
+                      <span className="block text-sm font-medium text-gray-900">Moderate Reviews</span>
+                      <span className="block text-xs text-gray-600">{stats.summary.pendingReviews} reviews pending</span>
                     </div>
                   </button>
                   <button
@@ -1062,8 +1062,8 @@ export default function AdminDashboard() {
                   >
                     <Pin aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
-                      <p className="text-sm font-medium text-gray-900">Manage Products</p>
-                      <p className="text-xs text-gray-600">Feature or unfeature products on homepage</p>
+                      <span className="block text-sm font-medium text-gray-900">Manage Products</span>
+                      <span className="block text-xs text-gray-600">Feature or unfeature products on homepage</span>
                     </div>
                   </button>
                   <a
@@ -1072,8 +1072,8 @@ export default function AdminDashboard() {
                   >
                     <Users aria-hidden="true" className="w-5 h-5 text-gray-600" />
                     <div>
-                      <p className="text-sm font-medium text-gray-900">UX Study Participants</p>
-                      <p className="text-xs text-gray-600">Track and schedule usability testers</p>
+                      <span className="block text-sm font-medium text-gray-900">UX Study Participants</span>
+                      <span className="block text-xs text-gray-600">Track and schedule usability testers</span>
                     </div>
                   </a>
                 </div>
