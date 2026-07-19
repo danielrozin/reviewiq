@@ -454,7 +454,7 @@ export default function AdminDashboard() {
             {/* Rating Distribution */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-gray-900 mb-4">Rating Distribution</h3>
+                <h2 className="text-sm font-semibold text-gray-900 mb-4">Rating Distribution</h2>
                 <div className="space-y-2">
                   {stats.ratingDistribution.map((r) => (
                     <RatingBar
@@ -468,7 +468,7 @@ export default function AdminDashboard() {
               </div>
 
               <div className="bg-white border border-gray-200 rounded-xl p-6">
-                <h3 className="text-sm font-semibold text-gray-900 mb-4">Recent Signups</h3>
+                <h2 className="text-sm font-semibold text-gray-900 mb-4">Recent Signups</h2>
                 {stats.recentSignups.length > 0 ? (
                   <ul role="list" className="space-y-2 list-none p-0 m-0">
                     {stats.recentSignups.slice(0, 8).map((u) => (
@@ -491,7 +491,7 @@ export default function AdminDashboard() {
 
             {/* Recent Reviews */}
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="text-sm font-semibold text-gray-900 mb-4">Recent Reviews</h3>
+              <h2 className="text-sm font-semibold text-gray-900 mb-4">Recent Reviews</h2>
               {stats.recentReviews.length > 0 ? (
                 <ul role="list" className="space-y-3 list-none p-0 m-0">
                   {stats.recentReviews.map((r) => (
@@ -515,7 +515,7 @@ export default function AdminDashboard() {
 
             {/* Top Products */}
             <div className="bg-white border border-gray-200 rounded-xl p-6">
-              <h3 className="text-sm font-semibold text-gray-900 mb-4">Top Products by Reviews</h3>
+              <h2 className="text-sm font-semibold text-gray-900 mb-4">Top Products by Reviews</h2>
               {stats.topProducts.length > 0 ? (
                 <div className="overflow-x-auto">
                 <table className="w-full text-sm" aria-label="Top products by reviews">

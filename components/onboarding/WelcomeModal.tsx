@@ -156,7 +156,7 @@ export function WelcomeModal() {
 
         {step === "props" && (
           <div className="p-6 sm:p-8">
-            <h3 ref={propsHeadingRef} tabIndex={-1} id="welcome-modal-heading" className="text-lg font-bold text-gray-900 mb-1 focus:outline-none">
+            <h3 ref={propsHeadingRef} tabIndex={-1} id="welcome-modal-heading" className="text-lg font-bold text-gray-900 mb-1 focus-visible:outline-none">
               Here&apos;s what you can do
             </h3>
             <p className="text-sm text-gray-600 mb-5">

@@ -63,7 +63,7 @@ export function EmailCaptureCTA({
             <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
           </svg>
         </div>
-        <h3 ref={successHeadingRef} tabIndex={-1} id="email-capture-success-heading" className="text-lg font-semibold text-emerald-800 mb-1 focus:outline-none">
+        <h3 ref={successHeadingRef} tabIndex={-1} id="email-capture-success-heading" className="text-lg font-semibold text-emerald-800 mb-1 focus-visible:outline-none">
           You&apos;re on the list!
         </h3>
         <p className="text-sm text-emerald-700 mb-3">
