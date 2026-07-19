@@ -231,12 +231,26 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-600 mb-4">
-        <span>By {review.authorName}</span>
-        {review.timeOwned && <span>Owned {review.timeOwned}</span>}
-        <span className="capitalize">{review.experienceLevel} user</span>
-        <time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time>
-      </div>
+      <dl className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-600 mb-4">
+        <div className="inline-flex gap-1">
+          <dt className="sr-only">Reviewer</dt>
+          <dd>By {review.authorName}</dd>
+        </div>
+        {review.timeOwned && (
+          <div className="inline-flex gap-1">
+            <dt className="sr-only">Owned for</dt>
+            <dd>Owned {review.timeOwned}</dd>
+          </div>
+        )}
+        <div className="inline-flex gap-1">
+          <dt className="sr-only">Experience</dt>
+          <dd className="capitalize">{review.experienceLevel} user</dd>
+        </div>
+        <div className="inline-flex gap-1">
+          <dt className="sr-only">Date</dt>
+          <dd><time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time></dd>
+        </div>
+      </dl>
 
       {(review.pros.length > 0 || review.cons.length > 0) && (
         <section aria-label="Pros and cons" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">

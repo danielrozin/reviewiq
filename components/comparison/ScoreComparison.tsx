@@ -79,17 +79,26 @@ function ScoreBlock({
           </div>
         )}
       </div>
-      <div className="text-center">
-        <p className="text-sm font-semibold text-gray-900 line-clamp-2">
-          {product.name}
-        </p>
-        <p className={cn("text-xs font-medium", getScoreColor(product.smartScore))}>
-          {getScoreLabel(product.smartScore)}
-        </p>
-        <p className="text-xs text-gray-600 mt-1">
-          {product.reviewCount} reviews
-        </p>
-      </div>
+      <dl className="text-center">
+        <div>
+          <dt className="sr-only">Product</dt>
+          <dd className="text-sm font-semibold text-gray-900 line-clamp-2">
+            {product.name}
+          </dd>
+        </div>
+        <div>
+          <dt className="sr-only">Rating tier</dt>
+          <dd className={cn("text-xs font-medium", getScoreColor(product.smartScore))}>
+            {getScoreLabel(product.smartScore)}
+          </dd>
+        </div>
+        <div>
+          <dt className="sr-only">Reviews</dt>
+          <dd className="text-xs text-gray-600 mt-1">
+            {product.reviewCount} reviews
+          </dd>
+        </div>
+      </dl>
     </div>
   );
 }
