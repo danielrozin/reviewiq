@@ -1,5 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { categories } from "@/data/categories";
+
+export const metadata: Metadata = {
+  title: "Page Not Found — ReviewIQ",
+  description:
+    "The page you're looking for doesn't exist or has been moved. Browse ReviewIQ product categories to find what you need.",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   const popularCategories = categories.slice(0, 6);
