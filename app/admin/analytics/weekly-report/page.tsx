@@ -68,12 +68,14 @@ function TrendBadge({ change, trend }: { change: string; trend: "up" | "down" | 
 function MetricCard({ label, current, previous, change, trend }: { label: string } & MetricPair) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
-      <div className="flex items-end gap-2 mt-1">
-        <p className="text-2xl font-bold text-gray-900">{current.toLocaleString()}</p>
-        <TrendBadge change={change} trend={trend} />
-      </div>
-      <p className="text-xs text-gray-600 mt-0.5">prev: {previous.toLocaleString()}</p>
+      <dl>
+        <dt className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</dt>
+        <div className="flex items-end gap-2 mt-1">
+          <dd className="text-2xl font-bold text-gray-900">{current.toLocaleString()}</dd>
+          <TrendBadge change={change} trend={trend} />
+        </div>
+        <dd className="text-xs text-gray-600 mt-0.5">prev: {previous.toLocaleString()}</dd>
+      </dl>
     </div>
   );
 }
