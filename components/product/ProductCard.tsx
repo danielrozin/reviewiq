@@ -57,9 +57,9 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
         <div className="p-5">
         <div className="flex items-start justify-between mb-3">
           <div className="flex-1 min-w-0 pr-3">
-            <p className="text-xs font-semibold text-brand-600 uppercase tracking-wider mb-1">
+            <span className="block text-xs font-semibold text-brand-600 uppercase tracking-wider mb-1">
               {product.brand}
-            </p>
+            </span>
             <h3 id={`product-${product.id}`} className="text-base font-semibold text-gray-900 group-hover:text-brand-600 transition-colors leading-snug line-clamp-2">
               {product.name}
             </h3>

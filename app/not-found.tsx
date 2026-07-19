@@ -20,9 +20,9 @@ export default function NotFound() {
           <div className="absolute w-40 h-40 bg-brand-50 rounded-full blur-2xl opacity-80" />
           <div className="relative w-28 h-28 bg-white border-2 border-gray-100 rounded-3xl shadow-lg flex items-center justify-center">
             <div className="text-center">
-              <p className="text-4xl font-extrabold text-brand-600 leading-none">4</p>
-              <p className="text-4xl font-extrabold text-gray-200 leading-none">0</p>
-              <p className="text-4xl font-extrabold text-brand-600 leading-none">4</p>
+              <span className="block text-4xl font-extrabold text-brand-600 leading-none">4</span>
+              <span className="block text-4xl font-extrabold text-gray-200 leading-none">0</span>
+              <span className="block text-4xl font-extrabold text-brand-600 leading-none">4</span>
             </div>
           </div>
           {/* Floating badge */}

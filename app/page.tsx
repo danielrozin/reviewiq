@@ -91,8 +91,8 @@ export default function HomePage() {
                   className="group block p-3 bg-white/80 hover:bg-white border border-gray-200 hover:border-brand-400 hover:shadow-sm rounded-xl motion-safe:transition-all text-sm backdrop-blur-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
                 >
                   <span aria-hidden="true" className="text-xl block mb-1">{tile.icon}</span>
-                  <p className="font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</p>
-                  <p className="text-gray-600 text-xs mt-0.5">{tile.desc}</p>
+                  <span className="block font-semibold text-gray-800 group-hover:text-brand-600 leading-tight">{tile.label}</span>
+                  <span className="block text-gray-600 text-xs mt-0.5">{tile.desc}</span>
                 </Link>
                 </li>
               ))}
@@ -310,9 +310,9 @@ export default function HomePage() {
 
                 {/* Card body */}
                 <div className="p-4 flex-1 flex flex-col">
-                  <p className="text-xs text-brand-600 font-semibold uppercase tracking-wider mb-0.5">
+                  <span className="block text-xs text-brand-600 font-semibold uppercase tracking-wider mb-0.5">
                     {product.brand}
-                  </p>
+                  </span>
                   <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 flex-1 mb-3">
                     {product.name}
                   </h3>
@@ -556,7 +556,7 @@ export default function HomePage() {
                   )}
                 </div>
                 <div className="p-6 flex flex-col flex-1">
-                  <p className="text-xs text-brand-600 font-bold uppercase tracking-wider mb-1">{featured.brand}</p>
+                  <span className="block text-xs text-brand-600 font-bold uppercase tracking-wider mb-1">{featured.brand}</span>
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 leading-tight">
                     {featured.name}
                   </h3>
@@ -604,7 +604,7 @@ export default function HomePage() {
                             #{i + 2} Pick
                           </span>
                         </div>
-                        <p className="text-xs text-brand-600 font-bold uppercase tracking-wider">{product.brand}</p>
+                        <span className="block text-xs text-brand-600 font-bold uppercase tracking-wider">{product.brand}</span>
                         <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors line-clamp-2 mt-0.5">
                           {product.name}
                         </h3>
