@@ -460,9 +460,9 @@ export default function HomePage() {
                 <h3 id={`home-blog-${post.id}-title`} className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 mb-2 line-clamp-2 flex-1 leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
+                <span className="block text-sm text-gray-600 line-clamp-2 leading-relaxed mb-4">
                   {post.excerpt}
-                </p>
+                </span>
                 <div className="flex items-center gap-2.5 pt-3 border-t border-gray-100">
                   <div aria-hidden="true" className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0">
                     <span className="text-[9px] font-bold text-brand-600">
@@ -560,9 +560,9 @@ export default function HomePage() {
                   <h3 className="text-xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 leading-tight">
                     {featured.name}
                   </h3>
-                  <p className="text-sm text-gray-600 flex-1 line-clamp-2 mb-4">
+                  <span className="block text-sm text-gray-600 flex-1 line-clamp-2 mb-4">
                     AI analysis of {formatNumber(featured.reviewCount)} verified reviews. Outperforms alternatives across noise reduction, battery life, and comfort.
-                  </p>
+                  </span>
                   <div className="flex items-center justify-between">
                     <SmartScore score={featured.smartScore} size="md" />
                     <span className="text-sm font-medium text-gray-600">
