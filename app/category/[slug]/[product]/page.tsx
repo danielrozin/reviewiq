@@ -202,9 +202,11 @@ export default async function ProductPage({ params }: Props) {
 
               <div>
                 <dt className="sr-only">Reviews</dt>
-                <RatingStars rating={avgRating} size="md" showValue />
-                <dd className="text-sm text-gray-600 mt-1">
-                  Based on {formatNumber(product.reviewCount)} reviews
+                <dd>
+                  <RatingStars rating={avgRating} size="md" showValue />
+                  <span className="text-sm text-gray-600 mt-1 block">
+                    Based on {formatNumber(product.reviewCount)} reviews
+                  </span>
                 </dd>
               </div>
 
