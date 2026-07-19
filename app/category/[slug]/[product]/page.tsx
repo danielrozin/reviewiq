@@ -201,8 +201,8 @@ export default async function ProductPage({ params }: Props) {
               {!product.image && <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />}
 
               <div>
-                <RatingStars rating={avgRating} size="md" showValue />
                 <dt className="sr-only">Reviews</dt>
+                <RatingStars rating={avgRating} size="md" showValue />
                 <dd className="text-sm text-gray-600 mt-1">
                   Based on {formatNumber(product.reviewCount)} reviews
                 </dd>
