@@ -30,9 +30,9 @@ export function RecommendedProducts({ products }: RecommendedProductsProps) {
           </div>
 
           <div aria-hidden="true" className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
+            <span className="block text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
               {product.name}
-            </p>
+            </span>
             <p className="text-xs text-gray-600 mt-0.5">
               {product.brand} · {product.reviewCount} reviews
             </p>

@@ -293,7 +293,7 @@ export default function WhoIsThisForPage() {
                   <span className="font-medium text-gray-700">Scenario:</span> {persona.scenario}
                 </p>
                 <div className="mb-4">
-                  <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Search queries you&rsquo;d use:</p>
+                  <span className="block text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Search queries you&rsquo;d use:</span>
                   <ul role="list" className="flex flex-wrap gap-2">
                     {persona.queries.map((query) => (
                       <li key={query} className="text-xs bg-gray-50 text-gray-600 border border-gray-200 px-3 py-1 rounded-full font-mono">

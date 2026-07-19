@@ -62,9 +62,9 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
             </div>
 
             <div aria-hidden="true" className="text-right shrink-0">
-              <p className={`text-lg font-bold ${getScoreColor(item.currentScore)}`}>
+              <strong className={`text-lg font-bold ${getScoreColor(item.currentScore)}`}>
                 {item.currentScore}
-              </p>
+              </strong>
               {scoreDiff !== 0 && (
                 <p
                   className={`text-xs font-medium ${

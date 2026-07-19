@@ -506,9 +506,9 @@ export function WriteReviewForm() {
             </fieldset>
 
             <div role="group" aria-labelledby="category-ratings-label" className="bg-white border border-gray-100 rounded-xl p-4 space-y-4">
-              <p id="category-ratings-label" className="text-xs font-semibold text-gray-600 uppercase tracking-wide">
+              <span id="category-ratings-label" className="block text-xs font-semibold text-gray-600 uppercase tracking-wide">
                 Category Ratings
-              </p>
+              </span>
               {[
                 { label: "Reliability", value: reliabilityRating, setter: setReliabilityRating },
                 { label: "Ease of Use", value: easeOfUseRating, setter: setEaseOfUseRating },
@@ -686,9 +686,9 @@ export function WriteReviewForm() {
             </div>
 
             <div>
-              <p id="verification-group-label" className="block text-sm font-semibold text-gray-900 mb-2">
+              <span id="verification-group-label" className="block text-sm font-semibold text-gray-900 mb-2">
                 Purchase Verification *
-              </p>
+              </span>
               <div
                 role="radiogroup"
                 aria-labelledby="verification-group-label"

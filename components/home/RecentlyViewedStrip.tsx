@@ -76,9 +76,9 @@ export function RecentlyViewedStrip() {
                 <span className="text-xs text-gray-600 font-medium truncate max-w-[80px] uppercase tracking-wider">{item.brand}</span>
                 <SmartScore score={item.smartScore} size="sm" />
               </div>
-              <p className="text-sm font-semibold text-gray-800 group-hover:text-brand-600 line-clamp-2 leading-snug transition-colors mb-1.5">
+              <span className="block text-sm font-semibold text-gray-800 group-hover:text-brand-600 line-clamp-2 leading-snug transition-colors mb-1.5">
                 {item.name}
-              </p>
+              </span>
               {item.categorySlug && (
                 <p className="text-xs text-gray-600 truncate capitalize">
                   {item.categorySlug.replace(/-/g, " ")}
