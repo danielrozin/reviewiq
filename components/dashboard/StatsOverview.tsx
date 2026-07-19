@@ -125,20 +125,33 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
             <span aria-hidden="true" className="w-8 h-8 bg-gray-50 rounded-lg flex items-center justify-center shrink-0">
               {TRUST_LEVEL_ICONS[stats.trustLevel]}
             </span>
-            <div>
-              <p className="text-sm font-semibold text-gray-900">
-                {TRUST_LEVEL_LABELS[stats.trustLevel]}
-              </p>
-              <p className="text-xs text-gray-600">{formatNumber(stats.reputationScore)} reputation</p>
-            </div>
+            <dl>
+              <div>
+                <dt className="sr-only">Trust level</dt>
+                <dd className="text-sm font-semibold text-gray-900">{TRUST_LEVEL_LABELS[stats.trustLevel]}</dd>
+              </div>
+              <div>
+                <dt className="sr-only">Reputation</dt>
+                <dd className="text-xs text-gray-600">{formatNumber(stats.reputationScore)} reputation</dd>
+              </div>
+            </dl>
           </div>
           {nextLevel && (
-            <div className="text-right">
-              <p className="text-xs text-gray-600">
-                <span className="font-semibold text-gray-700">{pointsToNext}</span> pts to {TRUST_LEVEL_LABELS[nextLevel]}
-              </p>
-              <p className="inline-flex items-center gap-1 text-xs text-gray-600 mt-0.5"><span aria-hidden="true">{TRUST_LEVEL_ICONS[nextLevel]}</span> Next level</p>
-            </div>
+            <dl className="text-right">
+              <div>
+                <dt className="sr-only">Points to next level</dt>
+                <dd className="text-xs text-gray-600">
+                  <span className="font-semibold text-gray-700">{pointsToNext}</span> pts to {TRUST_LEVEL_LABELS[nextLevel]}
+                </dd>
+              </div>
+              <div>
+                <dt className="sr-only">Next level</dt>
+                <dd className="inline-flex items-center justify-end gap-1 text-xs text-gray-600 mt-0.5">
+                  <span aria-hidden="true">{TRUST_LEVEL_ICONS[nextLevel]}</span>
+                  <span aria-hidden="true">{TRUST_LEVEL_LABELS[nextLevel]}</span>
+                </dd>
+              </div>
+            </dl>
           )}
           {!nextLevel && (
             <span className="text-xs font-medium px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full">

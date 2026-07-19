@@ -30,15 +30,24 @@ export function ReviewCard({ review }: ReviewCardProps) {
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-gray-600 mb-4">
-        <span className="font-medium text-gray-600">{review.authorName}</span>
-        <span aria-hidden="true" className="text-gray-200">·</span>
-        <span>Owned {review.timeOwned}</span>
-        <span aria-hidden="true" className="text-gray-200">·</span>
-        <span className="capitalize">{review.experienceLevel} user</span>
-        <span aria-hidden="true" className="text-gray-200">·</span>
-        <time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time>
-      </div>
+      <dl className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-600 mb-4">
+        <div>
+          <dt className="sr-only">Reviewer</dt>
+          <dd className="font-medium text-gray-600">{review.authorName}</dd>
+        </div>
+        <div>
+          <dt className="sr-only">Owned for</dt>
+          <dd>Owned {review.timeOwned}</dd>
+        </div>
+        <div>
+          <dt className="sr-only">Experience</dt>
+          <dd className="capitalize">{review.experienceLevel} user</dd>
+        </div>
+        <div>
+          <dt className="sr-only">Date</dt>
+          <dd><time dateTime={review.createdAt}>{formatDate(review.createdAt)}</time></dd>
+        </div>
+      </dl>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
         <div>
