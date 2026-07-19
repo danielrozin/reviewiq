@@ -68,11 +68,14 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                   key={product.id}
                   role="columnheader"
                   className={cn(
-                    "px-4 py-3 text-xs font-semibold uppercase tracking-wider text-center",
-                    i === 0 ? "text-brand-700" : "text-gray-600"
+                    "px-4 py-3 text-xs uppercase tracking-wider text-center",
+                    i === 0 ? "text-brand-700 font-bold" : "text-gray-600 font-semibold"
                   )}
                 >
-                  <span className="block truncate">{product.brand}</span>
+                  <span className="block truncate">
+                    {product.brand}
+                    {i === 0 && <span className="sr-only"> (primary)</span>}
+                  </span>
                   <span className="block text-xs font-normal text-gray-600 truncate">{product.name}</span>
                 </div>
               ))}
@@ -117,10 +120,10 @@ export function MultiSpecsTable({ products }: MultiSpecsTableProps) {
                             key={product.id}
                             role="cell"
                             className={cn(
-                              "px-4 py-3 font-medium text-center",
+                              "px-4 py-3 text-center",
                               value
-                                ? isDifferent && i === 0 ? "text-brand-700" : "text-gray-900"
-                                : "text-gray-600"
+                                ? isDifferent && i === 0 ? "text-brand-700 font-semibold" : "text-gray-900 font-medium"
+                                : "text-gray-600 font-medium"
                             )}
                           >
                             {value || <span aria-label="not available">—</span>}

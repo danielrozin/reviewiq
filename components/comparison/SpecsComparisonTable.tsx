@@ -56,8 +56,8 @@ export function SpecsComparisonTable({
               <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider text-left">
                 Spec
               </th>
-              <th scope="col" className="px-4 py-3 text-xs font-semibold text-brand-700 uppercase tracking-wider text-center truncate">
-                {nameA}
+              <th scope="col" className="px-4 py-3 text-xs font-bold text-brand-700 uppercase tracking-wider text-center truncate">
+                {nameA}<span className="sr-only"> (primary)</span>
               </th>
               <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 uppercase tracking-wider text-center truncate">
                 {nameB}
@@ -96,8 +96,8 @@ export function SpecsComparisonTable({
                       </span>
                     </th>
                     <td className={cn(
-                      "px-4 py-3 font-medium text-center",
-                      differs ? "text-brand-700" : "text-gray-900"
+                      "px-4 py-3 text-center",
+                      differs ? "text-brand-700 font-semibold" : "text-gray-900 font-medium"
                     )}>
                       {spec.a || <span aria-label="not available" className="text-gray-600">—</span>}
                     </td>
