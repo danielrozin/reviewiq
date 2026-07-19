@@ -377,6 +377,7 @@ export default function UxParticipantsPage() {
                     <td className="px-4 py-3">
                       <div className="relative">
                         <select
+                          aria-label={`Status for ${p.name}`}
                           value={p.status}
                           disabled={saving === p.id}
                           aria-label={`Status for ${p.name}`}
