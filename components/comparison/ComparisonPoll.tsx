@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import type React from "react";
 
 interface PollOption {
   id: string;
@@ -28,6 +29,7 @@ export function ComparisonPoll({
     Object.fromEntries(options.map((o) => [o.id, o.votes ?? 0]))
   );
   const [mounted, setMounted] = useState(false);
+  const groupRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -37,6 +39,29 @@ export function ComparisonPoll({
 
   function totalVotes() {
     return Object.values(votes).reduce((s, v) => s + v, 0);
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent) {
+    if (hasVoted) return;
+    const idx = options.findIndex((o) => o.id === (voted ?? options[0].id));
+    const focusOption = (id: string) => {
+      (groupRef.current?.querySelector(`[data-pollkey="${id}"]`) as HTMLButtonElement)?.focus();
+    };
+    if (e.key === "ArrowDown" || e.key === "ArrowRight") {
+      e.preventDefault();
+      const next = options[(idx + 1) % options.length];
+      focusOption(next.id);
+    } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const prev = options[(idx - 1 + options.length) % options.length];
+      focusOption(prev.id);
+    } else if (e.key === "Home") {
+      e.preventDefault();
+      focusOption(options[0].id);
+    } else if (e.key === "End") {
+      e.preventDefault();
+      focusOption(options[options.length - 1].id);
+    }
   }
 
   function handleVote(optionId: string) {
@@ -71,11 +96,13 @@ export function ComparisonPoll({
       </div>
 
       <div
-        role="group"
+        ref={groupRef}
+        role="radiogroup"
         aria-label={question}
         className="space-y-2.5"
+        onKeyDown={handleKeyDown}
       >
-        {options.map((option) => {
+        {options.map((option, optIdx) => {
           const pct = total > 0 ? Math.round(((votes[option.id] ?? 0) / total) * 100) : 0;
           const isWinner = hasVoted && pct === Math.max(...options.map((o) => total > 0 ? Math.round(((votes[o.id] ?? 0) / total) * 100) : 0));
 
@@ -83,14 +110,17 @@ export function ComparisonPoll({
             <div key={option.id} className="relative">
               <button
                 type="button"
-                onClick={() => handleVote(option.id)}
-                disabled={hasVoted}
-                aria-pressed={voted === option.id}
+                role="radio"
+                data-pollkey={option.id}
+                onClick={() => !hasVoted && handleVote(option.id)}
+                aria-checked={voted === option.id}
+                aria-disabled={hasVoted || undefined}
+                tabIndex={hasVoted ? -1 : (optIdx === 0 || voted === option.id ? 0 : -1)}
                 aria-label={hasVoted ? `${option.label}: ${pct}% of votes${isWinner ? " — leading" : ""}` : `Vote for ${option.label}`}
                 className={`relative w-full text-left px-4 min-h-[44px] touch-manipulation text-sm font-medium rounded-xl border overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 ${
                   hasVoted
                     ? voted === option.id
-                      ? "border-brand-400 bg-brand-50 text-brand-700"
+                      ? "border-brand-400 bg-brand-50 text-brand-700 cursor-default"
                       : "border-gray-100 bg-gray-50 text-gray-500 cursor-default"
                     : "border-gray-200 bg-white text-gray-700 hover:border-brand-300 hover:bg-brand-50/50 hover:text-brand-700"
                 }`}
