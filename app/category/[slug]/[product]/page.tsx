@@ -196,38 +196,39 @@ export default async function ProductPage({ params }: Props) {
               {product.description}
             </p>
 
-            <div className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
+            <dl className="flex flex-wrap items-center gap-6" data-speakable="smart-score">
               {!product.image && <SmartScore score={product.smartScore} size="lg" showRing animateOnView />}
               {!product.image && <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />}
 
               <div>
                 <RatingStars rating={avgRating} size="md" showValue />
-                <p className="text-sm text-gray-600 mt-1">
+                <dt className="sr-only">Reviews</dt>
+                <dd className="text-sm text-gray-600 mt-1">
                   Based on {formatNumber(product.reviewCount)} reviews
-                </p>
+                </dd>
               </div>
 
               <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />
 
               <div>
-                <p
+                <dt className="text-sm text-gray-600">Price range</dt>
+                <dd
                   className="text-lg font-semibold text-gray-900"
-                  aria-label={`Price range: $${product.priceRange.min} to $${product.priceRange.max}`}
+                  aria-label={`$${product.priceRange.min} to $${product.priceRange.max}`}
                 >
                   <span aria-hidden="true">${product.priceRange.min} — ${product.priceRange.max}</span>
-                </p>
-                <p className="text-sm text-gray-600">Price range</p>
+                </dd>
               </div>
 
               <div aria-hidden="true" className="h-12 w-px bg-gray-200 hidden sm:block" />
 
               <div>
-                <p className="text-lg font-semibold text-emerald-600">
+                <dt className="text-sm text-gray-600">Verified buyers</dt>
+                <dd className="text-lg font-semibold text-emerald-600">
                   {product.verifiedPurchaseRate}%
-                </p>
-                <p className="text-sm text-gray-600">Verified buyers</p>
+                </dd>
               </div>
-            </div>
+            </dl>
 
             {/* Share row */}
             <div className="mt-6 pt-5 border-t border-gray-100">
