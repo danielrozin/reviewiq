@@ -202,12 +202,12 @@ export default async function ThreadPage({ params }: Props) {
                         <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                       </svg>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-xs text-gray-600 uppercase tracking-wider font-medium mb-0.5">Related Product</p>
-                      <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors capitalize truncate">
+                    <dl className="flex-1 min-w-0">
+                      <dt className="text-xs text-gray-600 uppercase tracking-wider font-medium mb-0.5">Related Product</dt>
+                      <dd className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors capitalize truncate">
                         {thread.productSlug.replace(/-/g, " ")}
-                      </p>
-                    </div>
+                      </dd>
+                    </dl>
                     <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
                     </svg>

@@ -71,14 +71,14 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
             </p>
           </div>
 
-          <div aria-hidden="true" className="text-right shrink-0">
-            <p className={`text-lg font-bold ${getScoreColor(item.productScore)}`}>
-              {item.productScore}
-            </p>
-            <p className="text-xs text-gray-600">
+          <dl aria-hidden="true" className="text-right shrink-0 flex flex-col-reverse">
+            <dt className="text-xs text-gray-600">
               {getScoreLabel(item.productScore)}
-            </p>
-          </div>
+            </dt>
+            <dd className={`text-lg font-bold ${getScoreColor(item.productScore)}`}>
+              {item.productScore}
+            </dd>
+          </dl>
         </Link>
         </li>
       ))}
