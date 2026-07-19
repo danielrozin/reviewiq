@@ -85,13 +85,15 @@ export function MultiScoreComparison({ products }: MultiScoreComparisonProps) {
               const isLowest = product.priceRange.min === lowestPrice;
               return (
                 <li key={product.id}>
-                  <p className="text-xs text-gray-600 mb-1">Price Range</p>
-                  <p className={cn("text-sm font-semibold", isLowest ? "text-emerald-600" : "text-gray-900")}>
-                    ${product.priceRange.min}–${product.priceRange.max}
-                    {isLowest && products.length > 1 && (
-                      <span className="ml-1 text-xs text-emerald-600 font-normal">Best</span>
-                    )}
-                  </p>
+                  <dl>
+                    <dt className="text-xs text-gray-600 mb-1">Price Range</dt>
+                    <dd className={cn("text-sm font-semibold", isLowest ? "text-emerald-600" : "text-gray-900")}>
+                      ${product.priceRange.min}–${product.priceRange.max}
+                      {isLowest && products.length > 1 && (
+                        <span className="ml-1 text-xs text-emerald-600 font-normal">Best</span>
+                      )}
+                    </dd>
+                  </dl>
                 </li>
               );
             })}

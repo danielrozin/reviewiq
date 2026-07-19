@@ -214,7 +214,7 @@ export default function HomePage() {
                   <dd className="text-2xl font-bold text-gray-900 group-hover:text-brand-600 transition-colors leading-none">
                     {stat.value}
                   </dd>
-                  <p className="text-xs text-gray-600">{stat.sublabel}</p>
+                  <dd className="text-xs text-gray-600">{stat.sublabel}</dd>
                 </div>
               </div>
             ))}
