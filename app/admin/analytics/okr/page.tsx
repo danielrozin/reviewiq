@@ -187,14 +187,14 @@ export default function OKRDashboard() {
               <p className="text-sm text-gray-600">{data.quarter} &middot; Last updated {data.lastUpdated}</p>
             </div>
             <div className="flex items-center gap-6">
-              <div className="text-center">
-                <p className="text-2xl font-bold text-indigo-600">{avgCompanyProgress}%</p>
-                <p className="text-[10px] text-gray-600 uppercase tracking-wider">Company</p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl font-bold text-violet-600">{avgTeamProgress}%</p>
-                <p className="text-[10px] text-gray-600 uppercase tracking-wider">Avg Team</p>
-              </div>
+              <dl className="text-center flex flex-col-reverse">
+                <dt className="text-[10px] text-gray-600 uppercase tracking-wider">Company</dt>
+                <dd className="text-2xl font-bold text-indigo-600">{avgCompanyProgress}%</dd>
+              </dl>
+              <dl className="text-center flex flex-col-reverse">
+                <dt className="text-[10px] text-gray-600 uppercase tracking-wider">Avg Team</dt>
+                <dd className="text-2xl font-bold text-violet-600">{avgTeamProgress}%</dd>
+              </dl>
               <div className="flex gap-1.5 items-center" aria-label="Health metric summary">
                 {healthCounts.green > 0 && (
                   <span className="flex items-center gap-1 text-xs">

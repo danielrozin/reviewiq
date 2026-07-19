@@ -119,11 +119,13 @@ function StatCard({
 }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
-      <p className={`font-bold text-gray-900 mt-1 ${large ? "text-3xl" : "text-2xl"}`} style={color ? { color } : undefined}>
-        {value}
-      </p>
-      {subtitle && <p className="text-xs text-gray-600 mt-0.5">{subtitle}</p>}
+      <dl>
+        <dt className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</dt>
+        <dd className={`font-bold text-gray-900 mt-1 ${large ? "text-3xl" : "text-2xl"}`} style={color ? { color } : undefined}>
+          {value}
+        </dd>
+        {subtitle && <dd className="text-xs text-gray-600 mt-0.5">{subtitle}</dd>}
+      </dl>
     </div>
   );
 }

@@ -66,9 +66,11 @@ const RATING_COLORS: Record<number, string> = { 5: "#10b981", 4: "#34d399", 3: "
 function StatCard({ label, value, subtitle }: { label: string; value: string | number; subtitle?: string }) {
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4">
-      <p className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</p>
-      <p className="text-2xl font-bold text-gray-900 mt-1">{value}</p>
-      {subtitle && <p className="text-xs text-gray-600 mt-0.5">{subtitle}</p>}
+      <dl>
+        <dt className="text-xs font-semibold text-gray-600 uppercase tracking-wider">{label}</dt>
+        <dd className="text-2xl font-bold text-gray-900 mt-1">{value}</dd>
+        {subtitle && <dd className="text-xs text-gray-600 mt-0.5">{subtitle}</dd>}
+      </dl>
     </div>
   );
 }
