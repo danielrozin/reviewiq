@@ -94,9 +94,9 @@ export function CategorySearch({ categories }: CategorySearchProps) {
             <h2 className="text-xl font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2">
               {cat.name}
             </h2>
-            <p className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2">
+            <span className="text-sm text-gray-600 leading-relaxed mb-4 line-clamp-2 block">
               {cat.description}
-            </p>
+            </span>
             <div className="flex items-center gap-1.5 text-sm font-medium text-brand-600">
               <span>Explore reviews</span>
               <svg aria-hidden="true" className="w-4 h-4 motion-safe:group-hover:translate-x-1 motion-safe:transition-transform duration-200" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

@@ -107,10 +107,10 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
               </svg>
             </span>
-            <p title={product.aiSummary.whatPeopleLove[0]} className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
+            <span title={product.aiSummary.whatPeopleLove[0]} className="text-sm text-gray-600 line-clamp-1 leading-relaxed block">
               <span className="sr-only">Pro: </span>
               {product.aiSummary.whatPeopleLove[0]}
-            </p>
+            </span>
           </li>
           <li className="flex items-start gap-2">
             <span aria-hidden="true" className="shrink-0 mt-0.5 w-4 h-4 rounded-full bg-red-100 flex items-center justify-center">
@@ -118,10 +118,10 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
               </svg>
             </span>
-            <p title={product.aiSummary.whatPeopleHate[0]} className="text-sm text-gray-600 line-clamp-1 leading-relaxed">
+            <span title={product.aiSummary.whatPeopleHate[0]} className="text-sm text-gray-600 line-clamp-1 leading-relaxed block">
               <span className="sr-only">Con: </span>
               {product.aiSummary.whatPeopleHate[0]}
-            </p>
+            </span>
           </li>
         </ul>
         </div>{/* end p-5 */}

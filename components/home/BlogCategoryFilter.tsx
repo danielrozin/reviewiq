@@ -147,9 +147,9 @@ export function BlogCategoryFilter({ posts }: Props) {
               <h3 id={`blog-post-${post.id}-title`} className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2 leading-snug">
                 {post.title}
               </h3>
-              <p className="text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1 mb-4">
+              <span className="text-sm text-gray-600 leading-relaxed line-clamp-3 flex-1 mb-4 block">
                 {post.excerpt}
-              </p>
+              </span>
               <div className="flex items-center gap-2.5 pt-3 border-t border-gray-100">
                 <div aria-hidden="true" className="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center shrink-0">
                   <span className="text-xs font-bold text-brand-600">

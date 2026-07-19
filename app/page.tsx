@@ -252,9 +252,9 @@ export default function HomePage() {
               <h3 className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">
                 {cat.name}
               </h3>
-              <p className="text-sm text-gray-600 mt-1">
+              <span className="text-sm text-gray-600 mt-1 block">
                 {cat.productCount} products
-              </p>
+              </span>
             </Link>
             </li>
           ))}
