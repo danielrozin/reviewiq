@@ -80,9 +80,9 @@ export function RecentlyViewedStrip() {
                 {item.name}
               </span>
               {item.categorySlug && (
-                <p className="text-xs text-gray-600 truncate capitalize">
+                <span className="block text-xs text-gray-600 truncate capitalize">
                   {item.categorySlug.replace(/-/g, " ")}
-                </p>
+                </span>
               )}
               </div>
             </Link>

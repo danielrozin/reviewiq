@@ -56,9 +56,9 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
               <h3 aria-hidden="true" className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
                 {item.productName}
               </h3>
-              <p className="text-xs text-gray-600 mt-0.5">
+              <span className="block text-xs text-gray-600 mt-0.5">
                 Watching since {item.addedAt}
-              </p>
+              </span>
             </div>
 
             <div aria-hidden="true" className="text-right shrink-0">
@@ -66,17 +66,17 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
                 {item.currentScore}
               </strong>
               {scoreDiff !== 0 && (
-                <p
-                  className={`text-xs font-medium ${
+                <span
+                  className={`block text-xs font-medium ${
                     scoreDiff > 0 ? "text-trust-green" : "text-trust-red"
                   }`}
                 >
                   {scoreDiff > 0 ? "+" : ""}
                   {scoreDiff} pts
-                </p>
+                </span>
               )}
               {scoreDiff === 0 && (
-                <p className="text-xs text-gray-600">No change</p>
+                <span className="block text-xs text-gray-600">No change</span>
               )}
             </div>
             </div>
