@@ -29,7 +29,7 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
           </svg>
         </div>
         <div>
-          <p className="text-white font-semibold text-sm">AI Verdict</p>
+          <h2 className="text-white font-semibold text-sm">AI Verdict</h2>
           <p className="text-white text-xs">Based on verified buyer reviews</p>
         </div>
         {winner && (

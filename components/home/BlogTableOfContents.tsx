@@ -47,9 +47,9 @@ export function BlogTableOfContents({ headings, className = "" }: BlogTableOfCon
       aria-label="Table of contents"
       className={`${className}`}
     >
-      <p className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-3">
+      <h2 className="text-xs font-semibold text-gray-700 uppercase tracking-wide mb-3">
         On this page
-      </p>
+      </h2>
       <ol role="list" className="space-y-0.5">
         {headings.map((heading) => {
           const active = activeId === heading.id;

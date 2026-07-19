@@ -256,9 +256,9 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
         <section aria-label="Pros and cons" className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           {review.pros.length > 0 && (
             <section aria-label="Pros">
-              <p className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
+              <h4 className="text-xs font-medium text-emerald-600 uppercase tracking-wider mb-1.5">
                 Pros
-              </p>
+              </h4>
               <ul role="list" className="space-y-1">
                 {review.pros.map((pro, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
@@ -275,9 +275,9 @@ function ReviewCardWithVoting({ review }: { review: Review }) {
           )}
           {review.cons.length > 0 && (
             <section aria-label="Cons">
-              <p className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
+              <h4 className="text-xs font-medium text-red-600 uppercase tracking-wider mb-1.5">
                 Cons
-              </p>
+              </h4>
               <ul role="list" className="space-y-1">
                 {review.cons.map((con, i) => (
                   <li key={i} className="text-sm text-gray-600 flex items-start gap-1.5">
