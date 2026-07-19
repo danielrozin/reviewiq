@@ -64,11 +64,11 @@ export function SavedComparisons({ items }: SavedComparisonsProps) {
               {item.productName}
             </h3>
             {item.note && (
-              <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate">{item.note}</p>
+              <span aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate block">{item.note}</span>
             )}
-            <p aria-hidden="true" className="text-xs text-gray-600 mt-1">
+            <span aria-hidden="true" className="text-xs text-gray-600 mt-1 block">
               Saved {item.savedAt}
-            </p>
+            </span>
           </div>
 
           <dl aria-hidden="true" className="text-right shrink-0 flex flex-col-reverse">

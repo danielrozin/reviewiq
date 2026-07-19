@@ -110,10 +110,10 @@ export function StatsOverview({ stats }: StatsOverviewProps) {
             <div aria-hidden="true" className={`w-9 h-9 rounded-xl ${STAT_COLORS[i].icon} flex items-center justify-center mb-3`}>
               {STAT_ICONS[i]}
             </div>
-            <p aria-hidden="true" className="text-2xl font-bold text-gray-900">
+            <span aria-hidden="true" className="text-2xl font-bold text-gray-900 block">
               {formatNumber(stat.value)}
-            </p>
-            <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
+            </span>
+            <span aria-hidden="true" className="text-xs text-gray-600 mt-0.5 block">{stat.label}</span>
           </li>
         ))}
       </ul>

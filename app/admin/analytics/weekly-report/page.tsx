@@ -294,8 +294,8 @@ export default function WeeklyReportPage() {
                   { label: "Comments", value: data.platform.totalComments },
                 ].map((item) => (
                   <li key={item.label} className="text-center" aria-label={`${item.label}: ${item.value.toLocaleString()}`}>
-                    <p aria-hidden="true" className="text-2xl font-bold text-gray-900">{item.value.toLocaleString()}</p>
-                    <p aria-hidden="true" className="text-[10px] text-gray-600 uppercase tracking-wider">{item.label}</p>
+                    <span aria-hidden="true" className="text-2xl font-bold text-gray-900 block">{item.value.toLocaleString()}</span>
+                    <span aria-hidden="true" className="text-[10px] text-gray-600 uppercase tracking-wider block">{item.label}</span>
                   </li>
                 ))}
               </ul>

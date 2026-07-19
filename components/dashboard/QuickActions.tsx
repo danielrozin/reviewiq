@@ -59,8 +59,8 @@ export function QuickActions() {
                 {action.icon}
               </div>
               <div className="flex-1 min-w-0">
-                <p aria-hidden="true" className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors">{action.title}</p>
-                <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate">{action.description}</p>
+                <span aria-hidden="true" className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors block">{action.title}</span>
+                <span aria-hidden="true" className="text-xs text-gray-600 mt-0.5 truncate block">{action.description}</span>
               </div>
               <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

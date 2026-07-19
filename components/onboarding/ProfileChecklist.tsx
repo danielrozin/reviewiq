@@ -105,11 +105,11 @@ export function ProfileChecklist() {
                 )}
               </div>
               <div className="flex-1 min-w-0">
-                <p aria-hidden="true" className={`text-sm font-medium ${done ? "text-gray-500 line-through" : "text-gray-900"}`}>
+                <span aria-hidden="true" className={`text-sm font-medium block ${done ? "text-gray-500 line-through" : "text-gray-900"}`}>
                   {item.label}
-                </p>
+                </span>
                 {!done && (
-                  <p aria-hidden="true" className="text-xs text-gray-600 mt-0.5">{item.description}</p>
+                  <span aria-hidden="true" className="text-xs text-gray-600 mt-0.5 block">{item.description}</span>
                 )}
               </div>
               {!done && (
