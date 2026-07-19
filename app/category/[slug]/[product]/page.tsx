@@ -186,9 +186,9 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Meta info — right column */}
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-brand-600 uppercase tracking-wider mb-2">
+            <span className="text-sm font-medium text-brand-600 uppercase tracking-wider mb-2 block">
               {product.brand}
-            </p>
+            </span>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
               {product.name}
             </h1>
