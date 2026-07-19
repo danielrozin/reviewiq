@@ -242,12 +242,12 @@ export function SearchBar({ size = "default", placeholder, className }: SearchBa
                 )}
               </span>
               <div className="min-w-0">
-                <p className="text-sm font-medium text-gray-900 truncate">
+                <span className="text-sm font-medium text-gray-900 truncate block">
                   {result.name}
-                </p>
-                <p className="text-xs text-gray-600 truncate">
+                </span>
+                <span className="text-xs text-gray-600 truncate block">
                   {result.subtitle}
-                </p>
+                </span>
               </div>
             </div>
           ))}

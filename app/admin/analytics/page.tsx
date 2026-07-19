@@ -355,7 +355,7 @@ export default function ReviewIQAnalytics() {
       {activeTab === "funnel" && (
         <div id="panel-funnel" role="tabpanel" aria-labelledby="tab-funnel" className="space-y-6">
           <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-6">
-            <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">North Star Metric</p>
+            <span className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1 block">North Star Metric</span>
             <h2 className="text-xl font-bold text-gray-900">{config.kpis.northStar.metric}</h2>
             <p className="text-sm text-gray-600 mt-1">{config.kpis.northStar.description}</p>
             <p className="text-sm text-gray-600 mt-2">Target: {config.kpis.northStar.target}</p>

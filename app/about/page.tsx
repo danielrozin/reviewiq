@@ -253,7 +253,7 @@ export default function AboutPage() {
                   {member.initials}
                 </div>
                 <h3 className="font-semibold text-gray-900 mb-0.5">{member.name}</h3>
-                <p className="text-xs font-medium text-brand-600 mb-3">{member.role}</p>
+                <span className="text-xs font-medium text-brand-600 mb-3 block">{member.role}</span>
                 <p className="text-sm text-gray-600 leading-relaxed">{member.bio}</p>
               </div>
             </li>

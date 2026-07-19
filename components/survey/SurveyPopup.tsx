@@ -247,7 +247,7 @@ export function SurveyPopup() {
 
         {step === "q1" && (
           <div>
-            <p className="text-xs text-brand-600 font-medium mb-2" aria-label="Step 1 of 5">1 of 5</p>
+            <span className="text-xs text-brand-600 font-medium mb-2 block" aria-label="Step 1 of 5">1 of 5</span>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">What brought you here today?</h3>
             <div ref={q1GroupRef} role="radiogroup" aria-label="What brought you here today?" className="space-y-2" onKeyDown={handleQ1KeyDown}>
               {INTENT_OPTIONS.map((opt, idx) => (
@@ -277,7 +277,7 @@ export function SurveyPopup() {
 
         {step === "q2" && (
           <div>
-            <p className="text-xs text-brand-600 font-medium mb-2" aria-label="Step 2 of 5">2 of 5</p>
+            <span className="text-xs text-brand-600 font-medium mb-2 block" aria-label="Step 2 of 5">2 of 5</span>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">Did you find what you were looking for?</h3>
             <div ref={q2GroupRef} role="radiogroup" aria-label="Did you find what you were looking for?" className="flex gap-3 mb-4" onKeyDown={handleQ2KeyDown}>
               <button
@@ -334,7 +334,7 @@ export function SurveyPopup() {
 
         {step === "q3" && (
           <div>
-            <p className="text-xs text-brand-600 font-medium mb-2" aria-label="Step 3 of 5">3 of 5</p>
+            <span className="text-xs text-brand-600 font-medium mb-2 block" aria-label="Step 3 of 5">3 of 5</span>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How would you rate your experience?</h3>
             <div ref={q3GroupRef} role="radiogroup" aria-label="How would you rate your experience? (1 = Poor, 5 = Excellent)" className="flex justify-center gap-2 mb-4" onKeyDown={handleQ3KeyDown}>
               {[1, 2, 3, 4, 5].map((n) => (
@@ -369,7 +369,7 @@ export function SurveyPopup() {
 
         {step === "q4" && (
           <div>
-            <p className="text-xs text-brand-600 font-medium mb-2" aria-label="Step 4 of 5">4 of 5</p>
+            <span className="text-xs text-brand-600 font-medium mb-2 block" aria-label="Step 4 of 5">4 of 5</span>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">What could we improve?</h3>
             <textarea
               value={answers.q4Improvement}
@@ -400,7 +400,7 @@ export function SurveyPopup() {
 
         {step === "q5" && (
           <div>
-            <p className="text-xs text-brand-600 font-medium mb-2" aria-label="Step 5 of 5">5 of 5</p>
+            <span className="text-xs text-brand-600 font-medium mb-2 block" aria-label="Step 5 of 5">5 of 5</span>
             <h3 ref={stepHeadingRef} id="survey-dialog-heading" tabIndex={-1} className="text-base font-bold text-gray-900 mb-4">How did you discover ReviewIQ?</h3>
             <div ref={q5GroupRef} role="radiogroup" aria-label="How did you discover ReviewIQ?" className="space-y-2 mb-4" onKeyDown={handleQ5KeyDown}>
               {DISCOVERY_OPTIONS.map((opt, idx) => (
