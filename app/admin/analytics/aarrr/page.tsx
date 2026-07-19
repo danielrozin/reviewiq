@@ -302,15 +302,16 @@ export default function AARRRDashboard() {
       {/* North Star */}
       <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-2xl p-6 mb-8">
         <div className="flex items-center justify-between flex-wrap gap-4">
-          <div>
-            <p className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">
+          <dl>
+            <dt className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">
               North Star Metric
-            </p>
-            <h2 className="text-xl font-bold text-gray-900">{data.northStar.metric}</h2>
-          </div>
-          <div className="text-right">
-            <p className="text-4xl font-bold text-emerald-700">{data.northStar.current}</p>
-            <p className="text-sm text-gray-600 mt-1">
+            </dt>
+            <dd><h2 className="text-xl font-bold text-gray-900">{data.northStar.metric}</h2></dd>
+          </dl>
+          <dl className="text-right">
+            <dt className="sr-only">Current value</dt>
+            <dd className="text-4xl font-bold text-emerald-700">{data.northStar.current}</dd>
+            <dd className="text-sm text-gray-600 mt-1">
               vs {data.northStar.previous} last week{" "}
               <span
                 className={`font-semibold ${
@@ -324,8 +325,8 @@ export default function AARRRDashboard() {
               >
                 ({data.northStar.changePercent > 0 ? "+" : ""}{data.northStar.changePercent}%)
               </span>
-            </p>
-          </div>
+            </dd>
+          </dl>
         </div>
       </div>
 
