@@ -41,7 +41,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
           <li key={item.id}>
           <Link
             href={`/category/${item.categorySlug}/${item.productSlug}`}
-            aria-label={`${item.productName} — SmartScore ${item.currentScore}${scoreDiff > 0 ? `, up ${scoreDiff} points` : scoreDiff < 0 ? `, down ${Math.abs(scoreDiff)} points` : ", no change"}`}
+            aria-describedby={`watchlist-score-${item.id}`}
             className="block bg-white border border-gray-100 rounded-xl overflow-hidden hover:border-brand-200 hover:shadow-sm motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
           >
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
@@ -53,7 +53,7 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
             </div>
 
             <div className="flex-1 min-w-0">
-              <h3 aria-hidden="true" className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
+              <h3 className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">
                 {item.productName}
               </h3>
               <span className="block text-xs text-gray-600 mt-0.5">
@@ -80,6 +80,9 @@ export function WatchlistPanel({ items }: WatchlistPanelProps) {
               )}
             </div>
             </div>
+            <span id={`watchlist-score-${item.id}`} className="sr-only">
+              SmartScore {item.currentScore}{scoreDiff > 0 ? `, up ${scoreDiff} points` : scoreDiff < 0 ? `, down ${Math.abs(scoreDiff)} points` : ", no change"}
+            </span>
           </Link>
           </li>
         );
