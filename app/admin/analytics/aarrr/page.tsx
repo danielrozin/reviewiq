@@ -428,10 +428,12 @@ export default function AARRRDashboard() {
               <ul role="list" aria-label="Customer health distribution" className="grid grid-cols-3 gap-4 mt-6 w-full list-none p-0 m-0">
                 {(["healthy", "atRisk", "churning"] as const).map((key) => (
                   <li key={key} className="text-center">
-                    <p className="text-lg font-bold" style={{ color: HEALTH_COLORS[key] }}>
-                      {data.customerHealth.distribution[key]}
-                    </p>
-                    <p className="text-xs text-gray-600 capitalize">{key === "atRisk" ? "At Risk" : key}</p>
+                    <dl className="flex flex-col-reverse">
+                      <dt className="text-xs text-gray-600 capitalize">{key === "atRisk" ? "At Risk" : key}</dt>
+                      <dd className="text-lg font-bold" style={{ color: HEALTH_COLORS[key] }}>
+                        {data.customerHealth.distribution[key]}
+                      </dd>
+                    </dl>
                   </li>
                 ))}
               </ul>
@@ -865,21 +867,21 @@ export default function AARRRDashboard() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Referral Levers</h3>
               <ul role="list" aria-label="Referral levers" className="space-y-4 list-none p-0 m-0">
                 <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-                  <p className="text-sm font-semibold text-gray-900">Review Quality</p>
+                  <h4 className="text-sm font-semibold text-gray-900">Review Quality</h4>
                   <p className="text-xs text-gray-600 mt-1">
                     {data.referral.totalReviews} reviews generate SEO traffic that brings new users organically.
                     Higher review count and quality improve search rankings.
                   </p>
                 </li>
                 <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-                  <p className="text-sm font-semibold text-gray-900">Community Discussions</p>
+                  <h4 className="text-sm font-semibold text-gray-900">Community Discussions</h4>
                   <p className="text-xs text-gray-600 mt-1">
                     {data.referral.communityEngagement.totalThreads} discussion threads create shareable, indexable content.
                     Active discussions signal product authority.
                   </p>
                 </li>
                 <li className="p-4 bg-gray-50 rounded-lg border border-gray-100">
-                  <p className="text-sm font-semibold text-gray-900">Badge & Reputation System</p>
+                  <h4 className="text-sm font-semibold text-gray-900">Badge &amp; Reputation System</h4>
                   <p className="text-xs text-gray-600 mt-1">
                     {data.referral.communityAdvocates} users have earned badges. These power users are natural
                     advocates who share expertise and attract new community members.
