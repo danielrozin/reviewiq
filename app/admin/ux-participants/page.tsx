@@ -379,6 +379,7 @@ export default function UxParticipantsPage() {
                         <select
                           value={p.status}
                           disabled={saving === p.id}
+                          aria-label={`Status for ${p.name}`}
                           onChange={e => updateStatus(p.id, e.target.value as Status)}
                           className={`appearance-none pl-2 pr-6 py-1 rounded-full text-xs font-medium border-0 cursor-pointer ${STATUS_CONFIG[p.status].color} focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-indigo-400`}
                         >

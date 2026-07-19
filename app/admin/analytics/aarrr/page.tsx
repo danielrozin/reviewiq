@@ -306,7 +306,7 @@ export default function AARRRDashboard() {
             <dt className="text-xs font-semibold text-emerald-600 uppercase tracking-wider mb-1">
               North Star Metric
             </dt>
-            <dd><h2 className="text-xl font-bold text-gray-900">{data.northStar.metric}</h2></dd>
+            <dd className="text-xl font-bold text-gray-900">{data.northStar.metric}</dd>
           </dl>
           <dl className="text-right">
             <dt className="sr-only">Current value</dt>
