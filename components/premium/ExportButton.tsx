@@ -132,11 +132,12 @@ export function ExportButton({ onExport }: ExportButtonProps) {
           role="alertdialog"
           aria-modal="true"
           aria-label="Upgrade required to export"
+          aria-describedby="export-gate-title"
           tabIndex={-1}
           className="absolute right-0 mt-2 w-80 z-20 focus-visible:outline-none"
           onKeyDown={handleGateKeyDown}
         >
-          <UpgradePrompt gate="export" compact />
+          <UpgradePrompt gate="export" compact titleId="export-gate-title" />
           <button
             type="button"
             onClick={() => { setShowGate(false); triggerRef.current?.focus(); }}

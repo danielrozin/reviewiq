@@ -68,7 +68,7 @@ export function ReviewsWithFilter({ reviews, totalCount }: ReviewsWithFilterProp
   }
 
   return (
-    <section id="section-reviews" aria-labelledby="verified-reviews-heading">
+    <section id="section-reviews" aria-labelledby="verified-reviews-heading" className="scroll-mt-28">
       {/* Controls */}
       <div className="flex flex-wrap items-center gap-3 mb-6">
         <div className="flex items-center gap-2.5 flex-1 min-w-0">

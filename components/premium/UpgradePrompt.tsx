@@ -55,9 +55,10 @@ function GateIcon({ gate, className }: { gate: GateType; className: string }) {
 interface UpgradePromptProps {
   gate: GateType;
   compact?: boolean;
+  titleId?: string;
 }
 
-export function UpgradePrompt({ gate, compact = false }: UpgradePromptProps) {
+export function UpgradePrompt({ gate, compact = false, titleId }: UpgradePromptProps) {
   const { title, description } = GATE_COPY[gate];
 
   if (compact) {
@@ -65,7 +66,7 @@ export function UpgradePrompt({ gate, compact = false }: UpgradePromptProps) {
       <div className="flex items-center gap-3 p-3 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl">
         <span aria-hidden="true"><GateIcon gate={gate} className="w-5 h-5 text-amber-600 shrink-0" /></span>
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium text-amber-900">{title}</p>
+          <p id={titleId} className="text-sm font-medium text-amber-900">{title}</p>
         </div>
         <Link
           href="/pricing"

@@ -253,7 +253,7 @@ export default async function ProductPage({ params }: Props) {
           />
 
           {/* AI Summary */}
-          <div id="section-summary" data-speakable="ai-summary">
+          <div id="section-summary" data-speakable="ai-summary" className="scroll-mt-28">
             <AISummaryCard summary={product.aiSummary} score={product.smartScore} />
           </div>
 
@@ -390,12 +390,12 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* Specs */}
-          <div id="section-specs" data-speakable="specifications">
+          <div id="section-specs" data-speakable="specifications" className="scroll-mt-28">
             <SpecsTable specs={product.specs} />
           </div>
 
           {/* Comparisons */}
-          <div id="section-compare" data-speakable="compare-with">
+          <div id="section-compare" data-speakable="compare-with" className="scroll-mt-28">
             <ComparisonModule
               currentProduct={product.name}
               currentProductSlug={product.slug}
@@ -405,7 +405,7 @@ export default async function ProductPage({ params }: Props) {
           </div>
 
           {/* FAQ */}
-          <div id="section-faq">
+          <div id="section-faq" className="scroll-mt-28">
             <FAQSection items={product.faq} />
           </div>
         </aside>
