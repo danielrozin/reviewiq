@@ -178,20 +178,20 @@ export default function AboutPage() {
       </header>
 
       {/* Stats bar */}
-      <ul role="list" className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20 list-none p-0 m-0">
+      <dl className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-20">
         {STATS.map((s) => (
-          <li key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
+          <div key={s.label} className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-md motion-safe:hover:-translate-y-0.5 motion-safe:transition-all duration-200 group">
             <div aria-hidden="true" className="h-0.5 w-full bg-gradient-to-r from-brand-400 to-brand-600 opacity-0 group-hover:opacity-100 motion-safe:transition-opacity duration-200" />
             <div className="p-5 text-center">
               <div aria-hidden="true" className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 {s.icon}
               </div>
-              <p className="text-2xl font-extrabold text-gray-900">{s.value}</p>
-              <p className="text-xs text-gray-600 mt-1">{s.label}</p>
+              <dd className="text-2xl font-extrabold text-gray-900">{s.value}</dd>
+              <dt className="text-xs text-gray-600 mt-1">{s.label}</dt>
             </div>
-          </li>
+          </div>
         ))}
-      </ul>
+      </dl>
 
       {/* Why we built this */}
       <section aria-labelledby="about-why-heading" className="mb-20" data-speakable="about-why">

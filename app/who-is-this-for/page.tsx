@@ -406,14 +406,14 @@ export default function WhoIsThisForPage() {
         <h2 id="witf-proof-heading" className="text-2xl font-bold text-gray-900 mb-8">
           Proof with numbers
         </h2>
-        <ul role="list" className="grid grid-cols-1 sm:grid-cols-2 gap-6 list-none p-0">
+        <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {stats.map((stat) => (
-            <li key={stat.value}>
-              <p className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</p>
-              <p className="text-sm text-gray-600 leading-relaxed">{stat.label}</p>
-            </li>
+            <div key={stat.value}>
+              <dd className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</dd>
+              <dt className="text-sm text-gray-600 leading-relaxed">{stat.label}</dt>
+            </div>
           ))}
-        </ul>
+        </dl>
       </section>
 
       {/* FAQ */}
