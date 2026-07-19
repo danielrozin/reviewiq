@@ -42,10 +42,10 @@ export function ExternalComparisonLinks({
                   </svg>
                 </div>
                 <div aria-hidden="true">
-                  <p className="text-sm font-medium text-gray-900 group-hover:text-purple-600 transition-colors">
+                  <span className="block text-sm font-medium text-gray-900 group-hover:text-purple-600 transition-colors">
                     {comp.title}
-                  </p>
-                  <p className="text-xs text-gray-600">on {comp.source}</p>
+                  </span>
+                  <span className="block text-xs text-gray-600">on {comp.source}</span>
                 </div>
               </div>
               <span aria-hidden="true" className="inline-flex items-center gap-1 text-purple-600 text-xs font-medium shrink-0 ml-3">

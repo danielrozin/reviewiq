@@ -19,12 +19,12 @@ export function ReviewFormCTA({ productName, productSlug, categorySlug }: Review
   return (
     <div className="bg-gradient-to-r from-brand-50/60 to-white border border-brand-100 rounded-xl p-4 flex items-center justify-between gap-4">
       <div>
-        <p className="text-sm font-medium text-gray-900">
+        <strong className="block text-sm font-medium text-gray-900">
           Own this product?
-        </p>
-        <p className="text-xs text-gray-600">
+        </strong>
+        <span className="block text-xs text-gray-600">
           Share your experience to help other buyers
-        </p>
+        </span>
       </div>
       <Link
         href={`/write-review?product=${productSlug}&category=${categorySlug}`}
