@@ -107,7 +107,7 @@ export default async function BlogPostPage({
 
       <div className="mt-8 max-w-6xl mx-auto lg:flex lg:gap-10 lg:items-start">
         {tocHeadings.length >= 2 && (
-          <aside className="hidden lg:block lg:w-56 xl:w-64 shrink-0 sticky top-24 self-start">
+          <aside aria-label="Table of contents" className="hidden lg:block lg:w-56 xl:w-64 shrink-0 sticky top-24 self-start">
             <BlogTableOfContents headings={tocHeadings} />
           </aside>
         )}
@@ -434,8 +434,8 @@ function markdownToHtml(md: string): string {
   });
 
   // Headers — add tabIndex=-1 + id for TOC anchor targeting (WCAG 2.4.1)
-  html = html.replace(/^### (.+)$/gm, (_m, t) => `<h3 id="${slugify(t)}" tabindex="-1" class="text-xl font-semibold text-gray-900 mt-8 mb-3 focus-visible:outline-none">${t}</h3>`);
-  html = html.replace(/^## (.+)$/gm, (_m, t) => `<h2 id="${slugify(t)}" tabindex="-1" class="text-2xl font-bold text-gray-900 mt-10 mb-4 focus-visible:outline-none">${t}</h2>`);
+  html = html.replace(/^### (.+)$/gm, (_m, t) => `<h3 id="${slugify(t)}" tabindex="-1" class="text-xl font-semibold text-gray-900 mt-8 mb-3 scroll-mt-20 focus-visible:outline-none">${t}</h3>`);
+  html = html.replace(/^## (.+)$/gm, (_m, t) => `<h2 id="${slugify(t)}" tabindex="-1" class="text-2xl font-bold text-gray-900 mt-10 mb-4 scroll-mt-20 focus-visible:outline-none">${t}</h2>`);
 
   // Bold and italic
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
