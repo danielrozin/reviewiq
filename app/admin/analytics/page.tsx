@@ -317,8 +317,8 @@ export default function ReviewIQAnalytics() {
             >
               <div aria-hidden="true" className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600 text-lg font-bold">G</div>
               <div aria-hidden="true">
-                <p className="font-medium text-gray-900">Google Analytics</p>
-                <p className="text-xs text-gray-600">{config.ga4Property}</p>
+                <span className="block font-medium text-gray-900">Google Analytics</span>
+                <span className="block text-xs text-gray-600">{config.ga4Property}</span>
               </div>
             </a>
             <a
@@ -330,8 +330,8 @@ export default function ReviewIQAnalytics() {
             >
               <div aria-hidden="true" className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-lg font-bold">C</div>
               <div aria-hidden="true">
-                <p className="font-medium text-gray-900">Microsoft Clarity</p>
-                <p className="text-xs text-gray-600">{config.clarityProject}</p>
+                <span className="block font-medium text-gray-900">Microsoft Clarity</span>
+                <span className="block text-xs text-gray-600">{config.clarityProject}</span>
               </div>
             </a>
             <a
@@ -343,8 +343,8 @@ export default function ReviewIQAnalytics() {
             >
               <div aria-hidden="true" className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-lg font-bold">S</div>
               <div aria-hidden="true">
-                <p className="font-medium text-gray-900">Search Console</p>
-                <p className="text-xs text-gray-600">GSC data</p>
+                <span className="block font-medium text-gray-900">Search Console</span>
+                <span className="block text-xs text-gray-600">GSC data</span>
               </div>
             </a>
           </div>
