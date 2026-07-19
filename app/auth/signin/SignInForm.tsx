@@ -62,9 +62,9 @@ export function SignInForm() {
             </div>
             <span className="text-xl font-bold text-gray-900">Review<span className="text-brand-600">IQ</span></span>
           </Link>
-          <h2 className="text-3xl font-extrabold text-gray-900 mb-4 leading-tight">
+          <p className="text-3xl font-extrabold text-gray-900 mb-4 leading-tight">
             Make smarter buying<br />decisions — for free
-          </h2>
+          </p>
           <p className="text-gray-600 mb-8 leading-relaxed">
             AI-powered review intelligence trusted by 20,000+ verified buyers. No affiliate bias. No fake reviews.
           </p>
