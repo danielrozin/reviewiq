@@ -128,7 +128,7 @@ export function PrivacyContent() {
         <h2 id="contact-h" className="text-2xl font-bold text-gray-900 mb-4">11. Contact Us</h2>
         <p>If you have questions about this Privacy Policy, please contact us:</p>
         <div className="mt-4 bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
-          <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>
+          <strong className="font-semibold text-gray-900 mb-1 block">ReviewIQ</strong>
           <p>Email: <a href="mailto:contact@revieweriq.com" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">contact@revieweriq.com</a></p>
         </div>
       </section>

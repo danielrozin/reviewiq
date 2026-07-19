@@ -103,7 +103,7 @@ export function TermsContent() {
         <h2 id="terms-contact-h" className="text-2xl font-bold text-gray-900 mb-4">10. Contact</h2>
         <p className="mb-4">Questions about these Terms? Contact us:</p>
         <div className="bg-gray-50 border border-gray-200 rounded-xl p-5 text-sm">
-          <p className="font-semibold text-gray-900 mb-1">ReviewIQ</p>
+          <strong className="font-semibold text-gray-900 mb-1 block">ReviewIQ</strong>
           <p>Email: <a href="mailto:contact@revieweriq.com" className="text-brand-600 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1 rounded">contact@revieweriq.com</a></p>
         </div>
       </section>

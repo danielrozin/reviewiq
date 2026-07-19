@@ -51,9 +51,9 @@ export function StickyMobileCTA({
               <SmartScore score={smartScore} size="sm" showLabel={false} />
             </div>
           )}
-          <p className="flex-1 text-sm font-semibold text-gray-800 truncate min-w-0">
+          <span className="flex-1 text-sm font-semibold text-gray-800 truncate min-w-0">
             {productName}
-          </p>
+          </span>
           <Link
             href={compareHref}
             className="shrink-0 inline-flex items-center gap-1 min-h-[44px] px-3 py-3 text-xs font-medium text-gray-700 bg-white border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors touch-manipulation focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-600 focus-visible:ring-offset-1"
