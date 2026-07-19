@@ -269,7 +269,7 @@ export default async function ThreadPage({ params }: Props) {
             <h2 id="thread-sidebar-heading" className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider text-gray-600">
               Thread Info
             </h2>
-            <div className="grid grid-cols-3 gap-3 mb-5">
+            <dl className="grid grid-cols-3 gap-3 mb-5">
               {[
                 { label: "Views", value: formatNumber(thread.viewCount), icon: (
                   <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
@@ -283,11 +283,11 @@ export default async function ThreadPage({ params }: Props) {
               ].map((stat) => (
                 <div key={stat.label} className="text-center p-2.5 bg-gray-50 rounded-xl">
                   <div aria-hidden="true" className={`flex items-center justify-center mb-1 ${stat.color}`}>{stat.icon}</div>
-                  <p className="text-sm font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-xs text-gray-600 mt-0.5">{stat.label}</p>
+                  <dt className="text-xs text-gray-600 mt-0.5">{stat.label}</dt>
+                  <dd className="text-sm font-bold text-gray-900">{stat.value}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
             <dl className="space-y-2 text-sm border-t border-gray-100 pt-4">
               <div className="flex justify-between">
                 <dt className="text-gray-600">Created</dt>
@@ -328,21 +328,21 @@ export default async function ThreadPage({ params }: Props) {
 
           {/* Related threads */}
           {related.length > 0 && (
-            <div>
+            <section aria-labelledby="related-discussions-heading">
               <div className="flex items-center gap-2 mb-3">
                 <div aria-hidden="true" className="w-7 h-7 bg-brand-50 rounded-lg flex items-center justify-center shrink-0">
                   <svg aria-hidden="true" className="w-3.5 h-3.5 text-brand-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
                   </svg>
                 </div>
-                <h2 className="font-semibold text-gray-900">Related Discussions</h2>
+                <h2 id="related-discussions-heading" className="font-semibold text-gray-900">Related Discussions</h2>
               </div>
               <div className="space-y-1">
                 {related.map((t) => (
                   <ThreadCard key={t.id} thread={t} compact />
                 ))}
               </div>
-            </div>
+            </section>
           )}
         </aside>
       </div>
