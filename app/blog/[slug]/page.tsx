@@ -274,13 +274,13 @@ export default async function BlogPostPage({
                     <span aria-hidden="true">{product.smartScore}</span>
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
+                    <span className="block font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                       {product.name}
-                    </p>
-                    <p className="text-xs text-gray-600 mt-0.5">
+                    </span>
+                    <span className="block text-xs text-gray-600 mt-0.5">
                       ${product.priceRange.min}–${product.priceRange.max} <span aria-hidden="true">&middot;</span>{" "}
                       {product.reviewCount} reviews
-                    </p>
+                    </span>
                   </div>
                   <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -322,13 +322,13 @@ export default async function BlogPostPage({
                       <span aria-hidden="true">{product.smartScore}</span>
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
+                      <span className="block font-medium text-gray-900 truncate group-hover:text-brand-600 transition-colors">
                         {product.name}
-                      </p>
-                      <p className="text-xs text-gray-600 mt-0.5">
+                      </span>
+                      <span className="block text-xs text-gray-600 mt-0.5">
                         <span className="text-brand-600 font-medium"><span aria-hidden="true">{cat?.icon} </span>{cat?.name}</span>
                         {" "}<span aria-hidden="true">&middot;</span> ${product.priceRange.min}–${product.priceRange.max}
-                      </p>
+                      </span>
                     </div>
                     <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -375,12 +375,12 @@ export default async function BlogPostPage({
                   <span className="text-xs font-medium text-brand-600 bg-brand-50 px-2.5 py-1 rounded-full">
                     {rp.categoryName}
                   </span>
-                  <p className="font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 leading-snug">
+                  <span className="block font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mt-3 leading-snug">
                     {rp.title}
-                  </p>
-                  <p className="text-sm text-gray-600 mt-2 line-clamp-2 leading-relaxed">
+                  </span>
+                  <span className="block text-sm text-gray-600 mt-2 line-clamp-2 leading-relaxed">
                     {rp.excerpt}
-                  </p>
+                  </span>
                   <div className="flex items-center gap-1 mt-3 text-xs text-brand-600 font-medium sm:opacity-0 sm:group-hover:opacity-100 sm:group-focus-within:opacity-100 motion-safe:transition-opacity">
                     Read article
                     <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">

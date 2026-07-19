@@ -147,9 +147,9 @@ export default async function BlogCategoryPage({
               <h2 className="text-lg font-semibold text-gray-900 group-hover:text-brand-600 transition-colors mb-2 line-clamp-2">
                 {post.title}
               </h2>
-              <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
+              <span className="block text-sm text-gray-600 leading-relaxed line-clamp-3">
                 {post.excerpt}
-              </p>
+              </span>
               <div className="mt-4 flex items-center justify-between">
                 <time dateTime={post.publishedAt} className="text-xs text-gray-600">
                   {new Date(post.publishedAt).toLocaleDateString("en-US", {
