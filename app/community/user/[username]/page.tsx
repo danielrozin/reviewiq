@@ -98,13 +98,13 @@ export default async function UserProfilePage({ params }: Props) {
                 { value: user.verifiedProductCount, label: "Verified", color: "text-amber-600" },
                 { value: user.helpfulVotesReceived, label: "Helpful Votes", color: "text-gray-700" },
               ].map((stat) => (
-                <div key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl">
-                  <dd className={`text-lg font-bold ${stat.color}`}>
-                    {formatNumber(stat.value)}
-                  </dd>
+                <div key={stat.label} className="text-center p-3 bg-gray-50 rounded-xl flex flex-col-reverse">
                   <dt className="text-xs text-gray-600 uppercase tracking-wider mt-0.5">
                     {stat.label}
                   </dt>
+                  <dd className={`text-lg font-bold ${stat.color}`}>
+                    {formatNumber(stat.value)}
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -145,10 +145,16 @@ export default async function UserProfilePage({ params }: Props) {
             )}
 
             {/* Meta */}
-            <div className="border-t border-gray-100 pt-4 text-xs text-gray-600 space-y-1">
-              <p>Joined <time dateTime={user.joinedAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.joinedAt))}</time></p>
-              <p>Last active <time dateTime={user.lastActiveAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.lastActiveAt))}</time></p>
-            </div>
+            <dl className="border-t border-gray-100 pt-4 text-xs text-gray-600 space-y-1">
+              <div className="flex gap-1">
+                <dt>Joined</dt>
+                <dd><time dateTime={user.joinedAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.joinedAt))}</time></dd>
+              </div>
+              <div className="flex gap-1">
+                <dt>Last active</dt>
+                <dd><time dateTime={user.lastActiveAt}>{new Intl.DateTimeFormat("en-US", { year: "numeric", month: "short", day: "numeric", timeZone: "UTC" }).format(new Date(user.lastActiveAt))}</time></dd>
+              </div>
+            </dl>
           </div>
         </aside>
 

@@ -89,9 +89,9 @@ export default function CommunityPage() {
               <div aria-hidden="true" className={`w-9 h-9 ${stat.iconBg} ${stat.iconColor} rounded-lg flex items-center justify-center shrink-0`}>
                 {stat.icon}
               </div>
-              <div>
-                <dd className="text-lg font-bold text-gray-900 leading-none">{stat.value.toLocaleString()}</dd>
+              <div className="flex flex-col-reverse">
                 <dt className="text-xs text-gray-600 mt-0.5">{stat.label}</dt>
+                <dd className="text-lg font-bold text-gray-900 leading-none">{stat.value.toLocaleString()}</dd>
               </div>
             </div>
           ))}
