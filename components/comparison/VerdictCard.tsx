@@ -55,11 +55,11 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               <div role="img" aria-label={`SmartScore: ${winner.smartScore}`} className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(winner.smartScore)}`}>
                 <span aria-hidden="true">{winner.smartScore}</span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Winner</p>
-                <p className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">{winner.name}</p>
-                <p className="text-xs text-gray-600">{winner.brand}</p>
-              </div>
+              <dl className="min-w-0">
+                <dt className="text-xs font-bold text-emerald-600 uppercase tracking-wider">Winner</dt>
+                <dd className="text-sm font-semibold text-gray-900 group-hover:text-brand-600 transition-colors truncate">{winner.name}</dd>
+                <dd className="text-xs text-gray-600">{winner.brand}</dd>
+              </dl>
               <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>
@@ -81,11 +81,11 @@ export function VerdictCard({ productA, productB }: VerdictCardProps) {
               <div role="img" aria-label={`SmartScore: ${loser.smartScore}`} className={`w-12 h-12 rounded-xl font-bold text-white flex items-center justify-center text-lg shrink-0 ${getScoreBgColor(loser.smartScore)}`}>
                 <span aria-hidden="true">{loser.smartScore}</span>
               </div>
-              <div className="min-w-0">
-                <p className="text-xs font-medium text-gray-600 uppercase tracking-wider">Runner-up</p>
-                <p className="text-sm font-semibold text-gray-700 group-hover:text-brand-600 transition-colors truncate">{loser.name}</p>
-                <p className="text-xs text-gray-600">{loser.brand}</p>
-              </div>
+              <dl className="min-w-0">
+                <dt className="text-xs font-medium text-gray-600 uppercase tracking-wider">Runner-up</dt>
+                <dd className="text-sm font-semibold text-gray-700 group-hover:text-brand-600 transition-colors truncate">{loser.name}</dd>
+                <dd className="text-xs text-gray-600">{loser.brand}</dd>
+              </dl>
               <svg aria-hidden="true" className="w-4 h-4 text-gray-400 group-hover:text-brand-400 transition-colors ml-auto shrink-0" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
               </svg>

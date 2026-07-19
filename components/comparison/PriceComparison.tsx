@@ -45,18 +45,21 @@ function PriceCard({ product, isLowest }: { product: Product; isLowest: boolean 
           Best Price
         </span>
       )}
-      <p className="text-sm font-semibold text-gray-900 mb-2">
-        {product.name}
-      </p>
-      <p className="text-2xl font-bold text-gray-900">
-        {formatter.format(min)}
-        {max !== min && (
-          <span className="text-gray-600"> – {formatter.format(max)}</span>
-        )}
-      </p>
-      <p className="text-xs text-gray-600 mt-1">
-        Verified purchase rate: {product.verifiedPurchaseRate}%
-      </p>
+      <dl>
+        <dt className="text-sm font-semibold text-gray-900 mb-2">{product.name}</dt>
+        <dd className="text-2xl font-bold text-gray-900" aria-label={`${formatter.format(min)}${max !== min ? ` to ${formatter.format(max)}` : ""}`}>
+          <span aria-hidden="true">
+            {formatter.format(min)}
+            {max !== min && (
+              <span className="text-gray-600"> – {formatter.format(max)}</span>
+            )}
+          </span>
+        </dd>
+        <div className="mt-1">
+          <dt className="sr-only">Verified purchase rate</dt>
+          <dd className="text-xs text-gray-600">{product.verifiedPurchaseRate}% verified buyers</dd>
+        </div>
+      </dl>
     </div>
   );
 }
