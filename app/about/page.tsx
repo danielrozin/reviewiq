@@ -186,8 +186,10 @@ export default function AboutPage() {
               <div aria-hidden="true" className={`w-9 h-9 ${s.color} rounded-xl flex items-center justify-center mx-auto mb-3`}>
                 {s.icon}
               </div>
-              <dd className="text-2xl font-extrabold text-gray-900">{s.value}</dd>
-              <dt className="text-xs text-gray-600 mt-1">{s.label}</dt>
+              <div className="flex flex-col-reverse">
+                <dt className="text-xs text-gray-600 mt-1">{s.label}</dt>
+                <dd className="text-2xl font-extrabold text-gray-900">{s.value}</dd>
+              </div>
             </div>
           </div>
         ))}

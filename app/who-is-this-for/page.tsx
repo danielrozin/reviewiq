@@ -408,9 +408,9 @@ export default function WhoIsThisForPage() {
         </h2>
         <dl className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {stats.map((stat) => (
-            <div key={stat.value}>
-              <dd className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</dd>
+            <div key={stat.value} className="flex flex-col-reverse">
               <dt className="text-sm text-gray-600 leading-relaxed">{stat.label}</dt>
+              <dd className="text-2xl font-bold text-brand-600 mb-1">{stat.value}</dd>
             </div>
           ))}
         </dl>
