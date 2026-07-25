@@ -19,7 +19,9 @@
     "test:ci": "vitest run --reporter=verbose --no-color",
     "discover:keywords": "tsx scripts/keyword-discovery.ts",
     "cleanup:consent": "tsx scripts/cleanup-consent-records.ts",
-    "submit:indexnow": "tsx scripts/submit-indexnow.ts"
+    "submit:indexnow": "tsx scripts/submit-indexnow.ts",
+    "audit:jsonld": "node scripts/audit-jsonld-fields.mjs",
+    "audit:jsonld:selftest": "node scripts/audit-jsonld-fields.mjs --selftest"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
