@@ -58,6 +58,7 @@ model User {
   image               String?
   username            String?   @unique
   bio                 String?   @db.Text
+  password            String?   @db.Text
   trustLevel          String    @default("newcomer")
   reputationScore     Int       @default(0)
   badges              String[]  @default([])
